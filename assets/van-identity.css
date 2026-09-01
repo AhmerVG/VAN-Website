@@ -1,0 +1,56 @@
+/* ===========================================================
+   VAN shared identity — typography + brand tokens
+   Rolls the homepage identity (Space Grotesk / Archivo, navy
+   #0E3550, gold #E3A93C) across the whole site.
+   Loaded by every page; fonts are cached once, not re-embedded.
+   =========================================================== */
+
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:700;font-display:swap;
+  src:url(/assets/fonts/space-grotesk-700.woff2) format('woff2');}
+@font-face{font-family:'Archivo';font-style:normal;font-weight:400;font-display:swap;
+  src:url(/assets/fonts/archivo-400.woff2) format('woff2');}
+@font-face{font-family:'Archivo';font-style:normal;font-weight:600;font-display:swap;
+  src:url(/assets/fonts/archivo-600.woff2) format('woff2');}
+@font-face{font-family:'Archivo';font-style:normal;font-weight:700;font-display:swap;
+  src:url(/assets/fonts/archivo-700.woff2) format('woff2');}
+
+:root{
+  --van-display:'Space Grotesk','Segoe UI',system-ui,sans-serif;
+  --van-body:'Archivo','Segoe UI',system-ui,sans-serif;
+  --van-gold:#E3A93C;
+  --van-gold-hi:#F0BB56;
+}
+
+/* --- align the interior navy to the homepage navy --- */
+:root{ --navy:#0E3550; }
+
+/* --- body text --- */
+body{font-family:var(--van-body);}
+
+/* --- display type: headings and the nav wordmark --- */
+h1,h2,h3,h4,h5,
+.sec,.pname,.band h3,.rung h3,
+.v6links,.navlinks,.nlinks{
+  font-family:var(--van-display);
+  letter-spacing:-.015em;
+}
+/* nav links are UI, not display copy — keep them tight but not condensed */
+.v6links,.navlinks,.nlinks{letter-spacing:0;}
+
+/* --- primary CTA takes the homepage gold --- */
+.v6cta .go,.ncta .go,
+.cta:not(.o){
+  background:var(--van-gold);
+  border-color:var(--van-gold);
+  color:#0E3550;
+}
+.v6cta .go:hover,.ncta .go:hover,
+.cta:not(.o):hover{
+  background:var(--van-gold-hi);
+  border-color:var(--van-gold-hi);
+  color:#0E3550;
+}
+.cta.o{color:var(--navy);border-color:var(--navy);}
+
+/* --- active nav item gets the gold underline used on the homepage --- */
+.v6links a.on,.navlinks .on{box-shadow:inset 0 -2px 0 var(--van-gold);}
