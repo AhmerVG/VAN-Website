@@ -1,0 +1,127 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# van.com.pk — redirects for the new site
+# Written 8 Sep 2026. Upload as ".htaccess" in the web root (note the leading dot).
+#
+# WHY THIS FILE EXISTS
+# The live site has 84 indexed URLs. The new site rebuilds 13 of the 22 that had no
+# home, and merges the other 9 into stronger pages. Without these 301s those 9 URLs
+# would 404 and lose their ranking and their backlinks. A 301 passes both on.
+#
+# Every rule below is a permanent redirect (301). Nothing here deletes a page.
+# ─────────────────────────────────────────────────────────────────────────────
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # ── The five lab pages merge into one /lab page with anchors ──────────────
+  # Their content is all there; the protocol was restated near-verbatim across four
+  # of the five, so it is now said once and linked to from each old address.
+  RewriteRule ^lab/blind-chain\.html$   /lab/index.html#blind-chain [R=301,L]
+  RewriteRule ^lab/tests\.html$         /lab/index.html#prices      [R=301,L]
+  RewriteRule ^lab/book\.html$          /lab/index.html#book        [R=301,L]
+  RewriteRule ^lab/business\.html$      /lab/index.html#trade       [R=301,L]
+  # /lab/verify.html has a distinct search intent ("is this bag real"), so it goes
+  # to the standalone verify page rather than to an anchor.
+  RewriteRule ^lab/verify\.html$        /verify.html          [R=301,L]
+
+  # ── The three formulation codes merge into the pipeline library ───────────
+  # Nobody searches "N-26L". Their full specs are on the pipeline page.
+  RewriteRule ^partner/formulations/n-26l\.html$  /partner/pipeline.html#codes [R=301,L]
+  RewriteRule ^partner/formulations/p-44l\.html$  /partner/pipeline.html#codes [R=301,L]
+  RewriteRule ^partner/formulations/pk-82\.html$  /partner/pipeline.html#codes [R=301,L]
+
+  # ── Pages folded into a hub ───────────────────────────────────────────────
+  # /partner/dossier.html described what happens after interest is expressed and
+  # answered no question a reader arrives with — it is now the partner hub's CTA.
+  RewriteRule ^partner/dossier\.html$   /partner/index.html         [R=301,L]
+  # /crop-specific-nutrition.html was three grades "in development" with no specs,
+  # duplicating the pipeline page's framing with less detail.
+  RewriteRule ^crop-specific-nutrition\.html$ /partner/pipeline.html [R=301,L]
+
+  # ── One page moved, and keeps its value ───────────────────────────────────
+  # Application systems now sits under /knowledge with the other two articles.
+  RewriteRule ^application-systems\.html$ /knowledge/application-systems.html [R=301,L]
+
+  # ── One Tank folds into the application-systems article ───────────────────
+  # /one-tank.html was live and in the live nav, but it is not in the submitted
+  # sitemap, which is why the first rebuild pass missed it entirely. Tahir's call
+  # (9 Sep) was to merge it rather than give it its own page: its whole content is
+  # now section 05 of the application-systems article, so the old URL lands on that
+  # section rather than at the top of the page.
+  RewriteRule ^one-tank\.html$ /knowledge/application-systems.html#one-tank [R=301,L]
+
+  # ── The distributor page moved out from under Make With Us (10 Sep 2026) ──
+  # Make With Us is now for manufacturing and own-brand partners only. The dealer
+  # page has its own address. The old address is indexed and must not 404.
+  RewriteRule ^partner/distributor\.html$ /become-a-dealer.html [R=301,L]
+
+  # ── A page that never existed ─────────────────────────────────────────────
+  # /foliark-precise.html is in the submitted sitemap but 404s and is not on disk.
+  # Remove it from sitemap.xml as well as adding this line.
+  RewriteRule ^foliark-precise\.html$   /brands/index.html        [R=301,L]
+</IfModule>
+
+# ─────────────────────────────────────────────────────────────────────────────
+# THE 404 PAGE — added 9 Sep 2026.
+# The new build now ships its own /404.html. Without this line Apache would keep
+# serving the OLD site's 404 page (the upload goes on top of the existing root, so
+# the old file survives) — old design, old navigation, on a new site.
+# The file is written with ABSOLUTE asset paths precisely because Apache serves it
+# from whatever URL was asked for, including deep ones like /crops/does-not-exist.
+ErrorDocument 404 /404.html
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ─────────────────────────────────────────────────────────────────────────────
+# UNCHANGED — do not add rules for these. They keep their exact URLs:
+#   /  ·  /about.html  ·  /verify.html  ·  /simulator.html
+#   /brands/index.html and all 24 /brands/<slug>.html product pages
+#   /crops/index.html and all 28 /crops/<slug>.html crop pages
+#   /knowledge/index.html  ·  /knowledge/soil-and-sustainability.html
+#   /knowledge/why-pakistan-must-shift.html
+#   /circular-economy/index.html  ·  /circular-economy/ash.html  ·  /circular-economy/soil.html
+#   /lab/index.html  ·  /partner/index.html
+#   /partner/brief-to-bag.html  ·  /partner/engineering.html  ·  /partner/manufacturing.html
+#   /partner/pipeline.html  ·  /partner/regulatory.html  ·  /become-a-dealer.html
+#
+# AFTER UPLOAD, CHECK THESE BY HAND — a redirect that silently fails is worse than none:
+#   curl -I https://www.van.com.pk/lab/tests.html          -> expect 301 to /lab/index.html#prices
+#   curl -I https://www.van.com.pk/partner/dossier.html    -> expect 301 to /partner/index.html
+#   curl -I https://www.van.com.pk/brands/vital-urea.html  -> expect 200, NOT a redirect
+#   curl -I https://www.van.com.pk/one-tank.html           -> expect 301 to /knowledge/application-systems.html#one-tank
+#   curl -I https://www.van.com.pk/no-such-page            -> expect 404 AND the new 404 page's markup
+# Then re-submit sitemap.xml in Search Console with /foliark-precise.html removed.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CORRECTED 8 Sep 2026, before go-live. Six of these targets read /lab.html,
+# /partner.html and /products.html. Those pages do not exist under those names —
+# the live site's own URLs are /lab/, /partner/ and /brands/, and the new build
+# ships lab/index.html, partner/index.html and brands/index.html to match. Left
+# as written, six old indexed URLs would have 301'd straight into a 404.
+# Every target below is now verified against a file that exists in the build.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ─────────────────────────────────────────────────────────────────────────────
+# COMPRESSION AND CACHING — added 11 Sep 2026.
+# Measured on the built site: 8.2 seconds to interactive on Fast 3G with compression,
+# 16.6 seconds without. This block turns it on in Apache without touching cPanel.
+# If the host already compresses, these lines do no harm.
+# ─────────────────────────────────────────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # The bundle and images carry a content hash in their file name, so they can be
+  # cached for a year: a new build gets new names and the old ones are simply unused.
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  # HTML pages change with every build, so they are checked every time.
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
