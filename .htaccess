@@ -16,19 +16,19 @@
   # ── The five lab pages merge into one /lab page with anchors ──────────────
   # Their content is all there; the protocol was restated near-verbatim across four
   # of the five, so it is now said once and linked to from each old address.
-  RewriteRule ^lab/blind-chain\.html$   /lab/index.html#blind-chain [R=301,L]
-  RewriteRule ^lab/tests\.html$         /lab/index.html#prices      [R=301,L]
-  RewriteRule ^lab/book\.html$          /lab/index.html#book        [R=301,L]
-  RewriteRule ^lab/business\.html$      /lab/index.html#trade       [R=301,L]
+  RewriteRule ^lab/blind-chain\.html$   /lab/index.html#blind-chain [R=301,L,NE]
+  RewriteRule ^lab/tests\.html$         /lab/index.html#prices      [R=301,L,NE]
+  RewriteRule ^lab/book\.html$          /lab/index.html#book        [R=301,L,NE]
+  RewriteRule ^lab/business\.html$      /lab/index.html#trade       [R=301,L,NE]
   # /lab/verify.html has a distinct search intent ("is this bag real"), so it goes
   # to the standalone verify page rather than to an anchor.
   RewriteRule ^lab/verify\.html$        /verify.html          [R=301,L]
 
   # ── The three formulation codes merge into the pipeline library ───────────
   # Nobody searches "N-26L". Their full specs are on the pipeline page.
-  RewriteRule ^partner/formulations/n-26l\.html$  /partner/pipeline.html#codes [R=301,L]
-  RewriteRule ^partner/formulations/p-44l\.html$  /partner/pipeline.html#codes [R=301,L]
-  RewriteRule ^partner/formulations/pk-82\.html$  /partner/pipeline.html#codes [R=301,L]
+  RewriteRule ^partner/formulations/n-26l\.html$  /partner/pipeline.html#codes [R=301,L,NE]
+  RewriteRule ^partner/formulations/p-44l\.html$  /partner/pipeline.html#codes [R=301,L,NE]
+  RewriteRule ^partner/formulations/pk-82\.html$  /partner/pipeline.html#codes [R=301,L,NE]
 
   # ── Pages folded into a hub ───────────────────────────────────────────────
   # /partner/dossier.html described what happens after interest is expressed and
@@ -48,7 +48,7 @@
   # (9 Sep) was to merge it rather than give it its own page: its whole content is
   # now section 05 of the application-systems article, so the old URL lands on that
   # section rather than at the top of the page.
-  RewriteRule ^one-tank\.html$ /knowledge/application-systems.html#one-tank [R=301,L]
+  RewriteRule ^one-tank\.html$ /knowledge/application-systems.html#one-tank [R=301,L,NE]
 
   # ── The distributor page moved out from under Make With Us (10 Sep 2026) ──
   # Make With Us is now for manufacturing and own-brand partners only. The dealer
