@@ -25,9 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') { http_response_code(405); exit('{"ok
 $in = json_decode(file_get_contents('php://input'), true);
 if (!is_array($in)) { http_response_code(422); exit(json_encode(['ok' => false, 'message' => 'Nothing arrived. Send it on WhatsApp instead.'])); }
 
-// Inbox per form, as each page names it: partner@ for the trade, kisan@ for growers, info@ general.
+// Inbox per form, as Tahir set them on 3 Oct 2026: dealer, partner and lab-test to partner@;
+// farmer-plan and report-bag to info@.
 $INBOX = ['dealer' => 'partner@van.com.pk', 'partner' => 'partner@van.com.pk',
-          'lab-test' => 'kisan@van.com.pk', 'farmer-plan' => 'kisan@van.com.pk', 'report-bag' => 'info@van.com.pk'];
+          'lab-test' => 'partner@van.com.pk', 'farmer-plan' => 'info@van.com.pk', 'report-bag' => 'info@van.com.pk'];
 $FROM  = 'website@van.com.pk';
 $form  = (string)($in['form'] ?? '');
 $f     = is_array($in['fields'] ?? null) ? $in['fields'] : [];
