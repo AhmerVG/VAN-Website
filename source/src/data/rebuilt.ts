@@ -163,7 +163,7 @@ export const APPLICATION_SYSTEMS: RebuiltPage = {
           ],
         } },
         { k: 'p', text: 'The injected solution touches every part of a long galvanised span on each pass, and the two failure directions are opposite. That is why pH is the controlled variable in a pivot programme. It decides whether the machine ages normally or early, and VAN sets it before the product is packed rather than leaving it to the grower at the injection point.' },
-        { k: 'note', text: 'The band is a formulation specification. What these grades are built to. The measured pH comes off the certificate of analysis that ships with the batch; send the batch number and VAN sends it. No corrosion-rate or equipment-life numbers are published here. Those tests have not been run, and the mechanism above is standard corrosion engineering, not a VAN measurement.' },
+        { k: 'note', text: 'The band is a formulation specification. What these grades are built to. The measured pH comes off the lab report for the batch; type the batch number on Verify a bag to open it. No corrosion-rate or equipment-life numbers are published here. Those tests have not been run, and the mechanism above is standard corrosion engineering, not a VAN measurement.' },
       ],
     },
     {

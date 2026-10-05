@@ -18,7 +18,7 @@ export function Verify() {
       <VerifyPanel full />
       {/* 10 Sep 2026: the page had a field that opened a WhatsApp message. That is a way of asking a
           person to verify for you, and it took a working day. This is the check itself, built
-          against O2S's own records. See src/lib/o2s.ts for the one endpoint it needs. */}
+          against O2S's own records. 5 Oct 2026: number in, lab report out. See src/lib/o2s.ts. */}
       <section className="mt-8"><BatchVerify /></section>
       <section className="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 mt-8">
         <div className="panel p-6">
@@ -156,7 +156,7 @@ export default function Lab() {
             <div className="panel p-6" style={{ borderColor: 'var(--green)', borderWidth: 2 }}>
               <span className="eyebrow">You bought VAN product</span>
               <h2 style={{ fontSize: 'clamp(22px, 2.2vw, 28px)' }}>Check the batch number.</h2>
-              <p className="small muted mt-2">The number is printed on the bag. It tells you what the product is, when it was made, when QC released it, and gives you the certificate of analysis for that batch. There is no charge and nothing to send back.</p>
+              <p className="small muted mt-2">The number is printed on the bag. It opens the approved lab report for that batch. There is no charge and nothing to send back.</p>
               <a className="btn btn-green mt-4" href="#/verify">Verify a batch and take the report →</a>
             </div>
             <div className="panel p-6" style={{ borderColor: 'var(--navy)', borderWidth: 2 }}>

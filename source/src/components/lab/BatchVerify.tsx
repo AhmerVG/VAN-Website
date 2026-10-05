@@ -1,138 +1,92 @@
-import { useMemo, useState } from 'react'
-import { PRODUCTS } from '@/data/catalogue'
-import { CONTACT, WA, COUNTS } from '@/data/site'
+import { useEffect, useState } from 'react'
+import { CONTACT, WA } from '@/data/site'
 import { WaButton } from '@/components/bits'
 import { VanForm } from '@/components/VanForm'
 import { REPORT_BAG_FORM } from '@/data/formSpecs'
-import { O2S, EXAMPLE_RECORD, certificateUrl, lookupBatch, normaliseBatch, type BatchRecord, type LookupResult } from '@/lib/o2s'
+import { lookupBatch, normaliseBatch, type BatchReport, type LookupResult } from '@/lib/o2s'
 
 /**
- * VERIFY A BATCH, AND TAKE THE QC REPORT — 10 September 2026.
+ * VERIFY A BATCH: NUMBER IN, LAB REPORT OUT. 5 Oct 2026, on the rulings of 3 Oct 2026.
  *
- * Tahir: "we need to link the batch verification as well the lab report of the batch to O2S. My web
- * team is working on API call integration but we should build the front end so a farmer could be
- * able to verify batch and download the QC report of the batch."
+ * A farmer types the batch number printed on his bag and gets that batch's approved laboratory
+ * report (PDF), nothing else. No product name, pack size, client, dates, status or deviation on
+ * the page. He does not pick a product. The endpoint is in src/lib/o2s.ts.
  *
- * WHAT WAS THERE. A field that took a batch number and opened a WhatsApp message with it. That is
- * not verification; it is a way of asking a person to verify for you, and it took a working day.
+ * The 4 answers:
+ *  · FOUND (200): "Lab report for batch {batch}, approved on {date}" and a button that opens the
+ *    report. On a wide screen the report is also shown inside the page; on a phone the button is
+ *    enough, and the file is not loaded until he asks for it.
+ *  · NOT FOUND (404): not in VAN's records, or the report is not approved yet. No accusation, and
+ *    the report-a-bag form and WhatsApp route stay (10 Sep 2026 ruling on the counterfeit case).
+ *  · TOO MANY (429): try again in 10 minutes.
+ *  · NO ANSWER or a server error: "the live check is not connected", and WhatsApp. Never a fail.
  *
- * HIS FOUR RULINGS, and each one is visible in the code below:
- *  · ON SCREEN: the release line — product, pack, made on, released on, passed. The measured values
- *    against the declared analysis go in the certificate, not on the page.
- *  · THE INPUT: the batch number AND which product. Two fields, because a number typed correctly off
- *    the wrong bag is a real mistake, and a number that resolves to a different product is what a
- *    re-labelled bag looks like. That case is answered differently from a miss.
- *  · NOT FOUND: say it plainly, tell him it is most often a typing slip, and give him a way to send
- *    a photo of the bag. No accusation on the page, and VAN finds out where the bag came from.
- *  · THE REPORT: open to anyone holding the number, and stamped by O2S with the batch and the date
- *    it was downloaded so it cannot be passed off as another batch's.
- *
- * NOTHING HERE EVER INVENTS AN ANSWER. While O2S.enabled is false every lookup returns `offline` and
- * the panel says the live check is not connected yet and hands the reader WhatsApp, exactly as
- * today. A verification screen that guesses is worse than none at all, because the one person it
- * would mislead is the one holding a counterfeit bag.
- *
- * THE EXAMPLE VIEW is a separate, labelled panel. It shows the web team and Tahir all four finished
- * outcomes today, and it cannot be mistaken for a live check because it says what it is in its own
- * heading and carries no batch the reader typed.
+ * Replaced: the product picker, the product comparison screens and the 3 worked examples
+ * (10 Sep 2026), which showed the old screens.
  */
 
 const fmtDate = (iso: string) => {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(iso)) return iso || 'n/a'
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(iso)) return iso
   const [y, m, d] = iso.split('-').map(Number)
+  if (m < 1 || m > 12 || d < 1 || d > 31) return iso
   return `${d} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][m - 1]} ${y}`
 }
-const today = () => fmtDate(new Date().toISOString().slice(0, 10))
 
-function Line({ k, v }: { k: string; v: string }) {
-  return (
-    <div className="bv-line">
-      <span className="cap">{k}</span>
-      <span className="num" style={{ color: 'var(--navy)', fontWeight: 600 }}>{v}</span>
-    </div>
-  )
+/** True on a screen wide enough to show a PDF inside the page. */
+function useWide() {
+  const q = '(min-width: 768px)'
+  const [wide, setWide] = useState(() => typeof window !== 'undefined' && window.matchMedia(q).matches)
+  useEffect(() => {
+    const m = window.matchMedia(q)
+    const on = () => setWide(m.matches)
+    m.addEventListener('change', on)
+    return () => m.removeEventListener('change', on)
+  }, [])
+  return wide
 }
 
-/** The pass. Release line on screen; the numbers are in the file. */
-function Passed({ r, example = false }: { r: BatchRecord; example?: boolean }) {
-  const href = r.certificateUrl ?? certificateUrl(r.batch)
+function Found({ r }: { r: BatchReport }) {
+  const wide = useWide()
+  const approved = r.approvedOn ? `, approved on ${fmtDate(r.approvedOn)}` : ''
   return (
     <div className="panel p-5 lg:p-6" style={{ borderColor: 'var(--green)', borderWidth: 2 }}>
       <div className="flex items-center gap-3 flex-wrap">
         <span className="bv-mark bv-pass" aria-hidden="true">✓</span>
-        <div>
-          <div className="display text-[20px]" style={{ color: 'var(--navy)' }}>{r.batch} is a VAN batch</div>
-          <div className="cap">released by VAN QC before it left the plant</div>
-        </div>
-      </div>
-      <div className="bv-lines mt-4">
-        <Line k="Product" v={r.productName} />
-        <Line k="Registered analysis" v={r.analysis} />
-        <Line k="Pack" v={r.pack} />
-        <Line k="Made" v={fmtDate(r.madeOn)} />
-        <Line k="Released by QC" v={r.releasedOn ? fmtDate(r.releasedOn) : 'not released'} />
+        <div className="display text-[20px]" style={{ color: 'var(--navy)' }}>Lab report for batch {r.batch}{approved}</div>
       </div>
       <div className="flex flex-wrap gap-2 mt-4">
-        {example
-          ? <span className="btn btn-navy btn-lg" aria-disabled="true" style={{ opacity: .5, pointerEvents: 'none' }}>Download the QC report (PDF)</span>
-          : <a className="btn btn-navy btn-lg" href={href} target="_blank" rel="noopener">Download the QC report (PDF)</a>}
-        <a className="btn btn-ghost" href={`#/products/${r.productSlug}`}>What this product is →</a>
+        <a className="btn btn-navy btn-lg" href={r.reportUrl} target="_blank" rel="noopener noreferrer">Open the report</a>
       </div>
-      <p className="cap mt-3 max-w-[140ch]">
-        The report carries the measured values against the registered analysis, the test methods and the QC
-        Manager's release. Every copy is stamped with <b>{r.batch}</b> and the date it was downloaded ({today()}),
-        so it cannot be passed off as another batch's. {COUNTS.labStd}.
-      </p>
+      {wide && (
+        <iframe
+          src={r.reportUrl}
+          title={`Lab report for batch ${r.batch}`}
+          className="mt-4"
+          style={{ width: '100%', height: '75vh', minHeight: 480, border: '1px solid var(--line, #d6d3c8)', borderRadius: 8, background: '#fff' }}
+        />
+      )}
     </div>
   )
 }
 
-/** A real VAN batch, wrong product. The one outcome that is worth a warning. */
-function Mismatch({ r, picked }: { r: BatchRecord; picked: string }) {
-  return (
-    <div className="panel p-5 lg:p-6" style={{ borderColor: 'var(--gold)', borderWidth: 2, background: 'var(--gold-soft)' }}>
-      <div className="flex items-center gap-3 flex-wrap">
-        <span className="bv-mark bv-warn" aria-hidden="true">!</span>
-        <div>
-          <div className="display text-[20px]" style={{ color: 'var(--navy)' }}>That number belongs to a different product</div>
-          <div className="cap">{r.batch} is a VAN batch, but of {r.productName}, not {picked}</div>
-        </div>
-      </div>
-      <p className="small mt-3 max-w-[140ch]">
-        Read the bag again. If the number really is printed on a {picked} bag, then the number and the bag do not
-        belong together, and VAN would like to see it.
-      </p>
-      <div className="flex flex-wrap gap-2 mt-3">
-        <WaButton href={WA.reportBag(r.batch)}>Send us a photo of the bag</WaButton>
-        <a className="btn btn-ghost" href={`mailto:${CONTACT.email}?subject=${encodeURIComponent('Batch ' + r.batch + ' on the wrong bag')}`}>or email</a>
-      </div>
-    </div>
-  )
-}
-
-/** Not in O2S at all. His ruling: plainly, no accusation, and a route to send the bag. */
+/** 404. His ruling: plainly, no accusation, and a route to send the bag. */
 function NotFound({ batch }: { batch: string }) {
   const [open, setOpen] = useState(false)
   return (
     <div className="panel p-5 lg:p-6" style={{ borderColor: 'var(--rust)', borderWidth: 2 }}>
       <div className="flex items-center gap-3 flex-wrap">
         <span className="bv-mark bv-fail" aria-hidden="true">✕</span>
-        <div>
-          <div className="display text-[20px]" style={{ color: 'var(--navy)' }}>{batch} is not in VAN's records</div>
-          <div className="cap">no batch of that number was made and released here</div>
+        <div className="display text-[20px] max-w-[60ch]" style={{ color: 'var(--navy)' }}>
+          This batch number is not in VAN's records, or its lab report is not approved yet.
         </div>
       </div>
-      <p className="small mt-3 max-w-[140ch]">
-        <b>Check the number on the bag and try again first.</b> A digit typed wrongly looks exactly like a number
-        that was never ours, and most of the time that is all it is.
-      </p>
+      <p className="small mt-3 max-w-[140ch]"><b>Check the number on the bag.</b></p>
       <p className="small mt-2 max-w-[140ch]">
-        If the number is right, we would like to see the bag, and above all <b>where you bought it</b>. A number
-        nobody made matters far less than the shop it came out of.
+        If the number is right, we would like to see the bag, and above all <b>where you bought it</b>.
       </p>
       <div className="flex flex-wrap gap-2 mt-3">
         <button className="btn btn-navy" onClick={() => setOpen(o => !o)} aria-expanded={open}>
-          {open ? 'Close the report' : 'Report this bag to VAN'}
+          {open ? 'Close the form' : 'Report this bag to VAN'}
         </button>
         <WaButton href={WA.reportBag(batch)}>Send a photo on WhatsApp</WaButton>
       </div>
@@ -155,7 +109,16 @@ function NotFound({ batch }: { batch: string }) {
   )
 }
 
-/** The endpoint is not wired yet. Says so, and does what the site did before. */
+/** 429. */
+function TooMany() {
+  return (
+    <div className="panel p-5 lg:p-6" style={{ borderColor: 'var(--gold)', borderWidth: 2 }}>
+      <div className="display text-[19px]" style={{ color: 'var(--navy)' }}>Too many checks. Please try again in 10 minutes.</div>
+    </div>
+  )
+}
+
+/** No answer, or a server error. Says so, and does what the site did before. Never a fail. */
 function Offline({ batch }: { batch: string }) {
   return (
     <div className="panel p-5 lg:p-6" style={{ borderColor: 'var(--gold)', borderWidth: 2 }}>
@@ -169,28 +132,24 @@ function Offline({ batch }: { batch: string }) {
       </p>
       <div className="flex flex-wrap gap-2 mt-3">
         <WaButton href={WA.verify(batch)} lg>Send {batch || 'the number'} on WhatsApp</WaButton>
-        <a className="btn btn-ghost btn-lg" href={`mailto:${CONTACT.email}?subject=${encodeURIComponent('Certificate for VAN batch number ' + (batch || '____'))}`}>or email</a>
+        <a className="btn btn-ghost btn-lg" href={`mailto:${CONTACT.email}?subject=${encodeURIComponent('Lab report for VAN batch number ' + (batch || '____'))}`}>or email</a>
       </div>
     </div>
   )
 }
 
-export function BatchVerify({ compact = false }: { compact?: boolean }) {
+export function BatchVerify() {
   const [batch, setBatch] = useState('')
-  const [slug, setSlug] = useState('')
   const [busy, setBusy] = useState(false)
   const [res, setRes] = useState<LookupResult | null>(null)
-  const [example, setExample] = useState<null | 'pass' | 'mismatch' | 'notfound'>(null)
-
-  const products = useMemo(() => [...PRODUCTS].sort((a, b) => a.name.localeCompare(b.name)), [])
-  const pickedName = products.find(p => p.slug === slug)?.name ?? ''
+  const [asked, setAsked] = useState('')
   const clean = normaliseBatch(batch)
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!clean) return
-    setBusy(true); setExample(null)
-    setRes(await lookupBatch(clean, slug || null))
+    if (!clean || busy) return
+    setBusy(true); setRes(null); setAsked(clean)
+    setRes(await lookupBatch(clean))
     setBusy(false)
   }
 
@@ -198,23 +157,12 @@ export function BatchVerify({ compact = false }: { compact?: boolean }) {
     <div>
       <form onSubmit={submit} className="panel p-5 lg:p-6" style={{ borderColor: 'var(--navy)', borderWidth: 2 }}>
         <span className="eyebrow navy">Verify a bag</span>
-        <h3 className="mt-1">Check the batch number, and take the QC report.</h3>
-        <p className="small muted mt-1 max-w-[140ch]">
-          The number is printed on the bag. Telling us which product it is stops a number read off the wrong bag from
-          passing, so both are asked for.
-        </p>
-        <div className="grid sm:grid-cols-[1fr_1fr_auto] gap-3 items-end mt-4">
+        <h3 className="mt-1">Type the batch number, and open its lab report.</h3>
+        <div className="grid sm:grid-cols-[1fr_auto] gap-3 items-end mt-4">
           <div>
-            <label className="block font-bold small" htmlFor="bv-batch">Batch number</label>
+            <label className="block font-bold small" htmlFor="bv-batch">Batch number, printed on the bag</label>
             <input id="bv-batch" className="input input-lg mt-1" value={batch} onChange={e => setBatch(e.target.value)}
               placeholder="e.g. VU25186" autoComplete="off" spellCheck={false} />
-          </div>
-          <div>
-            <label className="block font-bold small" htmlFor="bv-product">Which product</label>
-            <select id="bv-product" className="input input-lg mt-1" value={slug} onChange={e => setSlug(e.target.value)}>
-              <option value="">Not sure / skip</option>
-              {products.map(p => <option key={p.slug} value={p.slug}>{p.name}</option>)}
-            </select>
           </div>
           <button className="btn btn-navy btn-lg" type="submit" disabled={!clean || busy}>{busy ? 'Checking…' : 'Check it'}</button>
         </div>
@@ -222,37 +170,12 @@ export function BatchVerify({ compact = false }: { compact?: boolean }) {
       </form>
 
       <div aria-live="polite" className="grid gap-3 mt-3">
-        {res?.ok && <Passed r={res.record} />}
-        {res && !res.ok && res.reason === 'product-mismatch' && <Mismatch r={res.record} picked={pickedName} />}
-        {res && !res.ok && res.reason === 'not-found' && <NotFound batch={clean} />}
-        {res && !res.ok && res.reason === 'offline' && <Offline batch={clean} />}
+        {busy && <p className="small muted">Checking {asked}…</p>}
+        {res?.ok && <Found r={res.report} />}
+        {res && !res.ok && res.reason === 'not-found' && <NotFound batch={asked} />}
+        {res && !res.ok && res.reason === 'too-many' && <TooMany />}
+        {res && !res.ok && res.reason === 'offline' && <Offline batch={asked} />}
       </div>
-
-      {!compact && (
-        <div className="panel-soft p-4 mt-3">
-          <div className="flex items-baseline justify-between gap-3 flex-wrap">
-            <span className="cap" style={{ fontWeight: 700, color: 'var(--navy)' }}>
-              What the answer will look like · examples, not a live check
-            </span>
-            <span className="flex flex-wrap gap-2">
-              <button className={`chip chip-xs ${example === 'pass' ? 'on' : ''}`} onClick={() => { setExample(example === 'pass' ? null : 'pass'); setRes(null) }}>A batch that passes</button>
-              <button className={`chip chip-xs ${example === 'mismatch' ? 'on' : ''}`} onClick={() => { setExample(example === 'mismatch' ? null : 'mismatch'); setRes(null) }}>The wrong product</button>
-              <button className={`chip chip-xs ${example === 'notfound' ? 'on' : ''}`} onClick={() => { setExample(example === 'notfound' ? null : 'notfound'); setRes(null) }}>Not in our records</button>
-            </span>
-          </div>
-          {example && (
-            <div className="mt-3">
-              {example === 'pass' && <Passed r={EXAMPLE_RECORD} example />}
-              {example === 'mismatch' && <Mismatch r={EXAMPLE_RECORD} picked="Green Sulfur" />}
-              {example === 'notfound' && <NotFound batch="VU00000" />}
-              <p className="cap mt-2">
-                An example, drawn with an invented batch number so nobody can mistake it for a live result.
-                {!O2S.enabled && ' The live check goes on the moment the plant’s own endpoint answers.'}
-              </p>
-            </div>
-          )}
-        </div>
-      )}
     </div>
   )
 }

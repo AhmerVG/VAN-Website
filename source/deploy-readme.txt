@@ -1,4 +1,29 @@
 VAN - NEW SITE STATIC BUILD
+Built 5 Oct 2026 (v61.15).  85 HTML files (84 pages plus 404.html).  Replaces v61.14.
+
+DO NOT UPLOAD THIS FILE. It is a packing note, not part of the site. Everything else
+in this folder goes up; this one stays on your machine.
+
+WHAT IS NEW IN THIS BUILD
+  - Verify a bag: number in, lab report out (rulings of 3 Oct 2026). The page calls
+    https://van-control-tower.onrender.com/api/public/batch/{number} and shows only the
+    batch number, the approval date and the approved lab report (PDF). The product picker,
+    the product comparison screens and the 3 worked examples are gone. If O2S does not
+    answer, the page says the live check is not connected and offers WhatsApp, as before.
+  - Text that described the old check (product match, release, certificate) now says
+    "lab report": /verify, /lab, the home page (box, slide, method journey), the menu,
+    the product pages, the company profile page, the tools page, and 1 line in the
+    application-systems article.
+  - New bundle file (demo.<hash>.js). The old demo.2985b9cb.js can be removed once no page
+    names it.
+  - To roll back to v61.14: git revert this commit, or upload v61.14 on top.
+
+NEVER wipe the web root: /plans, /lms, /sds and /spec-sheets hold linked files that are
+not in this build. Upload on top.
+
+--- Earlier note (2 Oct 2026), kept below for the record ---
+
+VAN - NEW SITE STATIC BUILD
 Built 2 Oct 2026 (v61.14).  85 HTML files (84 pages plus 404.html).  Replaces v61.13.
 
 DO NOT UPLOAD THIS FILE. It is a packing note, not part of the site. Everything else

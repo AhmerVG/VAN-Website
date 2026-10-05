@@ -141,9 +141,9 @@ export const TOOLS: Tool[] = [
   // ── Coming. Each says what it is waiting on. ──
   {
     name: 'Batch check',
-    one: 'Type the batch number on a VAN bag and see that batch’s test results.',
+    one: 'Type the batch number on a VAN bag and open that batch’s lab report.',
     state: 'building', href: '#/verify', topics: ['Verify a bag'],
-    what: 'Type the batch number printed on a VAN bag and see the test results recorded for that batch. Until the live check is connected, send the number on WhatsApp and the certificate comes back the same day. For any other brand, book a test through Sample Reception.',
+    what: 'Type the batch number printed on a VAN bag and open the approved lab report for that batch. If the live check does not answer, send the number on WhatsApp and the report comes back the same day. For any other brand, book a test through Sample Reception.',
     needs: 'The connection to the plant’s released-batch records (O2S).',
   },
   {

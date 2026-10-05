@@ -239,7 +239,7 @@ export default function CompanyProfile() {
         </div>
         <div className="grid lg:grid-cols-3 gap-3 mt-4">
           <div className="panel p-5"><h4>2 analysts on every sample</h4><p className="small muted mt-1">Written methods, calibrated instruments and reference standards, so a result does not depend on who ran the test. Results take {LAB.stats[1][0]} working days from booking.</p></div>
-          <div className="panel p-5"><h4>The certificate for your bag</h4><p className="small muted mt-1">Send the batch number printed on a VAN bag and VAN sends the certificate of analysis for that batch, with no charge.</p></div>
+          <div className="panel p-5"><h4>The lab report for your bag</h4><p className="small muted mt-1">Type the batch number printed on a VAN bag and open the lab report for that batch, with no charge.</p></div>
           <div className="panel p-5"><h4>ISO 9001 in progress</h4><p className="small muted mt-1">Certification with System Certification Centre (SCC) is expected during 2027. VAN does not claim it until the certificate is issued.</p></div>
         </div>
         <div className="flex flex-wrap gap-2 mt-4">

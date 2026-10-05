@@ -131,7 +131,7 @@ export default function ProductPage({ slug }: { slug: string }) {
                 taken verbatim from the reason the regulatory page already gives.
                 Revert: delete REGISTRATION_EXCEPTIONS and restore the single blanket sentence. */}
             <div className="k">Registration</div><div>{REGISTRATION_EXCEPTIONS[p.slug] ?? `Registered with PSQCA and released through VAN’s own PNAC-accredited laboratory, ISO/IEC 17025:2017, ${COUNTS.lab}.`}{!REGISTRATION_EXCEPTIONS[p.slug] && p.slug === 'v-phosphate' && <span className="cap block mt-1">Held on that licence as <strong>V-Phosphate 10-44-0</strong>, the name printed on the registration. Registered as V-Ammonium Phosphate 12-44-0 until July 2026. Same product.</span>}</div>
-            <div className="k">Certificate</div><div>Send the batch number off the bag and VAN sends the certificate of analysis for that batch. <a href="#/verify">Verify a bag →</a></div>
+            <div className="k">Lab report</div><div>Type the batch number off the bag and open the lab report for that batch. <a href="#/verify">Verify a bag →</a></div>
           </div>
 
           {/* D-196, 27 Sep 2026: the flagship treatment. Vital Urea has its own page (VitalUrea.tsx) and

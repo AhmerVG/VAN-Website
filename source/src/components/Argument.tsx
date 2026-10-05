@@ -236,7 +236,7 @@ const NODES: { t: string; s: string; body: string[] }[] = [
   { t: 'Plant', s: COUNTS.capacity, body: [ABOUT.stats[2][1], PARTNER.capability[1][1]] },
   { t: 'Laboratory', s: `${COUNTS.lab} · ISO/IEC 17025`, body: [LAB.why1, PARTNER.capability[3][1]] },
   { t: 'PSQCA registration', s: `${COUNTS.licences} licences · ${COUNTS.standards} standards`, body: [`${ABOUT.stats[3][0]} ${lc(ABOUT.stats[3][1])}`, PARTNER.capability[2][1]] },
-  { t: 'Certificate with the bag', s: 'on request, no charge', body: [VERIFY.lead, VERIFY.note] },
+  { t: 'Lab report with the bag', s: 'by batch number, no charge', body: [VERIFY.lead, VERIFY.note] },
 ]
 const STEP_MS = 5000
 export function MethodJourney() {

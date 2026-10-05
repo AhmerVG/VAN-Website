@@ -41,7 +41,7 @@ export function VerifyPanel({ full = false }: { full?: boolean }) {
         <input id={full ? 'batch-full' : 'batch-home'} className="input input-lg mt-2" placeholder="e.g. VU25186" value={batch} onChange={e => setBatch(e.target.value)} autoComplete="off" inputMode="text" />
         <div className="flex flex-wrap gap-3 mt-4">
           <WaButton href={WA.verify(batch.trim())} lg>Send it on WhatsApp</WaButton>
-          <a className="btn btn-ghost btn-lg" href={`mailto:${CONTACT.email}?subject=${encodeURIComponent('Certificate for VAN batch number ' + (batch.trim() || '____'))}`}>or email</a>
+          <a className="btn btn-ghost btn-lg" href={`mailto:${CONTACT.email}?subject=${encodeURIComponent('Lab report for VAN batch number ' + (batch.trim() || '____'))}`}>or email</a>
         </div>
         <p className="cap mt-3">The number opens a WhatsApp message to VAN with the batch already in it. {!full && <a href="#/verify">How verification works ›</a>}</p>
         {/* The blind-test offer is written out on /verify, which is the page about verification.

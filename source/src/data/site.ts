@@ -43,7 +43,8 @@ export const WA = {
   // 28 Sep 2026, Tahir's ruling: the second, product-verification form on /verify explains that
   // asking for the product stops a number read off the wrong bag from passing, so the primary
   // WhatsApp message now carries that same safeguard instead of asking for the batch number alone.
-  verify: (batch: string) => wa(`Hello VAN. Please send me the certificate of analysis for the product ____ and batch number ${batch || '____'}`),
+  // 5 Oct 2026: the farmer no longer picks a product; the number alone brings the lab report.
+  verify: (batch: string) => wa(`Hello VAN. Please send me the lab report for batch number ${batch || '____'}`),
   // 10 Sep 2026, Tahir's ruling on the counterfeit case: a number that is not in O2S gets a plain
   // statement and a way to send the bag, never an accusation on the page. This is that route.
   reportBag: (batch: string) => wa(`Hello VAN. I checked a batch number on van.com.pk and it is not in your records. The number on the bag is ${batch || '____'}. I am attaching a photo of the bag. I bought it from:`),
@@ -95,7 +96,7 @@ export const HOME_SLIDES = [
   { kicker: 'What this soil does', title: 'Made for Pakistani soil.', lead: 'Most of Punjab’s farmland is alkaline and calcareous: 69.1% of 770,160 samples are above pH 8. VAN builds a product against each loss.', cta: [['Find your crop’s plan', '#/crops'], ['See the 23 products', '#/products']] },
   { kicker: 'Since 2010', title: 'Tested on our own ground.', lead: 'The farm came first; the company was built around it. Every season since, VAN’s products have been tested on that ground before they are sold for yours.', cta: [['About VAN', '#/about'], ['All 28 crop plans', '#/crops']] },
   { kicker: 'Beta testing · wheat and potato live now', title: 'Nutrition decides about 1/4 of the yield. Sowing, seed, water, weeds and pests decide the rest.', lead: 'The simulator scores sowing date, irrigation and plant stand, and shows what each one costs the crop.', cta: [['Open the simulator', '#/simulator']] },
-  { kicker: 'PNAC · ISO/IEC 17025:2017', title: 'Know what’s in the bag.', lead: 'Every batch VAN makes is tested before it ships, and the certificate for the batch you bought is yours for the asking.', cta: [['Verify a bag', '#/verify'], ['VAN Lab', '#/lab']] },
+  { kicker: 'PNAC · ISO/IEC 17025:2017', title: 'Know what’s in the bag.', lead: 'Every batch VAN makes is tested before it ships, and the lab report for the batch you bought is yours for the asking.', cta: [['Verify a bag', '#/verify'], ['VAN Lab', '#/lab']] },
 ]
 
 // The three losses — live home (verbatim)
@@ -108,7 +109,7 @@ export const LOSSES = [
 export const HOME_COPY = {
   lossesH2: '3 ways the ground takes your fertilizer back.',
   lossesLead: 'Nitrogen leaves as ammonia, phosphate is bound by calcium, and too little potash goes on. VAN builds a product against each of the 3.',
-  verifyH2: 'Send the batch number. Get the certificate for that batch.',
+  verifyH2: 'Send the batch number. Get the lab report for that batch.',
   verifyLead: 'Every VAN batch is tested before it leaves the plant. Send the number printed on the bag and we send back the measured values from the tests our laboratory ran on it. No charge, no sample to post, no form.',
   beyondH2: 'Where the nutrients go after harvest.',
   beyondLead: 'The loop that brings nutrients back instead of importing them again.',
@@ -250,7 +251,7 @@ export const NATIONAL = {
 // Lab (verbatim)
 export const LAB = {
   h1: 'Know what is in the bag.',
-  lead: 'Every batch VAN makes is tested here before it ships, and the certificate for the batch you bought is yours for the asking. Send us the batch number off the bag. If you have fertilizer from anywhere else, send us 500 g and we will measure it.',
+  lead: 'Every batch VAN makes is tested here before it ships, and the lab report for the batch you bought is yours to see. Type the batch number off the bag to open it. If you have fertilizer from anywhere else, send us 500 g and we will measure it.',
   whyH2: 'Why VAN built a laboratory',
   why1: 'VAN Lab is built to return the same answer twice on the same sample. Written methods, calibrated instruments, reference standards run alongside every batch, 2 analysts on every sample, a manager who reviews the work and signs his name to it.',
   why2: 'All of that exists so that the number does not depend on who ran the test, on which day they ran it, or on what anybody hoped it would say.',
@@ -263,20 +264,21 @@ export const LAB = {
 }
 
 /**
+ * 5 Oct 2026: number in, lab report out (rulings of 3 Oct 2026); the product step is gone.
  * 10 Sep 2026: the three steps used to describe a WhatsApp round trip, because that is all the page
  * could do. They now describe the check itself and keep WhatsApp as the fallback while the plant's
  * endpoint is being wired, which is what the page actually does today.
  */
 export const VERIFY = {
-  h1: 'Every VAN batch is tested before it leaves the plant. The certificate is yours to see.',
-  lead: 'Type the batch number printed on the bag and the page answers 4 questions: what the product is, when it was made, when QC released it, and where the certificate of analysis for that batch is. The check reads the plant\u2019s own production records, and until that connection is switched on the page says so on screen and sends the number to VAN. No charge, no sample to post, no sign-in.',
+  h1: 'Every VAN batch is tested before it leaves the plant. The lab report is yours to see.',
+  lead: 'Type the batch number printed on the bag and the page gives you the approved laboratory report for that batch, as a PDF. The check reads the plant\u2019s own records. If they do not answer, the page says so on screen and sends the number to VAN. No charge, no sample to post, no sign-in.',
   steps: [
-    'Find the batch number printed on the bag, and note which product it is.',
-    'Type both above. The number is checked against the batch the plant recorded, and the product against what that batch actually was.',
-    'Take the QC report: physical status, moisture, particle size, pH and the chemical assays, each with its specification, its result and the method used. Every copy carries its batch number and the date it was downloaded.',
-    'While the live check is being connected, the same number sent on WhatsApp +92 300 5003041 or to info@van.com.pk gets the same certificate back the same day.',
+    'Find the batch number printed on the bag.',
+    'Type it above. The number is checked against the plant\u2019s own records.',
+    'Open the lab report: physical status, moisture, particle size, pH and the chemical assays, each with its specification, its result and the method used. Every copy carries its batch number and the date it was downloaded.',
+    'If the live check does not answer, the same number sent on WhatsApp +92 300 5003041 or to info@van.com.pk gets the same report back the same day.',
   ],
-  blind: 'If you would rather not take our own certificate for it, send 500 g of the product to Sample Reception as a normal priced test. It goes to the same desk, gets the same code, and is run by 2 analysts who will not know it is ours.',
+  blind: 'If you would rather not take our own lab report for it, send 500 g of the product to Sample Reception as a normal priced test. It goes to the same desk, gets the same code, and is run by 2 analysts who will not know it is ours.',
   note: 'The laboratory is PNAC-accredited to ISO/IEC 17025:2017, Accreditation No. LAB 336. It is a quality-control function. It rejects any batch that fails its specification.',
 }
 

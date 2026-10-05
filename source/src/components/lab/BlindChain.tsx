@@ -173,7 +173,7 @@ export function SampleTracker() {
     <div className="panel p-5" style={{ borderColor: 'var(--gold)', borderWidth: 2 }}>
       <div className="flex items-baseline justify-between gap-3 flex-wrap">
         <h4>Where is my sample?</h4>
-        {!O2S.enabled && <span className="tag tag-gold">not connected yet</span>}
+        {!(O2S.enabled && O2S.samplesEnabled) && <span className="tag tag-gold">not connected yet</span>}
       </div>
       <p className="small muted mt-1 max-w-[140ch]">Anyone with a reference number can ask, without an account. The stages are the same seven the diagram shows.</p>
       <form className="flex flex-wrap gap-2 mt-3" onSubmit={submit}>

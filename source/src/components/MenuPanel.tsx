@@ -73,7 +73,7 @@ const PAGES: [string, string, string][] = [
   ['Formulation library', '27 unbranded formulations', '#/partner/pipeline#library'],
   ['Composition chart', 'Every brand and code with its analysis', '#/composition'],
   ['VAN Lab', 'PNAC accredited, ISO/IEC 17025:2017', '#/lab'],
-  ['Verify a bag', 'Batch number to certificate of analysis', '#/verify'],
+  ['Verify a bag', 'Batch number to lab report', '#/verify'],
   ['Knowledge', 'Decks, evidence and the sources under them', '#/knowledge'],
   ['The 17 nutrients', 'What each does, and the barrel you fill with your own bags', '#/knowledge/nutrients'],
   ['Why Pakistan must shift', 'The national case, with every chart', '#/knowledge/why-pakistan-must-shift'],
