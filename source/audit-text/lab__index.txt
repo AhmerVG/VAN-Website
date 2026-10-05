@@ -1,0 +1,318 @@
+PAGE: /lab/index.html
+======================================================================
+Products
+Crop Plans
+Soil
+Tools
+VAN Lab
+Knowledge
+About
+Make with us
+For farmers
+Menu ☰
+View
+Simple view
+VAN Lab · batch testing and certificates
+Know what is in the bag.
+Every batch VAN makes is tested here before it ships, and the certificate for the batch you bought is yours for the asking. Send us the batch number off the bag. If you have fertilizer from anywhere else, send us 500 g and we will measure it.
+Ask for your batch certificate
+Send a sample. Ask on WhatsApp
+21
+tests, priced publicly, 8 of them accredited
+3
+working days for most tests, from confirmed booking
+2
+independent analysts on every single sample
+17025
+PNAC ISO/IEC 17025:2017, LAB 336
+You bought VAN product
+Check the batch number.
+The number is printed on the bag. It tells you what the product is, when it was made, when QC released it, and gives you the certificate of analysis for that batch. There is no charge and nothing to send back.
+Verify a batch and take the report →
+You bought anything else
+Send us 500 g.
+Any fertilizer, any brand, any manufacturer. Send us 500 g and we will measure what is in it, against the published price list. The result is the same accredited certificate we issue to importers and laboratories.
+Book a test →
+Why
+Why VAN built a laboratory
+VAN Lab is built to return the same answer twice on the same sample. Written methods, calibrated instruments, reference standards run alongside every batch, two analysts on every sample, a manager who reviews the work and signs his name to it.
+All of that exists so that the number does not depend on who ran the test, on which day they ran it, or on what anybody hoped it would say.
+8 of the 21 tests VAN Lab performs are covered by PNAC ISO/IEC 17025:2017 accreditation, LAB 336. The other 13 are tests the laboratory runs which sit outside that granted scope. They are listed separately throughout this site so you always know which is which.
+The report
+What the report gives you.
+The measured value
+For every parameter you asked for, as found in the sample you sent.
+The method used to measure it
+Named on the report. A measured value only means something alongside the method that produced it. Particularly for humic acid, where the extraction protocol defines what gets counted.
+A signature
+Reviewed by the Assistant QC Manager and signed by the QC Manager, against a sample code.
+Who sends us samples
+Farmers, dealers, importers, laboratories.
+Farmers
+Counterfeit and quality verification on fertilizer you have already purchased.
+Distributors
+Incoming-goods verification on anything you stock, not only VAN product.
+Importers
+Consignment testing with a published turnaround and an accredited certificate.
+Laboratories
+Reference and umpire analysis, under the same blind protocol as everything else.
+The blind chain
+One parcel, seven steps. Your name is on it at step 02 and again at step 07.
+The separation below is built into the buildings and the coding system rather than written down as a policy promise.
+Where your name goes, and where it stops
+one parcel, seven steps
+01
+Your parcel
+You send it, with your name on it
+02
+Sample Reception
+Separate address. Knows who you are. Never sees your result
+03
+A code is issued
+By the system, not a person. It encodes nothing about you
+04
+Split three ways
+Two portions forward, one retained untouched
+05
+Two analysts
+Working independently. Neither sees the other’s number
+06
+Compared, then signed
+Against a documented criterion. The QC Manager signs a code
+07
+The report finds you
+The system reconnects the code to you at release, and logs it
+your name
+a code only
+Your name travels as far as step 02 and rejoins at step 07.
+Everything in between happens to a code. Nobody who tested your sample knew it was yours, which is why they cannot have gone easy on a VAN bag.
+Six roles, and what each one knows and handles.
+The only people who know your name never touch your sample.
+Role
+Knows who you are
+Handles the sample
+Sees the result
+Sample Reception (separate address)
+Analyst A
+Analyst B
+Assistant QC Manager
+QC Manager (signs)
+Coordination / invoicing
+Sample Reception is a separate location with its own address, independent of the laboratory. Segregation of duties is enforced by documented procedure, and reconnecting your code to your report at release is done by the system and logged, not performed by a person.
+Where is my sample?
+not connected yet
+Anyone with a reference number can ask, without an account. The stages are the same seven the diagram shows.
+Check
+Book a test
+Tell us what to expect, and post the sample.
+The laboratory works to a published price list and issues the same accredited certificate to everybody. Booking first means the sample is expected, coded on arrival and not sitting on a desk.
+Or ask on WhatsApp
+Your name
+Phone
+Email
+· optional
+Company
+· optional
+What you want tested
+How many samples
+· optional
+Which tests, if you know
+· optional
+Company website
+Book the test
+Send on WhatsApp instead
+It goes to
+info@van.com.pk
+. VAN's own inbox, not a third party.
+01
+The blind chain
+Nobody who tested your sample knew it was yours.
+The laboratory is arranged so that this holds. Your sample is coded before it reaches a bench, split three ways, and run by two analysts working independently.
+Step
+What happens
+Your sample arrives, not at the laboratory
+Somebody has to open the parcel; no arrangement removes that, and a laboratory claiming otherwise is describing something that cannot happen. So the parcel is not opened at the laboratory. Sample Reception is a separate place with its own address, independent of the laboratory both physically and organisationally. The people there know who you are. They will never see your result.
+Your name comes off
+Reception enters your details and the system generates a laboratory code. The system, not a person, because an assigned code can carry meaning and meaning leaks. The code encodes nothing about you: no initials, no district, no segment, no priority marker. Your form, the outer packaging, the courier documents and every brand marking stay at the desk.
+Split three ways
+Two portions go forward for analysis. One is retained, untouched, so a complete independent re-test is possible if you ever dispute the result. All three carry the code and nothing else.
+Two analysts, working independently
+VAN does not report on a single analysis. Two different analysts each receive a portion and each runs the test, and neither sees the other’s result before both are submitted. If the two compared results first, their agreement would prove nothing.
+The two results are compared
+Against a documented acceptance criterion. Where they agree, the result is reported. Where they do not, the QC Manager decides whether a third analysis is run or which result stands.
+Reviewed and signed
+The Assistant QC Manager reviews the work; the QC Manager signs the report digitally. He signs against a code and does not know whose sample he is approving, which is precisely what makes the signature worth having.
+The report finds you again
+Only at release does the code reconnect to you, and the system does it, not a person. The report reaches you and nobody in the laboratory learns who it went to.
+Role
+Knows who you are
+Handles the sample
+Sees the result
+Sample Reception (separate address)
+Yes
+No
+No
+Analyst A
+No
+Yes
+Own only
+Analyst B
+No
+Yes
+Own only
+Assistant QC Manager
+No
+Yes
+Yes
+QC Manager (signs)
+No
+No
+Yes
+Coordination / invoicing
+Yes
+No
+No
+Sample Reception is a separate location with its own address, independent of the laboratory. Segregation of duties is enforced by documented procedure, and reconnecting your code to your report at release is done by the system and logged, not performed by a person.
+Why this matters to you specifically: they cannot have gone easy on a VAN bag, because they did not know it was a VAN bag. Your supplier’s stock is tested exactly the way VAN’s own product is tested. Same desk, same coding, same two analysts. This is chain of custody, documented: the language your buyer, your bank and your customs broker already work in.
+02
+Tests and prices
+Every test, every price, published.
+21 tests. Nothing is “on request”, nothing is quoted after we learn who is asking. Prices in PKR, effective 15 August 2026.
+Accredited tests. Covered by VAN Lab’s accreditation
+Test
+Price (PKR)
+Working days
+Nitrogen
+1,000
+3
+Phosphate
+1,500
+3
+Potassium
+1,000
+3
+Boron
+1,000
+3
+Humic acid. The determination itself runs 36 hours
+2,000
+4
+Elemental sulfur. Gravimetry and HPLC, measures S₈ itself, not sulfate
+4,000
+3
+pH
+500
+3
+Conductivity
+500
+3
+Additional tests. Outside the granted accreditation scope
+Test
+Price (PKR)
+Working days
+Zinc by titration
+500
+3
+Zinc by kit
+2,000
+3
+Cation exchange capacity
+500
+3
+Amino acid
+1,500
+3
+Sulfate
+500
+3
+Nitrate nitrogen
+500
+3
+Moisture by Karl Fischer
+2,000
+3
+Calcium
+1,000
+3
+Iron
+1,000
+3
+Copper
+1,000
+3
+Magnesium
+1,500
+3
+Manganese
+1,500
+3
+Sodium
+500
+3
+These are performed by the same laboratory, under the same blind chain, by the same two analysts. They sit outside the granted accreditation scope and are listed separately so you are never in any doubt which is which.
+03
+Book and track
+No account, no login.
+What to know before booking
+What to send
+500 g by weight, whether the product is solid or liquid. Enough for two independent analyses plus the portion we retain in case you ever dispute the result. Liquids in a sealed bottle. Bring it to the laboratory, hand it to your VAN dealer, or courier it.
+Turnaround
+The clock starts when your booking is confirmed, not when the sample reaches the bench. Most tests are 3 working days; humic acid is 4, because the determination alone runs 36 hours.
+What you get back
+The measured value for each parameter you asked for, and the method used to measure it. A measured value only means something alongside the method that produced it. Particularly for humic acid, where the extraction protocol defines the number.
+Already have a VAN bag?
+Send us the batch number off the bag instead and we will give you the certificate of analysis for that batch. No charge, no sample needed.
+Anyone with a reference number can ask where a sample is, no account, and you do not have to be a regular customer. The tracker on this page is built and is not yet reading from the laboratory system, so for now send the reference on WhatsApp and somebody looks it up the same day.
+04
+For distributors, importers and other labs
+Three different worries, one protocol.
+Distributors. Incoming goods
+You are about to sell stock on your own name. If it is not what your supplier says it is, the farmer comes back to you, not to them. We test anything you stock, not only VAN product. A laboratory that tested only its own company’s range would be no use to you for incoming goods.
+Importers. Consignment testing
+A consignment sitting at a port costs money every day it sits. What you need is a turnaround you can plan around and a certificate your buyer will accept: 3 working days for most tests from confirmed booking, printed on the price list rather than quoted case by case, and PNAC ISO/IEC 17025:2017 LAB 336 for the accredited parameters. Non-accredited tests are identified as such on the price list and on the report.
+Other laboratories. Reference and umpire analysis
+When two parties disagree about a result, somebody has to be the third. That role only works if the third laboratory has no stake in the answer, and cannot acquire one. A referee sample entering VAN Lab is stripped of its origin at the same desk as a farmer’s bag. The analysts do not know which laboratory sent it, which two parties are in dispute, or what either of them reported. They receive a code and a test request.
+Testing more than the occasional sample? Distributors and importers running regular volume are quoted differently. We are working out a block-testing arrangement and would rather build it around real submission volumes than publish a number we have not thought through. Tell us roughly how many samples a season and we will talk.
+Verify a bag. Any brand →
+Send us a sample
+Book it in writing or on WhatsApp, whichever you prefer. You get a reference number, and you can check where your sample is at any time.
+Book a test
+Ask on WhatsApp
+Crop nutrition engineered, manufactured, registered and tested in Pakistan.
+Plant
+·
+49-Km Multan Road, Phool Nagar Bypass, Lahore
+Head office
+·
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+WhatsApp
++92 300 5003041
+Landline
++92 42 35762215
+info@van.com.pk
+Products
+All 23 brands
+Vital Urea
+Where to buy
+Verify a bag
+Crops
+28 crop plans
+Wheat
+How you apply it
+Knowledge
+Why Pakistan must shift
+The soil, measured
+Product knowledge decks
+Circular economy
+Company
+Make with us
+VAN Lab
+Tools
+About & contact
+© 2026
+Vital Agri Nutrients (Pvt) Ltd
+·
+www.van.com.pk
+LinkedIn
+Facebook
+Instagram

@@ -1,0 +1,137 @@
+TEAM CALCULATOR IMPORT REPORT
+Workbook: /mnt/user-data/uploads/VAN Web APP/Output 24 Sep 2026/Fertilizer Nutrient Calculator For Economic Nutrition Planning.xlsx
+Sheets: 28. Run: 2026-09-25. Script: tools/import-team-calculator.py
+Analysis and pack: the site's (MASTER_PRODUCTS, crop plan). Prices: never read from the sheet.
+
+-- Sugarcane (Feb): not a candidate in ruling 1, not wired.
+-- Rice (Hybrid): not a candidate in ruling 1, not wired.
+-- Soybean: not a candidate in ruling 1, not wired.
+-- Sunflower: not a candidate in ruling 1, not wired.
+-- Mung, Mash bean: not a candidate in ruling 1, not wired.
+-- Tomato: not a candidate in ruling 1, not wired.
+-- Watermelon: not a candidate in ruling 1, not wired.
+-- Turmeric: not a candidate in ruling 1, not wired.
+-- Onion: not a candidate in ruling 1, not wired.
+-- Banana (Year 1): not a candidate in ruling 1, not wired.
+-- Banana (Year 2): not a candidate in ruling 1, not wired.
+-- Date Palm: not a candidate in ruling 1, not wired.
+-- Mango: not a candidate in ruling 1, not wired.
+-- Strawberry: not a candidate in ruling 1, not wired.
+-- Guava: not a candidate in ruling 1, not wired.
+-- mango: excluded outright, per-tree programme (the sheet mixes per-plant and per-acre quantities).
+-- date-palm: excluded outright, age-band programme (the sheet adds the 5 tree-age bands into 1 figure).
+
+=== Sugarcane (Ratoon) -> sugarcane-ratoon ===
+  rows with a quantity: 14   mapped: 14
+  quantity header: "QTY Bags per acre (Website Nutrition Plan)"
+  sheet totals (sheet analysis x sheet pack), kg an acre: N 86.40 · P2O5 36.40 · K2O 31.89
+  site totals (site analysis x site pack), kg an acre:   N 86.90 · P2O5 36.40 · K2O 31.84
+  recommended dose on the sheet, "Less fertile": N 150 · P2O5 90 · K2O 65  (report only; never printed on the site)
+  recommended dose on the sheet, "Average Fertile": N 134 · P2O5 74 · K2O 65  (report only; never printed on the site)
+  recommended dose on the sheet, "Very Fertile": N 113 · P2O5 60 · K2O 49  (report only; never printed on the site)
+  row 8 Sarsabz CAN: "Sarsabz CAN" shown as the plan's "CAN" with the plan's printed analysis (N 26); the sheet has N 26, K 0.09, Ca 10, S 0.4.
+  row 16 Fusion Potash: analysis differs, site used: B sheet 0 site 1, Mg sheet 0 site 1, N sheet 0 site 2.
+  WIRED: every check passed.
+
+=== Cotton -> cotton ===
+  rows with a quantity: 11   mapped: 11
+  quantity header: "QTY Bags per acre (Website Nutrition Plan)"
+  sheet totals (sheet analysis x sheet pack), kg an acre: N 94.20 · P2O5 28.40 · K2O 21.90
+  site totals (site analysis x site pack), kg an acre:   N 94.70 · P2O5 28.40 · K2O 21.86
+  recommended dose on the sheet, "Less fertile": N 119 · P2O5 69 · K2O 50  (report only; never printed on the site)
+  recommended dose on the sheet, "Average Fertile": N 92 · P2O5 58 · K2O 37  (report only; never printed on the site)
+  recommended dose on the sheet, "Very Fertile": N 75 · P2O5 46 · K2O 25  (report only; never printed on the site)
+  row 8 Sarsabz CAN: "Sarsabz CAN" shown as the plan's "Calcium Ammonium Nitrate" with the plan's printed analysis (N 26); the sheet has N 26, K 0.09, Ca 10, S 0.4.
+  row 16 Fusion Potash: analysis differs, site used: B sheet 0 site 1, Mg sheet 0 site 1, N sheet 0 site 2.
+  WIRED: every check passed.
+
+=== Maize -> maize ===
+  rows with a quantity: 12   mapped: 12
+  quantity header: "QTY Bags per acre (Website Nutrition Plan)"
+  sheet totals (sheet analysis x sheet pack), kg an acre: N 81.20 · P2O5 28.40 · K2O 15.89
+  site totals (site analysis x site pack), kg an acre:   N 81.45 · P2O5 28.40 · K2O 15.89
+  recommended dose on the sheet, "Less fertile": N 119 · P2O5 69 · K2O 50  (report only; never printed on the site)
+  recommended dose on the sheet, "Average Fertile": N 92 · P2O5 58 · K2O 37  (report only; never printed on the site)
+  recommended dose on the sheet, "Very Fertile": N 75 · P2O5 46 · K2O 25  (report only; never printed on the site)
+  row 16 Fusion Potash: analysis differs, site used: B sheet 0 site 1, Mg sheet 0 site 1, N sheet 0 site 2.
+  WIRED: every check passed.
+
+=== Rice (Basmati) -> rice-basmati ===
+  rows with a quantity: 11   mapped: 11
+  quantity header: "QTY Bags per acre (Website Nutrition Plan)"
+  sheet totals (sheet analysis x sheet pack), kg an acre: N 48.70 · P2O5 20.40 · K2O 15.05
+  site totals (site analysis x site pack), kg an acre:   N 48.95 · P2O5 20.40 · K2O 15.05
+  recommended dose on the sheet, "Recommended": N 55 · P2O5 35 · K2O 25  (report only; never printed on the site)
+  row 16 Fusion Potash: analysis differs, site used: B sheet 0 site 1, Mg sheet 0 site 1, N sheet 0 site 2.
+  WIRED: every check passed.
+
+=== Canola -> canola ===
+  rows with a quantity: 10   mapped: 10
+  quantity header: "QTY Bags per acre (Website Nutrition Plan)"
+  sheet totals (sheet analysis x sheet pack), kg an acre: N 48.15 · P2O5 20.40 · K2O 19.66
+  site totals (site analysis x site pack), kg an acre:   N 48.65 · P2O5 20.40 · K2O 19.66
+  recommended dose on the sheet, "Recommended": N 35 · P2O5 30 · K2O 12  (report only; never printed on the site)
+  row 16 Fusion Potash: analysis differs, site used: B sheet 0 site 1, Mg sheet 0 site 1, N sheet 0 site 2.
+  WIRED: every check passed.
+
+=== Sesame -> sesame ===
+  rows with a quantity: 7   mapped: 7
+  quantity header: "QTY Bags per acre (Website Nutrition Plan)"
+  sheet totals (sheet analysis x sheet pack), kg an acre: N 16.10 · P2O5 16.00 · K2O 4.96
+  site totals (site analysis x site pack), kg an acre:   N 16.10 · P2O5 16.00 · K2O 4.96
+  recommended dose on the sheet, "Recommended": N 34 · P2O5 23 · K2O 12  (report only; never printed on the site)
+  WIRED: every check passed.
+
+=== Chickpea -> chickpea ===
+  rows with a quantity: 11   mapped: 11
+  quantity header: "QTY Bags per acre (Website Nutrition Plan)"
+  sheet totals (sheet analysis x sheet pack), kg an acre: N 20.43 · P2O5 12.48 · K2O 4.46
+  site totals (site analysis x site pack), kg an acre:   N 20.18 · P2O5 12.48 · K2O 4.46
+  recommended dose on the sheet, "Recommended": N 13 · P2O5 34 · K2O 12  (report only; never printed on the site)
+  row 33 V-Compost: pack: sheet 25, site plan 20; site used. analysis from the site's V-Compost (20 kg · Mn grade) record. analysis differs, site used: Mn sheet 0 site 1.
+  WIRED: every check passed.
+
+=== Lentil -> lentil ===
+  rows with a quantity: 12   mapped: 12
+  quantity header: "QTY Bags per acre (Website Nutrition Plan)"
+  sheet totals (sheet analysis x sheet pack), kg an acre: N 20.43 · P2O5 12.48 · K2O 10.71
+  site totals (site analysis x site pack), kg an acre:   N 20.43 · P2O5 12.48 · K2O 10.71
+  recommended dose on the sheet, "Recommended": N 13 · P2O5 23 · K2O 12  (report only; never printed on the site)
+  row 16 Fusion Potash: analysis differs, site used: B sheet 0 site 1, Mg sheet 0 site 1, N sheet 0 site 2.
+  row 33 V-Compost: pack: sheet 25, site plan 20; site used. analysis from the site's V-Compost (20 kg · Mn grade) record. analysis differs, site used: Mn sheet 0 site 1.
+  WIRED: every check passed.
+
+=== Chili -> chili ===
+  rows with a quantity: 14   mapped: 14
+  quantity header: "QTY Bags per acre (Website Nutrition Plan)"
+  sheet totals (sheet analysis x sheet pack), kg an acre: N 61.30 · P2O5 36.40 · K2O 21.90
+  site totals (site analysis x site pack), kg an acre:   N 61.80 · P2O5 36.40 · K2O 21.86
+  recommended dose on the sheet, "Recommended": N 58 · P2O5 23 · K2O 25  (report only; never printed on the site)
+  row 8 Sarsabz CAN: "Sarsabz CAN" shown as the plan's "Calcium Ammonium Nitrate" with the plan's printed analysis (N 26); the sheet has N 26, K 0.09, Ca 10, S 0.4.
+  row 16 Fusion Potash: analysis differs, site used: B sheet 0 site 1, Mg sheet 0 site 1, N sheet 0 site 2.
+  row 29 Cala-Mag V: analysis differs, site used: B sheet 0 site 1.
+  WIRED: every check passed.
+
+=== Garlic -> garlic ===
+  rows with a quantity: 13   mapped: 13
+  quantity header: "QTY Bags per acre (Website Nutrition Plan)"
+  sheet totals (sheet analysis x sheet pack), kg an acre: N 52.00 · P2O5 43.15 · K2O 28.79
+  site totals (site analysis x site pack), kg an acre:   N 53.10 · P2O5 43.75 · K2O 29.35
+  recommended dose on the sheet, "Recommended": N 64 · P2O5 46 · K2O 25  (report only; never printed on the site)
+  row 8 Sarsabz CAN: "Sarsabz CAN" shown as the plan's "CAN" with the plan's printed analysis (N 26); the sheet has N 26, K 0.09, Ca 10, S 0.4.
+  row 16 Fusion Potash: analysis differs, site used: B sheet 0 site 1, Mg sheet 0 site 1, N sheet 0 site 2.
+  row 22 Crop Force (15:15:15): pack: sheet 1, site plan 20; site used. sheet 1 x 1; Owner, 10 Sep 2026: "Garlic 5 kg, is 1/4 bag of same 20 kg bag." The workbook still has 1 x 1 kg. Site figure used (0.25 x 20 kg = 5 kg).
+  WIRED: every check passed.
+
+=== Citrus (5 years) -> citrus ===
+  rows with a quantity: 15   mapped: 15
+  quantity header: "QTY Bags per acre (Website Nutrition Plan)"
+  sheet totals (sheet analysis x sheet pack), kg an acre: N 66.43 · P2O5 20.63 · K2O 22.81
+  site totals (site analysis x site pack), kg an acre:   N 66.93 · P2O5 20.63 · K2O 22.77
+  recommended dose on the sheet, "Recommended": N 45 · P2O5 25 · K2O 15  (report only; never printed on the site)
+  row 8 Sarsabz CAN: "Sarsabz CAN" shown as the plan's "CAN" with the plan's printed analysis (N 26); the sheet has N 26, K 0.09, Ca 10, S 0.4.
+  row 16 Fusion Potash: analysis differs, site used: B sheet 0 site 1, Mg sheet 0 site 1, N sheet 0 site 2.
+  WIRED: every check passed.
+
+WIRED 11: sugarcane-ratoon, cotton, maize, rice-basmati, canola, sesame, chickpea, lentil, chili, garlic, citrus
+SKIPPED 0: 

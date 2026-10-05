@@ -1,0 +1,202 @@
+PAGE: /simulator.html
+======================================================================
+Products
+Crop Plans
+Soil
+Tools
+VAN Lab
+Knowledge
+About
+Make with us
+For farmers
+Menu ☰
+View
+Simple view
+Beta testing · wheat and potato live now
+VAN Yield & Discipline Simulator. Nutrition is half the yield. Discipline is the other half.
+The world talks about nutrition and uptake, and it matters. VAN is building the tool that adds the other half: what the field actually does, when it was sown, how it was watered, how thick it stands, and what that does to the yield the nutrition was planned for.
+Wheat and potato are live
+.
+wheat →
+·
+potato →
+Twenty-six more crops are due by the end of September. If something is missing from this list that costs you yield on your own field, tell us before the next upgrade and it goes in.
+Run it first. Leave your crop and district
+Write to
+info@van.com.pk
+Discipline dial · preview
+Move the practices. Watch the needle and the row.
+Directions only, and deliberately so. No figure is printed here. Wheat and potato have working simulators with their own ten levers; the rest of the 26 follow as each crop’s lever set is built.
+Pick your crop
+2
+live ·
+26
+in build
+Wheat
+●
+Maize
+Basmati Rice
+Hybrid Rice
+Cotton
+Sugarcane
+Ratoon Sugarcane
+Canola
+Sesame
+Soybean
+Sunflower
+Chickpea
+Lentil
+Mungbean & Mash
+Potato
+●
+Tomato
+Chili
+Garlic
+Watermelon
+Turmeric
+Onion
+Banana
+Banana
+Citrus
+Date Palm
+Mango
+Strawberry
+Guava
+Wheat
+has a working simulator.
+Ten levers, its own weights, your own season.
+Open it →
+Land preparation
+Levelled and ploughed in time
+Ploughed, not levelled
+Rushed, sown into a rough seedbed
+Sowing date
+Inside the window
+10 days late
+20 days late
+A month late
+Seed and stand
+Certified seed, full stand
+Own seed, full stand
+Thin stand, gaps in the rows
+Thin and patchy
+Basal fertilizer
+Placed at sowing
+Broadcast at sowing
+Broadcast after sowing
+Skipped
+Irrigation
+Every one on time
+One delayed
+One missed
+Two missed
+Two missed and one late
+Top-dressing nitrogen
+Split, each on time
+Split, one late
+All at once, early
+All at once, late
+Weeds
+Cleared in the window
+Cleared late
+Left in the crop
+Zinc and boron
+Applied at the right stage
+Applied, wrong stage
+Not applied
+Harvest
+At maturity
+A week late
+Two weeks or more late
+Reset. Every practice in its window
+Attainable yield
+illustrative
+OFF COURSE
+ON COURSE
+directions only · no figure is printed
+On course. Every practice in its window: the nutrition plan can deliver the target it was set for.
+How it will work
+Eight things you tell it. Five things it tells you.
+Your field, as it is
+1
+Crop and variety, from Pakistan’s list, not a generic one.
+2
+District and soil, the Punjab survey’s 770,000 samples and VAN’s own set the soil prior; a laboratory report overrides it.
+3
+Target yield, in maunds per acre, against what the district can carry.
+4
+Sowing date, the day, not the month.
+5
+Irrigation, canal, tube well or both, and the schedule you can keep.
+6
+Plant population, seed rate and stand.
+7
+Cropping pattern, what the field carried before: rice–wheat, cotton–wheat, cane and ratoon.
+8
+Practices. Weed window, top-dressing, harvest window.
+Your yield, your score, your plan
+1
+Your attainable yield, with the discipline you described, on your field.
+2
+Your discipline score, which practices carry the target, and which one is costing you most.
+3
+The nutrients in kilograms. N, P₂O₅, K₂O, the secondaries and the micros, stage by stage, after the soil’s own contribution.
+4
+The VAN products that deliver them. Product, stage, method and pack, from the crop programmes already on this site.
+5
+What each slip costs, and the way back.
+What it is built on
+The figures will come from ground VAN owns and samples VAN read.
+Every figure it prints will carry its source: VAN’s own trials first, published Pakistani research with its citation second.
+17 years
+of trial data from VAN’s research farm, counted from 2009
+770,000
+Punjab soil samples, the provincial survey read with VAN’s own
+28 crop programmes
+already on this site, product by stage, with their PDF sheets
+LAB 336
+the PNAC-accredited laboratory that tests the batches the plan names
+Coming soon
+Run it first.
+Leave your crop and district on WhatsApp or by email and you are on the list for the first release. VAN’s agronomy team will also ask the first users what the scorecard should carry for their crop.
+WhatsApp
++92 300 5003041
+info@van.com.pk
+Crop nutrition engineered, manufactured, registered and tested in Pakistan.
+Plant
+·
+49-Km Multan Road, Phool Nagar Bypass, Lahore
+Head office
+·
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+WhatsApp
++92 300 5003041
+Landline
++92 42 35762215
+info@van.com.pk
+Products
+All 23 brands
+Vital Urea
+Where to buy
+Verify a bag
+Crops
+28 crop plans
+Wheat
+How you apply it
+Knowledge
+Why Pakistan must shift
+The soil, measured
+Product knowledge decks
+Circular economy
+Company
+Make with us
+VAN Lab
+Tools
+About & contact
+© 2026
+Vital Agri Nutrients (Pvt) Ltd
+·
+www.van.com.pk
+LinkedIn
+Facebook
+Instagram

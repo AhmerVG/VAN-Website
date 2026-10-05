@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "outDir": "enginetest-out",
+    "rootDir": "src",
+    "module": "commonjs",
+    "target": "es2020",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "resolveJsonModule": true,
+    "ignoreDeprecations": "6.0"
+  },
+  "include": [
+    "src/__enginetest.ts",
+    "src/__costcheck.ts",
+    "src/__derivecheck.ts",
+    "src/__template.ts",
+    "src/__templatejson.ts",
+    "src/__exposure.ts",
+    "src/__climatecheck.ts",
+    "src/__balancecheck.ts",
+    "src/__soilreview.ts",
+    "src/__packcheck.ts",
+    "src/__teamcalccheck.ts"
+  ]
+}

@@ -1,0 +1,1056 @@
+PAGE: /soil.html
+======================================================================
+Products
+Crop Plans
+Soil
+Tools
+VAN Lab
+Knowledge
+About
+Make with us
+For farmers
+Menu ☰
+View
+Simple view
+The soil, measured
+· Punjab
+770,160 samples. One condition.
+Punjab tested three-quarters of a million soil samples for pH, organic matter, phosphorus, potash, calcium carbonate and five micronutrients. Read together, they describe one soil: alkaline, calcareous, almost without carbon, short of phosphorus, potash, zinc and boron in most of them, and never tested for sulfur.
+Soil is alive. VAN feeds the soil, not only the crop.
+Eight things VAN already makes or already publishes against the condition these samples describe. Each one goes somewhere.
+Sulfur
+Sulfur 70% WDG, and 13% more inside the urea granule
+Humic
+Potassium humate, for ground under one percent carbon
+Zinc
+Zinc 21%, granular, for soil that locks it up
+Micronutrients
+Zn 5 · Fe 2 · Mn 2 · Cu 1, in one foliar pass
+Iron
+10-44-0 carrying iron, manganese and copper
+Right rate, time, place
+How it is delivered is part of the product
+Crop-specific
+A plan per crop, stage by stage, per acre
+Soil-specific
+Your district, and the ground inside it
+Reading
+Punjab, all 36 districts
+·
+770,160
+samples
+▸ press one to draw the map on it
+pH
+96.1%
+above pH 7.5
+mean
+8.22
+Average
+Organic matter
+90.2%
+below 0.86%
+mean
+0.61
+%
+Weak
+Phosphorus
+97.9%
+below adequate, 15 ppm
+mean
+6.6
+ppm
+Weak
+Potash
+87.8%
+below 180 ppm
+mean
+132
+ppm
+Average
+Zinc
+59.0%
+below 1.0 ppm
+mean
+1.25
+ppm
+Healthy
+the average passes · most single samples do not
+Sulfur
+0
+samples tested, in any district file
+never measured
+The large figure is the share of samples past Punjab's own working threshold. The chip classifies the
+province
+mean against VAN's five-band soil-test table, the same one printed on a VAN soil report. Two different questions, so they can disagree, and where they do the tile says so.
+Source ·
+Punjab soil testing programme · 36 district workbooks · 770,160 valid samples · c. 2016–2018
+. Deficiency shares are of samples below Punjab’s working thresholds, not a diagnosis of any field.
+Read this before quoting ›
+01
+Read it this way
+How bad is it, really?
+One province, 770,160 samples, and a single condition underneath all of it.
+02
+Read it this way
+Find my own ground
+Your district, and then the neighbourhood inside it, because a district average may not describe your field at all.
+03
+Read it this way
+Where is a product needed?
+A region, its condition, what is already made for it, and where nothing is.
+Punjab, and only Punjab.
+All
+770,160
+samples come from the province's own 36 district workbooks. Sindh, Khyber Pakhtunkhwa and Balochistan were never surveyed at this depth, which is itself a finding about how Pakistan knows its own soil. Punjab carries most of the country's cropped area, so Punjab's figures carry the national argument, though they are not national figures.
+The living map
+VAN built these maps from the data, so the soil can be seen, and answered.
+Eight analytes, one ground, in two groups: the four a partner formulates against, and the four that describe what those four land in. The map cycles through them once when it comes into view, then rests on phosphorus. Hover a square for its district and value; tap one to hold that district in focus. The readings at the top of the page and the matrix below both drive it.
+▸ pick an analyte · Play / Pause · hover · tap
+Nutrients
+P
+K
+Zn
+B
+The ground
+pH
+OM
+CaCO₃
+EC
+▶ Play
+▸ Pick an analyte · hover · tap for a district
+Labels
+on
+Phosphorus, available
+· ppm
+·
+rust where short (below 7 ppm), green towards adequate (15)
+3.0
+12.0
+ppm
+7.5
+Every square is the mean of the georeferenced samples inside it, no boundary file, no interpolation. Switch the analyte and watch the same ground re-colour.
+4,911
+cells of 0.05°, no boundary file, no interpolation, no district polygons.
+Source ·
+Punjab soil testing programme · 36 district workbooks · 770,160 valid samples · c. 2016–2018
+.
+Read this before quoting ›
+Reading it
+Warm means short. Most of this ground is warm.
+The map opens on phosphorus, and almost none of it is green:
+97.9%
+of samples sit below the adequate level of 15 ppm,
+59.1%
+below 7 ppm. Potash, zinc and boron read the same way, rust below the working threshold and green above.
+Switch to the ground those nutrients land in and the province turns gold to rust on pH:
+96.1%
+of samples above 7.5,
+69.1%
+above 8.0. Organic matter reads pale across nearly the whole province, mean
+0.61%
+, with
+90.2%
+below 0.86%. Calcium carbonate deepens to navy where the ground is most calcareous, and EC turns rust where it is saline (
+9.0%
+of samples above 4 dS/m).
+Sulfur has no map, because it was never measured. See the analyte list below.
+Thirty-six districts
+Thirty-six districts, one gradient.
+Every district a row, every parameter a column, every cell on VAN's own five-band scale. Sort by a column to see who is worst on it, search for your own, and tap a cell to take that district and that parameter to the map above.
+Worst first
+↓
+A–Z
+Samples
+Add Cu · Mn · CaCO₃
+District
+pH
+OM
+%
+P
+ppm
+K
+ppm
+Zn
+ppm
+B
+ppm
+Fe
+ppm
+EC
+dS/m
+Punjab · all 36
+770,160
+8.22
+0.61
+6.6
+132
+1.25
+0.59
+3.42
+2.07
+Bhakkar
+23,220
+7.90
+0.46
+7.0
+94
+0.57
+0.37
+2.45
+0.17
+Jhang
+27,501
+8.35
+0.61
+7.3
+120
+0.65
+0.28
+0.67
+1.97
+Toba Tek Singh
+24,614
+8.27
+0.80
+9.0
+164
+0.68
+0.38
+0.77
+4.56
+Chiniot
+17,935
+8.22
+0.65
+7.0
+119
+0.71
+0.38
+0.97
+2.64
+Jhelum
+8,536
+7.90
+0.61
+4.1
+143
+n.d.
+0.41
+0.45
+2.98
+Faisalabad
+51,556
+8.17
+0.70
+6.5
+130
+0.70
+0.34
+0.81
+1.88
+Okara
+27,063
+8.14
+0.56
+6.8
+133
+0.69
+0.58
+2.01
+2.26
+Mianwali
+14,037
+8.06
+0.58
+5.6
+93
+0.53
+0.48
+3.33
+1.99
+Attock
+12,002
+7.96
+0.57
+3.9
+111
+0.68
+0.36
+3.71
+0.73
+Khushab
+20,887
+8.29
+0.72
+7.7
+139
+0.62
+0.45
+3.69
+0.88
+Bahawalpur
+33,871
+8.01
+0.68
+4.6
+149
+2.18
+0.56
+3.87
+4.33
+Rawalpindi
+11,963
+7.59
+0.61
+5.1
+128
+0.65
+0.34
+3.29
+1.15
+Nankana Sahib
+16,700
+8.51
+0.52
+3.8
+115
+1.23
+1.44
+2.57
+2.25
+Lahore
+13,330
+8.49
+0.56
+6.9
+121
+1.16
+0.56
+2.19
+2.17
+Narowal
+25,557
+8.29
+0.45
+4.6
+144
+2.37
+0.40
+4.46
+0.79
+Sialkot
+18,131
+8.08
+0.65
+4.1
+114
+1.19
+0.39
+3.95
+0.28
+Sheikhupura
+26,676
+8.73
+0.59
+5.4
+118
+1.11
+0.72
+2.36
+1.75
+Kasur
+28,703
+8.67
+0.57
+14.8
+116
+1.12
+0.63
+3.00
+2.54
+Bahawalnagar
+28,233
+8.25
+0.57
+6.3
+110
+1.97
+0.51
+3.21
+2.95
+Chakwal
+10,752
+7.89
+0.83
+7.5
+130
+0.65
+0.36
+4.01
+0.93
+Khanewal
+31,103
+8.47
+0.66
+6.2
+130
+0.85
+0.95
+4.75
+2.65
+Muzaffargarh
+19,972
+8.46
+0.74
+5.8
+128
+1.13
+0.68
+4.21
+4.22
+Layyah
+14,757
+8.40
+0.59
+5.8
+95
+1.21
+0.61
+3.83
+1.80
+Sargodha
+23,642
+8.17
+0.67
+7.0
+148
+0.76
+0.51
+5.68
+1.52
+Mandi Bahauddin
+20,392
+7.93
+0.70
+4.5
+93
+1.98
+0.48
+4.65
+1.51
+Vehari
+31,684
+8.51
+0.69
+7.1
+147
+1.00
+0.96
+5.52
+2.86
+Hafizabad
+9,396
+8.39
+0.60
+6.7
+137
+2.36
+0.40
+4.44
+0.97
+Pakpattan
+14,757
+8.16
+0.51
+8.8
+138
+0.98
+0.99
+4.90
+0.98
+Gujranwala
+21,511
+8.10
+0.60
+5.3
+114
+2.53
+0.43
+4.75
+0.98
+Dera Ghazi Khan
+12,032
+8.00
+0.49
+6.0
+131
+1.25
+0.87
+4.14
+2.71
+Lodhran
+13,231
+8.31
+0.48
+6.3
+130
+1.14
+1.03
+5.08
+3.90
+Rahim Yar Khan
+42,094
+8.25
+0.55
+6.9
+170
+2.47
+0.64
+3.98
+1.49
+Rajanpur
+11,092
+8.02
+0.39
+5.8
+159
+1.23
+0.86
+4.01
+1.13
+Gujrat
+25,197
+7.54
+0.59
+6.3
+124
+2.11
+0.40
+4.06
+1.09
+Multan
+12,869
+8.29
+0.62
+8.6
+168
+0.81
+0.78
+5.93
+1.40
+Sahiwal
+25,164
+8.24
+0.57
+7.7
+201
+1.04
+0.86
+4.93
+2.88
+How bad
+Critical
+Weak
+Average
+Moderate
+Healthy
+The bands are VAN's own five-band soil-test table, the same one printed on a VAN soil report, read against the district mean. Calcium carbonate has no row in that table, so it carries a value and no colour. Copper and manganese have three bands there rather than five. N.d. = not determined; Jhelum returns no valid zinc.
+Tap any cell
+to take that district and that parameter to the map and the readings above.
+Province
+Punjab, all 36 districts
+770,160
+samples · mean pH
+8.22
+· OM
+0.61
+% · P
+6.6
+ppm · K
+132
+ppm · Zn
+1.25 ppm
+· B
+0.59
+ppm · CaCO₃
+6.53
+%
+pH
+769,645
+in range · count per bin
+5–5.25: 1 (0.0%)
+5.25–5.5: 0 (0.0%)
+5.5–5.75: 1 (0.0%)
+5.75–6: 0 (0.0%)
+6–6.25: 185 (0.0%)
+6.25–6.5: 176 (0.0%)
+6.5–6.75: 273 (0.0%)
+6.75–7: 329 (0.0%)
+7–7.25: 5,424 (0.7%)
+7.25–7.5: 12,922 (1.7%)
+7.5–7.75: 49,863 (6.5%)
+7.75–8: 106,061 (13.8%)
+8–8.25: 260,391 (33.8%)
+8.25–8.5: 148,098 (19.2%)
+8.5–8.75: 125,449 (16.3%)
+8.75–9: 32,141 (4.2%)
+9–9.25: 18,855 (2.4%)
+9.25–9.5: 5,256 (0.7%)
+9.5–9.75: 3,435 (0.4%)
+9.75–10: 785 (0.1%)
+7.5
+8.0
+8.5
+5
+10
+Organic matter
+769,843
+in range · count per bin
+0–0.1%: 4 (0.0%)
+0.1–0.2%: 6,240 (0.8%)
+0.2–0.3%: 41,036 (5.3%)
+0.3–0.4%: 51,720 (6.7%)
+0.4–0.5%: 119,476 (15.5%)
+0.5–0.6%: 143,567 (18.6%)
+0.6–0.7%: 176,317 (22.9%)
+0.7–0.8%: 112,169 (14.6%)
+0.8–0.9%: 67,561 (8.8%)
+0.9–1%: 33,500 (4.4%)
+1–1.1%: 10,481 (1.4%)
+1.1–1.2%: 4,613 (0.6%)
+1.2–1.3%: 1,763 (0.2%)
+1.3–1.4%: 913 (0.1%)
+1.4–1.5%: 113 (0.0%)
+1.5–1.6%: 104 (0.0%)
+1.6–1.7%: 117 (0.0%)
+1.7–1.8%: 58 (0.0%)
+1.8–1.9%: 67 (0.0%)
+1.9–2%: 24 (0.0%)
+0.86
+0
+%
+2
+%
+Available phosphorus
+770,142
+in range · count per bin
+0–1 ppm: 50 (0.0%)
+1–2 ppm: 15,390 (2.0%)
+2–3 ppm: 37,599 (4.9%)
+3–4 ppm: 58,299 (7.6%)
+4–5 ppm: 98,961 (12.8%)
+5–6 ppm: 118,271 (15.4%)
+6–7 ppm: 126,753 (16.5%)
+7–8 ppm: 134,174 (17.4%)
+8–9 ppm: 71,322 (9.3%)
+9–10 ppm: 39,184 (5.1%)
+10–11 ppm: 16,063 (2.1%)
+11–12 ppm: 12,618 (1.6%)
+12–13 ppm: 11,314 (1.5%)
+13–14 ppm: 7,048 (0.9%)
+14–15 ppm: 6,660 (0.9%)
+15–16 ppm: 2,142 (0.3%)
+16–17 ppm: 2,962 (0.4%)
+17–18 ppm: 4,313 (0.6%)
+18–19 ppm: 1,987 (0.3%)
+19–20 ppm: 1,224 (0.2%)
+20–21 ppm: 224 (0.0%)
+21–22 ppm: 1,379 (0.2%)
+22–23 ppm: 615 (0.1%)
+23–24 ppm: 258 (0.0%)
+24–25 ppm: 812 (0.1%)
+25–26 ppm: 344 (0.0%)
+26–27 ppm: 77 (0.0%)
+27–28 ppm: 45 (0.0%)
+28–29 ppm: 20 (0.0%)
+29–30 ppm: 34 (0.0%)
+7
+15
+0
+ppm
+30
+ppm
+Share below Punjab’s working threshold
+shares of samples, not a diagnosis of any field
+Organic matter
+below 0.86%
+90.2%
+Phosphorus
+below 15 ppm (adequate)
+97.9%
+Phosphorus
+below 7 ppm (low)
+59.1%
+Potash
+below 180 ppm
+87.8%
+Zinc
+below 1.0 ppm
+59.0%
+Boron
+below 0.5 ppm
+51.7%
+Salinity
+EC above 4 dS/m
+9.0%
+Texture, as recorded
+share of samples by class
+loam
+78.8
+% ·
+596,936
+sandy loam
+10.7
+% ·
+81,427
+clay loam
+6.5
+% ·
+49,492
+heavy loam
+1.3
+% ·
+9,693
+heavy clay
+0.5
+% ·
+3,635
+sand
+0.4
+% ·
+3,139
+other spellings
+1.7
+% ·
+13,241
+Source ·
+Punjab soil testing programme · 36 district workbooks · 770,160 valid samples · c. 2016–2018
+. Thresholds:
+Punjab working thresholds: organic matter low < 0.86%, available P low < 7 ppm (adequate ≥ 15), available K low < 180 ppm, Zn low < 1.0 ppm, B low < 0.5 ppm; EC > 4 dS/m saline.
+Read this before quoting ›
+One level down
+Pick your district above and this reads the ground inside it.
+The survey is not only district averages. It carries
+4,911
+cells
+of about 5.5 by 4.8 kilometres, roughly 6,600 acres each, and every district has its own. That is closer to a neighbourhood than to a district, and it is where a district average starts to fall apart.
+Relations
+How one variable moves another, and where it does not.
+Pick what to group the samples by and what to read across the groups. Where the evidence page recorded a verdict, it is shown as written. Including the one that does not hold.
+▸ change X and Y · the chart redraws
+X · group the samples by
+pH band
+Organic-matter band
+Calcium-carbonate band
+Texture class
+Y · and read the mean of
+Calcium carbonate
+Zinc
+Phosphorus
+Potash
+Boron
+Organic matter
+Mean
+calcium carbonate
+by
+pH band
+· Punjab
+for
+Punjab · all 36 districts
+Sheikhupura
+Kasur
+Nankana Sahib
+Vehari
+Lahore
+Khanewal
+Muzaffargarh
+Layyah
+Hafizabad
+Jhang
+Lodhran
+Multan
+Narowal
+Khushab
+Toba Tek Singh
+Rahim Yar Khan
+Bahawalnagar
+Sahiwal
+Chiniot
+Faisalabad
+Sargodha
+Pakpattan
+Okara
+Gujranwala
+Sialkot
+Mianwali
+Rajanpur
+Bahawalpur
+Dera Ghazi Khan
+Attock
+Mandi Bahauddin
+Jhelum
+Bhakkar
+Chakwal
+Rawalpindi
+Gujrat
+979 samples below pH 7.0 are not drawn (the four bands shown carry 99.9% of the province).
+✓
+Holds
+Carbonate drives alkalinity
+Province series ·
+3.41 → 4.86 → 6.91 → 7.41 % CaCO₃
+Mean calcium carbonate rises monotonically across every pH band. The alkalinity is calcareous in origin, exactly as expected.
+Source ·
+Punjab soil testing programme · 36 district workbooks · 770,160 valid samples · c. 2016–2018
+. Observational; establishes conditions, not mechanism.
+Read this before quoting ›
+The six pairs with a verdict:
+Carbonate drives alkalinity
+Zinc falls as pH rises
+Sandy soil holds less potash
+Zinc is highest where carbonate is lowest
+Phosphorus vs pH
+Zinc vs organic matter
+These are observational district data, not a controlled experiment. Two relationships hold cleanly, one holds with a limit, one is reported without explanation, and one widely-assumed relationship does not appear. Stated here because it is the one a technical reader will look for.
+The analyte list
+Thirteen determinations. One that is not there.
+Every district workbook carries the same thirteen columns. Read them as a list and the fourteenth line writes itself. The nutrient VAN’s programmes place twice in wheat alone was never on the schedule.
+Green Sulfur →
+Vital Urea · S 13% →
+The wheat programme →
+Fourteen questions. Thirteen were asked.
+province means
+✓
+Saturation percentage
+36.2%
+✓
+Texture class
+loam · 77.5% of samples
+✓
+Electrical conductivity
+2.07 dS/m
+✓
+pH
+8.22
+✓
+Organic matter
+0.61%
+✓
+Phosphorus, available
+6.62 ppm
+✓
+Potash, available
+132 ppm
+✓
+Calcium carbonate
+6.53%
+✓
+Zinc
+1.25 ppm
+✓
+Copper
+0.94 ppm
+✓
+Iron
+3.42 ppm
+✓
+Manganese
+1.90 ppm
+✓
+Boron
+0.59 ppm
+·
+Sulfur
+not determined
+Sulfur, not determined
+Sulfur appears in no district file, in no column, at any point in the sampling programme. Sulfur was left off the testing schedule, so no result for it exists. Because it is never measured, it is never reported as deficient and it never enters a fertiliser plan.
+Sulfur is in VAN’s published programmes. The wheat plan alone places Green Sulfur at germination and again at early growth, and in none of the 770,160 determinations.
+Source ·
+Punjab soil testing programme · 36 district workbooks · 770,160 valid samples · c. 2016–2018
+.
+Copper, iron, manganese and saturation percentage are province means from the same module; texture is the share of the commonest recorded class.
+Read this before quoting ›
+VAN and the condition
+What VAN builds against it.
+The survey gives the condition. The mechanism sentences are VAN’s own published copy. No performance figure is claimed for any product.
+01
+·
+Nitrogen
+pH above 8, 69.1% of samples
+the condition · from the survey
+“
+Above pH 8, surface urea leaves as ammonia before the crop can use it. What dissolves moves down with the irrigation water.
+”
+.
+van.com.pk · Home · the three losses
+Vital Urea
+02
+·
+Phosphate
+Calcareous soil. Mean CaCO₃ 6.53%, rising with pH
+the condition · from the survey
+“
+Calcareous soil binds phosphate with free calcium and takes most of it back before the root arrives.
+”
+.
+van.com.pk · Home · the three losses
+Green Phosphate
+6-32
+5-40
+8-38
+VAN NP Range
+V. Ammonium Phosphate
+Fusion Phosphate
+03
+·
+Potash
+87.8% below 180 ppm. Lowest on sandy loam
+the condition · from the survey
+“
+One kilogram of potash goes on for every eighty-three of nitrogen, and the crop fills from potash.
+”
+.
+van.com.pk · Home · the three losses
+Vital Potash
+Fusion Potash
+SOP
+VL-Potash Liquid
+V-Potash Plus
+04
+·
+Zinc
+59.0% below 1.0 ppm. Falls as pH rises
+the condition · from the survey
+“
+In Punjab’s alkaline, high-pH soils, zinc is chemically fixed as Zn²⁺-phosphate or zinc adsorbed on calcium carbonate, making it unavailable to roots even when total soil Zn is adequate.
+”
+.
+van.com.pk · Wheat programme · deficiency notes
+V-Transform
+V-Zinc 10%
+VL-Micromix
+05
+·
+Organic matter
+90.2% below 0.86%. Mean 0.61%
+the condition · from the survey
+“
+Concentrated humate with fulvic acid and potash for fertigation and foliar use on soils under one percent organic matter.
+”
+.
+van.com.pk · Formulation library · BIO-H50F
+Humi Grow
+Humi Grow Plus
+V-Compost
+Tornado
+06
+·
+Boron
+51.7% below 0.5 ppm
+the condition · from the survey
+“
+Vital Potash, N 11 · K₂O 44, coated with boron in two forms.
+”
+.
+van.com.pk · Products
+VL-Boron
+Vital Potash
+Fusion Potash
+07
+·
+Sulfur
+Not determined in any of 770,160 samples
+the condition · from the survey
+“
+Sulfur Coated Urea · N 32% min · S 13% min. Green Sulfur · Sulfur 70% WDG.
+”
+.
+van.com.pk · Products
+Vital Urea
+Green Sulfur
+The survey gives the condition. The mechanism sentences are VAN’s own published copy. No performance figure is claimed for any product.
+Condition figures:
+Punjab soil testing programme · 36 district workbooks · 770,160 valid samples · c. 2016–2018
+.
+What this ground costs the country
+More product on this soil is not the answer. The soil takes it back first.
+Punjab's ground is alkaline and calcareous.
+96.1% of samples above pH 7.5
+, mean carbonate 6.53%. On that soil, nutrient applied per hectare has risen by more than two thirds since 2000 while wheat yield rose by less than a third.
+Roughly one kilogram of applied nitrogen in four reaches the crop.
+What changes the outcome is
+the form the nutrient arrives in and where it is put
+, not the tonnage. That is what a value added fertilizer is, and it is why this soil demands one.
+The nutrition Pakistan pays for →
+Read this before quoting
+Method & caveats
+Thirty-six district workbooks from the Punjab soil testing programme, each row one georeferenced sample carrying district, tehsil, markaz, union council and mauza identifiers alongside the laboratory determinations. Every row was read; no sub-sampling. Records without a valid pH were excluded; 770,160 remained. Province figures are weighted by district sample count.
+Age
+The sampling window is roughly 2016–2018. These figures describe a structural baseline, not present-day status.
+Observational
+Survey data with no controlled treatments. It establishes conditions with very high confidence. It cannot establish mechanism, for that, controlled and peer-reviewed work is the appropriate evidence.
+Thresholds
+Deficiency shares use Punjab’s working thresholds: organic matter below 0.86%, available phosphorus below 7 ppm (adequate at 15), available potash below 180 ppm, zinc below 1.0 ppm, boron below 0.5 ppm.
+Repairs
+The Sheikhupura workbook carries a duplicated header column; it was re-parsed with the offset corrected. Jhelum returns no valid zinc data. Physically impossible values were bounded before averaging.
+Bounds and repairs, as recorded in the module.
+Punjab soil testing programme, 36 district workbooks, georeferenced to plot level, sampling window c. 2016–2018; every row read, no sub-sampling; records without a valid pH excluded; physically impossible values bounded before averaging (pH 0–14, OM 0–10%, P 0–200 ppm, CaCO3 0–100%, K 0–3000 ppm, Zn 0–50 ppm, B 0–20 ppm, EC 0–100 dS/m). Province figures weighted by district sample count. Sheikhupura workbook re-parsed with its duplicated header column corrected. Jhelum returns no valid zinc data. Sulfur is not determined in any file.
+Thresholds.
+Punjab working thresholds: organic matter low < 0.86%, available P low < 7 ppm (adequate ≥ 15), available K low < 180 ppm, Zn low < 1.0 ppm, B low < 0.5 ppm; EC > 4 dS/m saline.
+770,160
+valid samples across
+36
+districts. Analytes determined:
+Saturation percentage · Texture class · Electrical conductivity · pH · Organic matter · Phosphorus (available) · Potash (available) · Calcium carbonate · Zinc · Copper · Iron · Manganese · Boron
+. Not determined:
+Sulfur
+.
+Your own field
+A survey mean is not your soil test.
+These are district means over samples taken c. 2016–2018. For a plan against your own field, VAN works from your soil analysis. Ask on WhatsApp, or send 500 g to the laboratory.
+Ask for my plan
+VAN Lab. Send a sample
+Crop nutrition engineered, manufactured, registered and tested in Pakistan.
+Plant
+·
+49-Km Multan Road, Phool Nagar Bypass, Lahore
+Head office
+·
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+WhatsApp
++92 300 5003041
+Landline
++92 42 35762215
+info@van.com.pk
+Products
+All 23 brands
+Vital Urea
+Where to buy
+Verify a bag
+Crops
+28 crop plans
+Wheat
+How you apply it
+Knowledge
+Why Pakistan must shift
+The soil, measured
+Product knowledge decks
+Circular economy
+Company
+Make with us
+VAN Lab
+Tools
+About & contact
+© 2026
+Vital Agri Nutrients (Pvt) Ltd
+·
+www.van.com.pk
+LinkedIn
+Facebook
+Instagram
+Find a dealer
+My crop's plan
+Verify a bag
+Find a dealer
+My crop's plan
+Verify a bag

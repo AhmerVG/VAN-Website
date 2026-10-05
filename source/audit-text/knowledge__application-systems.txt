@@ -1,0 +1,182 @@
+PAGE: /knowledge/application-systems.html
+======================================================================
+Products
+Crop Plans
+Soil
+Tools
+VAN Lab
+Knowledge
+About
+Make with us
+For farmers
+Menu ☰
+View
+Simple view
+Knowledge · application systems
+A bag is not a dose.
+How nutrient is delivered is part of the product.
+Two fields can take the same nutrient, in the same quantity, in the same season, and get different results. Form, timing and placement decide how much of it the crop ever sees, so VAN formulates to the machine as well as to the crop.
+01
+Three systems
+02
+Between the bag and the crop
+03
+Every delivery system
+04
+What VAN has actually put in a field
+05
+One Tank · ایک ٹینک
+01
+Three systems
+Each system sets its own limits on the product.
+Broadcasting a bag spreads nutrient over the whole surface and leaves the root to find it. Pivot, drip and drone each place it somewhere specific.
+Pivot
+Drip
+Drone
+Where the nutrient lands
+Whole circle, with the water
+Wetted root zone only
+On the leaf
+Hardest product constraint
+No precipitate in the carrier water
+Near-zero insolubles. Emitters and filters
+Concentration and suspension stability
+Form we supply
+Soluble crystal and liquid
+Liquid and soluble crystal, acidic reaction where water is hard
+Concentrated liquid and fine WDG
+What it buys the grower
+Cheap splitting, many small doses
+Placement, nothing applied between the rows
+Access and speed. Crops and windows the ground cannot reach
+Crops it fits first
+Field crops under pivot irrigation
+Orchards, high-value vegetables, protected cropping
+Sugarcane, maize, rice, cotton at canopy closure
+The injected solution touches every part of a long galvanised span on each pass, and the two failure directions are opposite. That is why pH is the controlled variable in a pivot programme. It decides whether the machine ages normally or early, and VAN sets it before the product is packed rather than leaving it to the grower at the injection point.
+The band is a formulation specification. What these grades are built to. The measured pH comes off the certificate of analysis that ships with the batch; send the batch number and VAN sends it. No corrosion-rate or equipment-life numbers are published here. Those tests have not been run, and the mechanism above is standard corrosion engineering, not a VAN measurement.
+02
+Between the bag and the crop
+Four decisions, none of them printed on the bag.
+Form
+On ground above pH 8, surface-applied uncoated urea hydrolyses and escapes as ammonia; the same nitrogen behind a sulfur coating dissolves gradually instead. Chelated micronutrients stay available in alkaline soil where the sulfate equivalents precipitate out and do nothing.
+Timing
+Crop demand peaks at defined growth stages, and nutrient supplied outside those windows is substantially wasted. It is why the 28 crop programmes are written stage by stage rather than as a season total.
+Placement
+Broadcast, drilled, side-dressed, banded, fertigated or sprayed on the leaf. Each has a different loss profile, and placement is usually decided by the equipment available rather than by agronomy, which is exactly why it is worth designing for.
+Physical fit
+A product that blocks an emitter, settles out of a spray tank or is too coarse for a drone boom is not a delivery option regardless of its analysis. Solubility, particle size, pH and tank-mix behaviour decide it.
+03
+Every delivery system
+What each one demands of the product.
+System
+What it demands of the product
+Where it earns its place
+Broadcast & side-dressing
+Granular integrity, controlled dissolution, resistance to volatilisation on hot alkaline surfaces
+The bulk of field-crop nitrogen and base nutrition
+Fertigation
+Full water solubility, no precipitate, no emitter blockage, compatible pH
+Orchards, high-value vegetables, any drip or sprinkler system
+Foliar
+Fine particle size, tank-mix stability, leaf-safe concentration, chelated micronutrients
+Correcting a deficiency inside days rather than waiting on root uptake
+Drone / ultra-low volume
+High concentration in very little water, no nozzle blockage, stable in suspension
+Tall or dense standing crops a tractor cannot enter, and speed when the window is short
+Seed & starter placement
+Low salt index, safe in contact with germinating seed, early-available phosphorus
+Root establishment, where a small precise quantity outperforms a large imprecise one
+VAN produces powder, granular, pellet, crystalline and liquid grades, and formulates to a customer’s delivery system as part of the brief. Pack sizes are registered per product and printed on each product’s own page. They are kept there only, so that one pack size is never published as two different figures.
+04
+What VAN has actually put in a field
+Two programmes of our own.
+Testing the two halves of the same idea: that form changes how much nitrogen survives, and that timing changes how much of it is used.
+With Rafhan Maize Products
+Across five grower sites at Khaliqabad, from application in August 2023 to harvest in October, assessed at 12 and 24 days. The comparison was deliberately uneven.
+Across the parameters assessed, shoot length, colour, leaf number and vigour, the single 25 kg bag produced comparable crop growth on roughly a third of the applied nitrogen, with the sulfur included and at a comparable bag price. Observers also recorded better uniformity of plant height, improved grain formation, more milk-line development and better disease tolerance. Cob size and length showed no difference.
+The replicated trial
+A replicated maize trial at VAN’s trial station: two stage-timed applications of sulfur-coated urea, at the 4–6 leaf stage and again twenty days later at 8–12 leaf, against a conventional programme of five applications of uncoated urea followed by calcium ammonium nitrate.
+Coated nitrogen releases across the crop’s demand curve instead of flushing and volatilising, so fewer, better-timed applications deliver more to the plant than more frequent applications of a form that does not stay put.
+Source
+·
+Umair, A., Manzoor, M., Saleem, M. S., Akram, S., Ali, M., Batool, A., Javaid, T., Javaid, A., Sharif, M. N. & Haider, M. S. (2025). Efficacy Evaluation of Different Doses of Nitrgenous Fertilizers on the Growth and Yield of Maize (Zea mays). Planta Animalia 4(3), 129–135. DOI 10.71454/PA.004.03.0126. Randomised complete block design, three replications, DK-6321 hybrid, spring season 2024.
+Vital Urea. The evidence in full →
+05
+One Tank · ایک ٹینک
+Twenty litres for the whole field.
+A drone carries about twenty litres and then has to land. Everything the crop is going to get that day has to be dissolved in that twenty litres, arrive on the leaf without blocking a nozzle, and be safe on the leaf at a concentration the original label was never written around. That needs a different specification from a knapsack spray, and at VAN it carries a different name: One Tank.
+A drone will spray whatever is put in its tank. Choosing a grade that was not written for the tank is where the application fails, not in the aircraft.
+The name tells you what it was built under
+VAN does not put the word “drone” on the end of an existing brand. A drone-ready version of a VAN product is a different formulation with a different concentration, a different particle specification and a different dose per acre, and giving it the parent’s name would invite a grower to swap one for the other. So it gets its own name in its own family: One Tank. The name refers to the twenty litres a drone tank holds.
+The rule runs one way and has no exceptions. If a product is meant to be flown, it is named into the One Tank family. If it carries a VAN brand name, it was not built for the drone. Whatever it happens to dissolve like. SOP is the standing example: it is a soil and fertigation product, it is not a drone grade, and it will not become one.
+The family
+Code
+Nutrient
+One Tank K
+Potassium
+One Tank K+P
+Potassium with phosphorus
+One Tank N
+Nitrogen
+One Tank KN
+Potassium with nitrogen
+One Tank Zn
+Zinc
+Five codes. The code is the nutrient identity, that is the whole point of naming it this way. Crop-specific variants sit inside the same family and follow the same rule: the crop is named on the pack, the family name does not change.
+What the twenty-litre tank decides
+Twenty litres is the maximum total tank mix for a One Tank application. It is set before the formulation work starts, and everything else, concentration, solubility, what can share a tank with what, is decided underneath it. A grade that needs more water than the drone can carry is not a drone grade, however well it performs on a boom.
+Three things follow from it directly. The nutrient load has to dissolve, and stay dissolved, at several times the concentration a knapsack would use. The solution has to pass a nozzle screen and keep passing it for the length of a flight, which rules out anything that settles or flocculates in the tank. And it has to be safe on the leaf at that concentration, because the same quantity of nutrient is landing in far less water.
+What VAN already flies
+Drone and ultra-low-volume grades are in commercial production today under their existing VAN brand names: VL-Micromix · VL-Boron · V-Zinc · Tornado · V-Germinator Pro · Cala-Mag V. Those products keep their names. One Tank is the family for products designed around the drone from the start rather than qualified for it afterwards.
+VL-Micromix
+VL-Boron
+V-Zinc
+Tornado
+V-Germinator Pro
+Cala-Mag V
+What is not on this page
+One Tank is published here as a naming convention and a design constraint, because those are settled. The ultra-low-volume rate is settled, one litre of product per twenty-litre tank, per acre, and so is the registration position: a One Tank code is a formulation and grade variant of an already-registered VAN product, so it is covered by that product’s registration and carries no separate licence. The potash grade is VL-Potash.
+The analysis of a One Tank code is the analysis of the registered VAN grade it is built from. It is printed on that grade’s own page, with its pack size, and is not restated here. What a code adds on top of that grade is its delivery package: additional ingredients for ultra-low-volume spraying, not a different raw material. That package is still being set against VAN’s own drone work, so it is not written down here and will not be until it is fixed. VAN publishes no drift, coverage or spray-efficiency figure for drone application, because the trials that would support one have not been run.
+The products that fly today →
+A question this page doesn’t answer?
+The agronomy team answers on the same WhatsApp line as everything else.
+Ask on WhatsApp
+Crop nutrition engineered, manufactured, registered and tested in Pakistan.
+Plant
+·
+49-Km Multan Road, Phool Nagar Bypass, Lahore
+Head office
+·
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+WhatsApp
++92 300 5003041
+Landline
++92 42 35762215
+info@van.com.pk
+Products
+All 23 brands
+Vital Urea
+Where to buy
+Verify a bag
+Crops
+28 crop plans
+Wheat
+How you apply it
+Knowledge
+Why Pakistan must shift
+The soil, measured
+Product knowledge decks
+Circular economy
+Company
+Make with us
+VAN Lab
+Tools
+About & contact
+© 2026
+Vital Agri Nutrients (Pvt) Ltd
+·
+www.van.com.pk
+LinkedIn
+Facebook
+Instagram

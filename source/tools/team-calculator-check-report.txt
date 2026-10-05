@@ -1,0 +1,168 @@
+Team calculator check · Fertilizer Nutrient Calculator For Economic Nutrition Planning.xlsx (28 sheets, imported 2026-09-25)
+Live calculators, in list order: wheat, potato, sugarcane-ratoon, cotton, maize, rice-basmati, canola, sesame, chickpea, lentil, chili, garlic
+
+=== Ratoon Sugarcane (sugarcane-ratoon) · sheet "Sugarcane (Ratoon)" ===
+  rows 14 · products 14 · rows the site figure replaced the sheet's: 2
+                         N    P₂O₅   K₂O   (kg an acre)
+  calculator          86.9  36.4  31.8
+  published plan      86.9  36.4  31.3
+  sheet's own sum     86.4  36.4  31.9   (sheet analysis x sheet pack)
+  band "Less fertile"     150.0  90.0  65.0   calculator against this band: N -42%, P₂O₅ -60%, K₂O -51%
+  band "Average Fertile"  134.0  74.0  65.0   calculator against this band: N -35%, P₂O₅ -51%, K₂O -51%
+  band "Very Fertile"     113.0  60.0  49.0   calculator against this band: N -23%, P₂O₅ -39%, K₂O -35%
+  page prints: N 86.9 kg · P₂O₅ 36.4 kg · K₂O 31.3–31.8 kg
+  differences from the published plan (D-77, printed as a range where they move a nutrient):
+    Humi Grow: the plan prints no analysis for it ("Soil Conditioner"), the calculator counts {"K":7,"HA":40} from the site's catalogue
+  sheet row 8 Sarsabz CAN: "Sarsabz CAN" shown as the plan's "CAN" with the plan's printed analysis (N 26); the sheet has N 26, K 0.09, Ca 10, S 0.4.
+  sheet row 16 Fusion Potash: analysis differs, site used: B sheet 0 site 1, Mg sheet 0 site 1, N sheet 0 site 2.
+  priced after the click from FARMER_PRICE: 12 lines; commodity lines, never priced: Urea, CAN
+
+=== Cotton (cotton) · sheet "Cotton" ===
+  rows 11 · products 11 · rows the site figure replaced the sheet's: 2
+                         N    P₂O₅   K₂O   (kg an acre)
+  calculator          94.7  28.4  21.9
+  published plan      94.7  28.4  21.3
+  sheet's own sum     94.2  28.4  21.9   (sheet analysis x sheet pack)
+  band "Less fertile"     119.0  69.0  50.0   calculator against this band: N -20%, P₂O₅ -59%, K₂O -56%
+  band "Average Fertile"   92.0  58.0  37.0   calculator against this band: N +3%, P₂O₅ -51%, K₂O -41%
+  band "Very Fertile"      75.0  46.0  25.0   calculator against this band: N +26%, P₂O₅ -38%, K₂O -13%
+  page prints: N 94.7 kg · P₂O₅ 28.4 kg · K₂O 21.3–21.9 kg
+  differences from the published plan (D-77, printed as a range where they move a nutrient):
+    Humi Grow: the plan prints no analysis for it ("Soil Conditioner"), the calculator counts {"K":7,"HA":40} from the site's catalogue
+  sheet row 8 Sarsabz CAN: "Sarsabz CAN" shown as the plan's "Calcium Ammonium Nitrate" with the plan's printed analysis (N 26); the sheet has N 26, K 0.09, Ca 10, S 0.4.
+  sheet row 16 Fusion Potash: analysis differs, site used: B sheet 0 site 1, Mg sheet 0 site 1, N sheet 0 site 2.
+  priced after the click from FARMER_PRICE: 9 lines; commodity lines, never priced: Urea, Calcium Ammonium Nitrate
+
+=== Maize (Corn) (maize) · sheet "Maize" ===
+  rows 12 · products 12 · rows the site figure replaced the sheet's: 1
+                         N    P₂O₅   K₂O   (kg an acre)
+  calculator          81.5  28.4  15.9
+  published plan      81.5  28.4  15.3
+  sheet's own sum     81.2  28.4  15.9   (sheet analysis x sheet pack)
+  band "Less fertile"     119.0  69.0  50.0   calculator against this band: N -32%, P₂O₅ -59%, K₂O -68%
+  band "Average Fertile"   92.0  58.0  37.0   calculator against this band: N -11%, P₂O₅ -51%, K₂O -57%
+  band "Very Fertile"      75.0  46.0  25.0   calculator against this band: N +9%, P₂O₅ -38%, K₂O -36%
+  page prints: N 81.5 kg · P₂O₅ 28.4 kg · K₂O 15.3–15.9 kg
+  differences from the published plan (D-77, printed as a range where they move a nutrient):
+    V-Mag Essential: plan 2 x 5, calculator 1 x 5
+    Humi Grow: the plan prints no analysis for it ("Soil Conditioner"), the calculator counts {"K":7,"HA":40} from the site's catalogue
+  sheet row 16 Fusion Potash: analysis differs, site used: B sheet 0 site 1, Mg sheet 0 site 1, N sheet 0 site 2.
+  priced after the click from FARMER_PRICE: 11 lines; commodity lines, never priced: Urea
+
+=== Basmati Rice (rice-basmati) · sheet "Rice (Basmati)" ===
+  rows 11 · products 11 · rows the site figure replaced the sheet's: 1
+                         N    P₂O₅   K₂O   (kg an acre)
+  calculator          49.0  20.4  15.1
+  published plan      49.0  20.4  15.1
+  sheet's own sum     48.7  20.4  15.1   (sheet analysis x sheet pack)
+  band "Recommended"       55.0  35.0  25.0   calculator against this band: N -11%, P₂O₅ -42%, K₂O -40%
+  page prints: N 49.0 kg · P₂O₅ 20.4 kg · K₂O 15.1 kg
+  differences from the published plan (D-77, printed as a range where they move a nutrient):
+    in the plan, not the calculator: Humi Grow (1 x 8)
+    Tornado: plan 2 x 0.5, calculator 1 x 0.5
+    Tornado: the plan prints no analysis for it ("Bio-stimulant"), the calculator counts {"AA":10} from the site's catalogue
+  sheet row 16 Fusion Potash: analysis differs, site used: B sheet 0 site 1, Mg sheet 0 site 1, N sheet 0 site 2.
+  priced after the click from FARMER_PRICE: 10 lines; commodity lines, never priced: Urea
+
+=== Canola (canola) · sheet "Canola" ===
+  rows 10 · products 10 · rows the site figure replaced the sheet's: 1
+                         N    P₂O₅   K₂O   (kg an acre)
+  calculator          48.6  20.4  19.7
+  published plan      48.6  20.4  19.1
+  sheet's own sum     48.1  20.4  19.7   (sheet analysis x sheet pack)
+  band "Recommended"       35.0  30.0  12.0   calculator against this band: N +39%, P₂O₅ -32%, K₂O +64%
+  page prints: N 48.6 kg · P₂O₅ 20.4 kg · K₂O 19.1–19.7 kg
+  differences from the published plan (D-77, printed as a range where they move a nutrient):
+    Humi Grow: the plan prints no analysis for it ("Soil Conditioner"), the calculator counts {"K":7,"HA":40} from the site's catalogue
+  sheet row 16 Fusion Potash: analysis differs, site used: B sheet 0 site 1, Mg sheet 0 site 1, N sheet 0 site 2.
+  priced after the click from FARMER_PRICE: 9 lines; commodity lines, never priced: Urea
+
+=== Sesame (sesame) · sheet "Sesame" ===
+  rows 7 · products 7 · rows the site figure replaced the sheet's: 0
+                         N    P₂O₅   K₂O   (kg an acre)
+  calculator          16.1  16.0   5.0
+  published plan      16.1  16.0   4.4
+  sheet's own sum     16.1  16.0   5.0   (sheet analysis x sheet pack)
+  band "Recommended"       34.0  23.0  12.0   calculator against this band: N -53%, P₂O₅ -30%, K₂O -59%
+  page prints: N 16.1 kg · P₂O₅ 16.0 kg · K₂O 4.4–5.0 kg
+  differences from the published plan (D-77, printed as a range where they move a nutrient):
+    Humi Grow: the plan prints no analysis for it ("Soil Conditioner"), the calculator counts {"K":7,"HA":40} from the site's catalogue
+  priced after the click from FARMER_PRICE: 7 lines; commodity lines, never priced: none
+
+=== Chickpea (chickpea) · sheet "Chickpea" ===
+  rows 11 · products 11 · rows the site figure replaced the sheet's: 1
+                         N    P₂O₅   K₂O   (kg an acre)
+  calculator          20.2  12.5   4.5
+  published plan      20.2  12.5   4.5
+  sheet's own sum     20.4  12.5   4.5   (sheet analysis x sheet pack)
+  band "Recommended"       13.0  34.0  12.0   calculator against this band: N +55%, P₂O₅ -63%, K₂O -63%
+  page prints: N 20.2 kg · P₂O₅ 12.5 kg · K₂O 4.5 kg
+  the calculator and the published plan carry the same products, packs and rates
+  sheet row 33 V-Compost: pack: sheet 25, site plan 20; site used. analysis from the site's V-Compost (20 kg · Mn grade) record. analysis differs, site used: Mn sheet 0 site 1.
+  priced after the click from FARMER_PRICE: 10 lines; commodity lines, never priced: Urea
+
+=== Lentil (lentil) · sheet "Lentil" ===
+  rows 12 · products 12 · rows the site figure replaced the sheet's: 2
+                         N    P₂O₅   K₂O   (kg an acre)
+  calculator          20.4  12.5  10.7
+  published plan      20.4  12.5  10.7
+  sheet's own sum     20.4  12.5  10.7   (sheet analysis x sheet pack)
+  band "Recommended"       13.0  23.0  12.0   calculator against this band: N +57%, P₂O₅ -46%, K₂O -11%
+  page prints: N 20.4 kg · P₂O₅ 12.5 kg · K₂O 10.7 kg
+  the calculator and the published plan carry the same products, packs and rates
+  sheet row 16 Fusion Potash: analysis differs, site used: B sheet 0 site 1, Mg sheet 0 site 1, N sheet 0 site 2.
+  sheet row 33 V-Compost: pack: sheet 25, site plan 20; site used. analysis from the site's V-Compost (20 kg · Mn grade) record. analysis differs, site used: Mn sheet 0 site 1.
+  priced after the click from FARMER_PRICE: 11 lines; commodity lines, never priced: Urea
+
+=== Chili (chili) · sheet "Chili" ===
+  rows 14 · products 14 · rows the site figure replaced the sheet's: 3
+                         N    P₂O₅   K₂O   (kg an acre)
+  calculator          61.8  36.4  21.9
+  published plan      61.8  36.4  21.3
+  sheet's own sum     61.3  36.4  21.9   (sheet analysis x sheet pack)
+  band "Recommended"       58.0  23.0  25.0   calculator against this band: N +7%, P₂O₅ +58%, K₂O -13%
+  page prints: N 61.8 kg · P₂O₅ 36.4 kg · K₂O 21.3–21.9 kg
+  differences from the published plan (D-77, printed as a range where they move a nutrient):
+    Humi Grow: the plan prints no analysis for it ("Soil Conditioner"), the calculator counts {"K":7,"HA":40} from the site's catalogue
+  sheet row 8 Sarsabz CAN: "Sarsabz CAN" shown as the plan's "Calcium Ammonium Nitrate" with the plan's printed analysis (N 26); the sheet has N 26, K 0.09, Ca 10, S 0.4.
+  sheet row 16 Fusion Potash: analysis differs, site used: B sheet 0 site 1, Mg sheet 0 site 1, N sheet 0 site 2.
+  sheet row 29 Cala-Mag V: analysis differs, site used: B sheet 0 site 1.
+  priced after the click from FARMER_PRICE: 12 lines; commodity lines, never priced: Urea, Calcium Ammonium Nitrate
+
+=== Garlic (garlic) · sheet "Garlic" ===
+  rows 13 · products 13 · rows the site figure replaced the sheet's: 3
+                         N    P₂O₅   K₂O   (kg an acre)
+  calculator          53.1  43.8  29.3
+  published plan      53.1  43.8  28.8
+  sheet's own sum     52.0  43.1  28.8   (sheet analysis x sheet pack)
+  band "Recommended"       64.0  46.0  25.0   calculator against this band: N -17%, P₂O₅ -5%, K₂O +17%
+  page prints: N 53.1 kg · P₂O₅ 43.8 kg · K₂O 28.8–29.3 kg
+  differences from the published plan (D-77, printed as a range where they move a nutrient):
+    Humi Grow: the plan prints no analysis for it ("Soil Conditioner"), the calculator counts {"K":7,"HA":40} from the site's catalogue
+  sheet row 8 Sarsabz CAN: "Sarsabz CAN" shown as the plan's "CAN" with the plan's printed analysis (N 26); the sheet has N 26, K 0.09, Ca 10, S 0.4.
+  sheet row 16 Fusion Potash: analysis differs, site used: B sheet 0 site 1, Mg sheet 0 site 1, N sheet 0 site 2.
+  sheet row 22 Crop Force (15:15:15): pack: sheet 1, site plan 20; site used. sheet 1 x 1; Owner, 10 Sep 2026: "Garlic 5 kg, is 1/4 bag of same 20 kg bag." The workbook still has 1 x 1 kg. Site figure used (0.25 x 20 kg = 5 kg).
+  priced after the click from FARMER_PRICE: 11 lines; commodity lines, never priced: Ammonium Sulfate, CAN
+
+=== Citrus, 5 years and over (citrus) · sheet "Citrus (5 years)" ===
+  NOT LIVE, waiting for the team: V-Mag Essential 0.16 bag on the team sheet against 1.16 in the published plan; the sheet looks to carry only the 2 x 400 g foliar part. Waiting for the team's answer.
+  rows 15 · products 15 · rows the site figure replaced the sheet's: 2
+                         N    P₂O₅   K₂O   (kg an acre)
+  calculator          66.9  20.6  22.8
+  published plan      66.9  20.6  21.6
+  sheet's own sum     66.4  20.6  22.8   (sheet analysis x sheet pack)
+  band "Recommended"       45.0  25.0  15.0   calculator against this band: N +49%, P₂O₅ -17%, K₂O +52%
+  page prints: N n/a · P₂O₅ n/a · K₂O n/a
+  differences from the published plan (D-77, printed as a range where they move a nutrient):
+    V-Mag Essential: plan 1.16 x 5, calculator 0.16 x 5
+    Humi Grow: the plan prints no analysis for it ("Soil Conditioner"), the calculator counts {"K":7,"HA":40} from the site's catalogue
+    Tornado: the plan prints no analysis for it ("Bio-stimulant"), the calculator counts {"AA":10} from the site's catalogue
+  sheet row 8 Sarsabz CAN: "Sarsabz CAN" shown as the plan's "CAN" with the plan's printed analysis (N 26); the sheet has N 26, K 0.09, Ca 10, S 0.4.
+  sheet row 16 Fusion Potash: analysis differs, site used: B sheet 0 site 1, Mg sheet 0 site 1, N sheet 0 site 2.
+  priced after the click from FARMER_PRICE: 13 lines; commodity lines, never priced: Urea, CAN
+
+SKIPPED: none of the candidate crops failed a check
+
+Live: 12 crops (10 team, plus wheat and potato). Held for the team: citrus.
+
+all 11 team calculators pass every check

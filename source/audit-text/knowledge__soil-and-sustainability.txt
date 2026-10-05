@@ -1,0 +1,160 @@
+PAGE: /knowledge/soil-and-sustainability.html
+======================================================================
+Products
+Crop Plans
+Soil
+Tools
+VAN Lab
+Knowledge
+About
+Make with us
+For farmers
+Menu ☰
+View
+Simple view
+Knowledge · the state of Pakistani soil
+We have been spending the soil’s
+capital, not its income.
+A harvest is an export. Every tonne of cane, wheat or cotton that leaves a field takes nutrient with it. If less goes back than comes off, the difference is drawn from the soil’s own reserves, and reserves are finite even in ground that started rich. Pakistan has been running that overdraft for decades. This page sets out what is actually measured, what it means, and where the measurement stops.
+01
+The overdraft
+02
+Where the soil already is
+03
+Why alkaline soil makes it worse
+04
+What is missing
+05
+What VAN does about it
+01
+The overdraft
+What the crop takes out, against what we put back.
+This is the whole mechanism. Everything else on the page follows from it.
+100–150 kg
+K₂O per hectare removed by Pakistani cropping every year
+1.48 kg
+K₂O per hectare, the national average application in 2023
+At 100 to 150 kg of K₂O removed per hectare against 1.48 kg applied, the soil’s own potassium reserve is drawn down every season.
+Source
+·
+Removal: Wakeel, A. & Magen, H. (2017), Potash Use for Sustainable Crop Production in Pakistan: A Review, International Journal of Agriculture & Biology 19(3). Application: FAOSTAT Fertilizers by Nutrient via Our World in Data (2023), potash per hectare of cropland.
+02
+Where the soil already is
+Six surveys, shown separately on purpose.
+Published soil surveys, each with its own region, year, sample count and critical level. The pattern across them is consistent even though the numbers are not comparable to each other.
+Nutrient / property
+Share below critical level
+Region, year, samples
+Source
+Organic matter
+over 95% deficient
+Muzaffargarh district, Punjab · 3,325 composite samples · published 2014
+Akram, Z., Hussain, S. & Mansoor, M. (2014), Universal Journal of Agricultural Research 2(7):242–249
+Organic matter
+typically below 1%
+Punjab surface soils
+Azam (1988); Rashid (1994), as cited in Minhas et al. (2024)
+Phosphorus
+99% poor in available P
+Hazro tehsil, Attock district
+as cited in Alvi, S., Khalid, R. & Rashid, M. (2011), Pak. J. Sci. Ind. Res. 54(1):45–47
+Phosphorus
+over 70% deficient
+Punjab province
+Malik (1984); Rashid (1994), as cited in Minhas et al. (2024)
+Boron
+70.8% of surface soils deficient
+Multan citrus orchards · 24 orchards · critical level 0.5 mg/kg
+Minhas, A., Ahmed, N. & Sajid, M. (2024), Journal of Plant and Environment 5(1):71–85
+Boron
+41% of samples deficient
+Multan district
+Rashid (1995, 1996)
+Zinc
+over 60% deficient
+Punjab province
+Tariq et al. (2004), as cited in Alvi et al. (2011)
+Potassium
+40% of soils deficient
+Pakistan, review of available data
+Wakeel, A. & Magen, H. (2017), Int. J. Agric. Biol. 19(3)
+Source
+·
+A national survey of 329 soil samples reported widespread deficiency of zinc and boron followed by iron. Zia et al. (2004), as cited in Alvi et al. (2011).
+Punjab now has a measured picture of its own on this site, 770,160 samples across 36 districts, read district by district.
+The Punjab soil lens →
+03
+Why alkaline soil makes it worse
+One property drives most of this page.
+Most cultivated ground in Pakistan is calcareous and alkaline, with free calcium carbonate through the profile and pH commonly above 8. Phosphorus applied to such soil precipitates with calcium into forms the root cannot reach. Zinc, iron and manganese become progressively less soluble as pH rises, which is why the micronutrient deficiencies cluster in exactly the soils with the highest lime content and the lowest organic matter. And surface-applied urea hydrolyses and escapes as ammonia before the crop can take it up.
+Low organic matter compounds every one of these. Organic matter holds nutrients against leaching, buffers pH, feeds soil biology and improves structure and water retention. At under 1% there is very little of that buffering left. Pakistani summers above 45 °C accelerate decomposition, and crop residue is generally burned or fed to livestock rather than returned, so the organic fraction is consumed faster than it is replaced, for the same reason the mineral fraction is.
+04
+What is missing
+The measurement gap, stated plainly.
+There is no published national time series of Pakistani soil nutrient levels in ppm running from the 1980s to today. We looked for one, because it is the chart this page most wants. It does not appear to exist in the public literature.
+The reason is given plainly in the standard review of Pakistani potash: “Due to least soil testing facilities, farmers usually don’t analyze their soils.” Soil testing in Pakistan has been sparse, irregular, and organised district by district rather than as a repeated national panel, so there is no consistent baseline to measure change against.
+What exists instead is what is on this page: a well-established depletion mechanism with both of its figures published, and a set of separate surveys showing where the soil has ended up. The trend is inferred from the arithmetic, not read off a measured national curve. We say so, rather than draw a line that implies a dataset nobody has collected.
+A National Soil Health Atlas, periodic, consistent, district-level, publicly available, is the single piece of infrastructure that would settle this. Pakistan does not have one. Until it does, every conversation about balanced nutrition in this country is conducted partly in the dark, and that includes ours.
+05
+What VAN does about it
+The gap, and what it requires.
+What the soil is short of
+What that requires
+What we make
+Potassium
+Potash applied in the crop's uptake window, in a form that can be delivered through fertigation rather than only at land preparation
+Vital Potash · SOP · V-Potash Plus
+Available phosphorus
+Phosphate engineered against calcium fixation rather than simply applied at a higher rate
+VAN NP Range · Green Phosphate
+Zinc and boron
+Chelated micronutrients that stay available at high pH, applied at the growth stage that needs them
+V-Zinc · VL-Boron · VL-Micromix
+Organic matter
+Carbon returned to the soil, and nutrient recovered from residue streams instead of burned
+V-Compost · Humi Grow · V-Transform · Circular Economy
+Nitrogen that stays put
+Coated, controlled-release nitrogen on ground where plain urea volatilises
+Vital Urea
+The national picture. Usage, balance, productivity →
+A question this page doesn’t answer?
+The agronomy team answers on the same WhatsApp line as everything else.
+Ask on WhatsApp
+Crop nutrition engineered, manufactured, registered and tested in Pakistan.
+Plant
+·
+49-Km Multan Road, Phool Nagar Bypass, Lahore
+Head office
+·
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+WhatsApp
++92 300 5003041
+Landline
++92 42 35762215
+info@van.com.pk
+Products
+All 23 brands
+Vital Urea
+Where to buy
+Verify a bag
+Crops
+28 crop plans
+Wheat
+How you apply it
+Knowledge
+Why Pakistan must shift
+The soil, measured
+Product knowledge decks
+Circular economy
+Company
+Make with us
+VAN Lab
+Tools
+About & contact
+© 2026
+Vital Agri Nutrients (Pvt) Ltd
+·
+www.van.com.pk
+LinkedIn
+Facebook
+Instagram

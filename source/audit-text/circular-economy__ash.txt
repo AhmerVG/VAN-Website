@@ -1,0 +1,151 @@
+PAGE: /circular-economy/ash.html
+======================================================================
+Products
+Crop Plans
+Soil
+Tools
+VAN Lab
+Knowledge
+About
+Make with us
+For farmers
+Menu ☰
+View
+Simple view
+Circular economy · the process
+Fly ash in.
+Potassium and silicon out.
+What physically happens to a tonne of bio-fuel plant fly ash after it reaches VAN. Ten tonnes of ash yield roughly one tonne of potash. The potassium route is running and feeding our own plant; the silicon route is finishing R&D. The process route itself stays proprietary, and the figures we do not yet hold are tagged rather than guessed.
+01
+Ten years
+02
+Step by step
+03
+Under whose scope
+04
+What form it takes
+01
+Ten years
+From a question to a commercial batch.
+VAN developed this route in-house, over ten years. It started with a question from a bio-fuel producer and took a decade to reach a saleable batch. We publish the two dates we can date, and the intervals between them as intervals. We have not converted the gaps into stamped years.
+When
+What we did
+What it settled
+2014
+Answered a question from a bio-fuel producer. What happens to the ash their boilers leave behind. The route began with that question, in 2014.
+The problem was named. Nothing was recovered yet.
+The next seven years
+Ran the chemistry before the engineering. Characterised feedstock types and their analyses, mapped ash chemistry batch by batch, profiled the impurities, and worked out which grades of ash were worth touching at all.
+Seven years before the first batch of fly ash landed with us as a working input.
+Two more years
+Built the extraction technology and its configurations. Turning a characterised feedstock into a route that recovers potassium repeatably rather than once.
+A process, not a laboratory result.
+Late 2023
+Produced the first commercial batch.
+The point the route stopped being development and started being production.
+Late 2023 → today
+Produce, measure, adjust, produce again. The line has been on a learning curve since the first batch. Yields, impurity handling and configuration have all moved since late 2023.
+In production and still improving.
+The ash-recovery site is not published. The dates above are VAN’s own record of the route’s development; they are not third-party verified.
+02
+Step by step
+Seven steps, each with its own status.
+#
+What we do
+Why it works
+Status
+01
+We source captured fly ash from boilers fired on agricultural residue. 3,000 tonnes processed to date; the 2027 line takes 5,000 tonnes a year.
+Combustion removes the carbon and the water, so the mineral fraction, including K and Si, arrives concentrated relative to the raw residue.
+1 under long-term contract · 4 in negotiation
+02
+We assay each incoming batch for potassium and silicon before accepting it.
+Ash composition swings with the feedstock and the boiler, so there is no single fixed window worth quoting. We trace the crop residue and the burn cycle behind each batch and judge the ash against what that fuel should produce. Batches outside it are rejected rather than averaged out.
+Running
+03
+We send the ash to PCSIR for heavy-metal screening before it enters the process.
+Ash is a waste stream. A recovered nutrient is only usable if what rides along with it is measured, and measured by someone other than us. PCSIR is a government laboratory outside VAN. The screening is against the applicable PSQCA limits, and the report goes out against a batch number like any other certificate.
+PCSIR. External · PSQCA limits
+04
+We extract the plant-available potassium and silicon from the ash body. About one tonne of potash per ten tonnes of ash.
+The recoverable fraction is separated from the inert residue so the nutrient can be dosed accurately rather than spread as bulk ash.
+K: in production · Si: final R&D · route proprietary
+05
+We charge the recovered potassium into our own manufacturing, in place of imported potash.
+A recovered nutrient still has to granulate, flow, store and dissolve like the bought-in material it replaces. That is a manufacturing problem, and it is the one VAN already solves across its registered products.
+In production. ~20% of intake · grade allocation not published
+06
+We hold it to the same guaranteed analysis as any other raw material we buy.
+The finished product’s declared N-P-K does not move because its potassium arrived from ash instead of a ship. The incoming material is assayed and dosed to hit the same number.
+In production
+07
+We are building the line beyond our own demand, 500 tonnes of recovered potash from 5,000 tonnes of ash, by 2027.
+Recovery currently sizes to what VAN’s plant consumes. Scaling past that is what turns an internal substitution into a supply.
+Target: 500 t/yr by 2027
+03
+Under whose scope
+Potassium is measured under LAB 336 accreditation; silicon is measured by an in-house method outside it.
+We separate what our accreditation covers from what it does not, and print which.
+Parameter
+Where it is measured
+Scope
+Potassium (as K₂O). Every production batch
+VAN QC Laboratory
+PNAC accredited · ISO/IEC 17025:2017 · LAB 336
+Silicon (Si)
+VAN QC Laboratory, R&D method, final stage
+In-house method, outside accredited scope
+Heavy metals, incoming ash
+PCSIR, external government laboratory, not VAN
+External screening · PSQCA limits
+pH · conductivity
+VAN QC Laboratory
+PNAC accredited (conductivity within the extended scope)
+VAN’s laboratory holds PNAC accreditation No. LAB 336 to ISO/IEC 17025:2017. We do not extend that accreditation to parameters it does not cover.
+The VAN Lab →
+04
+What form it takes
+Liquid or solid is a manufacturing decision.
+The recovery route yields recovered potassium in either form, and both go into VAN’s own manufacturing as raw material. Today the split follows what our internal process needs. As we scale past our own demand, we will produce the form the market and the customer ask for. We are not going to pin a ratio to it in advance.
+Recovered potassium is a raw material either way. It carries no separate registration and no separate performance claim. The finished grades it feeds carry theirs.
+A question this page doesn’t answer?
+The agronomy team answers on the same WhatsApp line as everything else.
+Ask on WhatsApp
+Crop nutrition engineered, manufactured, registered and tested in Pakistan.
+Plant
+·
+49-Km Multan Road, Phool Nagar Bypass, Lahore
+Head office
+·
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+WhatsApp
++92 300 5003041
+Landline
++92 42 35762215
+info@van.com.pk
+Products
+All 23 brands
+Vital Urea
+Where to buy
+Verify a bag
+Crops
+28 crop plans
+Wheat
+How you apply it
+Knowledge
+Why Pakistan must shift
+The soil, measured
+Product knowledge decks
+Circular economy
+Company
+Make with us
+VAN Lab
+Tools
+About & contact
+© 2026
+Vital Agri Nutrients (Pvt) Ltd
+·
+www.van.com.pk
+LinkedIn
+Facebook
+Instagram

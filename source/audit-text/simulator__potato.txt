@@ -1,0 +1,159 @@
+PAGE: /simulator/potato.html
+======================================================================
+Products
+Crop Plans
+Soil
+Tools
+VAN Lab
+Knowledge
+About
+Make with us
+For farmers
+Menu ☰
+View
+Simple view
+Crop plans
+/
+Potato
+/ Farm discipline simulator
+Farm discipline simulator · pilot ·
+Potato
+Nutrition is one lever of ten.
+Yield isn't only nutrition. It's whether ten things were each done well and on time. Set a target, score your season, see what's holding it back.
+←
+Potato
+crop page
+Open the
+potato
+nutrition creator →
+Potato
+·
+Sahiwal White
+What yield are you aiming for?
+Default is
+300.0
+maunds/acre.
+Sahiwal White
+. Know your own variety does better or worse? Type your own number. Then score how the season is actually being run below. The simulator shows what that gets you, and what would close the gap.
+mds/acre
+This season, as scored below
+150.0
+maunds/acre
+150.0
+mds/acre short of your target
+Your biggest opportunities right now
+Seed Tuber Quality & Source
+. Currently
+OK
+. Getting this to Best could add up to
+30.0
+maunds/acre
+.
+Disease Management (late blight and other field disease)
+. Currently
+OK
+. Getting this to Best could add up to
+27.0
+maunds/acre
+.
+Irrigation Management
+. Currently
+OK
+. Getting this to Best could add up to
+22.5
+maunds/acre
+.
+Seed Tuber Quality & Source
+Farmer-saved seed but 1st–2nd generation from a known clean/certified source, visually inspected and rogued
+Bad
+OK
+Best
+Disease Management (late blight and other field disease)
+Fungicide applied reactively after visible late blight symptoms; monitoring only moderate
+Bad
+OK
+Best
+Irrigation Management
+Minor delay or unevenness during initiation or bulking, but nothing missed outright
+Bad
+OK
+Best
+Macronutrient Nutrition (potash and nitrogen timing)
+Potash applied at part of the optimum; nitrogen reasonably timed but not split to match peak demand
+Bad
+OK
+Best
+Insect-Pest Management (aphids and tuber moth)
+Insecticide applied only after visible infestation or damage
+Bad
+OK
+Best
+Hilling / Earthing-Up and Land Preparation
+Hilled, but late or with incomplete cover
+Bad
+OK
+Best
+Micronutrient and Soil Fertility (calcium, zinc, boron)
+Micronutrient applied partially or inconsistently
+Bad
+OK
+Best
+Seed Rate / Plant Spacing
+Moderate deviation from the recommended spacing or seed rate
+Bad
+OK
+Best
+Planting Time
+Planted slightly outside the optimal window
+Bad
+OK
+Best
+Harvest Timing and Post-Harvest Handling
+Timing reasonable but curing or storage practice incomplete
+Bad
+OK
+Best
+This is a pilot model built from VAN's own agronomy work, not yet calibrated against a full season's results in your district. Treat the yield number as a direction, not a guarantee.
+A plan for your own field
+Want VAN's agronomy team to score your actual field?
+Send your soil analysis, your district and what you've done so far this season.
+Ask on WhatsApp
+kisan@van.com.pk
+Crop nutrition engineered, manufactured, registered and tested in Pakistan.
+Plant
+·
+49-Km Multan Road, Phool Nagar Bypass, Lahore
+Head office
+·
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+WhatsApp
++92 300 5003041
+Landline
++92 42 35762215
+info@van.com.pk
+Products
+All 23 brands
+Vital Urea
+Where to buy
+Verify a bag
+Crops
+28 crop plans
+Wheat
+How you apply it
+Knowledge
+Why Pakistan must shift
+The soil, measured
+Product knowledge decks
+Circular economy
+Company
+Make with us
+VAN Lab
+Tools
+About & contact
+© 2026
+Vital Agri Nutrients (Pvt) Ltd
+·
+www.van.com.pk
+LinkedIn
+Facebook
+Instagram

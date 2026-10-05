@@ -1,0 +1,273 @@
+PAGE: /brands/vital-urea.html
+======================================================================
+Products
+Crop Plans
+Soil
+Tools
+VAN Lab
+Knowledge
+About
+Make with us
+For farmers
+Menu ☰
+View
+Simple view
+Our brands
+/ Nitrogen / Vital Urea
+Nitrogen · Hero product · VAN exclusive
+Vital Urea
+Sulfur Coated Urea. N 32% min · S 13% min
+Nitrogen that feeds the crop, not the air. In Pakistan’s alkaline, hot soils a large share of plain urea’s nitrogen is lost before the plant can use it. Vital Urea’s sulfur coating releases N in step with crop demand, and the sulfur itself conditions the root zone, temporarily acidifying it to unlock fixed phosphorus and zinc.
+Broadcast
+Sowing / basal + top-dress
+VAN exclusive
+Patent No. 144684 · PS 217-2023
+What the soil does to this
+69.1% of Punjab samples above pH 8.0
+See it on the map →
+The pH at which VAN’s own copy says surface urea leaves as ammonia
+.
+Punjab soil testing programme · 36 district workbooks · 770,160 valid samples · c. 2016–2018
+. A condition of the soil, not a claim for the product.
+Order on WhatsApp
+Verify a bag
+32% N · 13% S
+guaranteed analysis, at least 8.0 kg of nitrogen and 3.25 kg of sulfur in every 25 kg bag
+7–18 days
+release profile, depending on climate and application method
+No. 144684
+Pakistan Patent on the sulfur-coating technology. Government of Pakistan Patent Office
+PS 217-2023
+PSQCA standard · licence CM/L-4126/2025 · released through VAN’s PNAC-accredited laboratory, LAB 336
+The problem
+Only about a quarter of applied nitrogen ends up in Pakistan’s crops.
+Nitrogen loss in Pakistani soil is chemistry, not carelessness. Volatilisation, nitrification and leaching all act on nitrogen that is dissolved in the soil solution, and a granule of plain urea dissolves all at once, on ground that is hot and alkaline. Everything that follows on this page is one idea: nitrogen still inside a granule is not in the soil solution, and what has not been released yet cannot be lost yet.
+The full case for moving off plain urea, with its sources, is on
+the national picture page
+. This page is about the coating: what it does, what it cannot do, and why it is made of sulfur.
+Roughly a quarter reaches the crop here. Against about 72% in the United States
+Share of applied nitrogen taken up by the crop, national cropland estimate
+Pakistan
+~
+25
+%
+United States
+~
+72
+%
+Source: Lassaletta et al. (2014), Environmental Research Letters 9:105011. Vital Urea exists because of the first number.
+What a bag buys
+One 25 kg bag stood against a 50 kg bag of plain urea, and the growth was comparable.
+Khaliqabad field programme with Rafhan Maize Products, 2023. Five grower sites picked by their agronomy team, application in August through harvest in October, assessments at 12 and 24 days. The comparison was deliberately uneven.
+Two bags, drawn to one scale of nitrogen. What the label says, and when it arrives
+Kilograms of N are registered label contents. Release behaviour is the mechanism each product is built on.
+Urea
+50 kg
+Plain urea
+50 kg. The default the market buys
+on the label
+23 kg N
+how it arrives
+all at once, the day it dissolves
+from that moment, volatilisation, nitrification and leaching act on all of it
+all released the day it dissolves, then exposed
+Vital Urea
+25 kg. Openly a smaller bag
+on the label
+8 kg N
++ at least 3.25 kg of sulfur in the same granules
+how it arrives
+metered over 7–18 days
+released while there is a root ready to take it. What is still inside the granule cannot be lost yet
+metered over 7–18 days,
+depending on climate and application method
+What the five sites recorded: comparable crop growth, shoot length, colour, leaf number, vigour, from the 25 kg bag on roughly a third of the applied nitrogen, with better uniformity of plant height, grain formation and milk-line development also observed. Cob size and length showed no difference. And what this was not: an observational field programme, not a replicated randomised trial, no independent yield measurement was recorded, and VAN reports it as exactly that. If you need replicated trial data for a purchasing decision, ask. Where it exists, you will get it.
+The coating
+A barrier with a deliberate failure rate.
+Water finds its way into the sulfur shell through pores and micro-cracks, dissolves the urea inside, and the solution diffuses back out through the same paths. Nothing releases until water gets in, that is what produces the 7–18 day profile.
+Three things move it inside that range: soil temperature, because diffusion and the microbes both run faster when it is hot; moisture, because a dry seedbed releases nothing; and handling, because a granule crushed at spreading has no barrier left and behaves like plain urea from the moment it hits the ground.
+What it does not do.
+A coating does not stop volatilisation. It reduces how much nitrogen is exposed to it at any one moment. Nitrogen released into hot alkaline soil behaves like any other nitrogen released into hot alkaline soil. Placement and irrigation timing still matter, and no coating substitutes for either.
+The same nitrogen, arriving while there is a root ready to take it. Schematic, not a measurement. The demand curve is drawn for shape, and no axis carries a figure VAN has not published. Both curves carry the same nitrogen. The only difference is when it arrives.
+Why sulfur
+Three ways to slow urea down. Only one of them is also plant food.
+accurate, inert
+Polymer coating
+Controls release accurately and delivers nothing else. Adds no nutrient, and the polymer stays in the soil after the nitrogen has gone.
+slow the reactions, not the release
+Chemical inhibitors
+Imported, dose-sensitive, temperature-sensitive, and they add no nutrient of their own.
+the one VAN chose
+Sulfur coating
+Controls release and is the only one of the three that is itself a nutrient and itself chemically active in the soil. The next section is what that buys.
+A sixth of the bag is coating, and the numbers are kept honest: 3.25 kg is the registered sulfur nutrient, 13% of 25 kg under PS 217-2023. The sulfur VAN charges to the coater is 80% pure, so delivering it means about 4.06 kg of sulfur material in the bag. Arithmetic, not a batch assay. What a certificate carries is the measured elemental sulfur, most recently 13.27% on batch VU25186.
+The chemistry
+Why the result is not “nitrogen plus sulfur.”
+Two pictures. The shell geometry is what makes the sulfur work, and the sulfur is what lets the nitrogen finish as yield.
+Sulfur only becomes plant food at its surface, and a micronised shell is nearly all surface
+The same mass of elemental sulfur in three geometries; oxidation to sulfate happens where soil touches sulfur
+one lump
+granules
+urea
+micronised shell
+Rapid oxidation calls for particles finer than about 20 µm, well dispersed (Bremer, 2022), which is what a shell micronised onto a granule is. The reaction is biological and roughly triples to quadruples for every 10 °C of soil warming (Janzen & Bettany, 1987): the heat that destroys surface urea is the heat that runs this. 2 S⁰ + 3 O₂ + 2 H₂O → 2 SO₄²⁻ + 4 H⁺. Four protons per two atoms of sulfur.
+Nitrogen that arrives without sulfur does not become yield
+Both elements are built into protein together; where sulfur is short, absorbed nitrogen accumulates unfinished
+Wheat builds protein at about fifteen parts nitrogen to one part sulfur, and above seventeen-to-one yield falls away, so each kilogram of sulfur the crop is short of is roughly 10–15 kg of nitrogen that cannot be finished into protein (Grzebisz et al., 2022; Zapałowska et al., 2026; Wan et al., 2012. A cereal ratio; brassicas run lower). The protons from the oxidation land exactly where the nitrogen is. Dissolving calcium-held phosphorus and freeing zinc, iron and manganese (Khoshru et al., 2023).
+Where this stops being certain.
+Alkaline soil is a harder place to oxidise sulfur, not an easier one: in a controlled comparison, elemental sulfur lowered the pH of an alkaline soil only where a sulfur-oxidising inoculant was added with it (Mattiello et al., 2017). Either way it is a microsite effect. A zone around each granule, for the weeks it is releasing. It will not move a soil test, and VAN does not claim it does. Raising that oxidation rate deliberately is a live VAN research track, not a product claim.
+One granule, not a blend
+Coated on every granule. The argument that decides the other three.
+Everything above needs the nitrogen and the sulfur in the same place at the same moment. A mixture cannot promise that.
+Two materials in one bag separate; a coated granule cannot separate from itself
+Blends segregate by size and density, and the wider the size spread, the more severe it gets (Antille et al., 2013)
+a blend, settled by size
+every granule coated
+The shell is also what creates the surface in the first figure. The same sulfur as a lump would still be sitting there next season.
+What is claimed here and what is not.
+Uniformity is recorded batch by batch. What VAN publishes is the declared analysis, 32% N and 13% S, registered against PS 217-2023 and released through VAN’s PNAC-accredited laboratory. Coating weight is measured per batch; VAN does not publish the figure, and will provide it against a batch number on the same terms as the certificate. No granule-to-granule figure is claimed on this page because none is published, not because none is measured.
+The evidence
+What has been tested, and how it was tested.
+The field programme above is one of two proofs. The second is a published, replicated trial. Nothing below is an estimate.
+Published trial. Maize, VAN’s trial station, 2024
+A randomised complete block design with three replications on DK-6321 maize compared nitrogen strategies. Two stage-timed applications of sulfur-coated urea, at the 4–6 leaf stage and again twenty days later at the 8–12 leaf stage. Outperformed a five-application programme of conventional urea followed by calcium ammonium nitrate across the growth and yield parameters measured.
+Why we cite it for the finding and not a headline number:
+the paper reports its own yield inconsistently between its results table and its discussion. We would rather tell you that here than have you find it.
+Umair, A., Manzoor, M., Saleem, M. S., et al. (2025). Planta Animalia 4(3), 129–135.
+DOI 10.71454/PA.004.03.0126
+.
+What the published research establishes about coated urea, not measurements of Vital Urea
+Coated urea raises nitrogen recovery against uncoated urea.
+Zhao, Gao & Gao (2025), Agriculture 15(14):1554. A two-year field study reporting higher nitrogen recovery efficiency, agronomic efficiency and grain yield for sulfur-coated urea than for conventional urea in rice.
+The effect holds in Pakistani conditions.
+Ghafoor, Rahman & Ali et al. (2021), Environmental Science and Pollution Research. Coated urea sources improved growth, yield and nitrogen use efficiency and reduced nitrogen losses in wheat under an arid Pakistani environment.
+Elemental sulfur releases phosphorus that alkaline soil has locked away.
+Nadeem, Hanif & Khan (2022), Archives of Agronomy and Soil Science 69(9):1494–1502. Elemental sulfur with a sulfur-oxidising inoculant raised phosphorus availability and improved wheat growth and yield in calcareous soil.
+Sources for the chemistry sections
+＋
+Degryse, F., et al. (2016). Soil Science Society of America Journal 80(2), 294–305. doi:10.2136/sssaj2015.06.0237.
+Bremer, E. (2022). Crops & Soils 56(1), 34–37. doi:10.1002/crso.20241.
+Janzen, H. H., & Bettany, J. R. (1987). Canadian Journal of Soil Science 67(3), 609–618. Doi:10.4141/cjss87-057. Temperature response as summarised by Degryse et al. (2016).
+Grzebisz, W., Zielewicz, W., & Przygocka-Cyna, K. (2022). Agronomy 13(1), 66. doi:10.3390/agronomy13010066.
+Elbasyoni, I. S., et al. (2026). Life 16(5), 795. doi:10.3390/life16050795.
+Khoshru, B., et al. (2023). Bacteria 2(2), 98–115. doi:10.3390/bacteria2020008.
+Mattiello, E. M., et al. (2017). Journal of Agricultural and Food Chemistry 65(6), 1108–1115. doi:10.1021/acs.jafc.6b04586.
+Zapałowska, A., et al. (2026). Molecules 31(1), 160. Doi:10.3390/molecules31010160. The N:S optima, summarising Sedlár et al.
+Wan, Y., Shewry, P. R., & Hawkesford, M. J. (2012). Journal of Cereal Science 56(1), 72–80. Doi:10.1016/j.jcs.2011.10.014. Critical grain S 1.2 mg/g and N:S 17:1.
+Antille, D. L., Sakrabani, R., & Tyrrel, S. (2013). Applied and Environmental Soil Science 2013, 694597. Doi:10.1155/2013/694597. Reporting the segregation thresholds of Miserque and Pirard.
+Lassaletta, L., et al. (2014). Environmental Research Letters 9:105011. The national nitrogen uptake shares.
+In the field
+Where it goes, and how much.
+From the locked VAN crop nutrition plans, 2025 set. This table is a sample. Vital Urea appears in 27 of the 28 published programmes.
+All 28 crop plans →
+Crop
+Stage
+Dose per acre
+Method
+Wheat
+Land Preparation
+½ bag
+(
+25 kg
+)
+Broadcasting
+Garlic
+Land preparation
+1 bag (25 kg)
+Broadcasting
+Garlic
+Germination
+1 bag (25 kg)
+Broadcast
+Sesame
+Germination
+1 bag (25 kg)
+Side dressing / broadcasting
+Sesame
+Early growth
+½ bag (12.5 kg)
+Side dressing / broadcasting
+Soybean
+Land preparation
+½ bag (12.5 kg)
+Broadcasting
+Lentil
+Land preparation
+½ bag (12.5 kg)
+Broadcasting
+Mungbean & mash
+Land preparation
+½ bag (12.5 kg)
+Broadcasting
+Canola
+Land preparation
+1 bag (25 kg)
+Side dressing / broadcasting
+Growing a different crop? The full stage-by-stage programme for 28 crops is in the crop nutrition plans, and how the bag is applied changes the answer, so the application guidance sits beside them.
+Find your crop’s plan →
+Behind the bag
+What is behind the bag.
+Registration & standard
+PSQCA PS 217-2023 · Licence CM/L-4126/2025 · Pakistan Patent No. 144684
+Pack size
+25 kg bag
+Quality
+Every batch released through VAN’s own PNAC-accredited laboratory. ISO/IEC 17025:2017, LAB 336
+Certificate on request
+Send the batch number off the bag and VAN sends the certificate of analysis for that batch. The elemental-sulfur figure on it is measured, most recently 13.27% on batch VU25186.
+⬇ Specification sheet (PDF)
+⬇ MSDS (PDF)
+⬇ Product knowledge deck (PDF)
+Verify a bag →
+A VAN flagship. Exclusively ours
+Vital Urea stays a VAN brand.
+The sulfur-coating technology is protected by Pakistan Patent No.
+144684
+. Carry it through the distribution network. Territory and volume terms available.
+Become a distributor →
+Sources for this page.
+Analysis, standard, licence and patent. The registered TDS and van.com.pk. Release mechanism and coating chemistry. The peer-reviewed sources listed in the evidence section, cited for the technologies they studied, under the conditions each study describes; none is a measurement of Vital Urea. Field programme, Khaliqabad 2023, with Rafhan Maize Products. Replicated trial, Umair et al. (2025), Planta Animalia 4(3). National nitrogen uptake, Lassaletta et al. (2014). Doses, the locked VAN crop nutrition plans, 2025 set. No performance percentage is claimed for Vital Urea anywhere on this page; the two proofs are reported with their limits stated.
+Crop nutrition engineered, manufactured, registered and tested in Pakistan.
+Plant
+·
+49-Km Multan Road, Phool Nagar Bypass, Lahore
+Head office
+·
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+WhatsApp
++92 300 5003041
+Landline
++92 42 35762215
+info@van.com.pk
+Products
+All 23 brands
+Vital Urea
+Where to buy
+Verify a bag
+Crops
+28 crop plans
+Wheat
+How you apply it
+Knowledge
+Why Pakistan must shift
+The soil, measured
+Product knowledge decks
+Circular economy
+Company
+Make with us
+VAN Lab
+Tools
+About & contact
+© 2026
+Vital Agri Nutrients (Pvt) Ltd
+·
+www.van.com.pk
+LinkedIn
+Facebook
+Instagram
+Find a dealer
+My crop's plan
+Verify a bag
+Find a dealer
+My crop's plan
+Verify a bag

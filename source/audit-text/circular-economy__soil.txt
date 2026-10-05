@@ -1,0 +1,152 @@
+PAGE: /circular-economy/soil.html
+======================================================================
+Products
+Crop Plans
+Soil
+Tools
+VAN Lab
+Knowledge
+About
+Make with us
+For farmers
+Menu ☰
+View
+Simple view
+Circular economy · the register
+VAN does not publish general writing on soil health.
+This page lists what VAN does to soil.
+This is the register. Every row is an intervention VAN actually makes, the mechanism it works through, and the evidence behind it. A row without a mechanism and an evidence status does not go on the page.
+01
+Why this page exists
+02
+The register
+03
+The rule behind this page
+04
+Rows we have deliberately left off
+01
+Why this page exists
+Potassium and micronutrients leave with the harvest while nitrogen keeps going on.
+Pakistan is not under-fertilised. What that nutrient consists of is the problem: overwhelmingly nitrogen, with potash under one per cent of it. Potassium and the micronutrients leave with every harvest and are not put back; nitrogen goes on season after season into ground that cannot hold it. Across much of the cropped area organic carbon sits under 1%, so there is little left to hold a cation or a molecule of water. Yield per kilogram of nutrient has fallen while the kilograms have not.
+More of the same bag does not answer that, and nor does a statement about caring for the soil. What follows is what VAN does instead.
+Sources for every figure. Why Pakistan must shift →
+02
+The register
+What we do, how it works, and what backs it.
+What we do
+How it works on the soil
+Where it shows up
+Evidence
+We coat urea granules with sulfur.
+The coating slows nitrogen release from days to weeks. Where soil sulfur-oxidising bacteria are active, oxidising that sulfur releases acid into the few centimetres around each granule, and phosphorus and zinc held by alkalinity can come back into solution there. A microsite effect, not a field one.
+Vital Urea (SCU)
+Patent 144684
+We granulate phosphate inside an acidic microenvironment and seal it with humic.
+Pakistani soils run above pH 8 and fix 70–80% of applied phosphate. The acidic microenvironment and the humic seal slow that fixation reaction at the granule surface, so more of the applied P stays available.
+Green Phosphate
+COA
+We supply potassium humate as pellets and as liquid.
+Humate raises the soil’s cation exchange capacity and chelates cations, so applied nutrients are held on the exchange sites instead of leaching or precipitating.
+Humi Grow · Humi Grow Plus
+COA
+We manufacture compost from plant residue.
+Plant residue only, screened free of contamination and pathogens before it goes in. Returns organic matter to soils that sit under 1% organic carbon. The input side of the deficit, applied as a measured product rather than as raw manure.
+V-Compost
+COA
+We recover potassium from bio-fuel plant fly ash and run it through our own plant.
+Puts back the mineral fraction that left the field when the residue was cut for fuel, instead of importing mined potash for the same acre. Roughly one tonne of potash comes out of ten tonnes of ash.
+~20% of VAN’s potash intake · 3,000 t ash processed · 500 t/yr line for 2027
+In production
+We are completing the route that recovers silicon from the same ash.
+Husk and straw carry heavy silicon loads that leave with the residue. Recovering it returns the element to the soil rather than sending it to an ash dump. Target form not fixed yet. Soluble silicate and amorphous silica behave differently in an alkaline soil, so we do not name one.
+Not in any product
+Final R&D
+We publish a dose and a growth stage for 28 crops.
+An application rate tied to the crop’s uptake stage is the mechanism by which over-application stops.
+28 crop nutrition plans
+Published
+We design against soil data, not against a national average.
+Roughly 770,000 soil records across Punjab, 18,000 across Sindh and 600 in Gilgit-Baltistan sit behind VAN’s formulation decisions. VAN did not collect that data and does not claim it. It comes from the provincial soil survey work and from VAN’s own sampling, and VAN reads it. A grade chosen against a district’s measured deficiency is a different product from a grade chosen against a national mean.
+Every VAN grade and coating decision
+Provincial soil survey + VAN sampling
+We coat the same granule differently depending on where it is going.
+The phosphate granule sent to Kamalia carries an iron coat. The same granule going to Lodhran carries boron. One base material, one coating line, and the micronutrient chosen against the soil the bag will actually be opened on.
+Coated phosphate grades
+In production
+We set micronutrient need from the crop and the climate, not from the price list.
+What a crop is short of depends on what its soil holds, what that crop removes and the season it grows in. Deciding the micronutrient from those three is the mechanism that stops one being applied where it was never missing, which is both a cost to the grower and a load on the soil.
+Formulation and recommendation
+In use
+We put a soil tool in the grower’s hands.
+It reads what his soil holds, sets that against what his crop removes, and returns what to supply, by which route, at which stage. A rate given without the growth stage it belongs to cannot be applied correctly. The tool puts the plan in the hands of the person who applies it.
+The nutrition creator on each crop page
+In use
+We measure N, P₂O₅ and K₂O in our own accredited laboratory.
+A guaranteed analysis a grower can rely on is what makes a rate recommendation meaningful. Unverified analysis makes every downstream soil calculation wrong.
+All registered products
+PNAC LAB 336
+Read together, the soil-data, coating, micronutrient and tool rows are one discipline: the right material, at the right rate, at the right stage, on the right field. VAN does not badge that. It is what a plan looks like when the soil decides the product rather than the other way round. Rows are added when the action exists and the evidence exists, not when the intention exists.
+03
+The rule behind this page
+Three tests every soil sentence on this site must pass.
+1 · Is there a verb we own? “We coat”, “we granulate”, “we recover”, “we measure”, not “we are committed to”, “we believe in”, “we strive for”.
+2 · Is there a mechanism? The sentence must say how the action changes the soil, in terms a soil scientist could argue with.
+3 · Is there an evidence status? Lab result, COA, patent, published plan, or the stage it is at. “pilot”, “to verify”.
+04
+Rows we have deliberately left off
+What is missing, and why.
+Not on the register
+Why not
+Carbon / emissions reduction
+A live R&D theme at VAN, but we hold no measured figure, so there is no mechanism and no evidence to publish.
+Biofertilizers (phosphorus-solubilising bacteria)
+The mechanism is real; awaiting a VAN trial or COA reference before it earns a row.
+Water use
+No VAN measurement exists. Nothing to say.
+Any yield percentage
+Held back until each figure is tied to a named trial.
+An absolute displaced-import tonnage
+We publish the share of our potash intake that recovery covers, the ash we have processed and the capacity we are building. We have not converted those into a tonnes-of-import-avoided headline, and we will not until it is a measured figure rather than a derived one.
+Heavy-metal limits
+PCSIR screens the incoming ash; the thresholds are not printed here until we can print them exactly.
+A question this page doesn’t answer?
+The agronomy team answers on the same WhatsApp line as everything else.
+Ask on WhatsApp
+Crop nutrition engineered, manufactured, registered and tested in Pakistan.
+Plant
+·
+49-Km Multan Road, Phool Nagar Bypass, Lahore
+Head office
+·
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+WhatsApp
++92 300 5003041
+Landline
++92 42 35762215
+info@van.com.pk
+Products
+All 23 brands
+Vital Urea
+Where to buy
+Verify a bag
+Crops
+28 crop plans
+Wheat
+How you apply it
+Knowledge
+Why Pakistan must shift
+The soil, measured
+Product knowledge decks
+Circular economy
+Company
+Make with us
+VAN Lab
+Tools
+About & contact
+© 2026
+Vital Agri Nutrients (Pvt) Ltd
+·
+www.van.com.pk
+LinkedIn
+Facebook
+Instagram
