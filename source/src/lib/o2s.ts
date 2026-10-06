@@ -46,7 +46,10 @@ export type LookupResult =
 
 export const O2S = {
   enabled: true,
+  // Live Server
   base: 'https://van-control-tower.onrender.com/api/public',
+  // Local Server
+  // base: 'http://localhost:3000/api/public',
   /** The free server can take a while to wake up, so the wait is generous. */
   timeoutMs: 30000,
   /**
@@ -80,7 +83,10 @@ export async function lookupBatch(batchRaw: string): Promise<LookupResult> {
     const j = await res.json()
     const reportUrl = typeof j?.report_url === 'string' ? j.report_url : ''
     // Only an https address is opened, so nothing but a real file link can reach the button.
+    // Live Server 
     if (!/^https:\/\//i.test(reportUrl)) return { ok: false, reason: 'offline' }
+    // Local Server
+    // if (!/^https?:\/\//i.test(reportUrl)) return { ok: false, reason: 'offline' }
     return {
       ok: true,
       report: {
