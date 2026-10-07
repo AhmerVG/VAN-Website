@@ -17,7 +17,8 @@ import { lookupBatch, normaliseBatch, type BatchReport, type LookupResult } from
  *    report. On a wide screen the report is also shown inside the page; on a phone the button is
  *    enough, and the file is not loaded until he asks for it.
  *  · NOT FOUND (404): not in VAN's records, or the report is not approved yet. No accusation, and
- *    the report-a-bag form and WhatsApp route stay (10 Sep 2026 ruling on the counterfeit case).
+ *    the report-a-bag form, WhatsApp and email stay (10 Sep 2026 ruling on the counterfeit case;
+ *    email added 7 Oct 2026).
  *  · TOO MANY (429): try again in 10 minutes.
  *  · NO ANSWER or a server error: "the live check is not connected", and WhatsApp. Never a fail.
  *
@@ -89,6 +90,7 @@ function NotFound({ batch }: { batch: string }) {
           {open ? 'Close the form' : 'Report this bag to VAN'}
         </button>
         <WaButton href={WA.reportBag(batch)}>Send a photo on WhatsApp</WaButton>
+        <a className="btn btn-ghost" href={`mailto:${CONTACT.email}?subject=${encodeURIComponent('Batch number not in records: ' + batch)}`}>or email {CONTACT.email}</a>
       </div>
       {open && (
         <div className="mt-3">
@@ -138,7 +140,10 @@ function Offline({ batch }: { batch: string }) {
   )
 }
 
-export function BatchVerify() {
+/** The check's state: what is typed, what was asked, and the answer. Shared by BatchVerify and
+ *  VerifyPanel (7 Oct 2026: the "Verify a bag" box on Home and /verify runs the check itself; its
+ *  WhatsApp and email buttons came off, since they asked a person to do what the page now does). */
+export function useBatchCheck() {
   const [batch, setBatch] = useState('')
   const [busy, setBusy] = useState(false)
   const [res, setRes] = useState<LookupResult | null>(null)
@@ -152,6 +157,24 @@ export function BatchVerify() {
     setRes(await lookupBatch(clean))
     setBusy(false)
   }
+  return { batch, setBatch, busy, res, asked, clean, submit }
+}
+
+/** The answer under the box: the report, or not found, too many, or not connected. */
+export function BatchResult({ busy, res, asked }: { busy: boolean; res: LookupResult | null; asked: string }) {
+  return (
+    <div aria-live="polite" className="grid gap-3 mt-3">
+      {busy && <p className="small muted">Checking {asked}…</p>}
+      {res?.ok && <Found r={res.report} />}
+      {res && !res.ok && res.reason === 'not-found' && <NotFound batch={asked} />}
+      {res && !res.ok && res.reason === 'too-many' && <TooMany />}
+      {res && !res.ok && res.reason === 'offline' && <Offline batch={asked} />}
+    </div>
+  )
+}
+
+export function BatchVerify() {
+  const { batch, setBatch, busy, res, asked, clean, submit } = useBatchCheck()
 
   return (
     <div>
@@ -169,13 +192,7 @@ export function BatchVerify() {
         <p className="cap mt-3">No sign-in and no phone number. The batch number is printed on the bag, so only somebody holding the bag can enter it.</p>
       </form>
 
-      <div aria-live="polite" className="grid gap-3 mt-3">
-        {busy && <p className="small muted">Checking {asked}…</p>}
-        {res?.ok && <Found r={res.report} />}
-        {res && !res.ok && res.reason === 'not-found' && <NotFound batch={asked} />}
-        {res && !res.ok && res.reason === 'too-many' && <TooMany />}
-        {res && !res.ok && res.reason === 'offline' && <Offline batch={asked} />}
-      </div>
+      <BatchResult busy={busy} res={res} asked={asked} />
     </div>
   )
 }

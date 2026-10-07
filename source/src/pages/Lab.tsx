@@ -1,7 +1,6 @@
 import { LAB, WA, CONTACT, VERIFY } from '@/data/site'
 import { SectionHead, WaButton, Stat } from '@/components/bits'
 import { VerifyPanel } from '@/components/VerifyPanel'
-import { BatchVerify } from '@/components/lab/BatchVerify'
 import { VanForm } from '@/components/VanForm'
 import { LAB_TEST_FORM } from '@/data/formSpecs'
 import { PartnerNav } from '@/components/PartnerNav'
@@ -15,11 +14,11 @@ import { LabScene } from '@/components/lab/LabScene'
 export function Verify() {
   return (
     <div className="wrap py-8 lg:py-12">
-      <VerifyPanel full />
       {/* 10 Sep 2026: the page had a field that opened a WhatsApp message. That is a way of asking a
-          person to verify for you, and it took a working day. This is the check itself, built
-          against O2S's own records. 5 Oct 2026: number in, lab report out. See src/lib/o2s.ts. */}
-      <section className="mt-8"><BatchVerify /></section>
+          person to verify for you, and it took a working day. 5 Oct 2026: number in, lab report out,
+          built against O2S's own records (src/lib/o2s.ts). 7 Oct 2026: the check runs in this one box;
+          the second box (BatchVerify) came off, so there is one place to type the number. */}
+      <VerifyPanel full />
       <section className="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 mt-8">
         <div className="panel p-6">
           <span className="eyebrow">What you get, and how</span>

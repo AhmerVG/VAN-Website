@@ -44,12 +44,19 @@ export type LookupResult =
   /** No answer, a server error, or an answer the page cannot use. Never shown as a pass or a fail. */
   | { ok: false; reason: 'offline' }
 
+/**
+ * 7 Oct 2026: live or local is chosen by where the page is open, so this file never has to be edited
+ * before a push. On this computer (localhost, 127.0.0.1) the check asks the local VAN-OP on port
+ * 3000, which must have PUBLIC_EXTRA_ORIGINS=http://localhost:5173 in its .env. Anywhere else,
+ * van.com.pk included, it asks the live server.
+ */
+const IS_LOCAL = typeof window !== 'undefined' && /^(localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)
+const LIVE_BASE = 'https://van-control-tower.onrender.com/api/public'
+const LOCAL_BASE = 'http://localhost:3000/api/public'
+
 export const O2S = {
   enabled: true,
-  // Live Server
-  base: 'https://van-control-tower.onrender.com/api/public',
-  // Local Server
-  // base: 'http://localhost:3000/api/public',
+  base: IS_LOCAL ? LOCAL_BASE : LIVE_BASE,
   /** The free server can take a while to wake up, so the wait is generous. */
   timeoutMs: 30000,
   /**
@@ -83,10 +90,8 @@ export async function lookupBatch(batchRaw: string): Promise<LookupResult> {
     const j = await res.json()
     const reportUrl = typeof j?.report_url === 'string' ? j.report_url : ''
     // Only an https address is opened, so nothing but a real file link can reach the button.
-    // Live Server 
-    if (!/^https:\/\//i.test(reportUrl)) return { ok: false, reason: 'offline' }
-    // Local Server
-    // if (!/^https?:\/\//i.test(reportUrl)) return { ok: false, reason: 'offline' }
+    // The local VAN-OP serves plain http, so on this computer http is accepted too.
+    if (!(IS_LOCAL ? /^https?:\/\//i : /^https:\/\//i).test(reportUrl)) return { ok: false, reason: 'offline' }
     return {
       ok: true,
       report: {

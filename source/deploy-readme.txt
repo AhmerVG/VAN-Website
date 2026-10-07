@@ -1,4 +1,37 @@
 VAN - NEW SITE STATIC BUILD
+Built 7 Oct 2026 (v61.16).  Same pages as v61.15.  Replaces v61.15.
+
+DO NOT UPLOAD THIS FILE. It is a packing note, not part of the site. Everything else
+in this folder goes up; this one stays on your machine.
+
+WHAT IS NEW IN THIS BUILD
+  - Verify a bag, on the home page and /verify: the box runs the live check itself. Type
+    the number, press "Check it", and the approved lab report opens under the box. The
+    "Send it on WhatsApp" and "or email" buttons in the box are gone. /verify has 1 box,
+    not 2.
+  - Number not found: the report-a-bag form, WhatsApp, and a new "or email" button.
+  - Live check not answering: "not connected yet", with WhatsApp and email, as before.
+  - src/lib/o2s.ts picks the server from the page address: the live server on van.com.pk,
+    the local VAN-OP on localhost. Nothing to switch before a build.
+  - New bundle file demo.31fab2fc.js. No page names demo.eebc20ad.js any more; it can be
+    removed from the server.
+  - Built on Windows (no WSL): Parcel, then build-static.mjs with CHROME set to the installed
+    Chrome. On Windows, src/data/catalogue.ts must have LF line breaks in the build copy, or
+    build-static.mjs finds no products or crops and writes only 32 pages. The last pushed
+    source built this way gave the live demo.eebc20ad.js exactly.
+  - To roll back to v61.15: git revert this commit, or upload v61.15 on top.
+
+AFTER UPLOAD, CHECK on https://www.van.com.pk/verify.html
+  - VAN6IE002 -> "Lab report for batch VAN6IE002, approved on ..." and the report.
+  - MAXNK26009 (lab approval pending on 28 Sep) -> not found, with the form, WhatsApp, email.
+  - The same check once from the home page box.
+
+NEVER wipe the web root: /plans, /lms, /sds and /spec-sheets hold linked files that are
+not in this build. Upload on top.
+
+--- Earlier note (5 Oct 2026), kept below for the record ---
+
+VAN - NEW SITE STATIC BUILD
 Built 5 Oct 2026 (v61.15).  85 HTML files (84 pages plus 404.html).  Replaces v61.14.
 
 DO NOT UPLOAD THIS FILE. It is a packing note, not part of the site. Everything else

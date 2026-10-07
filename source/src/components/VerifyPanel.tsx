@@ -1,6 +1,5 @@
-import { useState } from 'react'
-import { VERIFY, HOME_COPY, WA, CONTACT, COUNTS } from '@/data/site'
-import { WaButton } from './bits'
+import { VERIFY, HOME_COPY, COUNTS } from '@/data/site'
+import { useBatchCheck, BatchResult } from '@/components/lab/BatchVerify'
 
 /** A drawn VAN bag. When a batch number is typed the tick draws itself. */
 function BagCheck({ batch }: { batch: string }) {
@@ -26,11 +25,15 @@ function BagCheck({ batch }: { batch: string }) {
   )
 }
 
+/** 7 Oct 2026: the box runs the live check (src/lib/o2s.ts) and the report opens under it. The
+ *  "Send it on WhatsApp" and "or email" buttons came off; WhatsApp and email now appear only when
+ *  the number is not found or the check cannot answer (BatchVerify.tsx). */
 export function VerifyPanel({ full = false }: { full?: boolean }) {
-  const [batch, setBatch] = useState('')
+  const { batch, setBatch, busy, res, asked, clean, submit } = useBatchCheck()
   return (
+    <div>
     <div className="panel p-6 lg:p-10 grid lg:grid-cols-[1.25fr_0.75fr] gap-8 items-center" style={{ borderColor: 'var(--green)', borderWidth: 2 }}>
-      <div>
+      <form onSubmit={submit}>
         <span className="eyebrow">Verify a bag</span>
         {full ? <h1 className="max-w-[20ch]">{VERIFY.h1}</h1> : <h2 className="max-w-[20ch]">{HOME_COPY.verifyH2}</h2>}
         <p className="lead mt-4">{full ? VERIFY.lead : HOME_COPY.verifyLead}</p>
@@ -38,19 +41,20 @@ export function VerifyPanel({ full = false }: { full?: boolean }) {
           <span className="tag tag-green">PNAC accredited</span><span className="tag tag-green">{COUNTS.lab}</span><span className="tag tag-green">ISO/IEC 17025:2017</span>
         </div>
         <label className="block mt-7 font-bold" htmlFor={full ? 'batch-full' : 'batch-home'}>Batch number, printed on the bag</label>
-        <input id={full ? 'batch-full' : 'batch-home'} className="input input-lg mt-2" placeholder="e.g. VU25186" value={batch} onChange={e => setBatch(e.target.value)} autoComplete="off" inputMode="text" />
-        <div className="flex flex-wrap gap-3 mt-4">
-          <WaButton href={WA.verify(batch.trim())} lg>Send it on WhatsApp</WaButton>
-          <a className="btn btn-ghost btn-lg" href={`mailto:${CONTACT.email}?subject=${encodeURIComponent('Lab report for VAN batch number ' + (batch.trim() || '____'))}`}>or email</a>
+        <div className="grid sm:grid-cols-[1fr_auto] gap-3 items-end mt-2">
+          <input id={full ? 'batch-full' : 'batch-home'} className="input input-lg" placeholder="e.g. VU25186" value={batch} onChange={e => setBatch(e.target.value)} autoComplete="off" spellCheck={false} inputMode="text" />
+          <button className="btn btn-navy btn-lg" type="submit" disabled={!clean || busy}>{busy ? 'Checking…' : 'Check it'}</button>
         </div>
-        <p className="cap mt-3">The number opens a WhatsApp message to VAN with the batch already in it. {!full && <a href="#/verify">How verification works ›</a>}</p>
+        <p className="cap mt-3">No sign-in and no phone number. The batch number is printed on the bag, so only somebody holding the bag can enter it. {!full && <a href="#/verify">How verification works ›</a>}</p>
         {/* The blind-test offer is written out on /verify, which is the page about verification.
             On the home page it is a line and a link, not the same paragraph a second time. */}
         {full ? null : (
           <p className="small muted mt-5">Would rather not take our word for it? Send 500 g to Sample Reception and it is tested blind, as an ordinary priced test. <a href="#/verify">How that works ›</a></p>
         )}
-      </div>
+      </form>
       <div className="order-first lg:order-none"><BagCheck batch={batch} /></div>
+    </div>
+    <BatchResult busy={busy} res={res} asked={asked} />
     </div>
   )
 }

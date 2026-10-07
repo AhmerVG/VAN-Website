@@ -109,8 +109,8 @@ export const LOSSES = [
 export const HOME_COPY = {
   lossesH2: '3 ways the ground takes your fertilizer back.',
   lossesLead: 'Nitrogen leaves as ammonia, phosphate is bound by calcium, and too little potash goes on. VAN builds a product against each of the 3.',
-  verifyH2: 'Send the batch number. Get the lab report for that batch.',
-  verifyLead: 'Every VAN batch is tested before it leaves the plant. Send the number printed on the bag and we send back the measured values from the tests our laboratory ran on it. No charge, no sample to post, no form.',
+  verifyH2: 'Type the batch number. Get the lab report for that batch.',
+  verifyLead: 'Every VAN batch is tested before it leaves the plant. Type the number printed on the bag and open the approved laboratory report for that batch, with the measured values from the tests our laboratory ran on it. No charge, no sample to post, no sign-in.',
   beyondH2: 'Where the nutrients go after harvest.',
   beyondLead: 'The loop that brings nutrients back instead of importing them again.',
   beyondCard: 'VAN recovers potassium from crop residue ash, instead of importing it. Silicon from the same ash is still in development.',
@@ -271,7 +271,7 @@ export const LAB = {
  */
 export const VERIFY = {
   h1: 'Every VAN batch is tested before it leaves the plant. The lab report is yours to see.',
-  lead: 'Type the batch number printed on the bag and the page gives you the approved laboratory report for that batch, as a PDF. The check reads the plant\u2019s own records. If they do not answer, the page says so on screen and sends the number to VAN. No charge, no sample to post, no sign-in.',
+  lead: 'Type the batch number printed on the bag and the page gives you the approved laboratory report for that batch, as a PDF. The check reads the plant\u2019s own records. If they do not answer, the page says so on screen and gives you WhatsApp and email to reach VAN. No charge, no sample to post, no sign-in.',
   steps: [
     'Find the batch number printed on the bag.',
     'Type it above. The number is checked against the plant\u2019s own records.',
