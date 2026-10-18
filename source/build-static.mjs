@@ -116,7 +116,8 @@ const esc = t => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(
 ;(async () => {
   const distIndex = fs.readFileSync(path.join(DIST, 'index.html'), 'utf8')
   // D-250: the VAN door. A 13.7 s story opener (drawn field, the VAN horse, "We were in a field before
-  // we were a company.") that plays once a day before the home page, then removes itself. Kept as one
+  // we were a company.") that plays before the home page whenever it is opened from outside the site (D-252:
+  // every arrival, not once a day), then removes itself. Kept as one
   // self-contained block in door.inline.html and put at the top of <body> of the home page only, so
   // the React app and every other page are untouched. Record: F:\Story and Marketing\Working Record.md.
   const DOOR = fs.readFileSync(path.join(ROOT, 'door.inline.html'), 'utf8').replace(/\r\n?/g, '\n').replace(/\n*$/, '\n') // LF whatever the checkout did

@@ -79,8 +79,9 @@ the 28 crop pages. Everything else is byte for byte the same (checked 5 Oct 2026
   inboxes must match the repo root's `api/enquiry.php`), `data/lenses.json`, `downloads/`, `3d/`.
 - `build-static.mjs` the route table, page titles and descriptions.
 - `door.inline.html` the VAN door: the story opener that `build-static.mjs` puts at the top of
-  `<body>` of the home page only (D-250, 18 Oct 2026). It plays once a day per browser, skips for
-  reduced motion, data saver, automation and deep links, and removes itself when it ends.
+  `<body>` of the home page only (D-250 to D-252, 18 Oct 2026). It plays on every arrival from outside
+  the site (not when a visitor comes from another page of the site), skips for reduced motion, data
+  saver, automation, frames and deep links, and removes itself when it ends.
   `?door=1` on the home page forces it to play; `?door=0` keeps it away. It is not part of the
   React app, so `npm run dev` does not show it; only the built `index.html` does.
 - `deploy-readme.txt` the packing note written for each build.
