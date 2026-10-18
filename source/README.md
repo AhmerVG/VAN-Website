@@ -78,6 +78,11 @@ the 28 crop pages. Everything else is byte for byte the same (checked 5 Oct 2026
 - `site-root/` copied as it is into the built site: `api/enquiry.php` (the form endpoint; its
   inboxes must match the repo root's `api/enquiry.php`), `data/lenses.json`, `downloads/`, `3d/`.
 - `build-static.mjs` the route table, page titles and descriptions.
+- `door.inline.html` the VAN door: the story opener that `build-static.mjs` puts at the top of
+  `<body>` of the home page only (D-250, 18 Oct 2026). It plays once a day per browser, skips for
+  reduced motion, data saver, automation and deep links, and removes itself when it ends.
+  `?door=1` on the home page forces it to play; `?door=0` keeps it away. It is not part of the
+  React app, so `npm run dev` does not show it; only the built `index.html` does.
 - `deploy-readme.txt` the packing note written for each build.
 - `*.mjs` at the top level: checks run against a built site (`sweep.mjs`, `modecheck.mjs`,
   `formtest.mjs` and others). They use a fixed Chromium path; edit it if yours differs.
