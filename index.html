@@ -281,7 +281,9 @@ html.vd-locked,html.vd-locked body{overflow:hidden!important}
   function frame(ts){ if(t0===null){ t0=ts; setTimeout(function(){ if(!done) bail(); }, DUR+2500); } if(!root){ root=document.getElementById('root'); if(root && !done){ try{ root.inert=true; }catch(e){} } } var t=ts-t0; try{ paint(Math.min(t,DUR)); }catch(e){ bail(); return; } if(t<DUR && !done) raf=requestAnimationFrame(frame); }
   html.__vd=true;
   if(html.getAttribute('data-vd-why')){ var why=document.createElement('div'); why.textContent='door: '+html.getAttribute('data-vd-why'); why.style.cssText='position:fixed;left:8px;bottom:8px;z-index:2147483002;max-width:90vw;font:12px/1.4 monospace;background:#14231a;color:#fbf9f3;padding:6px 8px;border-radius:4px;word-break:break-all'; document.body.appendChild(why); }
-  raf=requestAnimationFrame(frame);
+  // a tab opened in the background waits; the door starts when the person is actually looking
+  function start(){ raf=requestAnimationFrame(frame); }
+  if(document.hidden){ var onVis=function(){ if(!document.hidden && !done){ document.removeEventListener('visibilitychange', onVis); start(); } }; document.addEventListener('visibilitychange', onVis); } else { start(); }
   }catch(e){ standDown(); }
 })();
 </script>
