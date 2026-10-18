@@ -50,7 +50,7 @@ export default function Products() {
       <h1>{brands} products. Every analysis published, every batch tested.</h1>
       <p className="lead mt-4">Sell it as a VAN brand, or make it yours. All {COUNTS.ownBrandOpen} are open for own-brand manufacturing, Vital Urea included.</p>
       <div className="flex flex-wrap gap-2 mt-6 cap">
-        <span className="tag tag-navy">{COUNTS.licences} PSQCA licences</span><span className="tag tag-navy">{COUNTS.standards} Pakistan Standards</span><span className="tag tag-green">{COUNTS.lab} · every batch tested</span>
+        <span className="tag tag-navy">{COUNTS.licencesOwn} PSQCA licences on these brands</span><span className="tag tag-navy">{COUNTS.standards} Pakistan Standards</span><span className="tag tag-green">{COUNTS.lab} · every batch tested</span>
       </div>
 
       <div id="table" className="panel p-4 lg:p-5 mt-8 grid gap-4" style={{ scrollMarginTop: 96 }}>

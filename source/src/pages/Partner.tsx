@@ -1,4 +1,4 @@
-import { PARTNER, LIBRARY, WA, CONTACT, HOME_COPY } from '@/data/site'
+import { PARTNER, LIBRARY, WA, CONTACT, HOME_COPY, COUNTS } from '@/data/site'
 import { SectionHead, WaButton } from '@/components/bits'
 import { PartnerJourney } from '@/components/PartnerJourney'
 import { PartnerNav } from '@/components/PartnerNav'
@@ -47,6 +47,8 @@ export default function Partner() {
               <a className="btn btn-ghost btn-sm" href="#/composition#library">Composition chart, every code with its analysis →</a>
             </div>
           </div>
+          {/* D-257, Tahir 18 Oct 2026: the 12 licensed products, said first. They are not library codes. */}
+          <p className="pr-ready mt-4"><b className="num">{COUNTS.licencesPartnerReady}</b> products already hold a PSQCA licence and are ready for a partner launch: your name on the bag, in the market within <b>{COUNTS.partnerReadyDays} days</b>. They are separate from the {LIBRARY.length} library formulations. <a href="#talk">Ask which ones →</a></p>
           <p className="small mt-4 max-w-[140ch]">{PARTNER.lead}</p>
         </div>
       </section>

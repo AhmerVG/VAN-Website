@@ -496,7 +496,7 @@ export const PARTNER_BRIEF_TO_BAG: RebuiltPage = {
     {
       id: 'registration', n: '03', kicker: 'Where registration sits', title: 'Registration is built in, not handed back to you.', tone: 'rust',
       blocks: [
-        { k: 'lead', text: 'A formulation can be finished and a pilot can be good, and the product still misses its season because the licence takes one to obtain. VAN treats registration as part of the build rather than as your problem afterwards. The same team that has taken VAN’s own products through PSQCA takes yours, and VAN holds 22 licences against 8 Pakistan Standards to show it has done it.' },
+        { k: 'lead', text: 'A formulation can be finished and a pilot can be good, and the product still misses its season because the licence takes one to obtain. VAN treats registration as part of the build rather than as your problem afterwards. The same team that has taken VAN’s own products through PSQCA takes yours, and VAN holds 34 PSQCA licences to show it has done it: 22 on its own brands, against 8 Pakistan Standards, and 12 on products ready for partners.' },
         { k: 'cta', label: 'Regulatory and registration services →', href: '#/partner/regulatory' },
       ],
     },
@@ -636,7 +636,7 @@ export const PARTNER_MANUFACTURING: RebuiltPage = {
       id: 'farm', n: '03', kicker: 'The research farms', title: 'Every formulation is tested on calcareous field soil, not only on the bench.',
       blocks: [
         { k: 'p', text: 'VAN’s first agricultural experimental station was established in 2009 and the company runs its own research farms, staffed by agricultural scientists, for product trials. The farm is where a failure gets found out before a client’s season depends on it.' },
-        { k: 'note', text: 'Standards the plant works to, with their numbers: 22 PSQCA manufacturing licences against 8 Pakistan Standards, each listed by brand with its licence number on the regulatory page, and a PNAC-accredited laboratory, ISO/IEC 17025:2017, Accreditation No. LAB 336. An ISO 9001 quality management certification is in progress with System Certification Centre (SCC), expected during 2027, and is not claimed here until the certificate is issued. Plant visits are part of most partner conversations, and for a co-manufacturing decision they are usually the point at which it becomes a real one.' },
+        { k: 'note', text: 'Standards the plant works to, with their numbers: 34 PSQCA manufacturing licences, 22 of them on VAN’s own brands against 8 Pakistan Standards, each listed by brand with its licence number on the regulatory page, and 12 on products ready for partners; and a PNAC-accredited laboratory, ISO/IEC 17025:2017, Accreditation No. LAB 336. An ISO 9001 quality management certification is in progress with System Certification Centre (SCC), expected during 2027, and is not claimed here until the certificate is issued. Plant visits are part of most partner conversations, and for a co-manufacturing decision they are usually the point at which it becomes a real one.' },
       ],
     },
   ],
@@ -853,7 +853,7 @@ export const PARTNER_REGULATORY: RebuiltPage = {
   eyebrow: 'Your Brand · regulatory',
   h1: 'A fertilizer that is not registered',
   h1accent: 'cannot be sold.',
-  lead: 'If the selling season is missed, the product cannot be sold until the next one. VAN runs Pakistani registration for its own catalogue, 20 of 23 brands hold a live PSQCA licence, and now runs that work for partners as a service in its own right.',
+  lead: 'If the selling season is missed, the product cannot be sold until the next one. VAN runs Pakistani registration for its own catalogue, 20 of 23 brands hold a live PSQCA licence, 12 more products are already licensed and ready for a partner to launch within 60 days, and VAN now runs that work for partners as a service in its own right.',
   tone: 'navy',
   sections: [
     {

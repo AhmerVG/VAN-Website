@@ -39,7 +39,7 @@ const STATIC_ROUTES = [
   // D-172: without its own description the About page took its lead, which opens "Trials have run on that ground" with nothing for "that" to refer to.
   { hash: '#/about', out: 'about.html', title: 'About VAN', description: 'VAN started with a research farm in 2009, a year before the company. It formulates, manufactures, registers and tests what it sells on one plant site in Lahore: 23 registered brands and a PNAC-accredited laboratory, LAB 336.' },
   // D-147: the company profile. Its PDF is site-root/downloads/VAN-Company-Profile-2026.pdf, copied to out/downloads/.
-  { hash: '#/company-profile', out: 'company-profile.html', title: 'Company profile', description: 'The VAN company profile: a Lahore crop nutrition manufacturer since 2010, with 23 registered brands, 22 PSQCA licences, a PNAC-accredited laboratory and products made under partners\u2019 own brands. Read it on the page or download it as a PDF.' },
+  { hash: '#/company-profile', out: 'company-profile.html', title: 'Company profile', description: 'The VAN company profile: a Lahore crop nutrition manufacturer since 2010, with 23 registered brands, 34 PSQCA licences, a PNAC-accredited laboratory and products made under partners\u2019 own brands. Read it on the page or download it as a PDF.' },
   { hash: '#/products', out: 'brands/index.html', title: 'Products' },
   // D-202, 27 Sep 2026: the composition chart, brands and library codes with their analysis.
   { hash: '#/composition', out: 'composition.html', title: 'Composition chart · every VAN brand and library code, with what is in it', description: '23 registered brands and 27 unbranded formulations, each with its declared analysis by nutrient, packs and documents. No prices.' },
@@ -66,7 +66,7 @@ const STATIC_ROUTES = [
   { hash: '#/partner/manufacturing', out: 'partner/manufacturing.html', title: 'Manufacturing & quality' },
   { hash: '#/partner/pipeline', out: 'partner/pipeline.html', title: 'Pipeline & formulation library' },
   { hash: '#/become-a-dealer', out: 'become-a-dealer.html', title: 'Become a VAN dealer or distributor' },
-  { hash: '#/partner/regulatory', out: 'partner/regulatory.html', title: 'Regulatory & registration services' },
+  { hash: '#/partner/regulatory', out: 'partner/regulatory.html', title: 'Regulatory & registration services', description: 'PSQCA registration run by VAN: 34 licences, 22 on VAN’s own brands and 12 on products ready for partners, and the same work done for your brand.' },
   { hash: '#/simulator', out: 'simulator.html', title: 'Farm discipline simulator' },
   { hash: '#/tools', out: 'tools.html', title: 'Vitalytics · VAN’s tools, live and coming' },
   { hash: '#/where-to-buy', out: 'where-to-buy.html', title: 'Where to buy VAN products' },

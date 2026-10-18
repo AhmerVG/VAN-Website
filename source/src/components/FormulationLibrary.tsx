@@ -59,7 +59,8 @@ const PATH: { key: PathKey; label: string; ask: string; statuses: FormulationSta
 ]
 
 const STATUS_COL: Record<FormulationStatus, string> = {
-  Feasibility: '#8A968C', Concept: '#8A968C', 'In development': '#7A5230', 'Field trials': '#7A5A0E', Validated: '#14231A', Available: '#2A5E33',
+  // 18 Oct 2026: the 2 early stages were #8A968C, too faint to read as text (2.7:1). Now 5:1 or better.
+  Feasibility: '#5E6A61', Concept: '#5E6A61', 'In development': '#7A5230', 'Field trials': '#7A5A0E', Validated: '#14231A', Available: '#2A5E33',
 }
 
 const NUT_ORDER: Nut[] = ['N', 'P', 'K', 'S', 'Ca', 'Zn', 'B', 'Fe', 'Org']

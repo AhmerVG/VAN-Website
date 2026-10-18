@@ -189,7 +189,7 @@ export default function Home() {
       <ProductRail />
       <KnowledgeCards />
       <section className="sec-tight"><div className="wrap flex flex-wrap gap-x-8 gap-y-2 cap justify-center">
-        <span>{PRODUCTS.filter(p => !p.family).length} registered brands</span><span>{CROPS.length} crop plans, per acre</span><span>{COUNTS.licences} PSQCA licences · {COUNTS.standards} standards</span><span>{COUNTS.lab} · {COUNTS.labStd}</span><span>{COUNTS.patentLabel} {COUNTS.patent}</span>
+        <span>{PRODUCTS.filter(p => !p.family).length} registered brands</span><span>{CROPS.length} crop plans, per acre</span><span>{COUNTS.licences} PSQCA licences</span><span>{COUNTS.lab} · {COUNTS.labStd}</span><span>{COUNTS.patentLabel} {COUNTS.patent}</span>
       </div></section>
     </>
   )

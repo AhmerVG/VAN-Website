@@ -64,7 +64,12 @@ export const WA = {
 export const COUNTS = {
   brands: 23,
   cropPlans: 28,
-  licences: 22,
+  // D-257, Tahir 18 Oct 2026: 34 PSQCA licences = 22 on VAN's own brands + 12 on products licensed
+  // and ready for a partner launch (in the market within 60 days). The single source for every count.
+  licences: 34,
+  licencesOwn: 22,
+  licencesPartnerReady: 12,
+  partnerReadyDays: 60,
   standards: 8,
   lab: 'LAB 336',
   labStd: 'PNAC · ISO/IEC 17025:2017',
@@ -147,11 +152,9 @@ export const ABOUT = {
     ['17 years', 'Of trial data behind every formulation. Read against Punjab’s own 770,160-sample soil survey.'],
     // D-175: "drop biological" (Tahir 26 Sep); the plant runs granular, coated, liquid, water-soluble and compounded lines.
     ['About 50,000\u00A0t', 'Made a year, on one plant site. Granular, coated, liquid, water-soluble and compounded, across shifts.'],
-    // Audit, 9 Sep 2026: "22 PSQCA licences" read against "20 of the 23 brands hold a licence" on
-    // the regulatory page and looked like a contradiction. It is not one — 22 licences are held
-    // across 20 brands, because a brand can hold more than one. Said precisely so nobody has to
-    // reconcile it themselves. No number changed.
-    ['22 licences', 'Held across 20 of the 23 brands, against 8 Pakistan Standards. Every number published, product by product.'],
+    // Audit, 9 Sep 2026: 22 licences are held across 20 brands, because a brand can hold more than
+    // one. D-257, 18 Oct 2026: 34 in all, the 22 plus 12 on products ready for partners.
+    ['34 licences', 'On 20 of the 23 VAN brands (22 licences, against 8 Pakistan Standards) and on 12 products ready for partners to launch under their own name. The 22 are published product by product.'],
     ['LAB 336', 'PNAC-accredited since 2024. Every lot tested before it ships; every certificate on request.'],
     // D-173: VAN is B2B; the farmer reach belongs to Vital Green (Tahir 25 Sep).
     ['23 brands', 'Registered and made in Pakistan.'],
@@ -180,7 +183,7 @@ export const ABOUT = {
     { year: '2023', title: 'Potash from ash', text: 'The first commercial batch of potash recovered from crop residue ash.' },
     { year: '2024', title: 'The laboratory, accredited', text: 'PNAC accreditation, LAB 336, against ISO/IEC 17025:2017. Every lot is tested before it ships and every certificate is available on request.' },
     { year: '2026', title: 'Patent, biological laboratory, NP line', text: 'Pakistan Patent 144684 granted for Vital Urea, VAN\u2019s sulfur-coated urea. VAN\u2019s first biological laboratory. A new NP granulation line planned for the plant site, not yet started.' },
-    { year: 'Today', title: 'Where VAN is now', text: 'More than 150 people · 23 registered brands · 22 PSQCA licences against 8 Pakistan Standards · about 50,000 t made a year · made for 14 companies.' },
+    { year: 'Today', title: 'Where VAN is now', text: 'More than 150 people · 23 registered brands · 34 PSQCA licences, 22 of them on VAN’s own brands · about 50,000 t made a year · made for 14 companies.' },
   ],
   evidenceH2: 'More went on. Less came back.',
   evidenceLead: 'Between 1999-2000 and 2023-24 Pakistan raised the nutrient it applies per acre by 68%. Wheat yield rose by 31%. Every kilogram now returns less than it did at the turn of the century, which is an argument about balance and timing, not about applying more.',
@@ -438,7 +441,8 @@ export const PARTNER = {
     { v: '100+', l: 'partner brands registered with VAN named as the manufacturer', note: '14 companies hold them between them. One partner usually runs several brands off the same plant, and the largest holds 8. Every product sold under a partner\u2019s brand carries its own registration file against this plant.' },
     { v: '8', l: 'products held by the largest single partner', note: 'The next largest holds 7. One relationship, 8 registration files.' },
     { v: '27', l: 'unbranded formulations in the library, 11 ready to carry your name', note: 'A code you can put your own name on, with the terms written down.' },
-    { v: '22', l: 'PSQCA licences against 8 Pakistan Standards', note: 'Each one listed by brand with its licence number on the regulatory page.' },
+    { v: '34', l: 'PSQCA licences', note: '22 on VAN’s own brands, against 8 Pakistan Standards, each listed with its licence number on the regulatory page; 12 on products ready for partners.' },
+    { v: '12', l: 'products already PSQCA licensed, ready for a partner launch', note: 'Your name on the bag, in the market within 60 days. Separate from the 27 library formulations.' },
     { v: '5', l: 'production lines', note: 'Granular, coated, liquid, water-soluble and compounded. The analytical laboratory is on the same site; the biological laboratory opened in 2026.' },   // D-177, Tahir 26 Sep: 5 lines, lab and farm separate. Was 8 lines under one roof.
     { v: 'About 50,000\u00A0t', l: 'made a year', note: 'A batch runs from 1 tonne; a single lot goes up to 50 tonnes and the line runs up to 4 lots a week. 3 to 5 days under 10 t, 7 to 18 days from 11 to 100 t.' },
   ] as { v: string; l: string; note: string }[],

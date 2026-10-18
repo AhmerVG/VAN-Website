@@ -2,6 +2,7 @@ import { CROPS, PRODUCTS } from '@/data/catalogue'
 import { SOIL_HEADLINE } from '@/data/soilLens'
 import { WaButton } from '@/components/bits'
 import { WA } from '@/data/site'
+import { HorseMark } from '@/components/HorseMark'
 
 /**
  * 404 — added 9 Sep 2026 (D-47).
@@ -34,6 +35,8 @@ export default function NotFound() {
     <div>
       <section style={{ background: 'linear-gradient(180deg, var(--sand-2), var(--sand))' }}>
         <div className="wrap py-8 lg:py-12">
+          {/* V3: the horse, so a lost visitor still knows whose site this is. */}
+          <HorseMark className="nf-horse" size={96} />
           <span className="eyebrow rust">404 · page not found</span>
           {/* D-151 (QA 38): was "This page isn’t here. The field still is." */}
           <h1 className="max-w-[22ch]">This page is not here. <span style={{ color: 'var(--rust-text)' }}>The links below go to the main parts of the site.</span></h1>

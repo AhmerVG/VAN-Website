@@ -8,7 +8,10 @@ import type { Route } from '@/lib/router'
 import { WaIcon } from './bits'
 import { PlainModeToggle } from './Detail'
 import { UrduToggle } from './Ur'
-import { URDU_ON } from '@/lib/readingMode'
+import { URDU_ON, usePlainMode } from '@/lib/readingMode'
+import { usePhonePlainDefault } from '@/lib/phonePlain'
+import { useScrollFocus } from '@/lib/scrollFocus'
+import { HorseMark } from './HorseMark'
 
 /**
  * 10 Sep 2026 · "Make With Us" was in this list AND on a button two centimetres to its right, in
@@ -26,10 +29,14 @@ import { URDU_ON } from '@/lib/readingMode'
  * one destination has one label (the 10 Sep rule above).
  */
 export const PARTNER_NAV = 'Your Brand'   // Tahir 26 Sep 2026 chose 'Your Brand'
+// U1, Tahir 18 Oct 2026: 8 items, "For farmers" dropped (it went to Crop Plans, already an item), order
+// on advice: the 2 things most visitors come for side by side (what VAN makes, what to apply), then
+// the partner door, then the data tools together (Soil Atlas, Vitalytics, the Lab), learning and the
+// company last. Was: Products, Your Brand, Crop Plans, Soil Atlas, Vitalytics, VAN Lab, Knowledge, About.
 const NAV: [string, string, Route['name'][]][] = [
   ['Products', '#/products', ['products', 'product']],
-  [PARTNER_NAV, '#/partner', ['partner']],
   ['Crop Plans', '#/crops', ['crops', 'crop']],
+  [PARTNER_NAV, '#/partner', ['partner']],
   ['Soil Atlas', '#/soil', ['soil']],   // 11 Sep 2026, Tahir's name for the tab
   ['Vitalytics', '#/tools', ['tools', 'simulator']],   // 11 Sep 2026, Tahir's trademark name for the tools
   ['VAN Lab', '#/lab', ['lab', 'verify']],
@@ -65,6 +72,9 @@ export function ViewBar() {
 }
 
 export function Header({ route }: { route: Route }) {
+  usePhonePlainDefault()   // R5, Tahir 18 Oct 2026: every page opens in Simple view on a phone
+  const [plainNow] = usePlainMode()
+  useScrollFocus(JSON.stringify(route) + (plainNow ? ':plain' : ':full'))   // R4: sideways-scrolling boxes reachable by keyboard
   const [open, setOpen] = useState(false)
   const menuBtnRef = useRef<HTMLButtonElement>(null)
   useEffect(() => { setOpen(false) }, [route])
@@ -115,7 +125,7 @@ export function Header({ route }: { route: Route }) {
                 commercial door replaces it (11 Sep rule). Was a separate button shown only from 1320px. */}
             {route.name === 'partner'
               ? <a className="nav-btn nav-cta" href="#/partner#talk">Talk to us</a>
-              : !['crops', 'crop'].includes(route.name) && <a className="nav-btn nav-cta" href="#/crops">For farmers</a>}
+              : null /* U1, 18 Oct 2026: "For farmers" dropped by Tahir's ruling. */}
           </nav>
           {/* Kept at every width. The inline nav carries eight top-level places; the panel carries
               everything under them, which is the only way the sub-pages are reachable without
@@ -136,7 +146,6 @@ export function Header({ route }: { route: Route }) {
             <>
               {!isDesktop && (
                 <>
-                  <a className="btn btn-gold" href="#/crops" onClick={() => setOpen(false)}>For farmers</a>
                   <a className="btn btn-navy" href="#/partner" onClick={() => setOpen(false)}>{PARTNER_NAV}</a>
                 </>
               )}
@@ -258,6 +267,8 @@ export function Footer() {
        Every link, address and number from D-171 is still here. Revert: the v58 source zip. */
     <footer className="ft mt-10">
       <svg className="ft-ground" viewBox="0 0 1440 22" preserveAspectRatio="none" aria-hidden="true"><path d={FT_EDGE} fill="currentColor" /></svg>
+      {/* V3: the horse, faint, at the foot of every page. */}
+      <HorseMark className="ft-horse" size={260} />
       <div className="wrap ft-inner">
         <div className="ft-main">
           <div className="ft-brand">

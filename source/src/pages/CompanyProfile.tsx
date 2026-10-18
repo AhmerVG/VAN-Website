@@ -122,7 +122,7 @@ export default function CompanyProfile() {
             </div>
             <div className="grid grid-cols-2 gap-2">
               <Stat v={String(COUNTS.brands)} l="registered brands, made in Pakistan" tone="green" compact />
-              <Stat v={String(COUNTS.licences)} l={`PSQCA licences, against ${COUNTS.standards} Pakistan Standards`} tone="green" compact />
+              <Stat v={String(COUNTS.licences)} l={`PSQCA licences: ${COUNTS.licencesOwn} on VAN brands, ${COUNTS.licencesPartnerReady} ready for partners`} tone="green" compact />
               <Stat v={COUNTS.lab} l="PNAC-accredited laboratory, ISO/IEC 17025:2017" tone="navy" compact />
               <Stat v={String(CROPS.length)} l="crop programmes, per acre, stage by stage" tone="navy" compact />
               <Stat v={PARTNER.proof.v} l="partner brands registered with VAN as the manufacturer" tone="soil" compact />
@@ -234,7 +234,7 @@ export default function CompanyProfile() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
           <Stat v={COUNTS.lab} l={`PNAC accredited, ISO/IEC 17025:2017, since 2024`} tone="navy" />
           <Stat v={`${COUNTS.labAccreditedTests} of ${COUNTS.labTests}`} l="laboratory tests accredited, and all of them priced publicly" tone="green" />
-          <Stat v={String(COUNTS.licences)} l={`PSQCA licences, against ${COUNTS.standards} Pakistan Standards`} tone="gold" />
+          <Stat v={String(COUNTS.licences)} l={`PSQCA licences: ${COUNTS.licencesOwn} on VAN brands, ${COUNTS.licencesPartnerReady} ready for partners`} tone="gold" />
           <Stat v={COUNTS.patent} l="Pakistan Patent, for VAN’s sulfur coated urea" tone="soil" />
         </div>
         <div className="grid lg:grid-cols-3 gap-3 mt-4">

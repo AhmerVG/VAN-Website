@@ -207,11 +207,17 @@ export function LossStrip() {
           <div className="strip-scroll"><StripArt active={active} /></div>
           <div className="grid md:grid-cols-3 gap-3 p-4">
             {LOSSES.map((l, i) => (
-              <button key={l.n} className={`loss-col ${active === i ? 'on' : ''}`} style={{ ['--zone' as string]: l.colour } as CSSProperties} onClick={() => { setActive(i); setPlaying(false) }} aria-pressed={active === i}>
+              // R4, 18 Oct 2026: the card was a <button> with a link inside it (nested controls, which
+              // keyboard and screen-reader users cannot reach properly). The card is now a plain box a
+              // mouse can still click anywhere on; the keyboard control is the title button, and the
+              // "Read the evidence" link sits beside it, not inside it.
+              <div key={l.n} className={`loss-col ${active === i ? 'on' : ''}`} style={{ ['--zone' as string]: l.colour } as CSSProperties} onClick={() => { setActive(i); setPlaying(false) }}>
                 <div className="bag"><img src={PACK_PNG[pngs[i]]} alt={l.product} /></div>
                 <div className="min-w-0">
-                  <div className="cap uppercase tracking-[.1em] font-bold" style={{ color: (l.colour === '#B0841A' || l.colour === '#B97F1C') ? 'var(--gold-text)' : l.colour }}>{l.kicker}</div>
-                  <div className="display text-[18px] leading-tight mt-1">{l.title}</div>
+                  <button type="button" className="loss-pick" aria-pressed={active === i} onClick={e => { e.stopPropagation(); setActive(i); setPlaying(false) }}>
+                  <span className="cap uppercase tracking-[.1em] font-bold block" style={{ color: (l.colour === '#B0841A' || l.colour === '#B97F1C') ? 'var(--gold-text)' : l.colour }}>{l.kicker}</span>
+                  <span className="display text-[18px] leading-tight mt-1 block">{l.title}</span>
+                  </button>
                   <p className="small muted mt-1">{l.text}</p>
                   <div className="mt-2 pt-2" style={{ borderTop: '1px solid var(--line)' }}>
                     <div className="cap uppercase tracking-[.08em] font-bold" style={{ color: 'var(--navy)' }}>Built against it</div>
@@ -219,7 +225,7 @@ export function LossStrip() {
                     <a href={`#/products/${l.slug}`} className="small font-bold inline-block mt-1" style={{ color: 'var(--navy)' }} onClick={e => e.stopPropagation()}>Read the evidence →</a>
                   </div>
                 </div>
-              </button>
+              </div>
             ))}
           </div>
         </div>
@@ -235,7 +241,7 @@ const NODES: { t: string; s: string; body: string[] }[] = [
   { t: 'Formulation', s: '17 years of trial data', body: ['What a trial shows sets the formulation. The formulation is then made on VAN’s own plant.', PARTNER.capability[0][1]] },
   { t: 'Plant', s: COUNTS.capacity, body: [ABOUT.stats[2][1], PARTNER.capability[1][1]] },
   { t: 'Laboratory', s: `${COUNTS.lab} · ISO/IEC 17025`, body: [LAB.why1, PARTNER.capability[3][1]] },
-  { t: 'PSQCA registration', s: `${COUNTS.licences} licences · ${COUNTS.standards} standards`, body: [`${ABOUT.stats[3][0]} ${lc(ABOUT.stats[3][1])}`, PARTNER.capability[2][1]] },
+  { t: 'PSQCA registration', s: `${COUNTS.licences} licences`, body: [`${ABOUT.stats[3][0]} ${lc(ABOUT.stats[3][1])}`, PARTNER.capability[2][1]] },
   { t: 'Lab report with the bag', s: 'by batch number, no charge', body: [VERIFY.lead, VERIFY.note] },
 ]
 const STEP_MS = 5000

@@ -3,6 +3,7 @@ import { CONTACT, WA } from '@/data/site'
 import { WaButton } from '@/components/bits'
 import { VanForm } from '@/components/VanForm'
 import { REPORT_BAG_FORM } from '@/data/formSpecs'
+import { HorseMark } from '@/components/HorseMark'
 import { lookupBatch, normaliseBatch, type BatchReport, type LookupResult } from '@/lib/o2s'
 
 /**
@@ -50,7 +51,9 @@ function Found({ r }: { r: BatchReport }) {
   const wide = useWide()
   const approved = r.approvedOn ? `, approved on ${fmtDate(r.approvedOn)}` : ''
   return (
-    <div className="panel p-5 lg:p-6" style={{ borderColor: 'var(--green)', borderWidth: 2 }}>
+    <div className="panel p-5 lg:p-6 bv-found" style={{ borderColor: 'var(--green)', borderWidth: 2 }}>
+      {/* V3: the horse as the seal on a batch VAN's laboratory has signed off. */}
+      <HorseMark className="bv-horse" size={72} />
       <div className="flex items-center gap-3 flex-wrap">
         <span className="bv-mark bv-pass" aria-hidden="true">✓</span>
         <div className="display text-[20px]" style={{ color: 'var(--navy)' }}>Lab report for batch {r.batch}{approved}</div>

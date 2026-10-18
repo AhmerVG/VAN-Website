@@ -31,7 +31,8 @@ export default function About() {
       <section className="ab-story">
         <div className="wrap">
           <span className="eyebrow">{ABOUT_HERO.eyebrow}</span>
-          <h1 className="ab-story-h1">From a batch of humic acid in 2007 to about 50,000 t a year.</h1>
+          {/* V5, Tahir 18 Oct 2026: open with 2009, as the story does. 2007 stays on the timeline. */}
+          <h1 className="ab-story-h1">From a research farm in 2009 to about 50,000 t a year.</h1>
           <div className="mt-6"><GrowthStory /></div>
         </div>
       </section>
