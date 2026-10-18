@@ -67,7 +67,7 @@ export default function ProductPage({ slug }: { slug: string }) {
       <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-8 lg:gap-12 mt-4 items-start">
         <div className="lg:sticky lg:top-20">
           <div className="panel p-6 flex items-center justify-center" style={{ minHeight: 360, background: 'linear-gradient(180deg,#fff,var(--sand-2))' }}>
-            {p.family ? <FamilyShot /> : <PackShot slug={p.slug} hi style={{ maxHeight: 400, width: 'auto' }} />}
+            {p.family ? <FamilyShot max={420} /> : <PackShot slug={p.slug} hi style={{ maxHeight: 400, width: 'auto' }} />}
           </div>
           {!p.family && <Pack3D slug={p.slug} name={p.name} />}
         </div>

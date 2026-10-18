@@ -37,7 +37,7 @@ export default function Partner() {
                   straight to library if he want." A reader who already knows he wants something off
                   the shelf should not have to read a page about development first. */}
               <a className="btn btn-navy btn-sm" href="#library">
-                Go straight to the library · {LIBRARY.length} formulations, {READY} ready to carry your name →
+                Go straight to the library · {LIBRARY.length} formulations, {READY} ready to carry your name →
               </a>
               {/* 11 Sep 2026 · the hero's only door was the library. A procurement head who arrives
                   ready to talk had nothing to press until 13,000px down the page. */}
@@ -53,7 +53,19 @@ export default function Partner() {
 
       <PartnerNav />
 
-      {/* The routes and the rail start immediately, inside the first screen. */}
+      {/* T1, 18 Oct 2026 (D-254, reverses the Your Brand part of D-197). Tahir, audit of 18 Oct: "THE
+          PARTNER PAGE IS A PAGE WHERE PARTNER NEED TO GO TOO DEEP TO FIND WHAT HE IS LOOKING FOR I.E.
+          THE FORMULATION AVAILABLE." The library was the 6th block, about 41% down the page, and showed
+          only the ladder; the list itself sat on the Pipeline page behind one more click. It now comes
+          first, right under the hero, in full: the ladder, the 2 filters and every formulation with its
+          "Ask about" button. The Pipeline page keeps its own copy. Revert: put back the old block below
+          "range" with <FormulationLibrary pathOnly />, and the old ITEMS order in PartnerNav. */}
+      <section id="library" className="sec pnav-target" style={{ background: 'var(--sand-2)' }}><div className="wrap">
+        <SectionHead eyebrow="The formulation library" title={`${LIBRARY.length} formulations. ${READY} ready to carry your name now.`} lead="None has a brand on it yet. Each card shows how far along it is. Filter by what it carries and the form it comes in, then open a card to ask about it." tone="navy" />
+        <FormulationLibrary phoneShort />
+      </div></section>
+
+      {/* The routes and the rail come straight after the library (T1, 18 Oct 2026). */}
       <section id="journey" className="wrap pnav-target" style={{ paddingTop: 18, paddingBottom: 28 }}>
         <PartnerJourney />
       </section>
@@ -90,15 +102,6 @@ export default function Partner() {
         <div className="flex flex-wrap gap-3 mt-5"><a className="btn btn-navy" href="#talk">Send us your crops and regions →</a><a className="btn btn-ghost" href="#/products">The 23 brands</a></div>
       </div></section>
 
-      {/* THE LIBRARY MOVED UP, 10 Sep 2026. It used to sit below the five sub-page links, which
-          put twenty-five finished formulations underneath a list of links to pages about how
-          formulations get made. Route 2 on the rail above ends in this section, so it now follows
-          the rail directly. */}
-      <section id="library" className="sec pnav-target" style={{ background: 'var(--sand-2)' }}><div className="wrap">
-        <SectionHead eyebrow="Ready to carry your name" title="The formulation library." lead="Formulations with no brand on them, each shown at its stage. They sit here under neutral codes, waiting for a name. The colour is the family, the chips are what it delivers, and the ladder shows how far along each one is." tone="navy" />
-        {/* D-197: the full library lives on the Pipeline page; Your Brand keeps the ladder and the door (UX review, Tahir 27 Sep). */}
-        <FormulationLibrary pathOnly />
-      </div></section>
 
       {/**
         * THE PORTFOLIO — 11 September 2026.
@@ -128,7 +131,7 @@ export default function Partner() {
             <div className="pf-card"><div className="pf-n num">{PARTNER.portfolioPending.launchRange}</div><div className="pf-l">fastest and slowest, brief to market</div></div>
           )}
         </div>
-        <p className="src">Every figure on this block is published elsewhere on this site: the registration count and the largest partner on this page, the licences and standards on the regulatory page, the library in the section above, the tonnage made a year on the engineering page, the lines on the manufacturing page, and the order sizes and lead times among the questions at the foot of the dealer page. None of them is a client.</p>
+        <p className="src">Every figure on this block is published elsewhere on this site: the registration count and the largest partner on this page, the licences and standards on the regulatory page, the library at the top of this page, the tonnage made a year on the engineering page, the lines on the manufacturing page, and the order sizes and lead times among the questions at the foot of the dealer page. None of them is a client.</p>
       </div></section>
 
       <section id="detail" className="sec pnav-target"><div className="wrap">

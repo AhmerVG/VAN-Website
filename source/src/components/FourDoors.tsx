@@ -91,6 +91,18 @@ export function FourDoors() {
             back (D-239). No soil sample count here, at his word. The tagline itself (footer, menu, profile)
             is unchanged. */}
         <h1 className="fd-title fd-title-3"><span>Soil first.</span> <span>Then the crop.</span> <span>Then the bag.</span></h1>
+        {/* P1, 18 Oct 2026 (D-255). Audit: on a phone the first screen showed no action at all; the 4
+            doors started below it and the first sat under the bottom bar. On a phone or tablet (up to
+            1023 px) the 4 doors now also appear here as 4 buttons, each naming the visitor and its
+            main page. On a laptop this strip is hidden; the doors below carry a button each (V2). */}
+        <nav className="fd-quick" aria-label="Go straight to">
+          {doors.map(d => (
+            <a key={d.key} href={d.go[0][1]} className="fd-quick-a">
+              <span className="fd-quick-t">{d.title}</span>
+              <span className="fd-quick-g">{d.go[0][0]} →</span>
+            </a>
+          ))}
+        </nav>
         <ol className="fd-tiers">
           {HERO_TIERS.map(t => (
             <li key={t.k} className="fd-tier">

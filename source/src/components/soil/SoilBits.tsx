@@ -2,7 +2,7 @@ import { SOIL } from '@/data/soil'
 import { SOIL_SOURCE, SOIL_ANALYTES, SOIL_MISSING, SOIL_MECHANISMS, SOIL_COPY, PRODUCT_SOIL, SOIL_HEADLINE, SOIL_BELIEF } from '@/data/soilLens'
 import type { Product } from '@/data/catalogue'
 import { useInView, useCountUp } from '@/hooks/useInView'
-import { PackShot, productBySlug, DrawnBag } from '@/components/bits'
+import { PackShot, productBySlug, FamilyShot } from '@/components/bits'
 import { thousands, textureTotal } from '@/lib/soil'
 
 /** The source line every soil figure carries. */
@@ -115,7 +115,7 @@ function Shot({ slug }: { slug: string }) {
   if (!p) return null
   return (
     <a href={`#/products/${slug}`} className="no-underline flex flex-col items-center gap-1" style={{ width: 84 }} title={p.name}>
-      <div style={{ height: 96, display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}>{p.family ? <div className="flex items-end gap-1"><DrawnBag label="6-32" width={26} /><DrawnBag label="5-40" width={30} /><DrawnBag label="8-38" width={26} /></div> : <PackShot slug={slug} style={{ maxHeight: 92, width: 'auto' }} />}</div>
+      <div style={{ height: 96, display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}>{p.family ? <FamilyShot max={84} /> : <PackShot slug={slug} style={{ maxHeight: 92, width: 'auto' }} />}</div>
       <span className="cap text-center leading-tight" style={{ fontSize: 11.5, color: 'var(--navy)', fontWeight: 600 }}>{p.name}</span>
     </a>
   )

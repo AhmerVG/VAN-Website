@@ -68,11 +68,14 @@ const FORM_ORDER: Form[] = ['liquid', 'soluble', 'granular', 'biological']
 const meta = (code: string) => LIB_META[code] ?? { n: [] as [Nut, string?][] }
 
 /** D-197, 27 Sep 2026: pathOnly draws the ladder and a door to the full library on the Pipeline page. */
-export function FormulationLibrary({ pathOnly = false }: { pathOnly?: boolean } = {}) {
+/** phoneShort (Your Brand only, 18 Oct): on a phone the cards come before the ladder, 6 at first. */
+export function FormulationLibrary({ pathOnly = false, phoneShort = false }: { pathOnly?: boolean; phoneShort?: boolean } = {}) {
   const [stage, setStage] = useState<PathKey | null>(null)
   const [nut, setNut] = useState<Nut | null>(null)
   const [form, setForm] = useState<Form | null>(null)
   const [open, setOpen] = useState<string | null>(null)
+  // Tahir, 18 Oct: on a phone the first 6 cards show, then "Show all"; the filters still search all 27.
+  const [all, setAll] = useState(false)
   const cards = useRef<Record<string, HTMLDivElement | null>>({})
   const firstPaint = useRef(true)
 
@@ -99,9 +102,9 @@ export function FormulationLibrary({ pathOnly = false }: { pathOnly?: boolean } 
   const clear = () => { setStage(null); setNut(null); setForm(null) }
 
   return (
-    <div>
+    <div className={phoneShort ? 'fl-wrap' : undefined}>
       {/* ── the ladder, drawn ─────────────────────────────────────────────────────────────────── */}
-      <div className="panel p-4 lg:p-5">
+      <div className="panel p-4 lg:p-5 fl-ladder">
         <div className="flex items-baseline justify-between gap-3 flex-wrap mb-3">
           <span className="eyebrow navy">The path, from an idea to a registered product. Where the {LIBRARY.length} sit on it today</span>
           <span className="cap">one dot is one formulation · colour is its family · a ring means registered and available · tap a stage to filter</span>
@@ -185,14 +188,14 @@ export function FormulationLibrary({ pathOnly = false }: { pathOnly?: boolean } 
               )
             })}
             {/* Said out loud rather than hidden: the filter does not cover every code, and the
-                reason is VAN's own position on form, three sections down this same page. */}
+                reason is VAN's own position on form, further down this same page. */}
             <span className="cap" style={{ color: 'var(--muted)' }}>
               The same composition is made in more than one form, so a form chip here means the library has fixed that form for this code.
             </span>
           </span>
         </div>
         <div className="flex items-baseline justify-between gap-3 flex-wrap">
-          <span className="cap"><b style={{ color: 'var(--navy)' }}>{list.length}</b> of {LIBRARY.length} formulations</span>
+          <span className="cap"><b style={{ color: 'var(--navy)' }}>{list.length}</b> of {LIBRARY.length} formulations{phoneShort && !all && list.length > 6 && <span className="fl-showing"> · the first 6 shown</span>}</span>
           {filtered && <button className="btn btn-ghost btn-sm" onClick={clear}>Clear filters ✕</button>}
         </div>
       </div>
@@ -203,13 +206,13 @@ export function FormulationLibrary({ pathOnly = false }: { pathOnly?: boolean } 
           its row, which put a void between the sentence and the family line; and opening a card
           grew every card beside it by the height of the panel that only one of them was showing. */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-3 items-start">
-        {list.map(l => {
+        {list.map((l, i) => {
           const m = meta(l.code)
           const col = FAMILY_COL[l.family]
           const on = open === l.code
           return (
             <div key={l.code} ref={el => { cards.current[l.code] = el }}
-              className="panel flex flex-col overflow-hidden"
+              className={`panel flex flex-col overflow-hidden ${phoneShort && !all && i >= 6 ? 'fl-more' : ''}`}
               style={{ borderColor: on ? col : undefined, borderWidth: on ? 2 : undefined, borderLeft: `5px solid ${col}` }}>
               <button onClick={() => setOpen(on ? null : l.code)} aria-expanded={on}
                 className="text-left p-4 flex flex-col gap-2" style={{ cursor: 'pointer', background: 'transparent' }}>
@@ -241,6 +244,8 @@ export function FormulationLibrary({ pathOnly = false }: { pathOnly?: boolean } 
                   {m.form && <><span aria-hidden="true">·</span>{FORM_LABEL[m.form]}</>}
                   {m.apply?.map(a => <span key={a}>· {APPLY_LABEL[a]}</span>)}
                 </span>
+                {/* Design review, 18 Oct: with the cards first on Your Brand, each says it opens. */}
+                <span className="cap" style={{ color: 'var(--navy)', fontWeight: 700 }}>{on ? 'Close ▴' : `Open ${l.code} to ask about it ▾`}</span>
               </button>
 
               {on && (
@@ -257,6 +262,8 @@ export function FormulationLibrary({ pathOnly = false }: { pathOnly?: boolean } 
                       href={`mailto:${CONTACT.partnerEmail}?subject=${encodeURIComponent(`Formulation ${l.code}`)}&body=${encodeURIComponent(`We are interested in ${l.code} (${l.title}). Our market is:`)}`}>
                       Ask about {l.code} →
                     </a>
+                    {/* The button opens an email app, and many phones have none set up: the address is shown too. */}
+                    <p className="cap mt-2">Or write to <b className="select-all">{CONTACT.partnerEmail}</b> and name {l.code}.</p>
                   </div>
                 </div>
               )}
@@ -264,6 +271,9 @@ export function FormulationLibrary({ pathOnly = false }: { pathOnly?: boolean } 
           )
         })}
       </div>
+      {phoneShort && !all && list.length > 6 && (
+        <button className="btn btn-white fl-all mt-3" onClick={() => setAll(true)}>Show all {list.length} formulations ▾</button>
+      )}
 
       {!list.length && (
         <div className="panel p-8 text-center mt-3">

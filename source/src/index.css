@@ -1489,3 +1489,95 @@ svg g[role="button"]:focus-visible { outline: 2px solid var(--navy); outline-off
 .lz thead th{font-family:var(--mono);font-size:11px;color:var(--muted);font-weight:500}
 .lz tr.lz-pak td{color:var(--pak);font-weight:600}
 .lz-fail{font-size:14px;color:var(--muted)}
+
+/* ─────────────────────────────────────────────────────────────────────────────────────────────
+ * R1 · READING SIZE · 18 Oct 2026 (D-254). Audit of 18 Oct: 55% to 91% of all reading text on the
+ * site was under 16 px, most of it 13 to 14 px. Farmers and dealers read this on phones. Tahir
+ * picked it first. This block sits last on purpose: it repeats the original selectors, so it wins
+ * by order without touching the rules above. Revert = delete this block. Tailwind's own text-sm
+ * and text-xs are left as they were (a trial change there reached no page and was dropped).
+ *   reading text  → --fs-read  16 px (17 px on a phone)
+ *   notes, captions, small controls → --fs-note 14 px (15 px on a phone)
+ *   uppercase labels and table heads → 13 px (they were 10.5 to 12 px; uppercase with spacing
+ *     reads larger than its size; at 14 px they push product cards and chips out of shape)
+ * Left alone on purpose: headings, the main menu (9 items must fit one line on a laptop),
+ * buttons at 15.5 px and up, and text drawn inside charts (it scales with the chart).
+ * ───────────────────────────────────────────────────────────────────────────────────────────── */
+:root { --fs-read: 16px; --fs-note: 14px; }
+@media (max-width: 640px) { :root { --fs-read: 17px; --fs-note: 15px; } }
+
+.small, .tbl, .fd-tier-a, .fd-door-b, .fd-why-a, .spec, .tf-one, .tf-detail p, .gs-text, .gs-lines,
+.ab-facts dd, .ab-person .r, .ab-brief-r, .ab-people-r, .ab-people-t, .ab-line a, .ab-textlink, .ab-evidence a,
+.belief-item b, .nc-gap, .ns-c, .ns-soil-say p, .rd-list dd, .nt-dl, .nt-prod, .lb-row, .fs-wont-list,
+.lz, .lz-read, .disc > summary, .verdict, .an-row .box, .share-row, .mp-hit-l, .mp-none, .mp-job li a,
+.pf-l, .bd-card .n, .pp-loop, .cal .grp, .stage-tab .t, .ab-person .n, .ft li, .lz-fail
+{ font-size: var(--fs-read); line-height: 1.55; }
+
+.cap, .src, .chart-tip, .soil-tip, .legend, .lz-tip, .lz-source, .lz-src, .tf-more, .mp-hit-s, .mp-job-n, .ns-sl,
+.ab-person .more, .ft-addr, .ft-bottom, .ft-tag, .ft .ft-chip, .gs-y, .idn-count, .tf-clear, .tf-open, .tf-count,
+.d-chip, .d-chip .v, .act-pill, .fs-bar, .lz-chip, .lz-seg button, .lz-tab, .lz-year, .lz-linkbtn, .lz select,
+.lz table, .mx-tbl, .p3d-top span, .bd-card .r, .vt-s, .legend .mid, .tf-chip, .tf-switch,
+.nt-name, .nt-ur, .cal .c, .btn-sm, .chip-sm, .chip-xs, .pnav-link, .dock-bottom a, .mode-btn, .p3d-btn
+{ font-size: var(--fs-note); }
+
+.tag, .badge, .tbl th, .stage-tab .n, .act-index .lbl, .cal .hd, .spec > .k, .tf-state, .mp-kind, .idn-kicker,
+.ft h3, .ft-addr b, .pp-loop-k, .fd-kicker, .fd-tier-r, .rg-who, .nt-dl dt, .lb-lab, .fs-lab, .rd-list dt,
+.vt-h, .vt-b, .dock-side a, .lz-topic, .nt-brief
+{ font-size: 13px; }
+
+.fd-go { font-size: var(--fs-read); }
+.live-calc { font-size: 12.5px; }
+.live-calc-sm { font-size: 11.5px; }
+/* Fits, after review. Product-tile labels stay 12 px: "MICRONUTRIENTS" at 13 px is wider than a
+   150 px tile on a 360 px phone. The soil table's column heads (.mx-head .s) stay 13 px in their
+   fixed-width cells. Table cells and the in-page bar give back 1 to 3 px of side padding, and the
+   year tiles 2 px, so the bigger text does not push a table, the bar or the 10th year off the edge. */
+.tile .tag { font-size: 12px; }
+/* Labels set in capitals with .cap (e.g. "NITROGEN · LOSS 1 OF 3") follow the 13 px rule for
+   capital labels, and soil-table district names stay 13 px in their 108 px column on a phone. */
+.cap.uppercase { font-size: 13px; }
+/* Your Brand library on a phone (FormulationLibrary phoneShort): filters and cards first, the
+   6-stage ladder after them; the first 6 cards, then "Show all". Desktop and the Pipeline page unchanged. */
+.fl-all, .fl-showing { display: none; }
+@media (max-width: 760px) {
+  .fl-wrap { display: flex; flex-direction: column; }
+  .fl-wrap > .fl-ladder { order: 9; margin-top: 16px; }
+  .fl-more { display: none !important; }
+  .fl-all { display: inline-flex; align-self: flex-start; }
+  .fl-showing { display: inline; }
+}
+.mx-tbl th.mx-name, .mx-tbl th.mx-name button { font-size: 13px; }
+.tbl th, .tbl td { padding-left: 9px; padding-right: 9px; }
+@media (max-width: 640px) { .tbl th, .tbl td { padding-left: 8px; padding-right: 8px; } }
+.pnav-link { padding-left: 11px; padding-right: 11px; }
+@media (min-width: 1024px) { .sc-rail .sc-year { padding-left: 8px; padding-right: 8px; } }
+
+/* ─────────────────────────────────────────────────────────────────────────────────────────────
+ * P1 + V2 · THE FIRST SCREEN · 18 Oct 2026 (D-255).
+ * V2: each door's main link becomes a solid button; the second stays a quiet text link.
+ * P1: on a phone or tablet (up to 1023 px) the 4 doors also sit under the line as 4 buttons
+ * (.fd-quick, FourDoors.tsx), 2 by 2, or 4 in a row from 600 px (a phone on its side, a tablet);
+ * "I grow" in gold, as "For farmers" is in the menu. Revert = delete this block and the
+ * .fd-quick nav in FourDoors.tsx.
+ * ───────────────────────────────────────────────────────────────────────────────────────────── */
+.fd-door-go { align-items: center; gap: 8px 16px; }
+.fd-go:not(.quiet) { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 14px; border-radius: var(--radius); border-bottom: 0; background: var(--navy); color: #fff; font-size: var(--fs-read); line-height: 1.2; }
+.fd-go:not(.quiet):hover { background: var(--navy-2); color: #fff; }
+.fd-go:not(.quiet):focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.fd-quick { display: none; }
+@media (max-width: 1023px) {
+  .fd-quick { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 16px; }
+  .fd-quick-a { display: flex; flex-direction: column; justify-content: center; gap: 3px; min-height: 64px; padding: 10px 12px; border-radius: var(--radius); background: var(--navy); color: #fff; text-decoration: none; }
+  .fd-quick-a:first-child { background: var(--gold); color: var(--navy); }
+  .fd-quick-t { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 17px; line-height: 1.15; }
+  .fd-quick-g { font-size: 14px; line-height: 1.25; opacity: .92; }
+  .fd-quick-a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+}
+@media (min-width: 600px) and (max-width: 1023px) { .fd-quick { grid-template-columns: repeat(4, 1fr); } }
+.fd-quick-a:first-child:focus-visible { outline-color: var(--navy); }
+/* 1024 to 1279 px: 4 narrow door cards. The text link goes above and the solid button sits at the
+   foot of every card, so the 4 buttons line up along the bottom (margin-top: auto above). */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .fd-door-go { flex-direction: column-reverse; align-items: flex-start; }
+  .fd-go:not(.quiet) { font-size: 15px; padding: 9px 12px; }
+}

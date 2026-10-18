@@ -183,7 +183,7 @@ export function PartnerJourney() {
 
         <div className="flex flex-wrap gap-2 mt-4">
           {route.key === 'library'
-            ? <a className="btn btn-navy btn-sm" href="#library">See what is in the library →</a>
+            ? <a className="btn btn-navy btn-sm" href="#library">Back up to the library ↑</a>
             : <a className="btn btn-navy btn-sm" href="#/partner/brief-to-bag">How a brief becomes a bag →</a>}
           <a className="btn btn-ghost btn-sm" href="#/partner/manufacturing">What the plant can make →</a>
           <a className="btn btn-ghost btn-sm" href="#/partner/regulatory">The regulatory service →</a>

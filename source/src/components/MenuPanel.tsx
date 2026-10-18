@@ -7,6 +7,7 @@ import { TOOLS } from '@/data/tools'
 import { DISTRICT_PROFILES } from '@/data/districtSoil'
 import { COVERED } from '@/data/dealers'
 import { CONTACT } from '@/data/site'
+import { CROP_WORDS, productWords, exactMatch, slipCost } from '@/lib/findWords'
 
 /**
  * THE MENU — rebuilt 10/11 September 2026.
@@ -45,20 +46,13 @@ const PAGE_KEYS: Record<string, string> = {
 }
 
 /** D-151 (QA 36): the names a farmer is likely to type, in Roman Urdu and in Urdu, per crop page. */
-const CROP_WORDS: Record<string, string> = {
-  wheat: 'gandum gundum گندم', maize: 'makai makki مکئی', 'rice-basmati': 'chawal chawel dhan basmati چاول دھان', 'rice-hybrid': 'chawal chawel dhan چاول دھان',
-  cotton: 'kapas phutti کپاس پھٹی', sugarcane: 'ganna kamad گنا کماد', 'sugarcane-ratoon': 'ganna kamad mudhi مونڈھی گنا کماد', canola: 'sarson raya سرسوں کینولا',
-  sesame: 'til تل', soybean: 'soyabean سویابین', sunflower: 'surajmukhi سورج مکھی', chickpea: 'chana channa چنا', lentil: 'masoor مسور',
-  'mungbean-mash': 'moong mung mash مونگ ماش', potato: 'aloo alu آلو', tomato: 'tamatar ٹماٹر', chili: 'mirch mirchi مرچ', garlic: 'lehsan lahsan لہسن',
-  watermelon: 'tarbooz تربوز', turmeric: 'haldi ہلدی', onion: 'piaz pyaz پیاز', 'banana-year1': 'kela کیلا', 'banana-year2': 'kela کیلا',
-  citrus: 'kinnow kinno malta کینو مالٹا', 'date-palm': 'khajoor khajur کھجور', mango: 'aam آم', strawberry: 'اسٹرابیری', guava: 'amrood amrud امرود',
-}
+// D-255: CROP_WORDS moved to '@/lib/findWords', shared with the crop search box.
 
 function index(): Hit[] {
   const out: Hit[] = []
   // D-144: crops with a live calculator are indexed first and carry the tag.
   for (const c of liveFirst(CROPS, cropSlug)) out.push({ label: c.name, sub: `${c.sowing} · ${c.programme}`, href: `#/crops/${cropSlug(c)}`, kind: 'Crop plan', live: hasCalculator(cropSlug(c)), keys: CROP_WORDS[cropSlug(c)] })
-  for (const p of PRODUCTS) if (!p.family) out.push({ label: p.name, sub: p.analysis, href: `#/products/${p.slug}`, kind: 'Product' })
+  for (const p of PRODUCTS) if (!p.family) out.push({ label: p.name, sub: p.analysis, href: `#/products/${p.slug}`, kind: 'Product', keys: productWords(p.slug, p.cat) })   // D-255
   for (const t of TOOLS) if (t.href) out.push({ label: t.name, sub: t.one, href: t.href, kind: 'Tool', keys: t.keywords })
   for (const [label, sub, href] of PAGES) out.push({ label, sub, href, kind: 'Page', keys: PAGE_KEYS[href] })
   return out
@@ -136,11 +130,10 @@ export function MenuPanel({ onClose, extras }: { onClose: () => void; extras?: R
   const hits = useMemo(() => {
     const s = q.trim().toLowerCase()
     if (!s) return []
-    const words = s.split(/\s+/)
     const scored = all
       .map(h => {
         const hay = `${h.label} ${h.sub} ${h.kind} ${h.keys ?? ''}`.toLowerCase()
-        if (!words.every(w => hay.includes(w))) return null
+        if (!exactMatch(hay, s)) return null
         // A name that STARTS with what was typed is what the reader meant. "pot" is potato before
         // it is "V-Potash Plus", and a page whose body merely mentions potash is last.
         const l = h.label.toLowerCase()
@@ -151,7 +144,14 @@ export function MenuPanel({ onClose, extras }: { onClose: () => void; extras?: R
     // D-144: among names that match, a crop with a live calculator comes first (ruling 1). A hit
     // found only through its keywords still comes after every name match.
     const nameHit = (x: { rank: number }) => (x.rank < 2 ? 0 : 1)
-    return scored.sort((a, b) => nameHit(a) - nameHit(b) || Number(!a.h.live) - Number(!b.h.live) || a.rank - b.rank || a.h.label.length - b.h.label.length).slice(0, 8).map(x => x.h)
+    if (scored.length) return scored.sort((a, b) => nameHit(a) - nameHit(b) || Number(!a.h.live) - Number(!b.h.live) || a.rank - b.rank || a.h.label.length - b.h.label.length).slice(0, 8).map(x => x.h)
+    // D-255: nothing matched exactly, so the names and keywords 1 slip away ("wheet", "pottash").
+    // Only names and keywords, never page descriptions ("whaet" is wheat, not "what"); closest first.
+    const near = all
+      .map(h => ({ h, d: slipCost(`${h.label} ${h.keys ?? ''}`, s), named: slipCost(h.label, s) >= 0 }))
+      .filter(x => x.d >= 0)
+    // Closest first; then a hit whose own NAME is the near-miss ("pottash" → Vital Potash before SOP).
+    return near.sort((a, b) => a.d - b.d || Number(!a.named) - Number(!b.named) || Number(!a.h.live) - Number(!b.h.live) || a.h.label.length - b.h.label.length).slice(0, 8).map(x => x.h)
   }, [q, all])
 
   useEffect(() => setCur(0), [q])

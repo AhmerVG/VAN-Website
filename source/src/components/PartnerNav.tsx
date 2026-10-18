@@ -15,9 +15,9 @@ import { useEffect, useState } from 'react'
  */
 
 const ITEMS: [string, string][] = [
+  ['library', 'The formulations'],   // D-254: first, as the section now is
   ['journey', 'The two routes'],
   ['models', 'The 3 models'],   // D-185
-  ['library', 'The library'],
   ['portfolio', 'The portfolio'],
   ['detail', 'In more detail'],
   ['limits', 'Before you ask'],

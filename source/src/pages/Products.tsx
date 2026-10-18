@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from 'react'
 import { PRODUCTS, type Product } from '@/data/catalogue'
 import { COUNTS, WA } from '@/data/site'
-import { PackShot, MethodIcon, DrawnBag, WaButton } from '@/components/bits'
+import { PackShot, MethodIcon, WaButton, FamilyShot } from '@/components/bits'
+import { NP_PACK } from '@/data/npPacks'
+export { FamilyShot }
 
 const CATS: [Product['cat'] | 'ALL', string][] = [['ALL', 'All'], ['N', 'Nitrogen'], ['P', 'Phosphorus'], ['K', 'Potash'], ['NPK', 'NPK'], ['MICRO', 'Micronutrients'], ['SEC', 'Secondary'], ['BIO', 'Biologicals']]
 const CAT_ORDER: Product['cat'][] = ['N', 'P', 'K', 'NPK', 'MICRO', 'SEC', 'BIO']
@@ -9,9 +11,6 @@ const METHODS = ['Broadcast', 'Fertigation', 'Foliar', 'Basal']
 const STAGES = ['Soil prep', 'Sowing', 'Germination', 'Early growth', 'Mid-life', 'Maturity']
 type SortKey = 'catalogue' | 'name' | 'category' | 'method' | 'stage' | 'availability'
 
-export function FamilyShot() {
-  return <div className="flex items-end gap-2"><DrawnBag label="6-32" width={54} /><DrawnBag label="5-40" width={62} /><DrawnBag label="8-38" width={54} /></div>
-}
 
 /** B's pack-shot grid and filters, plus A's table as a toggle (Cards ⇄ Table, sortable by clicking a header). */
 export default function Products() {
@@ -102,7 +101,7 @@ export default function Products() {
             <tbody>
               {list.map(p => (
                 <tr key={p.slug} className="rowlink" onClick={() => { window.location.hash = `#/products/${p.slug}` }}>
-                  <td><div style={{ width: 40, height: 52, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{p.family ? <DrawnBag label="NP" width={28} /> : <PackShot slug={p.slug} style={{ maxHeight: 50, width: 'auto' }} />}</div></td>
+                  <td><div style={{ width: 40, height: 52, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{p.family ? <img src={NP_PACK['5-40']} alt="" style={{ maxHeight: 50, width: 'auto' }} /> : <PackShot slug={p.slug} style={{ maxHeight: 50, width: 'auto' }} />}</div></td>
                   <td className="font-bold whitespace-nowrap" style={{ color: 'var(--navy)' }}>{p.name}{p.family && <span className="tag tag-grey ml-2">family</span>}</td>
                   <td style={{ minWidth: 110 }}>{p.catLabel}</td>
                   <td style={{ minWidth: 220 }}>{p.analysis}</td>

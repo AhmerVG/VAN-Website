@@ -1,5 +1,6 @@
 import type { ReactNode, CSSProperties } from 'react'
 import { PACK_WEBP, PACK_PNG } from '@/data/assets'
+import { NP_PACK } from '@/data/npPacks'
 import { PRODUCTS, type Product } from '@/data/catalogue'
 
 export function SectionHead({ eyebrow, title, lead, tone, right, id }: { eyebrow?: string; title: ReactNode; lead?: ReactNode; tone?: 'green' | 'soil' | 'gold' | 'navy' | 'rust'; right?: ReactNode; id?: string }) {
@@ -53,6 +54,18 @@ export function PackShot({ slug, hi, className = '', style, alt }: { slug: strin
   const src = (hi && p?.png && PACK_PNG[p.png]) || PACK_WEBP[slug]
   if (!src) return <DrawnBag className={className} />
   return <img src={src} alt={alt ?? p?.name ?? slug} className={className} style={style} />
+}
+
+/** D-256: the NP Range as its 3 bags, the real Green Phosphate (6-32) and the 2 new packs. */
+export function FamilyShot({ max = 280 }: { max?: number }) {
+  const one = { width: '100%', height: 'auto', maxHeight: 'none', display: 'block' } as const
+  return (
+    <div className="grid grid-cols-3 items-end gap-2" style={{ width: '100%', maxWidth: max }}>
+      <img src={NP_PACK['6-32']} alt="Green Phosphate, NP 6-32" style={one} />
+      <img src={NP_PACK['5-40']} alt="VAN NP 5-40" style={one} />
+      <img src={NP_PACK['8-38']} alt="VAN NP 8-38" style={one} />
+    </div>
+  )
 }
 
 /** Split a bag label into at most 3 short lines so a long name ("Calcium Ammonium Nitrate") fits. */
