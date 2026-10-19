@@ -193,7 +193,7 @@ export function SoilMatrix({ selected, onSelect, param, onParam }: {
         The bands are VAN's own 5-band soil-test table, the same one printed on a VAN soil report,
         read against the district median, the typical field; the mean sits under each value. Calcium carbonate has no row in that table, so it carries a value and no
         colour. Copper and manganese have 3 bands there rather than 5. N.d. = not determined; Jhelum returns no
-        valid zinc. * Iron and copper in Faisalabad, Jhang, Chiniot and Toba Tek Singh read far below every other district,
+        valid zinc. * Copper in Faisalabad, Jhang, Chiniot and Toba Tek Singh reads far below every other district, and iron far below most,
         which points to a different laboratory method rather than different soil. They are shown as surveyed and not banded.
         <b> Tap any cell</b> to take that district and that parameter to the map and the readings above.
       </p>

@@ -91,6 +91,11 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
     if (!profile) return
     setSoilInputs(s => {
       const next = { ...s }
+      // D-273, Tahir 19 Oct 2026: a row filled from the previous district that this district leaves blank is
+      // cleared, so no reading from another district is counted. Rows the farmer set himself stay.
+      for (const parameter of Object.keys(next) as SoilParameter[]) {
+        if (bandSource[parameter] === 'district' && !(parameter in profile.bands)) delete next[parameter]
+      }
       for (const [parameter, band] of Object.entries(profile.bands)) {
         if (bandSource[parameter as SoilParameter] === 'farmer') continue
         next[parameter as SoilParameter] = band
@@ -99,6 +104,9 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
     })
     setBandSource(s => {
       const next = { ...s }
+      for (const parameter of Object.keys(next) as SoilParameter[]) {
+        if (next[parameter] === 'district' && !(parameter in profile.bands)) delete next[parameter]
+      }
       for (const parameter of Object.keys(profile.bands)) {
         if (next[parameter as SoilParameter] === 'farmer') continue
         next[parameter as SoilParameter] = 'district'
@@ -313,6 +321,9 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
                 </div>
               ))}
             </div>
+            {/* D-272, Tahir's ruling 19 Oct 2026: VAN does not sell half bags, but a farmer splits a bag ("half bag dosage
+                does work, 1 bag is for 2 acres"), so the cost stays priced on the exact quantity. Note only, no figure changes. */}
+            <p className="cap mt-3 max-w-[140ch]" data-price-note>This cost is for the amount used on the field. Where the plan says half a bag, 1 bag covers 2 acres.</p>
             {cost.unpriced.length > 0 && (
               <div className="mt-4 pt-3" style={{ borderTop: '1px dashed var(--line)' }}>
                 <div className="cap font-bold uppercase tracking-[.06em] mb-1">Not in that total</div>

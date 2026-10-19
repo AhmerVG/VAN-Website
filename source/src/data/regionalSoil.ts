@@ -2,6 +2,7 @@ import { DISTRICT_PROFILES, PARAMETER_ANALYTE } from './districtSoil'
 import type { DistrictProfile } from './districtSoil'
 import { bandForValue } from './soilThresholds'
 import type { SoilBand, SoilParameter } from './soilThresholds'
+import { notComparable } from '../lib/soilSeverity'
 
 /**
  * REGIONAL SOIL LAYER — a starting point for a farmer who has no soil report of their own.
@@ -36,20 +37,28 @@ export type RegionalProfile = {
   values: Partial<Record<SoilParameter, number>>
   /** Parameters this district has no valid survey data for. */
   missing: SoilParameter[]
+  /** D-271: parameters the Soil Atlas marks "not comparable" for this district (D-181: iron and copper in Faisalabad,
+   *  Jhang, Chiniot and Toba Tek Singh). Not banded and not filled, so the soil rows stay blank and the plan does not
+   *  count them. */
+  notComparable: SoilParameter[]
 }
 
 function classify(d: DistrictProfile): RegionalProfile {
   const bands: Partial<Record<SoilParameter, SoilBand>> = {}
   const values: Partial<Record<SoilParameter, number>> = {}
   const missing: SoilParameter[] = []
+  const nc: SoilParameter[] = []
   for (const parameter of REGIONAL_PARAMETERS) {
+    // D-271, Tahir's ruling 19 Oct 2026: the district fill leaves out what D-181 marks not comparable. Was: banded and
+    // filled like any other reading (basmati in Faisalabad: iron Critical, VL-Micromix 1 to 2 L).
+    if (notComparable(d.key, PARAMETER_ANALYTE[parameter])) { nc.push(parameter); continue }
     const value = d.median[PARAMETER_ANALYTE[parameter]]
     const band = bandForValue(parameter, value)
     if (value === undefined || !band) { missing.push(parameter); continue }
     bands[parameter] = band
     values[parameter] = value
   }
-  return { key: d.key, name: d.name, n: d.n, bands, values, missing }
+  return { key: d.key, name: d.name, n: d.n, bands, values, missing, notComparable: nc }
 }
 
 /** All 36 Punjab districts, alphabetical, as a farmer would look for their own. */

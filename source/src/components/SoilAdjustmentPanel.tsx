@@ -73,6 +73,18 @@ export function SoilAdjustmentPanel({ crop, soilInputs, bandSource, district, on
             Filled in from the {REGIONAL_SOURCE.survey}, {REGIONAL_SOURCE.window}. {profile.n.toLocaleString()} samples in {profile.name}.
             {' '}{REGIONAL_SOURCE.caution}
             {profile.missing.length > 0 && <> The survey has no valid {profile.missing.map(m => soilParameterInline(m)).join(', ')} reading here, so {profile.missing.length > 1 ? 'those rows are' : 'that row is'} left blank.</>}
+            {/* D-271: the Soil Atlas's own "not comparable" note (D-181), for the district fill, naming only rows this crop shows that are actually blank (a row kept from an earlier district or typed by the farmer is not named). */}
+            {(() => {
+              const nc = profile.notComparable.filter(m => parameters.includes(m) && soilInputs[m] === undefined)
+              if (nc.length === 0) return null
+              // D-271 wording, Tahir 19 Oct 2026: copper here is below every other district; iron is below most (Jhelum's iron is lower still).
+              const hasFe = nc.includes('Fe'), hasCu = nc.includes('Cu')
+              const lead = hasFe && hasCu ? 'Copper here reads far below every other district, and iron far below most,'
+                : hasCu ? 'Copper here reads far below every other district,'
+                : hasFe ? 'Iron here reads far below most districts,'
+                : `${nc.map((m, i) => (i ? soilParameterInline(m) : SOIL_PARAMETER_LABEL[m])).join(' and ')} here ${nc.length > 1 ? 'read' : 'reads'} far below other districts,`
+              return <> {lead} which points to a different laboratory method rather than different soil. {nc.length > 1 ? 'They are' : 'It is'} not comparable, so {nc.length > 1 ? 'those rows are' : 'that row is'} left blank.</>
+            })()}
           </p>
         )}
       </div>

@@ -111,8 +111,9 @@ export function urgencyScore(s: BandStats, districtKey?: string): number {
 }
 
 /**
- * D-181, Tahir 26 Sep 2026: iron and copper in these 4 districts read far below the other 32 (iron median
- * 0.59 to 0.82 ppm against 1.4 to 5.9 elsewhere), which looks like a different laboratory method rather than
+ * D-181, Tahir 26 Sep 2026: copper in these 4 districts reads far below all the other 32, and iron far below most (iron median
+ * 0.59 to 0.82 ppm against 1.44 to 5.9 in 31 of the other 32, Jhelum lower at 0.46; copper 0.21 to 0.24 against
+ * 0.39 to 1.52 in all 32 others; figures corrected 19 Oct 2026), which looks like a different laboratory method rather than
  * different soil. No conversion factor exists, so the readings are kept exactly as surveyed and marked
  * "not comparable" rather than corrected. His choice: mark them, do not normalise.
  */

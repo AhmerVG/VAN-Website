@@ -88,8 +88,17 @@ export const SOIL_BUMP_MULTIPLIER: Record<SoilBand, number> = {
  * The same cutoffs as SOIL_PARAMETER_THRESHOLDS above, expressed numerically so a measured value can
  * be classified in code. Nothing new is decided here — every boundary is read straight off the same
  * source rows (`Report, Color, VAC add, Order of Nutrition Plan.xlsx`, Sheet1 P2:U12); the strings
- * above stay the display form. Ranges are [min, max) — a value equal to a boundary falls in the
- * higher band, which is the ordinary reading of "5–10" following "< 5".
+ * above stay the display form. Ranges are [min, max) by default; `maxClosed` makes the top edge
+ * inclusive and `minOpen` makes the bottom edge exclusive.
+ *
+ * D-270, Tahir's ruling 19 Oct 2026: a reading exactly on a boundary falls in the band the sheet's own
+ * inequality gives it (Sheet1 P3:U12). Was: every range [min, max), so a value equal to a boundary
+ * always fell in the higher band (pH 8.0 read Average, the sheet says Moderate). Edges the sheet writes
+ * with "<=" on the upper side or ">" on the lower side are now marked. 2 points the sheet itself does
+ * not settle, ruled by Tahir 19 Oct 2026: pH 7.5 is in both Healthy (7.5 >= pH >= 7) and Moderate
+ * (8 >= pH >= 7.5) on the sheet and stays Moderate, as before;
+ * P 20 and K 200 are in no band on the sheet ("15 <= P2O < 20", "P2O > 20"); Tahir ruled 19 Oct 2026
+ * that they fall in the band below, Moderate (was Healthy, which took a quarter off phosphate or potash).
  *
  * pH is the one non-monotonic row: VAN's table classifies only the alkaline side (7 upward), because
  * Punjab's calcareous soils run alkaline. A reading below 7 has nothing to classify against in the
@@ -99,19 +108,19 @@ export const SOIL_BUMP_MULTIPLIER: Record<SoilBand, number> = {
  * gaps are simply absent here too, so a value in what would be the Weak range classifies to the
  * nearest band the source actually defines.
  */
-export type BandRange = { band: SoilBand; min: number; max: number }
+export type BandRange = { band: SoilBand; min: number; max: number; minOpen?: boolean; maxClosed?: boolean }
 
 export const SOIL_PARAMETER_RANGES: Record<SoilParameter, BandRange[]> = {
-  EC:  [{ band: 'healthy', min: -Infinity, max: 2 }, { band: 'moderate', min: 2, max: 4 }, { band: 'average', min: 4, max: 8 }, { band: 'weak', min: 8, max: 12 }, { band: 'critical', min: 12, max: Infinity }],
-  pH:  [{ band: 'healthy', min: 7, max: 7.5 }, { band: 'moderate', min: 7.5, max: 8 }, { band: 'average', min: 8, max: 8.5 }, { band: 'weak', min: 8.5, max: 9 }, { band: 'critical', min: 9, max: Infinity }],
-  OM:  [{ band: 'critical', min: -Infinity, max: 0.5 }, { band: 'weak', min: 0.5, max: 0.75 }, { band: 'average', min: 0.75, max: 1 }, { band: 'moderate', min: 1, max: 1.25 }, { band: 'healthy', min: 1.25, max: Infinity }],
-  P2O: [{ band: 'critical', min: -Infinity, max: 5 }, { band: 'weak', min: 5, max: 10 }, { band: 'average', min: 10, max: 15 }, { band: 'moderate', min: 15, max: 20 }, { band: 'healthy', min: 20, max: Infinity }],
-  K2O: [{ band: 'critical', min: -Infinity, max: 50 }, { band: 'weak', min: 50, max: 100 }, { band: 'average', min: 100, max: 150 }, { band: 'moderate', min: 150, max: 200 }, { band: 'healthy', min: 200, max: Infinity }],
-  Zn:  [{ band: 'critical', min: -Infinity, max: 0.6 }, { band: 'weak', min: 0.6, max: 0.7 }, { band: 'average', min: 0.7, max: 0.8 }, { band: 'moderate', min: 0.8, max: 1 }, { band: 'healthy', min: 1, max: Infinity }],
-  B:   [{ band: 'critical', min: -Infinity, max: 0.2 }, { band: 'weak', min: 0.2, max: 0.4 }, { band: 'average', min: 0.4, max: 0.6 }, { band: 'moderate', min: 0.6, max: 1 }, { band: 'healthy', min: 1, max: Infinity }],
-  Fe:  [{ band: 'critical', min: -Infinity, max: 2 }, { band: 'weak', min: 2, max: 3 }, { band: 'average', min: 3, max: 4 }, { band: 'moderate', min: 4, max: 5 }, { band: 'healthy', min: 5, max: Infinity }],
-  Cu:  [{ band: 'critical', min: -Infinity, max: 0.1 }, { band: 'average', min: 0.1, max: 0.2 }, { band: 'healthy', min: 0.2, max: Infinity }],
-  Mn:  [{ band: 'critical', min: -Infinity, max: 0.5 }, { band: 'average', min: 0.5, max: 1 }, { band: 'healthy', min: 1, max: Infinity }],
+  EC:  [{ band: 'healthy', min: -Infinity, max: 2 }, { band: 'moderate', min: 2, max: 4 }, { band: 'average', min: 4, max: 8, maxClosed: true }, { band: 'weak', min: 8, max: 12, minOpen: true, maxClosed: true }, { band: 'critical', min: 12, max: Infinity, minOpen: true }],
+  pH:  [{ band: 'healthy', min: 7, max: 7.5 }, { band: 'moderate', min: 7.5, max: 8, maxClosed: true }, { band: 'average', min: 8, max: 8.5, minOpen: true, maxClosed: true }, { band: 'weak', min: 8.5, max: 9, minOpen: true, maxClosed: true }, { band: 'critical', min: 9, max: Infinity, minOpen: true }],
+  OM:  [{ band: 'critical', min: -Infinity, max: 0.5 }, { band: 'weak', min: 0.5, max: 0.75 }, { band: 'average', min: 0.75, max: 1 }, { band: 'moderate', min: 1, max: 1.25, maxClosed: true }, { band: 'healthy', min: 1.25, max: Infinity, minOpen: true }],
+  P2O: [{ band: 'critical', min: -Infinity, max: 5 }, { band: 'weak', min: 5, max: 10 }, { band: 'average', min: 10, max: 15 }, { band: 'moderate', min: 15, max: 20, maxClosed: true }, { band: 'healthy', min: 20, max: Infinity, minOpen: true }],
+  K2O: [{ band: 'critical', min: -Infinity, max: 50 }, { band: 'weak', min: 50, max: 100 }, { band: 'average', min: 100, max: 150 }, { band: 'moderate', min: 150, max: 200, maxClosed: true }, { band: 'healthy', min: 200, max: Infinity, minOpen: true }],
+  Zn:  [{ band: 'critical', min: -Infinity, max: 0.6 }, { band: 'weak', min: 0.6, max: 0.7 }, { band: 'average', min: 0.7, max: 0.8 }, { band: 'moderate', min: 0.8, max: 1, maxClosed: true }, { band: 'healthy', min: 1, max: Infinity, minOpen: true }],
+  B:   [{ band: 'critical', min: -Infinity, max: 0.2 }, { band: 'weak', min: 0.2, max: 0.4 }, { band: 'average', min: 0.4, max: 0.6 }, { band: 'moderate', min: 0.6, max: 1, maxClosed: true }, { band: 'healthy', min: 1, max: Infinity, minOpen: true }],
+  Fe:  [{ band: 'critical', min: -Infinity, max: 2 }, { band: 'weak', min: 2, max: 3 }, { band: 'average', min: 3, max: 4 }, { band: 'moderate', min: 4, max: 5, maxClosed: true }, { band: 'healthy', min: 5, max: Infinity, minOpen: true }],
+  Cu:  [{ band: 'critical', min: -Infinity, max: 0.1 }, { band: 'average', min: 0.1, max: 0.2, maxClosed: true }, { band: 'healthy', min: 0.2, max: Infinity, minOpen: true }],
+  Mn:  [{ band: 'critical', min: -Infinity, max: 0.5 }, { band: 'average', min: 0.5, max: 1, maxClosed: true }, { band: 'healthy', min: 1, max: Infinity, minOpen: true }],
 }
 
 /**
@@ -127,7 +136,10 @@ export const SOIL_P_K_BASIS = 'elemental' as const
 export function bandForValue(parameter: SoilParameter, value: number | null | undefined): SoilBand | undefined {
   if (value === null || value === undefined || !Number.isFinite(value)) return undefined
   for (const r of SOIL_PARAMETER_RANGES[parameter]) {
-    if (value >= r.min && value < r.max) return r.band
+    // D-270: each edge's side as the sheet writes it. Was: if (value >= r.min && value < r.max) return r.band
+    const aboveMin = r.minOpen ? value > r.min : value >= r.min
+    const belowMax = r.maxClosed ? value <= r.max : value < r.max
+    if (aboveMin && belowMax) return r.band
   }
   return undefined
 }
