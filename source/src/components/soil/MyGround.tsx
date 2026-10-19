@@ -1,6 +1,12 @@
 import { useMemo } from 'react'
 import { GRID, districtByKey, medianStats, ANALYTES, fmtVal, type AnalyteKey } from '@/lib/soil'
 import { SOIL_SOURCE } from '@/data/soilLens'
+import { bandOf, SOIL_BAND_LABEL, type SoilColKey } from '@/lib/soilSeverity'
+import { BAND_UR, KHATA_UR } from '@/data/soilUrdu'
+import { fmtSafe } from '@/components/soil/TeesraKhata'
+import { DISTRICT_UR } from '@/data/soilTehsils'
+import { DISTRICT_PROFILES } from '@/data/districtSoil'
+import { phWord } from '@/data/soilUrdu'
 
 /**
  * ONE LEVEL BELOW THE DISTRICT — O-20, 9 September 2026.
@@ -55,7 +61,11 @@ export function MyGround({ selected }: { selected: string | null }) {
     const a = ANALYTES.find(x => x.key === k)!
     const vals = cells.map(c => c[k]).filter((v): v is number => v != null).sort((x, y) => x - y)
     const mean = (d.summary as unknown as Record<string, number | null>)[k]
-    const median = (medianStats(d.summary, d.key) as unknown as Record<string, number | null>)[k]
+    // Teesra Khata, 18 Oct 2026: the median is the one the wheat calculator fills from (districtSoil.ts, the raw record's
+    // 3 decimals), so this row, the khata above and the calculator read the same band. soilMedians.ts rounds to 2, which
+    // read Faisalabad and Toba Tek Singh zinc (0.697) as 0.70, a band too high. Falls back to soilMedians.ts.
+    const own = (DISTRICT_PROFILES.find(x => x.key === d.key)?.median as Record<string, number | undefined> | undefined)?.[k]
+    const median = own ?? (medianStats(d.summary, d.key) as unknown as Record<string, number | null>)[k]
     return { a, k, lo: vals[0] ?? null, hi: vals[vals.length - 1] ?? null, n: vals.length, mean: mean ?? null, median: median ?? null }
   }).filter(s => s.n > 1)
 
@@ -82,12 +92,14 @@ export function MyGround({ selected }: { selected: string | null }) {
 
       <div className="overflow-x-auto mt-4">
         <table className="tbl" style={{ minWidth: 560 }}>
-          <thead><tr><th>Reading</th><th className="r">District median</th><th className="r">District mean</th><th className="r">Lowest cell</th><th className="r">Highest cell</th></tr></thead>
+          <thead><tr><th>Reading</th><th className="r">District median</th><th>Band · <span className="urdu">درجہ</span></th><th className="r">District mean</th><th className="r">Lowest cell</th><th className="r">Highest cell</th></tr></thead>
           <tbody>
             {stats.map(s => (
               <tr key={s.k}>
                 <td className="font-semibold">{s.a.label}</td>
-                <td className="r num">{fmtVal(s.k, s.median)}</td>
+                {/* Teesra Khata, 18 Oct 2026: the band word in Urdu beside the ppm (Tahir's words), and a median that never rounds into the next band. */}
+                <td className="r num">{s.k === 'ph' || s.k === 'om' || s.k === 'p' || s.k === 'k' || s.k === 'zn' || s.k === 'b' ? `${fmtSafe(s.k, s.median)}${s.median != null && s.a.unit ? ' ' + s.a.unit : ''}` : fmtVal(s.k, s.median)}</td>
+                <td>{(() => { const b = s.median == null ? undefined : bandOf(s.k as SoilColKey, s.median); const w = s.k === 'ph' ? phWord(s.median) : null; return b ? <span className="whitespace-nowrap"><span className="urdu" style={{ fontWeight: 700 }}>{w ? w.ur : BAND_UR[b]}</span> <span className="cap">{w ? `${w.en} · ` : ''}{SOIL_BAND_LABEL[b]}</span></span> : null })()}</td>
                 <td className="r num">{fmtVal(s.k, s.mean)}</td>
                 <td className="r num">{fmtVal(s.k, s.lo)}</td>
                 <td className="r num">{fmtVal(s.k, s.hi)}</td>
@@ -104,9 +116,10 @@ export function MyGround({ selected }: { selected: string | null }) {
       </p>
       <div className="flex flex-wrap gap-3 mt-4">
         <a className="btn btn-navy btn-sm" href="#/lab">Have your field tested →</a>
-        <a className="btn btn-ghost btn-sm" href="#/crops">Build a plan from a soil report →</a>
+        {/* Teesra Khata, 18 Oct 2026: this opened all 28 crops. It now opens the wheat calculator with this district's soil rows filled (Tahir's wording). */}
+        <a className="btn btn-gold btn-sm" href={`#/crops/wheat?district=${encodeURIComponent(d.key)}`}><span className="urdu">{KHATA_UR.planButton}</span> <span className="cap" style={{ color: 'inherit' }}>· the wheat plan for {d.name}</span></a>
       </div>
-      <p className="src mt-3"><b>Source ·</b> {SOIL_SOURCE.short}. Cells of {GRID.deg}° with at least three samples; no interpolation and no boundary file. A farmer knows his tehsil rather than his cell. Reading these by tehsil and mauza is possible from the same workbooks and is not built yet.</p>
+      <p className="src mt-3"><b>Source ·</b> {SOIL_SOURCE.short}. Cells of {GRID.deg}° with at least three samples; no interpolation and no boundary file. A farmer knows his tehsil rather than his cell: the tehsil readings ({DISTRICT_UR[d.key]}, {d.name}) are in the farmer screens at the top of this page, from the same workbooks.</p>
     </div>
   )
 }

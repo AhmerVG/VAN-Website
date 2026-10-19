@@ -15,9 +15,10 @@ import { SoilLenses, type LensKey } from '@/components/soil/SoilLenses'
 import { MyGround } from '@/components/soil/MyGround'
 import { SoilReadingPanel } from '@/components/soil/SoilReadingPanel'
 import { Lens } from '@/components/Lens'
+import { TeesraKhata } from '@/components/soil/TeesraKhata'
 
 /** #/soil — the Soil lens: what 770,160 Punjab samples say, and where VAN's own published mechanism sentences meet it. */
-export default function Soil({ rel, district }: { rel: string | null; district: string | null }) {
+export default function Soil({ rel, district, from = null }: { rel: string | null; district: string | null; from?: string | null }) {
   const [sel, setSel] = useState<string | null>(districtByKey(district) ? district : null)
   // O-20: the lens is a route through the page, not a filter. Null means the page as it always was.
   const [lens, setLens] = useState<LensKey | null>(null)
@@ -36,6 +37,10 @@ export default function Soil({ rel, district }: { rel: string | null; district: 
   const mapAnalyte = MAPPABLE.includes(param) ? (param as unknown as AnalyteKey) : undefined
   return (
     <div>
+      {/* Teesra Khata, 18 Oct 2026: the farmer screens, Urdu first, at the top of the page, after the full-screen
+          door (soil-door.inline.html). They fold away to this page, which is unchanged below them. A LinkedIn
+          arrival (?from=mitti-en) gets them folded, English first. Plan: Soil Atlas Plan 18 Oct 2026.md. */}
+      <TeesraKhata district={district} englishFirst={from === 'mitti-en'} />
       {/* D-180, 26 Sep 2026 · Tahir: "visually interactive first ... may be a map ... then facts. I'm not saying
           to remove anything, but text after." The living map now opens the page, beside how to read it; the
           lead, the 8 answers, the readings and the lenses follow it. Nothing was removed. Revert: the v58 zip. */}
@@ -47,7 +52,7 @@ export default function Soil({ rel, district }: { rel: string | null; district: 
           <p className="cap mt-1">▸ The map plays through 8 readings, then rests on phosphorus. Pick a reading, hover a square for its district and value, tap one to hold that district.</p>
           <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-6 items-start">
           <div className="panel p-4 lg:p-5">
-            <SoilMap initial="p" analyte={mapAnalyte} onAnalyte={k => setParam(k as SoilColKey)} focus={sel} onPick={k => setSel(k)} maxHeight={640} />
+            <SoilMap initial="p" analyte={mapAnalyte} onAnalyte={k => setParam(k as SoilColKey)} focus={sel} onPick={k => setSel(k)} maxHeight={640} urduLabels={!!from && from.startsWith('mitti') && from !== 'mitti-en'} />
             {!mapAnalyte && <p className="cap mt-2" style={{ color: 'var(--rust)' }}>Iron, copper and manganese are determined in every district workbook but are not in the 0.05° grid file, so they have a row in the matrix below and no layer on this map.</p>}
           </div>
           <div className="grid gap-4 lg:sticky lg:top-24">
@@ -59,7 +64,7 @@ export default function Soil({ rel, district }: { rel: string | null; district: 
             {/* D-243, 1 Oct 2026: the panel reads whichever reading is on the map. The general text that
                 stood here (one panel for all 8 readings) is replaced; revert from the v61.10 zip. */}
             <SoilReadingPanel analyte={mapAnalyte ?? 'p'} district={sel} />
-            {sel && <div className="panel p-4 flex items-center gap-3"><span className="font-bold">In focus: {districtByKey(sel)?.name}</span><a className="btn btn-sm btn-ghost ml-auto" href="#/soil#soil-districts">Its distribution ↓</a><button className="btn btn-sm btn-white" onClick={() => setSel(null)}>Show all</button></div>}
+            {sel && <div className="panel p-4 flex items-center gap-3"><span className="font-bold">In focus: {districtByKey(sel)?.name}</span><a className="btn btn-sm btn-ghost ml-auto" href="#soil-districts">Its distribution ↓</a><button className="btn btn-sm btn-white" onClick={() => setSel(null)}>Show all</button></div>}
           </div>
         </div>
         </div>

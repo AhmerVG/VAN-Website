@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { DISTRICT_UR } from '@/data/soilTehsils'
 import { SOIL } from '@/data/soil'
 import { DISTRICTS, medianStats, thousands } from '@/lib/soil'
 import { SOIL_COLS, SOIL_BAND_COLOR, SOIL_BAND_LABEL, SOIL_BAND_ORDER, bandOf, bandTint, fmt, readVal, urgencyScore, notComparable, type SoilColKey } from '@/lib/soilSeverity'
@@ -73,7 +74,9 @@ export function SoilMatrix({ selected, onSelect, param, onParam }: {
 
   const rows = useMemo(() => {
     const t = q.trim().toLowerCase()
-    const list = DISTRICTS.filter(d => !t || d.name.toLowerCase().includes(t))
+    // Teesra Khata, 18 Oct 2026: the search also finds a district by its Urdu name.
+    const u = q.trim()
+    const list = DISTRICTS.filter(d => !t || d.name.toLowerCase().includes(t) || (DISTRICT_UR[d.key] ?? '').includes(u))
     return [...list].sort((a, b) => {
       if (sort.key === 'name') return a.name.localeCompare(b.name) * sort.dir
       const ma = medianStats(a.summary, a.key), mb = medianStats(b.summary, b.key)
@@ -138,7 +141,11 @@ export function SoilMatrix({ selected, onSelect, param, onParam }: {
   return (
     <div>
       <div className="flex flex-wrap items-center gap-2 mb-3">
-        <input className="input input-sm" style={{ maxWidth: 220 }} placeholder="My district…" value={q} onChange={e => setQ(e.target.value)} aria-label="Find a district" />
+        {/* Teesra Khata, 18 Oct 2026: picking from the search sets the district. When the search narrows to 1 district
+            it is chosen, and Enter chooses the first row, so the map, the readings and "one level down" all follow. */}
+        <input className="input input-sm" style={{ maxWidth: 220 }} placeholder="My district… · ضلع" value={q}
+          onChange={e => { const v = e.target.value; setQ(v); const t = v.trim().toLowerCase(); if (!t) return; const m = DISTRICTS.filter(d => d.name.toLowerCase().includes(t) || (DISTRICT_UR[d.key] ?? '').includes(v.trim())); if (m.length === 1) onSelect(m[0].key) }}
+          onKeyDown={e => { if (e.key === 'Enter' && rows[0]) onSelect(rows[0].key) }} aria-label="Find a district" />
         <button className={`chip chip-xs ${sort.key === 'worst' ? 'on' : ''}`} onClick={() => head('worst')} aria-pressed={sort.key === 'worst'}>Worst first{arrow('worst')}</button>
         <button className={`chip chip-xs ${sort.key === 'name' ? 'on' : ''}`} onClick={() => head('name')} aria-pressed={sort.key === 'name'}>A–Z{arrow('name')}</button>
         <button className={`chip chip-xs ${sort.key === 'n' ? 'on' : ''}`} onClick={() => head('n')} aria-pressed={sort.key === 'n'}>Samples{arrow('n')}</button>

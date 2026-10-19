@@ -34,8 +34,8 @@ export default function App() {
     case 'composition': page = <Composition />; break   // D-202
     case 'product': page = <ProductPage slug={route.slug} />; break
     case 'crops': page = <Crops />; break
-    case 'crop': page = <CropPage slug={route.slug} />; break
-    case 'soil': page = <Soil rel={route.rel} district={route.district} />; break
+    case 'crop': page = <CropPage slug={route.slug} district={route.district} />; break
+    case 'soil': page = <Soil rel={route.rel} district={route.district} from={route.from} />; break
     case 'partner': {
       const pp = route.slug ? PARTNER_PAGES.find(x => x.slug === route.slug) : null
       page = pp ? <Article page={pp} /> : <Partner />

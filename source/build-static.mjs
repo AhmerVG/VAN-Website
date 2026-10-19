@@ -122,6 +122,11 @@ const esc = t => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(
   // the React app and every other page are untouched. Record: F:\Story and Marketing\Working Record.md.
   const DOOR = fs.readFileSync(path.join(ROOT, 'door.inline.html'), 'utf8').replace(/\r\n?/g, '\n').replace(/\n*$/, '\n') // LF whatever the checkout did
   if (!/^<!-- VAN door: start/.test(DOOR) || !/<!-- VAN door: end -->\n$/.test(DOOR)) throw new Error('door.inline.html is not the door block (markers missing)')
+  // Teesra Khata, 18 Oct 2026: the soil door. Plays before the Soil Atlas on every visit (Tahir's ruling), full screen
+  // like the home door, then hands over to the farmer screens at the top of the page. One self-contained block in
+  // soil-door.inline.html, put at the top of <body> of soil.html only. Record: F:\Story and Marketing\Mitti Ka hissab.
+  const SOIL_DOOR = fs.readFileSync(path.join(ROOT, 'soil-door.inline.html'), 'utf8').replace(/\r\n?/g, '\n').replace(/\n*$/, '\n')
+  if (!/^<!-- VAN soil door: start/.test(SOIL_DOOR) || !/<!-- VAN soil door: end -->\n$/.test(SOIL_DOOR)) throw new Error('soil-door.inline.html is not the soil door block (markers missing)')
   // Parcel emits unquoted attributes, so match both quoted and bare forms.
   const scripts = [...distIndex.matchAll(/<script[^>]*\ssrc=["']?([^"'\s>]+)/g)].map(m => m[1])
   const styles = [...distIndex.matchAll(/<link[^>]*rel=["']?stylesheet["']?[^>]*\shref=["']?([^"'\s>]+)/g)].map(m => m[1])
@@ -281,7 +286,7 @@ addEventListener('hashchange', function () {
 </script>
 </head>
 <body>
-${r.hash === '#/' ? DOOR : ''}<div id="root">${bodyOut}</div>
+${r.hash === '#/' ? DOOR : r.hash === '#/soil' ? SOIL_DOOR : ''}<div id="root">${bodyOut}</div>
 ${scripts.map(x => `<script defer src="${rel(x)}"></script>`).join('\n')}
 </body>
 </html>`

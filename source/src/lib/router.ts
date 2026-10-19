@@ -5,8 +5,8 @@ export type Route =
   | { name: 'products' }
   | { name: 'product'; slug: string }
   | { name: 'crops' }
-  | { name: 'crop'; slug: string }
-  | { name: 'soil'; rel: string | null; district: string | null }
+  | { name: 'crop'; slug: string; district: string | null }
+  | { name: 'soil'; rel: string | null; district: string | null; from: string | null }
   | { name: 'partner'; slug: string | null }
   | { name: 'lab' }
   | { name: 'verify' }
@@ -33,12 +33,21 @@ export function parseHash(hash: string): { route: Route; anchor: string | null }
   const [p, b] = h.split('/')
   switch (p) {
     case 'products': return { route: b ? { name: 'product', slug: b } : { name: 'products' }, anchor: a }
-    case 'crops': return { route: b ? { name: 'crop', slug: b } : { name: 'crops' }, anchor: a }
+    // Teesra Khata (18 Oct 2026): `?district=` on a crop page opens its calculator with the soil rows filled from
+    // that district's survey median, and lands on it.
+    case 'crops': {
+      const district = query.get('district')
+      return { route: b ? { name: 'crop', slug: b, district } : { name: 'crops' }, anchor: a ?? (b && district ? 'creator' : null) }
+    }
     case 'soil': {
       const rel = query.get('rel')
       const district = query.get('district')
+      // Teesra Khata (18 Oct 2026): `?from=` names the campaign link (mitti, mitti-en, mitti-wa). A campaign link with a
+      // district lands on the farmer screens at the top, opened at that district; any other `?district=` keeps landing on
+      // the district panel, as before.
+      const from = query.get('from')
       // `?rel=` pre-selects the relation explorer and lands on it; `?district=` lands on the district panel.
-      return { route: { name: 'soil', rel, district }, anchor: a ?? (rel ? 'soil-relations' : district ? 'soil-districts' : null) }
+      return { route: { name: 'soil', rel, district, from }, anchor: a ?? (rel ? 'soil-relations' : from && district ? 'teesra-khata' : district ? 'soil-districts' : null) }
     }
     case 'partner': return { route: { name: 'partner', slug: b || null }, anchor: a }
     case 'circular-economy': return { route: { name: 'circular', slug: b || null }, anchor: a }
@@ -75,14 +84,18 @@ declare global { interface Window { __ROUTE__?: string } }
 
 function read(): { route: Route; anchor: string | null } {
   const raw = window.location.hash
+  // Teesra Khata (18 Oct 2026): a built page is a real URL, so a link such as soil.html?district=SHEIKHUPURA or
+  // crops/wheat.html?district=SHEIKHUPURA#creator carries its query in location.search, not in the hash. The page's
+  // own route gets that query, so an ad or a WhatsApp link lands with the district already chosen.
+  const own = window.__ROUTE__ && window.location.search ? window.__ROUTE__.replace(/\?.*$/, '') + window.location.search : window.__ROUTE__
   // A bare "#section" is an in-page anchor, not a route. Before this check the router failed to
   // parse it, decided it was a 404 and reset to the home page — which silently broke every
   // "jump to section" link on the site.
   if (raw && !raw.startsWith('#/')) {
-    const here = parseHash(window.__ROUTE__ || '#/')
+    const here = parseHash(own || '#/')
     return { route: here ? here.route : { name: 'home' }, anchor: raw.slice(1) || null }
   }
-  const r = parseHash(raw || window.__ROUTE__ || '')
+  const r = parseHash(raw || own || '')
   if (!r) {
     window.history.replaceState(null, '', '#/')
     return { route: { name: 'home' }, anchor: null }

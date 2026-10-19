@@ -1,4 +1,5 @@
 import { SOIL_HEADLINE } from '@/data/soilLens'
+import { KHATA_UR } from '@/data/soilUrdu'
 
 /**
  * THE SOIL LENSES — O-20, 9 September 2026.
@@ -99,6 +100,8 @@ export function SoilLenses({ value, onChange }: { value: LensKey | null; onChang
                 {on ? 'Reading this way' : 'Read it this way'}
               </span>
               <span className="display text-[18px]" style={{ color: 'var(--navy)' }}>{l.label}</span>
+              {/* Teesra Khata, 18 Oct 2026: lens 02 keeps its English question exactly (11 Sep ruling) and gains Tahir's Urdu line beside it. */}
+              {l.key === 'ground' && <span className="urdu" style={{ color: 'var(--navy)', fontSize: 16 }}>{KHATA_UR.lens02}</span>}
               <span className="small muted">{l.blurb}</span>
             </button>
           )

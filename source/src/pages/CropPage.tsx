@@ -46,10 +46,10 @@ const SIMULATOR_CROPS = ['wheat', 'potato']
 const DEFAULT_YIELD: Record<string, number> = { potato: 300 }
 const NUTRIENT_CAT: Record<string, string[]> = { N: ['N'], P: ['P'], K: ['K'], S: ['SEC'], Multi: ['MICRO', 'SEC'] }
 
-export default function CropPage({ slug }: { slug: string }) {
+export default function CropPage({ slug, district = null }: { slug: string; district?: string | null }) {
   const [askOpen, setAskOpen] = useState(false)
   usePhonePlainDefault()   // D-199
-  if (slug === 'wheat') return <Wheat />
+  if (slug === 'wheat') return <Wheat district={district} />
   const c = cropBySlug(slug)
   if (!c) {
     return (
@@ -144,7 +144,7 @@ export default function CropPage({ slug }: { slug: string }) {
         <section className="wrap sec-tight" id="creator">
           <SectionHead eyebrow="Scale it to your field" title="The dynamic nutrition creator." lead={`Set your acres and every quantity below scales with it. Sourced straight from VAN's own ${cropLower} calculator, not estimated.`} tone="navy" />
           <p className="small mb-3 max-w-[140ch]"><b>Which list to use:</b> the acres figure is shared with the shopping list above. The shopping list is the published plan; this list is VAN’s calculator, and it is the one to use if you have a soil report. Where the 2 differ, the totals below show a range.</p>{/* D-151 (A12): was "This is the same programme from VAN’s calculator; use it if you have a soil report." */}
-          <NutritionCreator crop={slug} cropName={cropLower} />
+          <NutritionCreator crop={slug} cropName={cropLower} initialDistrict={district} />
         </section>
       )}
 

@@ -34,7 +34,7 @@ import { SectionHead, WaButton } from '@/components/bits'
  * The order is the season, not the org chart. What moved and why is D-65 in DECISIONS.md; the old
  * order is one file revert away.
  */
-export default function Wheat() {
+export default function Wheat({ district = null }: { district?: string | null } = {}) {
   usePhonePlainDefault()   // D-199
   const [askOpen, setAskOpen] = useState(false)
   const pdf = `https://www.van.com.pk/${WHEAT.pdf}`
@@ -83,7 +83,8 @@ export default function Wheat() {
       <section className="wrap sec-tight" id="creator">
         <SectionHead eyebrow="Adjust it for your soil" title="The dynamic nutrition creator." lead="Set your acres and every quantity scales with it, then enter your soil report, or pick your district and it fills from the Punjab survey's own median, and the quantities move with what your ground actually shows. Sourced straight from VAN's own wheat calculator, not estimated." tone="navy" />
         <p className="small mb-3 max-w-[140ch]"><b>Which list to use:</b> the acres figure is shared with the shopping list above. The shopping list is the published plan; this list is VAN’s calculator, and it is the one to use if you have a soil report. Where the 2 differ, the totals below show a range.</p>{/* D-151 (A12): was "This is the same programme from VAN’s calculator; use it if you have a soil report." */}
-        <NutritionCreator crop="wheat" />
+        {/* Teesra Khata, 18 Oct 2026: a link from the Soil Atlas carries the district, and the soil rows open filled from it. */}
+        <NutritionCreator crop="wheat" initialDistrict={district} />
       </section>
 
       {/* 05b. What the plan puts back against what the harvest takes. Sits with block 05 because

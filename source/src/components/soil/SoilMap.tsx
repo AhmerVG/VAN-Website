@@ -1,4 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { DISTRICT_UR } from '@/data/soilTehsils'
 import { SOIL_GRID } from '@/data/soil'
 import { SOIL_SOURCE, SOIL_COPY } from '@/data/soilLens'
 import { ANALYTES, GRID, type AtlasCell, analyteByKey, colourFor, fmtVal, rampCss, districtName, thousands, type AnalyteKey } from '@/lib/soil'
@@ -28,10 +29,12 @@ type Props = {
   onAnalyte?: (k: AnalyteKey) => void
   maxHeight?: number
   className?: string
+  /** Teesra Khata, 18 Oct 2026: a farmer arriving from the Urdu campaign link sees the district labels in Urdu. */
+  urduLabels?: boolean
 }
 
 /** The living map — SOIL_GRID cells drawn as squares on a canvas, coloured by the selected analyte. No boundary file, no interpolation. */
-export function SoilMap({ initial = 'ph', mini = false, focus = null, onPick, autoplay = true, maxHeight = 640, className = '', analyte: driven, onAnalyte }: Props) {
+export function SoilMap({ initial = 'ph', mini = false, focus = null, onPick, autoplay = true, maxHeight = 640, className = '', analyte: driven, onAnalyte, urduLabels = false }: Props) {
   const rm = useReducedMotion()
   const desktop = useIsDesktop()
   const { ref: hostRef, inView } = useInView<HTMLDivElement>({ threshold: 0.25 })
@@ -58,8 +61,8 @@ export function SoilMap({ initial = 'ph', mini = false, focus = null, onPick, au
   const revealStart = useRef<number | null>(null)
   const revealDone = useRef(false)
   const raf = useRef(0)
-  const stateRef = useRef({ analyte, focus, labels, desktop, mini })
-  stateRef.current = { analyte, focus, labels, desktop, mini }
+  const stateRef = useRef({ analyte, focus, labels, desktop, mini, urduLabels })
+  stateRef.current = { analyte, focus, labels, desktop, mini, urduLabels }
 
   const fillTarget = (a: AnalyteKey, into: Float32Array) => {
     for (let i = 0; i < n; i++) {
@@ -95,7 +98,7 @@ export function SoilMap({ initial = 'ph', mini = false, focus = null, onPick, au
     if (cv.width !== Math.round(size.w * dpr)) { cv.width = Math.round(size.w * dpr); cv.height = Math.round(size.h * dpr) }
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
     ctx.clearRect(0, 0, size.w, size.h)
-    const { focus: f, labels: lb, desktop: dk, mini: mn } = stateRef.current
+    const { focus: f, labels: lb, desktop: dk, mini: mn, urduLabels: ul } = stateRef.current
     const ch = size.ch, cw = ch * GRID.xScale
     // transition progress
     let t = 1
@@ -129,8 +132,8 @@ export function SoilMap({ initial = 'ph', mini = false, focus = null, onPick, au
         ctx.fillStyle = on ? '#D9A21B' : '#fff'; ctx.fill()
         ctx.lineWidth = on ? 2 : 1.2; ctx.strokeStyle = '#14231A'; ctx.stroke()
         if (lb && dk) {
-          const name = districtName(key)
-          ctx.font = `${on ? 700 : 600} ${on ? 12 : 10.5}px Public Sans, system-ui, sans-serif`
+          const name = ul ? (DISTRICT_UR[key] ?? districtName(key)) : districtName(key)
+          ctx.font = ul ? `${on ? 700 : 500} ${on ? 14 : 12}px "Noto Nastaliq Urdu", serif` : `${on ? 700 : 600} ${on ? 12 : 10.5}px Public Sans, system-ui, sans-serif`
           ctx.lineWidth = 3; ctx.strokeStyle = 'rgba(255,255,255,.85)'; ctx.lineJoin = 'round'
           ctx.strokeText(name, px, py - 7)
           ctx.fillStyle = '#14231A'; ctx.fillText(name, px, py - 7)
@@ -229,7 +232,7 @@ export function SoilMap({ initial = 'ph', mini = false, focus = null, onPick, au
         </div>
         {tip && (
           <div className="soil-tip" style={{ left: tip.x + (size.w ? (hostRef.current!.clientWidth - size.w) / 2 : 0), top: tip.y }}>
-            <b>{districtName(tip.cell.dist)}</b> · {thousands(tip.cell.n)} samples<br />{A.label}: median {fmtVal(analyte, tip.cell[analyte])} · mean {fmtVal(analyte, tip.cell.mean[analyte])}
+            <b>{districtName(tip.cell.dist)}</b> <span className="urdu">{DISTRICT_UR[tip.cell.dist]}</span> · {thousands(tip.cell.n)} samples<br />{A.label}: median {fmtVal(analyte, tip.cell[analyte])} · mean {fmtVal(analyte, tip.cell.mean[analyte])}
           </div>
         )}
       </div>

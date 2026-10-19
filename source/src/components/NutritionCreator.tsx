@@ -46,7 +46,7 @@ const LIQUID_SLUGS = new Set(Object.values(CROP_PLANS).flatMap(p => p.plan as Pl
 const packUnit = (slug: string | null) => (slug && LIQUID_SLUGS.has(slug) ? 'L' : 'kg')
 
 /** D-144: `crop` is any slug in COST_PLANS; `cropName` is how the page names it ("basmati rice"). */
-export function NutritionCreator({ crop, cropName = crop }: { crop: string; cropName?: string }) {
+export function NutritionCreator({ crop, cropName = crop, initialDistrict = null }: { crop: string; cropName?: string; initialDistrict?: string | null }) {
   const [acres, setAcres] = useSharedAcres(crop)   // M1: shared with the shopping list
   const [soilInputs, setSoilInputs] = useState<SoilInputs>({})
   // Where each band on screen came from — a farmer's own reading, or their district's survey average.
@@ -104,6 +104,17 @@ export function NutritionCreator({ crop, cropName = crop }: { crop: string; crop
   }
 
   const clearSoil = () => { setSoilInputs({}); setBandSource({}); setDistrict('') }
+
+  // Teesra Khata (18 Oct 2026): a link from the Soil Atlas (crops/wheat.html?district=KEY) opens the calculator with
+  // the soil rows filled from that district's survey median, exactly as if the farmer had picked it himself, and
+  // labelled the same way ("district typical"). Only on a crop with a soil panel, and only once.
+  const linked = useRef(false)
+  useEffect(() => {
+    if (linked.current || !initialDistrict || !regionalProfile(initialDistrict)) return
+    linked.current = true
+    pickDistrict(initialDistrict)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialDistrict])
 
   const cost = useMemo(() => {
     let total = 0
