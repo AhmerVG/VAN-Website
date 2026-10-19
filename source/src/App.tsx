@@ -96,6 +96,8 @@ export default function App() {
         <Dock
           partner={route.name === 'partner' || route.name === 'dealers'}
           crop={route.name === 'crop' ? cropBySlug(route.slug)?.name : undefined}
+          cropSlug={route.name === 'crop' ? route.slug : undefined}
+          soil={route.name === 'soil'}
         />
       )}
     </div>

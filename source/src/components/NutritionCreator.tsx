@@ -13,6 +13,7 @@ import type { BandSource } from './SoilAdjustmentPanel'
 import { regionalProfile } from '@/data/regionalSoil'
 import { wa } from '@/data/site'
 import { PackShot, DrawnBag, WaButton } from './bits'
+import { usePublishShared } from '@/lib/shareState'
 
 /** D-144: every crop with a calculator, from one registry (src/data/costPlans.ts). Was { wheat, potato }. */
 const PLANS = COST_PLANS
@@ -27,6 +28,9 @@ function fmtQty(n: number) {
   const r = Math.round(n * 100) / 100
   return r % 1 === 0 ? String(r) : r.toFixed(2).replace(/0$/, '')
 }
+
+/** D-261: the quantity a row prints on screen (the big figure on each line below), for the WhatsApp message. */
+const shownQty = (l: { qty: number; soilBumpQty: number; swapQty: number }) => Math.max(0, l.qty + l.soilBumpQty + l.swapQty)
 
 /**
  * The dynamic nutrition-plan creator — currently wheat and potato only, because those are the two
@@ -139,18 +143,29 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
 
   const text = useMemo(() => {
     const l1 = `Hello VAN. My ${cropName} plan for ${acres} acre${acres > 1 ? 's' : ''}:`
-    const ls = totals.lines.map(l => `• ${l.product}, ${fmtQty(l.qty + l.soilBumpQty)} × ${l.packKg} ${packUnit(l.slug)}`)
-    const fractional = totals.lines.some(l => Math.abs((l.qty + l.soilBumpQty) - Math.round(l.qty + l.soilBumpQty)) > 1e-6)
+    // D-261, 19 Oct 2026: the message carries exactly the figure each row shows on screen (shownQty, the same sum the
+    // row prints: plan + soil change + nitrogen moved, never below 0). It used to leave out the nitrogen move, so with a
+    // district picked the screen said Vital Urea 2.22 and the message 0.5. No calculated value changes here.
+    // Was: fmtQty(l.qty + l.soilBumpQty), and the same sum in `fractional`.
+    const ls = totals.lines.map(l => `• ${l.product}, ${fmtQty(shownQty(l))} × ${l.packKg} ${packUnit(l.slug)}`)
+    const fractional = totals.lines.some(l => Math.abs(shownQty(l) - Math.round(shownQty(l))) > 1e-6)
     const profile = regionalProfile(district)
     const usedDistrictAvg = Object.values(bandSource).includes('district')
+    const name = profile ? profile.name.replace(' (all districts)', '') : ''
+    // D-261: the district is named, and where the soil rows came from the district's survey median the message says so
+    // (was "Soil: no test of my own. Plan adjusted using the <district> survey average.": the fill is the median).
     const soilNote = profile
       ? usedDistrictAvg
-        ? `Soil: no test of my own. Plan adjusted using the ${profile.name.replace(' (all districts)', '')} survey average.`
-        : `My district: ${profile.name.replace(' (all districts)', '')}.`
+        ? [`My district: ${name}.`, 'Soil: no test of my own. The soil rows are the district survey median.']
+        : [`My district: ${name}.`]
       : null
     // L9, 24 Sep 2026: the "My district is:" prompt goes last, so the farmer types after it.
-    return [l1, ...ls, ...(fractional ? ['(Round up to whole packs.)'] : []), ...(soilNote ? [soilNote] : []), 'Please confirm pricing and availability.', ...(soilNote ? [] : ['Please confirm my nearest dealer. My district is:'])].join('\n')
+    return [l1, ...ls, ...(fractional ? ['(Round up to whole packs.)'] : []), ...(soilNote ?? []), 'Please confirm pricing and availability.', ...(soilNote ? [] : ['Please confirm my nearest dealer. My district is:'])].join('\n')
   }, [totals, acres, cropName, district, bandSource])
+
+  // D-262: the bottom bar ("My Wheat plan") sends this same message once the farmer has set anything here: a district,
+  // the acres or a soil row. With nothing set it keeps its own enquiry message.
+  usePublishShared(`calc:${crop}`, { text, active: !!district || acres !== 1 || Object.keys(soilInputs).length > 0, district })
 
   return (
     <div className="panel p-5 lg:p-8" style={{ borderColor: 'var(--navy)', borderWidth: 2 }}>

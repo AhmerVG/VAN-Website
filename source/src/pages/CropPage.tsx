@@ -136,7 +136,7 @@ export default function CropPage({ slug, district = null }: { slug: string; dist
             lead={cp.mode === 'age'
               ? `Pick the age of your orchard, set your acres, and this is the ${shortCropName(c.name).toLowerCase()} programme turned into bags. A palm's requirement rises as it matures, so one age band applies at a time. The bands are not added together.`
               : `Tick the stages you are planning, set your acres, and this is the ${shortCropName(c.name).toLowerCase()} programme turned into bags and packs. Published rate multiplied by your acres, no estimate in between.${planUpdateNote(slug) ? ' ' + planUpdateNote(slug) : ''}`} />
-          <ListBuilder stages={cp.stages} plan={cp.plan} cropName={shortCropName(c.name).toLowerCase()} pdfPath={c.pdf} mode={cp.mode} cropKey={slug} soil={!calc && hasSoilLayer(slug)} />
+          <ListBuilder stages={cp.stages} plan={cp.plan} cropName={shortCropName(c.name).toLowerCase()} pdfPath={c.pdf} mode={cp.mode} cropKey={slug} soil={!calc && hasSoilLayer(slug)} published={calc} />
         </section>
       )}
 

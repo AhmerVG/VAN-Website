@@ -59,6 +59,13 @@
   # /foliark-precise.html is in the submitted sitemap but 404s and is not on disk.
   # Remove it from sitemap.xml as well as adding this line.
   RewriteRule ^foliark-precise\.html$   /brands/index.html        [R=301,L]
+
+  # ── The Soil Atlas without ".html" (19 Oct 2026, D-267) ─────────────────
+  # /soil and /soil/ gave a 404; the page is /soil.html. A typed or shared short
+  # address now lands on it. QSA keeps the query string, so
+  # /soil?district=SHEIKHUPURA&from=mitti arrives at /soil.html with its district.
+  # NE: the query is passed on as sent, never escaped a second time.
+  RewriteRule ^soil/?$                  /soil.html                [R=301,L,QSA,NE]
 </IfModule>
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -89,6 +96,9 @@ ErrorDocument 404 /404.html
 #   curl -I https://www.van.com.pk/brands/vital-urea.html  -> expect 200, NOT a redirect
 #   curl -I https://www.van.com.pk/one-tank.html           -> expect 301 to /knowledge/application-systems.html#one-tank
 #   curl -I https://www.van.com.pk/no-such-page            -> expect 404 AND the new 404 page's markup
+#   curl -I "https://www.van.com.pk/soil?district=RYK"     -> expect 301 to /soil.html?district=RYK (D-267)
+#   curl -I https://www.van.com.pk/soil/                   -> expect 301 to /soil.html (D-267)
+#   curl -I https://www.van.com.pk/soil.html               -> expect 200, NOT a redirect
 # Then re-submit sitemap.xml in Search Console with /foliark-precise.html removed.
 # ─────────────────────────────────────────────────────────────────────────────
 

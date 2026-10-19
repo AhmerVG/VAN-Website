@@ -1,7 +1,8 @@
 import { shortCropName } from '@/data/catalogue'
 import { useEffect, useRef, useState } from 'react'
 import { LOGO } from '@/data/assets'
-import { CONTACT, WA } from '@/data/site'
+import { CONTACT, WA, wa } from '@/data/site'
+import { useShared } from '@/lib/shareState'
 import { PRODUCTS, CROPS } from '@/data/catalogue'
 import { MenuPanel } from './MenuPanel'
 import type { Route } from '@/lib/router'
@@ -194,7 +195,20 @@ export function dockShowsOn(name: Route['name']): boolean {
     || name === 'soil' || name === 'home' || name === 'partner'
 }
 
-export function Dock({ partner = false, crop }: { partner?: boolean; crop?: string } = {}) {
+export function Dock({ partner = false, crop, cropSlug, soil = false }: { partner?: boolean; crop?: string; cropSlug?: string; soil?: boolean } = {}) {
+  /**
+   * 19 Oct 2026 · D-262: on a crop page the bar sent a fixed "I'd like a nutrition plan for my wheat. My district and
+   * acres:" even after the farmer had set both. Once the page's calculator (or, on a crop with no calculator, its list)
+   * holds his own state, the bar sends that tool's own message, the same text its button sends. With nothing set, the
+   * old enquiry stays. D-266: on the Soil Atlas, once the farmer screens have a district, "My crop's plan" opens the
+   * wheat calculator (the campaign crop) with that district, instead of the English list of all crops.
+   * Revert: the 2 `h:` lines below back to WA.crop(crop) and '#/crops'; App.tsx back to crop only.
+   */
+  const calcShared = useShared(cropSlug ? `calc:${cropSlug}` : null)
+  const listShared = useShared(cropSlug ? `list:${cropSlug}` : null)
+  const planShared = calcShared ?? listShared
+  const soilDistrict = useShared(soil ? 'soil:district' : null)?.district
+  const cropHref = crop && planShared?.active && planShared.text ? wa(planShared.text) : crop ? WA.crop(crop) : ''
   /**
    * 11 Sep 2026 · two faults, both measured.
    *
@@ -217,8 +231,8 @@ export function Dock({ partner = false, crop }: { partner?: boolean; crop?: stri
       // carries the sentence.
       // D-151 (QA 18): the short crop name in its own case, on 1 line; "My plan" when that is still too long.
       // Was: `My ${crop.toLowerCase()} plan`.
-      ? { l: `My ${shortCropName(crop)} plan`.length <= 16 ? `My ${shortCropName(crop)} plan` : 'My plan', h: WA.crop(crop), cls: 'gold', ext: true, icon: <WaIcon size={22} /> }
-      : { l: "My crop's plan", h: '#/crops', cls: 'gold', ext: false, icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true"><path d="M12 21V9M12 13c-4 0-6-2-6-6 4 0 6 2 6 6zM12 11c0-4 2-6 6-6 0 4-2 6-6 6z" /><path d="M4 21h16" /></svg> },
+      ? { l: `My ${shortCropName(crop)} plan`.length <= 16 ? `My ${shortCropName(crop)} plan` : 'My plan', h: cropHref, cls: 'gold', ext: true, icon: <WaIcon size={22} /> }
+      : { l: "My crop's plan", h: soilDistrict ? `#/crops/wheat?district=${encodeURIComponent(soilDistrict)}` : '#/crops', cls: 'gold', ext: false, icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true"><path d="M12 21V9M12 13c-4 0-6-2-6-6 4 0 6 2 6 6zM12 11c0-4 2-6 6-6 0 4-2 6-6 6z" /><path d="M4 21h16" /></svg> },
     { l: 'Verify a bag', h: '#/verify', cls: '', ext: false, icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M6 4h12l2 4v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8z" /><path d="M8 13l3 3 5-6" /></svg> },
   ]
   // A partner or dealer page gets the first door only; the other two are farmer doors.

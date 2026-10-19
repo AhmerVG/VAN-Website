@@ -14,6 +14,7 @@ import { Ur, UrduReviewNotice } from './Ur'
 import { useUrduMode } from '@/lib/readingMode'
 import { ur as urStage } from '@/data/urdu'
 import type { SoilBand, SoilParameter } from '@/data/soilThresholds'
+import { useShared, usePublishShared } from '@/lib/shareState'
 
 /**
  * Tick the stages you want, set your acres, get a shopping list. No prices — VAN replies with those
@@ -24,7 +25,11 @@ import type { SoilBand, SoilParameter } from '@/data/soilThresholds'
  * reason for 27 crops to go without it. `crop` and `pdf` default to wheat so the wheat page is
  * unchanged.
  */
-export function ListBuilder({ stages = WHEAT_STAGES, plan = WHEAT_PLAN, cropName = 'wheat', pdfPath = WHEAT.pdf, mode = 'stage', cropKey = 'wheat', soil = false }: { stages?: string[]; plan?: PlanRow[]; cropName?: string; pdfPath?: string; mode?: 'stage' | 'age'; cropKey?: string; soil?: boolean } = {}) {
+/** D-263, 19 Oct 2026: `published` is set where the same page also carries the dynamic nutrition creator (wheat, and
+ *  every crop with a calculator). There the page had 2 "Send this list on WhatsApp" buttons sending 2 different
+ *  lists, unlabelled; this one now says it is VAN's published plan, in its button, its message and the line under it.
+ *  Its quantities are unchanged. Revert: drop the prop and the 2 call sites' `published`. */
+export function ListBuilder({ stages = WHEAT_STAGES, plan = WHEAT_PLAN, cropName = 'wheat', pdfPath = WHEAT.pdf, mode = 'stage', cropKey = 'wheat', soil = false, published = false }: { stages?: string[]; plan?: PlanRow[]; cropName?: string; pdfPath?: string; mode?: 'stage' | 'age'; cropKey?: string; soil?: boolean; published?: boolean } = {}) {
   // In AGE mode the list is not a set of stages a farmer passes through in one season — it is a set
   // of orchard-age bands, and exactly one applies. Ticking several would add a young palm's dose to a
   // mature palm's. So the control is single-select and opens on the mature band.
@@ -137,19 +142,35 @@ export function ListBuilder({ stages = WHEAT_STAGES, plan = WHEAT_PLAN, cropName
     }
     return { total, priced, unpriced }
   }, [shown])
+  // D-263: the district, when the page knows it: picked in this list's own soil panel, or in the nutrition creator on
+  // the same page (which also takes it from a ?district= link). Was always "My district is:" with nothing after it.
+  const calcShared = useShared(`calc:${cropKey}`)
+  const knownDistrict = district || calcShared?.district || ''
+  const districtName = regionalProfile(knownDistrict)?.name.replace(' (all districts)', '') ?? ''
   const text = useMemo(() => {
     const st = stages.filter(s => ticked.has(s))
+    // D-263: on a page with the creator, the first line names this as VAN's published plan.
+    const what = published ? `My ${cropName} list from VAN's published ${cropName} plan, for` : `My ${cropName} list for`
     const l1 = isAge
-      ? `Hello VAN. My ${cropName} list for ${acres} acre${acres > 1 ? 's' : ''} (orchard age: ${st.join(', ') || 'none'}):`
-      : `Hello VAN. My ${cropName} list for ${acres} acre${acres > 1 ? 's' : ''} (stages: ${st.join(', ') || 'none'}):`
+      ? `Hello VAN. ${what} ${acres} acre${acres > 1 ? 's' : ''} (orchard age: ${st.join(', ') || 'none'}):`
+      : `Hello VAN. ${what} ${acres} acre${acres > 1 ? 's' : ''} (stages: ${st.join(', ') || 'none'}):`
     const ls = van.map(l => `• ${l.product}, ${fmtQty(l.units, l.unit)} of ${l.size} ${l.measure}`)
     const cs = commodity.map(l => `(plus commodity urea, not a VAN product: ${fmtQty(l.units, l.unit)} of ${l.size} ${l.measure})`)
     const soilNote = soilAdjusted
       ? ['(these quantities are adjusted for my soil reading: ' +
          Object.entries(soilInputs).map(([k, v]) => `${k} ${v}`).join(', ') + ')']
-      : []
-    return [l1, ...ls, ...cs, ...soilNote, 'Please send price, availability and my nearest dealer. My district is:'].join('\n')
-  }, [ticked, acres, van, commodity, soilAdjusted, soilInputs])
+      : published ? ['(The published plan, not adjusted for my soil.)'] : []
+    const ask = districtName
+      ? `Please send price, availability and my nearest dealer. My district: ${districtName}.`
+      : 'Please send price, availability and my nearest dealer. My district is:'
+    return [l1, ...ls, ...cs, ...soilNote, ask].join('\n')
+  }, [ticked, acres, van, commodity, soilAdjusted, soilInputs, published, districtName])
+
+  // D-262: on a crop page with no creator, this list is the farmer's plan, so the bottom bar sends it once he has set
+  // anything here (acres, stages, a district or a soil row). Where the page has a creator, the bar reads the creator.
+  const defaultTicked = isAge ? [stages[stages.length - 1]] : stages
+  const tickedChanged = ticked.size !== defaultTicked.length || defaultTicked.some(s => !ticked.has(s))
+  usePublishShared(`list:${cropKey}`, { text, active: acres !== 1 || tickedChanged || !!district || Object.keys(soilInputs).length > 0, district: knownDistrict })
 
   return (
     <div className="panel p-5 lg:p-8" style={{ borderColor: 'var(--navy)', borderWidth: 2 }}>
@@ -344,11 +365,14 @@ export function ListBuilder({ stages = WHEAT_STAGES, plan = WHEAT_PLAN, cropName
             {!showCost
               ? <button className="btn btn-ghost btn-lg" onClick={() => setShowCost(true)}>What will this cost me? →</button>
               : null}
-            <WaButton href={wa(text)} lg>Send this list on WhatsApp</WaButton>
+            <WaButton href={wa(text)} lg>{published ? 'Send the published plan on WhatsApp' : 'Send this list on WhatsApp'}</WaButton>
             <a className="btn btn-ghost btn-lg" href={pdf} target="_blank" rel="noopener">Download the PDF ↓</a>
           </div>
           <UrduReviewNotice />
-          <p className="cap mt-3">The message carries the list above. Add your district and VAN replies with price and the nearest dealer.</p>
+          {/* D-263: was, on every page, "The message carries the list above. Add your district and VAN replies with price and the nearest dealer." */}
+          {published
+            ? <p className="cap mt-3">This sends VAN’s published {cropName} plan for the stages you ticked{districtName ? `, with your district, ${districtName}` : ''}. It is not adjusted for your soil: the calculator below is, and its own button sends that plan.{districtName ? '' : ' Add your district and VAN replies with price and the nearest dealer.'}</p>
+            : <p className="cap mt-3">The message carries the list above. {districtName ? `It names your district, ${districtName}, and VAN replies with price and the nearest dealer.` : 'Add your district and VAN replies with price and the nearest dealer.'}</p>}
         </div>
       </div>
     </div>

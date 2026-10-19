@@ -11,6 +11,8 @@ import { COST_PLANS } from '@/data/costPlans'
 import { calcPlan } from '@/lib/planCalc'
 import { computeSoilBumps, type SoilInputs } from '@/lib/soilAdjustment'
 import type { SoilParameter } from '@/data/soilThresholds'
+import { wa } from '@/data/site'
+import { usePublishShared } from '@/lib/shareState'
 
 /**
  * TEESRA KHATA ON THE SOIL ATLAS — the farmer screens, 18 Oct 2026.
@@ -154,28 +156,47 @@ async function drawCard(name: { d: string; t?: string }, vals: Vals, n: number |
   const g = cv.getContext('2d')!
   g.fillStyle = '#FBF9F3'; g.fillRect(0, 0, W, H)
   g.fillStyle = '#14231A'; g.fillRect(0, H - 150, W, 150)
-  g.fillStyle = '#FFFDF6'; g.fillRect(70, 300, W - 140, 500)
+  // D-264, 19 Oct 2026: every row now prints its value in the left column, as the khata screens do, and pH and EC have
+  // their own rows (pH with its pH word, EC a number with its label and no band word, as ruled). The card was band words
+  // only, with the value column blank and no pH or EC. To fit 8 rows the ledger runs 250 to 810 in rows of 70 (was 300
+  // to 800 in rows of 80, 6 rows), and the title, the line under it and the type sizes move up and down a little.
+  // No new words: the row names, band words, pH words and the EC label are the ruled ones from soilUrdu.ts.
+  const TOP = 250, ROW = 70, CARD_ROWS: (KhataKey | 's')[] = [...ROWS, 'ph', 'ec', 's'], BOTTOM = TOP + ROW * CARD_ROWS.length
+  g.fillStyle = '#FFFDF6'; g.fillRect(70, TOP, W - 140, BOTTOM - TOP)
   g.strokeStyle = '#D9CFB8'; g.lineWidth = 2
-  for (let y = 380; y < 800; y += 80) { g.beginPath(); g.moveTo(70, y); g.lineTo(W - 70, y); g.stroke() }
-  g.strokeStyle = '#C9564A'; g.lineWidth = 3; g.beginPath(); g.moveTo(W - 330, 300); g.lineTo(W - 330, 800); g.stroke()
+  for (let y = TOP + ROW; y < BOTTOM; y += ROW) { g.beginPath(); g.moveTo(70, y); g.lineTo(W - 70, y); g.stroke() }
+  g.strokeStyle = '#C9564A'; g.lineWidth = 3; g.beginPath(); g.moveTo(W - 330, TOP); g.lineTo(W - 330, BOTTOM); g.stroke()
   g.direction = 'rtl'; g.textAlign = 'right'; g.fillStyle = '#14231A'
-  g.font = '700 64px "Noto Nastaliq Urdu", serif'; g.fillText(KHATA_UR.myKhata, W - 80, 150)
-  g.font = '500 40px "Noto Nastaliq Urdu", serif'; g.fillStyle = '#5B6A5E'
-  g.fillText(`ضلع ${name.d}${name.t ? ' · تحصیل ' + name.t : ''}`, W - 80, 245)
-  ROWS.forEach((k, i) => {
-    const y = 352 + i * 80, v = vals[k] ?? null, b = band(k, v)
-    g.direction = 'rtl'; g.textAlign = 'right'; g.fillStyle = '#14231A'; g.font = '500 38px "Noto Nastaliq Urdu", serif'
-    g.fillText(READING_UR[k].ur, W - 100, y + 8)
-    if (b) { g.fillStyle = BAND_TINT[b][0]; g.fillRect(W - 600, y - 52, 220, 84); g.fillStyle = BAND_TINT[b][1]; g.textAlign = 'center'; g.fillText(BAND_UR[b], W - 490, y + 8) }
+  g.font = '700 60px "Noto Nastaliq Urdu", serif'; g.fillText(KHATA_UR.myKhata, W - 80, 125)
+  g.font = '500 36px "Noto Nastaliq Urdu", serif'; g.fillStyle = '#5B6A5E'
+  g.fillText(`ضلع ${name.d}${name.t ? ' · تحصیل ' + name.t : ''}`, W - 80, 208)
+  CARD_ROWS.forEach((k, i) => {
+    const top = TOP + i * ROW, base = top + 46
+    // The reading's name, right, in Urdu (pH stays pH).
+    g.direction = 'rtl'; g.textAlign = 'right'; g.fillStyle = '#14231A'; g.font = `500 ${k === 'ec' ? 24 : 32}px "Noto Nastaliq Urdu", serif`
+    g.fillText(READING_UR[k].ur, W - 100, base)
+    if (k === 's') {
+      g.fillStyle = '#5B6A5E'; g.font = '500 27px "Noto Nastaliq Urdu", serif'; g.fillText(KHATA_UR.notTested, W - 380, base)
+      return
+    }
+    const v = vals[k] ?? null
+    // The middle column: the band word (pH: its pH word, in its band's colour). EC has none.
+    const b = band(k, v), word = k === 'ph' ? phWord(v)?.ur : b ? BAND_UR[b] : undefined
+    if (word && k !== 'ec') {
+      if (b) { g.fillStyle = BAND_TINT[b][0]; g.fillRect(W - 600, top + 8, 220, ROW - 16) }
+      g.fillStyle = b ? BAND_TINT[b][1] : '#14231A'; g.textAlign = 'center'; g.font = '500 30px "Noto Nastaliq Urdu", serif'
+      g.fillText(word, W - 490, base)
+    }
+    // The left column: the value, with its unit, as on the khata screens.
+    g.direction = 'ltr'; g.textAlign = 'left'; g.fillStyle = '#14231A'; g.font = '600 34px "Public Sans", sans-serif'
+    g.fillText(`${fmtSafe(k, v)}${v != null && READING_UR[k].unit ? ' ' + READING_UR[k].unit : ''}`, 110, base - 4)
   })
-  { const y = 352 + 5 * 80; g.textAlign = 'right'; g.fillStyle = '#14231A'; g.font = '500 38px "Noto Nastaliq Urdu", serif'; g.fillText(READING_UR.s.ur, W - 100, y + 8)
-    g.fillStyle = '#5B6A5E'; g.font = '500 30px "Noto Nastaliq Urdu", serif'; g.fillText(KHATA_UR.notTested, W - 380, y + 8) }
   // The caveat in Urdu first (independent review: an Urdu reader must see it), then the English source line.
-  g.direction = 'rtl'; g.textAlign = 'right'; g.fillStyle = '#14231A'; g.font = '500 30px "Noto Nastaliq Urdu", serif'
-  g.fillText('یہ علاقے کا حساب ہے، آپ کے کھیت کا ٹیسٹ نہیں۔ اپنا ٹیسٹ: VAN Lab', W - 80, 848)
-  g.direction = 'ltr'; g.textAlign = 'left'; g.fillStyle = '#5B6A5E'; g.font = '400 22px "Public Sans", sans-serif'
-  g.fillText('Punjab government soil record, about 2016 to 2018, mapped by VAN.', 80, 888)
-  g.fillText(n != null ? `Square of about 6,600 acres, ${thousands(n)} samples. An area reading, not your field’s test.` : 'An area reading, not your field’s test.', 80, 916)
+  g.direction = 'rtl'; g.textAlign = 'right'; g.fillStyle = '#14231A'; g.font = '500 28px "Noto Nastaliq Urdu", serif'
+  g.fillText('یہ علاقے کا حساب ہے، آپ کے کھیت کا ٹیسٹ نہیں۔ اپنا ٹیسٹ: VAN Lab', W - 80, BOTTOM + 48)
+  g.direction = 'ltr'; g.textAlign = 'left'; g.fillStyle = '#5B6A5E'; g.font = '400 21px "Public Sans", sans-serif'
+  g.fillText('Punjab government soil record, about 2016 to 2018, mapped by VAN.', 80, BOTTOM + 84)
+  g.fillText(n != null ? `Square of about 6,600 acres, ${thousands(n)} samples. An area reading, not your field’s test.` : 'An area reading, not your field’s test.', 80, BOTTOM + 110)
   g.fillStyle = '#FBF9F3'; g.font = '700 40px "Public Sans", sans-serif'; g.fillText('van.com.pk/soil.html', 80, H - 60)
   await new Promise<void>(res => {
     const img = new Image()
@@ -186,15 +207,60 @@ async function drawCard(name: { d: string; t?: string }, vals: Vals, n: number |
   return cv.toDataURL('image/png')
 }
 
+/**
+ * D-265, 19 Oct 2026: BACK AND FORWARD KEEP THE FARMER'S PLACE. Pressing Back from the wheat calculator reloaded this page
+ * at "آپ کا ضلع؟", and the district, tehsil, square and card took about 7 taps to redo. The screens now write their
+ * place (step, district, tehsil, square, the map's reading, folded or open) into this page's own history entry
+ * (history.state, the URL is not touched, so the router's anchors work as before), and read it back only when the
+ * page is reached by Back or Forward. A fresh visit or a reload starts as before. The soil door already skips on Back and
+ * Forward (soil-door.inline.html), unchanged. Revert: the 2 effects and readSaved below, and the useState lines back to
+ * their plain starting values.
+ */
+const SAVE_KEY = 'vanTeesraKhata'
+type Saved = { folded: boolean; step: Step; d: string | null; t: number | null; c: number | null; mapKey: KhataKey }
+function readSaved(): Saved | null {
+  try {
+    const nav = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined
+    if (!nav || nav.type !== 'back_forward') return null
+    const st = history.state as Record<string, unknown> | null
+    const s = (st && typeof st === 'object' ? st[SAVE_KEY] : null) as Saved | null
+    if (!s || !STEPS.includes(s.step)) return null
+    // Every saved value is checked against the data before it is used; anything that does not fit is dropped.
+    const d = s.d && districtByKey(s.d) ? s.d : null
+    const t = d && typeof s.t === 'number' && TEHSILS[s.t]?.district === d ? s.t : null
+    const c = d && typeof s.c === 'number' && GRID.cells[s.c]?.dist === d ? s.c : null
+    const mapKey = (['zn', 'p', 'k', 'ph'] as KhataKey[]).includes(s.mapKey) ? s.mapKey : 'zn'
+    return { folded: !!s.folded, step: d ? s.step : 'district', d, t, c, mapKey }
+  } catch { return null }
+}
+function writeSaved(s: Saved) {
+  try {
+    const st = history.state && typeof history.state === 'object' ? history.state : {}
+    history.replaceState({ ...st, [SAVE_KEY]: s }, '')
+  } catch { /* a browser that refuses history writes keeps today's behaviour */ }
+}
+
 export function TeesraKhata({ district, englishFirst }: { district: string | null; englishFirst: boolean }) {
   const linked = districtByKey(district)
-  const [folded, setFolded] = useState(englishFirst)
-  const [step, setStep] = useState<Step>(linked ? 'khata' : 'district')
-  const [d, setD] = useState<string | null>(linked ? linked.key : null)
-  const [t, setT] = useState<number | null>(null)
-  const [c, setC] = useState<number | null>(null)
+  const [saved] = useState(readSaved)
+  const [folded, setFolded] = useState(saved ? saved.folded : englishFirst)
+  const [step, setStep] = useState<Step>(saved ? saved.step : linked ? 'khata' : 'district')
+  const [d, setD] = useState<string | null>(saved ? saved.d : linked ? linked.key : null)
+  const [t, setT] = useState<number | null>(saved ? saved.t : null)
+  const [c, setC] = useState<number | null>(saved ? saved.c : null)
   const [q, setQ] = useState('')
-  const [mapKey, setMapKey] = useState<KhataKey>('zn')
+  const [mapKey, setMapKey] = useState<KhataKey>(saved ? saved.mapKey : 'zn')
+  // D-265: keep this history entry's copy current; an in-page jump (#soil-districts) makes a new entry, so it is
+  // written there too.
+  const snap = useRef<Saved | null>(null)
+  useEffect(() => { snap.current = { folded, step, d, t, c, mapKey }; writeSaved(snap.current) }, [folded, step, d, t, c, mapKey])
+  useEffect(() => {
+    const again = () => { if (snap.current) writeSaved(snap.current) }
+    window.addEventListener('hashchange', again); window.addEventListener('popstate', again)
+    return () => { window.removeEventListener('hashchange', again); window.removeEventListener('popstate', again) }
+  }, [])
+  // D-266: the bottom bar's "My crop's plan" opens the wheat calculator with this district once one is picked.
+  usePublishShared('soil:district', { district: d ?? undefined })
   const [card, setCard] = useState<string | null>(null)
   const top = useRef<HTMLDivElement>(null)
   const [pendingScroll, setPendingScroll] = useState<string | null>(null)
@@ -261,6 +327,30 @@ export function TeesraKhata({ district, englishFirst }: { district: string | nul
     } catch { /* fall through to the WhatsApp link */ }
     window.open('https://wa.me/?text=' + encodeURIComponent(shareText), '_blank', 'noopener')
   }
+
+  // D-264: the same card, sent to VAN. The share button above goes to friends (no number) with district and tehsil only;
+  // this one goes to VAN's WhatsApp with what the card shows: district, tehsil, the square and its readings. English,
+  // since VAN reads it; no new Urdu (the button's Urdu waits for Tahir).
+  const vanText = (() => {
+    if (!dist || square == null) return ''
+    const cell = GRID.cells[square], vals = cellVals(square)
+    const tIdx = t != null ? t : CELL_TEHSIL[square][0] >= 0 ? CELL_TEHSIL[square][0] : null
+    const lat = ((cell.y + 0.5) * GRID.deg).toFixed(2), lon = ((cell.x + 0.5) * GRID.deg).toFixed(2)
+    const row = (k: KhataKey) => {
+      const v = vals[k] ?? null, b = band(k, v)
+      const word = k === 'ph' ? phWord(v)?.en : k === 'ec' ? undefined : b ? SOIL_BAND_LABEL[b] : undefined
+      return `${READING_UR[k].en}: ${fmtSafe(k, v)}${v != null && READING_UR[k].unit ? ' ' + READING_UR[k].unit : ''}${v != null && word ? ` (${word})` : ''}`
+    }
+    return [
+      'Hello VAN. My soil card from the Soil Atlas (Teesra Khata):',
+      `District: ${dist.name}`,
+      `Tehsil: ${tIdx != null ? TEHSILS[tIdx].en : 'not known'}`,
+      `Area: a square of about 6,600 acres around ${lat} N, ${lon} E, ${thousands(cell.n)} samples`,
+      ...[...ROWS, 'ph', 'ec'].map(k => row(k as KhataKey)),
+      `${READING_UR.s.en}: not tested in this survey`,
+      'These are the area readings of the Punjab government soil survey, about 2016 to 2018, not a test of my field. Please advise.',
+    ].join('\n')
+  })()
 
   const stepNo = STEPS.indexOf(step)
   const back = () => go(STEPS[Math.max(0, stepNo - 1)])
@@ -393,6 +483,8 @@ export function TeesraKhata({ district, englishFirst }: { district: string | nul
             <p className="tk-en">Your soil card, sized for WhatsApp. No product and no price.</p>
             {card ? <img className="tk-card" src={card} alt={`Soil card for ${dist.name}`} /> : <div className="tk-card tk-card-wait" />}
             <button className="btn tk-btn tk-wa" onClick={share}><span className="urdu">{KHATA_UR.share}</span><span className="tk-btn-en">Send on WhatsApp</span></button>
+            {/* D-264: to VAN, with the readings. English only until Tahir gives the Urdu for this button. */}
+            {vanText && <a className="btn tk-btn tk-wa tk-wa-van" href={wa(vanText)} target="_blank" rel="noopener"><span style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.9 }}>Send my soil card to VAN</span><span className="tk-btn-en">VAN’s WhatsApp, with your area and its readings</span></a>}
             {card && <a className="tk-link" href={card} download={`teesra-khata-${dist.key.toLowerCase().replace(/\s+/g, '-')}.png`}><span className="urdu">{KHATA_UR.saveImage}</span> · save the image</a>}
             <button className="btn btn-navy tk-btn" onClick={() => go('plan')}><span className="urdu">{KHATA_UR.planButton}</span><span className="tk-btn-en">See the wheat plan by your soil</span></button>
           </div>

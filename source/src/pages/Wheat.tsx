@@ -75,7 +75,8 @@ export default function Wheat({ district = null }: { district?: string | null } 
       {/* 04. The action. */}
       <section className="sec" style={{ background: 'var(--sand-2)' }}><div className="wrap" id="list">
         <SectionHead eyebrow="Your shopping list" title="What to buy for your acres." tone="navy" />
-        <ListBuilder />
+        {/* D-263: this page also carries the creator, so the list says it is the published plan. */}
+        <ListBuilder published />
       </div></section>
 
       {/* 05. The same numbers, moved by the farmer's own ground. On wheat the soil layer lives

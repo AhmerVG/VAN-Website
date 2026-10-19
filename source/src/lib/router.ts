@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { canonicalDistrict } from './districtKey'
 
 export type Route =
   | { name: 'home' }
@@ -36,12 +37,13 @@ export function parseHash(hash: string): { route: Route; anchor: string | null }
     // Teesra Khata (18 Oct 2026): `?district=` on a crop page opens its calculator with the soil rows filled from
     // that district's survey median, and lands on it.
     case 'crops': {
-      const district = query.get('district')
+      // D-268: ?district=sheikhupura (any case, spaces or dots) reaches the page as the data's KEY, SHEIKHUPURA.
+      const district = canonicalDistrict(query.get('district'))
       return { route: b ? { name: 'crop', slug: b, district } : { name: 'crops' }, anchor: a ?? (b && district ? 'creator' : null) }
     }
     case 'soil': {
       const rel = query.get('rel')
-      const district = query.get('district')
+      const district = canonicalDistrict(query.get('district'))   // D-268
       // Teesra Khata (18 Oct 2026): `?from=` names the campaign link (mitti, mitti-en, mitti-wa). A campaign link with a
       // district lands on the farmer screens at the top, opened at that district; any other `?district=` keeps landing on
       // the district panel, as before.
