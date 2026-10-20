@@ -5,13 +5,17 @@ import { SOIL_BAND_ORDER, SOIL_BAND_LABEL, SOIL_BAND_COLOR, SOIL_PARAMETER_LABEL
 import type { SoilBand, SoilParameter } from '@/data/soilThresholds'
 import { REGIONAL_PROFILES, REGIONAL_SOURCE, regionalProfile } from '@/data/regionalSoil'
 import { mappedParameters } from '@/lib/soilAdjustment'
+import { cardTextByParam, type CardInfo } from '@/lib/gpsCard'
 import type { SoilInputs, SoilCrop } from '@/lib/soilAdjustment'
 
 /** D-151: labels that fit a 5-column row on a 360px phone. */
 const SOIL_BAND_SHORT: Record<string, string> = { critical: 'Crit', weak: 'Weak', average: 'Avg', moderate: 'Mod', healthy: 'Good' }
 
-/** Where a band on screen came from: the farmer's own report, or their district's survey average. */
-export type BandSource = Partial<Record<SoilParameter, 'farmer' | 'district'>>
+/** Where a band on screen came from: the farmer's own report, their district's survey average, or (D-279) the Soil
+ *  Atlas card for the area near his land. */
+export type BandSource = Partial<Record<SoilParameter, 'farmer' | 'district' | 'card'>>
+/** D-279: the Soil Atlas card behind the rows (the type lives in lib/gpsCard.ts, beside the link that carries it). */
+export type { CardInfo } from '@/lib/gpsCard'
 
 function fmtValue(parameter: SoilParameter, value: number) {
   const unit = SOIL_PARAMETER_UNIT[parameter]
@@ -32,11 +36,12 @@ function fmtValue(parameter: SoilParameter, value: number) {
  * fill is a starting point and is labelled as one on every row it touches — the farmer overrides any
  * row by tapping a band, and that row then reads as theirs, not the district's.
  */
-export function SoilAdjustmentPanel({ crop, soilInputs, bandSource, district, onChange, onPickDistrict, onClear }: {
+export function SoilAdjustmentPanel({ crop, soilInputs, bandSource, district, card = null, onChange, onPickDistrict, onClear }: {
   crop: SoilCrop
   soilInputs: SoilInputs
   bandSource: BandSource
   district: string
+  card?: CardInfo | null
   onChange: (p: SoilParameter, band: SoilBand | undefined) => void
   onPickDistrict: (key: string) => void
   onClear: () => void
@@ -68,7 +73,15 @@ export function SoilAdjustmentPanel({ crop, soilInputs, bandSource, district, on
           </select>
           {anySet && <button className="btn btn-sm" onClick={() => { setTyped({}); onClear() }}>Clear all</button>}
         </div>
-        {profile && (
+        {/* D-279: the rows came from the Soil Atlas card, not from the district; the district stays picked as the default.
+            Its last sentence (20 Oct 2026, low finding of the review): choosing the district already picked does nothing in a
+            list, so it now says how; was "Pick your district again above to use the district instead." */}
+        {profile && card && Object.values(bandSource).includes('card') && (
+          <p className="cap mt-2" data-card-note style={{ lineHeight: 1.5 }}>
+            Filled in from the Soil Atlas card for the area near your land: the {REGIONAL_SOURCE.survey}, {REGIONAL_SOURCE.window}, readings within {card.r} km, {card.n.toLocaleString('en-US')} samples. Not a test of your field. Rows the card has no reading for are left blank, not filled from the district. To use the district’s readings instead, press Clear all, then choose your district.
+          </p>
+        )}
+        {profile && !(card && Object.values(bandSource).includes('card')) && (
           <p className="cap mt-2" style={{ lineHeight: 1.5 }}>
             Filled in from the {REGIONAL_SOURCE.survey}, {REGIONAL_SOURCE.window}. {profile.n.toLocaleString()} samples in {profile.name}.
             {' '}{REGIONAL_SOURCE.caution}
@@ -92,7 +105,9 @@ export function SoilAdjustmentPanel({ crop, soilInputs, bandSource, district, on
       <div className="grid gap-2.5">
         {parameters.map(param => {
           const fromDistrict = bandSource[param] === 'district'
+          const fromCard = bandSource[param] === 'card'
           const districtValue = profile?.values[param]
+          const cardValue = card?.values[param]
           return (
             <div key={param} className="grid gap-1">
               <span className="small font-bold">
@@ -108,6 +123,9 @@ export function SoilAdjustmentPanel({ crop, soilInputs, bandSource, district, on
                 )}
                 {fromDistrict && districtValue !== undefined && (
                   <span className="cap block" style={{ fontWeight: 400 }}>{profile?.name} typical · {fmtValue(param, districtValue)}</span>
+                )}
+                {fromCard && cardValue !== undefined && card && (
+                  <span className="cap block" data-card-row={param} style={{ fontWeight: 400 }}>Soil card, {card.r} km around your land · {cardTextByParam(param, cardValue)}{SOIL_PARAMETER_UNIT[param] ? ` ${SOIL_PARAMETER_UNIT[param]}` : ''}</span>
                 )}
               </span>
               <div className="flex flex-wrap items-center gap-2">
@@ -142,7 +160,7 @@ export function SoilAdjustmentPanel({ crop, soilInputs, bandSource, district, on
                       style={{
                         padding: '4px 2px', fontSize: 11, minWidth: 0, minHeight: 40, lineHeight: 1.1,
                         ...(active
-                          ? { background: SOIL_BAND_COLOR[band], color: band === 'critical' || band === 'healthy' ? '#fff' : '#0C1710', border: fromDistrict ? '2px dashed #0C1710' : '1px solid transparent' }
+                          ? { background: SOIL_BAND_COLOR[band], color: band === 'critical' || band === 'healthy' ? '#fff' : '#0C1710', border: fromDistrict || fromCard ? '2px dashed #0C1710' : '1px solid transparent' }
                           : { background: '#fff', color: 'var(--navy)', border: '1px solid var(--line)' }),
                       }}
                       aria-pressed={active}
@@ -157,6 +175,9 @@ export function SoilAdjustmentPanel({ crop, soilInputs, bandSource, district, on
       </div>
       {Object.values(bandSource).includes('district') && (
         <p className="cap mt-3">Rows marked <em>typical</em> are the survey's middle reading for your area, not a reading from your land. Tap any band to replace it with your own.</p>
+      )}
+      {Object.values(bandSource).includes('card') && (
+        <p className="cap mt-3">Rows marked <em>soil card</em> are the survey's middle reading for the area near your land, not a reading from your land. Tap any band to replace it with your own.</p>
       )}
     </div>
   )

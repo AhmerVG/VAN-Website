@@ -6,7 +6,7 @@ export type Route =
   | { name: 'products' }
   | { name: 'product'; slug: string }
   | { name: 'crops' }
-  | { name: 'crop'; slug: string; district: string | null }
+  | { name: 'crop'; slug: string; district: string | null; card?: string | null }
   | { name: 'soil'; rel: string | null; district: string | null; from: string | null }
   | { name: 'partner'; slug: string | null }
   | { name: 'lab' }
@@ -39,7 +39,18 @@ export function parseHash(hash: string): { route: Route; anchor: string | null }
     case 'crops': {
       // D-268: ?district=sheikhupura (any case, spaces or dots) reaches the page as the data's KEY, SHEIKHUPURA.
       const district = canonicalDistrict(query.get('district'))
-      return { route: b ? { name: 'crop', slug: b, district } : { name: 'crops' }, anchor: a ?? (b && district ? 'creator' : null) }
+      // GPS grid card (D-279, 20 Oct 2026): `#card=d=KEY;r=2;n=180;p=5.5;...` after the page carries the Soil Atlas card for
+      // the area near the farmer's land into the calculator's soil-numbers door. It rides after '#', so the browser never
+      // sends it to the server (finding 1 of the 20 Oct review; was `&card=` in the query). Read by NutritionCreator.
+      let card: string | null = null
+      let anc = a
+      if (a && a.startsWith('card=')) {
+        try { card = decodeURIComponent(a.slice(5)) } catch { card = a.slice(5) }
+        anc = null
+      }
+      const cardDistrict = card ? canonicalDistrict(/(?:^|;)d=([^;]*)/.exec(card)?.[1] ?? null) : null
+      const dist = district ?? cardDistrict
+      return { route: b ? { name: 'crop', slug: b, district: dist, card } : { name: 'crops' }, anchor: anc ?? (b && (dist || card) ? 'creator' : null) }
     }
     case 'soil': {
       const rel = query.get('rel')
@@ -93,6 +104,11 @@ function read(): { route: Route; anchor: string | null } {
   // A bare "#section" is an in-page anchor, not a route. Before this check the router failed to
   // parse it, decided it was a 404 and reset to the home page — which silently broke every
   // "jump to section" link on the site.
+  // D-279: a built crop page opened as crops/wheat.html#card=... (the GPS grid card's link) reads the card from the hash.
+  if (raw && raw.startsWith('#card=') && own) {
+    const here = parseHash(own + raw)
+    if (here) return here
+  }
   if (raw && !raw.startsWith('#/')) {
     const here = parseHash(own || '#/')
     return { route: here ? here.route : { name: 'home' }, anchor: raw.slice(1) || null }

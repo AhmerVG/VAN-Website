@@ -8,6 +8,7 @@ import { FlipCards } from '@/components/FlipCards'
 import { MethodsStrip } from '@/components/MethodsStrip'
 import { PlanMatrix } from '@/components/PlanMatrix'
 import { NutritionCreator } from '@/components/NutritionCreator'
+import { parseCardParam } from '@/lib/gpsCard'
 import { SowingDate } from '@/components/SowingDate'
 import { NutrientBalance } from '@/components/NutrientBalance'
 import { WaterRequirement } from '@/components/WaterRequirement'
@@ -34,7 +35,12 @@ import { SectionHead, WaButton } from '@/components/bits'
  * The order is the season, not the org chart. What moved and why is D-65 in DECISIONS.md; the old
  * order is one file revert away.
  */
-export default function Wheat({ district = null }: { district?: string | null } = {}) {
+export default function Wheat({ district = null, card = null }: { district?: string | null; card?: string | null } = {}) {
+  // G6: the card wording shows while rows from the Soil Atlas card are in use. Second review, 20 Oct 2026: it was read
+  // once from the link, so after "Clear all" and a district the head still said "this soil card"; the calculator now
+  // reports whether card rows are on screen, and the wording follows. It starts from the link, so the first paint
+  // matches.
+  const [fromCard, setFromCard] = useState(() => !!district && !!parseCardParam(card))
   usePhonePlainDefault()   // D-199
   const [askOpen, setAskOpen] = useState(false)
   const pdf = `https://www.van.com.pk/${WHEAT.pdf}`
@@ -82,10 +88,15 @@ export default function Wheat({ district = null }: { district?: string | null } 
       {/* 05. The same numbers, moved by the farmer's own ground. On wheat the soil layer lives
           inside the nutrition creator rather than on the list, so the creator is block 05. */}
       <section className="wrap sec-tight" id="creator">
-        <SectionHead eyebrow="Adjust it for your soil" title="The dynamic nutrition creator." lead="Set your acres and every quantity scales with it, then enter your soil report, or pick your district and it fills from the Punjab survey's own median, and the quantities move with what your ground actually shows. Sourced straight from VAN's own wheat calculator, not estimated." tone="navy" />
-        <p className="small mb-3 max-w-[140ch]"><b>Which list to use:</b> the acres figure is shared with the shopping list above. The shopping list is the published plan; this list is VAN’s calculator, and it is the one to use if you have a soil report. Where the 2 differ, the totals below show a range.</p>{/* D-151 (A12): was "This is the same programme from VAN’s calculator; use it if you have a soil report." */}
+        {/* G6, Tahir 20 Oct 2026: arriving from the Soil Atlas card, the head names the card instead of "your soil" and "your
+            soil report"; wording only. Without a card it reads as before. */}
+        {fromCard
+          ? <SectionHead eyebrow="Adjust it for this soil card" title="The dynamic nutrition creator." lead="Set your acres and every quantity scales with it. The soil rows below are filled from the Soil Atlas card for the area near your land, and the quantities move with what that card shows. Type your own soil test numbers over any row if you have them. Sourced straight from VAN's own wheat calculator, not estimated." tone="navy" />
+          : <SectionHead eyebrow="Adjust it for your soil" title="The dynamic nutrition creator." lead="Set your acres and every quantity scales with it, then enter your soil report, or pick your district and it fills from the Punjab survey's own median, and the quantities move with what your ground actually shows. Sourced straight from VAN's own wheat calculator, not estimated." tone="navy" />}
+        <p className="small mb-3 max-w-[140ch]"><b>Which list to use:</b> the acres figure is shared with the shopping list above. The shopping list is the published plan; this list is VAN’s calculator, and it is the one to use {fromCard ? 'with this soil card' : 'if you have a soil report'}. Where the 2 differ, the totals below show a range.</p>{/* D-151 (A12): was "This is the same programme from VAN’s calculator; use it if you have a soil report." */}
         {/* Teesra Khata, 18 Oct 2026: a link from the Soil Atlas carries the district, and the soil rows open filled from it. */}
-        <NutritionCreator crop="wheat" initialDistrict={district} />
+        {/* GPS grid card, D-279, 20 Oct 2026: a link from the card carries its readings too (line 13, Tahir's words). */}
+        <NutritionCreator crop="wheat" initialDistrict={district} initialCard={card} onCardRows={setFromCard} />
       </section>
 
       {/* 05b. What the plan puts back against what the harvest takes. Sits with block 05 because

@@ -13,6 +13,7 @@ import { computeSoilBumps, type SoilInputs } from '@/lib/soilAdjustment'
 import type { SoilParameter } from '@/data/soilThresholds'
 import { wa } from '@/data/site'
 import { usePublishShared } from '@/lib/shareState'
+import { GpsCard } from './GpsCard'
 
 /**
  * TEESRA KHATA ON THE SOIL ATLAS — the farmer screens, 18 Oct 2026.
@@ -66,7 +67,9 @@ const districtVals = (key: string): Vals => {
 const cellVals = (i: number): Vals => { const c = GRID.cells[i]; return { p: c.p, k: c.k, zn: c.zn, om: c.om, b: c.b, ph: c.ph, ec: c.ec } }
 const urName = (key: string) => DISTRICT_UR[key] ?? districtByKey(key)?.name ?? key
 
-function Khata({ vals, cmp }: { vals: Vals; cmp?: Vals }) {
+/** `fmt` (D-278, 20 Oct 2026): the GPS grid card prints its readings with its own one rounding (cardText in lib/gpsCard.ts),
+ *  the same as on the wheat calculator; every other screen keeps fmtSafe. */
+export function Khata({ vals, cmp, fmt = fmtSafe }: { vals: Vals; cmp?: Vals; fmt?: (k: KhataKey, v: number | null | undefined) => string }) {
   const ph = vals.ph ?? null, pw = phWord(ph), phb = band('ph', ph)
   return (
     <div className="tk-khata" dir="ltr">
@@ -75,19 +78,19 @@ function Khata({ vals, cmp }: { vals: Vals; cmp?: Vals }) {
         return (
           <div className="tk-kr" key={k}>
             <span className="tk-chip urdu" style={b ? { background: BAND_TINT[b][0], color: BAND_TINT[b][1] } : undefined}>{b ? BAND_UR[b] : '–'}</span>
-            <span className="tk-v num">{fmtSafe(k, v)}{v != null && READING_UR[k].unit ? ' ' + READING_UR[k].unit : ''}{cmp && <small>ضلع {fmtSafe(k, cmp[k])}</small>}</span>
+            <span className="tk-v num">{fmt(k, v)}{v != null && READING_UR[k].unit ? ' ' + READING_UR[k].unit : ''}{cmp && <small>ضلع {fmtSafe(k, cmp[k])}</small>}</span>
             <span className="tk-nm"><span className="urdu">{READING_UR[k].ur}</span><small>{READING_UR[k].en}{b ? ` · ${SOIL_BAND_LABEL[b]}` : ''}</small></span>
           </div>
         )
       })}
       <div className="tk-kr">
         <span className="tk-chip urdu" style={phb ? { background: BAND_TINT[phb][0], color: BAND_TINT[phb][1] } : undefined}>{pw ? pw.ur : '–'}</span>
-        <span className="tk-v num">{fmtSafe('ph', ph)}{cmp && <small>ضلع {fmtSafe('ph', cmp.ph)}</small>}</span>
+        <span className="tk-v num">{fmt('ph', ph)}{cmp && <small>ضلع {fmtSafe('ph', cmp.ph)}</small>}</span>
         <span className="tk-nm"><span>pH</span><small>{pw ? pw.en : ''}{phb ? ` · ${SOIL_BAND_LABEL[phb]}` : ''}</small></span>
       </div>
       <div className="tk-kr">
         <span className="tk-chip tk-none" />
-        <span className="tk-v num">{fmtSafe('ec', vals.ec)} dS/m{cmp && <small>ضلع {fmtSafe('ec', cmp.ec)}</small>}</span>
+        <span className="tk-v num">{fmt('ec', vals.ec)} dS/m{cmp && <small>ضلع {fmtSafe('ec', cmp.ec)}</small>}</span>
         <span className="tk-nm"><span className="urdu tk-small">{READING_UR.ec.ur}</span><small>{READING_UR.ec.en}</small></span>
       </div>
       <div className="tk-kr">
@@ -100,7 +103,7 @@ function Khata({ vals, cmp }: { vals: Vals; cmp?: Vals }) {
 }
 
 /** The small map. key 'neutral' paints by district; otherwise by VAN band of that reading. */
-function MiniMap({ idx, sel, colourBy, onPick, label }: { idx: number[]; sel: number | null; colourBy: KhataKey | 'neutral'; onPick: (i: number) => void; label: string }) {
+export function MiniMap({ idx, sel, colourBy, onPick, label }: { idx: number[]; sel: number | null; colourBy: KhataKey | 'neutral'; onPick: (i: number) => void; label: string }) {
   const ref = useRef<HTMLCanvasElement>(null)
   const geo = useMemo(() => {
     let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity
@@ -250,6 +253,8 @@ export function TeesraKhata({ district, englishFirst }: { district: string | nul
   const [c, setC] = useState<number | null>(saved ? saved.c : null)
   const [q, setQ] = useState('')
   const [mapKey, setMapKey] = useState<KhataKey>(saved ? saved.mapKey : 'zn')
+  // D-278: the GPS grid card opens from the first screen; while it is open, the district list below steps aside.
+  const [gpsOn, setGpsOn] = useState(false)
   // D-265: keep this history entry's copy current; an in-page jump (#soil-districts) makes a new entry, so it is
   // written there too.
   const snap = useRef<Saved | null>(null)
@@ -385,7 +390,11 @@ export function TeesraKhata({ district, englishFirst }: { district: string | nul
         {stepNo > 0 && <button className="tk-link" onClick={back}>← <span className="urdu">{KHATA_UR.back}</span></button>}
 
         {step === 'district' && (
-          <div className="tk-screen">
+          <GpsCard onActive={setGpsOn} onDistrictTehsil={() => { setGpsOn(false); requestAnimationFrame(() => document.getElementById('tk-district')?.scrollIntoView({ block: 'start', behavior: 'smooth' })) }} />
+        )}
+
+        {step === 'district' && !gpsOn && (
+          <div className="tk-screen" id="tk-district">
             <h2 className="tk-h urdu">{KHATA_UR.yourDistrict}</h2>
             <p className="tk-en">Your district? Search in Urdu or English, or pick your area on the map.</p>
             <input id="tk-q" className="input tk-search" placeholder="ضلع کا نام · district name" value={q} onChange={e => setQ(e.target.value)} aria-label="Search your district" />

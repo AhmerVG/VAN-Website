@@ -1675,3 +1675,25 @@ svg g[role="button"]:focus-visible { outline: 2px solid var(--navy); outline-off
 .tk-fold-in { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding-top: 6px; padding-bottom: 6px; }
 .tk-fold .tk-name { font-size: 18px; }
 @media (min-width: 900px) { .tk-in { max-width: 620px; } }
+
+/* D-278, 20 Oct 2026: the GPS grid card on the Teesra Khata screens. */
+.gps { display: grid; gap: 10px; scroll-margin-top: calc(var(--hdr-h) + 8px); }
+.gps-ask { border: 1.5px solid var(--line); border-radius: var(--radius); background: var(--paper); padding: 14px; }
+.gps-note { font-size: 15px; }
+.gps-or { font-weight: 600; color: var(--ink); margin-top: 6px; }
+.gps-ways { display: grid; gap: 8px; }
+.gps-alt { background: #fff; color: var(--navy); border: 1.5px solid var(--line); }
+.gps-alt .urdu { color: var(--navy); }
+.gps-msg { color: var(--rust); font-weight: 600; }
+.gps-map { display: block; margin: 0 auto; border-radius: 8px; border: 1px solid var(--line); max-width: 100%; }
+.gps-map-pick { cursor: crosshair; }
+.gps-zoom { display: flex; gap: 8px; justify-content: center; }
+.gps-slider input[type=range] { width: 100%; accent-color: var(--navy); min-height: 32px; }
+.gps-ticks { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); }
+.gps-ticks .on { color: var(--navy); font-weight: 700; }
+.gps-square { display: grid; gap: 6px; }
+.gps-paste { width: 100%; font-size: 16px; }
+.gps-for { font-size: 17px; }
+.gps-radius { font-weight: 700; font-size: 17px; color: var(--navy); }   /* G5, 20 Oct 2026: the radius, plainly */
+.gps-credit { font-size: 12px; color: var(--muted); text-align: center; margin-top: -4px; }   /* G10, 20 Oct 2026: the boundary credit, 1 small line under the map */
+.gps-outside { font-weight: 700; font-size: 16px; color: var(--ink); }   /* G9, 20 Oct 2026: his land is outside Punjab, said plainly */

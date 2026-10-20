@@ -85,3 +85,47 @@ export const KHATA_UR = {
   calcExplain: 'یہ VAN کا پورا گندم پلان ہے، بنڈل سے زیادہ۔ آپ کے ضلع کی مٹی سے اس میں یہ بدلتا ہے؛ مقدار کیلکولیٹر بتاتا ہے۔',
   calcDistrict: 'کیلکولیٹر آپ کا ضلع پڑھتا ہے، آپ کا علاقہ نہیں۔',
 }
+
+/**
+ * THE GPS GRID CARD'S URDU, D-278, 20 Oct 2026. All 16 lines are Tahir's: his words or approved by him as drafted, on
+ * 19 Oct 2026 (GPS Grid Card, rulings 19 Oct 2026.md and the design page "GPS Grid Card Design"), line 14 approved on
+ * 20 Oct 2026 (M4). Numbers fill in where the line has one. Line 16 (G3, Tahir 20 Oct 2026): the district and tehsil in
+ * the Urdu already live on the Teesra Khata screens (soilTehsils.ts, still drafts until his check), the Union Council in
+ * English. Line 14 is shown only on a computer (it says "computer"); on a phone with a wide location the English alone
+ * names the phone. Line 10 is the soil card's own reading names and band words, above. Every other line on these
+ * screens is English until Tahir gives the Urdu.
+ */
+export const GPS_UR = {
+  /** 1, heading, Tahir's words */
+  heading: 'آپ کی قریبی زمین کی مٹی کا ریکارڈ',
+  /** 2, note, Tahir's words */
+  note: 'کارڈ آپ کی زمین کے قریبی علاقے کی ریڈنگ ہے۔ آپ کی لوکیشن چیک نہیں کی جاتی۔',
+  /** 3, button, Tahir's words */
+  useLocation: 'اپنی لوکیشن سے ریکارڈ دیکھیں',
+  /** 4, button, Tahir's words */
+  clickMap: 'جگہ پر کلک کریں',
+  /** 5, button */
+  pastePin: 'گوگل میپس کا پن پیسٹ کریں',
+  /** 6, button */
+  pickDistrictTehsil: 'ضلع اور تحصیل چنیں',
+  /** 7, button */
+  searchUc: 'یونین کونسل یا چک نمبر تلاش کریں',
+  /** 8, the card's top line; the numbers fill in */
+  samplesWithin: (km: string, n: string) => `آپ کی زمین کے ${km} کلومیٹر کے اندر ${n} نمونے`,
+  /** 9, under the slider */
+  dragRadius: 'دائرہ بڑا یا چھوٹا کرنے کے لیے کھینچیں',
+  /** 11, the card's bottom line */
+  areaNotField: 'یہ علاقے کا حساب ہے، آپ کے کھیت کا ٹیسٹ نہیں۔ اپنا ٹیسٹ: VAN Lab',
+  /** 12, button, Tahir's words */
+  sendToVan: 'رہنمائی اور مٹی کے حساب سے کھاد کی ڈسکشن کے لیے یہ کارڈ VAN کو بھیجیں',
+  /** 13, button, Tahir's words */
+  wheatPlan: 'مٹی کے کارڈ کے حساب سے گندم کا پلان بنائیں',
+  /** 14, computer note; the number fills in */
+  computerNote: (km: string) => `آپ کے کمپیوٹر نے جگہ تقریباً ${km} کلومیٹر کے اندر بتائی ہے۔ پن کو اپنے کھیت پر لے جائیں۔`,
+  /** 14, computer button */
+  thisIsMyLand: 'یہی میری زمین ہے',
+  /** 15, the question before the location */
+  atYourLand: 'کیا آپ اس وقت اپنی زمین پر موجود ہیں؟',
+  /** 16, the place line; Union Council, tehsil and district fill in */
+  cardFor: (uc: string, tehsil: string, district: string) => `یہ کارڈ اس زمین کا ہے: ${uc}، ${tehsil}، ${district}`,
+}

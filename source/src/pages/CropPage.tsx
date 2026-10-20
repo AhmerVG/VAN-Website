@@ -46,10 +46,10 @@ const SIMULATOR_CROPS = ['wheat', 'potato']
 const DEFAULT_YIELD: Record<string, number> = { potato: 300 }
 const NUTRIENT_CAT: Record<string, string[]> = { N: ['N'], P: ['P'], K: ['K'], S: ['SEC'], Multi: ['MICRO', 'SEC'] }
 
-export default function CropPage({ slug, district = null }: { slug: string; district?: string | null }) {
+export default function CropPage({ slug, district = null, card = null }: { slug: string; district?: string | null; card?: string | null }) {
   const [askOpen, setAskOpen] = useState(false)
   usePhonePlainDefault()   // D-199
-  if (slug === 'wheat') return <Wheat district={district} />
+  if (slug === 'wheat') return <Wheat district={district} card={card} />
   const c = cropBySlug(slug)
   if (!c) {
     return (

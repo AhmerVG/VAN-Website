@@ -7,9 +7,10 @@ import { TEAM_CALCULATORS } from '@/data/teamCalculators'
 import { calcPlan, NUTRIENT_LABELS, MACRO_ORDER, nutrientKey } from '@/lib/planCalc'
 import { nutrientDelta, cropHasRange, fmtPair } from '@/lib/planRange'
 import type { SoilInputs } from '@/lib/soilAdjustment'
-import type { SoilBand, SoilParameter } from '@/data/soilThresholds'
+import { bandForValue, type SoilBand, type SoilParameter } from '@/data/soilThresholds'
 import { SoilAdjustmentPanel } from './SoilAdjustmentPanel'
 import type { BandSource } from './SoilAdjustmentPanel'
+import { parseCardParam, type CardInfo } from '@/lib/gpsCard'
 import { regionalProfile } from '@/data/regionalSoil'
 import { wa } from '@/data/site'
 import { PackShot, DrawnBag, WaButton } from './bits'
@@ -50,7 +51,13 @@ const LIQUID_SLUGS = new Set(Object.values(CROP_PLANS).flatMap(p => p.plan as Pl
 const packUnit = (slug: string | null) => (slug && LIQUID_SLUGS.has(slug) ? 'L' : 'kg')
 
 /** D-144: `crop` is any slug in COST_PLANS; `cropName` is how the page names it ("basmati rice"). */
-export function NutritionCreator({ crop, cropName = crop, initialDistrict = null }: { crop: string; cropName?: string; initialDistrict?: string | null }) {
+/**
+ * GPS grid card, D-279, 20 Oct 2026 (Tahir's rulings 9 and 11 of 19 Oct 2026; G2 and G6 of 20 Oct 2026). The card for
+ * the area near the farmer's land feeds the plan through the calculator's EXISTING soil-numbers door: each reading is
+ * put through bandForValue, exactly as a number typed into "Your reading" is, and calcPlan, the bands, the bumps and
+ * the swap are not touched. The link is read by parseCardParam (src/lib/gpsCard.ts).
+ */
+export function NutritionCreator({ crop, cropName = crop, initialDistrict = null, initialCard = null, onCardRows }: { crop: string; cropName?: string; initialDistrict?: string | null; initialCard?: string | null; onCardRows?: (on: boolean) => void }) {
   const [acres, setAcres] = useSharedAcres(crop)   // M1: shared with the shopping list
   const [soilInputs, setSoilInputs] = useState<SoilInputs>({})
   // Where each band on screen came from — a farmer's own reading, or their district's survey average.
@@ -58,6 +65,8 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
   // picking a district never quietly overwrites something the farmer has already told us.
   const [bandSource, setBandSource] = useState<BandSource>({})
   const [district, setDistrict] = useState('')
+  // D-279: the soil card the rows came from, if they came from one.
+  const [cardInfo, setCardInfo] = useState<CardInfo | null>(null)
   // Price is off until asked for. This is a conditional render, not a hidden panel: while it is
   // false the figures are not in the DOM, not in the page source and not in the pre-rendered HTML,
   // so nothing indexes a VAN product against a rupee figure. Tahir's ruling, 8 Sep 2026.
@@ -66,7 +75,7 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
   // reading into a potato plan whose mapped parameters are not even the same set.
   const cropRef = useRef(crop)
   useEffect(() => {
-    if (cropRef.current !== crop) { cropRef.current = crop; setSoilInputs({}); setBandSource({}); setDistrict('') }
+    if (cropRef.current !== crop) { cropRef.current = crop; setSoilInputs({}); setBandSource({}); setDistrict(''); setCardInfo(null) }
   }, [crop])
   const costPlan = PLANS[crop]
   const totals = useMemo(() => calcPlan(costPlan, acres, soilInputs, crop), [costPlan, acres, soilInputs, crop])
@@ -87,6 +96,7 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
   /** Fill every row the farmer hasn't answered themselves from the chosen district's survey average. */
   const pickDistrict = (key: string) => {
     setDistrict(key)
+    setCardInfo(null)
     const profile = regionalProfile(key)
     if (!profile) return
     setSoilInputs(s => {
@@ -94,7 +104,8 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
       // D-273, Tahir 19 Oct 2026: a row filled from the previous district that this district leaves blank is
       // cleared, so no reading from another district is counted. Rows the farmer set himself stay.
       for (const parameter of Object.keys(next) as SoilParameter[]) {
-        if (bandSource[parameter] === 'district' && !(parameter in profile.bands)) delete next[parameter]
+        // D-279: a row from the soil card is replaced by a district the farmer picks, as a district row is.
+        if ((bandSource[parameter] === 'district' || bandSource[parameter] === 'card') && !(parameter in profile.bands)) delete next[parameter]
       }
       for (const [parameter, band] of Object.entries(profile.bands)) {
         if (bandSource[parameter as SoilParameter] === 'farmer') continue
@@ -105,7 +116,7 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
     setBandSource(s => {
       const next = { ...s }
       for (const parameter of Object.keys(next) as SoilParameter[]) {
-        if (next[parameter] === 'district' && !(parameter in profile.bands)) delete next[parameter]
+        if ((next[parameter] === 'district' || next[parameter] === 'card') && !(parameter in profile.bands)) delete next[parameter]
       }
       for (const parameter of Object.keys(profile.bands)) {
         if (next[parameter as SoilParameter] === 'farmer') continue
@@ -115,15 +126,29 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
     })
   }
 
-  const clearSoil = () => { setSoilInputs({}); setBandSource({}); setDistrict('') }
+  const clearSoil = () => { setSoilInputs({}); setBandSource({}); setDistrict(''); setCardInfo(null) }
 
   // Teesra Khata (18 Oct 2026): a link from the Soil Atlas (crops/wheat.html?district=KEY) opens the calculator with
   // the soil rows filled from that district's survey median, exactly as if the farmer had picked it himself, and
   // labelled the same way ("district typical"). Only on a crop with a soil panel, and only once.
   const linked = useRef(false)
+  const cardPending = useRef(false)
   useEffect(() => {
     if (linked.current || !initialDistrict || !regionalProfile(initialDistrict)) return
     linked.current = true
+    // D-279: with a soil card in the link, the rows come from the card through the soil-numbers door (bandForValue, as a
+    // typed number) and the district stays picked as the default, without filling any row from the district (G2).
+    const card = parseCardParam(initialCard)
+    if (card) {
+      const params = Object.keys(card.values) as SoilParameter[]
+      setDistrict(initialDistrict)
+      setCardInfo(card)
+      setSoilInputs(() => { const next: SoilInputs = {}; for (const p of params) { const b = bandForValue(p, card.values[p] as number); if (b) next[p] = b } return next })
+      setBandSource(() => { const next: BandSource = {}; for (const p of params) if (bandForValue(p, card.values[p] as number)) next[p] = 'card'; return next })
+      // The card rows land on the next render; until then the page's head is not told "no card rows".
+      cardPending.current = params.some(p => !!bandForValue(p, card.values[p] as number))
+      return
+    }
     pickDistrict(initialDistrict)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialDistrict])
@@ -159,17 +184,32 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
     const fractional = totals.lines.some(l => Math.abs(shownQty(l) - Math.round(shownQty(l))) > 1e-6)
     const profile = regionalProfile(district)
     const usedDistrictAvg = Object.values(bandSource).includes('district')
+    const usedCard = Object.values(bandSource).includes('card') && cardInfo
     const name = profile ? profile.name.replace(' (all districts)', '') : ''
     // D-261: the district is named, and where the soil rows came from the district's survey median the message says so
     // (was "Soil: no test of my own. Plan adjusted using the <district> survey average.": the fill is the median).
     const soilNote = profile
-      ? usedDistrictAvg
+      ? usedCard
+        ? [`My district: ${name}.`, `Soil: no test of my own. The soil rows are from the Soil Atlas card for the area near my land: survey readings within ${cardInfo.r} km, ${cardInfo.n.toLocaleString('en-US')} samples. Not a test of my field.`]
+        : usedDistrictAvg
         ? [`My district: ${name}.`, 'Soil: no test of my own. The soil rows are the district survey median.']
         : [`My district: ${name}.`]
       : null
     // L9, 24 Sep 2026: the "My district is:" prompt goes last, so the farmer types after it.
     return [l1, ...ls, ...(fractional ? ['(Round up to whole packs.)'] : []), ...(soilNote ?? []), 'Please confirm pricing and availability.', ...(soilNote ? [] : ['Please confirm my nearest dealer. My district is:'])].join('\n')
-  }, [totals, acres, cropName, district, bandSource])
+  }, [totals, acres, cropName, district, bandSource, cardInfo])
+
+  // G6 (Tahir, 20 Oct 2026): with rows from the soil card on screen, the plan's "your soil" wording names the card
+  // instead; a typed reading keeps its own wording. Wording only, no figure changes.
+  const cardRows = !!cardInfo && Object.values(bandSource).includes('card')
+  const ownRows = Object.values(bandSource).includes('farmer')
+  const soilWord = cardRows ? (ownRows ? 'for this soil card and your readings' : 'for this soil card') : 'for your soil'
+  // Second review, 20 Oct 2026: the page's head (Wheat.tsx) follows whether card rows are in use, not the link alone.
+  useEffect(() => {
+    if (cardPending.current && !cardRows) return
+    cardPending.current = false
+    onCardRows?.(cardRows)
+  }, [cardRows, onCardRows])
 
   // D-262: the bottom bar ("My Wheat plan") sends this same message once the farmer has set anything here: a district,
   // the acres or a soil row. With nothing set it keeps its own enquiry message.
@@ -207,8 +247,9 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
               <div className="text-right shrink-0">
                 <div className="num text-[22px] leading-none" style={{ color: l.slug ? 'var(--navy)' : '#5B6A5E' }}>{fmtQty(Math.max(0, l.qty + l.soilBumpQty + l.swapQty))}</div>
                 <div className="cap">{Math.round(Math.max(0, l.qty + l.soilBumpQty + l.swapQty) * l.packKg * 10) / 10} {packUnit(l.slug)} total</div>
-                {l.soilBumpQtyPerAcre > 0 && <div className="cap" style={{ color: 'var(--rust)' }}>+{fmtQty(l.soilBumpQty)} for your soil</div>}
-                {l.soilBumpQtyPerAcre < 0 && <div className="cap" style={{ color: 'var(--green-text)' }}>−{fmtQty(-l.soilBumpQty)} for your soil, which reads healthy</div>}
+                {/* G6, Tahir 20 Oct 2026: wording only, and only with soil card rows on screen. Was always "for your soil". */}
+                {l.soilBumpQtyPerAcre > 0 && <div className="cap" style={{ color: 'var(--rust)' }}>+{fmtQty(l.soilBumpQty)} {soilWord}</div>}
+                {l.soilBumpQtyPerAcre < 0 && <div className="cap" style={{ color: 'var(--green-text)' }}>−{fmtQty(-l.soilBumpQty)} {soilWord}, which reads healthy</div>}
                 {l.swapQtyPerAcre > 0.001 && <div className="cap" style={{ color: 'var(--green)' }}>+{fmtQty(l.swapQty)}. Nitrogen moved here</div>}
                 {l.swapQtyPerAcre < -0.001 && <div className="cap" style={{ color: 'var(--muted)' }}>{fmtQty(l.swapQty)}. Nitrogen moved out</div>}
               </div>
@@ -276,6 +317,7 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
               soilInputs={soilInputs}
               bandSource={bandSource}
               district={district}
+              card={cardInfo}
               onChange={setSoilBand}
               onPickDistrict={pickDistrict}
               onClear={clearSoil}
@@ -296,7 +338,10 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
           <div className="cap font-bold uppercase tracking-[.06em]" style={{ color: 'var(--rust-text)' }}>Read this before you buy anything</div>
           <h4 className="mt-1">{a.headline}</h4>
           <p className="small mt-2 max-w-[140ch]">{a.body}</p>
-          <WaButton href={wa(`Hello VAN. My soil report shows a salinity (EC) problem on my ${cropName} land. Can your agronomy team advise?`)} >Send the report to the agronomy team</WaButton>
+          {/* G6: when this row came from the soil card, the message and the button say so (wording only). */}
+          {bandSource[a.parameter] === 'card' && cardInfo
+            ? <WaButton href={wa(`Hello VAN. The soil card for my area from the Soil Atlas shows a salinity (EC) problem near my ${cropName} land (survey readings within ${cardInfo.r} km, ${cardInfo.n.toLocaleString('en-US')} samples, not a test of my field). Can your agronomy team advise?`)} >Send the soil card to the agronomy team</WaButton>
+            : <WaButton href={wa(`Hello VAN. My soil report shows a salinity (EC) problem on my ${cropName} land. Can your agronomy team advise?`)} >Send the report to the agronomy team</WaButton>}
         </div>
       ))}
 
@@ -343,6 +388,7 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
         <p className="cap mt-1">
           This is a pilot soil-adjustment model, not yet calibrated against a full season's results. Confirm any soil-driven change with your VAN dealer before applying.
           {Object.values(bandSource).includes('district') && ' Part of this plan is adjusted from your district\u2019s survey average rather than a test of your own land. A soil test would make it exact.'}
+          {Object.values(bandSource).includes('card') && cardInfo && ` Part of this plan is adjusted from the Soil Atlas card for the area near your land (survey readings within ${cardInfo.r} km, ${cardInfo.n.toLocaleString('en-US')} samples), not a test of your own land. A soil test would make it exact.`}
         </p>
       )}
     </div>
