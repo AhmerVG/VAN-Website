@@ -21,7 +21,7 @@ import { usePublishShared } from '@/lib/shareState'
  * khata for the crop; the third, the soil's record kept by the Punjab government, is open to every farmer for
  * his area. A farmer who comes in from the Facebook post meets the full-screen door (soil-door.inline.html),
  * then these screens, Urdu first:
- *   district → its khata → tehsil (137, each with its sample count) → his square (about 6,600 acres)
+ *   district → its khata → tehsil (136, each with its sample count; Lahore and Lahore City joined, D-274) → his square (about 6,600 acres)
  *   → the soil card for WhatsApp (no product, no price) → the wheat bundle and the calculator.
  * Plan: F:\Story and Marketing\Mitti Ka hissab\Soil Atlas Plan 18 Oct 2026.md (items 2, 3, 4, 6, 7, 8).
  *
@@ -216,7 +216,7 @@ async function drawCard(name: { d: string; t?: string }, vals: Vals, n: number |
  * Forward (soil-door.inline.html), unchanged. Revert: the 2 effects and readSaved below, and the useState lines back to
  * their plain starting values.
  */
-const SAVE_KEY = 'vanTeesraKhata'
+const SAVE_KEY = 'vanTeesraKhata2'
 type Saved = { folded: boolean; step: Step; d: string | null; t: number | null; c: number | null; mapKey: KhataKey }
 function readSaved(): Saved | null {
   try {
@@ -431,7 +431,7 @@ export function TeesraKhata({ district, englishFirst }: { district: string | nul
             {tObj ? (
               <>
                 <h3 className="tk-h tk-h3 urdu">{KHATA_UR.tehsilKhata(tObj.ur)}</h3>
-                <p className="tk-en">{tObj.en} · {thousands(tObj.n)} samples · the tehsil median, with the district’s beside it{tObj.key === 'LAHORE' ? ' · in Lahore, 8,603 samples carry no tehsil and are listed under the district’s name' : ''}</p>
+                <p className="tk-en">{tObj.en} · {thousands(tObj.n)} samples · the tehsil median, with the district’s beside it</p>
                 <Khata vals={tObj.median} cmp={dVals} />
                 <p className="urdu tk-survey">{KHATA_UR.survey}</p>
                 <button className="btn btn-navy tk-btn" onClick={() => { setC(null); go('square') }}><span className="urdu">{KHATA_UR.seeArea}</span><span className="tk-btn-en">See your area, a square of about 6,600 acres</span></button>
