@@ -4,7 +4,7 @@ import { SOIL_MEDIANS } from '@/data/soilMedians'
 import { DISTRICT_PROFILES } from '@/data/districtSoil'
 import { bandOf, colByKey, SOIL_BAND_COLOR, SOIL_BAND_LABEL, type SoilBand } from '@/lib/soilSeverity'
 import { TEHSILS, CELL_TEHSIL, DISTRICT_UR } from '@/data/soilTehsils'
-import { BAND_UR, phWord, READING_UR, KHATA_UR, type KhataKey } from '@/data/soilUrdu'
+import { BAND_UR, phWord, READING_UR, KHATA_UR, GPS_UR, type KhataKey } from '@/data/soilUrdu'
 import { horseSvg } from '@/data/vanHorse'
 import { regionalProfile } from '@/data/regionalSoil'
 import { COST_PLANS } from '@/data/costPlans'
@@ -23,6 +23,8 @@ import { GpsCard } from './GpsCard'
  * his area. A farmer who comes in from the Facebook post meets the full-screen door (soil-door.inline.html),
  * then these screens, Urdu first:
  *   district → its khata → tehsil (136, each with its sample count; Lahore and Lahore City joined, D-274) → his square (about 6,600 acres)
+ *   D-280 (20 Oct 2026): district, its khata, the tehsil list and the tehsil's khata share 1 screen; once a tehsil is picked the GPS grid
+ *   card's ways open under it (Union Council or chak, the map, a pasted pin, his location), beside the old path to the square.
  *   → the soil card for WhatsApp (no product, no price) → the wheat bundle and the calculator.
  * Plan: F:\Story and Marketing\Mitti Ka hissab\Soil Atlas Plan 18 Oct 2026.md (items 2, 3, 4, 6, 7, 8).
  *
@@ -233,7 +235,9 @@ function readSaved(): Saved | null {
     const t = d && typeof s.t === 'number' && TEHSILS[s.t]?.district === d ? s.t : null
     const c = d && typeof s.c === 'number' && GRID.cells[s.c]?.dist === d ? s.c : null
     const mapKey = (['zn', 'p', 'k', 'ph'] as KhataKey[]).includes(s.mapKey) ? s.mapKey : 'zn'
-    return { folded: !!s.folded, step: d ? s.step : 'district', d, t, c, mapKey }
+    // D-280: the tehsil step now means a tehsil is picked; a place saved at the tehsil list with none picked is the district's screen.
+    const step: Step = !d ? 'district' : s.step === 'tehsil' && t == null ? 'khata' : s.step
+    return { folded: !!s.folded, step, d, t, c, mapKey }
   } catch { return null }
 }
 function writeSaved(s: Saved) {
@@ -255,6 +259,8 @@ export function TeesraKhata({ district, englishFirst }: { district: string | nul
   const [mapKey, setMapKey] = useState<KhataKey>(saved ? saved.mapKey : 'zn')
   // D-278: the GPS grid card opens from the first screen; while it is open, the district list below steps aside.
   const [gpsOn, setGpsOn] = useState(false)
+  // 21 Oct 2026 (Tahir): the "I am at my land" button at the top. He still picks district and tehsil first; the card then reads his location at once.
+  const [atLand, setAtLand] = useState(false)
   // D-265: keep this history entry's copy current; an in-page jump (#soil-districts) makes a new entry, so it is
   // written there too.
   const snap = useRef<Saved | null>(null)
@@ -295,13 +301,16 @@ export function TeesraKhata({ district, englishFirst }: { district: string | nul
   }, [d])
 
   const go = (s: Step) => { setStep(s); requestAnimationFrame(() => top.current?.scrollIntoView({ block: 'start', behavior: 'smooth' })) }
-  const pickDistrict = (key: string, ti: number | null = null, ci: number | null = null) => { setD(key); setT(ti); setC(ci); go('khata') }
+  const pickDistrict = (key: string, ti: number | null = null, ci: number | null = null) => { setD(key); setT(ti); setC(ci); go(ti != null ? 'tehsil' : 'khata') }
 
   const dist = districtByKey(d)
   const dVals = useMemo(() => (d ? districtVals(d) : {}), [d])
   const dCells = useMemo(() => (d ? GRID.cells.map((_, i) => i).filter(i => GRID.cells[i].dist === d) : []), [d])
   const tehsils = useMemo(() => TEHSILS.map((x, i) => ({ x, i })).filter(r => r.x.district === d).sort((a, b) => b.x.n - a.x.n), [d])
   const allCells = useMemo(() => GRID.cells.map((_, i) => i), [])
+  // D-280: what the GPS card is told about the district and tehsil he picked: the squares whose main tehsil it is.
+  const gpsScope = useMemo(() => (d && t != null && TEHSILS[t]?.district === d
+    ? { district: d, tehsil: TEHSILS[t].en, cells: dCells.filter(i => CELL_TEHSIL[i][0] === t) } : null), [d, t, dCells])
 
   // The square step opens on the tehsil's best-sampled square if he has not tapped one.
   const square = useMemo(() => {
@@ -358,7 +367,8 @@ export function TeesraKhata({ district, englishFirst }: { district: string | nul
   })()
 
   const stepNo = STEPS.indexOf(step)
-  const back = () => go(STEPS[Math.max(0, stepNo - 1)])
+  // D-280: from the tehsil, Back goes to the district's screen with the tehsil list and nothing picked.
+  const back = () => { if (step === 'tehsil') { setT(null); setC(null); go('khata') } else go(STEPS[Math.max(0, stepNo - 1)]) }
 
   if (folded) {
     return (
@@ -387,14 +397,14 @@ export function TeesraKhata({ district, englishFirst }: { district: string | nul
           </button>
         </div>
         <div className="tk-steps" aria-hidden="true">{STEPS.map((s, i) => <i key={s} className={i <= stepNo ? 'on' : ''} />)}</div>
-        {stepNo > 0 && <button className="tk-link" onClick={back}>← <span className="urdu">{KHATA_UR.back}</span></button>}
+        {stepNo > 0 && !gpsOn && <button className="tk-link" onClick={back}>← <span className="urdu">{KHATA_UR.back}</span></button>}
 
         {step === 'district' && (
-          <GpsCard onActive={setGpsOn} onDistrictTehsil={() => { setGpsOn(false); requestAnimationFrame(() => document.getElementById('tk-district')?.scrollIntoView({ block: 'start', behavior: 'smooth' })) }} />
-        )}
-
-        {step === 'district' && !gpsOn && (
           <div className="tk-screen" id="tk-district">
+            <button type="button" className={`btn tk-btn ${atLand ? 'btn-navy' : 'btn-ghost'}`} data-tk="atland" aria-pressed={atLand} onClick={() => setAtLand(v => !v)}>
+              <span className="urdu">{GPS_UR.atYourLand}</span><span className="tk-btn-en">I am at my land now</span>
+            </button>
+            {atLand && <p className="tk-en" data-tk="atland-hint" role="status">First pick your district and tehsil below. Then your location is read.</p>}
             <h2 className="tk-h urdu">{KHATA_UR.yourDistrict}</h2>
             <p className="tk-en">Your district? Search in Urdu or English, or pick your area on the map.</p>
             <input id="tk-q" className="input tk-search" placeholder="ضلع کا نام · district name" value={q} onChange={e => setQ(e.target.value)} aria-label="Search your district" />
@@ -409,29 +419,31 @@ export function TeesraKhata({ district, englishFirst }: { district: string | nul
             </div>
             <p className="urdu tk-sub">{KHATA_UR.orTapMap}</p>
             <p className="tk-en">Or pick your area on the map: it sets your district, tehsil and square.</p>
-            <div className="tk-mapwrap"><MiniMap idx={allCells} sel={null} colourBy="neutral" label="Map of Punjab's soil squares" onPick={i => { const tt = CELL_TEHSIL[i][0]; pickDistrict(GRID.cells[i].dist, tt >= 0 ? tt : null, i) }} /></div>
+            <div className="tk-mapwrap"><MiniMap idx={allCells} sel={null} colourBy="neutral" label="Map of Punjab's soil squares" onPick={i => { const tt = CELL_TEHSIL[i][0]; setAtLand(false); pickDistrict(GRID.cells[i].dist, tt >= 0 ? tt : null, i) }} /></div>
           </div>
         )}
 
-        {step === 'khata' && dist && (
-          <div className="tk-screen">
+        {/* D-280 (Tahir, 20 Oct 2026): district, tehsil and then the finer ways to find his land, from the largest unit to the
+            smallest, on 1 screen: each part opens once the one above it is picked. */}
+        {(step === 'khata' || step === 'tehsil') && dist && !gpsOn && (
+          <div className="tk-screen" id="tk-district">
             <span className="cap">District · ضلع</span>
             <h2 className="tk-h urdu">{KHATA_UR.districtKhata(urName(dist.key))}</h2>
             <p className="tk-en">{dist.name} · {thousands(dist.summary.n)} samples · the district median</p>
             <Khata vals={dVals} />
             <p className="urdu tk-survey">{KHATA_UR.survey}</p>
             <p className="tk-en">This is the Punjab government’s survey, about 2016 to 2018. It is your area’s account, not your field’s.</p>
-            <button className="btn btn-navy tk-btn" onClick={() => go('tehsil')}><span className="urdu">{KHATA_UR.setTehsil}</span><span className="tk-btn-en">Pick your tehsil</span></button>
           </div>
         )}
 
-        {step === 'tehsil' && dist && (
-          <div className="tk-screen">
+        {(step === 'khata' || step === 'tehsil') && dist && !gpsOn && (
+          <div className="tk-screen" id="tk-tehsil">
             <h2 className="tk-h urdu">{KHATA_UR.setTehsil}</h2>
+            {atLand && <p className="tk-en" data-tk="atland-hint2" role="status">Pick your tehsil. Then your location is read.</p>}
             <p className="tk-en">{dist.name} has {tehsils.length} tehsils in the survey, each with its own sample count.</p>
             <div className="tk-list">
               {tehsils.map(({ x, i }) => (
-                <button key={x.key} className={`tk-row ${i === t ? 'on' : ''}`} onClick={() => { setT(i); setC(null) }} aria-pressed={i === t}>
+                <button key={x.key} className={`tk-row ${i === t ? 'on' : ''}`} onClick={() => { setT(i); setC(null); setStep('tehsil'); setPendingScroll('gps-card') }} aria-pressed={i === t}>
                   <span><span className="tk-en-name">{x.en}</span> <span className="cap num">{thousands(x.n)} samples</span></span>
                   <span className="urdu tk-ur-name">{x.ur}</span>
                 </button>
@@ -447,6 +459,11 @@ export function TeesraKhata({ district, englishFirst }: { district: string | nul
               </>
             ) : <p className="tk-en">Pick your tehsil to see its readings.</p>}
           </div>
+        )}
+
+        {/* The finer ways open once his tehsil is picked; the old path (the square) stays above them. */}
+        {step === 'tehsil' && dist && tObj && gpsScope && (
+          <GpsCard key={`${d}|${t}`} scope={gpsScope} autoLocate={atLand} onAutoLocate={() => setAtLand(false)} onActive={setGpsOn} onDistrictTehsil={() => { setGpsOn(false); setT(null); setC(null); go('district') }} />
         )}
 
         {step === 'square' && dist && sq && square != null && (

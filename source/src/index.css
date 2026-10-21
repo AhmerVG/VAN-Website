@@ -1681,6 +1681,8 @@ svg g[role="button"]:focus-visible { outline: 2px solid var(--navy); outline-off
 .gps-ask { border: 1.5px solid var(--line); border-radius: var(--radius); background: var(--paper); padding: 14px; }
 .gps-note { font-size: 15px; }
 .gps-or { font-weight: 600; color: var(--ink); margin-top: 6px; }
+.gps-scope { font-weight: 600; color: var(--muted); font-size: 14px; }   /* D-280 review: the tehsil a hidden-list screen is for */
+.gps-warn { display: grid; gap: 4px; border: 1.5px solid var(--gold); background: var(--gold-soft); border-radius: var(--radius); padding: 10px 12px; }   /* D-281: the outside-the-tehsil line, boxed so it is not read as part of the card's own line */
 .gps-ways { display: grid; gap: 8px; }
 .gps-alt { background: #fff; color: var(--navy); border: 1.5px solid var(--line); }
 .gps-alt .urdu { color: var(--navy); }

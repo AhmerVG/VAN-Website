@@ -177,7 +177,6 @@ console.log('\n4, 5, 6 · soil card, the VAN message, Back, the bar on the Soil 
   await page.click('#teesra-khata .tk-row:has(.tk-en-name:text-is("Sheikhupura"))')
   await page.waitForSelector('text=Pick your tehsil')
   check('Soil Atlas bar after picking Sheikhupura: opens the wheat calculator with it', /crops\/wheat\.html\?district=SHEIKHUPURA$/.test(await dockHref(page)), await dockHref(page))
-  await page.click('button.tk-btn:has-text("Pick your tehsil")')
   await page.click('#teesra-khata .tk-list .tk-row >> nth=0')
   const tehsil = (await page.textContent('#teesra-khata .tk-list .tk-row.on .tk-en-name')).trim()
   await page.click('button.tk-btn:has-text("See your area")')

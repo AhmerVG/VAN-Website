@@ -133,6 +133,11 @@ const tehsilSrc = fs.readFileSync(path.join(ROOT, 'src', 'data', 'soilTehsils.ts
 const DISTRICT_UR = JSON.parse(/export const DISTRICT_UR[^=]*=\s*(\{.*\})\s*$/m.exec(tehsilSrc)[1])
 const TEHSILS = JSON.parse(/export const TEHSILS[^=]*=\s*(\[.*\])\s*$/m.exec(tehsilSrc)[1])
 const dUr = k => DISTRICT_UR[k] ?? dname(k)
+const soilSrc = fs.readFileSync(path.join(ROOT, 'src', 'data', 'soil.ts'), 'utf8')
+const SOIL_CELLS = JSON.parse(/= (\{"cell_deg".*\});?\s*$/m.exec(soilSrc)[1]).cells
+const CELL_TEHSIL = JSON.parse(/export const CELL_TEHSIL[^=]*=\s*(\[\[.*\]\]);?\s*$/m.exec(tehsilSrc)[1])
+const cellIdxAt = (lat, lon) => SOIL_CELLS.findIndex(c => c.x === Math.floor(lon / 0.05) && c.y === Math.floor(lat / 0.05))
+const cellCentre = i => ({ lat: (SOIL_CELLS[i].y + 0.5) * 0.05, lon: (SOIL_CELLS[i].x + 0.5) * 0.05 })
 const tUr = (d, en) => TEHSILS.find(t => t.district === d && t.en === en)?.ur ?? en
 // Point in a published boundary (ray casting), written here apart from the page's own
 const inLine = (doc, lat, lon) => doc.polys.some(poly => {
@@ -153,6 +158,8 @@ const oldRule = (lat, lon) => {
   return null
 }
 const ISO = /[\u2066\u2069]/g
+const OUT_TEHSIL_UR = 'یہ جگہ آپ کی چنی ہوئی تحصیل سے باہر ہے۔'   // Tahir's pick, option 1, 20 Oct 2026
+const searchKeyOf = s => s.toUpperCase().replace(/\bCHAK\b|\bNO\b|\bUC\b|\bU\/C\b/g, ' ').replace(/[^A-Z0-9]+/g, '')
 
 // Tahir's 16 lines, as approved (GPS Grid Card, rulings 19 Oct 2026.md and the design page)
 const L = {
@@ -183,9 +190,18 @@ async function newPage(vp, geo = null, grant = true, extra = {}) {
   return { ctx, page, errors, urls }
 }
 const shot = async (page, name) => { if (SHOTS) await page.screenshot({ path: path.join(SHOTS, name + '.png'), fullPage: false }) }
-const openAsk = async (page) => {
-  await page.goto(`${BASE}/soil.html?from=mitti`, { waitUntil: 'networkidle' })
+// D-280 (Tahir, 20 Oct 2026): the ways to find his land open only after his district and tehsil are picked, so every
+// test first picks the district and tehsil of the Union Council it is about (u), the normal one by default.
+const pickTehsil = async (page, tehsil) => {
+  await page.click(`#tk-tehsil .tk-row:has(.tk-en-name:text-is("${tehsil}"))`)
   await page.waitForSelector('#gps-card .gps-ask')
+}
+const openAsk = async (page, u = NORMAL) => {
+  // through the district list, as a farmer does: the page request stays plain '/soil.html?from=mitti' (finding 1)
+  await page.goto(`${BASE}/soil.html?from=mitti`, { waitUntil: 'networkidle' })
+  await page.click(`#tk-district .tk-row:has(.tk-en-name:text-is("${dname(u.district)}"))`)
+  await page.waitForSelector('#tk-tehsil .tk-row')
+  await pickTehsil(page, u.tehsil)
   await page.locator('#gps-card').scrollIntoViewIfNeeded()
 }
 const locateAt = async (vp, lat, lon, acc = 15, extra = {}) => {
@@ -312,6 +328,19 @@ const shownOrder = (page, lbl) => page.evaluate(lbl => {
     .sort((a, b) => a[0] - b[0]).map(x => x[1]).join('')
 }, lbl)
 
+{
+  const C44d = ucBy(u => u.name.replace(/\s+/g, ' ').toUpperCase() === 'CHAK 44') ?? ucBy(u => /^(CHAK )?44$/.test(u.label))
+  const same = [NORMAL, KALLAH, C44d].filter(Boolean).every(u => u.district === NORMAL.district && u.tehsil === NORMAL.tehsil)
+  check(`test data: the normal Union Council (${NORMAL.label}), ${KALLAH.label} and ${C44d?.label} share 1 district and tehsil (${dname(NORMAL.district)}, ${NORMAL.tehsil}), because the search lists only the picked tehsil (D-280)`, same, JSON.stringify([NORMAL, KALLAH, C44d].map(u => u && [u.district, u.tehsil])))
+}
+// a 2 letter start of names that the picked tehsil holds (at least 2) and other tehsils hold too, so the scope has work to do
+const SCOPE_Q = (() => {
+  const inT = allUcs.filter(u => u.district === NORMAL.district && u.tehsil === NORMAL.tehsil && !u.pin)
+  const best = new Map()
+  for (const u of inT) { const k = searchKeyOf(u.name).slice(0, 2); if (k.length === 2) best.set(k, (best.get(k) ?? 0) + 1) }
+  const ok = [...best].filter(([k, n]) => n >= 2 && allUcs.some(u => (u.district !== NORMAL.district || u.tehsil !== NORMAL.tehsil) && searchKeyOf(u.name).startsWith(k))).sort((a, b) => b[1] - a[1])
+  return (ok[0] ?? [searchKeyOf(NORMAL.name).slice(0, 2)])[0].toLowerCase()
+})()
 for (const [label, vp] of [['phone', { width: 412, height: 860 }], ['computer', { width: 1366, height: 900 }]]) {
   console.log(`\n${label} (${vp.width} x ${vp.height})`)
   // ── 1 the first screen
@@ -320,8 +349,8 @@ for (const [label, vp] of [['phone', { width: 412, height: 860 }], ['computer', 
     const { ctx, page, errors } = await newPage(vp, POS)
     await openAsk(page)
     const t = await page.textContent('#gps-card .gps-ask')
-    for (const n of [1, 2, 15, 3, 4, 7, 5, 6]) check(`first screen: line ${n} word for word`, t.includes(L[n]), L[n])
-    check('first screen: English beside the Urdu', /Are you at your land right now\?/.test(t) && /Not at your land now\?/.test(t), t)
+    for (const n of [1, 2, 15, 3, 4, 7, 5]) check(`first screen: line ${n} word for word`, t.includes(L[n]), L[n])
+    check('first screen: English beside the Urdu, and the way in named by his tehsil (D-280)', /Are you at your land right now\?/.test(t) && new RegExp(`Now find your land in ${NORMAL.tehsil} tehsil`).test(t) && !/Not at your land now\?/.test(t), t)
     await shot(page, `${label} 1 first screen`)
     // ── 2 his location
     await page.click('[data-gps="locate"]')
@@ -493,7 +522,7 @@ for (const [label, vp] of [['phone', { width: 412, height: 860 }], ['computer', 
     check(`finding 3: ${KALLAH.label} (${KALLAH.tehsil}, ${dname(KALLAH.district)}; its lattice point is named for ${own?.uc.label}) keeps its name after the wheat plan and Back`, !!k2 && same16(k1.for, KALLAH) && same16(k2.for, KALLAH), `${k1?.for} | ${k2?.for}`)
     // the district of the Union Council searched
     if (CROSS1) {
-      await page.click('#gps-card .tk-link')
+      await openAsk(page, CROSS1)
       await page.click('[data-gps="search"]')
       await page.fill('[data-gps="q"]', CROSS1.name)
       await page.waitForSelector(`[data-uc="${CROSS1.id}"]`)
@@ -504,7 +533,7 @@ for (const [label, vp] of [['phone', { width: 412, height: 860 }], ['computer', 
     }
     // a spread-out Union Council
     const PIN = ucBy(u => u.pin)
-    await page.click('#gps-card .tk-link')
+    await openAsk(page, PIN)
     await page.click('[data-gps="search"]')
     await page.fill('[data-gps="q"]', PIN.name)
     await page.waitForSelector(`[data-uc="${PIN.id}"]`)
@@ -520,7 +549,7 @@ for (const [label, vp] of [['phone', { width: 412, height: 860 }], ['computer', 
     await page.waitForSelector('[data-gps-card]', { timeout: 20000 }).catch(() => null)
     check('pin card: tapping the map gives a card', !!(await page.$('[data-gps-card]')))
     // paste
-    await page.click('#gps-card .tk-link')
+    await openAsk(page)
     await page.click('[data-gps="paste"]')
     await page.fill('[data-gps="pastebox"]', 'my land')
     check('paste: words with no numbers keep the button off and say why', await page.isDisabled('[data-gps="pastego"]') && (await page.textContent('#gps-card')).includes('No Punjab coordinates'))
@@ -606,9 +635,9 @@ for (const [label, vp] of [['phone', { width: 412, height: 860 }], ['computer', 
       check('the thin screen names VAN Lab once (low finding)', (tt.match(/VAN Lab/g) || []).length === 1, tt)
       await shot(T.page, `${label} 9 too thin`)
       await T.page.click('#gps-card .tk-screen button.gps-alt')
-      await T.page.waitForSelector('#tk-district', { timeout: 8000 }).catch(() => null)
-      const after = await T.page.textContent('#gps-card')
-      check('"Pick district and tehsil" from the thin screen: the thin message goes and the district list shows (low finding)', !after.includes('fewer than 20 samples') && !!(await T.page.$('#tk-district')), after.slice(0, 200))
+      await T.page.waitForSelector('#tk-district .tk-list .tk-row', { timeout: 8000 }).catch(() => null)
+      const rowsAfter = (await T.page.$$('#tk-district .tk-list .tk-row')).length
+      check('"Pick district and tehsil" from the thin screen: the thin message and the card box go and the list of all 36 districts shows (review fix: it used to scroll to the same district\'s khata)', !(await T.page.$('#gps-card')) && !(await T.page.textContent('#teesra-khata')).includes('fewer than 20 samples') && rowsAfter === 36, String(rowsAfter))
       await T.ctx.close()
     } else check('a place inside Punjab with no card exists in the data', false)
     for (const [where, pos] of Object.entries(BORDER)) {
@@ -624,7 +653,8 @@ for (const [label, vp] of [['phone', { width: 412, height: 860 }], ['computer', 
     await ref.page.click('[data-gps="locate"]')
     await ref.page.waitForSelector('#gps-card .gps-msg')
     const tr = await ref.page.textContent('#gps-card')
-    check('location refused: it says so and the other ways stay open', /was not shared|could not be read/.test(tr) && !!(await ref.page.$('[data-gps="search"]')), tr.slice(0, 300))
+    check('location refused: the message is above the buttons, not under the last one (hidden by the phone bar)', await ref.page.evaluate(() => { const m = document.querySelector('[data-gps="askmsg"]'), b = document.querySelector('[data-gps="locate"]'); return !!m && !!b && m.getBoundingClientRect().top < b.getBoundingClientRect().top }))
+    check('location refused: it says so, points to the ways above, and they stay open', /was not shared|could not be read/.test(tr) && /another way above/.test(tr) && !/another way below/.test(tr) && !!(await ref.page.$('[data-gps="search"]')), tr.slice(0, 300))
     await ref.ctx.close()
     const kar = await locateAt(vp, 24.86, 67.01)
     await kar.page.waitForSelector('#gps-card .gps-msg')
@@ -667,7 +697,7 @@ for (const [label, vp] of [['phone', { width: 412, height: 860 }], ['computer', 
     }
     for (const U of CHAKS) {
       const { ctx, page } = await newPage(vp)
-      await openAsk(page)
+      await openAsk(page, U)
       await page.click('[data-gps="search"]')
       await page.fill('[data-gps="q"]', U.label)
       await page.waitForSelector(`[data-uc="${U.id}"]`)
@@ -722,7 +752,7 @@ for (const [label, vp] of [['phone', { width: 412, height: 860 }], ['computer', 
     }
     if (UC_OUT) {
       const { ctx, page } = await newPage(vp)
-      await openAsk(page)
+      await openAsk(page, UC_OUT)
       await page.click('[data-gps="search"]')
       await page.fill('[data-gps="q"]', UC_OUT.name)
       await page.waitForSelector(`[data-uc="${UC_OUT.id}"]`)
@@ -739,7 +769,7 @@ for (const [label, vp] of [['phone', { width: 412, height: 860 }], ['computer', 
     for (const U of UC_MOVED) {
       if (!U) { check('third review: NOOR DOLAL and DHEER KOT are in search', false); continue }
       const { ctx, page } = await newPage(vp)
-      await openAsk(page)
+      await openAsk(page, U)
       await page.click('[data-gps="search"]')
       await page.fill('[data-gps="q"]', U.name)
       await page.waitForSelector(`[data-uc="${U.id}"]`)
@@ -792,7 +822,7 @@ for (const [label, vp] of [['phone', { width: 412, height: 860 }], ['computer', 
       const { ctx, page, errors } = await newPage(vp)
       let asked = 0
       await page.route(/\/data\/gps\/uc\.json$/, async r => { asked++; await new Promise(res => setTimeout(res, 4000)); await r.continue() })
-      await openAsk(page)
+      await openAsk(page, KALLAH)
       await page.click('[data-gps="search"]')
       await page.evaluate(() => {
         window.__nf = []
@@ -815,6 +845,254 @@ for (const [label, vp] of [['phone', { width: 412, height: 860 }], ['computer', 
       check(`G12 final fix: ${KALLAH.label} shows once the list arrives (after ${came.toFixed(1)} seconds), and "not found" never showed at any moment`, found && came >= 3.5 && nf === 0 && asked === 1, `found ${found}, ${came}s, notfound seen ${nf} times, uc.json asked ${asked} times`)
       check('no console error (G12 search, list held back)', errors.length === 0, errors.slice(0, 5))
       await ctx.close()
+    }
+    // ── 11 D-280 to D-282 (Tahir, 20 Oct 2026): district, tehsil, then the finer ways, largest to smallest, on 1 screen
+    {
+      const { ctx, page, errors } = await newPage(vp, POS)
+      await page.goto(`${BASE}/soil.html?from=mitti`, { waitUntil: 'networkidle' })
+      await page.waitForSelector('#teesra-khata #tk-district .tk-list .tk-row')
+      check('journey: first only the district list shows: no tehsil list and no way to find his land yet', !(await page.$('#tk-tehsil')) && !(await page.$('#gps-card')))
+      await page.click(`#tk-district .tk-row:has(.tk-en-name:text-is("${dname(NORMAL.district)}"))`)
+      await page.waitForSelector('#tk-tehsil .tk-row')
+      check('journey: with the district picked, its khata and its tehsil list show on 1 screen, and the ways to find his land are not open yet', !!(await page.$('#tk-district .tk-khata')) && !(await page.$('#gps-card')))
+      const rows = await page.$$eval('#tk-tehsil .tk-row .tk-en-name', ns => ns.map(n => n.textContent.trim()).sort())
+      const expect = TEHSILS.filter(t => t.district === NORMAL.district).map(t => t.en).sort()
+      check(`journey: the tehsil list is the district's own tehsils (${expect.length})`, JSON.stringify(rows) === JSON.stringify(expect), JSON.stringify(rows))
+      await shot(page, `${label} 15 district and tehsil`)
+      await pickTehsil(page, NORMAL.tehsil)
+      await page.waitForTimeout(400)
+      const gtop = await page.evaluate(() => { const r = document.getElementById('gps-card').getBoundingClientRect(); return { top: Math.round(r.top), vh: innerHeight } })
+      check('journey: after the tehsil is picked the page takes him to the ways to find his land (the top of them is on the screen)', gtop.top >= -4 && gtop.top < gtop.vh * 0.6, JSON.stringify(gtop))
+      const order = await page.evaluate(() => [...document.querySelectorAll('#tk-district, #tk-tehsil, [data-gps="search"], [data-gps="map"], [data-gps="paste"], [data-gps="locate"]')].map(el => el.id || el.getAttribute('data-gps')))
+      check('journey: from the largest unit to the smallest: district, tehsil, Union Council or chak, map, pin, his location (D-280)', JSON.stringify(order) === JSON.stringify(['tk-district', 'tk-tehsil', 'search', 'map', 'paste', 'locate']), JSON.stringify(order))
+      check('journey: the tehsil picked, its khata and the old path to the square show above the ways to find his land', !!(await page.$('#tk-tehsil .tk-khata')) && !!(await page.$('#tk-tehsil button.tk-btn:has-text("See your area")')))
+      check('journey: "Pick district and tehsil" is no longer one of the ways (it is the steps above)', !(await page.$('[data-gps="district"]')))
+      await shot(page, `${label} 16 the ways open under the tehsil`)
+      // search is limited to his tehsil
+      await page.click('[data-gps="search"]')
+      await page.fill('[data-gps="q"]', SCOPE_Q)
+      await page.waitForSelector('#gps-card [data-uc]')
+      const ids = await page.$$eval('#gps-card [data-uc]', ns => ns.map(n => n.getAttribute('data-uc')))
+      const inScope = ids.every(id => { const u = allUcs.find(x => x.id === id); return u && u.district === NORMAL.district && u.tehsil === NORMAL.tehsil })
+      check(`search: "${SCOPE_Q}" lists ${ids.length} Union Councils, all of ${NORMAL.tehsil} tehsil, ${dname(NORMAL.district)}`, ids.length > 0 && inScope, ids.slice(0, 5))
+      const OTHER_D = ucBy(u => u.district !== NORMAL.district && !u.pin && searchKeyOf(u.name).length >= 2)
+      const OTHER_T = ucBy(u => u.district === NORMAL.district && u.tehsil !== NORMAL.tehsil && !u.pin && searchKeyOf(u.name).length >= 2)
+      for (const [what, O] of [['another district', OTHER_D], ['another tehsil of the same district', OTHER_T]]) {
+        if (!O) { check(`search: a Union Council of ${what} exists in the data`, false); continue }
+        await page.fill('[data-gps="q"]', O.name)
+        await page.waitForSelector('[data-gps="notfound"], #gps-card [data-uc]', { timeout: 8000 }).catch(() => null)
+        await page.waitForTimeout(300)
+        const hit = !!(await page.$(`[data-uc="${O.id}"]`))
+        check(`search: ${O.label} (${O.tehsil}, ${dname(O.district)}), of ${what}, is not listed while ${NORMAL.tehsil} is picked`, !hit && !!(await page.$('[data-gps="notfound"]')), O.label)
+      }
+      // the map holds the squares of his tehsil
+      await page.click('#gps-card .tk-link')
+      await page.click('[data-gps="map"]')
+      await page.waitForSelector('#gps-card canvas.tk-map')
+      const aria = await page.getAttribute('#gps-card canvas.tk-map', 'aria-label')
+      check(`map: the first map holds the soil squares of ${NORMAL.tehsil} tehsil`, (aria ?? '').includes(`${NORMAL.tehsil} tehsil`), aria)
+      await shot(page, `${label} 17 the tehsil's map`)
+      // a pin in another tehsil: the card for that place, and the warning (D-281)
+      // Review fix: the warning needs two signals that agree: the survey square the pin is in (70% or more of its samples in one other tehsil) and the nearest sample's Union Council
+      const OTi = SOIL_CELLS.findIndex((c, i) => c.dist === NORMAL.district && CELL_TEHSIL[i][1] === 100 && CELL_TEHSIL[i][0] >= 0 && TEHSILS[CELL_TEHSIL[i][0]].district === NORMAL.district && TEHSILS[CELL_TEHSIL[i][0]].en !== NORMAL.tehsil && card(Math.round(cellCentre(i).lat / DLAT), Math.round(cellCentre(i).lon / DLON))?.uc.tehsil === TEHSILS[CELL_TEHSIL[i][0]].en)
+      const OT = { ...cellCentre(OTi), tehsil: TEHSILS[CELL_TEHSIL[OTi][0]].en }
+      await page.click('#gps-card .tk-link')
+      await page.click('[data-gps="paste"]')
+      await page.fill('[data-gps="pastebox"]', `${OT.lat.toFixed(5)}, ${OT.lon.toFixed(5)}`)
+      await page.click('[data-gps="pastego"]')
+      await page.waitForSelector('[data-gps-card]')
+      check(`no warning: a pasted pin in a square that is all ${OT.tehsil}, same district as the picked ${NORMAL.tehsil}: the card for that place is shown and no tehsil warning (Tahir, 21 Oct 2026: warn only for another district)`,
+        !!(await page.$('[data-gps-card]')) && !(await page.$('[data-gps="outtehsil"]')))
+      await shot(page, `${label} 18 the warning`)
+      // a pin in his own tehsil: no warning
+      await page.click('#gps-card .tk-link')
+      await page.click('[data-gps="paste"]')
+      await page.fill('[data-gps="pastebox"]', `${POS.latitude.toFixed(5)}, ${POS.longitude.toFixed(5)}`)
+      await page.click('[data-gps="pastego"]')
+      await page.waitForSelector('[data-gps-card]')
+      check(`warning: a pin at ${NORMAL.label}, a Union Council of ${NORMAL.tehsil} whose square is 71% Muridke samples, gives no warning (the two signals disagree)`, !(await page.$('[data-gps="outtehsil"]')) && NC.uc.tehsil === NORMAL.tehsil)
+      // the first screens say which tehsil they are for, since the lists above are hidden then
+      await page.click('#gps-card .tk-link')
+      await page.click('[data-gps="search"]')
+      check('the search screen names the tehsil it searches', (await page.textContent('[data-gps="scope"]')).includes(`Your tehsil: ${NORMAL.tehsil}`))
+      await page.click('#gps-card .tk-link'); await page.click('[data-gps="paste"]')
+      check('the paste screen names the tehsil', !!(await page.$('[data-gps="scope"]')))
+      await page.click('#gps-card .tk-link'); await page.click('[data-gps="map"]')
+      check('the map screen names the tehsil', !!(await page.$('[data-gps="scope"]')))
+      // changing the tehsil starts the search afresh
+      await page.click('#gps-card .tk-link')
+      await page.click('[data-gps="search"]')
+      await page.fill('[data-gps="q"]', SCOPE_Q)
+      await page.waitForSelector('#gps-card [data-uc]')
+      await page.click('#gps-card .tk-link')
+      await pickTehsil(page, OT.tehsil)
+      await page.click('[data-gps="search"]')
+      check('changing the tehsil: the search box is empty and the old list is gone', (await page.inputValue('[data-gps="q"]')) === '' && (await page.$$('#gps-card [data-uc]')).length === 0)
+      // Back from the tehsil takes the ways away and shows the district's screen with nothing picked
+      check('two Backs: while a way is open only "Back to the question" shows, the band\'s own Back is hidden', (await page.$$('#teesra-khata .tk-link:has-text("واپس")')).length === 0 && !!(await page.$('#gps-card .tk-link:has-text("Back to the question")')))
+      await page.click('#gps-card .tk-link')
+      await page.locator('#teesra-khata .tk-link:has-text("واپس")').first().click()   // the band's own Back, not the fold link
+      await page.waitForSelector('#tk-tehsil .tk-row')
+      const st = await page.evaluate(() => ({ gps: !!document.querySelector('#gps-card'), tehsil: !!document.querySelector('#tk-tehsil'), district: !!document.querySelector('#tk-district'), on: document.querySelectorAll('#tk-tehsil .tk-row.on').length }))
+      check('Back from the tehsil (with a way open): the district and tehsil show again, no tehsil picked, the ways are closed', !st.gps && st.tehsil && st.district && st.on === 0, JSON.stringify(st))
+      check('no console error (journey, search, map, warning, Back)', errors.length === 0, errors.slice(0, 5))
+      await ctx.close()
+      // a location in another tehsil gives the same warning; outside Punjab it gives the outside line and no tehsil warning
+      const LO = await locateAt(vp, OT.lat, OT.lon)
+      await LO.page.waitForSelector('[data-gps-card]')
+      check('no warning: his location in another tehsil of the same district gives no warning', !(await LO.page.$('[data-gps="outtehsil"]')))
+      await LO.ctx.close()
+      // the old false warning: Rahim Yar Khan tehsil, a pin in a square that is all Rahim Yar Khan, whose nearest sample is a Sadiqabad Union Council
+      {
+        const RYKi = cellIdxAt(28.251, 70.2555)
+        check('test data: 28.251, 70.2555 lies in a square that is all Rahim Yar Khan tehsil', RYKi >= 0 && CELL_TEHSIL[RYKi][1] === 100 && TEHSILS[CELL_TEHSIL[RYKi][0]].en === 'Rahim Yar Khan' && TEHSILS[CELL_TEHSIL[RYKi][0]].district === 'RYK')
+        const R = await newPage(vp, POS)
+        await openAsk(R.page, { district: 'RYK', tehsil: 'Rahim Yar Khan' })
+        await R.page.click('[data-gps="paste"]')
+        await R.page.fill('[data-gps="pastebox"]', '28.251, 70.2555')
+        await R.page.click('[data-gps="pastego"]')
+        await R.page.waitForSelector('[data-gps-card]')
+        check('warning: that pin gets no warning with Rahim Yar Khan picked (it did, wrongly, when the nearest Union Council was judged)', !(await R.page.$('[data-gps="outtehsil"]')))
+        await R.ctx.close()
+      }
+      // a card he left is not brought back by picking another tehsil
+      {
+        const S = await newPage(vp, POS)
+        await openAsk(S.page)
+        await S.page.click('[data-gps="search"]')
+        await S.page.fill('[data-gps="q"]', NORMAL.name.toLowerCase())
+        await S.page.waitForSelector(`[data-uc="${NORMAL.id}"]`)
+        await S.page.click(`[data-uc="${NORMAL.id}"]`)
+        await S.page.waitForSelector('[data-gps-card]')
+        await Promise.all([S.page.waitForURL(/crops\/wheat/), S.page.click('[data-gps="wheat"]')])
+        await S.page.waitForSelector('#creator ul li')
+        await S.page.goBack({ waitUntil: 'networkidle' })
+        await S.page.waitForSelector('[data-gps-card]', { timeout: 10000 })
+        await S.page.click('#gps-card .tk-link:has-text("Back to the question")')
+        const keyGone = await S.page.evaluate(() => !(history.state && 'vanGpsCard' in history.state))
+        await S.page.locator('#teesra-khata .tk-link:has-text("واپس")').first().click()
+        await S.page.waitForSelector('#tk-tehsil .tk-row')
+        const other = TEHSILS.find(t => t.district === NORMAL.district && t.en !== NORMAL.tehsil).en
+        await pickTehsil(S.page, other)
+        await S.page.waitForTimeout(1500)
+        check('stale card: after Back from the wheat plan, Back to the question, and another tehsil, no card opens by itself and the saved place is gone', keyGone && !(await S.page.$('[data-gps-card]')) && !!(await S.page.$('.gps-ask')), String(keyGone))
+        await S.ctx.close()
+      }
+      // a pin in another district (second review): the warning says the district, whatever the square says
+      {
+        const D2 = await newPage(vp, POS)
+        await openAsk(D2.page)
+        await D2.page.click('[data-gps="paste"]')
+        await D2.page.fill('[data-gps="pastebox"]', '31.7036, 71.0036')
+        await D2.page.click('[data-gps="pastego"]')
+        await D2.page.waitForSelector('[data-gps-card]')
+        const w2 = await D2.page.textContent('[data-gps="outtehsil"]').catch(() => null)
+        check('warning: a pin near Bhakkar with Ferozewala (Sheikhupura) picked: the card is for Bhakkar and the warning names Bhakkar district', !!w2 && w2.includes(OUT_TEHSIL_UR) && /nearest to this place is in Bhakkar district, not Sheikhupura/.test(w2), w2 ?? 'no warning')
+        await D2.ctx.close()
+      }
+      // D-280 (21 Oct 2026): the "I am at my land" button at the top. District and tehsil are still asked first, then the location is read at once.
+      {
+        const T = await newPage(vp, { latitude: POS.latitude, longitude: POS.longitude, accuracy: 15 })
+        await T.page.goto(`${BASE}/soil.html?from=mitti`, { waitUntil: 'networkidle' })
+        const tb = await T.page.$('[data-tk="atland"]')
+        check('top button: "I am at my land" shows at the very top of the district step, with the existing Urdu', !!tb && (await tb.textContent()).includes('کیا آپ اس وقت اپنی زمین پر موجود ہیں؟'))
+        check('top button: nothing opens before the district and tehsil are picked', !(await T.page.$('#gps-card')))
+        await T.page.click('[data-tk="atland"]')
+        check('top button: pressing it asks him to pick the district and tehsil first', !!(await T.page.$('[data-tk="atland-hint"]')) && !(await T.page.$('#gps-card')))
+        await T.page.click(`#tk-district .tk-row:has(.tk-en-name:text-is("${dname(NORMAL.district)}"))`)
+        await T.page.waitForSelector('#tk-tehsil .tk-row')
+        check('top button: after the district only, still no card, and a line under the tehsil list says the location is read after the tehsil', !(await T.page.$('#gps-card')) && !!(await T.page.$('[data-tk="atland-hint2"]')))
+        await T.page.click(`#tk-tehsil .tk-row:has(.tk-en-name:text-is("${NORMAL.tehsil}"))`)
+        await T.page.waitForSelector('[data-gps-card]')
+        const tc = await cardText(T.page)
+        check('top button: after the tehsil his location is read at once and the card opens (no second tap)', !!tc && tc.for.includes(NORMAL.label), tc?.for)
+        check('top button: no warning for his own district', !(await T.page.$('[data-gps="outtehsil"]')))
+        await T.page.click('#gps-card .tk-link')
+        await T.page.waitForSelector('#tk-tehsil .tk-row')
+        const other2 = TEHSILS.find(x => x.district === NORMAL.district && x.en !== NORMAL.tehsil).en
+        await T.page.click(`#tk-tehsil .tk-row:has(.tk-en-name:text-is("${other2}"))`)
+        await T.page.waitForSelector('#gps-card .gps-ask')
+        await T.page.waitForTimeout(800)
+        check('top button: it works once; another tehsil afterwards shows the ordinary first screen', !!(await T.page.$('#gps-card .gps-ask')) && !(await T.page.$('[data-gps-card]')))
+        await T.ctx.close()
+        // his location in another district: the card and the district warning
+        const T2 = await newPage(vp, { latitude: 31.7036, longitude: 71.0036, accuracy: 15 })
+        await openAsk(T2.page)
+        await T2.page.click('[data-gps="locate"]')
+        await T2.page.waitForSelector('[data-gps-card]')
+        const w3 = await T2.page.textContent('[data-gps="outtehsil"]').catch(() => null)
+        check('warning: his location near Bhakkar with another district picked names Bhakkar district (nearest survey area wording)', !!w3 && w3.includes(OUT_TEHSIL_UR) && /survey area nearest to this place is in Bhakkar district, not Sheikhupura/.test(w3), w3 ?? 'no warning')
+        await T2.ctx.close()
+      }
+      // a card left in the page's history entry by an earlier visit (a reload keeps it) is not opened under another tehsil
+      {
+        const R2 = await newPage(vp, POS)
+        await openAsk(R2.page)
+        await R2.page.click('[data-gps="search"]')
+        await R2.page.fill('[data-gps="q"]', NORMAL.name.toLowerCase())
+        await R2.page.waitForSelector(`[data-uc="${NORMAL.id}"]`)
+        await R2.page.click(`[data-uc="${NORMAL.id}"]`)
+        await R2.page.waitForSelector('[data-gps-card]')
+        await R2.page.reload({ waitUntil: 'networkidle' })
+        await R2.page.goto(`${BASE}/index.html`, { waitUntil: 'networkidle' })
+        await R2.page.goBack({ waitUntil: 'networkidle' })
+        const T2 = TEHSILS.find(t => t.district !== NORMAL.district)
+        await R2.page.waitForSelector('#teesra-khata')
+        await R2.page.click(`#tk-district .tk-row:has(.tk-en-name:text-is("${dname(T2.district)}"))`)
+        await R2.page.waitForSelector('#tk-tehsil .tk-row')
+        await pickTehsil(R2.page, T2.en)
+        await R2.page.waitForTimeout(1500)
+        check('stale card: a card left by an earlier visit (reload, another page, Back) does not open under another district and tehsil', !(await R2.page.$('[data-gps-card]')) && !!(await R2.page.$('.gps-ask')))
+        await R2.ctx.close()
+      }
+      // a map answer that comes late after Back changes nothing
+      {
+        const PU = allUcs.find(u => u.pin && searchKeyOf(u.name).length >= 2)
+        const M = await newPage(vp, POS)
+        await M.page.route(/\/data\/gps\/index\.json$/, async r => { await new Promise(res => setTimeout(res, 3000)); await r.continue() })
+        await openAsk(M.page, PU)
+        await M.page.click('[data-gps="search"]')
+        await M.page.fill('[data-gps="q"]', PU.name.toLowerCase())
+        await M.page.waitForSelector(`[data-uc="${PU.id}"]`)
+        await M.page.click(`[data-uc="${PU.id}"]`)
+        await M.page.click('#gps-card .tk-link:has-text("Back to the question")')
+        await M.page.waitForTimeout(5000)
+        check('late map: a spread-out Union Council tapped, then Back before its map points came: the question stays, the map does not open by itself', !!(await M.page.$('.gps-ask')) && !(await M.page.textContent('#gps-card')).includes('Tap your land'))
+        await M.ctx.close()
+      }
+      // a location answer that comes late changes nothing
+      {
+        const slow = () => { const g = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation); navigator.geolocation.getCurrentPosition = (ok, bad, o) => setTimeout(() => g(ok, bad, o), 3500) }
+        const L1 = await newPage(vp, POS)
+        await L1.page.addInitScript(slow)
+        await openAsk(L1.page)
+        await L1.page.click('[data-gps="locate"]')
+        await L1.page.click('#gps-card .tk-link:has-text("Back to the question")')
+        await L1.page.waitForTimeout(5500)
+        const a = await L1.page.evaluate(() => ({ card: !!document.querySelector('[data-gps-card]'), ask: !!document.querySelector('.gps-ask'), rows: document.querySelectorAll('#tk-tehsil .tk-row').length, dist: !!document.querySelector('#tk-district') }))
+        check('late location: he went Back before it came; when it arrives no card draws, the lists above stay, the question stays', !a.card && a.ask && a.rows > 0 && a.dist, JSON.stringify(a))
+        await L1.ctx.close()
+        const L2 = await newPage(vp, POS)
+        await L2.page.addInitScript(slow)
+        await openAsk(L2.page)
+        await L2.page.click('[data-gps="locate"]')
+        await L2.page.click('#gps-card .tk-link:has-text("Back to the question")')
+        await L2.page.click('[data-gps="paste"]')
+        await L2.page.fill('[data-gps="pastebox"]', `${OT.lat.toFixed(5)}, ${OT.lon.toFixed(5)}`)
+        await L2.page.click('[data-gps="pastego"]')
+        await L2.page.waitForSelector('[data-gps-card]')
+        const before = (await cardText(L2.page)).for
+        await L2.page.waitForTimeout(5500)
+        const after = (await cardText(L2.page)).for
+        check('late location: a pin card he made meanwhile is not replaced by the late location\'s card', before === after && before.length > 0, `${before} | ${after}`)
+        await L2.ctx.close()
+      }
+      if (ISB) {
+        const IO = await locateAt(vp, ISB.gi * DLAT, ISB.gj * DLON)
+        await IO.page.waitForSelector('[data-gps-card]', { timeout: 15000 }).catch(() => null)
+        check('warning: outside Punjab (Islamabad) says the outside-Punjab line and not the tehsil warning', !!(await IO.page.$('[data-gps="outside"]')) && !(await IO.page.$('[data-gps="outtehsil"]')))
+        await IO.ctx.close()
+      }
     }
   }
 }

@@ -263,13 +263,15 @@ async function ucs(): Promise<GpsSearchUc[]> {
 /** Throws GpsDownloadError when the list cannot be had, so the page never says "not found" for a list it does not have.
  *  A search whose name part (after CHAK, NO and UC are dropped) is under 2 characters finds nothing and is not a search
  *  yet: the page says nothing then (G12). */
-export async function searchUcs(q: string, limit = 30): Promise<GpsSearchUc[]> {
+export async function searchUcs(q: string, limit = 30, scope?: { district: string; tehsil: string }): Promise<GpsSearchUc[]> {
   const list = await ucs()
   const k = searchKey(q)
   if (k.length < 2) return []
   // The exact name first (CHAK 44 for "chak 44"), then names that start with it, then names that hold it.
   const exact: GpsSearchUc[] = [], starts: GpsSearchUc[] = [], within: GpsSearchUc[] = []
   for (const u of list) {
+    // D-280 (Tahir, 20 Oct 2026): with a tehsil picked, only the Union Councils of that district and tehsil are listed.
+    if (scope && (u.district !== scope.district || u.tehsil !== scope.tehsil)) continue
     const n = searchKey(u.name)
     if (n === k) exact.push(u)
     else if (n.startsWith(k)) starts.push(u)

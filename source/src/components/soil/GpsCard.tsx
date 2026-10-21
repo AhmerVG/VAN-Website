@@ -19,9 +19,12 @@ import {
  * found here (lib/gpsCard.ts), and nothing about his card leaves the device until he presses a WhatsApp button (the wheat
  * plan link carries the card after '#', D-279).
  *
- *   ask      "Are you at your land now?" (line 15). Yes: his location (line 3). No: click the place on the map (line 4),
- *            search the Union Council or chak (line 7), paste a Google Maps pin (line 5), or district and tehsil (line 6,
- *            the Teesra Khata screens below, unchanged).
+ *   ask      D-280 to D-282 (Tahir, 20 Oct 2026): this screen now opens only after he has picked his district and tehsil
+ *            (the Teesra Khata screens above it), and goes from the larger unit to the smaller: search the Union Council or
+ *            chak (line 7, only the Union Councils of his tehsil), click the place on the map (line 4, the squares of his
+ *            tehsil), paste a Google Maps pin (line 5), then "Are you at your land now?" (line 15) and his location (line 3).
+ *            Was: his location first, and district and tehsil as the last way. A card whose Union Council names another
+ *            tehsil than the one he picked says so (line 17), and still shows the card for the place he gave.
  *   confirm  a computer (or any device) whose own accuracy is wider than about 1 km: line 14, move the pin, confirm.
  *   card     names its Union Council, tehsil and district (line 16); the radius and the count (line 8); the slider
  *            between the ready radii (line 9); the soil card's readings and band words (line 10); the survey square too
@@ -45,10 +48,19 @@ import {
 type Screen = 'ask' | 'locating' | 'confirm' | 'map' | 'mapfine' | 'search' | 'paste' | 'card' | 'thin'
 /** Said when a data file could not be downloaded; the button beside it tries the same step again (finding 2). */
 const NET_MSG = 'The soil card could not be downloaded. Check your internet connection and try again.'
-const OUTSIDE_MSG = 'Your location is outside Punjab, so the Punjab survey has no card for it. If your land is in Punjab, find it another way below.'
+const OUTSIDE_MSG = 'Your location is outside Punjab, so the Punjab survey has no card for it. If your land is in Punjab, find it another way above.'
 type Pt = { lat: number; lon: number }
 const SAVE_KEY = 'vanGpsCard'
-type Saved = { gi: number; gj: number; ri: number; uc: string | null; pin: Pt | null }
+// Review (20 Oct 2026): the card saved in the page's history entry is brought back once, when the page itself is reached by Back.
+// Without this, any later mount of the card (another tehsil picked) read the same key and opened a card he never asked for.
+let restoreTried = false
+function clearSaved() {
+  try {
+    const st = history.state
+    if (st && typeof st === 'object' && SAVE_KEY in st) { const { [SAVE_KEY]: _gone, ...rest } = st as Record<string, unknown>; history.replaceState(rest, '') }
+  } catch { /* fine */ }
+}
+type Saved = { gi: number; gj: number; ri: number; uc: string | null; pin: Pt | null; sc?: string }   // sc: the district|tehsil he had picked (second review)
 
 const VAL_KEYS: KhataKey[] = ['p', 'k', 'zn', 'om', 'b', 'ph', 'ec']
 /** G3 (Tahir, 20 Oct 2026): line 16 names the district and tehsil in the Urdu already live on the Teesra Khata screens
@@ -158,9 +170,19 @@ function useUcLabels(center: Pt | null, halfKm: number) {
   return labels
 }
 
-export function GpsCard({ onActive, onDistrictTehsil }: { onActive: (on: boolean) => void; onDistrictTehsil: () => void }) {
+/** The district and tehsil he picked above this card, and the survey squares whose main tehsil it is (D-280). */
+export type GpsScope = { district: string; tehsil: string; cells: number[] }
+export function GpsCard({ onActive, onDistrictTehsil, scope, autoLocate = false, onAutoLocate }: { onActive: (on: boolean) => void; onDistrictTehsil: () => void; scope: GpsScope | null; autoLocate?: boolean; onAutoLocate?: () => void }) {
   const [screen, setScreenRaw] = useState<Screen>('ask')
-  const setScreen = (s: Screen) => { setScreenRaw(s); onActive(s !== 'ask') }
+  const setScreen = (s: Screen) => { if (!alive.current) return; setScreenRaw(s); onActive(s !== 'ask') }
+  // D-280: if this card goes away (Back, or the band folds), the screens above it must not stay hidden.
+  // Review (20 Oct 2026): an answer that arrives after he went back, or changed his tehsil, must not draw a card, change the
+  // screen or hide the lists above. Every step that waits (location, card file) checks that it is still the latest.
+  const alive = useRef(true)
+  const reqSeq = useRef(0)
+  const scopeKey = scope ? `${scope.district}|${scope.tehsil}` : ''
+  const restoring = useRef(false)
+  useEffect(() => { alive.current = true; return () => { alive.current = false; onActive(false); clearSaved() } }, [])   // eslint-disable-line react-hooks/exhaustive-deps
   const [pin, setPin] = useState<Pt | null>(null)          // his land, on this device only
   const [acc, setAcc] = useState<number | null>(null)      // the browser's own accuracy, metres
   const [card, setCard] = useState<Card | null>(null)
@@ -186,7 +208,7 @@ export function GpsCard({ onActive, onDistrictTehsil }: { onActive: (on: boolean
   const [paste, setPaste] = useState('')
   const [showSquare, setShowSquare] = useState(false)
   const top = useRef<HTMLDivElement>(null)
-  const go = (s: Screen) => { setScreen(s); setMsg(null); setRetry(null); requestAnimationFrame(() => top.current?.scrollIntoView({ block: 'start', behavior: 'smooth' })) }
+  const go = (s: Screen) => { reqSeq.current++; setScreen(s); setMsg(null); setRetry(null); requestAnimationFrame(() => top.current?.scrollIntoView({ block: 'start', behavior: 'smooth' })) }
   /** A download failed: back to the question (or stay, for the maps), say so plainly, offer to try the same step again. */
   const failed = (again: () => void, stay = false) => {
     if (!stay) setScreen('ask')
@@ -205,30 +227,39 @@ export function GpsCard({ onActive, onDistrictTehsil }: { onActive: (on: boolean
   }
 
   const openCard = async (p: Pt, uc: GpsSearchUc | null = null, startRi = 0) => {
+    const my = ++reqSeq.current
+    const stale = () => my !== reqSeq.current || !alive.current
     setPin(p); setFixedUc(uc); setShowSquare(false)
     try {
       // cardNear gives no card for a place outside Pakistan, not even a neighbouring card point's (second review).
       const c = uc ? await cardAt(uc.gi, uc.gj) : await cardNear(p.lat, p.lon)
+      if (stale()) return
       if (!c) {
         // G8: no card. Inside Punjab (and Pakistan) it is the survey that is too thin (fewer than 20 samples within
         // 50 km); outside Punjab, or over the border, it is outside the survey.
         setCard(null)
-        if ((await inPakistan(p.lat, p.lon)) && (await inPunjab(p.lat, p.lon))) go('thin')
+        const inside = (await inPakistan(p.lat, p.lon)) && (await inPunjab(p.lat, p.lon))
+        if (stale()) return
+        if (inside) go('thin')
         else { setScreen('ask'); setMsg(OUTSIDE_MSG); setRetry(null) }
         return
       }
       // G9: his own point (never a searched Union Council's) outside Punjab's line.
       const out = !uc && !(await inPunjab(p.lat, p.lon))
+      if (stale()) return
       setOutside(out)
       // G11: how far Punjab's line is from his own point, worked out here on his device (his point never leaves it).
       // Was from the card point: where his point is outside Punjab and the neighbour step gives a card point inside it
       // (28.2154, 69.5310; 30.2647, 70.0759), that said "Punjab is 1 km away" for a card point, not his land.
-      setLineKm(out ? await kmToPunjab(p.lat, p.lon) : null)
+      const lk = out ? await kmToPunjab(p.lat, p.lon) : null
+      if (stale()) return
+      setLineKm(lk)
       setCard(c); setRi(Math.min(startRi, c.radii.length - 1))
       await loadAround(p).catch(() => setPoints([]))   // the map's dots only; the card stands without them
+      if (stale()) return
       go('card')
     } catch {
-      failed(() => void openCard(p, uc, startRi))
+      if (!stale()) failed(() => void openCard(p, uc, startRi))
     }
   }
 
@@ -236,16 +267,22 @@ export function GpsCard({ onActive, onDistrictTehsil }: { onActive: (on: boolean
   // entry, on his device, never in the address. A card opened from the search comes back under the Union Council
   // searched (finding 3: KALLAH came back as KHAN PUR, the name of the lattice point's own nearest sample).
   useEffect(() => {
+    if (restoreTried) return
+    restoreTried = true
     try {
       const nav = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined
       const st = history.state as Record<string, unknown> | null
       const s = (st && typeof st === 'object' ? st[SAVE_KEY] : null) as Saved | null
-      if (nav?.type === 'back_forward' && s && Number.isInteger(s.gi) && Number.isInteger(s.gj)) {
+      // A saved card is brought back only under the district and tehsil it was made under: a key left by an earlier visit (a reload
+      // does not clear it) must not open a card under another tehsil.
+      if (s && s.sc !== scopeKey) clearSaved()
+      else if (nav?.type === 'back_forward' && s && Number.isInteger(s.gi) && Number.isInteger(s.gj)) {
         const p = s.pin ?? latticePos(s.gi, s.gj)
+        restoring.current = true
         void (async () => {
           let uc: GpsSearchUc | null = null
           if (s.uc) { try { uc = await ucById(s.uc) } catch { uc = null } }
-          await openCard(p, uc, s.ri | 0)
+          try { await openCard(p, uc, s.ri | 0) } finally { restoring.current = false }
         })()
       }
     } catch { /* starts at the question, as before */ }
@@ -255,28 +292,39 @@ export function GpsCard({ onActive, onDistrictTehsil }: { onActive: (on: boolean
     if (screen !== 'card' || !card) return
     try {
       const st = history.state && typeof history.state === 'object' ? history.state : {}
-      history.replaceState({ ...st, [SAVE_KEY]: { gi: card.gi, gj: card.gj, ri, uc: fixedUc?.id ?? null, pin } as Saved }, '')
+      history.replaceState({ ...st, [SAVE_KEY]: { gi: card.gi, gj: card.gj, ri, uc: fixedUc?.id ?? null, pin, sc: scopeKey } as Saved }, '')
     } catch { /* fine */ }
-  }, [screen, card, ri, fixedUc, pin])
+  }, [screen, card, ri, fixedUc, pin, scopeKey])
+  // He left the card (Back to the question): the saved place goes too, so Back from the wheat plan opens nothing he abandoned.
+  useEffect(() => { if (screen !== 'card' && !restoring.current) clearSaved() }, [screen])
 
   const locate = () => {
-    if (!('geolocation' in navigator)) { setMsg('This browser cannot give a location. Find your land another way below.'); setRetry(null); return }
+    if (!('geolocation' in navigator)) { setMsg('This browser cannot give a location. Find your land another way above.'); setRetry(null); return }
     go('locating')
+    const my = ++reqSeq.current
+    const stale = () => my !== reqSeq.current || !alive.current
     navigator.geolocation.getCurrentPosition(async g => {
+      if (stale()) return
       const p = { lat: g.coords.latitude, lon: g.coords.longitude }
       if (!(p.lat >= 27 && p.lat <= 35 && p.lon >= 68 && p.lon <= 76)) { setScreen('ask'); setMsg(OUTSIDE_MSG); setRetry(null); return }
       setAcc(g.coords.accuracy)
       if (g.coords.accuracy > 1000) {
         // Ruling 5: a computer's location can be off by hundreds of metres to kilometres. Ask him to confirm or move the pin.
         setPin(p); setCenter(p); setHalf(Math.min(25, Math.max(4, Math.ceil(g.coords.accuracy / 1000) * 1.6)))
-        try { await loadAround(p) } catch { failed(() => locate()); return }
+        try { await loadAround(p) } catch { if (!stale()) failed(() => locate()); return }
+        if (stale()) return
         go('confirm')
       } else void openCard(p)
     }, err => {
+      if (stale()) return
       setScreen('ask'); setRetry(null)
-      setMsg(err.code === err.PERMISSION_DENIED ? 'Your location was not shared. Find your land another way below.' : 'Your location could not be read. Find your land another way below.')
+      setMsg(err.code === err.PERMISSION_DENIED ? 'Your location was not shared. Find your land another way above.' : 'Your location could not be read. Find your land another way above.')
     }, { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 })
   }
+
+  // 21 Oct 2026 (Tahir): "I am at my land" at the top of the band. He picks his district and tehsil first; when this card then opens,
+  // his location is read at once, as if he had pressed the location button.
+  useEffect(() => { if (autoLocate) { onAutoLocate?.(); locate() } }, [])   // eslint-disable-line react-hooks/exhaustive-deps
 
   // Finding 2: a list that did not load is never reported as "no Union Council by that name".
   // G12, final fix: "not found" only for the text the list has answered, so never while uc.json is still coming.
@@ -284,7 +332,7 @@ export function GpsCard({ onActive, onDistrictTehsil }: { onActive: (on: boolean
     setQ(v)
     const n = ++searchSeq.current
     try {
-      const h = await searchUcs(v)
+      const h = await searchUcs(v, 30, scope ? { district: scope.district, tehsil: scope.tehsil } : undefined)
       if (n !== searchSeq.current) return
       setHits(h); setSearchFailed(false); setAnswered(v)
     } catch {
@@ -297,7 +345,9 @@ export function GpsCard({ onActive, onDistrictTehsil }: { onActive: (on: boolean
     if (u.pin) {
       // B11: this Union Council's samples are spread over more than 15 km, so the card is built from his own pin.
       setFixedUc(null); setPin(null); setCenter(p); setHalf(12)
-      try { await loadAround(p) } catch { failed(() => void pickUc(u), true); return }
+      const my = ++reqSeq.current
+      try { await loadAround(p) } catch { if (my === reqSeq.current && alive.current) failed(() => void pickUc(u), true); return }
+      if (my !== reqSeq.current || !alive.current) return   // he went Back while the map points came
       setScreen('mapfine'); setRetry(null)
       setMsg(`The samples of ${u.label} are spread over more than 15 km, so its card is built from your own pin: tap your land on the map.`)
       return
@@ -308,15 +358,29 @@ export function GpsCard({ onActive, onDistrictTehsil }: { onActive: (on: boolean
     const c = GRID.cells[i]
     const p = { lat: (c.y + 0.5) * GRID.deg, lon: (c.x + 0.5) * GRID.deg }
     setPin(null); setCenter(p); setHalf(6)
-    try { await loadAround(p) } catch { failed(() => void pickSquare(i), true); return }
+    const my = ++reqSeq.current
+    try { await loadAround(p) } catch { if (my === reqSeq.current && alive.current) failed(() => void pickSquare(i), true); return }
+    if (my !== reqSeq.current || !alive.current) return   // he went Back while the map points came
     go('mapfine')
   }
   const allCells = useMemo(() => GRID.cells.map((_, i) => i), [])
+  // D-280: the map he taps first holds only the squares of his tehsil (every tehsil has 3 or more); a search list is only his tehsil's.
+  const mapCells = useMemo(() => (scope && scope.cells.length ? scope.cells : allCells), [scope, allCells])
+  useEffect(() => { searchSeq.current++; setQ(''); setHits([]); setSearchFailed(false); setAnswered(null) }, [scope?.district, scope?.tehsil])
   const labels = useUcLabels(screen === 'mapfine' || screen === 'confirm' ? center : null, half)
 
+  // Review (20 Oct 2026): once a way is open the lists above are hidden, so each screen says which tehsil it is for.
+  const scopeLine = scope ? <p className="tk-en gps-scope" data-gps="scope">Your tehsil: {scope.tehsil}, {districtName(scope.district)}</p> : null
   const radius = card?.radii[ri] ?? null
   const ucName = fixedUc ?? card?.uc ?? null
   const square = pin ? GRID.byKey.get(`${Math.floor(pin.lon / GRID.deg)},${Math.floor(pin.lat / GRID.deg)}`) : undefined
+  // D-281 (Tahir, 20 Oct 2026): the point he gave is used, and if the card is for another district than the one he picked, he is told.
+  // Tahir's ruling after the reviews (21 Oct 2026): district only. The survey has no tehsil boundary lines, so a tehsil warning
+  // judged by the survey squares or by the nearest sample's Union Council was wrong for farmers inside their own tehsil (8% of all
+  // card points, up to half in Lahore's tehsils), and a district is the one thing the card is always certain about: the wheat plan by
+  // the card opens for the card's district. Not for a Union Council he searched (the search is his tehsil's), and not outside
+  // Punjab (G9 and G13 already say it).
+  const outTehsil = !!scope && !fixedUc && !outside && !!ucName && ucName.district !== scope.district
   // Low finding: the phone variant of line 14 has no Urdu from Tahir, so on a phone (a coarse pointer) the Urdu line,
   // which says "computer", is not shown and the English names the phone. Tahir's words are not changed.
   const coarse = typeof window !== 'undefined' && !!window.matchMedia && window.matchMedia('(pointer: coarse)').matches
@@ -363,20 +427,20 @@ export function GpsCard({ onActive, onDistrictTehsil }: { onActive: (on: boolean
         <div className="tk-screen gps-ask">
           <h2 className="tk-h urdu">{GPS_UR.heading}</h2>
           <p className="tk-en">The soil record of the land near you.</p>
+          {/* 21 Oct 2026 review: the refusal / outside Punjab message sat under the last button, hidden behind the phone's bottom bar. It is first now. */}
+          {msg && <p className="tk-en gps-msg" role="status" data-gps="askmsg">{msg}</p>}
+          {msg && retry && <button className="chip chip-xs" onClick={() => { const r = retry; setMsg(null); setRetry(null); r() }} data-gps="retry">Try again</button>}
           <p className="urdu tk-sub gps-note">{GPS_UR.note}</p>
           <p className="tk-en">The card is the reading of the area near your land. Your location is not checked, and it stays on your phone or computer.</p>
+          <p className="tk-en gps-or">{scope ? `Now find your land in ${scope.tehsil} tehsil. Each way is more exact than the one above it.` : 'Find your land. Each way is more exact than the one above it.'}</p>
+          <div className="gps-ways">
+            <button className="btn tk-btn gps-alt" onClick={() => go('search')} data-gps="search"><span className="urdu">{GPS_UR.searchUc}</span><span className="tk-btn-en">Search the Union Council or chak number</span></button>
+            <button className="btn tk-btn gps-alt" onClick={() => go('map')} data-gps="map"><span className="urdu">{GPS_UR.clickMap}</span><span className="tk-btn-en">Click the place on the map</span></button>
+            <button className="btn tk-btn gps-alt" onClick={() => go('paste')} data-gps="paste"><span className="urdu">{GPS_UR.pastePin}</span><span className="tk-btn-en">Paste a Google Maps pin</span></button>
+          </div>
           <p className="urdu tk-sub tk-strong">{GPS_UR.atYourLand}</p>
           <p className="tk-en">Are you at your land right now?</p>
           <button className="btn btn-navy tk-btn" onClick={locate} data-gps="locate"><span className="urdu">{GPS_UR.useLocation}</span><span className="tk-btn-en">Yes: see the record from my location</span></button>
-          {msg && <p className="tk-en gps-msg" role="status">{msg}</p>}
-          {msg && retry && <button className="chip chip-xs" onClick={() => { const r = retry; setMsg(null); setRetry(null); r() }} data-gps="retry">Try again</button>}
-          <p className="tk-en gps-or">Not at your land now? Find it another way:</p>
-          <div className="gps-ways">
-            <button className="btn tk-btn gps-alt" onClick={() => go('map')} data-gps="map"><span className="urdu">{GPS_UR.clickMap}</span><span className="tk-btn-en">Click the place on the map</span></button>
-            <button className="btn tk-btn gps-alt" onClick={() => go('search')} data-gps="search"><span className="urdu">{GPS_UR.searchUc}</span><span className="tk-btn-en">Search the Union Council or chak number</span></button>
-            <button className="btn tk-btn gps-alt" onClick={() => go('paste')} data-gps="paste"><span className="urdu">{GPS_UR.pastePin}</span><span className="tk-btn-en">Paste a Google Maps pin</span></button>
-            <button className="btn tk-btn gps-alt" onClick={toDistrictTehsil} data-gps="district"><span className="urdu">{GPS_UR.pickDistrictTehsil}</span><span className="tk-btn-en">Pick district and tehsil</span></button>
-          </div>
         </div>
       )}
 
@@ -396,10 +460,11 @@ export function GpsCard({ onActive, onDistrictTehsil }: { onActive: (on: boolean
       {screen === 'map' && (
         <div className="tk-screen">
           <p className="urdu tk-sub tk-strong">{GPS_UR.clickMap}</p>
+          {scopeLine}
           <p className="tk-en">Tap the square nearest your land. The next map shows that ground about 1 km at a time.</p>
           {msg && <p className="tk-en gps-msg" role="status">{msg}</p>}
           {msg && retry && <button className="chip chip-xs" onClick={() => { const r = retry; setMsg(null); setRetry(null); r() }} data-gps="retry">Try again</button>}
-          <div className="tk-mapwrap"><MiniMap idx={allCells} sel={null} colourBy="neutral" label="Map of Punjab's soil squares: tap near your land" onPick={i => void pickSquare(i)} /></div>
+          <div className="tk-mapwrap"><MiniMap idx={mapCells} sel={null} colourBy="neutral" label={scope ? `Map of the soil squares of ${scope.tehsil} tehsil: tap near your land` : "Map of Punjab's soil squares: tap near your land"} onPick={i => void pickSquare(i)} /></div>
         </div>
       )}
 
@@ -419,6 +484,7 @@ export function GpsCard({ onActive, onDistrictTehsil }: { onActive: (on: boolean
       {screen === 'search' && (
         <div className="tk-screen">
           <p className="urdu tk-sub tk-strong">{GPS_UR.searchUc}</p>
+          {scopeLine}
           <p className="tk-en">Type the Union Council's name or the chak number in English letters, for example Bathal or 160/P.</p>
           <input className="input tk-search" value={q} onChange={e => void search(e.target.value)} placeholder="Union Council or chak" aria-label="Search the Union Council or chak number" data-gps="q" />
           {msg && <p className="tk-en gps-msg" role="status">{msg}</p>}
@@ -433,7 +499,7 @@ export function GpsCard({ onActive, onDistrictTehsil }: { onActive: (on: boolean
               characters left once CHAK, NO and UC are dropped, so they are not a search yet and nothing is said. */}
           {/* G12, final fix (20 Oct 2026): and only once the list has answered this very text, so never while uc.json
               is still coming. */}
-          {!searchFailed && answered === q && searchKey(q).length >= 2 && !hits.length && <p className="tk-en" data-gps="notfound">No Union Council or chak by that name in the survey. Try another spelling, or click the place on the map.</p>}
+          {!searchFailed && answered === q && searchKey(q).length >= 2 && !hits.length && <p className="tk-en" data-gps="notfound">No Union Council or chak by that name {scope ? `in ${scope.tehsil} tehsil` : 'in the survey'}. Try another spelling, or click the place on the map.{scope ? ` Only Union Councils of ${scope.tehsil} tehsil are searched; if your land is in another tehsil, go back and pick that tehsil.` : ''}</p>}
           <div className="tk-list">
             {hits.map(u => (
               <button key={u.id} className="tk-row" onClick={() => void pickUc(u)} data-uc={u.id}>
@@ -447,6 +513,7 @@ export function GpsCard({ onActive, onDistrictTehsil }: { onActive: (on: boolean
       {screen === 'paste' && (
         <div className="tk-screen">
           <p className="urdu tk-sub tk-strong">{GPS_UR.pastePin}</p>
+          {scopeLine}
           <p className="tk-en">In Google Maps on your phone, press and hold on your land, copy the numbers that appear (for example 31.651, 74.020) or share the place and copy the link, then paste it here. A short link (maps.app.goo.gl) has no numbers in it: open it in Google Maps and copy the numbers instead.</p>
           <textarea className="input gps-paste" rows={3} value={paste} onChange={e => setPaste(e.target.value)} aria-label="Paste a Google Maps pin or coordinates" data-gps="pastebox" />
           {paste.trim() && !parsePin(paste) && <p className="tk-en gps-msg">No Punjab coordinates found in that. Paste the 2 numbers, for example 31.651, 74.020.</p>}
@@ -479,6 +546,12 @@ export function GpsCard({ onActive, onDistrictTehsil }: { onActive: (on: boolean
             </>
           ) : (
             <>
+              {outTehsil && scope && (
+                <div className="gps-warn" data-gps="outtehsil" role="status">
+                  <p className="urdu tk-sub tk-strong">{GPS_UR.outsideTehsil}</p>
+                  <p className="tk-en">{`The survey area nearest to this place is in ${districtName(ucName.district)} district, not ${districtName(scope.district)}, the district you picked.`} The card is for that area. If it is not your land, go back and find it another way.</p>
+                </div>
+              )}
               <p className="urdu tk-sub tk-strong gps-for">{GPS_UR.cardFor(ltr(ucName.label), ltr(tehsilUr(ucName.district, ucName.tehsil)), ltr(districtUr(ucName.district)))}</p>
               <p className="tk-en">This card is for the land at: Union Council {ucName.label}, tehsil {ucName.tehsil}, district {districtName(ucName.district)}. If that is not your land, go back and find it another way.</p>
               {!fixedUc && card.far > 5 && <p className="tk-en" data-gps="far">The nearest survey samples are about {card.far} km from this place, in Union Council {card.uc.label}.</p>}

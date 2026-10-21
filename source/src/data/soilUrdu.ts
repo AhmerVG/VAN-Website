@@ -108,6 +108,8 @@ export const GPS_UR = {
   pastePin: 'گوگل میپس کا پن پیسٹ کریں',
   /** 6, button */
   pickDistrictTehsil: 'ضلع اور تحصیل چنیں',
+  /** 17, warning when his point is outside the tehsil he picked (D-281, Tahir's pick, option 1, 20 Oct 2026; native Urdu check still to do) */
+  outsideTehsil: 'یہ جگہ آپ کی چنی ہوئی تحصیل سے باہر ہے۔',
   /** 7, button */
   searchUc: 'یونین کونسل یا چک نمبر تلاش کریں',
   /** 8, the card's top line; the numbers fill in */

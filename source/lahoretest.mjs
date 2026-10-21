@@ -88,7 +88,6 @@ async function newPage(vp = { width: 412, height: 860 }) {
 async function lahoreTehsils(page) {
   await page.goto(`${BASE}/soil.html?district=LAHORE&from=mitti`, { waitUntil: 'networkidle' })
   await page.waitForSelector('#teesra-khata')
-  await page.click('button.tk-btn:has-text("Pick your tehsil")')
   await page.waitForSelector('#teesra-khata .tk-list .tk-row')
   return page.evaluate(() => [...document.querySelectorAll('#teesra-khata .tk-list .tk-row')].map(b => ({
     en: b.querySelector('.tk-en-name')?.textContent.trim() ?? '',
@@ -112,13 +111,13 @@ console.log('\n1, 2 · Lahore lists Lahore City once, with 9,294 samples and its
   const intro = await page.evaluate(() => [...document.querySelectorAll('#teesra-khata .tk-en')].map(e => e.textContent).join(' | '))
   check('the screen says Lahore has 5 tehsils in the survey', /Lahore has 5 tehsils in the survey/.test(intro), intro)
   await page.click('#teesra-khata .tk-list .tk-row:has(.tk-en-name:text-is("Lahore City"))')
-  await page.waitForSelector('#teesra-khata .tk-khata')
+  await page.waitForSelector('#tk-tehsil .tk-khata')
   const line = await page.evaluate(() => [...document.querySelectorAll('#teesra-khata .tk-en')].map(e => e.textContent).find(t => /samples · the tehsil median/.test(t)) ?? '')
   check('Lahore City line: "Lahore City · 9,294 samples · the tehsil median, with the district’s beside it"', line === 'Lahore City · 9,294 samples · the tehsil median, with the district’s beside it', line)
   const all = await page.evaluate(() => document.getElementById('teesra-khata')?.textContent ?? '')
   check('the old note "8,603 samples carry no tehsil" is gone', !/8,603/.test(all) && !/carry no tehsil/.test(all))
   // The khata rows: P, K, Zn, OM, B, then pH, then EC. The first text of each value cell is the tehsil's own figure.
-  const shown = await page.evaluate(() => [...document.querySelectorAll('#teesra-khata .tk-khata .tk-kr .tk-v')].slice(0, 7).map(el => [...el.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent).join('').trim()))
+  const shown = await page.evaluate(() => [...document.querySelectorAll('#tk-tehsil .tk-khata .tk-kr .tk-v')].slice(0, 7).map(el => [...el.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent).join('').trim()))
   const want = [['P', 5.7], ['K', 120], ['Zn', 0.40], ['OM', 0.55], ['B', 0.47], ['pH', 8.6], ['EC', 2.3]]
   const off = want.filter(([, v], i) => {
     const m = /^(-?\d+(?:\.(\d+))?)/.exec(shown[i] ?? '')
@@ -154,7 +153,6 @@ console.log('\n4 · the tehsil data in the bundle')
   for (const d of dists) {
     await page.goto(`${BASE}/soil.html?district=${encodeURIComponent(d)}&from=mitti`, { waitUntil: 'networkidle' })
     await page.waitForSelector('#teesra-khata')
-    await page.click('button.tk-btn:has-text("Pick your tehsil")')
     await page.waitForSelector('#teesra-khata .tk-list .tk-row')
     const ns = await page.evaluate(() => [...document.querySelectorAll('#teesra-khata .tk-list .tk-row .cap.num')].map(e => Number(e.textContent.replace(/[^\d]/g, ''))))
     tehsils += ns.length; samples += ns.reduce((a, b) => a + b, 0)
@@ -209,11 +207,10 @@ console.log('\n7 · D-276: a place saved by the old page ("vanTeesraKhata") is i
   }
   {
     const { ctx, page, errors, nav, st } = await backWith('vanTeesraKhata')
-    check('old key "vanTeesraKhata": ignored on Back, the page starts afresh on Lahore\'s khata (the link\'s district), no tehsil list, no tehsil picked', nav === 'back_forward' && st.list === 0 && st.on.length === 0 && /Lahore ·/.test(st.en), JSON.stringify({ nav, st }))
-    await page.click('button.tk-btn:has-text("Pick your tehsil")')
+    check('old key "vanTeesraKhata": ignored on Back, the page starts afresh on Lahore\'s khata (the link\'s district) with the tehsil list under it (D-280) and no tehsil picked', nav === 'back_forward' && st.list === 5 && st.on.length === 0 && /Lahore ·/.test(st.en), JSON.stringify({ nav, st }))
     await page.waitForSelector('#teesra-khata .tk-list .tk-row')
-    const after = await page.evaluate(() => ({ rows: document.querySelectorAll('#teesra-khata .tk-list .tk-row').length, on: document.querySelectorAll('#teesra-khata .tk-list .tk-row.on').length, khata: !!document.querySelector('#teesra-khata .tk-khata'), hint: [...document.querySelectorAll('#teesra-khata .tk-en')].some(e => e.textContent === 'Pick your tehsil to see its readings.') }))
-    check('…and the tehsil list then shows Lahore\'s 5 tehsils with nothing preselected ("Pick your tehsil to see its readings.")', after.rows === 5 && after.on === 0 && !after.khata && after.hint, JSON.stringify(after))
+    const after = await page.evaluate(() => ({ rows: document.querySelectorAll('#teesra-khata .tk-list .tk-row').length, on: document.querySelectorAll('#teesra-khata .tk-list .tk-row.on').length, khata: !!document.querySelector('#tk-tehsil .tk-khata'), hint: [...document.querySelectorAll('#teesra-khata .tk-en')].some(e => e.textContent === 'Pick your tehsil to see its readings.') }))
+    check('…and the tehsil list shows Lahore\'s 5 tehsils with nothing preselected ("Pick your tehsil to see its readings.")', after.rows === 5 && after.on === 0 && !after.khata && after.hint, JSON.stringify(after))
     check('no console error or failed request on that path', errors.length === 0, errors.join(' | '))
     await ctx.close()
   }
