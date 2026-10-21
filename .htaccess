@@ -129,6 +129,13 @@ ErrorDocument 404 /404.html
   # cached for a year: a new build gets new names and the old ones are simply unused.
   ExpiresByType application/javascript "access plus 1 year"
   ExpiresByType text/css "access plus 1 year"
+  # D-285 (21 Oct 2026): the server names the bundle text/javascript, not application/javascript, so the bundle had no
+  # cache life at all, and the 9 font files (font/woff2) had none either. Both carry a content hash in the file name.
+  # Only the hashed bundle is matched, so 3d/viewer.js (no hash in its name) is left as it was.
+  ExpiresByType font/woff2 "access plus 1 year"
+  <FilesMatch "^demo\.[0-9a-f]+\.js$">
+    ExpiresDefault "access plus 1 year"
+  </FilesMatch>
   ExpiresByType image/webp "access plus 1 year"
   ExpiresByType image/png "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 year"

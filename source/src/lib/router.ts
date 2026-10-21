@@ -7,7 +7,7 @@ export type Route =
   | { name: 'product'; slug: string }
   | { name: 'crops' }
   | { name: 'crop'; slug: string; district: string | null; card?: string | null }
-  | { name: 'soil'; rel: string | null; district: string | null; from: string | null }
+  | { name: 'soil'; rel: string | null; district: string | null; from: string | null; tehsil?: string | null }
   | { name: 'partner'; slug: string | null }
   | { name: 'lab' }
   | { name: 'verify' }
@@ -59,8 +59,10 @@ export function parseHash(hash: string): { route: Route; anchor: string | null }
       // district lands on the farmer screens at the top, opened at that district; any other `?district=` keeps landing on
       // the district panel, as before.
       const from = query.get('from')
+      // D-283 (21 Oct 2026): `?tehsil=` names the tehsil inside that district; the farmer screens open at it. Checked against the data in TeesraKhata; an unknown tehsil is ignored.
+      const tehsil = query.get('tehsil')
       // `?rel=` pre-selects the relation explorer and lands on it; `?district=` lands on the district panel.
-      return { route: { name: 'soil', rel, district, from }, anchor: a ?? (rel ? 'soil-relations' : from && district ? 'teesra-khata' : district ? 'soil-districts' : null) }
+      return { route: { name: 'soil', rel, district, from, tehsil }, anchor: a ?? (rel ? 'soil-relations' : from && district ? 'teesra-khata' : district ? 'soil-districts' : null) }
     }
     case 'partner': return { route: { name: 'partner', slug: b || null }, anchor: a }
     case 'circular-economy': return { route: { name: 'circular', slug: b || null }, anchor: a }

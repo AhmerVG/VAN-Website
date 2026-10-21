@@ -18,7 +18,7 @@ import { Lens } from '@/components/Lens'
 import { TeesraKhata } from '@/components/soil/TeesraKhata'
 
 /** #/soil — the Soil lens: what 770,160 Punjab samples say, and where VAN's own published mechanism sentences meet it. */
-export default function Soil({ rel, district, from = null }: { rel: string | null; district: string | null; from?: string | null }) {
+export default function Soil({ rel, district, from = null, tehsil = null }: { rel: string | null; district: string | null; from?: string | null; tehsil?: string | null }) {
   const [sel, setSel] = useState<string | null>(districtByKey(district) ? district : null)
   // O-20: the lens is a route through the page, not a filter. Null means the page as it always was.
   const [lens, setLens] = useState<LensKey | null>(null)
@@ -40,7 +40,7 @@ export default function Soil({ rel, district, from = null }: { rel: string | nul
       {/* Teesra Khata, 18 Oct 2026: the farmer screens, Urdu first, at the top of the page, after the full-screen
           door (soil-door.inline.html). They fold away to this page, which is unchanged below them. A LinkedIn
           arrival (?from=mitti-en) gets them folded, English first. Plan: Soil Atlas Plan 18 Oct 2026.md. */}
-      <TeesraKhata district={district} englishFirst={from === 'mitti-en'} />
+      <TeesraKhata district={district} tehsil={tehsil} englishFirst={from === 'mitti-en'} />
       {/* D-180, 26 Sep 2026 · Tahir: "visually interactive first ... may be a map ... then facts. I'm not saying
           to remove anything, but text after." The living map now opens the page, beside how to read it; the
           lead, the 8 answers, the readings and the lenses follow it. Nothing was removed. Revert: the v58 zip. */}

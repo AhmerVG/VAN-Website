@@ -247,13 +247,24 @@ function writeSaved(s: Saved) {
   } catch { /* a browser that refuses history writes keeps today's behaviour */ }
 }
 
-export function TeesraKhata({ district, englishFirst }: { district: string | null; englishFirst: boolean }) {
+/** D-283: the tehsil named in a link, matched inside the linked district only (tehsil names repeat across districts, e.g. Sahiwal), ignoring case, spaces, dots and hyphens. Returns its index in TEHSILS, or null. */
+function linkedTehsil(districtKey: string | null, raw: string | null | undefined): number | null {
+  if (!districtKey || !raw) return null
+  const sq = (s: string) => s.toUpperCase().replace(/[^A-Z0-9]/g, '')
+  const want = sq(raw)
+  if (!want) return null
+  const i = TEHSILS.findIndex(x => x.district === districtKey && (sq(x.en) === want || sq(x.key) === want))
+  return i >= 0 ? i : null
+}
+
+export function TeesraKhata({ district, tehsil = null, englishFirst }: { district: string | null; tehsil?: string | null; englishFirst: boolean }) {
   const linked = districtByKey(district)
+  const linkedT = linkedTehsil(linked ? linked.key : null, tehsil)
   const [saved] = useState(readSaved)
   const [folded, setFolded] = useState(saved ? saved.folded : englishFirst)
-  const [step, setStep] = useState<Step>(saved ? saved.step : linked ? 'khata' : 'district')
+  const [step, setStep] = useState<Step>(saved ? saved.step : linked ? (linkedT != null ? 'tehsil' : 'khata') : 'district')
   const [d, setD] = useState<string | null>(saved ? saved.d : linked ? linked.key : null)
-  const [t, setT] = useState<number | null>(saved ? saved.t : null)
+  const [t, setT] = useState<number | null>(saved ? saved.t : linkedT)
   const [c, setC] = useState<number | null>(saved ? saved.c : null)
   const [q, setQ] = useState('')
   const [mapKey, setMapKey] = useState<KhataKey>(saved ? saved.mapKey : 'zn')
@@ -330,7 +341,7 @@ export function TeesraKhata({ district, englishFirst }: { district: string | nul
     return () => { live = false }
   }, [step, dist, square, t])
 
-  const shareText = dist ? `${KHATA_UR.myKhata}: ${urName(dist.key)}${t != null ? '، ' + TEHSILS[t].ur : ''}۔ ${KHATA_UR.ask}: https://www.van.com.pk/soil.html?district=${encodeURIComponent(dist.key)}&from=mitti-wa` : ''
+  const shareText = dist ? `${KHATA_UR.myKhata}: ${urName(dist.key)}${t != null ? '، ' + TEHSILS[t].ur : ''}۔ ${KHATA_UR.ask}: https://www.van.com.pk/soil.html?district=${encodeURIComponent(dist.key)}${t != null ? '&tehsil=' + encodeURIComponent(TEHSILS[t].en) : ''}&from=mitti-wa` : ''
   const share = async () => {
     try {
       if (card && navigator.canShare) {
@@ -580,6 +591,8 @@ function Plan({ dist, distName }: { dist: string; distName: string }) {
           <tr><td>Vital Potash</td><td className="num">10 kg</td></tr>
         </tbody></table>
         {pShort && <p className="tk-bline"><UrLine text="فاسفورس کم ہے: بنڈل میں Green Phosphate 50 کلو (1 بوری) تک۔" /><span className="tk-en">Phosphorus is short: in the bundle, Green Phosphate goes up to 50 kg (1 bag).</span></p>}
+        {/* D-284 (21 Oct 2026, Tahir's wording, from the reviewer's alternative): the bundle and the calculator below it are 2 different quantities; the farmer is told so beside the bundle's own number. English only until Tahir gives the Urdu. */}
+        <p className="tk-en" data-bundle-vs-calc>The bundle is VAN’s starting pack for this season. The calculator below uses VAN’s full wheat plan, so its Green Phosphate is a different figure.</p>
       </div>
       <div className="tk-calc">
       <p className="urdu tk-strong">{KHATA_UR.calcTitle}</p>
