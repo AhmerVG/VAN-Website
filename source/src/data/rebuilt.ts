@@ -559,7 +559,7 @@ export const PARTNER_ENGINEERING: RebuiltPage = {
           minWidth: 880,
           rows: [
             ['Controlled release', 'Sulfur coating of urea at commercial scale; dual-layer variants in development.', 'Vital Urea (sulfur-coated urea)'],
-            ['Acid activation & humic coating', 'Acidic-microenvironment granulation with a humic seal, to slow phosphate fixation.', 'Green Phosphate 6-32-0'],
+            ['Acid activation & humic coating', 'Acidic-microenvironment granulation with a humic seal, to slow phosphate fixation.', 'Green Phosphate 6:32:0'],
             ['Micronutrients', 'Zinc, boron, iron and multi-micronutrient formulation, granular and liquid; compatibility work for the tank.', 'V-Transform · V-Zinc · VL-Micromix'],
             ['Humic delivery', 'Potassium humate in crystal, powder, pellet and liquid at several concentrations.', 'Humi Grow · Humi Grow Plus'],
             ['Biologicals', 'A dedicated biological laboratory, established and running, with test production alongside it; phosphorus-solubilizing bacteria; compost and organic-carbon carriers. Strains are isolated locally and selected against Pakistani soil pH, climate and weather.', 'PSB · V-Compost'],
@@ -803,9 +803,9 @@ export const PARTNER_PIPELINE: RebuiltPage = {
           head: ['Route', 'Product', 'Analysis', 'Stage of the crop'],
           minWidth: 820,
           rows: [
-            ['Soil · basal', 'Green Phosphate', '6-32-0, humic-coated acidic', 'Sowing / land prep'],
+            ['Soil · basal', 'Green Phosphate', '6:32:0, humic-coated acidic', 'Sowing / land prep'],
             ['Soil · basal', 'Fusion Phosphate (TSP)', 'P₂O₅ 46 total / 43 water-soluble', 'Sowing'],
-            ['Fertigation · solid', 'V. Ammonium Phosphate (V-Phosphate)', '10-44-0 + Fe', 'Mid-life'],
+            ['Fertigation · solid', 'V. Ammonium Phosphate (V-Phosphate)', '10:44:0 + Fe', 'Mid-life'],
             ['Fertigation · liquid', 'V-Germinator Pro', 'P₂O₅ 27% w/v + N · K · Mg · S · Fe', 'Germination / phosphate booster'],
             ['Foliar · liquid', 'P-44L', 'P₂O₅ 44% w/v + K · Mg · Zn · B', 'Rapid growth / stress window'],
             ['Reproductive PK', 'PK-82', 'P₂O₅ 42 · K₂O 40', 'Flowering to grain fill'],
@@ -825,7 +825,7 @@ export const PARTNER_PIPELINE: RebuiltPage = {
         { k: 'p', text: 'The phosphate is carried in 2 fractions with different release behaviour: one available immediately, for the seedling root that has to find phosphorus in its first weeks; one releasing slowly afterwards, still supplying when demand peaks. A conventional basal phosphate delivers its whole load into the window where fixation is fastest and the crop is smallest. This splits that load across the season from a single placement. Low nitrogen by design: a phosphorus product with enough nitrogen to work with, not an NP blend balanced for both.' },
         { k: 'h3', text: 'N 8 · P 38. A chemistry answer' },
         { k: 'p', text: 'Rather than timing the phosphate around fixation, this grade is formulated to resist the reaction itself. Sulfur acidifies the granule’s immediate soil environment, where alkalinity drives the precipitation; alongside it, VAN’s calcium-resistant agents are formulated to hold soil calcium off the phosphate so it stays plant-available for longer. The release is slow throughout rather than split in two. The sulfur is a functioning part of the formulation, not a filler, and it is a nutrient the crop needs in its own right.' },
-        { k: 'note', text: 'Both descriptions are of mechanism, not measured outcome. No trial figure is published against either grade, because none has been signed off. The same rule that applies to every other code in this library. The analyses shown are recorded on VAN’s own register; the analysis report and specification sheet are available on request. The sulfur loading on the 8-38 grade is deliberately not published. Both grades are made in granular, powder and crystalline form, in 50 kg and 1000 kg packs.' },
+        { k: 'note', text: 'Both descriptions are of mechanism, not measured outcome. No trial figure is published against either grade, because none has been signed off. The same rule that applies to every other code in this library. The analyses shown are recorded on VAN’s own register; the analysis report and specification sheet are available on request. The sulfur loading on the 8:38 grade is deliberately not published. Both grades are made in granular, powder and crystalline form, in 50 kg and 1000 kg packs.' },
       ],
     },
     {
@@ -886,7 +886,7 @@ export const PARTNER_REGULATORY: RebuiltPage = {
             ['V-Mag Essential', 'n/a', 'Conformance report'],   // D-177, Tahir 26 Sep: carries a conformance report
             ['V-Compost', 'Soil Fertility Research Institute', 'SFRI-2025-07'],
           ],
-          note: 'From VAN’s trademark and PSQCA master record, July 2026. Product names in this table are the names held on the licences themselves, which is not in every case the name the product is sold under. V-Phosphate is registered as V-Phosphate 10-44-0 and marketed as V. Ammonium Phosphate. 20 of the 23 brands hold a live PSQCA manufacturing licence. The other 3 each have a reason: V-Mag Essential carries a conformance report, V-Compost is registered with the Soil Fertility Research Institute, and SOP is a traded commodity to which no VAN licence applies.',
+          note: 'From VAN’s trademark and PSQCA master record, July 2026. Product names in this table are the names held on the licences themselves, which is not in every case the name the product is sold under. V-Phosphate is registered as V-Phosphate 10:44:0 and marketed as V. Ammonium Phosphate. 20 of the 23 brands hold a live PSQCA manufacturing licence. The other 3 each have a reason: V-Mag Essential carries a conformance report, V-Compost is registered with the Soil Fertility Research Institute, and SOP is a traded commodity to which no VAN licence applies.',
         } },
       ],
     },

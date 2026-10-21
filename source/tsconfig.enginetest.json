@@ -27,6 +27,7 @@
     "src/__balancecheck.ts",
     "src/__soilreview.ts",
     "src/__packcheck.ts",
-    "src/__teamcalccheck.ts"
+    "src/__teamcalccheck.ts",
+    "src/__sulfurcheck.ts"
   ]
 }

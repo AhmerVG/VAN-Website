@@ -19,7 +19,7 @@ const DOC_STEM_BY_SLUG: Record<string, string> = { 'v-phosphate': 'V-Phosphate' 
 const docStem = (p: { name: string; slug: string }) => DOC_STEM_BY_SLUG[p.slug] ?? p.name.replace(/%/g, '').replace(/\s+/g, '-')
 // D-188, 26 Sep 2026: Crop Force has 2 datasheets, 1 per grade, already on the server in spec-sheets/.
 // They were committed but never linked. tdsUrls() returns 1 link for every other product and 2 here.
-const CROP_FORCE_TDS: [string, string][] = [['Datasheet 15-15-15', 'https://www.van.com.pk/spec-sheets/VAN-TDS-Crop-Force-15-15-15.pdf'], ['Datasheet 12-12-18', 'https://www.van.com.pk/spec-sheets/VAN-TDS-Crop-Force-12-12-18.pdf']]
+const CROP_FORCE_TDS: [string, string][] = [['Datasheet 15:15:15', 'https://www.van.com.pk/spec-sheets/VAN-TDS-Crop-Force-15-15-15.pdf'], ['Datasheet 12:12:18', 'https://www.van.com.pk/spec-sheets/VAN-TDS-Crop-Force-12-12-18.pdf']]
 const tdsUrls = (p: { name: string; slug: string }): [string, string][] => (p.slug === 'crop-force' ? CROP_FORCE_TDS : [['Datasheet', `https://www.van.com.pk/spec-sheets/VAN-TDS-${docStem(p)}.pdf`]])
 const sdsUrl = (p: { name: string; slug: string }) => `https://www.van.com.pk/sds/VAN-SDS-${docStem(p)}.pdf`
 
@@ -49,7 +49,7 @@ export default function ProductPage({ slug }: { slug: string }) {
     )
   }
   const wheatRows = WHEAT_PLAN.filter(r => r.slug === p.slug)
-  const members = p.family ? PRODUCTS.filter(x => !x.family && x.cat === 'P' && /6-32/.test(x.analysis)) : []
+  const members = p.family ? PRODUCTS.filter(x => !x.family && x.cat === 'P' && /6[-:]32/.test(x.analysis)) : []
   const related = PRODUCTS.filter(x => x.cat === p.cat && x.slug !== p.slug)
   const orderHref = wa(`Hello VAN. I’d like to order ${p.name}. Quantity and district:`)
   // The pairing reads in both directions: on Green Phosphate's page the other one is Fusion
@@ -81,7 +81,7 @@ export default function ProductPage({ slug }: { slug: string }) {
           </div>
           {p.family && (
             <div className="panel-soil p-4 mt-4">
-              <p className="small">3 grades, engineered against calcium fixation: 6-32 (Green Phosphate) · 5-40 · 8-38. The 6-32 grade is sold as a brand:</p>
+              <p className="small">3 grades, engineered against calcium fixation: 6:32 (Green Phosphate) · 5:40 · 8:38. The 6:32 grade is sold as a brand:</p>
               <div className="flex flex-wrap gap-2 mt-2">{members.map(m => <a key={m.slug} className="btn btn-white btn-sm" href={`#/products/${m.slug}`}>{m.name} →</a>)}</div>
             </div>
           )}
@@ -130,7 +130,7 @@ export default function ProductPage({ slug }: { slug: string }) {
                 cannot contradict the regulatory page. Each of the three now states its real status,
                 taken verbatim from the reason the regulatory page already gives.
                 Revert: delete REGISTRATION_EXCEPTIONS and restore the single blanket sentence. */}
-            <div className="k">Registration</div><div>{REGISTRATION_EXCEPTIONS[p.slug] ?? `Registered with PSQCA and released through VAN’s own PNAC-accredited laboratory, ISO/IEC 17025:2017, ${COUNTS.lab}.`}{!REGISTRATION_EXCEPTIONS[p.slug] && p.slug === 'v-phosphate' && <span className="cap block mt-1">Held on that licence as <strong>V-Phosphate 10-44-0</strong>, the name printed on the registration. Registered as V-Ammonium Phosphate 12-44-0 until July 2026. Same product.</span>}</div>
+            <div className="k">Registration</div><div>{REGISTRATION_EXCEPTIONS[p.slug] ?? `Registered with PSQCA and released through VAN’s own PNAC-accredited laboratory, ISO/IEC 17025:2017, ${COUNTS.lab}.`}{!REGISTRATION_EXCEPTIONS[p.slug] && p.slug === 'v-phosphate' && <span className="cap block mt-1">Held on that licence as <strong>V-Phosphate 10:44:0</strong>, the name printed on the registration. Registered as V-Ammonium Phosphate 12:44:0 until July 2026. Same product.</span>}</div>
             <div className="k">Lab report</div><div>Type the batch number off the bag and open the lab report for that batch. <a href="#/verify">Verify a bag →</a></div>
           </div>
 
@@ -153,13 +153,14 @@ export default function ProductPage({ slug }: { slug: string }) {
           ) : (
             <p className="small max-w-[140ch]">{p.name} does not appear in the wheat programme. The crop plans show which programmes use it. <a href="#/crops">The crop plans →</a></p>
           )}
-          {p.slug === 'green-phosphate' && <p className="small mt-4 max-w-[140ch]">Green Phosphate is the NP Range 6-32 grade. Humic-coated and acidic, engineered against calcium fixation. <a href="#/products/np-range">The VAN NP Range →</a></p>}
+          {p.slug === 'green-phosphate' && <p className="small mt-4 max-w-[140ch]">Green Phosphate is the NP Range 6:32 grade. Humic-coated and acidic, engineered against calcium fixation. <a href="#/products/np-range">The VAN NP Range →</a></p>}
           {/* 11 Sep 2026 · Tahir's rulings on the agronomy decision sheet, items A3, A4 and B3. The
               product pages named one method each while the crop plans used another; he ruled that
               both are real and that the page should say so, rather than one side being corrected to
               match the other. Green Sulfur also carries the crop-driven rate range, which he
               confirmed is deliberate. Revert: delete these two lines. */}
           {p.slug === 'green-sulfur' && <p className="small mt-4 max-w-[140ch]">Green Sulfur goes on both ways. It is broadcast at land preparation in some programmes and fertigated in others. Broadcasting gives elemental sulfur soil contact, and weeks for soil microbes to oxidise it into the sulfate a root can take up. <b>The rate is crop-driven and ranges from about 2 kg an acre on wheat and the pulses to about 10 kg on cotton, maize, potato and garlic.</b> That spread is deliberate. Your crop’s programme shows the method and the rate.</p>}
+          {p.slug === 'green-sulfur' && <p className="small mt-3 max-w-[140ch]" data-sulfur-packs><b>Two packs: 1 kg and 20 kg.</b> A programme whose dose is 5 kg or less at each application lists the 1 kg pack. A programme with a larger dose lists the 20 kg bag. The programme and the shopping list say the dose in kg.</p>}
           {p.slug === 'fusion-potash' && <p className="small mt-4 max-w-[140ch]">Fusion Potash goes on both ways. It is broadcast at land preparation in some programmes and fertigated in others. Your crop’s programme shows the method.</p>}
         </div>
       </div>

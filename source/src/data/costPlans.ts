@@ -1,5 +1,7 @@
-import { WHEAT_COST_PLAN, POTATO_COST_PLAN, type CostRow } from './pricing'
+import { WHEAT_COST_PLAN, POTATO_COST_PLAN, priceForPack, type CostRow } from './pricing'
 import { TEAM_CALCULATORS } from './teamCalculators'
+import { SULFUR_PACK_BY_CROP } from './catalogue'
+import { normaliseSulfurCost } from '../lib/sulfurPack'
 
 /**
  * EVERY CROP WITH A LIVE CALCULATOR, IN ONE PLACE. D-144, 25 Sep 2026, owner's ruling 1.
@@ -29,10 +31,12 @@ export const TEAM_CALC_WAITING: Record<string, string> = {
   citrus: "V-Mag Essential 0.16 bag on the team sheet against 1.16 in the published plan; the sheet looks to carry only the 2 x 400 g foliar part. Waiting for the team's answer.",
 }
 
+const sulfur = (slug: string, rows: CostRow[]) => normaliseSulfurCost(rows, SULFUR_PACK_BY_CROP[slug] ?? null, kg => priceForPack('green-sulfur', kg)?.pricePkr)
+
 export const COST_PLANS: Record<string, CostRow[]> = {
-  wheat: WHEAT_COST_PLAN,
-  potato: POTATO_COST_PLAN,
-  ...Object.fromEntries(Object.entries(TEAM_CALCULATORS).filter(([slug]) => !(slug in TEAM_CALC_WAITING)).map(([slug, c]) => [slug, c.rows as CostRow[]])),
+  wheat: sulfur('wheat', WHEAT_COST_PLAN),
+  potato: sulfur('potato', POTATO_COST_PLAN),
+  ...Object.fromEntries(Object.entries(TEAM_CALCULATORS).filter(([slug]) => !(slug in TEAM_CALC_WAITING)).map(([slug, c]) => [slug, sulfur(slug, c.rows as CostRow[])])),
 }
 
 /** Crop slugs with a live calculator, wheat and potato first, then the team's in import order. */

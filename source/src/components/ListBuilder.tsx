@@ -237,7 +237,7 @@ export function ListBuilder({ stages = WHEAT_STAGES, plan = WHEAT_PLAN, cropName
                 </div>
                 <div className="text-right shrink-0">
                   <div className="num text-[26px] leading-none" style={{ color: 'var(--navy)' }}>{fmtUnits(l.units)}</div>
-                  <div className="cap">{l.unit}{l.units > 1 ? 's' : ''} · {Math.round(l.units * l.size * 100) / 100} {l.measure}</div>
+                  <div className="cap">{l.unit}{l.units >= 1.125 ? 's' : ''} · {Math.round(l.units * l.size * 100) / 100} {l.measure}</div>
                   {'added' in l && Math.abs((l as { added: number }).added) > 0.01 && (
                     <div className="cap" style={{ color: (l as { added: number }).added > 0 ? 'var(--rust-text)' : 'var(--green)' }}>
                       {(l as { added: number }).added > 0 ? '+' : '−'}{fmtUnits(Math.abs((l as { added: number }).added))} for your soil
@@ -280,7 +280,7 @@ export function ListBuilder({ stages = WHEAT_STAGES, plan = WHEAT_PLAN, cropName
                 </div>
                 <div className="text-right shrink-0">
                   <div className="num text-[26px] leading-none" style={{ color: '#5B6A5E' }}>{fmtUnits(l.units)}</div>
-                  <div className="cap">{l.unit}{l.units > 1 ? 's' : ''}{l.size > 0 ? ` · ${Math.round(l.units * l.size * 100) / 100} ${l.measure || 'kg'}` : ''}</div>
+                  <div className="cap">{l.unit}{l.units >= 1.125 ? 's' : ''}{l.size > 0 ? ` · ${Math.round(l.units * l.size * 100) / 100} ${l.measure || 'kg'}` : ''}</div>
                   {'added' in l && (l as { added: number }).added < -0.01 && (
                     <div className="cap" style={{ color: 'var(--green)' }}>−{fmtUnits(Math.abs((l as { added: number }).added))} moved to Vital Urea</div>
                   )}

@@ -60,7 +60,7 @@ export default function Crops() {
     return (
       <article key={c.name} className="panel p-5 flex flex-col" style={{ borderTop: `6px solid ${colour}` }}>
         <h3 className="text-[22px]"><Ur kind="crop" en={c.name} /></h3>
-        <div className="flex flex-wrap gap-2 mt-3"><span className="tag tag-sky">{sowingLabel(c)} sowing</span><span className="tag tag-green">{c.programme}</span>{hasCalculator(slug) && <LiveCalcTag />}</div>
+        <div className="flex flex-wrap gap-2 mt-3"><span className="tag tag-sky">{sowingLabel(c)} sowing</span><span className="tag tag-green">{c.programme}</span>{hasCalculator(slug) && <span className="tag" data-crop-category>{groups.find(g => g.group === c.group)?.label ?? c.group}</span>}{hasCalculator(slug) && <LiveCalcTag />}</div>
         <div className="flex flex-wrap gap-2 mt-auto pt-5">
           <a className="btn btn-navy btn-sm" href={`#/crops/${slug}`}>Open the programme →</a>
           <a className="btn btn-ghost btn-sm" href={cropPdf(c)} target="_blank" rel="noopener">PDF ↓</a>

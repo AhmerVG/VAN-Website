@@ -1,4 +1,4 @@
-import { rateLabel } from '@/lib/season'
+import { rateLabel, packInfo } from '@/lib/season'
 import { alternativeFor } from '@/data/alternatives'
 import { Ur } from './Ur'
 import type { PlanRow } from '@/data/catalogue'
@@ -31,7 +31,7 @@ export function PlanMatrix({ stages, plan, tableNote }: { stages: string[]; plan
                         </div>
                         <div className="min-w-0">
                           {r.slug ? <a href={`#/products/${r.slug}`} className="font-semibold">{r.product}</a> : <span className="font-semibold">{r.product}</span>}<br />
-                          <span className="cap">{r.analysis} · <b>{rateLabel(r)}</b> · {r.pack.replace('Bag - ', '').replace('Pack - ', '')}</span><br />
+                          <span className="cap">{r.analysis} · <b>{rateLabel(r)}</b> · {r.product === 'Green Sulfur' ? `${packInfo(r.pack).label} ${packInfo(r.pack).unit}` : r.pack.replace('Bag - ', '').replace('Pack - ', '')}</span><br />
                           <span className="cap inline-flex items-center gap-1"><MethodIcon method={r.method} size={14} />{r.method}</span>
                           {/* Tahir 9 Sep: Fusion Phosphate is optional and always offered beside Green
                               Phosphate. The plan row itself is untouched. This names the other bag. */}

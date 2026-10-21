@@ -69,7 +69,7 @@ export const LIB_META: Record<string, LibMeta> = {
   'NP-540': { n: [['N', '5'], ['P', '40']], apply: ['soil'] },
   // "NP 8-38 + sulfur" · "the granule's immediate soil environment"
   'NP-838S': { n: [['N', '8'], ['P', '38'], ['S']], form: 'granular', apply: ['soil'] },
-  // "Urea phosphate · 17-44-0 and 12-44-0" · "one fully soluble salt"
+  // "Urea phosphate · 17:44:0 and 12:44:0" · "one fully soluble salt"
   'UP-44': { n: [['N', '17'], ['P', '44']], form: 'soluble', apply: ['fertigation'] },
   // "Potassium nitrate · 3 grades" · "Chloride-free potassium with nitrate nitrogen". No figure.
   'KN-44': { n: [['K'], ['N']] },
@@ -77,16 +77,16 @@ export const LIB_META: Record<string, LibMeta> = {
   'K-45L': { n: [['K', '45']], form: 'liquid', apply: ['foliar'] },
   // "P 42 · K 40, 82 nutrient units"
   'PK-82': { n: [['P', '42'], ['K', '40']] },
-  // "NPK 12-12-18 + micronutrients"
+  // "NPK 12:12:18 + micronutrients"
   'NPK-128M': { n: [['N', '12'], ['P', '12'], ['K', '18'], ['Zn'], ['B']] },
-  // "NPK 19-19-19 · 3 grades" · "The fully soluble balanced grade: foliar, fertigation and drone"
+  // "NPK 19:19:19 · 3 grades" · "The fully soluble balanced grade: foliar, fertigation and drone"
   'NPK-19': { n: [['N', '19'], ['P', '19'], ['K', '19']], form: 'soluble', apply: ['foliar', 'fertigation'] },
-  // "NPK 10-10-10, iron-coated"
+  // "NPK 10:10:10, iron-coated"
   'NPK-10': { n: [['N', '10'], ['P', '10'], ['K', '10'], ['Fe']] },
-  // "V-Potato 10-5-35 · V-Citrus 16-6-28 · V-Rice 12-10-25 · V-Wheat 21-7-19 with zinc 1.5%".
+  // "V-Potato 10:5:35 · V-Citrus 16:6:28 · V-Rice 12:10:25 · V-Wheat 21:7:19 with zinc 1.5%".
   // Four grades under one code, so the chips carry the nutrients and not one grade's numbers.
   'V-Crop series': { n: [['N'], ['P'], ['K'], ['Zn']] },
-  // "Vegetative 14-21-16 · Flowering Booster 8-34-14 · Fruiting Booster 12-8-32"
+  // "Vegetative 14:21:16 · Flowering Booster 8:34:14 · Fruiting Booster 12:8:32"
   'V-Stage series': { n: [['N'], ['P'], ['K']] },
   // "Chelated zinc 5%"
   'MX-Z05': { n: [['Zn', '5']] },

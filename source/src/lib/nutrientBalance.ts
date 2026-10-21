@@ -60,7 +60,7 @@ export function parseAnalysis(analysis: string): NutrientTotals | null {
   const out: NutrientTotals = {}
 
   // "NPK 10-44-0" or "NPK 11.0.44" — three figures, N then P₂O₅ then K₂O.
-  const npk = analysis.match(/NPK\s*(\d+(?:\.\d+)?)\s*[-.]\s*(\d+(?:\.\d+)?)\s*[-.]\s*(\d+(?:\.\d+)?)/i)
+  const npk = analysis.match(/NPK\s*(\d+(?:\.\d+)?)\s*[-.:]\s*(\d+(?:\.\d+)?)\s*[-.:]\s*(\d+(?:\.\d+)?)/i)
   if (npk) {
     const [n, p, k] = [Number(npk[1]), Number(npk[2]), Number(npk[3])]
     if (n) out.N = n

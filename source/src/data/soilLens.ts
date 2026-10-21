@@ -101,7 +101,7 @@ export const PRODUCT_SOIL: Record<string, { figure: string; line: string; relati
  * So the belief is one plain line and everything under it is a place to go. Every note is read off
  * the product's own catalogue entry, not written for effect: Green Sulfur is Sulfur 70% WDG, Vital
  * Urea is SCU at N 32 / S 13, V-Transform is zinc 21% granular, VL-Micromix is Zn 5 / Fe 2 / Mn 2 /
- * Cu 1, V. Ammonium Phosphate is 10-44-0 carrying iron (iron only, Tahir 27 Sep 2026, D-214).
+ * Cu 1, V. Ammonium Phosphate is 10:44:0 carrying iron (iron only, Tahir 27 Sep 2026, D-214).
  *
  * "Zinc coating" is written here as ZINC, and the question behind that wording is now CLOSED.
  * Tahir, 11 September 2026: THERE IS NO ZINC-COATED GRADE. VAN's coating line coats with sulfur and
@@ -117,7 +117,7 @@ export const SOIL_BELIEF = {
     ['Humic', 'Potassium humate, for ground under 1% carbon', '#/products/humi-grow'],
     ['Zinc', 'Zinc 21%, granular, for soil that locks it up', '#/products/v-transform'],
     ['Micronutrients', 'Zn 5 · Fe 2 · Mn 2 · Cu 1, in one foliar pass', '#/products/vl-micro-mix'],
-    ['Iron', '10-44-0 carrying iron', '#/products/v-phosphate'],
+    ['Iron', '10:44:0 carrying iron', '#/products/v-phosphate'],
     ['Right rate, time, place', 'How it is delivered is part of the product', '#/knowledge/application-systems'],
     ['Crop-specific', 'A plan per crop, stage by stage, per acre', '#/crops'],
     ['Soil-specific', 'Your district, and the ground inside it', '#soil-matrix'],

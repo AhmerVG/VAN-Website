@@ -3,7 +3,7 @@ import { CROPS, CROP_PLANS, shortCropName } from '@/data/catalogue'
 import { REGIONAL_PROFILES } from '@/data/regionalSoil'
 import { SOIL_BAND_LABEL } from '@/data/soilThresholds'
 import { removalFor, KG_PER_MAUND } from '@/data/removal'
-import { cropSlug } from '@/lib/season'
+import { cropSlug, tidyUnits } from '@/lib/season'
 
 /**
  * THE 3 FLAGSHIPS — 27 September 2026, D-196.
@@ -131,7 +131,7 @@ function VitalPotashTool() {
         <select id="fs-vp-crop" className="input input-sm" value={crop} onChange={e => setCrop(e.target.value)}>
           {crops.map(c => <option key={cropSlug(c)} value={cropSlug(c)}>{c.name}</option>)}
         </select>
-        <p className="small mt-3">The published {name.toLowerCase()} programme puts Vital Potash on at <b>{stages.join(' and ') || 'no stage'}</b>{rows[0] ? <>, by {rows[0].method.toLowerCase()}, {rows.map(r => r.rate).join(' and ')}</> : null}. That is the fill window: the stage where the crop stops growing leaf and starts filling grain, tuber or fruit.</p>
+        <p className="small mt-3">The published {name.toLowerCase()} programme puts Vital Potash on at <b>{stages.join(' and ') || 'no stage'}</b>{rows[0] ? <>, by {rows[0].method.toLowerCase()}, {rows.map(r => tidyUnits(r.rate)).join(' and ')}</> : null}. That is the fill window: the stage where the crop stops growing leaf and starts filling grain, tuber or fruit.</p>
         <div className="fs-row mt-4">
           <label htmlFor="fs-vp-bags" className="small">Bags (20 kg) on 1 acre</label>
           <input id="fs-vp-bags" type="number" min="0" max="20" step="0.5" inputMode="decimal" className="input input-sm" style={{ width: 90 }} value={bags} onChange={e => setBags(Math.max(0, Number(e.target.value) || 0))} />
@@ -183,7 +183,7 @@ function GreenPhosphateTool() {
           <span className="small">Bag</span>
           {[50, 35].map(b => <button key={b} type="button" className={`btn btn-sm ${bag === b ? 'btn-navy' : 'btn-ghost'}`} onClick={() => setBag(b as 50 | 35)}>{b} kg</button>)}
         </div>
-        <p className="small mt-3">1 bag of {bag} kg carries <b className="num">{fmt(p2o5)} kg P₂O₅</b> and <b className="num">{fmt(nKg)} kg N</b>, from the declared 6-32-0. The same 50 kg of TSP carries 23 kg P₂O₅ and no nitrogen, and no coating. On the crop page you can switch between them; the plan’s bag count does not change on a switch, on purpose.</p>
+        <p className="small mt-3">1 bag of {bag} kg carries <b className="num">{fmt(p2o5)} kg P₂O₅</b> and <b className="num">{fmt(nKg)} kg N</b>, from the declared 6:32:0. The same 50 kg of TSP carries 23 kg P₂O₅ and no nitrogen, and no coating. On the crop page you can switch between them; the plan’s bag count does not change on a switch, on purpose.</p>
         <svg viewBox="0 0 320 120" className="fs-svg" role="img" aria-label="One granule with an acidic zone around it in alkaline soil">
           <rect width="320" height="120" fill="#EFE6DA" />
           <text x="10" y="18" fontSize="11" fill="var(--soil)" fontFamily="Public Sans, sans-serif">calcareous soil{ph ? `, pH ${ph.toFixed(1)}` : ', above pH 8'}</text>

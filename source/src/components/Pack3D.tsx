@@ -12,7 +12,7 @@ import { createPortal } from 'react-dom'
  * its slug and label in MODELS below.
  */
 export const MODELS: Record<string, string> = {
-  'crop-force': 'The NPK 12-12-18 bag, 10 kg',
+  'crop-force': 'The NPK 12:12:18 bag, 10 kg',
 }
 
 /** The viewer sits beside the site's shared bundle, so resolve it from there: works at the domain root,

@@ -31,8 +31,10 @@ export default function Products() {
   const [dir, setDir] = useState<1 | -1>(1)
   const brands = PRODUCTS.filter(p => !p.family).length
   const list = useMemo(() => {
-    const t = q.trim().toLowerCase()
-    let r = PRODUCTS.filter(p => (cat === 'ALL' || p.cat === cat) && (!method || p.methods.includes(method)) && (!stage || p.stages.includes(stage)) && (!t || p.name.toLowerCase().includes(t) || p.analysis.toLowerCase().includes(t) || p.catLabel.toLowerCase().includes(t)))
+    // D-287: grades print as 10:44:0 now; a farmer who types 10-44-0 or 10.44.0 must still find them.
+    const gradeNorm = (s: string) => s.replace(/(?<=\d)[-.:](?=\d)/g, ':')
+    const t = gradeNorm(q.trim().toLowerCase())
+    let r = PRODUCTS.filter(p => (cat === 'ALL' || p.cat === cat) && (!method || p.methods.includes(method)) && (!stage || p.stages.includes(stage)) && (!t || gradeNorm(p.name.toLowerCase()).includes(t) || gradeNorm(p.analysis.toLowerCase()).includes(t) || p.catLabel.toLowerCase().includes(t)))
     if (sort !== 'catalogue') {
       r = [...r].sort((a, b) => {
         const k = sort === 'name' ? a.name.localeCompare(b.name) : sort === 'category' ? CAT_ORDER.indexOf(a.cat) - CAT_ORDER.indexOf(b.cat) : sort === 'method' ? a.methods[0].localeCompare(b.methods[0]) : sort === 'stage' ? STAGES.indexOf(a.stages[0]) - STAGES.indexOf(b.stages[0]) : a.badge.localeCompare(b.badge)

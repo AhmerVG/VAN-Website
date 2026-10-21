@@ -24,6 +24,8 @@ import { CROP_PLANS, CROPS } from '@/data/catalogue'
 import { MASTER_PRODUCTS, FARMER_PRICE, isFarmerBrand, priceForPack } from '@/data/pricing'
 import { TEAM_CALCULATORS, TEAM_CALC_SKIPPED, TEAM_CALC_SOURCE } from '@/data/teamCalculators'
 import { COST_PLANS, LIVE_CALC_CROPS, TEAM_CALC_WAITING } from '@/data/costPlans'
+import { SULFUR_PACK_BY_CROP } from '@/data/catalogue'
+import { normaliseSulfurCost } from '@/lib/sulfurPack'
 import { programmeSupply, allStages, parseAnalysis } from '@/lib/nutrientBalance'
 import { calcPlan } from '@/lib/planCalc'
 import { nutrientRanges, fmtRange } from '@/lib/planRange'
@@ -40,6 +42,8 @@ console.log(`Live calculators, in list order: ${LIVE_CALC_CROPS.join(', ')}`)
 if (LIVE_CALC_CROPS[0] !== 'wheat' || LIVE_CALC_CROPS[1] !== 'potato') fail('wheat and potato must lead LIVE_CALC_CROPS')
 
 for (const [slug, c] of Object.entries(TEAM_CALCULATORS)) {
+  // D-292: the generated rows keep the pack the sheet used; the site writes Green Sulfur in the pack its plan uses (same kg).
+  const rows = normaliseSulfurCost(c.rows, SULFUR_PACK_BY_CROP[slug] ?? null)
   const crop = CROPS.find(x => cropSlug(x) === slug)
   const cp = CROP_PLANS[slug]
   console.log(`\n=== ${crop?.name ?? slug} (${slug}) · sheet "${c.sheet}" ===`)
@@ -50,10 +54,10 @@ for (const [slug, c] of Object.entries(TEAM_CALCULATORS)) {
   if (slug in TEAM_CALC_WAITING) {
     console.log(`  NOT LIVE, waiting for the team: ${TEAM_CALC_WAITING[slug]}`)
     if (slug in COST_PLANS || LIVE_CALC_CROPS.includes(slug)) fail('held back for the team but still live')
-  } else if (COST_PLANS[slug] !== (c.rows as unknown)) fail('COST_PLANS does not carry this crop\'s rows')
+  } else if (JSON.stringify(COST_PLANS[slug]) !== JSON.stringify(rows)) fail('COST_PLANS does not carry this crop\'s rows')
 
   // Every row: the site's analysis and pack, a real quantity, no sheet price, farmer brands only.
-  for (const r of c.rows) {
+  for (const r of rows) {
     if (!(r.qtyPerAcre > 0) || !Number.isFinite(r.qtyPerAcre)) fail(`${r.product}: quantity ${r.qtyPerAcre}`)
     if (r.unitPricePkr !== 0) fail(`${r.product}: carries a price from the sheet`)
     if (r.slug) {
@@ -74,10 +78,10 @@ for (const [slug, c] of Object.entries(TEAM_CALCULATORS)) {
     }
   }
 
-  const calc = calcPlan(c.rows, 1, {}, slug).nutrientKg
+  const calc = calcPlan(rows, 1, {}, slug).nutrientKg
   const plan = programmeSupply(slug, allStages(slug)).perAcre
   const ranges = nutrientRanges(slug)
-  console.log(`  rows ${c.rows.length} · products ${new Set(c.rows.map(r => r.slug ?? r.product)).size} · rows the site figure replaced the sheet's: ${c.rows.filter(r => r.note).length}`)
+  console.log(`  rows ${rows.length} · products ${new Set(rows.map(r => r.slug ?? r.product)).size} · rows the site figure replaced the sheet's: ${rows.filter(r => r.note).length}`)
   console.log('                         N    P₂O₅   K₂O   (kg an acre)')
   console.log(`  calculator        ${f(calc.N)}${f(calc.P)}${f(calc.K)}`)
   console.log(`  published plan    ${f(plan.N)}${f(plan.P)}${f(plan.K)}`)
@@ -100,16 +104,16 @@ for (const [slug, c] of Object.entries(TEAM_CALCULATORS)) {
   const uncounted = new Set(sup.uncounted.map(u => u.product))
   const diffs: string[] = []
   for (const [prod, a] of inPlan) {
-    const b = c.rows.find(r => r.product === prod)
+    const b = rows.find(r => r.product === prod)
     if (!b) diffs.push(`in the plan, not the calculator: ${prod} (${+a.units.toFixed(3)} x ${a.pack})`)
     else if (Math.abs(a.pack - b.packKg) > 1e-9 || Math.abs(a.units - b.qtyPerAcre) > 1e-6) diffs.push(`${prod}: plan ${+a.units.toFixed(3)} x ${a.pack}, calculator ${b.qtyPerAcre} x ${b.packKg}`)
   }
-  for (const r of c.rows) if (!inPlan.has(r.product)) diffs.push(`in the calculator, not the plan: ${r.product}`)
-  for (const r of c.rows) if (uncounted.has(r.product)) diffs.push(`${r.product}: the plan prints no analysis for it ("${sup.uncounted.find(u => u.product === r.product)?.analysis}"), the calculator counts ${JSON.stringify(r.analysisPct)} from the site's catalogue`)
+  for (const r of rows) if (!inPlan.has(r.product)) diffs.push(`in the calculator, not the plan: ${r.product}`)
+  for (const r of rows) if (uncounted.has(r.product)) diffs.push(`${r.product}: the plan prints no analysis for it ("${sup.uncounted.find(u => u.product === r.product)?.analysis}"), the calculator counts ${JSON.stringify(r.analysisPct)} from the site's catalogue`)
   console.log(diffs.length ? '  differences from the published plan (D-77, printed as a range where they move a nutrient):\n    ' + diffs.join('\n    ') : '  the calculator and the published plan carry the same products, packs and rates')
-  for (const r of c.rows) if (r.note) console.log(`  sheet row ${r.sheetRow} ${r.sheetName}: ${r.note}`)
-  const unpriced = c.rows.filter(r => r.slug && !priceForPack(r.slug, r.packKg)).map(r => `${r.product} ${r.packKg}`)
-  console.log(`  priced after the click from FARMER_PRICE: ${c.rows.filter(r => r.slug && priceForPack(r.slug, r.packKg)).length} lines` + (unpriced.length ? `; no confirmed price, shown with a reason: ${unpriced.join(', ')}` : '') + `; commodity lines, never priced: ${c.rows.filter(r => !r.slug).map(r => r.product).join(', ') || 'none'}`)
+  for (const r of rows) if (r.note) console.log(`  sheet row ${r.sheetRow} ${r.sheetName}: ${r.note}`)
+  const unpriced = rows.filter(r => r.slug && !priceForPack(r.slug, r.packKg)).map(r => `${r.product} ${r.packKg}`)
+  console.log(`  priced after the click from FARMER_PRICE: ${rows.filter(r => r.slug && priceForPack(r.slug, r.packKg)).length} lines` + (unpriced.length ? `; no confirmed price, shown with a reason: ${unpriced.join(', ')}` : '') + `; commodity lines, never priced: ${rows.filter(r => !r.slug).map(r => r.product).join(', ') || 'none'}`)
   void FARMER_PRICE
 }
 

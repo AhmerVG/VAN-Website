@@ -61,9 +61,9 @@ export function FamilyShot({ max = 280 }: { max?: number }) {
   const one = { width: '100%', height: 'auto', maxHeight: 'none', display: 'block' } as const
   return (
     <div className="grid grid-cols-3 items-end gap-2" style={{ width: '100%', maxWidth: max }}>
-      <img src={NP_PACK['6-32']} alt="Green Phosphate, NP 6-32" style={one} />
-      <img src={NP_PACK['5-40']} alt="VAN NP 5-40" style={one} />
-      <img src={NP_PACK['8-38']} alt="VAN NP 8-38" style={one} />
+      <img src={NP_PACK['6-32']} alt="Green Phosphate, NP 6:32" style={one} />
+      <img src={NP_PACK['5-40']} alt="VAN NP 5:40" style={one} />
+      <img src={NP_PACK['8-38']} alt="VAN NP 8:38" style={one} />
     </div>
   )
 }

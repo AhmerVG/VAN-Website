@@ -12,7 +12,7 @@ import { MASTER_PRODUCTS } from './pricing'
  *
  * WHY THE DIFFERENCE IS PRINTED RATHER THAN GLOSSED OVER. These two are not the same bag:
  *
- *   Green Phosphate   6-32-0, humic-coated acidic   50 kg bag →  16.0 kg P₂O₅  + 3.0 kg N
+ *   Green Phosphate   6:32:0, humic-coated acidic   50 kg bag →  16.0 kg P₂O₅  + 3.0 kg N
  *   Fusion Phosphate  TSP, P₂O₅ 46%                 50 kg bag →  23.0 kg P₂O₅  + no nitrogen
  *
  * Bag for bag, Fusion Phosphate carries about 44% more phosphate and no nitrogen, and it has none of
@@ -37,7 +37,7 @@ export const ALTERNATIVES: Alternative[] = [
     slug: 'green-phosphate',
     altSlug: 'fusion-phosphate',
     altName: 'Fusion Phosphate',
-    difference: 'Same bag size, different bag. Fusion Phosphate is TSP at 46% P₂O₅. About 44% more phosphate per bag than Green Phosphate’s 6-32-0, and no nitrogen with it. Green Phosphate is the humic-coated acidic grade, built for alkaline ground. The plan’s number of bags does not change if you switch; what you put on the field does.',
+    difference: 'Same bag size, different bag. Fusion Phosphate is TSP at 46% P₂O₅. About 44% more phosphate per bag than Green Phosphate’s 6:32:0, and no nitrogen with it. Green Phosphate is the humic-coated acidic grade, built for alkaline ground. The plan’s number of bags does not change if you switch; what you put on the field does.',
   },
 ]
 

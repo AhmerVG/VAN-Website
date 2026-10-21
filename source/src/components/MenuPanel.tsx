@@ -128,15 +128,17 @@ export function MenuPanel({ onClose, extras }: { onClose: () => void; extras?: R
   useEffect(() => { if (window.matchMedia('(min-width: 900px)').matches) box.current?.focus() }, [])
 
   const hits = useMemo(() => {
-    const s = q.trim().toLowerCase()
+    // D-287: a grade typed as 10-44-0 or 10.44.0 finds the 10:44:0 the site now prints.
+    const gradeNorm = (s: string) => s.replace(/(?<=\d)[-.:](?=\d)/g, ':')
+    const s = gradeNorm(q.trim().toLowerCase())
     if (!s) return []
     const scored = all
       .map(h => {
-        const hay = `${h.label} ${h.sub} ${h.kind} ${h.keys ?? ''}`.toLowerCase()
+        const hay = gradeNorm(`${h.label} ${h.sub} ${h.kind} ${h.keys ?? ''}`.toLowerCase())
         if (!exactMatch(hay, s)) return null
         // A name that STARTS with what was typed is what the reader meant. "pot" is potato before
         // it is "V-Potash Plus", and a page whose body merely mentions potash is last.
-        const l = h.label.toLowerCase()
+        const l = gradeNorm(h.label.toLowerCase())
         const rank = l.startsWith(s) ? 0 : l.includes(s) ? 1 : 2
         return { h, rank }
       })
