@@ -38,5 +38,13 @@ check('canola: 5, 1.5 and 1.5 kg, list 8 packs of 1 kg', /Green Sulfur 1 kg pack
 const noOldSulfur = crops.filter(f => /Green Sulfur Sulfur 70% · (?:[¼½¾]|[\d.]+) (?:bags?|packs?)\b/.test(text.get(f)))
 check('no crop page still prints Green Sulfur as bags or packs in the plan', noOldSulfur.length === 0, noOldSulfur.slice(0, 3).join(', '))
 check('Green Sulfur product page names both packs', /Two packs: 1 kg and 20 kg/.test(flat('brands/green-sulfur.html')))
+
+// D-293 Vital Potash: 11:0:44 is always "coated with B" and never "+ Fe" (iron is V-Potash Plus).
+const vp = crops.filter(f => /11:0:44/.test(text.get(f)))
+const vpBare = vp.filter(f => /11:0:44(?!, coated with B)/.test(text.get(f)))
+check('every crop page that shows Vital Potash 11:0:44 says "coated with B" (' + vp.length + ' pages)', vp.length > 0 && vpBare.length === 0, vpBare.slice(0, 4).join(', '))
+const vpFe = crops.filter(f => /Vital Potash NPK 11:0:44.{0,60}\bFe\b/.test(text.get(f)))
+check('no crop page shows Vital Potash with Fe', vpFe.length === 0, vpFe.slice(0, 4).join(', '))
+check('V-Potash Plus is still on the product list with chelated Fe', /chelated Fe/.test(flat('brands/v-potash-plus.html')))
 console.log(`\n${passed} passed, ${failed} failed`)
 process.exit(failed ? 1 : 0)
