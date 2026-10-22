@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { DISTRICT_UR } from '@/data/soilTehsils'
 import { SOIL } from '@/data/soil'
 import { DISTRICTS, medianStats, thousands } from '@/lib/soil'
-import { SOIL_COLS, SOIL_BAND_COLOR, SOIL_BAND_LABEL, SOIL_BAND_ORDER, bandOf, bandTint, fmt, readVal, urgencyScore, notComparable, type SoilColKey } from '@/lib/soilSeverity'
+import { SOIL_COLS, SOIL_BAND_COLOR, SOIL_BAND_LABEL, SOIL_BAND_ORDER, bandOf, bandTint, fmt, readVal, urgencyScore, flaggedOnAtlas, type SoilColKey } from '@/lib/soilSeverity'
 
 /**
  * THIRTY-SIX DISTRICTS BY EIGHT PARAMETERS — 10 September 2026.
@@ -109,7 +109,7 @@ export function SoilMatrix({ selected, onSelect, param, onParam }: {
         {cols.map(c => {
           const v = readVal(sm, c.key)
           const mv = readVal(s, c.key)
-          const nc = notComparable(k, c.key)
+          const nc = flaggedOnAtlas(k, c.key)
           const b = nc ? undefined : bandOf(c.key, v)
           const hot = param === c.key
           const u = c.unit ? (c.unit === '%' ? '%' : ` ${c.unit}`) : ''
@@ -146,7 +146,7 @@ export function SoilMatrix({ selected, onSelect, param, onParam }: {
         <input className="input input-sm" style={{ maxWidth: 220 }} placeholder="My district… · ضلع" value={q}
           onChange={e => { const v = e.target.value; setQ(v); const t = v.trim().toLowerCase(); if (!t) return; const m = DISTRICTS.filter(d => d.name.toLowerCase().includes(t) || (DISTRICT_UR[d.key] ?? '').includes(v.trim())); if (m.length === 1) onSelect(m[0].key) }}
           onKeyDown={e => { if (e.key === 'Enter' && rows[0]) onSelect(rows[0].key) }} aria-label="Find a district" />
-        <button className={`chip chip-xs ${sort.key === 'worst' ? 'on' : ''}`} onClick={() => head('worst')} aria-pressed={sort.key === 'worst'}>Worst first{arrow('worst')}</button>
+        <button className={`chip chip-xs ${sort.key === 'worst' ? 'on' : ''}`} onClick={() => head('worst')} aria-pressed={sort.key === 'worst'}>Worst overall{arrow('worst')}</button>
         <button className={`chip chip-xs ${sort.key === 'name' ? 'on' : ''}`} onClick={() => head('name')} aria-pressed={sort.key === 'name'}>A–Z{arrow('name')}</button>
         <button className={`chip chip-xs ${sort.key === 'n' ? 'on' : ''}`} onClick={() => head('n')} aria-pressed={sort.key === 'n'}>Samples{arrow('n')}</button>
         <button className={`chip chip-xs ${extra ? 'on' : ''}`} onClick={() => setExtra(x => !x)} aria-pressed={extra}>
@@ -190,11 +190,12 @@ export function SoilMatrix({ selected, onSelect, param, onParam }: {
         ))}
       </div>
       <p className="cap mt-2 max-w-[140ch]">
+        Worst overall weighs the 8 main columns equally; tap a column head to sort by that reading.
         The bands are VAN's own 5-band soil-test table, the same one printed on a VAN soil report,
         read against the district median, the typical field; the mean sits under each value. Calcium carbonate has no row in that table, so it carries a value and no
         colour. Copper and manganese have 3 bands there rather than 5. N.d. = not determined; Jhelum returns no
         valid zinc. * Copper in Faisalabad, Jhang, Chiniot and Toba Tek Singh reads far below every other district, and iron far below most,
-        which points to a different laboratory method rather than different soil. They are shown as surveyed and not banded.
+        which points to a different laboratory method rather than different soil. * Phosphorus samples in Kasur read 2.5 to 5 times the samples within 1 km of them across the district line (median 14.5 ppm against Lahore 4.2 and Okara 5.9; 16.6 against Nankana Sahib 3.2), and all 4 of its tehsils read the same, which points the same way. They are shown as surveyed and not banded.
         <b> Tap any cell</b> to take that district and that parameter to the map and the readings above.
       </p>
     </div>

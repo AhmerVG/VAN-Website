@@ -14,7 +14,7 @@ import { phWord } from '@/data/soilUrdu'
  * Tahir: "if its farmer, he should be appealed to see his district OR ONE LEVEL DOWN as data."
  *
  * That data was already on this page and nobody could reach it. SOIL_GRID holds 4,911 cells of
- * 0.05° — about 5.5 km by 4.8 km at Punjab's latitude, roughly 27 km² or 6,600 acres, which is
+ * 0.05° — about 5.5 km by 4.8 km at Punjab's latitude, roughly 26.4 km² or 6,500 acres, which is
  * below tehsil. All 36 districts are covered, median 127 cells each, and 769,720 of the 770,160
  * samples sit inside them. Each cell carries its own pH, organic matter, P, K, zinc, carbonate,
  * boron, salinity and sample count. Until now the page used all of that only to colour a map: a
@@ -50,7 +50,7 @@ export function MyGround({ selected }: { selected: string | null }) {
         <h3 className="mt-1">Pick your district above and this reads the ground inside it.</h3>
         <p className="small muted mt-2 max-w-[140ch]">
           The survey is not only district averages. It carries <b>{GRID.cells.length.toLocaleString()} cells</b> of
-          about 5.5 by 4.8 kilometres, roughly 6,600 acres each, and every district has its own. That is closer
+          about 5.5 by 4.8 kilometres, roughly 6,500 acres each, and every district has its own. That is closer
           to a neighbourhood than to a district, and it is where a district average starts to fall apart.
         </p>
       </div>
@@ -111,7 +111,7 @@ export function MyGround({ selected }: { selected: string | null }) {
 
       <p className="small mt-4 max-w-[140ch]">
         <b>Every one of those numbers is real, and none of them is your field.</b> A cell is the median of the
-        samples that fell inside about 6,600 acres. Your own ground sits somewhere in that range, and the only
+        samples that fell inside about 6,500 acres. Your own ground sits somewhere in that range, and the only
         way to know where is to test it.
       </p>
       <div className="flex flex-wrap gap-3 mt-4">

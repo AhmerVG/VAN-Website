@@ -9,7 +9,7 @@ import { SectionHead, WaButton } from '@/components/bits'
 import { SoilMap } from '@/components/soil/SoilMap'
 import { Distribution } from '@/components/soil/SoilDistricts'
 import { RelationExplorer } from '@/components/soil/SoilRelations'
-import { SoilBelief, AnalyteList, BuiltAgainst, SoilCaveats } from '@/components/soil/SoilBits'
+import { AnalyteList, BuiltAgainst, SoilCaveats } from '@/components/soil/SoilBits'
 import { districtByKey } from '@/lib/soil'
 import { SoilLenses, type LensKey } from '@/components/soil/SoilLenses'
 import { MyGround } from '@/components/soil/MyGround'
@@ -72,9 +72,9 @@ export default function Soil({ rel, district, from = null, tehsil = null }: { re
 
       <section className="wrap sec-tight">
         <p className="lead max-w-[140ch]">{SOIL_COPY.lead}</p>
-        <div className="mt-6"><SoilBelief /></div>
+        {/* D-304, Tahir 22 Oct 2026: the 8 cards ("VAN feeds the soil as well as the crop") said what the 7 rows of "What VAN builds against it" say; the rows stay. */}
         <div className="mt-7"><SoilVitals district={sel} param={param} onParam={setParam} /></div>
-        <p className="src"><b>Source ·</b> {SOIL_SOURCE.short}. Deficiency shares are of samples below Punjab’s working thresholds, not a diagnosis of any field. <a href="#/soil#caveats">Read this before quoting ›</a></p>
+        <p className="src"><b>Source ·</b> {SOIL_SOURCE.short}. Deficiency shares are of samples below Punjab’s working thresholds, not a diagnosis of any field.</p>
         {/* O-20: the lenses. Named by what the reader wants to see, never by who he is. */}
         <div className="mt-8"><SoilLenses value={lens} onChange={setLens} /></div>
         <p className="small muted mt-6">The map: 8 readings, one ground, in 2 groups: the 4 a partner formulates against, and the 4 that describe what those 4 land in. The readings above and the matrix below both drive it.</p>
@@ -90,7 +90,7 @@ export default function Soil({ rel, district, from = null, tehsil = null }: { re
       </div></section>
 
       <section className="wrap sec" id="soil-relations">
-        <SectionHead eyebrow="Relations" title={SOIL_COPY.relH2} lead="Pick what to group the samples by and what to read across the groups. Where the evidence page recorded a verdict, it is shown as written. Including the one that does not hold." tone="rust" right={<span className="cap">▸ change X and Y · the chart redraws</span>} />
+        <SectionHead eyebrow="Relations" title={SOIL_COPY.relH2} lead="Pick what to group the samples by and what to read across the groups. Where the survey analysis recorded a verdict, it is shown as written. Including the one that does not hold." tone="rust" right={<span className="cap">▸ change X and Y · the chart redraws</span>} />
         <RelationExplorer initialRel={rel} />
       </section>
 
@@ -124,9 +124,11 @@ export default function Soil({ rel, district, from = null, tehsil = null }: { re
           <h3 className="mt-1 max-w-[30ch]">On this soil, adding more product does not solve the problem.</h3>
           <p className="mt-3">
             Punjab's ground is alkaline and calcareous. <b>96.1% of samples above pH 7.5</b>, mean carbonate 6.53%.
-            On that soil, nutrient applied per acre has risen by 68% since 2000 while wheat yield
+            Across Pakistan, nutrient applied per acre has risen by 68% since 2000 while wheat yield
             rose by 31%. <b>Roughly 1 kg of applied nitrogen in 4 reaches the crop.</b>
           </p>
+          {/* D-297, 22 Oct 2026: the 3 national figures carry their sources here too, as on the national page. */}
+          <p className="src mt-2"><b>Sources ·</b> nutrient per acre of arable land 1999-2000 to 2023-24: World Bank; wheat yield: Pakistan Economic Survey; nitrogen reaching the crop: Lassaletta et al. (2014), Environmental Research Letters 9:105011.</p>
           <p className="mt-2">
             What changes the outcome is <b>the form the nutrient arrives in and where it is put</b>, not the tonnage.
           </p>
@@ -144,7 +146,7 @@ export default function Soil({ rel, district, from = null, tehsil = null }: { re
       <section className="sec" style={{ background: 'var(--sand-2)' }}><div className="wrap">
         <SoilCaveats />
         <div className="panel-navy p-6 lg:p-8 mt-6 grid lg:grid-cols-[1fr_auto] gap-5 items-center">
-          <div><span className="eyebrow" style={{ color: 'var(--gold)' }}>Your own field</span><h3>A survey mean is not your soil test.</h3><p className="mt-2" style={{ color: 'rgba(255,255,255,.8)' }}>These are district means over samples taken c. 2016–2018. For a plan against your own field, VAN works from your soil analysis. Ask on WhatsApp, or send 500 g of soil to Sample Reception.</p></div>
+          <div><span className="eyebrow" style={{ color: 'var(--gold)' }}>Your own field</span><h3>A survey median is not your soil test.</h3><p className="mt-2" style={{ color: 'rgba(255,255,255,.8)' }}>These are district medians of samples taken c. 2016–2018. For a plan against your own field, VAN works from your soil analysis. Ask on WhatsApp, or send 500 g of soil to Sample Reception.</p></div>
           <div className="grid gap-3"><WaButton href={WA.farmer} lg>Ask for my plan</WaButton><a className="btn btn-lg" style={{ background: 'rgba(255,255,255,.14)', color: '#fff' }} href="#/lab">VAN Lab. Send a sample</a></div>
         </div>
       </div></section>

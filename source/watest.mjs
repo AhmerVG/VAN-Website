@@ -194,7 +194,7 @@ console.log('\n4, 5, 6 · soil card, the VAN message, Back, the bar on the Soil 
   check('share-to-friends button kept', !!friends)
   const van = await page.evaluate(() => [...document.querySelectorAll('#teesra-khata a[href^="https://wa.me/923005003041"]')].map(a => a.href)[0] ?? '')
   const vt = waText(van)
-  const want = ['District: Sheikhupura', `Tehsil: ${tehsil}`, 'Area: a square of about 6,600 acres', ...shown.map(v => `: ${v}`)]
+  const want = ['District: Sheikhupura', `Tehsil: ${tehsil}`, 'Area: a square of about 6,500 acres', ...shown.map(v => `: ${v}`)]
   const lack = want.filter(w => !vt.includes(w))
   check('a button sends the card to VAN (wa.me/923005003041)', !!van, van)
   check('the VAN message carries district, tehsil, square and every reading', !!van && lack.length === 0, `lacking ${JSON.stringify(lack)} in ${JSON.stringify(vt)}`)

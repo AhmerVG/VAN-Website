@@ -86,7 +86,7 @@ export const PRODUCT_SOIL: Record<string, { figure: string; line: string; relati
   NPK: { figure: '87.8% low potash · 97.9% below adequate phosphorus', line: '2 of 3 macronutrients short in most samples', relation: 'k-texture' },
   MICRO: { figure: '59.0% below 1.0 ppm zinc · 51.7% below 0.5 ppm boron', line: 'zinc falls as pH rises: 1.45 → 1.20 ppm across the bands', relation: 'zn-ph' },
   SEC: { figure: 'Sulfur: not determined in 770,160 samples', line: 'a nutrient that is never measured cannot appear deficient' },
-  BIO: { figure: '90.2% below 0.86% organic matter · mean 0.61%', line: 'the soil has almost no carbon left to work with', relation: 'zn-om' },
+  BIO: { figure: '90.2% below 0.86% organic matter · mean 0.61%', line: 'the soil has almost no organic matter left to work with', relation: 'zn-om' },
 }
 
 /**
@@ -114,7 +114,7 @@ export const SOIL_BELIEF = {
   sub: '8 things VAN already makes or already publishes against the condition these samples describe. Each one goes somewhere.',
   items: [
     ['Sulfur', 'Green Sulfur, 70% sulfur WDG, and Vital Urea, 13% sulfur in every granule', '#/products/green-sulfur'],
-    ['Humic', 'Potassium humate, for ground under 1% carbon', '#/products/humi-grow'],
+    ['Humic', 'Potassium humate, for ground under 1% organic matter', '#/products/humi-grow'],
     ['Zinc', 'Zinc 21%, granular, for soil that locks it up', '#/products/v-transform'],
     ['Micronutrients', 'Zn 5 · Fe 2 · Mn 2 · Cu 1, in one foliar pass', '#/products/vl-micro-mix'],
     ['Iron', '10:44:0 carrying iron', '#/products/v-phosphate'],
@@ -130,7 +130,7 @@ export const SOIL_COPY = {
   // had been spelling the figure out in words, which is the slowest possible way to deliver a number
   // to a reader who is scanning. The numeral is the headline now and the page says it once.
   h1: '770,160 samples. One condition.',
-  lead: 'Punjab tested 770,160 soil samples for pH, organic matter, phosphorus, potash, calcium carbonate and 5 micronutrients. Read together, they describe one soil: alkaline, calcareous, almost without carbon, short of phosphorus, potash, zinc and boron in most of them, and never tested for sulfur.',
+  lead: 'Punjab tested 770,160 soil samples for pH, organic matter, phosphorus, potash, calcium carbonate and 5 micronutrients. Read together, they describe one soil: alkaline, calcareous, very low in organic matter, short of phosphorus, potash, zinc and boron in most of them, and never tested for sulfur.',
   // Was "The map is made of the samples." Tahir: "can't we say it, we have created the maps from
   // data, so we can see, act, and respond to soil." The old line described how the map was built.
   // This one says why anybody built it.
@@ -138,7 +138,7 @@ export const SOIL_COPY = {
   mapLead: 'Every square is the median of the georeferenced samples inside it, no boundary file, no interpolation. Switch the analyte and watch the same ground re-colour.',
   distH2: '36 districts, one gradient.',
   relH2: 'How one variable moves another, and where it does not.',
-  relLead: 'These are observational district data, not a controlled experiment. 2 relationships hold cleanly, 1 holds with a limit, 1 is reported without explanation, and 1 widely-assumed relationship does not appear. Stated here because it is the one a technical reader will look for.',
+  relLead: 'These are observational district data, not a controlled experiment. 3 relationships hold cleanly, 1 holds with a limit, 1 is reported without explanation, and 1 widely-assumed relationship does not appear. Stated here because it is the one a technical reader will look for.',
   builtH2: 'What VAN builds against it.',
   builtLead: 'The survey gives the condition. The mechanism sentences are VAN’s own published copy. No performance figure is claimed for any product.',
   homeActKicker: 'The soil underneath the argument',

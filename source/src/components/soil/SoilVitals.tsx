@@ -86,7 +86,7 @@ export function SoilVitals({ district, param, onParam }: {
               className={`vt ${on ? 'on' : ''}`}
               style={band ? { borderTop: `4px solid ${SOIL_BAND_COLOR[band]}` } : undefined}
               title={`${c.label} · press to draw the map on it`}>
-              <span className="vt-h">{t.title}</span>
+              <span className="vt-h" style={k === 'ph' ? { textTransform: 'none' } : undefined}>{t.title}</span>{/* D-301, 22 Oct 2026: "pH", never "PH" */}
               {/* The big figure is a SHARE and the band classifies the MEDIAN (D-241). Colouring the share with
                   the mean's colour put a green 59.0% on the zinc tile, which is two true numbers
                   arranged into a false impression. The share is ink; the band colours the tile's top
@@ -102,7 +102,7 @@ export function SoilVitals({ district, param, onParam }: {
                   {SOIL_BAND_LABEL[band]}
                 </span>
               )}
-              {meanHidesIt && <span className="vt-w">the median passes · most single samples do not</span>}
+              {meanHidesIt && <span className="vt-w">the median reads {SOIL_BAND_LABEL[band!]} on VAN's table · most samples are past Punjab's line</span>}
             </button>
           )
         })}

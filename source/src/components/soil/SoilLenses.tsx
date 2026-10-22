@@ -69,9 +69,9 @@ const LENSES: { key: LensKey; label: string; blurb: string; tone: string; beats:
     tone: 'navy',
     beats: [
       { to: '#soil-districts', title: 'Pick a region and read its condition', why: 'Sort by the analyte you formulate against, and the districts order themselves by need.' },
-      { to: '#soil-relations', title: 'Understand what drives it there', why: 'A shortage caused by carbonate fixation needs a different product from one caused by low carbon.' },
+      { to: '#soil-relations', title: 'Understand what drives it there', why: 'A shortage caused by carbonate fixation needs a different product from one caused by low organic matter.' },
       { to: '#soil-analytes', title: 'See what nobody has measured', why: 'Sulfur was never on the schedule. A nutrient that is never measured cannot appear deficient and cannot enter a plan.' },
-      { to: '#soil-built', title: 'What VAN already makes against each condition', why: 'Both tiers: the branded range, and the unbranded formulations open for licensing.' },
+      { to: '#soil-built', title: 'What VAN already makes against each condition', why: 'Both tiers: the branded range, and the unbranded formulations open for white labelling or joint development.' } /* D-296, Tahir 22 Oct 2026: licensing is not offered (D-185) */,
     ],
     close: 'Where a condition is real and nothing on either tier is shaped for it, that is a gap worth building into. VAN would rather show you that than pretend the range is complete.',
   },

@@ -78,7 +78,7 @@ export function Distribution({ selected }: { selected: string | null }) {
           </div>
         </div>
       </div>
-      <p className="src"><b>Source ·</b> {SOIL_SOURCE.short}. Thresholds: {SOIL.meta.thresholds} <a href="#/soil#caveats">Read this before quoting ›</a></p>
+      <p className="src"><b>Source ·</b> {SOIL_SOURCE.short}. Thresholds: {SOIL.meta.thresholds}</p>
     </div>
   )
 }

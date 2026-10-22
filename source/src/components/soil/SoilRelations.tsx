@@ -91,7 +91,7 @@ export function RelationExplorer({ initialRel }: { initialRel?: string | null })
           ) : (
             <p className="mt-3 small muted">The survey records this series; no relationship has been examined for it. The bars are observed band means with their sample counts. Nothing more is read into them here.</p>
           )}
-          <p className="src"><b>Source ·</b> {SOIL_SOURCE.short}. Observational; establishes conditions, not mechanism. <a href="#/soil#caveats">Read this before quoting ›</a></p>
+          <p className="src"><b>Source ·</b> {SOIL_SOURCE.short}. Observational; establishes conditions, not mechanism.</p>
         </div>
       </div>
       <div className="flex flex-wrap gap-2 mt-4 pt-4" style={{ borderTop: '1px solid var(--line)' }}>

@@ -130,7 +130,7 @@ let LENSES = [
      const fb=v=>[50,100,150,200].some(c=>Math.abs(v-c)<0.5)?fmt(v,1):fmt(v,0); // 1 decimal next to a band cut-off, so the shown number never contradicts its band
      return `In ${y}, if nothing changes: average case <b>${fb(a)} ppm (${bn(a)})</b>, worst case ${fb(w)} ppm (${bn(w)}), best case ${fb(b)} ppm (${bn(b)}). The average case drops from Average to Weak around 2036; worst case 2027; best case 2044.`; },
    read:'Punjab soil potash (ppm, available K) projected from the 2016-18 soil tests of 770,160 samples. The coloured bands are VAN\'s own soil-test scale, the one printed on a VAN soil report: Critical below 50 ppm, Weak 50 to 100, Average 100 to 150, Moderate 150 to 200, Healthy above 200. 100 ppm is where soil moves from Average to Weak. Best and worst case: a 1 in 10 chance the result is better or worse.',
-   source:'Tahir Abbas, Soil Poverty Series No. 1, Punjab\'s Potash (2026). Start 130 ppm, weighted by cultivated area. Rate of loss set to SFRI monitoring sites, 2003-09. Projections, not measurements.'}
+   source:'Tahir Abbas, Soil Poverty Series No. 1, Punjab\'s Potash (2026). Start 130 ppm, weighted by cultivated area (the Atlas weighs by samples: median 126, mean 132). Rate of loss set to SFRI monitoring sites, 2003-09. Projections, not measurements.'}
 ];
 
 LENSES = specs.map(sp=>{ const L=LENSES.find(l=>l.id===sp.id); if(!L) return null;

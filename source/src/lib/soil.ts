@@ -6,15 +6,16 @@ import { SOIL_MEDIANS } from '@/data/soilMedians'
 export type AnalyteKey = 'ph' | 'om' | 'p' | 'k' | 'zn' | 'caco3' | 'b' | 'ec'
 
 /** Colour scales, sequential, one per analyte. `lo`/`hi` name the legend ends (values are clamped to them). */
+// D-299, 22 Oct 2026: each note now names the colours the scale really draws (lo, middle, hi), then Punjab's line.
 export const ANALYTES: { key: AnalyteKey; label: string; short: string; unit: string; lo: number; hi: number; dec: number; stops: string[]; note: string }[] = [
-  { key: 'ph', label: 'pH', short: 'pH', unit: '', lo: 7.4, hi: 8.8, dec: 2, stops: ['#2E7D4F', '#E3A93C', '#B5522A'], note: 'green below 7.5, gold around 8, rust above 8.5' },
+  { key: 'ph', label: 'pH', short: 'pH', unit: '', lo: 7.4, hi: 8.8, dec: 2, stops: ['#2E7D4F', '#E3A93C', '#B5522A'], note: 'green at 7.4 and below, gold at 8.1, rust from 8.8' },
   { key: 'om', label: 'Organic matter', short: 'OM', unit: '%', lo: 0.3, hi: 1.0, dec: 2, stops: ['#F3EDDD', '#C9A86A', '#5A3A20'], note: 'sand where there is almost none, deep brown at 1%' },
-  { key: 'p', label: 'Phosphorus, available', short: 'P', unit: 'ppm', lo: 3, hi: 12, dec: 1, stops: ['#B5522A', '#E3A93C', '#2E7D4F'], note: 'rust where short (below 7 ppm), green towards adequate (15)' },
-  { key: 'k', label: 'Potash, available', short: 'K', unit: 'ppm', lo: 60, hi: 200, dec: 0, stops: ['#B5522A', '#E3A93C', '#2E7D4F'], note: 'rust where short (below 180 ppm), green above' },
-  { key: 'zn', label: 'Zinc', short: 'Zn', unit: 'ppm', lo: 0.3, hi: 2.0, dec: 2, stops: ['#B5522A', '#E3A93C', '#2E7D4F'], note: 'rust below 1.0 ppm, green above' },
+  { key: 'p', label: 'Phosphorus, available', short: 'P', unit: 'ppm', lo: 3, hi: 12, dec: 1, stops: ['#B5522A', '#E3A93C', '#2E7D4F'], note: 'rust at 3 ppm and below, gold at 7.5, green from 12; Punjab calls below 7 low and 15 adequate' },
+  { key: 'k', label: 'Potash, available', short: 'K', unit: 'ppm', lo: 60, hi: 200, dec: 0, stops: ['#B5522A', '#E3A93C', '#2E7D4F'], note: 'rust at 60 ppm and below, gold at 130, green from 200; Punjab calls below 180 low' },
+  { key: 'zn', label: 'Zinc', short: 'Zn', unit: 'ppm', lo: 0.3, hi: 2.0, dec: 2, stops: ['#B5522A', '#E3A93C', '#2E7D4F'], note: 'rust at 0.30 ppm and below, gold at 1.15, green from 2.0; Punjab calls below 1.0 low' },
   { key: 'caco3', label: 'Calcium carbonate', short: 'CaCO₃', unit: '%', lo: 1, hi: 14, dec: 1, stops: ['#FBF7EE', '#9FB8CC', '#0E3550'], note: 'pale where there is little carbonate, navy where it is heavy' },
-  { key: 'b', label: 'Boron', short: 'B', unit: 'ppm', lo: 0.2, hi: 1.2, dec: 2, stops: ['#B5522A', '#E3A93C', '#2E7D4F'], note: 'rust below 0.5 ppm, green above' },
-  { key: 'ec', label: 'Electrical conductivity', short: 'EC', unit: 'dS/m', lo: 0, hi: 6, dec: 2, stops: ['#DCEBF5', '#E3A93C', '#B5522A'], note: 'sky where fresh, rust where saline (above 4 dS/m)' },
+  { key: 'b', label: 'Boron', short: 'B', unit: 'ppm', lo: 0.2, hi: 1.2, dec: 2, stops: ['#B5522A', '#E3A93C', '#2E7D4F'], note: 'rust at 0.20 ppm and below, gold at 0.70, green from 1.2; Punjab calls below 0.5 low' },
+  { key: 'ec', label: 'Electrical conductivity', short: 'EC', unit: 'dS/m', lo: 0, hi: 6, dec: 2, stops: ['#DCEBF5', '#E3A93C', '#B5522A'], note: 'sky where fresh, gold at 3, rust from 6; saline above 4 dS/m' },
 ]
 export const analyteByKey = (k: AnalyteKey) => ANALYTES.find(a => a.key === k)!
 
@@ -154,6 +155,6 @@ export function textureSplit(t: Record<string, BandStats>): { label: string; n: 
   const total = textureTotal(t)
   const rows = Object.entries(t).filter(([k]) => TEXTURE_DRAWN.includes(k)).map(([k, v]) => ({ label: k, n: v.n, share: (v.n / total) * 100 })).sort((a, b) => b.n - a.n)
   const other = total - rows.reduce((a, r) => a + r.n, 0)
-  if (other > 0) rows.push({ label: 'other spellings', n: other, share: (other / total) * 100 })
+  if (other > 0) rows.push({ label: 'other or unclear', n: other, share: (other / total) * 100 })
   return rows
 }

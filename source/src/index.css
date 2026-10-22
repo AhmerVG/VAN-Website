@@ -719,6 +719,14 @@ details > summary::-webkit-details-marker { display: none; }
   .mx-tbl th.mx-name { width: 108px; }
   .mx-cell button { padding: 6px 7px; }
 }
+/* D-300, 22 Oct 2026: on a phone the 8 or 11 columns were squeezed into the screen and the numbers ran
+   into each other ("8.200.626.4"). The table now keeps each number whole and scrolls sideways inside its
+   box, with the district names held at the left. Up to 900 px, so the 11 columns with Cu, Mn and CaCO3 fit too. */
+@media (max-width: 900px) {
+  .mx-tbl { table-layout: auto; width: max-content; min-width: 100%; }
+  .mx-tbl th.mx-name { min-width: 108px; max-width: 108px; }
+  .mx-cell button, .mx-head button { white-space: nowrap; }
+}
 
 /* THE SOIL VITALS — 10 Sep 2026. Six live readings, each one also a control for the map below. */
 .vt {

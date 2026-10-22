@@ -527,7 +527,7 @@ export function GpsCard({ onActive, onDistrictTehsil, scope, autoLocate = false,
           <button className="btn tk-btn gps-alt" onClick={toDistrictTehsil}><span className="urdu">{GPS_UR.pickDistrictTehsil}</span><span className="tk-btn-en">Pick district and tehsil</span></button>
           {/* Low finding: "VAN Lab" was printed 3 times here (the message, the English link text and the live Urdu line);
               now only the live Urdu line names it. */}
-          <a className="tk-link" href="#/lab"><span className="urdu">{KHATA_UR.ownTest}</span></a>
+          <a className="tk-link" href="#/lab"><span className="urdu" dir="rtl">{KHATA_UR.ownTest}</span></a>
         </div>
       )}
 
@@ -563,7 +563,8 @@ export function GpsCard({ onActive, onDistrictTehsil, scope, autoLocate = false,
           {/* G10 (Tahir, 20 Oct 2026): the boundary that decides Punjab and Pakistan is credited (licence CC BY-IGO). */}
           {pin && <p className="gps-credit" data-gps="credit">Boundary: OCHA COD-AB Pakistan (WFP)</p>}
           <p className="urdu tk-sub tk-strong" data-gps="count">{GPS_UR.samplesWithin(fmtKm(radius.r), thousands(radius.n))}</p>
-          <p className="tk-en">{thousands(radius.n)} samples within {fmtKm(radius.r)} km of your land{card.radii[0].r > 2 ? `: the survey is thin close to your land, so the card starts at ${fmtKm(card.radii[0].r)} km` : ''}.{radius.r > 10 ? ` This card covers a wide area, a circle ${fmtKm(radius.r * 2)} km across, so it can differ a lot from your own field.` : ''}</p>
+          {/* D-298, 22 Oct 2026: the samples are counted around the card point nearest his land, not his exact pin; the English says so. */}
+          <p className="tk-en">{thousands(radius.n)} samples within {fmtKm(radius.r)} km of the card point nearest your land{card.radii[0].r > 2 ? `: the survey is thin close to your land, so the card starts at ${fmtKm(card.radii[0].r)} km` : ''}. Card points are about 1 km apart.{radius.r > 10 ? ` This card covers a wide area, a circle ${fmtKm(radius.r * 2)} km across, so it can differ a lot from your own field.` : ''}</p>
           {card.radii.length > 1 && (
             <div className="gps-slider">
               <input type="range" min={0} max={card.radii.length - 1} step={1} value={ri} onChange={e => setRi(Number(e.target.value))} aria-label="Radius of the circle" data-gps="radius" />
@@ -574,6 +575,8 @@ export function GpsCard({ onActive, onDistrictTehsil, scope, autoLocate = false,
           )}
           <Khata vals={Object.fromEntries(VAL_KEYS.map(k => [k, radius.vals[k] ?? null]))} fmt={cardText} />
           {VAL_KEYS.some(k => radius.vals[k] == null) && <p className="tk-en">A row with no reading has fewer than 20 valid survey values inside the circle{card.district === 'JHELUM' ? ' (the survey has no valid zinc reading in Jhelum)' : ''}.</p>}
+          {/* D-307, Tahir 22 Oct 2026: the band words are VAN's table, while the Atlas quotes Punjab's lines; a reading can be "Average" here and still be low on Punjab's line. English only; Urdu to come from Tahir. */}
+          <p className="tk-en">The words are VAN’s soil-test bands. Punjab’s survey calls boron low below 0.5 ppm, zinc below 1.0 and potash below 180.</p>
           {square && (
             <div className="gps-square">
               <p className="tk-en">The survey square your land falls in, about {thousands(Math.round(squareAcres(pin?.lat ?? card.lat) / 100) * 100)} acres (the dashed square on the map): {thousands(square.n)} samples.</p>
@@ -581,9 +584,12 @@ export function GpsCard({ onActive, onDistrictTehsil, scope, autoLocate = false,
               {showSquare && <Khata vals={{ p: square.p, k: square.k, zn: square.zn, om: square.om, b: square.b, ph: square.ph, ec: square.ec }} />}
             </div>
           )}
-          <p className="urdu tk-survey">{GPS_UR.areaNotField}</p>
+          {/* D-302, 22 Oct 2026: "VAN Lab" kept on one line (it broke as "VAN" / "Lab" on a phone); the words are unchanged. */}
+          <p className="urdu tk-survey">{(() => { const t = GPS_UR.areaNotField; const i = t.indexOf('VAN Lab'); return i < 0 ? t : <>{t.slice(0, i)}<span style={{ whiteSpace: 'nowrap' }}>VAN Lab</span>{t.slice(i + 7)}</> })()}</p>
           <p className="tk-en">An area reading from the Punjab government survey, about 2016 to 2018, mapped by VAN. Not a test of your field. Your own test: VAN Lab.</p>
-          <a className="btn tk-btn tk-wa tk-wa-van" href={wa(vanText)} target="_blank" rel="noopener" data-gps="van"><span className="urdu">{GPS_UR.sendToVan}</span><span className="tk-btn-en">Send this card to VAN on WhatsApp: your card leaves your device only when you send it</span></a>
+          <a className="btn tk-btn tk-wa tk-wa-van" href={wa(vanText)} target="_blank" rel="noopener" data-gps="van"><span className="urdu" dir="rtl">{GPS_UR.sendToVan}</span><span className="tk-btn-en">Send this card to VAN to discuss your soil</span></a>
+          {/* D-295, Tahir 22 Oct 2026: the English says what his Urdu says; the privacy line moves under the button. */}
+          <p className="tk-en">Your card leaves your device only when you send it.</p>
           {/* Low finding: the wheat plan picks the district of the Union Council the card names (a searched Union Council's
               own district), not the district file the lattice point sits in (Nankana, Sargodha and Sialkot cases). */}
           <a className="btn btn-navy tk-btn" href={cardLink(ucName.district, radius)} data-gps="wheat"><span className="urdu">{GPS_UR.wheatPlan}</span><span className="tk-btn-en">Make the wheat plan by this soil card</span></a>

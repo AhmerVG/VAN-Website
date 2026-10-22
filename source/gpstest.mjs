@@ -166,7 +166,7 @@ const L = {
   1: 'آپ کی قریبی زمین کی مٹی کا ریکارڈ', 2: 'کارڈ آپ کی زمین کے قریبی علاقے کی ریڈنگ ہے۔ آپ کی لوکیشن چیک نہیں کی جاتی۔',
   3: 'اپنی لوکیشن سے ریکارڈ دیکھیں', 4: 'جگہ پر کلک کریں', 5: 'گوگل میپس کا پن پیسٹ کریں', 6: 'ضلع اور تحصیل چنیں',
   7: 'یونین کونسل یا چک نمبر تلاش کریں', 9: 'دائرہ بڑا یا چھوٹا کرنے کے لیے کھینچیں', 11: 'یہ علاقے کا حساب ہے، آپ کے کھیت کا ٹیسٹ نہیں۔ اپنا ٹیسٹ: VAN Lab',
-  12: 'رہنمائی اور مٹی کے حساب سے کھاد کی ڈسکشن کے لیے یہ کارڈ VAN کو بھیجیں', 13: 'مٹی کے کارڈ کے حساب سے گندم کا پلان بنائیں',
+  12: 'مٹی کی ڈسکشن کے لیے یہ کارڈ VAN کو بھیجیں', 13: 'مٹی کے کارڈ کے حساب سے گندم کا پلان بنائیں',
   '14b': 'یہی میری زمین ہے', 15: 'کیا آپ اس وقت اپنی زمین پر موجود ہیں؟',
 }
 const line8 = (r, n) => `آپ کی زمین کے ${r} کلومیٹر کے اندر ${n} نمونے`
@@ -995,7 +995,7 @@ for (const [label, vp] of [['phone', { width: 412, height: 860 }], ['computer', 
         const T = await newPage(vp, { latitude: POS.latitude, longitude: POS.longitude, accuracy: 15 })
         await T.page.goto(`${BASE}/soil.html?from=mitti`, { waitUntil: 'networkidle' })
         const tb = await T.page.$('[data-tk="atland"]')
-        check('top button: "I am at my land" shows at the very top of the district step, with the existing Urdu', !!tb && (await tb.textContent()).includes('کیا آپ اس وقت اپنی زمین پر موجود ہیں؟'))
+        check('top button: "I am at my land" shows at the very top of the district step, with Tahir\'s Urdu (D-308)', !!tb && (await tb.textContent()).includes('میں اپنی زمین پر ہوں'))
         check('top button: nothing opens before the district and tehsil are picked', !(await T.page.$('#gps-card')))
         await T.page.click('[data-tk="atland"]')
         check('top button: pressing it asks him to pick the district and tehsil first', !!(await T.page.$('[data-tk="atland-hint"]')) && !(await T.page.$('#gps-card')))

@@ -22,7 +22,7 @@ import { GpsCard } from './GpsCard'
  * khata for the crop; the third, the soil's record kept by the Punjab government, is open to every farmer for
  * his area. A farmer who comes in from the Facebook post meets the full-screen door (soil-door.inline.html),
  * then these screens, Urdu first:
- *   district → its khata → tehsil (136, each with its sample count; Lahore and Lahore City joined, D-274) → his square (about 6,600 acres)
+ *   district → its khata → tehsil (136, each with its sample count; Lahore and Lahore City joined, D-274) → his square (about 6,500 acres)
  *   D-280 (20 Oct 2026): district, its khata, the tehsil list and the tehsil's khata share 1 screen; once a tehsil is picked the GPS grid
  *   card's ways open under it (Union Council or chak, the map, a pasted pin, his location), beside the old path to the square.
  *   → the soil card for WhatsApp (no product, no price) → the wheat bundle and the calculator.
@@ -201,7 +201,7 @@ async function drawCard(name: { d: string; t?: string }, vals: Vals, n: number |
   g.fillText('یہ علاقے کا حساب ہے، آپ کے کھیت کا ٹیسٹ نہیں۔ اپنا ٹیسٹ: VAN Lab', W - 80, BOTTOM + 48)
   g.direction = 'ltr'; g.textAlign = 'left'; g.fillStyle = '#5B6A5E'; g.font = '400 21px "Public Sans", sans-serif'
   g.fillText('Punjab government soil record, about 2016 to 2018, mapped by VAN.', 80, BOTTOM + 84)
-  g.fillText(n != null ? `Square of about 6,600 acres, ${thousands(n)} samples. An area reading, not your field’s test.` : 'An area reading, not your field’s test.', 80, BOTTOM + 110)
+  g.fillText(n != null ? `Square of about 6,500 acres, ${thousands(n)} samples. An area reading, not your field’s test.` : 'An area reading, not your field’s test.', 80, BOTTOM + 110)
   g.fillStyle = '#FBF9F3'; g.font = '700 40px "Public Sans", sans-serif'; g.fillText('van.com.pk/soil.html', 80, H - 60)
   await new Promise<void>(res => {
     const img = new Image()
@@ -370,7 +370,7 @@ export function TeesraKhata({ district, tehsil = null, englishFirst }: { distric
       'Hello VAN. My soil card from the Soil Atlas (Teesra Khata):',
       `District: ${dist.name}`,
       `Tehsil: ${tIdx != null ? TEHSILS[tIdx].en : 'not known'}`,
-      `Area: a square of about 6,600 acres around ${lat} N, ${lon} E, ${thousands(cell.n)} samples`,
+      `Area: a square of about 6,500 acres around ${lat} N, ${lon} E, ${thousands(cell.n)} samples`,
       ...[...ROWS, 'ph', 'ec'].map(k => row(k as KhataKey)),
       `${READING_UR.s.en}: not tested in this survey`,
       'These are the area readings of the Punjab government soil survey, about 2016 to 2018, not a test of my field. Please advise.',
@@ -413,7 +413,7 @@ export function TeesraKhata({ district, tehsil = null, englishFirst }: { distric
         {step === 'district' && (
           <div className="tk-screen" id="tk-district">
             <button type="button" className={`btn tk-btn ${atLand ? 'btn-navy' : 'btn-ghost'}`} data-tk="atland" aria-pressed={atLand} onClick={() => setAtLand(v => !v)}>
-              <span className="urdu">{GPS_UR.atYourLand}</span><span className="tk-btn-en">I am at my land now</span>
+              <span className="urdu">{GPS_UR.atMyLandNow}</span><span className="tk-btn-en">I am at my land now</span>
             </button>
             {atLand && <p className="tk-en" data-tk="atland-hint" role="status">First pick your district and tehsil below. Then your location is read.</p>}
             <h2 className="tk-h urdu">{KHATA_UR.yourDistrict}</h2>
@@ -466,7 +466,7 @@ export function TeesraKhata({ district, tehsil = null, englishFirst }: { distric
                 <p className="tk-en">{tObj.en} · {thousands(tObj.n)} samples · the tehsil median, with the district’s beside it</p>
                 <Khata vals={tObj.median} cmp={dVals} />
                 <p className="urdu tk-survey">{KHATA_UR.survey}</p>
-                <button className="btn btn-navy tk-btn" onClick={() => { setC(null); go('square') }}><span className="urdu">{KHATA_UR.seeArea}</span><span className="tk-btn-en">See your area, a square of about 6,600 acres</span></button>
+                <button className="btn btn-navy tk-btn" onClick={() => { setC(null); go('square') }}><span className="urdu">{KHATA_UR.seeArea}</span><span className="tk-btn-en">See your area, a square of about 6,500 acres</span></button>
               </>
             ) : <p className="tk-en">Pick your tehsil to see its readings.</p>}
           </div>
@@ -480,7 +480,7 @@ export function TeesraKhata({ district, tehsil = null, englishFirst }: { distric
         {step === 'square' && dist && sq && square != null && (
           <div className="tk-screen">
             <h2 className="tk-h urdu">{KHATA_UR.yourArea}</h2>
-            <p className="tk-en">Pick the square nearest your fields. Each square is about 6,600 acres, the median of the samples inside it.</p>
+            <p className="tk-en">Pick the square nearest your fields. Each square is about 6,500 acres, the median of the samples inside it.</p>
             <div className="tk-seg" role="tablist">
               {(['zn', 'p', 'k', 'ph'] as KhataKey[]).map(k => <button key={k} role="tab" aria-selected={k === mapKey} className={`chip chip-xs ${k === mapKey ? 'on' : ''}`} onClick={() => setMapKey(k)}>{READING_UR[k].en} · <span className="urdu">{READING_UR[k].ur}</span></button>)}
             </div>
@@ -605,7 +605,7 @@ function Plan({ dist, distName }: { dist: string; distName: string }) {
       <p className="tk-en">The calculator reads your district, not your square, which is the closest the survey can be read today.</p>
       </div>
       <a className="btn btn-gold tk-btn" href={`#/crops/wheat?district=${encodeURIComponent(dist)}`}><span className="urdu">{KHATA_UR.planButton}</span><span className="tk-btn-en">Open the wheat calculator with your district filled in</span></a>
-      <p className="tk-en">Price shows only inside the calculator. Your own field’s test: <a href="#/lab">VAN Lab</a> · <span className="urdu">{KHATA_UR.ownTest}</span></p>
+      <p className="tk-en">Price shows only inside the calculator. Your own field’s test: <a href="#/lab">VAN Lab</a> · <span className="urdu" dir="rtl">{KHATA_UR.ownTest}</span></p>
     </div>
   )
 }

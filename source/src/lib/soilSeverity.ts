@@ -102,7 +102,7 @@ export function urgencyScore(s: BandStats, districtKey?: string): number {
   let sum = 0, n = 0
   for (const c of SOIL_COLS) {
     if (!c.param || c.extra) continue
-    if (districtKey && notComparable(districtKey, c.key)) continue   // D-181
+    if (districtKey && flaggedOnAtlas(districtKey, c.key)) continue   // D-181, D-303
     const b = bandOf(c.key, readVal(s, c.key))
     if (!b) continue
     sum += weight[b]; n++
@@ -122,3 +122,13 @@ export const NOT_COMPARABLE: Record<string, SoilColKey[]> = {
 }
 export const notComparable = (districtKey: string | null | undefined, col: SoilColKey) =>
   !!districtKey && (NOT_COMPARABLE[districtKey] ?? []).includes(col)
+/**
+ * D-303, Tahir 22 Oct 2026: Kasur phosphorus. In the master workbooks (E:\NP\DAP Alternative Project\Soil Data),
+ * Kasur samples within 1 km of a sample across the district line read P (medians) 14.5 ppm against Lahore 4.2, 14.5 against
+ * Okara 5.9, 16.6 against Nankana Sahib 3.2 (Kasur higher in 95 to 99% of those pairs), and all 4 Kasur tehsils read 14.3 to 14.5. That looks
+ * like a different laboratory method, not different soil. His ruling: flag it on the Atlas table only; the calculator,
+ * the district fill and the GPS cards keep Kasur's P as surveyed. So this list is NOT read by regionalSoil.ts.
+ */
+export const ATLAS_ONLY_FLAG: Record<string, SoilColKey[]> = { KASUR: ['p'] }
+export const flaggedOnAtlas = (districtKey: string | null | undefined, col: SoilColKey) =>
+  notComparable(districtKey, col) || (!!districtKey && (ATLAS_ONLY_FLAG[districtKey] ?? []).includes(col))

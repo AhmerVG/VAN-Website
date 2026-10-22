@@ -1,5 +1,5 @@
 import { SOIL } from '@/data/soil'
-import { SOIL_SOURCE, SOIL_ANALYTES, SOIL_MISSING, SOIL_MECHANISMS, SOIL_COPY, PRODUCT_SOIL, SOIL_HEADLINE, SOIL_BELIEF } from '@/data/soilLens'
+import { SOIL_SOURCE, SOIL_ANALYTES, SOIL_MISSING, SOIL_MECHANISMS, PRODUCT_SOIL, SOIL_HEADLINE, SOIL_BELIEF } from '@/data/soilLens'
 import type { Product } from '@/data/catalogue'
 import { useInView, useCountUp } from '@/hooks/useInView'
 import { PackShot, productBySlug, FamilyShot } from '@/components/bits'
@@ -7,7 +7,7 @@ import { thousands, textureTotal } from '@/lib/soil'
 
 /** The source line every soil figure carries. */
 export function SoilSource({ extra }: { extra?: string }) {
-  return <p className="src"><b>Source ·</b> {SOIL_SOURCE.short}. {extra} <a href="#/soil#caveats">Read this before quoting ›</a></p>
+  return <p className="src"><b>Source ·</b> {SOIL_SOURCE.short}. {extra}</p>
 }
 
 /**
@@ -105,7 +105,7 @@ export function AnalyteList() {
         <p className="small mt-1">{SOIL_MISSING.text}</p>
         <p className="small mt-2 font-semibold">{SOIL_MISSING.vanLine}</p>
       </div>
-      <SoilSource extra={`Copper, iron, manganese and saturation percentage are province means from the same module. Texture is the share of the commonest recorded class, out of the ${thousands(texN)} samples that carry a texture class at all; ${thousands(P.n - texN)} of the ${thousands(P.n)} do not, and are not counted either way.`} />
+      <SoilSource extra={`Copper, iron, manganese and saturation percentage are province means from the same survey. Texture is the share of the commonest recorded class, out of the ${thousands(texN)} samples that carry a texture class at all; ${thousands(P.n - texN)} of the ${thousands(P.n)} do not, and are not counted either way.`} />
     </div>
   )
 }
@@ -141,7 +141,7 @@ export function BuiltAgainst() {
           <div className="flex flex-wrap gap-2 lg:justify-end">{m.products.map(s => <Shot key={s} slug={s} />)}</div>
         </article>
       ))}
-      <p className="cap">{SOIL_COPY.builtLead} Condition figures: {SOIL_SOURCE.short}.</p>
+      <p className="cap">Condition figures: {SOIL_SOURCE.short}.</p>{/* D-305: the lead above already says the rest */}
     </div>
   )
 }
@@ -156,8 +156,7 @@ export function SoilCaveats() {
       <div className="grid md:grid-cols-2 gap-3 mt-4">
         {SOIL_SOURCE.caveats.map(([h, t]) => <div key={h} className="panel-soft p-4"><div className="font-bold">{h}</div><p className="small muted mt-1">{t}</p></div>)}
       </div>
-      <p className="cap mt-4"><b>Bounds and repairs, as recorded in the module.</b> {SOIL.meta.source}</p>
-      <p className="cap mt-2"><b>Thresholds.</b> {SOIL.meta.thresholds}</p>
+      <p className="cap mt-4"><b>Bounds.</b> Physically impossible values were bounded before averaging: {(SOIL.meta.source.match(/bounded before averaging \(([^)]*)\)/) ?? [])[1] ?? 'see the source line'}.</p>
       <p className="cap mt-2">{thousands(SOIL.province.n)} valid samples across {SOIL.districts.length} districts. Analytes determined: {SOIL.analytes.join(' · ')}. Not determined: {SOIL.not_determined.join(', ')}.</p>
     </div>
   )

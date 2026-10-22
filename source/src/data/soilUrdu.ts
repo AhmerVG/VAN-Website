@@ -118,14 +118,16 @@ export const GPS_UR = {
   dragRadius: 'دائرہ بڑا یا چھوٹا کرنے کے لیے کھینچیں',
   /** 11, the card's bottom line */
   areaNotField: 'یہ علاقے کا حساب ہے، آپ کے کھیت کا ٹیسٹ نہیں۔ اپنا ٹیسٹ: VAN Lab',
-  /** 12, button, Tahir's words */
-  sendToVan: 'رہنمائی اور مٹی کے حساب سے کھاد کی ڈسکشن کے لیے یہ کارڈ VAN کو بھیجیں',
+  /** 12, button, Tahir's words (D-294, 22 Oct 2026; was: رہنمائی اور مٹی کے حساب سے کھاد کی ڈسکشن کے لیے یہ کارڈ VAN کو بھیجیں) */
+  sendToVan: 'مٹی کی ڈسکشن کے لیے یہ کارڈ VAN کو بھیجیں',
   /** 13, button, Tahir's words */
   wheatPlan: 'مٹی کے کارڈ کے حساب سے گندم کا پلان بنائیں',
   /** 14, computer note; the number fills in */
   computerNote: (km: string) => `آپ کے کمپیوٹر نے جگہ تقریباً ${km} کلومیٹر کے اندر بتائی ہے۔ پن کو اپنے کھیت پر لے جائیں۔`,
   /** 14, computer button */
   thisIsMyLand: 'یہی میری زمین ہے',
+  /** D-308, the top button, Tahir's words 22 Oct 2026 ("Main apni zameen per hon"); the English is "I am at my land now" */
+  atMyLandNow: 'میں اپنی زمین پر ہوں',
   /** 15, the question before the location */
   atYourLand: 'کیا آپ اس وقت اپنی زمین پر موجود ہیں؟',
   /** 16, the place line; Union Council, tehsil and district fill in */
