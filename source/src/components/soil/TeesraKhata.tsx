@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { GRID, DISTRICTS, districtByKey, thousands } from '@/lib/soil'
 import { SOIL_MEDIANS } from '@/data/soilMedians'
+import { SOIL_GRID } from '@/data/soil'
 import { DISTRICT_PROFILES } from '@/data/districtSoil'
 import { bandOf, colByKey, SOIL_BAND_COLOR, SOIL_BAND_LABEL, type SoilBand } from '@/lib/soilSeverity'
 import { TEHSILS, CELL_TEHSIL, DISTRICT_UR } from '@/data/soilTehsils'
@@ -14,6 +15,7 @@ import type { SoilParameter } from '@/data/soilThresholds'
 import { wa } from '@/data/site'
 import { usePublishShared } from '@/lib/shareState'
 import { GpsCard } from './GpsCard'
+import { MAP_LATIN, MAP_URDU, boxFree, haloText, useMapFonts, type MapBox as Box, type MapName } from '@/lib/mapText'
 
 /**
  * TEESRA KHATA ON THE SOIL ATLAS — the farmer screens, 18 Oct 2026.
@@ -104,51 +106,150 @@ export function Khata({ vals, cmp, fmt = fmtSafe }: { vals: Vals; cmp?: Vals; fm
   )
 }
 
-/** The small map. key 'neutral' paints by district; otherwise by VAN band of that reading. */
-export function MiniMap({ idx, sel, colourBy, onPick, label }: { idx: number[]; sel: number | null; colourBy: KhataKey | 'neutral'; onPick: (i: number) => void; label: string }) {
+/** D-310: the Punjab map's district names, at the centre of each district's samples, the districts with most samples first. */
+const DISTRICT_NAMES: MapName[] = [...DISTRICTS].sort((a, b) => b.summary.n - a.summary.n).flatMap(d => {
+  const c = SOIL_GRID.centroids[d.key]
+  return c ? [{ en: d.name, ur: DISTRICT_UR[d.key], lat: c[1], lon: c[0], key: d.key }] : []
+})
+
+/**
+ * The small map. key 'neutral' paints by district; otherwise by VAN band of that reading.
+ * D-310 (Tahir, 23 Oct 2026, design "Soil Atlas Maps"): borders draws a line where 2 districts meet and, on a tap, darkens
+ * the district and shows its name before it opens; names puts names on the map, whole and never on top of one another
+ * (the first in the list keeps its place): district names in English and Urdu with borders (his "Both English and
+ * Urdu"), Union Council names with a dot at each centre on a tehsil's map.
+ */
+export function MiniMap({ idx, sel, colourBy, onPick, label, names, borders }: {
+  idx: number[]; sel: number | null; colourBy: KhataKey | 'neutral'; onPick: (i: number) => void; label: string; names?: MapName[]; borders?: boolean
+}) {
   const ref = useRef<HTMLCanvasElement>(null)
+  const pad = names && !borders ? 1 : 0   // a tehsil's map gets 1 square of margin, so the names at its edge fit
   const geo = useMemo(() => {
     let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity
     for (const i of idx) { const c = GRID.cells[i]; if (c.x < x0) x0 = c.x; if (c.x > x1) x1 = c.x; if (c.y < y0) y0 = c.y; if (c.y > y1) y1 = c.y }
+    x0 -= pad; x1 += pad; y0 -= pad; y1 += pad
     return { x0, x1, y0, y1, cols: x1 - x0 + 1, rows: y1 - y0 + 1 }
-  }, [idx])
+  }, [idx, pad])
   const [cell, setCell] = useState(8)
+  const [hi, setHi] = useState<string | null>(null)   // borders: the district just tapped
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  useEffect(() => () => { if (timer.current) clearTimeout(timer.current) }, [])
+  const fonts = useMapFonts(!!names)
   useEffect(() => {
     const cv = ref.current
     if (!cv) return
-    const w = cv.parentElement?.clientWidth || 440
+    // the width inside the map's frame (its padding taken off, review 23 Oct 2026: the whole clientWidth was used)
+    const host = cv.parentElement
+    const cs = host ? getComputedStyle(host) : null
+    const w = host ? host.clientWidth - (parseFloat(cs?.paddingLeft || '0') + parseFloat(cs?.paddingRight || '0')) : 440
     const c = Math.max(3, Math.min(26, Math.floor(w / geo.cols)))
     setCell(c)
+    const W = geo.cols * c, H = geo.rows * c
     const dpr = window.devicePixelRatio || 1
-    cv.width = geo.cols * c * dpr; cv.height = geo.rows * c * dpr
-    cv.style.width = geo.cols * c + 'px'; cv.style.height = geo.rows * c + 'px'
+    cv.width = W * dpr; cv.height = H * dpr
+    // height auto: where the frame is narrower than the map (a 360 px phone), the map shrinks evenly instead of only sideways
+    cv.style.width = W + 'px'; cv.style.height = 'auto'
     const g = cv.getContext('2d')
     if (!g) return
     g.setTransform(dpr, 0, 0, dpr, 0, 0)
-    g.clearRect(0, 0, geo.cols * c, geo.rows * c)
+    g.clearRect(0, 0, W, H)
     const gap = c > 5 ? 1 : 0
     const tones = ['#C9A77C', '#B8926A', '#D6B88E']
     for (const i of idx) {
       const cc = GRID.cells[i]
       let col: string
-      if (colourBy === 'neutral') col = tones[DISTRICTS.findIndex(d => d.key === cc.dist) % 3]
+      if (borders && hi && cc.dist === hi) col = '#7A5A34'
+      else if (colourBy === 'neutral') col = tones[DISTRICTS.findIndex(d => d.key === cc.dist) % 3]
       else { const v = (cc as unknown as Record<string, number | null>)[colourBy]; const b = band(colourBy, v); col = b ? SOIL_BAND_COLOR[b] : '#CFCFCF' }
       g.fillStyle = col
       g.fillRect((cc.x - geo.x0) * c, (geo.y1 - cc.y) * c, c - gap, c - gap)
+    }
+    if (borders) {
+      // A line on every edge where a square meets a square of another district.
+      const dist = new Map(idx.map(i => [GRID.cells[i].x + ',' + GRID.cells[i].y, GRID.cells[i].dist]))
+      g.strokeStyle = '#14231A'; g.lineWidth = 1.1; g.beginPath()
+      for (const i of idx) {
+        const cc = GRID.cells[i], px = (cc.x - geo.x0) * c, py = (geo.y1 - cc.y) * c
+        const r = dist.get((cc.x + 1) + ',' + cc.y), u = dist.get(cc.x + ',' + (cc.y + 1))
+        if (r !== undefined && r !== cc.dist) { g.moveTo(px + c, py); g.lineTo(px + c, py + c) }
+        if (u !== undefined && u !== cc.dist) { g.moveTo(px, py); g.lineTo(px + c, py) }
+      }
+      g.stroke()
     }
     if (sel != null) {
       const cc = GRID.cells[sel]
       g.lineWidth = 2.5; g.strokeStyle = '#14231A'
       g.strokeRect((cc.x - geo.x0) * c + 1, (geo.y1 - cc.y) * c + 1, c - 3, c - 3)
     }
-  }, [idx, sel, colourBy, geo])
+    if (names && names.length) {
+      // The map can be shown narrower than it is drawn (max-width: 100%); the letters are drawn larger by as much, so
+      // they read at 11 px (Urdu 13 px) on the phone.
+      const shown = Math.min(1, (w || W) / W), k = 1 / shown
+      const latin = MAP_LATIN(11 * k), urdu = MAP_URDU(13 * k)
+      const placed: Box[] = []
+      // A tapped district's name that found no room is drawn last, on top, at its centre; the other names keep their
+      // places (review, 23 Oct 2026: putting it first made them jump).
+      let hiShown = false
+      const later: (() => void)[] = []
+      for (const n of names) {
+        const x = (n.lon / GRID.deg - geo.x0) * c, y = (geo.y1 + 1 - n.lat / GRID.deg) * c
+        if (borders) {
+          // line heights leave room for Nastaliq's tall letters under the English (review, 23 Oct 2026: 15 and 18 let them cut in; 25 left a gap)
+          const lines: [string, string, boolean, number][] = [[n.en, latin, false, 14 * k]]
+          if (n.ur) lines.push([n.ur, urdu, true, 21 * k])
+          let wmax = 0
+          for (const [t, f] of lines) { g.font = f; wmax = Math.max(wmax, g.measureText(t).width) }
+          const hh = lines.reduce((a, l) => a + l[3], 0)
+          const draw = (cx: number, cy: number) => {
+            let yy = cy - hh / 2
+            for (const [t, f, rtl, lh] of lines) { yy += lh; haloText(g, t, cx, yy - 4 * k, f, rtl) }
+          }
+          // At the district's centre or, where that is taken, a little above, below or to a side of it; kept inside the
+          // map. A district whose name finds no room still shows it when tapped.
+          let at: [number, number] | null = null
+          for (const [dx, dy] of [[0, 0], [0, -0.55 * hh], [0, 0.55 * hh], [-0.45 * wmax, 0], [0.45 * wmax, 0], [-0.4 * wmax, -0.45 * hh], [0.4 * wmax, -0.45 * hh], [-0.4 * wmax, 0.45 * hh], [0.4 * wmax, 0.45 * hh]]) {
+            const cx = Math.max(wmax / 2 + 3, Math.min(W - wmax / 2 - 3, x + dx)), cy = Math.max(hh / 2 + 3, Math.min(H - hh / 2 - 3, y + dy))
+            const b: Box = [cx - wmax / 2 - 2, cy - hh / 2 - 2, cx + wmax / 2 + 2, cy + hh / 2 + 2]
+            if (boxFree(placed, b)) { at = [cx, cy]; placed.push(b); break }
+          }
+          if (at) { draw(at[0], at[1]); if (n.key === hi) hiShown = true }
+          else if (n.key === hi) {
+            const cx = Math.max(wmax / 2 + 3, Math.min(W - wmax / 2 - 3, x)), cy = Math.max(hh / 2 + 3, Math.min(H - hh / 2 - 3, y))
+            later.push(() => draw(cx, cy))
+          }
+        } else {
+          // A Union Council: a dot at its centre, its name above the dot, or under it if above is taken.
+          if (x < 0 || y < 0 || x > W || y > H) continue   // a centre that lies off this tehsil's map
+          g.fillStyle = '#14231A'; g.beginPath(); g.arc(x, y, 2.6 * k, 0, Math.PI * 2); g.fill()
+          g.font = latin
+          const tw = g.measureText(n.en).width
+          const left = Math.max(2, Math.min(W - 2 - tw - 6 * k, x - tw / 2 - 3 * k))
+          let b: Box = [left, y - 19 * k, left + tw + 6 * k, y - 5 * k]
+          if (!boxFree(placed, b) || b[1] < 0) {
+            b = [left, y + 5 * k, left + tw + 6 * k, y + 19 * k]
+            if (!boxFree(placed, b) || b[3] > H) continue
+          }
+          if (b[0] < 0) continue
+          placed.push(b)
+          haloText(g, n.en, (b[0] + b[2]) / 2, b[3] - 3 * k, latin)
+        }
+      }
+      if (!hiShown) for (const f of later) f()
+    }
+  }, [idx, sel, colourBy, geo, names, borders, hi, fonts])
   const pick = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const r = e.currentTarget.getBoundingClientRect()
     const sx = (e.clientX - r.left) * (geo.cols * cell / r.width), sy = (e.clientY - r.top) * (geo.rows * cell / r.height)
     const gx = geo.x0 + Math.floor(sx / cell), gy = geo.y1 - Math.floor(sy / cell)
     let best = -1, bd = Infinity
     for (const i of idx) { const c = GRID.cells[i]; const d = (c.x - gx) ** 2 + (c.y - gy) ** 2; if (d < bd) { bd = d; best = i } }
-    if (best >= 0 && bd <= 4) onPick(best)
+    if (!(best >= 0 && bd <= 4)) return
+    if (!borders) { onPick(best); return }
+    // The district he tapped darkens and its name shows, then it opens.
+    setHi(GRID.cells[best].dist)
+    if (timer.current) clearTimeout(timer.current)
+    const i = best
+    timer.current = setTimeout(() => onPick(i), 450)
   }
   return <canvas ref={ref} className="tk-map" role="img" aria-label={label} onClick={pick} />
 }
@@ -430,7 +531,10 @@ export function TeesraKhata({ district, tehsil = null, englishFirst }: { distric
             </div>
             <p className="urdu tk-sub">{KHATA_UR.orTapMap}</p>
             <p className="tk-en">Or pick your area on the map: it sets your district, tehsil and square.</p>
-            <div className="tk-mapwrap"><MiniMap idx={allCells} sel={null} colourBy="neutral" label="Map of Punjab's soil squares" onPick={i => { const tt = CELL_TEHSIL[i][0]; setAtLand(false); pickDistrict(GRID.cells[i].dist, tt >= 0 ? tt : null, i) }} /></div>
+            <div className="tk-mapwrap"><MiniMap idx={allCells} sel={null} colourBy="neutral" borders names={DISTRICT_NAMES} label="Map of Punjab's soil squares, with district borders and names" onPick={i => { const tt = CELL_TEHSIL[i][0]; setAtLand(false); pickDistrict(GRID.cells[i].dist, tt >= 0 ? tt : null, i) }} />
+              {/* D-310: English only; the Urdu of these 2 lines is to come from Tahir. */}
+              <div className="tk-legend" data-tk="maplegend"><span><i style={{ background: '#C9A77C' }} />survey squares, about 6,500 acres each</span><span><i style={{ background: '#14231A', height: 2 }} />district border, drawn from the squares</span></div>
+            </div>
           </div>
         )}
 

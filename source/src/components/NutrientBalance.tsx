@@ -159,27 +159,19 @@ export function NutrientBalance({ cropKey, cropName, defaultYieldMaunds }: { cro
 
         {ranged && (
           <p className="cap mt-3 max-w-[140ch]" style={{ color: 'var(--rust)' }}>
-            <b>Why some figures are a range.</b> {RANGE_NOTE}
+            {RANGE_NOTE}
           </p>
         )}
 
+        {/* D-311 (Tahir, 23 Oct 2026): the notes under the table, short and plain for farmers and dealers (were method
+            notes: the range's 2 documents, the minus at length, why a product is left out, and 1 litre counted as 1 kg). */}
         <p className="cap mt-3 max-w-[140ch]">
-          Per acre, per season. A minus means the crop takes more of that nutrient off the field than
-          the programme puts back. The difference comes out of what the soil already holds, and does
-          so every season. It is not a fault in the plan: no crop nutrition programme is written to
-          replace everything a harvest removes, and this is why a soil test matters more than any
-          published rate.
+          Per acre, per season. A minus means the crop takes more of that nutrient than the plan puts back; the soil
+          makes up the difference, which is why a soil test matters.
         </p>
 
         <NotCounted supply={supply} where="on the left" />
-        {supply.usedLitreAssumption && (
-          <p className="cap mt-2 max-w-[140ch]">
-            Liquid packs are counted at 1 litre to 1 kilogram. The plans give the pack in litres
-            and the analysis as a percentage without saying whether it is by weight or by volume, so
-            a density has to be assumed and 1.0 is it. Every liquid here is a micronutrient or a
-            foliar at a litre or two an acre, so it moves the totals by a fraction of a kilogram.
-          </p>
-        )}
+        {/* D-311: the 1 litre = 1 kg note is no longer shown (it moves a total by less than 1 kg); the count still works that way. */}
       </div>
 
       {uptake && t > 0 && (
@@ -238,12 +230,9 @@ function NotCounted({ supply, where }: { supply: ReturnType<typeof programmeSupp
     <>
       {supply.uncounted.length > 0 && (
         <p className="cap mt-2 max-w-[140ch]">
-          <b>Not counted {where}:</b> {supply.uncounted.map(u => u.product).join(', ')}. The plan
-          gives {supply.uncounted.length > 1 ? 'these' : 'this'} no nutrient analysis
-          ({supply.uncounted.map(u => `“${u.analysis || 'no analysis printed'}”`).join(', ')}), so
-          {supply.uncounted.length > 1 ? ' they are' : ' it is'} left out of the total rather than
-          given a figure {supply.uncounted.length > 1 ? 'they do' : 'it does'} not have. The real
-          total is therefore higher than shown.
+          {/* D-311: was "Not counted …: X. The plan gives this no nutrient analysis (…), so it is left out of the total rather
+              than given a figure it does not have. The real total is therefore higher than shown." */}
+          {supply.uncounted.map(u => `${u.product} ${/bio-?stimulant/i.test(u.analysis || '') ? 'is a bio-stimulant with' : 'has'} no nutrient figure`).join('; ')}, so {supply.uncounted.length > 1 ? 'they are' : 'it is'} not counted.
         </p>
       )}
       {supply.perPlantRows.length > 0 && (

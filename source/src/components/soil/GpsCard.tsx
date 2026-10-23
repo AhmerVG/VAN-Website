@@ -5,8 +5,9 @@ import { SOIL_BAND_LABEL, bandOf } from '@/lib/soilSeverity'
 import { wa } from '@/data/site'
 import { TEHSILS, DISTRICT_UR } from '@/data/soilTehsils'
 import { Khata, MiniMap } from './TeesraKhata'
+import { MAP_LATIN, boxFree, haloText, useMapFonts, type MapBox, type MapName } from '@/lib/mapText'
 import {
-  cardAt, cardNear, cardLink, cardText, districtPoints, inPakistan, inPunjab, kmToPunjab, latticePos, isChakLabel, loadIndex, loadUcs, parsePin, searchKey, searchUcs, tehsilUcs, ucById,
+  cardAt, cardNear, cardLink, cardText, districtPoints, inPakistan, inPunjab, km, kmToPunjab, latticePos, isChakLabel, loadIndex, loadUcs, parsePin, searchKey, searchUcs, tehsilUcs, ucById,
   MAX_KM, type GpsCard as Card, type GpsSearchUc,
 } from '@/lib/gpsCard'
 
@@ -73,17 +74,27 @@ const tehsilUr = (district: string, en: string | null) => (en ? TEHSILS.find(t =
  *  left as it is; Tahir's words do not change. */
 const ltr = (t: string) => (/[A-Za-z0-9]/.test(t) ? '\u2066' + t + '\u2069' : t)
 const fmtKm = (r: number) => (Number.isInteger(r) ? String(r) : r.toFixed(1))
+/** D-310: a distance in the "Near your land" list, in whole km: a centre is placed on the 1 km lattice, so a decimal would
+ *  claim more than the data holds (review, 23 Oct 2026). */
+const fmtNear = (k: number) => (k < 1 ? 'less than 1 km' : `${Math.round(k)} km`)
 /** Acres in a 0.05 degree survey square at this latitude (about 6,350 in the north of Punjab to 6,750 in the south). */
 const squareAcres = (lat: number) => { const kmDeg = 111.32 * 0.05; return kmDeg * kmDeg * Math.cos(lat * Math.PI / 180) * 247.105 }
 
 /** The map he clicks on: the card lattice of a district (points about 1 km apart), a window of the ground around a centre. */
-function FineMap({ points, center, halfKm, pin, circleKm, accKm, square, labels, onPick, label }: {
+/**
+ * D-310 (Tahir, 23 Oct 2026, design "Soil Atlas Maps"): cardMap is the soil card's own map: the card points drawn smaller
+ * and lighter, each Union Council name at a dot on its centre, the circle's km on the circle, a scale bar (1 km, or 2, 5,
+ * 10, 20 or 50 km on a wide card, where 1 km would be too short to see) and a north mark. The legend and the "Near your land" list sit
+ * under it, in the card.
+ */
+function FineMap({ points, center, halfKm, pin, circleKm, accKm, square, labels, onPick, label, cardMap }: {
   points: { gi: number; gj: number }[]; center: Pt; halfKm: number; pin: Pt | null; circleKm?: number | null; accKm?: number | null
-  square?: boolean; labels?: { name: string; lat: number; lon: number }[]; onPick?: (p: Pt) => void; label: string
+  square?: boolean; labels?: { name: string; lat: number; lon: number }[]; onPick?: (p: Pt) => void; label: string; cardMap?: boolean
 }) {
   const ref = useRef<HTMLCanvasElement>(null)
   const [w, setW] = useState(360)
   const kx = 111.32 * Math.cos((center.lat * Math.PI) / 180), ky = 110.57
+  const fonts = useMapFonts(!!cardMap)
   useEffect(() => {
     const cv = ref.current
     if (!cv) return
@@ -98,8 +109,9 @@ function FineMap({ points, center, halfKm, pin, circleKm, accKm, square, labels,
     const X = (lon: number) => width / 2 + (lon - center.lon) * kx * s
     const Y = (lat: number) => width / 2 - (lat - center.lat) * ky * s
     g.fillStyle = '#F3EEE2'; g.fillRect(0, 0, width, width)
-    const cell = Math.max(2, Math.min(28, 0.9 * s))
-    g.fillStyle = '#C9A77C'
+    // The card points are about 1 km apart, that is s pixels; on the card map they are small and light, so the names read.
+    const cell = cardMap ? Math.max(1.5, Math.min(6, 0.3 * s)) : Math.max(2, Math.min(28, 0.9 * s))
+    g.fillStyle = cardMap ? '#D9C3A0' : '#C9A77C'
     for (const p of points) {
       const { lat, lon } = latticePos(p.gi, p.gj)
       const x = X(lon), y = Y(lat)
@@ -120,7 +132,45 @@ function FineMap({ points, center, halfKm, pin, circleKm, accKm, square, labels,
       g.fillStyle = 'rgba(0,89,148,.12)'; g.strokeStyle = '#005994'; g.lineWidth = 2.5
       g.beginPath(); g.arc(X(pin.lon), Y(pin.lat), circleKm * s, 0, Math.PI * 2); g.fill(); g.stroke()
     }
-    if (labels) {
+    if (cardMap) {
+      const placed: MapBox[] = []
+      // the scale bar, bottom right, and the north mark, top right; names keep off both
+      const steps = [1, 2, 5, 10, 20, 50]
+      const bar = steps.find(k => k * s >= 36) ?? 50   // 1 km, unless 1 km is too short to see on a wide card
+      const bx = width - 14 - bar * s, by = width - 12
+      placed.push([bx - 6, by - 22, width - 2, width - 2], [width - 34, 4, width - 2, 52])
+      if (pin && circleKm) {
+        const a = circleKm * s * 0.72, cx = X(pin.lon) + a, cy = Y(pin.lat) - a
+        if (cx > 20 && cx < width - 40 && cy > 56 && cy < width - 30) {
+          const t = `${fmtKm(circleKm)} km`
+          g.font = MAP_LATIN(12); const tw = g.measureText(t).width
+          placed.push([cx - tw / 2 - 3, cy - 13, cx + tw / 2 + 3, cy + 3])
+          haloText(g, t, cx, cy, MAP_LATIN(12))
+        }
+      }
+      for (const l of labels ?? []) {
+        const x = X(l.lon), y = Y(l.lat)
+        if (x < 6 || y < 6 || x > width - 6 || y > width - 6) continue
+        g.fillStyle = '#14231A'; g.beginPath(); g.arc(x, y, 3, 0, Math.PI * 2); g.fill()
+        g.font = MAP_LATIN(11)
+        const tw = g.measureText(l.name).width
+        const left = Math.max(2, Math.min(width - 2 - tw - 6, x - tw / 2 - 3))
+        let box: MapBox = [left, y - 20, left + tw + 6, y - 6]
+        if (box[1] < 2 || !boxFree(placed, box)) {
+          box = [left, y + 6, left + tw + 6, y + 20]
+          if (box[3] > width - 2 || !boxFree(placed, box)) continue
+        }
+        placed.push(box)
+        haloText(g, l.name, (box[0] + box[2]) / 2, box[3] - 3, MAP_LATIN(11))
+      }
+      g.strokeStyle = '#14231A'; g.lineWidth = 3; g.lineCap = 'butt'
+      g.beginPath(); g.moveTo(bx, by); g.lineTo(bx + bar * s, by); g.stroke()
+      g.lineWidth = 1.5; g.beginPath(); g.moveTo(bx, by - 5); g.lineTo(bx, by + 2); g.moveTo(bx + bar * s, by - 5); g.lineTo(bx + bar * s, by + 2); g.stroke()
+      haloText(g, `${bar} km`, bx + bar * s / 2, by - 6, MAP_LATIN(11))
+      const nx = width - 18, ny = 30
+      g.fillStyle = '#14231A'; g.beginPath(); g.moveTo(nx, ny - 16); g.lineTo(nx - 6, ny); g.lineTo(nx + 6, ny); g.closePath(); g.fill()
+      haloText(g, 'N', nx, ny + 14, MAP_LATIN(11))
+    } else if (labels) {
       // Each name whole inside the map, none on top of another (the first drawn keeps its place), on a light halo.
       g.font = '600 11px "Public Sans", sans-serif'; g.textAlign = 'center'; g.lineJoin = 'round'
       const placed: [number, number, number, number][] = []
@@ -138,7 +188,7 @@ function FineMap({ points, center, halfKm, pin, circleKm, accKm, square, labels,
       g.fillStyle = '#C8323C'; g.strokeStyle = '#fff'; g.lineWidth = 2.5
       g.beginPath(); g.arc(X(pin.lon), Y(pin.lat), 7, 0, Math.PI * 2); g.fill(); g.stroke()
     }
-  }, [points, center, halfKm, pin, circleKm, accKm, square, labels, kx])
+  }, [points, center, halfKm, pin, circleKm, accKm, square, labels, kx, cardMap, fonts])
   const click = (e: React.MouseEvent<HTMLCanvasElement>) => {
     if (!onPick) return
     const r = e.currentTarget.getBoundingClientRect()
@@ -150,24 +200,66 @@ function FineMap({ points, center, halfKm, pin, circleKm, accKm, square, labels,
 }
 
 /** Union Council names around a point, for the map (from the search list, in search only). */
-function useUcLabels(center: Pt | null, halfKm: number) {
+function useUcLabels(center: Pt | null, halfKm: number, opts: { skipPin?: boolean; first?: string | null } = {}) {
   const [labels, setLabels] = useState<{ name: string; lat: number; lon: number }[]>([])
+  const { skipPin = false, first = null } = opts
   useEffect(() => {
     let live = true
     if (!center) return
     loadUcs().then(doc => {
       if (!live) return
-      const out: { name: string; lat: number; lon: number }[] = []
+      const out: { id: string; name: string; lat: number; lon: number }[] = []
       for (const u of doc.ucs) {
         const p = latticePos(u[5], u[6])
         if (Math.abs(p.lat - center.lat) * 110.57 > halfKm || Math.abs(p.lon - center.lon) * 95 > halfKm) continue
-        out.push({ name: u[2], lat: p.lat, lon: p.lon })
+        // D-310, card map: a Union Council spread over 15 km (a pin card, B11) has no centre worth showing
+        if (skipPin && u[8] === 1) continue
+        out.push({ id: u[0], name: u[2], lat: p.lat, lon: p.lon })
       }
+      // D-310: the nearest first, so where names crowd, the ones nearest the land keep their place (was the list's order);
+      // on the card map the card's own Union Council before all
+      const d = (l: { id: string; lat: number; lon: number }) => (l.id === first ? -1 : km(center.lat, center.lon, l.lat, l.lon))
+      out.sort((a, b) => d(a) - d(b))
       setLabels(out.slice(0, 60))
     }).catch(() => undefined)
     return () => { live = false }
-  }, [center, halfKm])
+  }, [center, halfKm, skipPin, first])
   return labels
+}
+
+const DIRS = ['north', 'north-east', 'east', 'south-east', 'south', 'south-west', 'west', 'north-west']
+type NearUc = { id: string; label: string; tehsil: string | null; km: number; dir: string; own: boolean }
+/**
+ * D-310 (Tahir, 23 Oct 2026): the 4 Union Council centres nearest his land, with km and direction, worked out on the
+ * device. Review, 23 Oct 2026: a Union Council spread over 15 km (a pin card, B11) is left out, its centre being far from
+ * its samples; on a card opened from the search the place is that Union Council's own centre, so it is left out (it
+ * was listed first, "0 km north"); and the card's own Union Council (named for the survey sample nearest his land) is
+ * marked, and added under the 4 when it is not among them, so the list never seems to contradict the card.
+ */
+function useNearUcs(at: Pt | null, skipId: string | null, ownId: string | null) {
+  const [near, setNear] = useState<NearUc[]>([])
+  useEffect(() => {
+    let live = true
+    if (!at) { setNear([]); return }
+    loadUcs().then(doc => {
+      if (!live) return
+      const r = Math.PI / 180
+      const row = (u: (typeof doc.ucs)[number]): NearUc => {
+        const p = latticePos(u[5], u[6])
+        const y = Math.sin((p.lon - at.lon) * r) * Math.cos(p.lat * r)
+        const x = Math.cos(at.lat * r) * Math.sin(p.lat * r) - Math.sin(at.lat * r) * Math.cos(p.lat * r) * Math.cos((p.lon - at.lon) * r)
+        const deg = (Math.atan2(y, x) / r + 360) % 360
+        return { id: u[0], label: u[2], tehsil: u[4], km: km(at.lat, at.lon, p.lat, p.lon), dir: DIRS[Math.round(deg / 45) % 8], own: u[0] === ownId }
+      }
+      const all = doc.ucs.filter(u => u[8] !== 1 && u[0] !== skipId).map(row)
+      all.sort((a, b) => a.km - b.km)
+      const top = all.slice(0, 4)
+      const own = ownId && !top.some(u => u.own) ? all.find(u => u.own) : undefined
+      setNear(own ? [...top, own] : top)
+    }).catch(() => { if (live) setNear([]) })
+    return () => { live = false }
+  }, [at, skipId, ownId])
+  return near
 }
 
 /** The district and tehsil he picked above this card, and the survey squares whose main tehsil it is (D-280). */
@@ -397,6 +489,14 @@ export function GpsCard({ onActive, onDistrictTehsil, scope, autoLocate = false,
   // Review (20 Oct 2026): once a way is open the lists above are hidden, so each screen says which tehsil it is for.
   const scopeLine = scope ? <p className="tk-en gps-scope" data-gps="scope">Your tehsil: {scope.tehsil}, {districtName(scope.district)}</p> : null
   const radius = card?.radii[ri] ?? null
+  const cardHalf = Math.max(3, (radius?.r ?? 2) * 1.25)
+  const ownUcId = !fixedUc && card ? card.uc.id : null
+  const cardLabels = useUcLabels(screen === 'card' && pin ? pin : null, cardHalf, { skipPin: true, first: ownUcId })
+  const near = useNearUcs(screen === 'card' && !outside ? pin : null, fixedUc?.id ?? null, ownUcId)
+  // D-310: the tehsil's map carries its Union Council names, the ones with most samples first.
+  // (an empty list until it arrives, so the map has its margin from the first draw and does not shift under a tap)
+  const ucNames = useMemo<MapName[] | undefined>(() => (scope
+    ? [...(allUcs ?? [])].sort((a, b) => b.samples - a.samples).map(u => ({ en: u.label, ...latticePos(u.gi, u.gj) })) : undefined), [scope, allUcs])
   const ucName = fixedUc ?? card?.uc ?? null
   const square = pin ? GRID.byKey.get(`${Math.floor(pin.lon / GRID.deg)},${Math.floor(pin.lat / GRID.deg)}`) : undefined
   // D-281 (Tahir, 20 Oct 2026): the point he gave is used, and if the card is for another district than the one he picked, he is told.
@@ -489,7 +589,7 @@ export function GpsCard({ onActive, onDistrictTehsil, scope, autoLocate = false,
           <p className="tk-en">Tap the square nearest your land. The next map shows that ground about 1 km at a time.</p>
           {msg && <p className="tk-en gps-msg" role="status">{msg}</p>}
           {msg && retry && <button className="chip chip-xs" onClick={() => { const r = retry; setMsg(null); setRetry(null); r() }} data-gps="retry">Try again</button>}
-          <div className="tk-mapwrap"><MiniMap idx={mapCells} sel={null} colourBy="neutral" label={scope ? `Map of the soil squares of ${scope.tehsil} tehsil: tap near your land` : "Map of Punjab's soil squares: tap near your land"} onPick={i => void pickSquare(i)} /></div>
+          <div className="tk-mapwrap"><MiniMap idx={mapCells} sel={null} colourBy="neutral" names={ucNames} label={scope ? `Map of the soil squares of ${scope.tehsil} tehsil, with its Union Council names: tap near your land` : "Map of Punjab's soil squares: tap near your land"} onPick={i => void pickSquare(i)} /></div>
         </div>
       )}
 
@@ -588,9 +688,27 @@ export function GpsCard({ onActive, onDistrictTehsil, scope, autoLocate = false,
           )}
           {/* G5 (Tahir, 20 Oct 2026): the farmer sees the radius plainly. */}
           <p className="gps-radius" data-gps="circle">Circle: {fmtKm(radius.r)} km around your land</p>
-          {pin && <FineMap points={points} center={pin} halfKm={Math.max(3, radius.r * 1.25)} pin={pin} circleKm={radius.r} square label={`Your land with a circle of ${fmtKm(radius.r)} km around it and the survey square it falls in`} />}
+          {pin && <FineMap points={points} center={pin} halfKm={cardHalf} pin={pin} circleKm={radius.r} square={!!square} labels={cardLabels} cardMap label={`Your land with a circle of ${fmtKm(radius.r)} km around it, the survey square it falls in and the Union Council names around it`} />}
+          {/* D-310: English only; the Urdu of the legend and of "Near your land" is to come from Tahir. */}
+          {pin && (
+            <div className="tk-legend gps-legend" data-gps="legend">
+              <span><i style={{ background: '#C8323C', borderRadius: '50%' }} />{fixedUc ? `the centre of ${fixedUc.label}` : 'your land'}</span>
+              <span><i style={{ background: 'rgba(0,89,148,.25)', border: '2px solid #005994', borderRadius: '50%' }} />the card’s circle ({fmtKm(radius.r)} km)</span>
+              {square && <span><i style={{ background: 'transparent', border: '1.5px dashed #14231A' }} />survey square</span>}
+              <span><i style={{ background: '#D9C3A0', width: 7, height: 7 }} />card points, about 1 km apart</span>
+              <span><i style={{ background: '#14231A', borderRadius: '50%', width: 7, height: 7 }} />Union Council centre</span>
+            </div>
+          )}
           {/* G10 (Tahir, 20 Oct 2026): the boundary that decides Punjab and Pakistan is credited (licence CC BY-IGO). */}
           {pin && <p className="gps-credit" data-gps="credit">Boundary: OCHA COD-AB Pakistan (WFP)</p>}
+          {/* not on an outside-Punjab card: G11 puts no km on a survey area there (review, 23 Oct 2026) */}
+          {pin && !outside && near.length > 0 && (
+            <div className="gps-near" data-gps="near">
+              <p className="gps-near-h">{fixedUc ? `Near ${fixedUc.label}` : 'Near your land'}</p>
+              <ol>{near.map(u => <li key={u.id}>{u.label}{u.tehsil ? `, ${u.tehsil}` : ''}: {fmtNear(u.km)} {u.dir}{u.own ? ' (this card’s Union Council)' : ''}</li>)}</ol>
+              <p className="tk-en">{fixedUc ? `From the centre of ${fixedUc.label}` : 'From your land'} to each Union Council’s centre, the middle of its survey samples.{!fixedUc && near.length && !near[0].own ? ' The card is named for the survey sample nearest your land, so its Union Council’s centre can be farther away than others.' : ''}</p>
+            </div>
+          )}
           <p className="urdu tk-sub tk-strong" data-gps="count">{GPS_UR.samplesWithin(fmtKm(radius.r), thousands(radius.n))}</p>
           {/* D-298, 22 Oct 2026: the samples are counted around the card point nearest his land, not his exact pin; the English says so. */}
           <p className="tk-en">{thousands(radius.n)} samples within {fmtKm(radius.r)} km of the card point nearest your land{card.radii[0].r > 2 ? `: the survey is thin close to your land, so the card starts at ${fmtKm(card.radii[0].r)} km` : ''}. Card points are about 1 km apart.{radius.r > 10 ? ` This card covers a wide area, a circle ${fmtKm(radius.r * 2)} km across, so it can differ a lot from your own field.` : ''}</p>

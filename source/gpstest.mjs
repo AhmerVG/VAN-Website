@@ -28,7 +28,7 @@
  *   9  second review, 20 Oct 2026: places 0.1 to 1 km inside India near Lahore, Kasur, Sialkot and Chunian get no card
  *      and the "outside Punjab" message (the fallback to a neighbouring card point only for a place inside Pakistan),
  *      while a place inside Pakistan whose own card point fell over the line still gets its neighbour's card; line 16
- *      with a chak Union Council (160/P, 105/DNB) reads in the right order on screen, and all 2,623 names do; the
+ *      with a chak Union Council (160/P, 105/DNB) reads in the right order on screen, and all names in search do (2,621 since R8, 23 Oct 2026); the
  *      wheat head and list follow whether card rows are in use (after Clear all and a district they say "your soil");
  *      a slow line on the largest district file (Rahim Yar Khan) still gives the card after more than 45 seconds, and a
  *      line gone quiet gives the message after the 30 second idle cut-off, and Try again then works; a place in

@@ -117,9 +117,9 @@ export function cropHasRange(cropKey: string): boolean {
  * The one sentence that explains every range on the site. Written once here so the two places that
  * print a range cannot drift into explaining it two ways.
  */
-export const RANGE_NOTE =
-  'Where a figure is shown as a range, it is because VAN holds 2 documents for this crop: the crop ' +
-  'calculator sheet and the published crop plan. They do not carry an identical product list, so they ' +
-  'do not deliver an identical kilogram of nutrient. Both ends are VAN’s own arithmetic on VAN’s own ' +
-  'figures and neither is estimated.'
+export const RANGE_NOTE = 'A range means VAN’s calculator sheet and the published plan use slightly different product lists.'
+// D-311 (Tahir, 23 Oct 2026: short plain notes for the live site): was 'Where a figure is shown as a range, it is because VAN
+// holds 2 documents for this crop: the crop calculator sheet and the published crop plan. They do not carry an identical
+// product list, so they do not deliver an identical kilogram of nutrient. Both ends are VAN’s own arithmetic on VAN’s own
+// figures and neither is estimated.'
 // D-151 (A27): the last sentence was 'The plans are being brought onto the calculator crop by crop, and as each one is done its range closes to a single number.'
