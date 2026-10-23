@@ -927,7 +927,11 @@ for (const [label, vp] of [['phone', { width: 412, height: 860 }], ['computer', 
       await page.click('#gps-card .tk-link')
       await pickTehsil(page, OT.tehsil)
       await page.click('[data-gps="search"]')
-      check('changing the tehsil: the search box is empty and the old list is gone', (await page.inputValue('[data-gps="q"]')) === '' && (await page.$$('#gps-card [data-uc]')).length === 0)
+      // D-309 (Tahir, 22 Oct 2026): the search opens on his tehsil's own list, so after a change it holds the new tehsil's Union Councils only.
+      await page.waitForSelector('#gps-card [data-uc]', { timeout: 8000 }).catch(() => null)
+      const newIds = await page.$$eval('#gps-card [data-uc]', ns => ns.map(n => n.getAttribute('data-uc')))
+      const wantIds = allUcs.filter(u => u.district === NORMAL.district && u.tehsil === OT.tehsil).map(u => u.id)
+      check('changing the tehsil: the search box is empty and the list is the new tehsil\'s own (D-309)', (await page.inputValue('[data-gps="q"]')) === '' && newIds.length === wantIds.length && newIds.every(id => wantIds.includes(id)), `${newIds.length} shown, ${wantIds.length} in ${OT.tehsil}`)
       // Back from the tehsil takes the ways away and shows the district's screen with nothing picked
       check('two Backs: while a way is open only "Back to the question" shows, the band\'s own Back is hidden', (await page.$$('#teesra-khata .tk-link:has-text("واپس")')).length === 0 && !!(await page.$('#gps-card .tk-link:has-text("Back to the question")')))
       await page.click('#gps-card .tk-link')

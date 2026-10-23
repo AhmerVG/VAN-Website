@@ -112,6 +112,8 @@ export const GPS_UR = {
   outsideTehsil: 'یہ جگہ آپ کی چنی ہوئی تحصیل سے باہر ہے۔',
   /** 7, button */
   searchUc: 'یونین کونسل یا چک نمبر تلاش کریں',
+  /** 7, the same line without "یا چک نمبر", for a tehsil with no chak numbers (D-309, 22 Oct 2026); no new word */
+  searchUcNoChak: 'یونین کونسل تلاش کریں',
   /** 8, the card's top line; the numbers fill in */
   samplesWithin: (km: string, n: string) => `آپ کی زمین کے ${km} کلومیٹر کے اندر ${n} نمونے`,
   /** 9, under the slider */

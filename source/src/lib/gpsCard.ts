@@ -279,6 +279,16 @@ export async function searchUcs(q: string, limit = 30, scope?: { district: strin
   }
   return [...exact, ...starts, ...within].slice(0, limit)
 }
+/** D-309: a chak number, not a name that ends in a number. "68 RB", "147/GB", "107/6 R", "UC 400 GB", "CHAK 34", "PADANA CHAK 45"
+ *  are chaks; "URBAN 2", "DARYA KHAN 2", "MAKKI 525", "SHERGARH 42" are names. 63 of the 136 tehsils have chak numbers. */
+export function isChakLabel(label: string) {
+  return /^(UC\s*|U\/C\s*|CHAK\s*(NO\.?\s*)?)?\d|\d+\s*\/\s*\d*\s*[A-Z]|\bCHAK\s*(NO\.?\s*)?\d/.test(label.toUpperCase())
+}
+/** D-309 (Tahir, 22 Oct 2026): every Union Council of a tehsil in the search, A to Z, shown before he types (the biggest tehsil has 61).
+ *  Throws GpsDownloadError like searchUcs when the list cannot be had. */
+export async function tehsilUcs(scope: { district: string; tehsil: string }): Promise<GpsSearchUc[]> {
+  return (await ucs()).filter(u => u.district === scope.district && u.tehsil === scope.tehsil).sort((a, b) => a.label.localeCompare(b.label, 'en', { numeric: true }))
+}
 /** A Union Council in search, by its id (to restore a card opened from the search, after Back). */
 export async function ucById(id: string): Promise<GpsSearchUc | null> {
   return (await ucs()).find(u => u.id === id) ?? null

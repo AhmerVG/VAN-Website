@@ -6,7 +6,7 @@ import { wa } from '@/data/site'
 import { TEHSILS, DISTRICT_UR } from '@/data/soilTehsils'
 import { Khata, MiniMap } from './TeesraKhata'
 import {
-  cardAt, cardNear, cardLink, cardText, districtPoints, inPakistan, inPunjab, kmToPunjab, latticePos, loadIndex, loadUcs, parsePin, searchKey, searchUcs, ucById,
+  cardAt, cardNear, cardLink, cardText, districtPoints, inPakistan, inPunjab, kmToPunjab, latticePos, isChakLabel, loadIndex, loadUcs, parsePin, searchKey, searchUcs, tehsilUcs, ucById,
   MAX_KM, type GpsCard as Card, type GpsSearchUc,
 } from '@/lib/gpsCard'
 
@@ -204,6 +204,8 @@ export function GpsCard({ onActive, onDistrictTehsil, scope, autoLocate = false,
   // G12, final fix (20 Oct 2026): the text the downloaded list last answered. Until the list (uc.json) has come, no
   // search has been answered, so "not found" cannot show; a later answer never overwrites a newer one.
   const [answered, setAnswered] = useState<string | null>(null)
+  // D-309: his tehsil's whole list, shown until his typing narrows it (null while it comes or when it could not come).
+  const [allUcs, setAllUcs] = useState<GpsSearchUc[] | null>(null)
   const searchSeq = useRef(0)
   const [paste, setPaste] = useState('')
   const [showSquare, setShowSquare] = useState(false)
@@ -366,7 +368,30 @@ export function GpsCard({ onActive, onDistrictTehsil, scope, autoLocate = false,
   const allCells = useMemo(() => GRID.cells.map((_, i) => i), [])
   // D-280: the map he taps first holds only the squares of his tehsil (every tehsil has 3 or more); a search list is only his tehsil's.
   const mapCells = useMemo(() => (scope && scope.cells.length ? scope.cells : allCells), [scope, allCells])
-  useEffect(() => { searchSeq.current++; setQ(''); setHits([]); setSearchFailed(false); setAnswered(null) }, [scope?.district, scope?.tehsil])
+  useEffect(() => { searchSeq.current++; setQ(''); setHits([]); setSearchFailed(false); setAnswered(null); setAllUcs(null) }, [scope?.district, scope?.tehsil])
+  // D-309: on the search screen, his tehsil's Union Councils come first, before he types.
+  useEffect(() => {
+    if (!scope || allUcs || (searchFailed && screen !== 'search')) return
+    let live = true
+    tehsilUcs({ district: scope.district, tehsil: scope.tehsil }).then(l => { if (live) { setAllUcs(l); setSearchFailed(false) } }).catch(() => { if (live && screen === 'search') setSearchFailed(true) })
+    return () => { live = false }
+  }, [screen, scope?.district, scope?.tehsil, allUcs, searchFailed])   // eslint-disable-line react-hooks/exhaustive-deps
+  // D-309: chak numbers are named only where his tehsil has them (63 of 136 tehsils, by isChakLabel); examples come from his own tehsil.
+  const hasChak = !!allUcs && allUcs.some(u => isChakLabel(u.label))
+  const chakFree = !!scope && !!allUcs && !hasChak   // his tehsil is known to have no chak numbers
+  const typedNumber = /\d/.test(q)
+  // A number typed where there are no chaks gets the no-chak line, unless it names one of his tehsil's own (e.g. URBAN 2).
+  const noChakHere = chakFree && typedNumber && (searchKey(q).length < 2 || (answered === q && !hits.length))
+  const typing = searchKey(q).length >= 2 && !noChakHere
+  // D-309: a name not found still leaves his tehsil's list under the message, so he can pick from it.
+  const shown = typing && (hits.length || answered !== q) ? hits : (allUcs ?? [])
+  const examples = allUcs && allUcs.length ? (() => {
+    const bySamples = [...allUcs].sort((a, b) => b.samples - a.samples)
+    const named = bySamples.filter(u => !isChakLabel(u.label)).map(u => u.label)
+    const chaks = bySamples.filter(u => isChakLabel(u.label)).map(u => u.label)
+    const pair = hasChak ? [named[0] ?? chaks[1], chaks[0]] : [named[0], named[1]]
+    return [...new Set(pair.filter(Boolean))].join(' or ')
+  })() : null
   const labels = useUcLabels(screen === 'mapfine' || screen === 'confirm' ? center : null, half)
 
   // Review (20 Oct 2026): once a way is open the lists above are hidden, so each screen says which tehsil it is for.
@@ -434,7 +459,7 @@ export function GpsCard({ onActive, onDistrictTehsil, scope, autoLocate = false,
           <p className="tk-en">The card is the reading of the area near your land. Your location is not checked, and it stays on your phone or computer.</p>
           <p className="tk-en gps-or">{scope ? `Now find your land in ${scope.tehsil} tehsil. Each way is more exact than the one above it.` : 'Find your land. Each way is more exact than the one above it.'}</p>
           <div className="gps-ways">
-            <button className="btn tk-btn gps-alt" onClick={() => go('search')} data-gps="search"><span className="urdu">{GPS_UR.searchUc}</span><span className="tk-btn-en">Search the Union Council or chak number</span></button>
+            <button className="btn tk-btn gps-alt" onClick={() => go('search')} data-gps="search"><span className="urdu">{chakFree ? GPS_UR.searchUcNoChak : GPS_UR.searchUc}</span><span className="tk-btn-en">{chakFree ? 'Search the Union Council' : 'Search the Union Council or chak number'}</span></button>
             <button className="btn tk-btn gps-alt" onClick={() => go('map')} data-gps="map"><span className="urdu">{GPS_UR.clickMap}</span><span className="tk-btn-en">Click the place on the map</span></button>
             <button className="btn tk-btn gps-alt" onClick={() => go('paste')} data-gps="paste"><span className="urdu">{GPS_UR.pastePin}</span><span className="tk-btn-en">Paste a Google Maps pin</span></button>
           </div>
@@ -483,10 +508,14 @@ export function GpsCard({ onActive, onDistrictTehsil, scope, autoLocate = false,
 
       {screen === 'search' && (
         <div className="tk-screen">
-          <p className="urdu tk-sub tk-strong">{GPS_UR.searchUc}</p>
+          <p className="urdu tk-sub tk-strong">{chakFree ? GPS_UR.searchUcNoChak : GPS_UR.searchUc}</p>
           {scopeLine}
-          <p className="tk-en">Type the Union Council's name or the chak number in English letters, for example Bathal or 160/P.</p>
-          <input className="input tk-search" value={q} onChange={e => void search(e.target.value)} placeholder="Union Council or chak" aria-label="Search the Union Council or chak number" data-gps="q" />
+          {/* D-309 (Tahir, 22 Oct 2026): the list of his tehsil first; chak numbers named only where the tehsil has them. */}
+          {scope && allUcs
+            ? <p className="tk-en" data-gps="searchhelp">{scope.tehsil} has {allUcs.length} Union Council{allUcs.length === 1 ? '' : 's'} in the survey. Tap yours below, or type {hasChak ? 'its name or chak number' : 'its name'} in English letters to narrow the list{examples ? `, for example ${examples}` : ''}.</p>
+            : <p className="tk-en">Type your Union Council's name in English letters.</p>}
+          <input className="input tk-search" value={q} onChange={e => void search(e.target.value)} placeholder={chakFree ? 'Union Council' : 'Union Council or chak'} aria-label={chakFree ? 'Search the Union Council' : 'Search the Union Council or chak number'} data-gps="q" />
+          {noChakHere && <p className="tk-en gps-msg" role="status" data-gps="nochak">{scope!.tehsil} has no chak numbers in the survey. Pick your Union Council from the list.</p>}
           {msg && <p className="tk-en gps-msg" role="status">{msg}</p>}
           {msg && retry && <button className="chip chip-xs" onClick={() => { const r = retry; setMsg(null); setRetry(null); r() }} data-gps="retry">Try again</button>}
           {searchFailed && (
@@ -499,9 +528,9 @@ export function GpsCard({ onActive, onDistrictTehsil, scope, autoLocate = false,
               characters left once CHAK, NO and UC are dropped, so they are not a search yet and nothing is said. */}
           {/* G12, final fix (20 Oct 2026): and only once the list has answered this very text, so never while uc.json
               is still coming. */}
-          {!searchFailed && answered === q && searchKey(q).length >= 2 && !hits.length && <p className="tk-en" data-gps="notfound">No Union Council or chak by that name {scope ? `in ${scope.tehsil} tehsil` : 'in the survey'}. Try another spelling, or click the place on the map.{scope ? ` Only Union Councils of ${scope.tehsil} tehsil are searched; if your land is in another tehsil, go back and pick that tehsil.` : ''}</p>}
+          {!searchFailed && !noChakHere && answered === q && searchKey(q).length >= 2 && !hits.length && <p className="tk-en" data-gps="notfound">No Union Council{chakFree ? '' : ' or chak'} by that name {scope ? `in ${scope.tehsil} tehsil` : 'in the survey'}. Try another spelling, or click the place on the map.{scope ? ` Only Union Councils of ${scope.tehsil} tehsil are searched; if your land is in another tehsil, go back and pick that tehsil.` : ''}</p>}
           <div className="tk-list">
-            {hits.map(u => (
+            {shown.map(u => (
               <button key={u.id} className="tk-row" onClick={() => void pickUc(u)} data-uc={u.id}>
                 <span><span className="tk-en-name">{u.label}</span> <span className="cap">{u.tehsil}, {districtName(u.district)} · <span className="num">{thousands(u.samples)}</span> samples</span></span>
               </button>
