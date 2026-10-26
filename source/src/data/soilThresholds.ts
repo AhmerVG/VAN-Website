@@ -29,7 +29,8 @@ export const soilParameterInline = (p: SoilParameter) => {
 }
 
 export const SOIL_PARAMETER_UNIT: Record<SoilParameter, string> = {
-  EC: 'mS/cm', pH: '', OM: '%', P2O: 'ppm', K2O: 'ppm', Zn: 'ppm', B: 'ppm', Fe: 'ppm', Cu: 'ppm', Mn: 'ppm',
+  // D-316, 26 Oct 2026: 'dS/m', as the soil card and the Soil Atlas print it; the same size of unit as VAN's table's mS/cm (1 dS/m = 1 mS/cm). Was 'mS/cm'.
+  EC: 'dS/m', pH: '', OM: '%', P2O: 'ppm', K2O: 'ppm', Zn: 'ppm', B: 'ppm', Fe: 'ppm', Cu: 'ppm', Mn: 'ppm',
 }
 
 /**

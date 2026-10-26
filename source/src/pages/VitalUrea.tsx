@@ -245,7 +245,14 @@ export default function VitalUrea() {
       </div></section>
 
       <section className="sec" style={{ background: 'var(--sand-2)' }}><div className="wrap">
-        <SectionHead eyebrow="What a bag buys" title="One 25 kg bag stood against a 50 kg bag of plain urea, and the growth was comparable." lead="Khaliqabad field programme with Rafhan Maize Products, 2023. 5 grower sites picked by their agronomy team, application in August through harvest in October, assessments at 12 and 24 days. The comparison was deliberately uneven." />
+        {/* D-316, 26 Oct 2026. Tahir: "The Khaliqabad, change it" (the growth outcome breaks the 28 Sep ruling: the trials
+            show the product in use, no result is printed). Was: title "One 25 kg bag stood against a 50 kg bag of plain
+            urea, and the growth was comparable."; lead ended "... assessments at 12 and 24 days. The comparison was
+            deliberately uneven."; and the paragraph under the 2 bags began "What the 5 sites recorded: comparable crop
+            growth, shoot length, colour, leaf number, vigour, from the 25 kg bag on roughly a third of the applied
+            nitrogen, with better uniformity of plant height, grain formation and milk-line development also observed.
+            Cob size and length showed no difference. And what this was not: ..." */}
+        <SectionHead eyebrow="What a bag buys" title="Khaliqabad, 2023: Vital Urea in the field with Rafhan Maize Products." lead="5 grower sites picked by their agronomy team, application in August through harvest in October." />
         <p className="font-bold mb-1">2 bags, drawn to one scale of nitrogen. What the label says, and when it arrives</p>
         <p className="cap mb-4">Kilograms of N are registered label contents. Release behaviour is the mechanism each product is built on.</p>
         {/* 11 Sep 2026 · Tahir's ruling. This is the only client named anywhere on the site, against a
@@ -259,22 +266,31 @@ export default function VitalUrea() {
             same number of applications. Rafhan 2022 joint; Descon Research Farm 2024 joint; the 2025 trial
             independent. Rafhan and Descon agreed to be named; the 2025 partner is not named (D-213, Tahir
             27 Sep 2026: "rest of 2 agreed"). Revert: delete this block and restore the sentence above. */}
+        {/* D-316, 26 Oct 2026: brought back to Tahir's rulings of 27 and 28 Sep 2026 (memory: flagship claims).
+            27 Sep: 25 kg Vital Urea in place of 50 kg urea ONCE in the crop cycle, at the first application,
+            the rest of the nitrogen programme unchanged; VAN never says every urea bag is replaced. 28 Sep: the
+            3 trials are evidence that the product exists and is used, not a yield claim; "5 to 15% more grain"
+            dropped everywhere; trials named with their years only; Rafhan's year is 2023, not 2022.
+            Was: eyebrow "3 maize trials, 2022 to 2025"; h3 "Half the weight at every application, and 5 to 15%
+            more grain."; "applied in place of 50 kg of urea at each application, the same number of times
+            through the season. Yield rose by 5 to 15%, with less nitrogen applied. ..."; Rafhan row 2022; caption
+            "The 5 to 15% is the range across the 3 trials. ..." */}
         <div className="panel p-5 lg:p-6 mb-6" id="maize-trials">
-          <span className="eyebrow">3 maize trials, 2022 to 2025</span>
-          <h3 className="mt-1 max-w-[34ch]">Half the weight at every application, and 5 to 15% more grain.</h3>
-          <p className="small mt-3 max-w-[110ch]">In 3 maize trials, 25 kg of Vital Urea was applied in place of 50 kg of urea at each application, the same number of times through the season. Yield rose by 5 to 15%, with less nitrogen applied. The crop was given less, and got more, because what it was given arrived in the weeks it could use it.</p>
+          <span className="eyebrow">3 maize trials, 2023 to 2025</span>
+          <h3 className="mt-1 max-w-[34ch]">1 bag of Vital Urea, once, at the first application.</h3>
+          <p className="small mt-3 max-w-[110ch]">Vital Urea has been used in 3 maize trials. In use, 1 bag of Vital Urea (25 kg) takes the place of 1 bag of urea (50 kg) once in the crop cycle, at the first application, when the crop needs the least nitrogen. The rest of the nitrogen programme stays as it is.</p>
           <div className="panel overflow-x-auto tbl-scroll mt-3"><table className="tbl" style={{ minWidth: 520 }}>
             <thead><tr><th>Trial</th><th>Year</th><th>Run by</th></tr></thead>
             <tbody>
-              <tr><td>Rafhan Maize Products, contract farms</td><td className="num">2022</td><td>Joint, VAN and Rafhan</td></tr>
+              <tr><td>Rafhan Maize Products, contract farms</td><td className="num">2023</td><td>Joint, VAN and Rafhan</td></tr>
               <tr><td>Descon Research Farm</td><td className="num">2024</td><td>Joint, VAN and Descon</td></tr>
               <tr><td>Independent partner farm, not named</td><td className="num">2025</td><td>Independent</td></tr>
             </tbody>
           </table></div>
-          <p className="cap mt-3">The 5 to 15% is the range across the 3 trials. The result on your field depends on your crop, your soil and the rest of your practice; the discipline simulator scores that part. Trial summaries are available on request to partner@van.com.pk.</p>
+          <p className="cap mt-3">The trials show the product in use in the field. VAN prints no yield figure from them. Trial summaries are available on request to partner@van.com.pk.</p>
         </div>
         <TwoBags />
-        <p className="mt-6 max-w-[140ch]">What the 5 sites recorded: comparable crop growth, shoot length, colour, leaf number, vigour, from the 25 kg bag on roughly a third of the applied nitrogen, with better uniformity of plant height, grain formation and milk-line development also observed. Cob size and length showed no difference. And what this was not: an observational field programme, not a replicated randomised trial, no independent yield measurement was recorded, and VAN reports it as exactly that. If you need replicated trial data for a purchasing decision, ask. Where it exists, you will get it.</p>
+        <p className="mt-6 max-w-[140ch]">What Khaliqabad was: an observational field programme on 5 grower sites, not a replicated randomised trial, with no independent yield measurement recorded. It shows the product in use, and VAN prints no result from it. If you need replicated trial data for a purchasing decision, ask. Where it exists, you will get it.</p>
       </div></section>
 
       {/* D-130, 24 Sep 2026: new section, the product as the owner's brief states it. Revert: delete. */}

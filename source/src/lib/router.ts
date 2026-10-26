@@ -48,6 +48,9 @@ export function parseHash(hash: string): { route: Route; anchor: string | null }
         try { card = decodeURIComponent(a.slice(5)) } catch { card = a.slice(5) }
         anc = null
       }
+      // D-316: `#tehsil=KEY` (the Soil Atlas tehsil, read by linkPlace.ts for the WhatsApp message) is not a
+      // section to jump to; the page lands on the calculator as for a district link.
+      if (a && a.startsWith('tehsil=')) anc = null
       const cardDistrict = card ? canonicalDistrict(/(?:^|;)d=([^;]*)/.exec(card)?.[1] ?? null) : null
       const dist = district ?? cardDistrict
       return { route: b ? { name: 'crop', slug: b, district: dist, card } : { name: 'crops' }, anchor: anc ?? (b && (dist || card) ? 'creator' : null) }
@@ -60,9 +63,17 @@ export function parseHash(hash: string): { route: Route; anchor: string | null }
       // the district panel, as before.
       const from = query.get('from')
       // D-283 (21 Oct 2026): `?tehsil=` names the tehsil inside that district; the farmer screens open at it. Checked against the data in TeesraKhata; an unknown tehsil is ignored.
-      const tehsil = query.get('tehsil')
+      // D-316, 26 Oct 2026 (Tahir: move it after the "#", yes): the link the farmer shares now carries the tehsil as
+      // `#tehsil=NAME` after the page address, so the browser keeps it on the phone and the server never gets it. A link
+      // already sent with `?tehsil=` still opens at its tehsil.
+      let tehsil = query.get('tehsil')
+      let anc = a
+      if (a && a.startsWith('tehsil=')) {
+        try { tehsil = decodeURIComponent(a.slice(7)) } catch { tehsil = a.slice(7) }
+        anc = null
+      }
       // `?rel=` pre-selects the relation explorer and lands on it; `?district=` lands on the district panel.
-      return { route: { name: 'soil', rel, district, from, tehsil }, anchor: a ?? (rel ? 'soil-relations' : from && district ? 'teesra-khata' : district ? 'soil-districts' : null) }
+      return { route: { name: 'soil', rel, district, from, tehsil }, anchor: anc ?? (rel ? 'soil-relations' : from && district ? 'teesra-khata' : district ? 'soil-districts' : null) }
     }
     case 'partner': return { route: { name: 'partner', slug: b || null }, anchor: a }
     case 'circular-economy': return { route: { name: 'circular', slug: b || null }, anchor: a }
@@ -107,7 +118,7 @@ function read(): { route: Route; anchor: string | null } {
   // parse it, decided it was a 404 and reset to the home page — which silently broke every
   // "jump to section" link on the site.
   // D-279: a built crop page opened as crops/wheat.html#card=... (the GPS grid card's link) reads the card from the hash.
-  if (raw && raw.startsWith('#card=') && own) {
+  if (raw && (raw.startsWith('#card=') || raw.startsWith('#tehsil=')) && own) {   // D-316: #tehsil= as #card=
     const here = parseHash(own + raw)
     if (here) return here
   }

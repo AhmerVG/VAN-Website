@@ -209,10 +209,12 @@ export function Flagship({ slug }: { slug: string }) {
       answers={[
         { h: 'A bag of urea has 3 claimants', p: 'The crop, the air and the water. Plain urea dissolves in the first irrigation and everything is exposed at once. Above pH 8 a share leaves as ammonia gas; what dissolves moves down with the water past the root. The farmer paid for all of it.' },
         { h: 'The coating limits how much is exposed at once', p: 'Plain urea inside, fine elemental sulfur outside, held by a binder. Nothing happens until water reaches the granule. Then the coating breaks down in steps and the nitrogen is released over weeks, so the crop meets it while it is still there.' },
-        { h: 'Half the weight, and more grain, in 3 maize trials', p: 'In maize trials at Rafhan Maize Products (2022, joint), Descon Research Farm (2024, joint) and an independent partner farm (2025, not named), 25 kg of Vital Urea in place of 50 kg of urea at each application gave 5 to 15% more grain with less nitrogen applied. Do not compare kilograms. Compare what reaches the crop in the weeks it can use it.' },
+        // D-316, 26 Oct 2026, to Tahir's 27/28 Sep rulings: once, at the first application; trials named by year only, no yield.
+        // Was: 'Half the weight, and more grain, in 3 maize trials' ... 'Rafhan Maize Products (2022, joint) ... at each application gave 5 to 15% more grain with less nitrogen applied.'
+        { h: '1 bag, once, at the first application', p: '1 bag of Vital Urea (25 kg) takes the place of 1 bag of urea (50 kg) once in the crop cycle, at the first application; the rest of the nitrogen programme stays as it is. Used in maize trials at Rafhan Maize Products (2023, joint), Descon Research Farm (2024, joint) and an independent partner farm (2025, not named). Do not compare kilograms. Compare what reaches the crop in the weeks it can use it.' },
       ]}
       tool="Count from the water"
-      wontClaim={['A yield figure beyond the 3 maize trials on this page. Other crops carry no figure until their own trials are named.', 'A laboratory release curve with days on it. VAN has none, so the picture above has no numbers.', 'That the coating stops volatilisation. It limits what is exposed at once; it does not change the soil.', 'A soil pH or soil test change. The acid effect is a zone around each granule for the weeks it is releasing.']}
+      wontClaim={['A yield figure. The 3 maize trials on this page show the product in use; they are not printed as a yield result.', 'A laboratory release curve with days on it. VAN has none, so the picture above has no numbers.', 'That the coating stops volatilisation. It limits what is exposed at once; it does not change the soil.', 'A soil pH or soil test change. The acid effect is a zone around each granule for the weeks it is releasing.']}
     ><VitalUreaTool /></Frame>
   )
   if (slug === 'vital-potash') return (

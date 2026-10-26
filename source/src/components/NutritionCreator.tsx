@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { linkTehsilName } from '@/lib/linkPlace'
 import { useSharedAcres } from '@/lib/sharedAcres'
 import { CROP_PLANS, type PlanRow } from '@/data/catalogue'
 import { FARMER_PRICE_SOURCE, NO_PRICE_REASON, NO_PACK_PRICE_REASON, priceForPack } from '@/data/pricing'
@@ -98,7 +99,13 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
     setDistrict(key)
     setCardInfo(null)
     const profile = regionalProfile(key)
-    if (!profile) return
+    // D-316, 26 Oct 2026: "Choose your district…" picked again means no district: the district (and soil card) rows are
+    // cleared, since they would otherwise stay without their "typical" label; rows the farmer set stay. Was: if (!profile) return
+    if (!profile) {
+      setSoilInputs(s => { const n = { ...s }; for (const p of Object.keys(n) as SoilParameter[]) if (bandSource[p] === 'district' || bandSource[p] === 'card') delete n[p]; return n })
+      setBandSource(s => { const n = { ...s }; for (const p of Object.keys(n) as SoilParameter[]) if (n[p] === 'district' || n[p] === 'card') delete n[p]; return n })
+      return
+    }
     setSoilInputs(s => {
       const next = { ...s }
       // D-273, Tahir 19 Oct 2026: a row filled from the previous district that this district leaves blank is
@@ -186,14 +193,16 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
     const usedDistrictAvg = Object.values(bandSource).includes('district')
     const usedCard = Object.values(bandSource).includes('card') && cardInfo
     const name = profile ? profile.name.replace(' (all districts)', '') : ''
+    const teh = profile ? linkTehsilName(district) : ''   // D-316: the tehsil he picked on the Soil Atlas, when the link carries it
+    const where = teh ? `${name}, tehsil ${teh}` : name
     // D-261: the district is named, and where the soil rows came from the district's survey median the message says so
     // (was "Soil: no test of my own. Plan adjusted using the <district> survey average.": the fill is the median).
     const soilNote = profile
       ? usedCard
-        ? [`My district: ${name}.`, `Soil: no test of my own. The soil rows are from the Soil Atlas card for the area near my land: survey readings within ${cardInfo.r} km, ${cardInfo.n.toLocaleString('en-US')} samples. Not a test of my field.`]
+        ? [`My district: ${where}.`, `Soil: no test of my own. The soil rows are from the Soil Atlas card for the area near my land: survey readings within ${cardInfo.r} km, ${cardInfo.n.toLocaleString('en-US')} samples. Not a test of my field.`]
         : usedDistrictAvg
-        ? [`My district: ${name}.`, 'Soil: no test of my own. The soil rows are the district survey median.']
-        : [`My district: ${name}.`]
+        ? [`My district: ${where}.`, 'Soil: no test of my own. The soil rows are the district survey median.']
+        : [`My district: ${where}.`]
       : null
     // L9, 24 Sep 2026: the "My district is:" prompt goes last, so the farmer types after it.
     return [l1, ...ls, ...(fractional ? ['(Round up to whole packs.)'] : []), ...(soilNote ?? []), 'Please confirm pricing and availability.', ...(soilNote ? [] : ['Please confirm my nearest dealer. My district is:'])].join('\n')

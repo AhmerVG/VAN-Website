@@ -1001,6 +1001,7 @@ for (const [label, vp] of [['phone', { width: 412, height: 860 }], ['computer', 
         await T.page.goto(`${BASE}/soil.html?from=mitti`, { waitUntil: 'networkidle' })
         const tb = await T.page.$('[data-tk="atland"]')
         check('top button: "I am at my land" shows at the very top of the district step, with Tahir\'s Urdu (D-308)', !!tb && (await tb.textContent()).includes('میں اپنی زمین پر ہوں'))
+        check('top button: the old question is gone and the Urdu reads right to left (D-316)', !!tb && !(await tb.textContent()).includes('کیا آپ اس وقت اپنی زمین پر موجود') && (await tb.$eval('.urdu', e => e.getAttribute('dir'))) === 'rtl')
         check('top button: nothing opens before the district and tehsil are picked', !(await T.page.$('#gps-card')))
         await T.page.click('[data-tk="atland"]')
         check('top button: pressing it asks him to pick the district and tehsil first', !!(await T.page.$('[data-tk="atland-hint"]')) && !(await T.page.$('#gps-card')))

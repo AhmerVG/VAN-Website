@@ -201,8 +201,9 @@ export const APPLICATION_SYSTEMS: RebuiltPage = {
       lead: 'Testing the two halves of the same idea: that form changes how much nitrogen survives, and that timing changes how much of it is used.',
       blocks: [
         { k: 'h3', text: 'With Rafhan Maize Products' },
-        { k: 'p', text: 'Across 5 grower sites at Khaliqabad, from application in August 2023 to harvest in October, assessed at 12 and 24 days. The comparison was deliberately uneven.' },
-        { k: 'p', text: 'Across the parameters assessed, shoot length, colour, leaf number and vigour, the single 25 kg bag produced comparable crop growth on roughly a third of the applied nitrogen, with the sulfur included and at a comparable bag price. Observers also recorded better uniformity of plant height, improved grain formation, more milk-line development and better disease tolerance. Cob size and length showed no difference.' },
+        { k: 'p', text: 'Across 5 grower sites at Khaliqabad, from application in August 2023 to harvest in October.' },
+        // D-316, 26 Oct 2026 (Tahir: "The Khaliqabad, change it"). Was: 'Across the parameters assessed, shoot length, colour, leaf number and vigour, the single 25 kg bag produced comparable crop growth on roughly a third of the applied nitrogen, ... better disease tolerance. Cob size and length showed no difference.' and the line above ended 'assessed at 12 and 24 days. The comparison was deliberately uneven.'
+        { k: 'p', text: 'An observational field programme, not a replicated trial. It shows the product in use, and VAN prints no result from it.' },
         { k: 'h3', text: 'The replicated trial' },
         { k: 'p', text: 'A replicated maize trial at VAN’s trial station: 2 stage-timed applications of sulfur-coated urea, at the 4–6 leaf stage and again 20 days later at 8–12 leaf, against a conventional programme of 5 applications of uncoated urea followed by calcium ammonium nitrate.' },
         { k: 'p', text: 'Coated nitrogen is released over days instead of all at once, so less of it is exposed to volatilisation at any one moment, and fewer, better-timed applications deliver more to the plant than more frequent applications of a form that does not stay put.' },

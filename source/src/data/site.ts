@@ -6,6 +6,8 @@ export const CONTACT = {
   company: 'Vital Agri Nutrients (Pvt) Ltd',
   short: 'VAN',
   tagline: 'Crop nutrition engineered, manufactured, registered and tested in Pakistan.',
+  // D-316, 26 Oct 2026. Tahir: CropLife Pakistan, "full members, 2024"; shown on About, the company profile and the footer.
+  membership: 'Full member of CropLife Pakistan since 2024',
   whatsapp: '+92 300 5003041',
   whatsappDigits: '923005003041',
   landline: '+92 42 35762215',
@@ -183,7 +185,7 @@ export const ABOUT = {
     { year: '2023', title: 'Potash from ash', text: 'The first commercial batch of potash recovered from crop residue ash.' },
     { year: '2024', title: 'The laboratory, accredited', text: 'PNAC accreditation, LAB 336, against ISO/IEC 17025:2017. Every lot is tested before it ships and every certificate is available on request.' },
     { year: '2026', title: 'Patent, biological laboratory, NP line', text: 'Pakistan Patent 144684 granted for Vital Urea, VAN\u2019s sulfur-coated urea. VAN\u2019s first biological laboratory. A new NP granulation line planned for the plant site, not yet started.' },
-    { year: 'Today', title: 'Where VAN is now', text: 'More than 150 people · 23 registered brands · 34 PSQCA licences, 22 of them on VAN’s own brands · about 50,000 t made a year · made for 14 companies.' },
+    { year: 'Today', title: 'Where VAN is now', text: 'More than 150 people · 23 registered brands · 34 PSQCA licences, 22 of them on VAN’s own brands · about 50,000 t made a year · made for 14 companies · full member of CropLife Pakistan since 2024.' },  // D-316: CropLife membership added
   ],
   evidenceH2: 'More went on. Less came back.',
   evidenceLead: 'Between 1999-2000 and 2023-24 Pakistan raised the nutrient it applies per acre by 68%. Wheat yield rose by 31%. Every kilogram now returns less than it did at the turn of the century, which is an argument about balance and timing, not about applying more.',
@@ -450,9 +452,9 @@ export const PARTNER = {
   portfolioPending: { partners: '14', oldest: '2011', /* D-177: first blend 2011; was 2010 */ launchRange: '2 to 17 months' },
 
   whoH2: 'Who already works this way',
-  who: 'VAN does not publish client names. It already manufactures for 14 national and multinational clients, and a partner under NDA can be given specifics in a meeting.',
+  who: 'VAN does not publish client names, apart from the 2 named below with their agreement. It already manufactures for 14 national and multinational clients, and a partner under NDA can be given specifics in a meeting.',
   whoTypes: ['Multinational crop-protection companies', 'National agri-input companies', 'Sugar mills and corporate farms', 'Importers replacing a bought-in product'],
-  firewall: 'Client names, formulations built to client briefs, and any data belonging to a client are not shown on this site and are never used to sell to anyone else. The named exceptions on the whole site are published because each agreed to it: the Khaliqabad field programme with Rafhan Maize Products on the Vital Urea page and the application systems page, and the 3 maize trials on the Vital Urea page (Rafhan Maize Products 2022, Descon Research Farm 2024; the 2025 trial partner is not named). Nothing else is named, and nothing is named without the client\u2019s word.',
+  firewall: 'Client names, formulations built to client briefs, and any data belonging to a client are not shown on this site and are never used to sell to anyone else. The named exceptions on the whole site are published because each agreed to it: the Khaliqabad field programme with Rafhan Maize Products on the Vital Urea page and the application systems page, and the 3 maize trials on the Vital Urea page (Rafhan Maize Products 2023, Descon Research Farm 2024; the 2025 trial partner is not named). Nothing else is named, and nothing is named without the client\u2019s word.',
   capability: [
     ['Physical forms', 'Granular \u00b7 powder \u00b7 crystalline soluble \u00b7 liquid \u00b7 pellet \u00b7 water-dispersible granule \u00b7 coated prill. The same composition is made in more than one form rather than the form dictating the composition.'],
     ['Pack range', 'From a 1 L bottle to a 1000 kg bulk bag and a 1000 L IBC. Trade packs, estate packs and contract-farming volumes are packed on the same line as the retail unit.'],
@@ -590,7 +592,7 @@ export const CIRCULAR = {
 export const RULES_FOR_DEMO = [
   'No invented numbers, trials, licences, agronomic claims or coefficients.',
   'No performance claim without a trial we can point to.',
-  'No client or partner names (Rafhan Maize on Vital Urea page is the single cleared exception).',
+  'No client or partner names (Rafhan Maize Products and Descon Research Farm are the 2 cleared exceptions, D-316).',
   'Registration is PSQCA-only. Publish licence numbers, never expiry dates.',
   // Superseded 11 Sep 2026: the simulator is LIVE on wheat and potato, so "coming soon" is no longer
   // allowed for it either. The tools page roadmap is where unbuilt work is named, with what it waits on.

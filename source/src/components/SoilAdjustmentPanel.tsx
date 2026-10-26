@@ -85,7 +85,8 @@ export function SoilAdjustmentPanel({ crop, soilInputs, bandSource, district, ca
           <p className="cap mt-2" style={{ lineHeight: 1.5 }}>
             Filled in from the {REGIONAL_SOURCE.survey}, {REGIONAL_SOURCE.window}. {profile.n.toLocaleString()} samples in {profile.name}.
             {' '}{REGIONAL_SOURCE.caution}
-            {profile.missing.length > 0 && <> The survey has no valid {profile.missing.map(m => soilParameterInline(m)).join(', ')} reading here, so {profile.missing.length > 1 ? 'those rows are' : 'that row is'} left blank.</>}
+            {/* D-316: names only rows this crop shows that are actually blank, never a row the farmer filled himself (was every missing analyte). */}
+            {(() => { const miss = profile.missing.filter(m => parameters.includes(m) && soilInputs[m] === undefined); return miss.length > 0 && <> The survey has no valid {miss.map(m => soilParameterInline(m)).join(', ')} reading here, so {miss.length > 1 ? 'those rows are' : 'that row is'} left blank.</> })()}
             {/* D-271: the Soil Atlas's own "not comparable" note (D-181), for the district fill, naming only rows this crop shows that are actually blank (a row kept from an earlier district or typed by the farmer is not named). */}
             {(() => {
               const nc = profile.notComparable.filter(m => parameters.includes(m) && soilInputs[m] === undefined)

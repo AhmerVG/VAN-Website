@@ -202,6 +202,14 @@ console.log('\n4, 5, 6 · soil card, the VAN message, Back, the bar on the Soil 
   await page.waitForSelector('a.tk-btn[href*="wheat.html?district=SHEIKHUPURA"]')
   await Promise.all([page.waitForURL(/crops\/wheat\.html\?district=SHEIKHUPURA/), page.click('a.tk-btn[href*="wheat.html?district=SHEIKHUPURA"]')])
   await page.waitForSelector('#creator ul li')
+  // D-316: the tehsil travels after a second '#', so the server never sees it, and the farmer's own message names it.
+  {
+    const loc = await page.evaluate(() => ({ search: location.search, hash: location.hash }))
+    check('wheat link: the tehsil is not in the address the server sees', !/tehsil/i.test(loc.search), JSON.stringify(loc))
+    check('wheat link: the tehsil rides after #, on the phone', /^#tehsil=/.test(loc.hash), JSON.stringify(loc))
+    const wt = waText((await creator(page)).href)
+    check(`wheat calculator message names the tehsil: "My district: Sheikhupura, tehsil ${tehsil}."`, wt.includes(`My district: Sheikhupura, tehsil ${tehsil}.`), wt)
+  }
   await page.goBack({ waitUntil: 'networkidle' })
   await page.waitForSelector('#teesra-khata')
   await page.waitForTimeout(300)

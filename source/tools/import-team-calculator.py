@@ -127,6 +127,7 @@ RULING_OVERRIDES = {
 # Sane per-acre bounds, kg. Wider than any published Pakistani recommendation for these crops; a total
 # outside them means a transcription or unit error, not agronomy.
 SANE = {'N': (1.0, 200.0), 'P': (0.0, 150.0), 'K': (0.0, 150.0)}
+PER_PLANT_FLOOR = 10.0     # D-316: N + P2O5 + K2O under this, on a sheet headed per acre, reads as per-plant figures
 MAX_ROW_KG = 250.0          # no single product row above 250 kg or L an acre
 PER_HA_RE = re.compile(r'hectare|\bper\s*ha\b|kg\s*/\s*ha\b|t\s*/\s*ha\b|/\s*ha\b', re.I)
 
@@ -264,15 +265,25 @@ def read_sheet(ws):
         rows.append({'row': r, 'name': str(name).strip(), 'raw': raw, 'qty': qty, 'sheetAnalysis': analysis,
                      'sheetPack': float(pack) if isinstance(pack, (int, float)) else None})
     # Recommended dose rows: the row whose quantity cell reads "Recommended Dose", then labelled rows.
+    # D-316, 26 Oct 2026: V2 heads the block "Recommended Dose - SFRI Guide V (2021)" (was exactly "Recommended
+    # Dose") and puts the band names under a "Soil / variety" header, so the reader takes any cell that STARTS with
+    # "recommended dose" and reads the label from a "Soil / variety" column when the sheet has one.
     bands = []
     tot = {k: hdr.get(k) for k in ('Total N', 'Total P', 'Total K')}
+    is_head = lambda v: str(v or '').strip().lower().startswith('recommended dose')
     for r in range(3, ws.max_row + 1):
-        if qty_col and str(ws.cell(r, qty_col).value or '').strip().lower() == 'recommended dose':
+        if qty_col and is_head(ws.cell(r, qty_col).value):
+            label_col = qty_col
+            for rr in (r, r + 1):
+                for c in range(1, ws.max_column + 1):
+                    t = str(ws.cell(rr, c).value or '').strip().lower()
+                    if 'soil' in t and 'variet' in t:
+                        label_col = c
             for rr in range(r, ws.max_row + 1):
                 vals = [ws.cell(rr, tot[k]).value if tot[k] else None for k in ('Total N', 'Total P', 'Total K')]
                 if all(isinstance(v, (int, float)) for v in vals):
-                    label = ws.cell(rr, qty_col).value
-                    label = '' if label is None or str(label).strip().lower() == 'recommended dose' else str(label).strip()
+                    label = ws.cell(rr, label_col).value
+                    label = '' if label is None or is_head(label) or ('soil' in str(label).lower() and 'variet' in str(label).lower()) else str(label).strip()
                     bands.append({'label': label or 'Recommended', 'N': float(vals[0]), 'P': float(vals[1]), 'K': float(vals[2])})
             break
     # Per-hectare scan: every text cell, every formula (a /2.471 conversion is a per-hectare figure).
@@ -415,6 +426,15 @@ def main():
         for k, (lo, hi) in SANE.items():
             if not (lo <= site_tot[k] <= hi):
                 fails.append(f'{k} total {site_tot[k]:.1f} kg an acre is outside the sane bounds {lo:g} to {hi:g}')
+        # D-316, 26 Oct 2026 (21 Oct handoff): a crop with 0 kg of N, P2O5 or K2O is held for a person to look at
+        # (sunflower passed with P2O5 0), and totals this small on a sheet headed "per acre" are almost certainly
+        # per plant (guava totals N 1.8 kg), so that crop is held too.
+        if out_rows:
+            for k, nm_ in (('N', 'N'), ('P', 'P2O5'), ('K', 'K2O')):
+                if site_tot[k] == 0:
+                    fails.append(f'{nm_} total is 0 kg an acre; held for a person to confirm before it goes live')
+            if site_tot['N'] + site_tot['P'] + site_tot['K'] < PER_PLANT_FLOOR:
+                fails.append(f'N + P2O5 + K2O is {site_tot["N"] + site_tot["P"] + site_tot["K"]:.1f} kg an acre, under {PER_PLANT_FLOOR:g}: the quantities look per plant, not per acre')
         if not out_rows:
             fails.append('no rows')
 

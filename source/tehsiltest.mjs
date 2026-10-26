@@ -14,8 +14,10 @@ const OUT = process.env.OUT || path.join(ROOT, 'out')
 const CHROME = process.env.CHROME || '/opt/pw-browsers/chromium-1194/chrome-linux/chrome'
 const MIME = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.woff2': 'font/woff2', '.json': 'application/json', '.pdf': 'application/pdf', '.ico': 'image/x-icon' }
 let passed = 0, failed = 0
+const seen = []
 const check = (label, ok, detail = '') => { if (ok) passed++; else failed++; console.log(`${ok ? '  ok  ' : '  FAIL'} ${label}${!ok && detail ? '\n         ' + detail : ''}`) }
 const server = http.createServer((req, res) => {
+  seen.push(req.url)   // D-316: every address the server is asked for
   const u = decodeURIComponent(req.url.split('?')[0])
   const f = path.join(OUT, u === '/' ? 'index.html' : u)
   if (!fs.existsSync(f) || fs.statSync(f).isDirectory()) { res.writeHead(404); res.end('not found'); return }
@@ -107,15 +109,21 @@ console.log('\n4 · the shared WhatsApp link carries the tehsil, and opens at it
   const popup = ctx.waitForEvent('page')
   await page.locator('#teesra-khata button.tk-wa').first().tap()
   const wa = await popup
+  // D-316: the popup can still be about:blank when it is first seen; wait until it has the WhatsApp address (the test raced, about 1 run in 3).
+  try { await wa.waitForURL(u => u.href.startsWith('http'), { timeout: 15000 }) } catch {}
   const url = new URL(wa.url())
   const text = url.searchParams.get('text') || ''
   const link = (text.match(/https:\/\/www\.van\.com\.pk\/soil\.html\?[^\s]+/) || [''])[0]
-  check('the message holds the link with district, tehsil and from=mitti-wa', link === 'https://www.van.com.pk/soil.html?district=SHEIKHUPURA&tehsil=Muridke&from=mitti-wa', link)
+  // D-316: the tehsil rides after '#' (was ?district=SHEIKHUPURA&tehsil=Muridke&from=mitti-wa), so the server never gets it.
+  check('the message holds the link with district, from=mitti-wa and the tehsil after #', link === 'https://www.van.com.pk/soil.html?district=SHEIKHUPURA&from=mitti-wa#tehsil=Muridke', link)
   check('the message still names the tehsil in Urdu', /مریدکے/.test(text), text)
   await wa.close()
+  const before = seen.length
   const { ctx: c2, page: p2 } = await open(link.replace('https://www.van.com.pk/soil.html', ''))
   const s = await state(p2)
   check('opening that link lands on Muridke again', s.on.length === 1 && s.on[0] === 'Muridke|4,316 samples', JSON.stringify(s))
+  const told = seen.slice(before).filter(u => /tehsil|muridke/i.test(u))
+  check('opening that link: no request to the server carries the tehsil', told.length === 0, told.join(' | '))
   await c2.close(); await ctx.close()
 }
 console.log('\n5 · taps from the link to the WhatsApp button (a phone)')

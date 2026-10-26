@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { linkTehsilName } from '@/lib/linkPlace'
 import { useSharedAcres } from '@/lib/sharedAcres'
 import { WHEAT_STAGES, WHEAT_PLAN, type PlanRow } from '@/data/catalogue'
 import { WHEAT, wa } from '@/data/site'
@@ -104,7 +105,14 @@ export function ListBuilder({ stages = WHEAT_STAGES, plan = WHEAT_PLAN, cropName
   const pickDistrict = (key: string) => {
     setDistrict(key)
     const profile = regionalProfile(key)
-    if (!profile) return
+    // D-316, 26 Oct 2026: "Choose your district…" picked again means no district. The rows the district filled are
+    // cleared (they would otherwise stay on screen without their "typical" label and read as his own); rows he set stay.
+    // Was: if (!profile) return
+    if (!profile) {
+      setSoilInputs(st => { const n = { ...st }; for (const p of Object.keys(n) as SoilParameter[]) if (bandSource[p] === 'district') delete n[p]; return n })
+      setBandSource(st => { const n = { ...st }; for (const p of Object.keys(n) as SoilParameter[]) if (n[p] === 'district') delete n[p]; return n })
+      return
+    }
     setSoilInputs(st => {
       const n = { ...st }
       // D-273, Tahir 19 Oct 2026: a row filled from the previous district that this district leaves blank is
@@ -169,7 +177,7 @@ export function ListBuilder({ stages = WHEAT_STAGES, plan = WHEAT_PLAN, cropName
          Object.entries(soilInputs).map(([k, v]) => `${k} ${v}`).join(', ') + ')']
       : published ? ['(The published plan, not adjusted for my soil.)'] : []
     const ask = districtName
-      ? `Please send price, availability and my nearest dealer. My district: ${districtName}.`
+      ? `Please send price, availability and my nearest dealer. My district: ${districtName}${linkTehsilName(knownDistrict) ? `, tehsil ${linkTehsilName(knownDistrict)}` : ''}.`  // D-316: tehsil when the link carries it
       : 'Please send price, availability and my nearest dealer. My district is:'
     return [l1, ...ls, ...cs, ...soilNote, ask].join('\n')
   }, [ticked, acres, van, commodity, soilAdjusted, soilInputs, published, districtName])

@@ -242,6 +242,8 @@ export default function CompanyProfile() {
           <div className="panel p-5"><h4>The lab report for your bag</h4><p className="small muted mt-1">Type the batch number printed on a VAN bag and open the lab report for that batch, with no charge.</p></div>
           <div className="panel p-5"><h4>ISO 9001 in progress</h4><p className="small muted mt-1">Certification with System Certification Centre (SCC) is expected during 2027. VAN does not claim it until the certificate is issued.</p></div>
         </div>
+        {/* D-316: CropLife Pakistan membership (Tahir, 26 Oct 2026). */}
+        <p className="small muted mt-4">VAN has been a full member of CropLife Pakistan since 2024.</p>
         <div className="flex flex-wrap gap-2 mt-4">
           <a className="btn btn-navy btn-sm" href="#/verify">Verify a bag →</a>
           <a className="btn btn-ghost btn-sm" href="#/lab">VAN Lab →</a>
@@ -258,7 +260,7 @@ export default function CompanyProfile() {
           {[
             ['Every figure names its source', 'Where VAN has done its own arithmetic on published data, the figure is marked as derived.'],
             ['A yield figure needs a named trial', 'VAN prints no performance figure for a product unless a named trial supports it. Where a figure does not exist, the page says so.'],
-            ['Client names stay private', 'VAN names 1 client on this website, on the Vital Urea page and the application systems page, with that client’s agreement. It names no other.'],
+            ['Client names stay private', 'VAN names 2 clients on this website, Rafhan Maize Products and Descon Research Farm, where their Vital Urea trials are described, each with its agreement. It names no other.'],  // D-316: was "VAN names 1 client on this website ... with that client’s agreement." 
             ['The province collected the soil survey', 'The data is the Punjab soil testing programme’s. VAN reads it alongside its own sampling and does not claim it as its own.'],
           ].map(([h, t]) => <div key={h} className="panel p-5"><h4>{h}</h4><p className="small muted mt-2">{t}</p></div>)}
         </div>

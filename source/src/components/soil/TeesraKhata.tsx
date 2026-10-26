@@ -442,7 +442,7 @@ export function TeesraKhata({ district, tehsil = null, englishFirst }: { distric
     return () => { live = false }
   }, [step, dist, square, t])
 
-  const shareText = dist ? `${KHATA_UR.myKhata}: ${urName(dist.key)}${t != null ? '، ' + TEHSILS[t].ur : ''}۔ ${KHATA_UR.ask}: https://www.van.com.pk/soil.html?district=${encodeURIComponent(dist.key)}${t != null ? '&tehsil=' + encodeURIComponent(TEHSILS[t].en) : ''}&from=mitti-wa` : ''
+  const shareText = dist ? `${KHATA_UR.myKhata}: ${urName(dist.key)}${t != null ? '، ' + TEHSILS[t].ur : ''}۔ ${KHATA_UR.ask}: https://www.van.com.pk/soil.html?district=${encodeURIComponent(dist.key)}&from=mitti-wa${t != null ? '#tehsil=' + encodeURIComponent(TEHSILS[t].en) : ''}` : ''   // D-316: tehsil after '#', so the server never gets it (was '&tehsil=' before &from)
   const share = async () => {
     try {
       if (card && navigator.canShare) {
@@ -514,7 +514,7 @@ export function TeesraKhata({ district, tehsil = null, englishFirst }: { distric
         {step === 'district' && (
           <div className="tk-screen" id="tk-district">
             <button type="button" className={`btn tk-btn ${atLand ? 'btn-navy' : 'btn-ghost'}`} data-tk="atland" aria-pressed={atLand} onClick={() => setAtLand(v => !v)}>
-              <span className="urdu">{GPS_UR.atMyLandNow}</span><span className="tk-btn-en">I am at my land now</span>
+              <span className="urdu" dir="rtl">{GPS_UR.atMyLandNow}</span><span className="tk-btn-en">I am at my land now</span>{/* D-316: dir added (review note, 22 Oct). No lang="ur": no other Urdu line on these screens carries it, and modecheck counts lang="ur" as the switched-off Urdu layer (O-2). */}
             </button>
             {atLand && <p className="tk-en" data-tk="atland-hint" role="status">First pick your district and tehsil below. Then your location is read.</p>}
             <h2 className="tk-h urdu">{KHATA_UR.yourDistrict}</h2>
@@ -631,7 +631,7 @@ export function TeesraKhata({ district, tehsil = null, englishFirst }: { distric
           </div>
         )}
 
-        {step === 'plan' && dist && <Plan dist={dist.key} distName={dist.name} />}
+        {step === 'plan' && dist && <Plan dist={dist.key} distName={dist.name} tehsilKey={t != null && TEHSILS[t]?.district === dist.key ? TEHSILS[t].key : null} />}
       </div>
     </section>
   )
@@ -666,7 +666,7 @@ function UrLine({ text }: { text: string }) {
   return <span className="urdu">{parts.map((x, i) => (i % 2 ? <bdi key={i} className="tk-prod">{x}</bdi> : x))}</span>
 }
 
-function Plan({ dist, distName }: { dist: string; distName: string }) {
+function Plan({ dist, distName, tehsilKey = null }: { dist: string; distName: string; tehsilKey?: string | null }) {
   const profile = regionalProfile(dist)
   const inputs = (profile?.bands ?? {}) as SoilInputs
   const totals = calcPlan(COST_PLANS.wheat, 1, inputs, 'wheat')
@@ -714,7 +714,8 @@ function Plan({ dist, distName }: { dist: string; distName: string }) {
       <p className="urdu tk-survey">{KHATA_UR.calcDistrict}</p>
       <p className="tk-en">The calculator reads your district, not your own land.</p>
       </div>
-      <a className="btn btn-gold tk-btn" href={`#/crops/wheat?district=${encodeURIComponent(dist)}`}><span className="urdu">{KHATA_UR.planButton}</span><span className="tk-btn-en">Open the wheat calculator with your district filled in</span></a>
+      {/* D-316: the tehsil he picked rides along, so his WhatsApp message to VAN names it (linkPlace.ts). */}
+      <a className="btn btn-gold tk-btn" href={`#/crops/wheat?district=${encodeURIComponent(dist)}${tehsilKey ? `#tehsil=${encodeURIComponent(tehsilKey)}` : ''}`}><span className="urdu">{KHATA_UR.planButton}</span><span className="tk-btn-en">Open the wheat calculator with your district filled in</span></a>
       <p className="tk-en">Price shows only inside the calculator. For your own field’s soil test, contact <a href="#/lab">VAN Lab</a> · <span className="urdu" dir="rtl"><VanLabNowrap text={KHATA_UR.ownTest} /></span></p>
     </div>
   )
