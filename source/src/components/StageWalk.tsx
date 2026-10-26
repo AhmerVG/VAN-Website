@@ -8,6 +8,7 @@ import { PackShot, MethodIcon, DrawnBag, bagSub } from './bits'
 const SHORT = ['Land prep', 'Germination', 'Early growth', 'Grand growth', 'Grain & maturity']
 
 /** The crop at each stage, drawn. */
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function StagePlant({ stage, size = 150 }: { stage: number; size?: number }) {
   const g = '#2F6B3A', g2 = '#6DA35C', gold = '#D9A21B'
   return (
@@ -87,7 +88,7 @@ export function StageWalk({ limit, teaser = false }: { limit?: number; teaser?: 
               <span className="eyebrow" style={{ color: 'var(--st-text, var(--st))' }}>Stage {i + 1} of {WHEAT_STAGES.length}</span>
               <h3 className="text-[clamp(26px,2.6vw,34px)]">{stages[i]}</h3>
               <div className="flex flex-wrap gap-2 mt-3">
-                <span className="tag tag-navy" title="Growing degree days, base 10 °C">GDD {g.gdd}</span>
+                {/\d/.test(g.gdd) && <span className="tag tag-navy" title="Growing degree days, base 10 °C">GDD {g.gdd}</span>}{/* D-317: no GDD tag before sowing (was "GDD n/a") */}
                 <span className="tag tag-navy">DAS {g.das}</span>
               </div>
             </div>
@@ -106,7 +107,7 @@ export function StageWalk({ limit, teaser = false }: { limit?: number; teaser?: 
           <div className="grid sm:grid-cols-2 gap-3">
             {rows.map((r, k) => <BagCard key={k} row={r} />)}
           </div>
-          {!rows.length && <div className="panel-soft p-5"><p className="font-bold">The published plan puts nothing new on at this stage.</p><p className="small muted mt-1">Minimal N applications after boot; no new nutrient applications after grain fill begins. The season's work is done by the four stages before it.</p></div>}
+          {!rows.length && <div className="panel-soft p-5"><p className="font-bold">The published plan puts nothing new on at this stage.</p><p className="small muted mt-1">Minimal N applications after boot; no new nutrient applications after grain fill begins. The season's work is done by the 4 stages before it.</p></div>}
           {teaser && <a className="btn btn-gold mt-4" href="#/crops/wheat">Walk all 5 stages of wheat →</a>}
         </div>
       </div>

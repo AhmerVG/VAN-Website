@@ -33,6 +33,7 @@ import { SOIL_COLS, SOIL_BAND_COLOR, SOIL_BAND_LABEL, SOIL_BAND_ORDER, bandOf, b
 
 type Sort = { key: SoilColKey | 'name' | 'n' | 'worst'; dir: 1 | -1 }
 
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function SoilMatrix({ selected, onSelect, param, onParam }: {
   selected: string | null
   onSelect: (k: string | null) => void
@@ -117,7 +118,7 @@ export function SoilMatrix({ selected, onSelect, param, onParam }: {
             : mv > v ? 'the simple average, pulled up by a few very high samples' : 'the simple average, pulled down by a few very low samples'
           const lines: [string, string][] = [
             ['mx-tip-h', `${name} · ${c.label}`],
-            ['mx-tip-l', v == null ? 'Not determined in this survey.' : `${fmt(c.key, v)}${u} (big) = median, the typical field.${nc ? ' Not banded: likely a different laboratory method.' : b ? ` Sets the colour: ${SOIL_BAND_LABEL[b]}.` : ' No band in VAN’s table.'}`],
+            ['mx-tip-l', v == null ? 'Not determined in this survey.' : `${fmt(c.key, v)}${u} (big) = median, the typical field.${nc ? ' No colour band: likely a different laboratory method.' : b ? ` Sets the colour: ${SOIL_BAND_LABEL[b]}.` : ' No band in VAN’s table.'}`],
           ]
           if (v != null) lines.push(['mx-tip-l', `${fmt(c.key, mv)}${u} (small) = mean, ${pull}.`])
           const label = lines.map(l => l[1]).join(' ')
@@ -180,7 +181,7 @@ export function SoilMatrix({ selected, onSelect, param, onParam }: {
       </div>
 
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-3">
-        <span className="cap">Each cell: the median, banded; the mean in small under it.</span>
+        <span className="cap">Each cell: the median, coloured by band; the mean below it in small type.</span>
         <span className="cap" style={{ fontWeight: 700, color: 'var(--navy)' }}>How bad</span>
         {SOIL_BAND_ORDER.map(b => (
           <span key={b} className="cap inline-flex items-center gap-1.5">
@@ -195,7 +196,7 @@ export function SoilMatrix({ selected, onSelect, param, onParam }: {
         read against the district median, the typical field; the mean sits under each value. Calcium carbonate has no row in that table, so it carries a value and no
         colour. Copper and manganese have 3 bands there rather than 5. N.d. = not determined; Jhelum returns no
         valid zinc. * Copper in Faisalabad, Jhang, Chiniot and Toba Tek Singh reads far below every other district, and iron far below most,
-        which points to a different laboratory method rather than different soil. * Phosphorus samples in Kasur read 2.5 to 5 times the samples within 1 km of them across the district line (median 14.5 ppm against Lahore 4.2 and Okara 5.9; 16.6 against Nankana Sahib 3.2), and all 4 of its tehsils read the same, which points the same way. They are shown as surveyed and not banded.
+        which points to a different laboratory method rather than different soil. * Phosphorus samples in Kasur read 2.5 to 5 times the samples within 1 km of them across the district line (median 14.5 ppm against Lahore 4.2 and Okara 5.9; 16.6 against Nankana Sahib 3.2), and all 4 of its tehsils read the same, which points the same way. They are shown as surveyed, without a colour band.
         <b> Tap any cell</b> to take that district and that parameter to the map and the readings above.
       </p>
     </div>

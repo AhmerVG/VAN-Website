@@ -113,7 +113,7 @@ export default function CompanyProfile() {
             <div>
               <span className="eyebrow">Company profile · {CONTACT.company} · since {COUNTS.incorporated}</span>
               <h1 className="max-w-[26ch]" style={{ fontSize: 'clamp(28px,3.2vw,42px)', lineHeight: 1.08 }}>{CONTACT.tagline}</h1>
-              <p className="lead mt-4">VAN began with a research farm in {COUNTS.since} and was incorporated in {COUNTS.incorporated}. On 1 plant site in Lahore it makes {COUNTS.brands} registered brands of its own, and more than 100 brands for {partners} national and multinational companies. This page is the company profile, and the same profile is a PDF to download.</p>
+              <p className="lead mt-4">VAN began with a research farm in {COUNTS.since} and was incorporated in {COUNTS.incorporated}. On 1 plant site in Lahore it makes {COUNTS.brands} registered brands of its own, and more than 100 brands for {partners} national and multinational companies. The profile is also a PDF to download.</p>
               <div className="flex flex-wrap gap-3 mt-5">
                 <Download />
                 <a className="btn btn-ghost" href="#contact">Talk to VAN</a>
@@ -142,7 +142,7 @@ export default function CompanyProfile() {
         <div className="ns-row on">
           <div className="ns-fig"><div className="ns-n num" style={{ color: 'var(--navy)' }}>{PK_ACRE}<span className="ns-u">kg/acre</span></div><p className="ns-c">of nutrient on an acre of cropland in Pakistan in 2023. The world average is {WORLD_ACRE} kg.</p></div>
           <div className="ns-fig"><div className="ns-n num" style={{ color: 'var(--rust)' }}>{NATIONAL.productivity.nutrientChange.pct}</div><p className="ns-c">nutrient on an acre, 1999-2000 to 2023-24. Wheat yield rose by {String(NATIONAL.productivity.wheatChange.pct).replace(/^\+/, '')} over the same years.</p></div>
-          <div className="ns-fig"><div className="ns-n num" style={{ color: 'var(--rust)' }}>{N_PER_K}<span className="ns-u">: 1</span></div><p className="ns-c">tonnes of nitrogen for every tonne of potash that Pakistan applied in 2023.</p></div>
+          <div className="ns-fig"><div className="ns-n num" style={{ color: 'var(--rust)' }}>{N_PER_K}<span className="ns-u">:1</span></div><p className="ns-c">tonnes of nitrogen for every tonne of potash that Pakistan applied in 2023.</p></div>
           <div className="ns-fig"><div className="ns-n num" style={{ color: 'var(--soil)' }}>{NATIONAL.nitrogen.pk}%</div><p className="ns-c">of the nitrogen put on the country&rsquo;s cropland is taken up by the crop. In the United States it is about {NATIONAL.nitrogen.us}%.</p></div>
         </div>
         <div className="ns-soil">
@@ -213,12 +213,13 @@ export default function CompanyProfile() {
           </div>
           <div className="panel p-5">
             <h4>7 physical forms</h4>
-            <p className="small muted mt-1">Granular, powder, crystalline soluble, liquid, pellet, water-dispersible granule and coated prill. 1 composition can be made in more than 1 of them.</p>
+            <p className="small muted mt-1">Granular, powder, crystalline soluble, liquid, pellet, water-dispersible granule and coated prill. The same composition can be made in several forms.</p>
           </div>
           <div className="panel p-5">
             <h4>Packs from 1 L to 1,000 kg</h4>
             <p className="small muted mt-1">From a 1 L bottle to a 1,000 kg bulk bag and a 1,000 L IBC. Estate and contract-farming packs run on the same line as the retail pack.</p>
-            <p className="small mt-3"><b>Order size.</b> A batch starts at 1 tonne. There is no minimum on the order itself.</p>
+            {/* D-317: was "A batch starts at 1 tonne. There is no minimum on the order itself." (Tahir's ruling 2, 26 Oct 2026) */}
+            <p className="small mt-3"><b>Order size.</b> No minimum order. A production batch is 1 tonne; smaller orders come from a batch.</p>
           </div>
         </div>
         <div className="flex flex-wrap gap-2 mt-4">
@@ -252,14 +253,15 @@ export default function CompanyProfile() {
       </div></section>
 
       {/* 05 · The evidence approach: the site's standing rules, said once for a reader deciding. */}
+      {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */}
       <section id="evidence" className="sec pnav-target" style={{ background: 'var(--sky)' }}><div className="wrap">
         <SectionHead eyebrow="The evidence approach" tone="navy"
-          title="The rules VAN follows before it prints a figure."
+          title="How VAN backs a figure."
           lead={`${COUNTS.yearsData} of trials on VAN's own research farms, a Punjab soil survey of ${SOIL_HEADLINE.samples} samples, and an accredited laboratory sit behind what VAN says.`} />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {[
             ['Every figure names its source', 'Where VAN has done its own arithmetic on published data, the figure is marked as derived.'],
-            ['A yield figure needs a named trial', 'VAN prints no performance figure for a product unless a named trial supports it. Where a figure does not exist, the page says so.'],
+            ['A yield figure needs a named trial', 'VAN prints no performance figure for a product unless a named trial supports it.'],
             ['Client names stay private', 'VAN names 2 clients on this website, Rafhan Maize Products and Descon Research Farm, where their Vital Urea trials are described, each with its agreement. It names no other.'],  // D-316: was "VAN names 1 client on this website ... with that client’s agreement." 
             ['The province collected the soil survey', 'The data is the Punjab soil testing programme’s. VAN reads it alongside its own sampling and does not claim it as its own.'],
           ].map(([h, t]) => <div key={h} className="panel p-5"><h4>{h}</h4><p className="small muted mt-2">{t}</p></div>)}
@@ -274,7 +276,7 @@ export default function CompanyProfile() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {[
             [`${CROPS.length} crop programmes`, 'What to apply on an acre, at which stage, by which method, and the pack it comes in.', '#/crops', 'panel-green'],
-            ['Nutrition calculator', `Live on ${LIVE_CALC_CROPS.length} crops. Set the acres and the plan scales; add a soil report or pick a district and it adjusts.`, '#/crops#live', 'panel-green'],
+            ['Nutrition creator', `Live on ${LIVE_CALC_CROPS.length} crops. Set the acres and the plan scales; add a soil report or pick a district and it adjusts.`, '#/crops#live', 'panel-green'],
             ['Yield and Discipline Simulator · beta', `${HOME_SLIDES[2].title} The simulator scores them on wheat and potato.`, '#/simulator', 'panel-soil'],
             ['Soil Atlas', `${SOIL_HEADLINE.samples} Punjab soil samples in ${SOIL_HEADLINE.districts} districts, read against what each crop takes out of the ground.`, '#/soil', 'panel-gold'],
           ].map(([h, t, href, cls]) => (
@@ -327,7 +329,7 @@ export default function CompanyProfile() {
           ))}
         </div>
         <div className="pf-grid mt-4">
-          <div className="pf-card"><div className="pf-n num">{PARTNER.proof.v}</div><div className="pf-l">partner brands registered with VAN named as the manufacturer</div></div>
+          <div className="pf-card"><div className="pf-n num">{PARTNER.proof.v}</div><div className="pf-l">partner brands registered with VAN as the manufacturer</div></div>
           <div className="pf-card"><div className="pf-n num">{partners}</div><div className="pf-l">companies hold them, the oldest partnership since {PARTNER.portfolioPending.oldest}</div></div>
           <div className="pf-card"><div className="pf-n num">{COUNTS.formulations}</div><div className="pf-l">unbranded formulations in the library, {READY} ready to carry your name</div></div>
         </div>

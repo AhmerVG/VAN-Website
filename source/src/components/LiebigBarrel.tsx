@@ -52,6 +52,7 @@ const SHORT: Record<Nutrient, string> = { N: 'N', P: 'P₂O₅', K: 'K₂O', S: 
 
 const fmt = (n: number) => n === 0 ? '0' : n >= 10 ? Math.round(n).toLocaleString('en-PK') : n >= 1 ? n.toFixed(1) : n.toFixed(2)
 
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function LiebigBarrel() {
   const [crop, setCrop] = useState('wheat')
   const [qty, setQty] = useState<Record<string, number>>({})
@@ -161,10 +162,10 @@ export function LiebigBarrel() {
                 </p>
                 {ceiling ? (
                   <p className="small mt-2">
-                    <b>Model estimate.</b> Nutrition decides about 1/4 of the yield. For {cropName.toLowerCase()} the yield number this site uses is <b>{ceiling.maunds} maunds an acre</b> ({ceiling.label}), so nutrition decides about <b>{Math.round(ceiling.maunds * NUTRITION_SHARE)} maunds</b> of it. Your mix reaches about <b>{fmt(ceiling.maunds * NUTRITION_SHARE * level)}</b> of those {Math.round(ceiling.maunds * NUTRITION_SHARE)}. The other {Math.round(ceiling.maunds * (1 - NUTRITION_SHARE))} are decided by sowing, seed, water, weeds and pests, which the <a href={`#/simulator/${crop}`}>discipline simulator</a> scores.{level < 0.15 ? ' A stave at 0 pulls the whole barrel to 0. A real field is never quite there, because the soil itself supplies some of every nutrient and this barrel does not count the soil. Read it as a direction, and let the crop page adjust for your district.' : ''}
+                    <b>Model estimate.</b> Nutrition decides about 1/4 of the yield. For {cropName.toLowerCase()} the yield number used is <b>{ceiling.maunds} maunds an acre</b> ({ceiling.label}), so nutrition decides about <b>{Math.round(ceiling.maunds * NUTRITION_SHARE)} maunds</b> of it. Your mix reaches about <b>{fmt(ceiling.maunds * NUTRITION_SHARE * level)}</b> of those {Math.round(ceiling.maunds * NUTRITION_SHARE)}. The other {Math.round(ceiling.maunds * (1 - NUTRITION_SHARE))} are decided by sowing, seed, water, weeds and pests, which the <a href={`#/simulator/${crop}`}>discipline simulator</a> scores.{level < 0.15 ? ' A stave at 0 pulls the whole barrel to 0. A real field is never quite there, because the soil itself supplies some of every nutrient and this barrel does not count the soil. Read it as a direction, and let the crop page adjust for your district.' : ''}
                   </p>
                 ) : (
-                  <p className="small mt-2"><b>Share only, no maunds.</b> A yield figure needs one ruled yield number for {cropName.toLowerCase()}, and this site holds one for wheat and potato only. Until then the barrel shows the share of the programme met.</p>
+                  <p className="small mt-2"><b>Share only, no maunds.</b> A yield figure is available for wheat and potato only. For {cropName.toLowerCase()} the barrel shows the share of the programme met.</p>
                 )}
                 {surplus.length > 0 && <p className="cap mt-2">Above the programme: {surplus.map(s => `${NUTRIENT_LABEL[s.n]} ${fmt(s.given)} of ${fmt(s.need)} kg`).join(', ')}. Extra is not credited. A tall stave does not hold water.</p>}
                 <p className="cap mt-2">Figures are kilograms of nutrient per acre from the declared analysis of each bag. Litres are counted as kilograms. Need is VAN’s published {cropName.toLowerCase()} programme for the whole season. Your soil’s own supply is not counted here; the <a href={`#/crops/${crop}`}>crop page</a> adjusts for your district.</p>

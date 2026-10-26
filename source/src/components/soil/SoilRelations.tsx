@@ -8,6 +8,7 @@ type XKey = (typeof X_AXES)[number]['key']
 type YKey = (typeof Y_AXES)[number]['key']
 
 const VERDICT_CLASS: Record<Verdict, string> = { Holds: 'holds', 'Holds, with a limit': 'limit', 'Observed, not explained here': 'observed', 'Does not hold': 'no' }
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function VerdictBadge({ v }: { v: Verdict | null }) {
   if (!v) return <span className="verdict none">Observed series, no verdict recorded</span>
   const icon = v === 'Holds' ? '✓' : v === 'Holds, with a limit' ? '✓' : v === 'Does not hold' ? '✕' : '○'
@@ -89,7 +90,7 @@ export function RelationExplorer({ initialRel }: { initialRel?: string | null })
               {d && <p className="cap mt-3 p-3 rounded-lg" style={{ background: 'var(--gold-soft)' }}>The verdict is recorded for the province series. The bars now show <b>{d.name}</b> on its own. Read them as that district’s observed means, not as a test of the verdict.</p>}
             </>
           ) : (
-            <p className="mt-3 small muted">The survey records this series; no relationship has been examined for it. The bars are observed band means with their sample counts. Nothing more is read into them here.</p>
+            <p className="mt-3 small muted">The survey records this series; no relationship has been examined for it. The bars are observed band means with their sample counts.</p>
           )}
           <p className="src"><b>Source ·</b> {SOIL_SOURCE.short}. Observational; establishes conditions, not mechanism.</p>
         </div>

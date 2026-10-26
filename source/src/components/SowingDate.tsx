@@ -22,11 +22,12 @@ import { UrLabel } from './Ur'
 const PLANTED = ['banana-year1']
 const ORCHARD = ['citrus', 'mango', 'guava', 'date-palm', 'banana-year2']
 function words(cropKey: string) {
-  if (PLANTED.includes(cropKey)) return { q: 'When did you plant?', date: 'Planting date', not: 'I haven’t planted yet', did: 'You planted on', window: 'planting window', aria: 'The date you planted your', notText: 'Then the 2 blocks you want are the programme and the shopping list. Come back to this question once the crop is planted and the page will follow the season with you.', urdu: false }
-  if (ORCHARD.includes(cropKey)) return { q: 'When did your season start?', date: 'Season start (flush, pruning or first irrigation)', not: 'It hasn’t started yet', did: 'Your season started on', window: 'season window', aria: 'The date your season started, for your', notText: 'Then the 2 blocks you want are the programme and the shopping list. Come back to this question once the season starts and the page will follow it with you.', urdu: false }
-  return { q: 'When did you sow?', date: 'Sowing date', not: 'I haven’t sown yet', did: 'You sowed on', window: 'sowing window', aria: 'The date you sowed your', notText: 'Then the two blocks you want are the programme and the shopping list. Come back to this question once the crop is in and the page will follow the season with you.', urdu: true }
+  if (PLANTED.includes(cropKey)) return { q: 'When did you plant?', date: 'Planting date', not: 'I haven’t planted yet', did: 'You planted on', window: 'planting window', aria: 'The date you planted your', notText: 'Then what you want is the programme and the shopping list below. Come back to this question once the crop is planted and the page will follow the season with you.', urdu: false }
+  if (ORCHARD.includes(cropKey)) return { q: 'When did your season start?', date: 'Season start (flush, pruning or first irrigation)', not: 'It hasn’t started yet', did: 'Your season started on', window: 'season window', aria: 'The date your season started, for your', notText: 'Then what you want is the programme and the shopping list below. Come back to this question once the season starts and the page will follow it with you.', urdu: false }
+  return { q: 'When did you sow?', date: 'Sowing date', not: 'I haven’t sown yet', did: 'You sowed on', window: 'sowing window', aria: 'The date you sowed your', notText: 'Then what you want is the programme and the shopping list below. Come back to this question once the crop is in and the page will follow the season with you.', urdu: true }
 }
 
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function SowingDate({ cropKey, cropName }: { cropKey: string; cropName: string }) {
   const [sown, setSown] = useSowing(cropKey)
   const w = words(cropKey)
@@ -49,13 +50,13 @@ export function SowingDate({ cropKey, cropName }: { cropKey: string; cropName: s
           the answers to 1 word a line. One column now: the question, then the controls under it. */}
       <div className="grid gap-4 items-start">
         <div>
-          <span className="eyebrow">Step one · optional</span>
+          <span className="eyebrow">Step 1 · optional</span>
           <h2 className="mt-1 text-[clamp(20px,2vw,26px)]">
             {w.urdu ? <UrLabel k="whenSown" en="When did you sow?" /> : w.q}
           </h2>
           <p className="cap mt-1 max-w-[140ch]">
-            Answer this and the page orders itself around your field. Skip it and nothing is lost, 
-            every rate, quantity and method below is exactly where it was.
+            Answer this and the page follows your season, or skip it. Every rate, quantity and
+            method below stays the same.
           </p>
         </div>
         {/* 11 Sep 2026 · min-w-0. A native date input has a wide intrinsic width, and without this
@@ -93,7 +94,7 @@ export function SowingDate({ cropKey, cropName }: { cropKey: string; cropName: s
                 : <>VAN’s published {cropName} window is <b>{check.label}</b>, so this is about{' '}
                     <b>{check.monthsOut} month{check.monthsOut === 1 ? '' : 's'} {check.direction}</b>.
                     The programme below is unchanged. It is written per acre, not per sowing date, 
-                    but sowing time is one of the ten levers in the discipline simulator, and it is
+                    but sowing time is one of the 10 levers in the discipline simulator, and it is
                     scored there.</>}
             </p>
           )}
@@ -104,8 +105,8 @@ export function SowingDate({ cropKey, cropName }: { cropKey: string; cropName: s
           )}
           {sown?.kind === 'unknown' && (
             <p className="small mt-3 max-w-[140ch]">
-              That is fine. The whole programme is below either way. If you can find the date later,
-              this page can work out which rows are due this week rather than showing you the season.
+              That is fine. The whole programme is below either way. If you find the date later,
+              the page shows what is due this week instead of the whole season.
             </p>
           )}
         </div>

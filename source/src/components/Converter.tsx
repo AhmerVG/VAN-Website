@@ -45,6 +45,7 @@ export function Converter() {
       .filter(([, v]) => v > 0.001)
   }, [product, bags])
 
+  /* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
   const TABS: [typeof tab, string][] = [['area', 'Land'], ['weight', 'Weight & yield'], ['bag', "What's in the bag"]]
 
   return (
@@ -66,7 +67,7 @@ export function Converter() {
               <div key={l as string} className="panel-soft p-4"><div className="num text-[26px]" style={{ color: 'var(--navy)' }}>{(v as number).toLocaleString(undefined, { maximumFractionDigits: 2 })}</div><div className="cap mt-1">{l as string}</div></div>
             ))}
           </div>
-          <p className="cap">1 acre = 8 kanal = 160 marla = 0.404686 hectare. Exact definitions, not rounded.</p>
+          <p className="cap">1 acre = 8 kanal = 160 marla = 0.404686 hectare.</p>
         </div>
       )}
 
@@ -98,7 +99,7 @@ export function Converter() {
             <div className="grid lg:grid-cols-[auto_1fr] gap-5 items-start">
               <div style={{ width: 90 }}><PackShot slug={product.slug} style={{ maxHeight: 120, width: 'auto' }} /></div>
               <div className="grid gap-3">
-                <div className="cap">{product.packKg} {product.packUnit ?? 'kg'} pack · {(Number(bags) || 0) * product.packKg} {product.packUnit ?? 'kg'} in total{product.packUnit === 'L' && <> · liquid, declared % w/v, so one litre carries the stated percentage in grams per 100 ml</>}</div>
+                <div className="cap">{product.packKg} {product.packUnit ?? 'kg'} pack · {(Number(bags) || 0) * product.packKg} {product.packUnit ?? 'kg'} in total{product.packUnit === 'L' && <> · liquid, declared % w/v, so 1 litre carries the stated percentage in grams per 100 ml</>}</div>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {nutrients.map(([k, v]) => (
                     <div key={k} className="panel-soft p-4">

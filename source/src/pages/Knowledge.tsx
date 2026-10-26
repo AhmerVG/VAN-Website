@@ -1,6 +1,6 @@
 import { NATIONAL, WA } from '@/data/site'
 import { CROPS } from '@/data/catalogue'
-import { SOIL_COPY, SOIL_HEADLINE, SOIL_SOURCE } from '@/data/soilLens'
+import { SOIL_COPY, SOIL_SOURCE } from '@/data/soilLens'
 import { LossLadder } from '@/components/LossLadder'
 import { BalanceChart, IndexLinesChart, ProductivityTable, ProductivityChart, RiceChart, RICE_ROWS, Source } from '@/components/Charts'
 import { WaButton } from '@/components/bits'
@@ -61,31 +61,32 @@ export default function Knowledge() {
           <span className="eyebrow rust">The national case</span>
           <h1 className="max-w-[22ch]">The nutrition Pakistan pays for.</h1>
           <p className="lead mt-4 max-w-[140ch]">{NATIONAL.h1a} {NATIONAL.h1b} {NATIONAL.lead}</p>
-          <p className="mt-4 max-w-[140ch]"><b>Roughly 1 kg of nitrogen in 4 is taken up by the crop.</b> The country buys the other 3, carries them to the field, and loses them there. Every figure below names its source and its year.</p>
+          <p className="mt-4 max-w-[140ch]"><b>Roughly 1 kg of nitrogen in 4 is taken up by the crop.</b> The country buys the other 3, carries them to the field, and loses them there.</p>
           <div className="flex flex-wrap gap-2 mt-6">{K_INDEX.map(([id, l]) => <a key={id} className="chip chip-xs" href={`#${id}`}>{l}</a>)}</div>
           {/* national → soil, saying WHY it is there. A link that says "learn more" does not get
               followed; one that names what is on the other side does. */}
           <div className="panel p-4 mt-6 max-w-[140ch]">
-            <span className="cap">The ground underneath this argument</span>
+            {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */}
+            <span className="cap">The soil underneath these numbers</span>
             <p className="mt-1"><a href="#/soil"><b>Punjab's soil, measured 770,160 times →</b></a><br />
-            <span className="small muted">This page says alkalinity is why the nutrient does not arrive. That is not an opinion here: it is measured across 36 districts, and you can read your own.</span></p>
+            <span className="small muted">Alkalinity is why the nutrient does not arrive. It is measured across 36 districts, and you can read your own.</span></p>
           </div>
           <p className="cap mt-4"><a href="#/knowledge">← All knowledge</a> · <a href="#/knowledge/soil-and-sustainability">The state of the soil</a> · <a href="#/knowledge/application-systems">Application systems</a></p>
         </div>
       </section>
 
-      <K id="k-usage" n="01" kicker="Usage" title="Pakistan is not under-fertilised." lead="The first thing to establish, because almost every other conclusion depends on it." tone="rust">
+      <K id="k-usage" n="01" kicker="Usage" title="Pakistan is not under-fertilised." tone="rust">
         {/* D-246: the fixed Chart 1 (UseChart) is now the interactive lens, all 3 nutrients together by default. */}
         <Lens label="Fertilizer per acre, Pakistan against other countries" countries={['India', 'United Kingdom', 'World', 'United States']} specs={[
           { id: 'perha', opt: 'NPK' },
           { id: 'phosphate', opts: ['stand'], tab: 'Where Pakistan stands', topic: 'WHERE PAKISTAN STANDS' },
         ]} />
         <div className="mt-6">
-          <div className="panel-soft p-5"><p className="small">{NATIONAL.usePerHa.note} If low application were the binding constraint, the countries below Pakistan on this chart would be the ones with a yield problem. They are not. So the question is what happens to the nutrient after it goes on the field.</p><p className="cap mt-3">Note where India sits. It is the heaviest applier in this comparison, and it is not the target, for reasons set out in the next section.</p></div>
+          <div className="panel-soft p-5"><p className="small">{NATIONAL.usePerHa.note} If low application were the binding constraint, the countries below Pakistan on this chart would be the ones with a yield problem. They are not. So the question is what happens to the nutrient after it goes on the field.</p><p className="cap mt-3">India is the heaviest applier in this comparison.</p></div>
         </div>
       </K>
 
-      <K id="k-balance" n="02" kicker="Balance" title="A nitrogen habit, not a nutrition plan." lead="Crops do not eat one nutrient. Pakistan very nearly feeds them one. Share of total nutrient applied, Pakistan against India. The nearest large neighbour growing comparable crops on comparable soils." bg="var(--sand-2)">
+      <K id="k-balance" n="02" kicker="Balance" title="A nitrogen habit, not a nutrition plan." lead="Crops do not eat 1 nutrient. Pakistan very nearly feeds them only 1. Share of total nutrient applied, Pakistan against India, the nearest large neighbour growing comparable crops on comparable soils." bg="var(--sand-2)">
         <BalanceChart />
         <p className="lead mt-6">{NATIONAL.balance.text} A crop given that ratio grows fast, soft and vulnerable, and then cannot convert the nitrogen it was given.</p>
         {/* D-246: the same balance over time and against any country. */}
@@ -93,15 +94,15 @@ export default function Knowledge() {
           { id: 'balance' },
           { id: 'phosphate', opts: ['np'], tab: 'Nitrogen against phosphate', topic: 'NITROGEN AGAINST PHOSPHATE' },
         ]} />
-        <details className="disc panel p-4 mt-5"><summary>India is on this page as a warning, not as a model</summary>
+        <details className="disc panel p-4 mt-5"><summary>India: a warning, not a model</summary>
           <div className="grid gap-3 small mt-2 max-w-[140ch]">
-            <p>India appears here because it is the nearest large neighbour farming comparable crops on comparable soils, not because its position is one to aim at. India is the heaviest applier per acre in section 1, and its own nutrient ratio has been repeatedly judged a policy failure at home. India’s Twelfth Five Year Plan called the design of its nutrient subsidy “seriously flawed” for distorting the balance between nutrients (Planning Commission of India, Twelfth Five Year Plan, Vol. II, para 12.37). The Comptroller and Auditor General found that between 2010-11 and 2013-14 urea consumption rose slightly while muriate of potash consumption fell sharply, as potash prices rose and urea’s did not (CAG of India, Report No. 16 of 2015). The retail price of a 45 kg bag of urea in India has been held at ₹242 since 1 March 2018 (Department of Fertilizers, Government of India).</p>
+            <p>India is the nearest large neighbour farming comparable crops on comparable soils. Its position is not one to aim at. India is the heaviest applier per acre in section 1, and its own nutrient ratio has been repeatedly judged a policy failure at home. India’s Twelfth Five Year Plan called the design of its nutrient subsidy “seriously flawed” for distorting the balance between nutrients (Planning Commission of India, Twelfth Five Year Plan, Vol. II, para 12.37). The Comptroller and Auditor General found that between 2010-11 and 2013-14 urea consumption rose slightly while muriate of potash consumption fell sharply, as potash prices rose and urea’s did not (CAG of India, Report No. 16 of 2015). The retail price of a 45 kg bag of urea in India has been held at ₹242 since 1 March 2018 (Department of Fertilizers, Government of India).</p>
             <p>The lesson is not to apply more like India. A distorted price signal buys volume and imbalance rather than conversion, and Pakistan is closer to that position than to escaping it.</p>
           </div>
         </details>
       </K>
 
-      <K id="k-productivity" n="03" kicker="Productivity" title="More went on, less came back." lead="The 2 lines that matter, and they point in opposite directions." tone="green">
+      <K id="k-productivity" n="03" kicker="Productivity" title="More went on, less came back." lead={`The 2 lines that matter: nutrient on an acre up ${NATIONAL.productivity.nutrientChange.pct.replace(/^\+/, '')}, wheat yield up ${NATIONAL.productivity.wheatChange.pct.replace(/^\+/, '')}.`} tone="green">
         {/* O-22: the before/after pair moved here from the About page. It is the plainest statement
             of the whole argument, so it goes first, and the index lines and the per-crop table follow
             for a reader who wants the working. */}
@@ -125,25 +126,25 @@ export default function Knowledge() {
         ]} />
         {/* D-247, Tahir 2 Oct 2026: matches the lens above (Lassaletta et al. 2014, Pakistan 26.72% in 2014). Was ≈{NATIONAL.nitrogen.pk}% (25) with "of the nitrogen applied ... is taken up by the crop"; the rest of the sentence is NATIONAL.nitrogen.text unchanged. */}
         <p className="lead mt-6"><b style={{ color: 'var(--navy)' }}>About 27%</b> of the nitrogen added to Pakistan’s cropland came out in the harvest (2014). {NATIONAL.nitrogen.text.slice(NATIONAL.nitrogen.text.indexOf('. ') + 2)}</p>
-        <Source>{NATIONAL.nitrogen.source}, which places Pakistan at the lowest partial factor productivity and the highest nitrogen surplus in its comparison set.</Source>
+        <Source>{NATIONAL.nitrogen.source.replace(/\.$/, '')}, which places Pakistan at the lowest partial factor productivity and the highest nitrogen surplus in its comparison set.</Source>
         {/* O-21: the ladder. The national page states the loss; this is what a reader can do about it,
             and it is the same component the crop pages carry so the two can never drift apart. */}
         <div className="mt-6"><LossLadder /></div>
         <div className="panel p-5 mt-6 max-w-[140ch]">
           <h3>Why Pakistani conditions make it worse</h3>
-          <p className="small mt-3">This is soil chemistry, not farmer error. Urea applied to a surface above pH 8, which is most cultivated ground in this country, hydrolyses rapidly and escapes as ammonia before it can be taken up. What survives nitrifies to nitrate, which is mobile and leaves with the irrigation water. In waterlogged ground the remainder denitrifies to gas. Meanwhile the same alkalinity locks up phosphorus and zinc as calcium and carbonate compounds the root cannot reach. High pH is therefore doing 2 kinds of damage at once: it wastes the nitrogen that is applied, and it withholds the nutrients that already are.</p>
+          <p className="small mt-3">This is soil chemistry, not farmer error. Urea applied to a surface above pH 8, which is most cultivated ground in this country, hydrolyses rapidly and escapes as ammonia before it can be taken up. What survives nitrifies to nitrate, which is mobile and leaves with the irrigation water. In waterlogged ground the remainder denitrifies to gas. Meanwhile the same alkalinity locks up phosphorus and zinc as calcium and carbonate compounds the root cannot reach. High pH is therefore doing 2 kinds of damage at once: it wastes the nitrogen that is applied, and it withholds the nutrients that are already there.</p>
         </div>
       </K>
 
-      <K id="k-soil" n="05" kicker={SOIL_COPY.homeActKicker} title="The soil underneath these numbers." lead={`In Punjab, that sentence is measured rather than assumed. ${SOIL_COPY.homeActLead}`} tone="soil">
+      <K id="k-soil" n="05" kicker={SOIL_COPY.homeActKicker} title="The soil underneath these numbers." lead={`In Punjab, this is measured. ${SOIL_COPY.homeActLead}`} tone="soil">
         <HeadlineTiles />
-        <p className="src"><b>Source ·</b> {SOIL_SOURCE.short}. {SOIL_HEADLINE.samples} samples across {SOIL_HEADLINE.districts} districts; conditions, not mechanism. <a href="#/soil#caveats">Read this before quoting ›</a></p>
+        <p className="src"><b>Source ·</b> {SOIL_SOURCE.short}. <a href="#/soil#caveats">Read this before quoting ›</a></p>
         <div className="flex flex-wrap gap-3 mt-5"><a className="btn btn-navy" href="#/soil">The soil underneath these numbers →</a><a className="btn btn-ghost" href="#/soil?rel=p-ph">The relationship that does not hold →</a></div>
       </K>
 
-      <K id="cases" n="06" kicker="The cases worth studying" title="Other countries have raised how much of their nutrient reaches the crop." lead="Several countries have moved it, in different ways, at different scales. India is not among them." bg="var(--sand-2)">
+      <K id="cases" n="06" kicker="The cases worth studying" title="Other countries have raised how much of their nutrient reaches the crop." lead="Several countries have raised it, in different ways, at different scales. India is not among them." bg="var(--sand-2)">
         <h3 className="mb-2">6.1 · Rice, and the neighbour that should worry us</h3>
-        <p className="small max-w-[140ch] mb-5">One crop, grown across the same region, measured one way: how much rice each kilogram of nitrogen produces.</p>
+        <p className="small max-w-[140ch] mb-5">1 crop, grown across the same region, measured 1 way: how much rice each kilogram of nitrogen produces.</p>
         <div className="grid xl:grid-cols-[1.1fr_0.9fr] gap-6 items-start">
           <RiceChart />
           <div className="panel overflow-x-auto tbl-scroll"><table className="tbl">
@@ -152,17 +153,17 @@ export default function Knowledge() {
           </table></div>
         </div>
         <p className="display mt-6 max-w-[40ch]" style={{ fontSize: 'clamp(20px,2vw,27px)', lineHeight: 1.25 }}>{NATIONAL.bangladesh}</p>
-        <p className="cap mt-3 max-w-[140ch]"><b>What this comparison can and cannot carry.</b> Nitrogen rates are survey estimates for the 2017/18 season; paddy yields are 2023. Recalculating both on a same-year 2018 basis changes the values but not the ranking. Bangladesh and Vietnam still convert nitrogen into rice better than Pakistan, and India still sits below us. Myanmar is excluded: it applies almost no nitrogen at all, which produces a flattering ratio and a poor harvest, and it is not a model for anything.</p>
+        <p className="cap mt-3 max-w-[140ch]"><b>Limits of this comparison.</b> Nitrogen rates are survey estimates for the 2017/18 season; paddy yields are 2023. Recalculating both on a same-year 2018 basis changes the values but not the ranking. Bangladesh and Vietnam still convert nitrogen into rice better than Pakistan, and India still sits below us. Myanmar is excluded: it applies almost no nitrogen at all, which produces a flattering ratio and a poor harvest.</p>
         <p className="small mt-3 max-w-[140ch]">Bangladesh is the uncomfortable case, and the useful one. Smaller farms, less capital, the same monsoon, and its paddy yield rose from 34.4 to 52.7 maunds an acre since 2000 (3.40 to 5.21 t/ha, FAOSTAT) while using less nitrogen per acre than Pakistan. Nothing about that is explained by money or land. It is explained by balance, variety and how nutrient is delivered.</p>
         <h3 className="mt-10 mb-3">6.2 · Decoupling at national scale</h3>
         <div className="grid md:grid-cols-2 gap-4">
-          <div className="panel p-5"><h4>China</h4><p className="small mt-2">Cut total nutrient use 22.6% between 2014 and 2023 and still raised cereal yield 8.9%. Its national programme to halt growth in fertilizer use took effect in 2015. The year the 2 lines separate. China’s own measured nutrient utilisation rate on rice, wheat and maize rose from 35.2% in 2015 to 42.6% in 2024.</p></div>
-          <div className="panel p-5"><h4>United States</h4><p className="small mt-2">Raised cereal production 35% between 2000 and 2023 on a fertilizer use that rose about 1%. Nutrient productivity 20.8 → 27.8 kg of cereal per kg of nutrient. 2.5 times Pakistan’s.</p></div>
+          <div className="panel p-5"><h4>China</h4><p className="small mt-2">Cut total nutrient use 22.6% between 2014 and 2023 and still raised cereal yield 8.9%. Its national programme to halt growth in fertilizer use took effect in 2015, the year the 2 lines separate. China’s own measured nutrient utilisation rate on rice, wheat and maize rose from 35.2% in 2015 to 42.6% in 2024.</p></div>
+          <div className="panel p-5"><h4>United States</h4><p className="small mt-2">Raised cereal production 35% between 2000 and 2023 on a fertilizer use that rose about 1%. Nutrient productivity rose from 20.8 to 27.8 kg of cereal per kg of nutrient, 2.5 times Pakistan’s.</p></div>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-4">
-          {[['Balance', 'Feeding the whole nutrient basket instead of pushing nitrogen. Soil-test-based, crop-specific formulations rather than one blend for everything.'], ['Use efficiency', 'The same nutrient, more of it reaching the plant. China’s own measured utilisation rate, 35.2% (2015) to 42.6% (2024).'], ['Right stage', 'Splitting and timing applications to the crop’s demand curve instead of front-loading the season.'], ['Right method', 'Deep placement, banding and fertigation in place of surface broadcast. Putting nutrient where the root is rather than where the loss is.']].map(([t, d]) => <div key={t} className="panel-soft p-4"><div className="font-bold">{t}</div><p className="cap mt-1">{d}</p></div>)}
+          {[['Balance', 'Feeding the whole nutrient basket instead of pushing nitrogen. Soil-test-based, crop-specific formulations rather than 1 blend for everything.'], ['Use efficiency', 'The same nutrient, more of it reaching the plant. China’s own measured utilisation rate, 35.2% (2015) to 42.6% (2024).'], ['Right stage', 'Splitting and timing applications to the crop’s demand curve instead of front-loading the season.'], ['Right method', 'Deep placement, banding and fertigation in place of surface broadcast. Putting nutrient where the root is rather than where the loss is.']].map(([t, d]) => <div key={t} className="panel-soft p-4"><div className="font-bold">{t}</div><p className="cap mt-1">{d}</p></div>)}
         </div>
-        <p className="cap mt-4 max-w-[140ch]"><b>The part we will not overstate.</b> China still applies roughly 2.5 times as much nutrient per acre as Pakistan, 159 against 65 kg an acre of arable land in 2023 (World Bank, published as 394 and 160 kg/ha). This is an argument about conversion, not volume. China’s own use peaked in 2014, the year before its programme was issued, so the policy consolidated a turn already under way rather than causing it single-handedly.</p>
+        <p className="cap mt-4 max-w-[140ch]">China still applies roughly 2.5 times as much nutrient per acre as Pakistan, 159 against 65 kg an acre of arable land in 2023 (World Bank, published as 394 and 160 kg/ha). This is an argument about conversion, not volume. China’s own use peaked in 2014, the year before its programme was issued, so the policy consolidated a turn already under way rather than causing it single-handedly.</p>
         <Source>World Bank AG.PRD.CREL.MT and AG.YLD.CREL.KG (FAO); FAOSTAT nutrient use via Our World in Data. Nutrient utilisation rate: Ministry of Agriculture and Rural Affairs, China, January 2021 and January 2025. Ratios derived.</Source>
       </K>
 
@@ -172,7 +173,7 @@ export default function Knowledge() {
         <a className="btn btn-ghost mt-4" href="#/crops/wheat#methods">How application changes the answer. The 5 methods →</a>
       </K>
 
-      <K id="k-builds" n="08" kicker="What VAN builds against each of these" title="5 gaps, and what each one actually requires." lead="Every product below is released through VAN’s own PNAC-accredited laboratory. 20 of the 23 brands also hold a live PSQCA manufacturing licence; the other 3 say on their own pages why they do not." tone="green" bg="var(--sand-2)">
+      <K id="k-builds" n="08" kicker="What VAN builds against each of these" title="5 gaps, and what each one actually requires." lead="Every product below is released through VAN’s own PNAC-accredited laboratory. 20 of the 23 brands also hold a live PSQCA manufacturing licence." tone="green" bg="var(--sand-2)">
         <div className="panel overflow-x-auto tbl-scroll"><table className="tbl" style={{ minWidth: 720 }}>
           <thead><tr><th>The gap</th><th>What it requires</th><th>What we make</th></tr></thead>
           <tbody>{BUILDS.map(([g, r, m]) => <tr key={g}><td className="font-bold whitespace-nowrap">{g}</td><td style={{ minWidth: 260 }}>{r}</td><td style={{ minWidth: 260 }}>{m.map(([n, s], i) => <span key={n}>{i > 0 && ' · '}{s ? <a href={`#/products/${s}`}>{n}</a> : g === 'Stage mismatch' ? <a href="#/crops">{n}</a> : n}</span>)}</td></tr>)}</tbody>
@@ -180,13 +181,13 @@ export default function Knowledge() {
         <a className="btn btn-navy mt-4" href="#/soil#soil-built">What VAN makes against each soil condition →</a>
       </K>
 
-      <K id="k-evidence" n="09" kicker="The evidence behind this page" title="How to read the evidence on this page.">
+      <K id="k-evidence" n="09" kicker="Evidence" title="How to read the evidence.">
         <div className="grid lg:grid-cols-2 gap-5">
           <div className="grid gap-3 small">
-            <p>Everything in sections 1 to 6 is national data from public sources. It establishes the problem. The evidence for VAN’s own answer is set out separately.</p>
+            <p>Everything in sections 1 to 6 is national data from public sources.</p>
             <p><b>What is independently established:</b> that coated and controlled-release nitrogen reduces losses and improves nitrogen recovery against uncoated urea, and that elemental sulfur raises phosphorus availability in calcareous soil. Both are peer-reviewed findings about the technology, not measurements of our product.</p>
-            <p><b>What we have of our own:</b> a replicated field trial at VAN’s trial station, spring 2024, published in 2025, in which 2 stage-timed applications of sulfur-coated urea outperformed a 5-application conventional urea and CAN programme on maize. We cite that finding as the paper states it.</p>
-            <p><b>Where the trials stand:</b> each product page prints the trial it has, and only that. If you need trial data for a specific product before you buy it, ask. Where a trial exists, you will get it.</p>
+            <p><b>What we have of our own:</b> a replicated field trial at VAN’s trial station, spring 2024, published in 2025, in which 2 stage-timed applications of sulfur-coated urea outperformed a 5-application conventional urea and CAN programme on maize.</p>
+            <p><b>Trial data.</b> If you need trial data for a specific product before you buy it, ask. Where a trial exists, you will get it.</p>
           </div>
           <div className="panel p-5" style={{ borderColor: 'var(--navy)', borderWidth: 2 }}>
             <span className="eyebrow navy">The trial</span>
@@ -202,7 +203,7 @@ export default function Knowledge() {
           <thead><tr><th>Figure</th><th>Source</th><th>Year</th></tr></thead>
           <tbody>{SOURCE_TABLE.map(([f, s, y]) => <tr key={f}><td className="font-semibold">{f}</td><td>{s}</td><td className="num whitespace-nowrap">{y}</td></tr>)}</tbody>
         </table></div>
-        <p className="cap mt-4 max-w-[140ch]">Figures marked derived are our arithmetic on the published inputs shown, not published figures in themselves. Where 2 series use different denominators, cropland in section 1, arable land in sections 3 and 6, we say so rather than presenting them as the same measure.</p>
+        <p className="cap mt-4 max-w-[140ch]">Derived figures are our arithmetic on the published inputs shown. Section 1 uses cropland; sections 3 and 6 use arable land.</p>
       </K>
 
       <section className="wrap sec-tight">

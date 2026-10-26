@@ -28,6 +28,7 @@ function BagCheck({ batch }: { batch: string }) {
 /** 7 Oct 2026: the box runs the live check (src/lib/o2s.ts) and the report opens under it. The
  *  "Send it on WhatsApp" and "or email" buttons came off; WhatsApp and email now appear only when
  *  the number is not found or the check cannot answer (BatchVerify.tsx). */
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function VerifyPanel({ full = false }: { full?: boolean }) {
   const { batch, setBatch, busy, res, asked, clean, submit } = useBatchCheck()
   return (
@@ -49,7 +50,7 @@ export function VerifyPanel({ full = false }: { full?: boolean }) {
         {/* The blind-test offer is written out on /verify, which is the page about verification.
             On the home page it is a line and a link, not the same paragraph a second time. */}
         {full ? null : (
-          <p className="small muted mt-5">Would rather not take our word for it? Send 500 g to Sample Reception and it is tested blind, as an ordinary priced test. <a href="#/verify">How that works ›</a></p>
+          <p className="small muted mt-5">Want an independent check? Send 500 g to Sample Reception and it is tested blind, as an ordinary priced test. <a href="#/verify">How that works ›</a></p>
         )}
       </form>
       <div className="order-first lg:order-none"><BagCheck batch={batch} /></div>

@@ -122,7 +122,7 @@ let LENSES = [
      let s=`In ${y-1}-${String(y).slice(2)}, Punjab's 5 main crops took about <b>${fmt(rem,0)} thousand t of potash</b> out of the soil. Fertilizer put back ${fmt(fert,1)} thousand t.`;
      s+= def>0 ? ` After manure and irrigation water (about ${fmt(man+wat,0)} thousand t, an estimate), the soil was short <b>${fmt(def,0)} thousand t</b>.` : ` Manure and irrigation water (about ${fmt(man+wat,0)} thousand t, an estimate) still covered what the crops took.`;
      return s; },
-   read:'Red line: potash carried out of the field in wheat, rice, sugarcane, maize and cotton, with the straw and stalks that leave the field. Green line: potash put back as fertilizer. Grey line: everything put back, fertilizer plus manure and irrigation water (the manure and water part is 1 estimate held for all years). The shaded gap is the yearly shortfall.',
+   read:'Red line: potash carried out of the field in wheat, rice, sugarcane, maize and cotton, with the straw and stalks that leave the field. Green line: potash put back as fertilizer. Grey line: everything put back, fertilizer plus manure and irrigation water (the manure and water part is held at the same estimate for every year). The shaded gap is the yearly shortfall.',
    source:'Tahir Abbas, Punjab potash balance model (2026), from Punjab Development Statistics, Punjab Agriculture Statistics and NFDC fertilizer offtake. Thousand tonnes of K2O. Model estimates.'},
  { id:'outlook', tab:'Punjab soil potash outlook', src:'Model', topic:'PUNJAB SOIL POTASH OUTLOOK', kind:'outlook', years:[2018,2050],
    answer(o,y){ const r=D.fan.find(d=>d[0]===y); if(!r) return ''; const [,w,,a,,b]=r;

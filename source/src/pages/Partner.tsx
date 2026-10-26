@@ -133,17 +133,17 @@ export default function Partner() {
             <div className="pf-card"><div className="pf-n num">{PARTNER.portfolioPending.launchRange}</div><div className="pf-l">fastest and slowest, brief to market</div></div>
           )}
         </div>
-        <p className="src">Every figure on this block is published elsewhere on this site: the registration count and the largest partner on this page, the licences and standards on the regulatory page, the library at the top of this page, the tonnage made a year on the engineering page, the lines on the manufacturing page, and the order sizes and lead times among the questions at the foot of the dealer page. None of them is a client.</p>
+        {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction. The source line that described where each figure is published came off. */}
       </div></section>
 
       <section id="detail" className="sec pnav-target"><div className="wrap">
-        <div className="mb-7"><span className="eyebrow navy">In more detail</span><h2 className="max-w-[24ch]">5 pages, one for each part of the decision.</h2></div>
+        <div className="mb-7"><span className="eyebrow navy">In more detail</span><h2 className="max-w-[24ch]">5 pages, 1 for each part of the decision.</h2></div>
         <div className="grid md:grid-cols-2 gap-3">
           {[['From brief to bag', 'brief-to-bag', '7 steps from an idea to a registered product in a dealer\u2019s shop.'],
             ['VAN Engineering', 'engineering', 'The dials and their ranges: batch size, coating, chelation, solubility, pack.'],
             ['Manufacturing & quality', 'manufacturing', 'What is on site, how a lot is released, and the research farms behind it.'],
             ['Pipeline & formulation library', 'pipeline', `${LIBRARY.length} unbranded codes, the 6-stage path, and what is published before an agreement.`],
-            ['Regulatory & registration', 'regulatory', 'The live PSQCA licences VAN holds, and the same team run for partners.']].map(([t, sl, d]) => (
+            ['Regulatory & registration', 'regulatory', 'The live PSQCA licences VAN holds, and the same team runs registration for partners.']].map(([t, sl, d]) => (
             <a key={sl} className="panel p-4 no-underline hover:border-[var(--navy)]" href={`#/partner/${sl}`}>
               <div className="font-bold display text-[17px]">{t}</div>
               <p className="cap mt-1">{d}</p>
@@ -159,7 +159,7 @@ export default function Partner() {
       <section id="limits" className="wrap sec pnav-target">
         <SectionHead eyebrow="Before you ask" title={PARTNER.limitsH2} tone="rust" />
         <div className="grid md:grid-cols-3 gap-4">{PARTNER.limits.map(([h, t]) => <div key={h} className="panel p-5"><h4>{h}</h4><p className="small muted mt-2">{t}</p></div>)}</div>
-        <p className="small mt-4 max-w-[140ch]"><b>Minimum order.</b> {PARTNER.minimum}</p>
+        <p className="small mt-4 max-w-[140ch]"><b>Order size.</b> {PARTNER.minimum}</p>
         <div className="grid lg:grid-cols-2 gap-4 mt-8">
           <div className="panel-soil p-6"><span className="eyebrow soil">{PARTNER.whoH2}</span><p className="small mt-2">{PARTNER.who}</p><div className="flex flex-wrap gap-2 mt-3">{PARTNER.whoTypes.map(t => <span key={t} className="tag tag-soil">{t}</span>)}</div><p className="cap mt-3">{PARTNER.firewall}</p></div>
           <div className="panel-sky p-6"><span className="eyebrow navy">What the lines can do</span><div className="grid gap-3 mt-2">{PARTNER.capability.map(([h, t]) => <div key={h}><div className="font-bold">{h}</div><p className="small muted">{t}</p></div>)}</div></div>

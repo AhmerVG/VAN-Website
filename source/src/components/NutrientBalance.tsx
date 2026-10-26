@@ -32,6 +32,7 @@ import { SectionHead } from './bits'
  * plausible figure — cotton above all, where the only published number is per tonne of LINT and a
  * Pakistani grower weighs phutti, so using it would overstate removal about threefold.
  */
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function NutrientBalance({ cropKey, cropName, defaultYieldMaunds }: { cropKey: string; cropName: string; defaultYieldMaunds?: number }) {
   const removal = removalFor(cropKey)
   const gap = removalGapFor(cropKey)
@@ -57,8 +58,8 @@ export function NutrientBalance({ cropKey, cropName, defaultYieldMaunds }: { cro
             total without saying which rows it leaves out. The same note now shows here. */}
         <NotCounted supply={supply} where="in the total above" />
         <p className="cap mt-4 max-w-[140ch]">
-          <b>What the crop takes out is not shown for {cropName}, and here is why.</b>{' '}
-          {gap ?? 'No credible per-tonne removal coefficient was found for this crop in any source, so none is shown.'}
+          {/* D-317: was "What the crop takes out is not shown for {cropName}, and here is why." followed by the removalGapFor note */}
+          Crop removal figures for {cropName} are not available.{gap ? <> {gap}</> : null}
         </p>
       </div>
     )
@@ -80,7 +81,7 @@ export function NutrientBalance({ cropKey, cropName, defaultYieldMaunds }: { cro
         eyebrow="Removal and replacement"
         title="What goes on, and what comes off."
         tone="soil"
-        lead={`Every season takes nutrients out of the field in the harvest. The programme puts some back. This is both sides of that, per acre, for ${cropName}, and the gap is the reason this site argues about soil the way it does.`}
+        lead={`Every season takes nutrients out of the field in the harvest. The programme puts some back. Here are both sides, per acre, for ${cropName}.`}
       />
 
       <div className="panel p-5 lg:p-6">
@@ -123,7 +124,7 @@ export function NutrientBalance({ cropKey, cropName, defaultYieldMaunds }: { cro
               <tr>
                 <th>Nutrient</th>
                 <th className="r">The programme puts on</th>
-                <th className="r">{t > 0 ? `${yieldMaunds} maunds takes off` : 'The harvest takes off'}</th>
+                <th className="r">{t > 0 ? `A ${yieldMaunds}-maund crop takes off` : 'The harvest takes off'}</th>
                 <th className="r">Balance</th>
               </tr>
             </thead>
@@ -147,7 +148,7 @@ export function NutrientBalance({ cropKey, cropName, defaultYieldMaunds }: { cro
                     <td className="r num">{t > 0 && off ? `${off.toFixed(1)} kg` : 'n/a'}</td>
                     <td className="r num" style={{ color: t > 0 && off ? (balHi < 0 ? 'var(--rust)' : balLo > 0 ? 'var(--green)' : undefined) : undefined, fontWeight: 700 }}>
                       {t > 0 && off
-                        ? (Math.abs(balHi - balLo) > 0.05 ? `${sign(balLo)}–${sign(balHi)} kg` : `${sign(balHi)} kg`)
+                        ? (Math.abs(balHi - balLo) > 0.05 ? `${sign(balLo)} to ${sign(balHi)} kg` : `${sign(balHi)} kg`)
                         : 'n/a'}
                     </td>
                   </tr>
@@ -182,20 +183,17 @@ export function NutrientBalance({ cropKey, cropName, defaultYieldMaunds }: { cro
             that and leaves the rest standing in the residue. At {yieldMaunds} maunds, {cropName} takes
             up about{' '}
             {(['N', 'P', 'K'] as Nutrient[]).map(n => `${(((uptake as unknown as Record<string, number>)[n] ?? 0) * t).toFixed(0)} kg ${NUTRIENT_LABEL[n].replace(/.*\(|\)/g, '')}`).join(', ')}, 
-            against what the table shows leaving. Whether that difference goes back into your soil or
+            more than the table shows leaving. Whether that difference goes back into your soil or
             onto a trolley is decided at harvest, not at sowing.
           </p>
         </div>
       )}
 
       <p className="cap mt-4 max-w-[140ch]">
-        <b>Where these 2 sides come from, because they do not come from the same place.</b>{' '}
-        <b>What goes on</b> is VAN's own published {cropName} plan. Its rows, its rates, its printed
-        analyses. Multiplied out. Nothing is modelled.{planUpdateNote(cropKey) ? <> {planUpdateNote(cropKey)}</> : null} <b>What comes off</b> is not VAN's: no
-        Pakistani nutrient-removal table exists on the public record, so these are the{' '}
+        <b>Sources.</b> <b>What goes on:</b> VAN's published {cropName} plan.{planUpdateNote(cropKey) ? <> {planUpdateNote(cropKey)}</> : null} <b>What comes off:</b> no
+        Pakistani nutrient-removal table is published, so these are the{' '}
         {REMOVAL_SOURCE.name} ({removal.region}), for “{removal.verbatim}”, per {removal.basis}.
-        IPNI's own note applies and is worth repeating: “{REMOVAL_SOURCE.footnote}” A Pakistani
-        measurement would replace these outright, and should.
+        IPNI's note: “{REMOVAL_SOURCE.footnote}”
       </p>
     </div>
   )
@@ -204,7 +202,7 @@ export function NutrientBalance({ cropKey, cropName, defaultYieldMaunds }: { cro
 function SupplyTable({ supply, cropName, cropKey }: { supply: ReturnType<typeof programmeSupply>; cropName: string; cropKey: string }) {
   const rows = (['N', 'P', 'K', 'S', 'Zn', 'B', 'Mg'] as Nutrient[]).filter(n => (supply.perAcre[n] ?? 0) > 0)
   const ranges = nutrientRanges(cropKey)
-  if (!rows.length) return <p className="small mt-3">The published {cropName} programme prints no analysis this page can total.</p>
+  if (!rows.length) return <p className="small mt-3">The published {cropName} programme prints no nutrient analysis to total.</p>
   return (
     <>
       <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
@@ -218,8 +216,8 @@ function SupplyTable({ supply, cropName, cropKey }: { supply: ReturnType<typeof 
       {/* B3, 24 Sep 2026: on mango the per-tree rows are left out of this total, and the caption
           said "across the whole programme", so a grower read 0.2 kg N as the orchard's dose. */}
       {supply.perPlantRows.length > 0
-        ? <p className="cap mt-3 max-w-[140ch]">Per acre, from the rows published per acre only. The per-tree doses ({[...new Set(supply.perPlantRows.map(r => r.product))].join(', ')}) are not included in this total. The published rates multiplied by the analysis printed on each row.</p>
-        : <p className="cap mt-3 max-w-[140ch]">Per acre, across the whole programme. The published rates multiplied by the analysis printed on each row. Nothing modelled.</p>}
+        ? <p className="cap mt-3 max-w-[140ch]">Per acre, from the rows published per acre only. The per-tree doses ({[...new Set(supply.perPlantRows.map(r => r.product))].join(', ')}) are not included in this total. Published rate × the analysis on each row.</p>
+        : <p className="cap mt-3 max-w-[140ch]">Per acre, across the whole programme. Published rate × the analysis on each row.</p>}
     </>
   )
 }
@@ -232,14 +230,17 @@ function NotCounted({ supply, where }: { supply: ReturnType<typeof programmeSupp
         <p className="cap mt-2 max-w-[140ch]">
           {/* D-311: was "Not counted …: X. The plan gives this no nutrient analysis (…), so it is left out of the total rather
               than given a figure it does not have. The real total is therefore higher than shown." */}
-          {supply.uncounted.map(u => `${u.product} ${/bio-?stimulant/i.test(u.analysis || '') ? 'is a bio-stimulant with' : 'has'} no nutrient figure`).join('; ')}, so {supply.uncounted.length > 1 ? 'they are' : 'it is'} not counted.
+          {(() => {
+            const names = [...new Set(supply.uncounted.map(u => /bio-?stimulant/i.test(u.analysis || '') ? `${u.product} (a bio-stimulant)` : u.product))]
+            const list = names.length > 1 ? `${names.slice(0, -1).join(', ')} and ${names[names.length - 1]}` : names[0]
+            return `${list} ${names.length > 1 ? 'have' : 'has'} no nutrient figure, so ${names.length > 1 ? 'they are' : 'it is'} not counted.`
+          })()}
         </p>
       )}
       {supply.perPlantRows.length > 0 && (
         <p className="cap mt-2 max-w-[140ch]">
           <b>Not counted {where}:</b> {[...new Set(supply.perPlantRows.map(r => r.product))].join(', ')}. Published
-          per tree, not per acre. Turning those into a per-acre figure needs your orchard's tree
-          count, which is your number and not ours.
+          per tree, not per acre. For a per-acre figure, multiply by the number of trees on your acre.
         </p>
       )}
     </>

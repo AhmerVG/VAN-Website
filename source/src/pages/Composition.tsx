@@ -40,7 +40,7 @@ function BrandsTable() {
           return rows.length ? rows.map((m, i) => (
             <tr key={m.product}>
               {i === 0 && <td rowSpan={rows.length} style={{ verticalAlign: 'top' }}><a href={`#/products/${p.slug}`} className="flex items-center gap-2 no-underline" style={{ color: 'var(--navy)', fontWeight: 700, whiteSpace: 'nowrap' }}><PackShot slug={p.slug} style={{ height: 34, width: 'auto' }} />{p.name}</a></td>}
-              <td className="cap">{rows.length > 1 ? m.product.replace(p.name, '').replace(/^[\s(·]+|[)\s]+$/g, '') || m.product : p.analysis.split('.')[0]}</td>
+              <td className="cap">{rows.length > 1 ? m.product.replace(p.name, '').replace(/^[\s(·]+|[)\s]+$/g, '') || m.product : p.analysis.split(/\.(?:\s|$)/)[0]}</td>
               {COLS.map(([k]) => <td key={k} className="r num" style={{ fontWeight: 400 }}>{fmtPct(m.analysisPct[k])}</td>)}
               <td className="num" style={{ fontWeight: 400, whiteSpace: 'nowrap' }}>{m.packKg} {m.packUnit ?? 'kg'}</td>
               {i === 0 && <td rowSpan={rows.length} style={{ verticalAlign: 'top', whiteSpace: 'nowrap' }}>
@@ -99,8 +99,9 @@ export default function Composition() {
       <div className="mt-4" id={view}>
         {view === 'brands' ? <BrandsTable /> : <LibraryTable />}
       </div>
+      {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction. The analysis cell now splits on a full stop followed by a space, so "Potash 3.5%" is no longer cut to "Potash 3". */}
       <p className="cap mt-3 max-w-[120ch]">{view === 'brands'
-        ? 'Source: VAN’s product record, the same table the crop calculators read. Documents open on van.com.pk: the product deck, the technical datasheet (TDS) and the safety data sheet (SDS). No price appears here; prices sit inside the plan tools only.'
+        ? 'Source: VAN’s product record. Documents open on van.com.pk: the product deck, the technical datasheet (TDS) and the safety data sheet (SDS).'
         : 'Source: the formulation library and its published meta. A dot means the nutrient is carried and the figure is not published; the dossier carries the number, after an agreement. Stage names are the 6-stage path on the Pipeline page.'}</p>
       <div className="flex flex-wrap gap-3 mt-5">
         <a className="btn btn-ghost" href="#/products">The products page</a>

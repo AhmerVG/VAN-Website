@@ -1,3 +1,4 @@
+// D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction
 /**
  * THE APPLICATION METHOD RULING — 27 September 2026, D-207.
  *
@@ -34,10 +35,10 @@ export const OBSERVATION = 'In VAN’s own fields and partner fields, on wheat, 
 
 /** The 1 line each product adds under the table, where it needs one. */
 export const PRODUCT_NOTE: Record<string, string> = {
-  'vital-urea': 'Drill it beside and below the seed, never in contact with it. At germination and early growth the programme rows side-dress it. Never fertigate it.',
-  'green-sulfur': 'Green Sulfur comes in 2 grades: a granule for the soil, which takes this order, and a water-dispersible powder for fertigation. Where the programme row says fertigation, use the powder and follow the row.',
-  'v-transform': 'The programme rows put it at germination, side-dressed beside the row. Where a plan puts it on at sowing, drill it.',
-  'crop-force': 'The programme rows place it or side-dress it at grand growth and maturity. At sowing, drill it.',
+  'vital-urea': 'Drill it beside and below the seed, never in contact with it. At germination and early growth the crop plans side-dress it. Never fertigate it.',
+  'green-sulfur': 'Green Sulfur comes in 2 grades: a granule for the soil, applied in the order above, and a water-dispersible powder for fertigation. Where the crop plan says fertigation, use the powder and follow the plan.',
+  'v-transform': 'The crop plans side-dress it beside the row at germination. Where a plan puts it on at sowing, drill it.',
+  'crop-force': 'The crop plans place it or side-dress it at grand growth and maturity. At sowing, drill it.',
   'sop': 'For the soil application. Where it goes through the water, follow the fertigation rate.',
   'humi-grow': 'Pellets. They go through a drill’s fertilizer box; where they are broadcast, mix them in before the irrigation.',
   'v-compost': 'Broadcast and mixed in at land preparation is the common practice; a drill with a wide box places it in the row.',

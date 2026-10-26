@@ -58,7 +58,8 @@ export default function Products() {
       <div id="table" className="panel p-4 lg:p-5 mt-8 grid gap-4" style={{ scrollMarginTop: 96 }}>
         <div className="flex flex-wrap gap-2 items-center">
           <input className="input" style={{ maxWidth: 340 }} placeholder="Search a product or analysis…" value={q} onChange={e => setQ(e.target.value)} aria-label="Search products" />
-          <div className="cap ml-auto">{list.length} of {PRODUCTS.length} cards. {brands} brands plus the NP Range family card</div>
+          {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */}
+          <div className="cap ml-auto">{list.length} of {PRODUCTS.length} shown. {brands} brands and the NP Range</div>
           {(cat !== 'ALL' || method || stage || q) && <button className="btn btn-ghost btn-sm" onClick={clear}>Clear filters ✕</button>}
           <a className="btn btn-ghost btn-sm" href="#/composition" style={{ marginRight: 8 }}>Composition chart →</a><div className="flex gap-1 p-1 rounded" style={{ background: 'var(--sand-2)' }} role="tablist" aria-label="View">
             <button role="tab" aria-selected={view === 'cards'} className={`chip chip-xs ${view === 'cards' ? 'on' : ''}`} style={{ borderColor: 'transparent' }} onClick={() => setView('cards')}>Cards</button>
@@ -87,7 +88,7 @@ export default function Products() {
               <div className="shot">{p.family ? <FamilyShot /> : <PackShot slug={p.slug} />}</div>
               <div className="p-4 flex flex-col flex-1">
                 <div className="flex flex-wrap items-center justify-between gap-1"><span className="tag tag-navy">{p.catLabel}</span>{p.exclusive ? <span className="tag tag-gold">VAN exclusive</span> : <span className="tag tag-green">Own-brand</span>}</div>
-                <div className="display text-[19px] leading-tight mt-2">{p.name}{p.family && <span className="cap block font-normal">the NP Range · a family of 3 grades</span>}</div>
+                <div className="display text-[19px] leading-tight mt-2">{p.name}{p.family && <span className="cap block font-normal">a family of 3 grades</span>}</div>
                 <div className="small muted mt-1 flex-1">{p.analysis}</div>
                 <div className="flex flex-wrap gap-1 mt-3">{p.methods.map(m => <span key={m} className="tag tag-sky inline-flex items-center gap-1"><MethodIcon method={m} size={14} />{m}</span>)}{p.stages.map(s => <span key={s} className="tag tag-grey">{s}</span>)}</div>
               </div>

@@ -1,3 +1,4 @@
+// D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction
 import type { AnalyteKey } from '@/lib/soil'
 
 /**
@@ -52,7 +53,7 @@ export const SOIL_READINGS: SoilReading[] = [
     share: { field: 'zn_lt10', words: 'of samples are below 1.0 ppm of zinc' },
     crop: 'Zinc makes the growth hormone that lengthens the stem and the enzymes that build protein. It decides plant height, leaf size and, in rice and wheat, grain set.',
     groundLabel: 'What Punjab’s ground does to it',
-    ground: 'In Punjab’s alkaline, high-pH soils, zinc is chemically fixed, making it unavailable to roots even when total soil zinc is adequate. Across the survey, average zinc falls as pH rises, 1.45 to 1.20 ppm. Piling on phosphate makes a zinc shortage worse.',
+    ground: 'In Punjab’s alkaline soils, zinc is chemically fixed, making it unavailable to roots even when total soil zinc is adequate. Across the survey, average zinc falls as pH rises, 1.45 to 1.20 ppm. Piling on phosphate makes a zinc shortage worse.',
   },
   {
     key: 'b', name: 'Boron',

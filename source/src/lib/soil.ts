@@ -1,3 +1,4 @@
+// D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction
 // Helpers over the Punjab soil survey module. Every figure shown on the site is read from SOIL / SOIL_GRID;
 // nothing here invents a number — it formats, looks up, and sums what the module already carries.
 import { SOIL, SOIL_GRID, type BandStats, type District, type GridCell } from '@/data/soil'
@@ -110,13 +111,13 @@ export function bandsFor(x: (typeof X_AXES)[number]['key'], d: District | null):
     const src = d ? d.texture : SOIL.province_texture
     const bands = TEXTURE_DRAWN.filter(k => src[k] && src[k].n > 0).map(k => ({ key: k, label: k, stats: src[k] }))
     const left = Object.entries(src).filter(([k]) => !TEXTURE_DRAWN.includes(k)).reduce((a, [, v]) => a + v.n, 0)
-    return { bands, note: left > 0 ? `${left.toLocaleString('en-US')} samples carry minor or truncated texture spellings and are counted but not drawn.` : '' }
+    return { bands, note: left > 0 ? `${left.toLocaleString('en-US')} samples with uncommon or incomplete texture names are counted but not shown.` : '' }
   }
   const src = d ? d.bands[x] : SOIL.province_bands[x]
   const labels = SOIL.meta.bands[x]
   const keys = x === 'phband' ? PH_DRAWN : Object.keys(labels)
   const bands = keys.filter(k => src[k] && src[k].n > 0).map(k => ({ key: k, label: labels[k] ?? k, stats: src[k] }))
-  const note = x === 'phband' ? `${(src['lt70']?.n ?? 0).toLocaleString('en-US')} samples below pH 7.0 are not drawn (the 4 bands shown carry 99.9% of the province).` : ''
+  const note = x === 'phband' ? 'The 4 bands shown cover 99.9% of Punjab’s samples.' : ''
   return { bands, note }
 }
 

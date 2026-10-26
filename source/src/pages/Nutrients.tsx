@@ -33,7 +33,7 @@ export default function Nutrients() {
         <div className="wrap py-8 lg:py-10">
           <span className="eyebrow">Knowledge · the 17 nutrients</span>
           <h1 className="max-w-[20ch]">Every nutrient a crop eats, and why the shortest one decides the harvest.</h1>
-          <p className="lead mt-4">A crop needs 17 nutrients. It takes 3 from air and water and 14 from the soil, in amounts from bags an acre down to a pinch. Nobody has to ask VAN for this. It is chemistry, it is the same on every farm, and a grower who knows it buys differently. This page sets out what each nutrient does, what a crop looks like without it, which nutrients work as pairs, and the 1 law that explains why a field full of urea can still stop growing.</p>
+          <p className="lead mt-4">A crop needs 17 nutrients. It takes 3 from air and water and 14 from the soil, in amounts from bags an acre down to a pinch. Nobody has to ask VAN for this. It is chemistry, it is the same on every farm, and a grower who knows it buys differently. Here is what each nutrient does, what a crop looks like without it, which nutrients work as pairs, and the 1 law that explains why a field full of urea can still stop growing.</p>
           <div className="flex flex-wrap gap-3 mt-5">
             <a className="btn btn-gold" href="#barrel" onClick={e => { e.preventDefault(); document.getElementById('barrel')?.scrollIntoView({ behavior: 'smooth' }) }}>Put your own bags in the barrel</a>
             <a className="btn btn-ghost" href="#/crops">The 28 crop programmes</a>
@@ -116,7 +116,7 @@ export default function Nutrients() {
             </div>
           ))}
         </div>
-        <p className="cap mt-4 max-w-[120ch]">What each nutrient does and how its shortage shows are textbook plant nutrition, written here in plain words and carrying no figure. Every number on this page is one this site already publishes with its source: the Punjab soil survey on the Soil Atlas, the Crop Force bag’s printed line on potash, the crop programmes and their balance blocks, and the registered analysis on each product page. No deficiency percentage, yield response or trial figure has been added.</p>
+        {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction. A caption describing the page's own sourcing rules came off. */}
         <div className="flex flex-wrap gap-3 mt-5">
           <a className="btn btn-navy" href="#/soil">Read your district in the Soil Atlas</a>
           <a className="btn btn-ghost" href="#/crops">Pick your crop programme</a>

@@ -161,7 +161,7 @@ export default function Lab() {
             <div className="panel p-6" style={{ borderColor: 'var(--navy)', borderWidth: 2 }}>
               <span className="eyebrow soil">You bought anything else</span>
               <h2 style={{ fontSize: 'clamp(22px, 2.2vw, 28px)' }}>Send us 500 g.</h2>
-              <p className="small muted mt-2">Any fertilizer, any brand, any manufacturer. Send us 500 g and we will measure what is in it, against the published price list. The result is the same certificate we issue to importers and laboratories, with the 8 accredited tests marked.</p>
+              <p className="small muted mt-2">Any fertilizer, any brand, any manufacturer. Send us 500 g and we will measure what is in it, at the published price. The result is the same certificate we issue to importers and laboratories, with the 8 accredited tests marked.</p>
               <div className="flex flex-wrap gap-3 mt-4">
                 <a className="btn btn-navy" href="#book">Book a test →</a>
                 <WaButton href={WA.lab}>Ask on WhatsApp</WaButton>
@@ -183,9 +183,9 @@ export default function Lab() {
           lead={<>{LAB.why1} {LAB.why2}</>} />
         <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-6 lg:gap-10 items-start">
           <div>
-            <p className="eyebrow mb-1" style={{ color: 'var(--muted)' }}>One parcel, 7 steps</p>
+            {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */}<p className="eyebrow mb-1" style={{ color: 'var(--muted)' }}>1 parcel, 7 steps</p>
             {/* D-169: carried back from the v54 lead (the independent review found it had been lost). */}
-            <p className="cap mb-4">The separation is built into the buildings and the coding system rather than written down as a policy promise.</p>
+            <p className="cap mb-4">The separation is built into the buildings and the coding system.</p>
             <Chain />
           </div>
           <div className="grid gap-4 lg:sticky" style={{ top: 'calc(var(--hdr-h) + 64px)' }}>

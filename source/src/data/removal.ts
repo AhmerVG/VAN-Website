@@ -1,3 +1,4 @@
+// D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction
 /**
  * NUTRIENT REMOVAL — what a crop takes OUT of the field, per tonne of what is harvested.
  * Added 9 September 2026.
@@ -73,7 +74,7 @@ export const REMOVAL: RemovalRow[] = [
   {
     crop: 'wheat', label: 'Wheat', basis: 'tonne of grain',
     N: 19, P: 8.0, K: 4.8, S: 1.7, kind: 'removal',
-    residue: { label: 'Wheat straw (bhusa)', basis: 'tonne of grain', N: 12, P: 2.7, K: 20, S: 2.3 },
+    residue: { label: 'Wheat straw (bhoosa)', basis: 'tonne of grain', N: 12, P: 2.7, K: 20, S: 2.3 },
     source: IPNI, region: 'North America', verbatim: 'Wheat (winter) grain / Wheat straw',
   },
   {
@@ -125,6 +126,8 @@ export const REMOVAL: RemovalRow[] = [
   },
 ]
 
+const BANANA_GAP = 'Removal figures for banana exist only on a whole-bunch basis (Israeli intensive culture) or per hectare at stated yields (India). Neither is a per-tonne figure this programme can be compared with.'
+
 /**
  * Crops deliberately left without a removal figure, and why. This list is published, because on a
  * site that refuses to invent agronomy a visible gap is worth more than a plausible number.
@@ -132,25 +135,25 @@ export const REMOVAL: RemovalRow[] = [
 export const REMOVAL_GAPS: { crop: string; why: string }[] = [
   {
     crop: 'cotton',
-    why: 'IPNI publishes cotton removal PER TONNE OF LINT, 64 kg N, 28 kg P₂O₅, 38 kg K₂O. A Pakistani grower weighs phutti, seed cotton, and lint is roughly a third of it, so applying that figure to a seed-cotton yield would overstate what the crop removes about threefold. No per-tonne-of-seed-cotton removal coefficient was found in any source. Rather than derive one, the figure is left out.',
+    why: 'IPNI gives cotton removal per tonne of lint: 64 kg N, 28 kg P₂O₅, 38 kg K₂O. A Pakistani grower weighs phutti (seed cotton), and lint is about 1/3 of it, so that figure would overstate what the crop removes about 3 times. No removal figure per tonne of seed cotton was found in any source.',
   },
-  { crop: 'chickpea', why: 'IPNI gives chickpea total UPTAKE from India (46 N, 8.4 P₂O₅, 50 K₂O per tonne) but no removal row. Uptake is not removal and the two are not interchangeable, so nothing is shown.' },
-  { crop: 'onion', why: 'No credible removal coefficient found. The one source giving onion also gave the identical figures for tomato, chilli and potato, which is not real data.' },
-  { crop: 'garlic', why: 'No credible removal coefficient found in any source.' },
-  { crop: 'chili', why: 'The only per-tonne figures found are for greenhouse sweet pepper at about 600 to 760 maunds an acre, which is a different crop at a different yield. Not transferable.' },
-  { crop: 'turmeric', why: 'No removal coefficient found.' },
-  { crop: 'watermelon', why: 'No removal coefficient found.' },
-  { crop: 'sesame', why: 'No removal coefficient found.' },
-  { crop: 'soybean', why: 'No removal coefficient found on a basis matching this programme.' },
-  { crop: 'lentil', why: 'No removal coefficient found.' },
-  { crop: 'mungbean-mash', why: 'No removal coefficient found.' },
-  { crop: 'banana-year1', why: 'Removal figures exist for banana but on a whole-bunch basis from Israeli intensive culture and Indian per-hectare data at stated yields. Neither is a per-tonne removal coefficient this programme can be read against.' },
-  { crop: 'banana-year2', why: 'As banana year 1.' },
-  { crop: 'citrus', why: 'Per-tonne removal figures exist for orange, tangerine, lemon and grapefruit from one commercial source (Israeli). They are not from an independent compilation and are not used.' },
-  { crop: 'mango', why: 'A peer-reviewed Mexican study gives per-tonne removal for 3 cultivars, but the mango programme is published per tree, not per acre, so there is no per-acre supply figure to set it against.' },
-  { crop: 'date-palm', why: 'No removal coefficient found. The programme is also age-banded, so a season balance would need the orchard\'s age and tree count.' },
-  { crop: 'guava', why: 'No removal coefficient found.' },
-  { crop: 'strawberry', why: 'No removal coefficient found.' },
+  { crop: 'chickpea', why: 'IPNI gives only the total uptake of chickpea, from India (46 N, 8.4 P₂O₅, 50 K₂O per tonne), not what leaves the field at harvest. Uptake and removal are different measures.' },
+  { crop: 'onion', why: 'No reliable removal figure was found. The 1 source that gave onion gave the same figures for tomato, chili and potato.' },
+  { crop: 'garlic', why: 'No reliable removal figure was found in any source.' },
+  { crop: 'chili', why: 'The only per-tonne figures found are for greenhouse sweet pepper at about 600 to 760 maunds an acre, a different crop at a different yield.' },
+  { crop: 'turmeric', why: 'No published removal figure was found.' },
+  { crop: 'watermelon', why: 'No published removal figure was found.' },
+  { crop: 'sesame', why: 'No published removal figure was found.' },
+  { crop: 'soybean', why: 'No published removal figure was found that matches this programme.' },
+  { crop: 'lentil', why: 'No published removal figure was found.' },
+  { crop: 'mungbean-mash', why: 'No published removal figure was found.' },
+  { crop: 'banana-year1', why: BANANA_GAP },
+  { crop: 'banana-year2', why: BANANA_GAP },
+  { crop: 'citrus', why: 'Per-tonne removal figures for orange, tangerine, lemon and grapefruit come from 1 commercial source (Israeli), not from an independent compilation.' },
+  { crop: 'mango', why: 'A peer-reviewed Mexican study gives per-tonne removal for 3 cultivars, but the mango programme is per tree, not per acre, so the 2 cannot be set against each other.' },
+  { crop: 'date-palm', why: 'No published removal figure was found. The programme is also set by orchard age, so a season balance would need the orchard’s age and tree count.' },
+  { crop: 'guava', why: 'No published removal figure was found.' },
+  { crop: 'strawberry', why: 'No published removal figure was found.' },
 ]
 
 export function removalFor(crop: string): RemovalRow | undefined {

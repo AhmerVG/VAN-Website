@@ -53,7 +53,7 @@ export default function Soil({ rel, district, from = null, tehsil = null }: { re
           <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-6 items-start">
           <div className="panel p-4 lg:p-5">
             <SoilMap initial="p" analyte={mapAnalyte} onAnalyte={k => setParam(k as SoilColKey)} focus={sel} onPick={k => setSel(k)} maxHeight={640} urduLabels={!!from && from.startsWith('mitti') && from !== 'mitti-en'} />
-            {!mapAnalyte && <p className="cap mt-2" style={{ color: 'var(--rust)' }}>Iron, copper and manganese are determined in every district workbook but are not in the 0.05° grid file, so they have a row in the matrix below and no layer on this map.</p>}
+            {!mapAnalyte && <p className="cap mt-2" style={{ color: 'var(--rust)' }}>Iron, copper and manganese are tested in every district but have no map layer. Their readings are in the matrix below.</p>}
           </div>
           <div className="grid gap-4 lg:sticky lg:top-24">
             {/* 10 Sep 2026: the heading here was "Alkalinity is the baseline. Carbon is the absence."
@@ -77,7 +77,8 @@ export default function Soil({ rel, district, from = null, tehsil = null }: { re
         <p className="src"><b>Source ·</b> {SOIL_SOURCE.short}. Deficiency shares are of samples below Punjab’s working thresholds, not a diagnosis of any field.</p>
         {/* O-20: the lenses. Named by what the reader wants to see, never by who he is. */}
         <div className="mt-8"><SoilLenses value={lens} onChange={setLens} /></div>
-        <p className="small muted mt-6">The map: 8 readings, one ground, in 2 groups: the 4 a partner formulates against, and the 4 that describe what those 4 land in. The readings above and the matrix below both drive it.</p>
+        {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */}
+        <p className="small muted mt-6">The map shows 8 readings in 2 groups: 4 nutrients a partner formulates against, and 4 that describe the soil they land in. Pick a reading above or in the matrix below to change the map.</p>
       </section>
 
       <section className="sec" style={{ background: 'var(--sand-2)' }}><div className="wrap" id="soil-districts">
@@ -90,13 +91,13 @@ export default function Soil({ rel, district, from = null, tehsil = null }: { re
       </div></section>
 
       <section className="wrap sec" id="soil-relations">
-        <SectionHead eyebrow="Relations" title={SOIL_COPY.relH2} lead="Pick what to group the samples by and what to read across the groups. Where the survey analysis recorded a verdict, it is shown as written. Including the one that does not hold." tone="rust" right={<span className="cap">▸ change X and Y · the chart redraws</span>} />
+        <SectionHead eyebrow="Relations" title={SOIL_COPY.relH2} lead="Pick what to group the samples by and what to read across the groups." tone="rust" right={<span className="cap">▸ change X and Y</span>} />
         <RelationExplorer initialRel={rel} />
       </section>
 
       {/* D-246: where the 2016-18 soil is heading. From Soil Poverty Series No. 1; model projections, not measurements. */}
       <section className="wrap sec" id="soil-outlook">
-        <SectionHead eyebrow="Outlook" title="Where Punjab’s soil potash is heading." lead="A projection from the 2016-18 soil tests, on VAN’s own soil scale. Move the year to see the best, average and worst case." tone="rust" right={<a className="cap" href="#/knowledge/soil-poverty-punjab-potash">Read the report ▸</a>} />
+        <SectionHead eyebrow="Outlook" title="Where Punjab’s soil potash is heading." lead="A projection from the 2016–2018 soil tests, on VAN’s own soil scale. Move the year to see the best, average and worst case." tone="rust" right={<a className="cap" href="#/knowledge/soil-poverty-punjab-potash">Read the report ▸</a>} />
         <Lens label="Punjab soil potash outlook" specs={[{ id: 'outlook' }]} />
       </section>
 
@@ -105,7 +106,7 @@ export default function Soil({ rel, district, from = null, tehsil = null }: { re
           <div>
             <span className="eyebrow navy">The analyte list</span>
             <h2>13 determinations, and no test for sulfur.</h2>
-            <p className="lead mt-4">Every district workbook carries the same 13 columns, and sulfur is not one of them. The nutrient VAN’s programmes place twice in wheat alone was never on the testing schedule.</p>
+            <p className="lead mt-4">The Punjab survey records the same 13 readings in every district, and sulfur is not one of them. The nutrient VAN’s programmes place twice in wheat alone was never on the testing schedule.</p>
             <div className="flex flex-wrap gap-2 mt-5"><a className="btn btn-navy btn-sm" href="#/products/green-sulfur">Green Sulfur →</a><a className="btn btn-ghost btn-sm" href="#/products/vital-urea">Vital Urea · S 13% →</a><a className="btn btn-ghost btn-sm" href="#/crops/wheat">The wheat programme →</a></div>
           </div>
           <AnalyteList />

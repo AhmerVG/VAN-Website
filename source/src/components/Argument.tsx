@@ -42,6 +42,7 @@ export function ActIndex() {
 }
 
 /** Numbered kicker — A's, used for the argument only (it encodes a real sequence there). */
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function ActHead({ n, kicker, title, lead, tone = 'navy', right }: { n: string; kicker: string; title: ReactNode; lead?: ReactNode; tone?: 'green' | 'soil' | 'gold' | 'navy' | 'rust'; right?: ReactNode }) {
   return (
     <div className="flex flex-col lg:flex-row lg:items-end gap-4 lg:gap-10 mb-7 lg:mb-9">
@@ -78,7 +79,7 @@ export function NationalStrip() {
   const figures: { n: string; unit?: string; cap: string; tone: string }[] = [
     // D-143: was n String(kgha) with unit 'kg/ha' (156) and 'a hectare'. usePerHa now holds kg per acre. Revert: with usePerHa.
     { n: String(Math.round(kgha)), unit: 'kg/acre', tone: 'var(--navy)', cap: `Nutrient Pakistan puts on an acre of cropland in a year. The world average is ${Math.round(world)}. FAO publishes these as 156 and 117 kg a hectare.` },
-    { n: '83', unit: ': 1', tone: 'var(--rust)', cap: 'Nitrogen against potash, by tonne. Crops are not fed on one nutrient.' },
+    { n: '83', unit: ':1', tone: 'var(--rust)', cap: 'Nitrogen against potash, by tonne. Crops are not fed on 1 nutrient.' },
     { n: wheat?.perKg ?? '', tone: 'var(--rust)', cap: 'What a kilogram of nutrient returns in wheat now, against the year 2000. Derived.' },
     { n: `≈${NATIONAL.nitrogen.pk}%`, tone: 'var(--soil)', cap: `The share of that nitrogen a crop actually takes up. In the United States it is about ${NATIONAL.nitrogen.us}%.` },
   ]
@@ -102,7 +103,7 @@ export function NationalStrip() {
             page and /soil carry them); the sources paragraph went with the charts it belongs to.
             The block is the 4 figures, the knowledge link and 1 line of sources. Revert: the v61 zip. */}
         <p className="src ns-src">
-          4 figures, 4 published sources (Our World in Data / FAO, FAOSTAT, the Pakistan Economic Survey, Lassaletta et&nbsp;al. 2014), each charted and cited on the knowledge page. Derived figures are marked derived. The ground under them, {SOIL_HEADLINE.samples} Punjab samples across {SOIL_HEADLINE.districts} districts, is on <a href="#/soil">the soil page</a>.
+          Sources: Our World in Data / FAO, FAOSTAT, the Pakistan Economic Survey, Lassaletta et&nbsp;al. 2014. The soil data, {SOIL_HEADLINE.samples} Punjab samples across {SOIL_HEADLINE.districts} districts, is on <a href="#/soil">the soil page</a>.
         </p>
       </div>
     </section>
@@ -197,12 +198,11 @@ export function LossStrip() {
   return (
     <section className="sec" id="builds" style={{ background: 'var(--sand-2)' }}>
       <div className="wrap">
-        <ActHead n="02" kicker="What VAN builds against it" title={HOME_COPY.lossesH2} lead={HOME_COPY.lossesLead} tone="soil" right={<a className="btn btn-ghost" href="#/soil#soil-built">All 7, against the soil data →</a>} />
+        <ActHead n="02" kicker="What VAN builds against it" title={HOME_COPY.lossesH2} lead={HOME_COPY.lossesLead} tone="soil" right={<a className="btn btn-ghost" href="#/soil#soil-built">All 7 conditions, against the soil data →</a>} />
         <div ref={ref} className={`panel overflow-hidden ${inView ? 'on' : ''} ${run ? '' : 'paused'}`}>
           <div className="flex flex-wrap items-center gap-3 px-4 pt-3 pb-2">
             <button className={`btn btn-sm ${run ? 'btn-navy' : 'btn-gold'}`} onClick={() => setPlaying(p => !p)} aria-pressed={playing}>{playing ? '❚❚ Pause' : '▶ Play'}</button>
-            <span className="cap" style={{ color: 'var(--gold-text)' }}>▸ Tap a loss to hold it · one cross-section, 3 losses, left to right</span>
-            <span className="cap ml-auto">line drawing · {run ? 'animating' : 'paused'}</span>
+            <span className="cap" style={{ color: 'var(--gold-text)' }}>▸ Tap a loss to hold it · 1 cross-section, 3 losses, left to right</span>
           </div>
           <div className="strip-scroll"><StripArt active={active} /></div>
           <div className="grid md:grid-cols-3 gap-3 p-4">
@@ -279,7 +279,7 @@ export function MethodJourney() {
             <span className="cap ml-auto">Station {active + 1} of {NODES.length}</span>
           </div>
           <div className="journey" ref={fit.ref}>
-            <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={narrow ? { minWidth: 0 } : undefined} role="group" aria-label="The method: six stations from the research farm to the certificate">
+            <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={narrow ? { minWidth: 0 } : undefined} role="group" aria-label="The method: 6 stations from the research farm to the certificate">
               <line x1={sx(0)} x2={sx(NODES.length - 1)} y1={ly} y2={ly} stroke="var(--line-2)" strokeWidth="3" />
               <line x1={sx(0)} x2={sx(active)} y1={ly} y2={ly} stroke="var(--green)" strokeWidth="3" style={{ transition: rm ? 'none' : 'x2 1.3s cubic-bezier(.4,.05,.2,1)' }} />
               {NODES.map((n, i) => (

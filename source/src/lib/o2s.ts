@@ -1,3 +1,4 @@
+// D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction
 /**
  * THE ONE PLACE THE WEBSITE TALKS TO O2S.
  *
@@ -126,7 +127,7 @@ export const SAMPLE_STAGE_LABEL: Record<SampleStage, string> = {
   reception: 'Received at Sample Reception',
   coded: 'A code has been issued',
   split: 'Split 3 ways',
-  analysts: 'With two analysts',
+  analysts: 'With 2 analysts',
   compared: 'Compared, awaiting signature',
   released: 'Reported and released to you',
 }

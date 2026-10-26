@@ -33,6 +33,7 @@ function Hist({ title, bins, counts, marks, unit, colour, id }: { title: string;
 }
 
 /** The distribution panel for a district — or the province when nothing is picked. */
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function Distribution({ selected }: { selected: string | null }) {
   const d = districtByKey(selected)
   const s = d ? d.summary : SOIL.province
@@ -65,7 +66,7 @@ export function Distribution({ selected }: { selected: string | null }) {
               </div>
             ))}
           </div>
-          {s.zn == null && <p className="cap mt-2" style={{ color: 'var(--rust-text)' }}>Zinc: not determined. The workbook returns no valid zinc data for this district.</p>}
+          {s.zn == null && <p className="cap mt-2" style={{ color: 'var(--rust-text)' }}>Zinc: not determined. The survey has no valid zinc data for this district.</p>}
         </div>
         <div>
           <div className="font-bold" style={{ fontSize: 14 }}>Texture, as recorded</div>

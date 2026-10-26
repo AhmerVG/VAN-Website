@@ -75,12 +75,13 @@ export function isFieldCrop(slug: string): boolean {
    the numbers are gone. Restoring them means restoring the three spans in this file AND the marker
    below it, which is why the marker is kept here rather than deleted. */
 
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function LossLadder({ slug, compact = false }: { slug?: string; compact?: boolean }) {
   const field = slug ? isFieldCrop(slug) : true
   return (
     <div className="panel p-5 lg:p-6" id="what-reaches">
       <span className="eyebrow rust">What actually reaches your crop</span>
-      <h3 className="mt-1 max-w-[30ch]">You pay for the whole bag. About a quarter of the nitrogen in it feeds the crop.</h3>
+      <h3 className="mt-1 max-w-[30ch]">You pay for the whole bag. About 1/4 of the nitrogen in it feeds the crop.</h3>
 
       <p className="lead mt-3 max-w-[140ch]">
         Across Pakistan's cropland, roughly <b>1 kg of applied nitrogen in 4</b> is taken up by the
@@ -110,8 +111,7 @@ export function LossLadder({ slug, compact = false }: { slug?: string; compact?:
         </div>
       </div>
       <p className="small muted mt-2 max-w-[140ch]">
-        <b>We are not going to tell you how the quarter splits between those two.</b> Nobody has measured that
-        for Pakistan, VAN included, and a number invented for the sake of a tidy page is worse than no number.
+        Nobody has yet measured how this loss splits between soil and practice in Pakistan.
       </p>
 
       <h4 className="mt-6">What you can do, in the order it costs you</h4>
@@ -120,7 +120,7 @@ export function LossLadder({ slug, compact = false }: { slug?: string; compact?:
           <span className="num shrink-0 w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'var(--gold)', color: 'var(--navy)' }}>1</span>
           <span>
             <b style={{ color: 'var(--navy)' }}>Change the form.</b>
-            <span className="small block">A coated urea releases over days instead of all at once on a hot surface. This is the rung that costs money, and it is deliberately first only because it is the largest.</span>
+            <span className="small block">A coated urea releases over days instead of all at once on a hot surface. This step costs money, and it comes first because it does the most.</span>
           </span>
         </li>
         {field && (
@@ -128,7 +128,7 @@ export function LossLadder({ slug, compact = false }: { slug?: string; compact?:
             <span className="num shrink-0 w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'var(--gold)', color: 'var(--navy)' }}>2</span>
             <span>
               <b style={{ color: 'var(--navy)' }}>If you cannot change the product, change the method.</b>
-              <span className="small block">Placed in the band, drilled at sowing, or side-dressed and watered in, the same bag puts <b>more of its nitrogen into the crop</b> than it does broadcast on a dry alkaline surface. The bag and the price are the same. Only the placement changes. VAN publishes no figure for how much more, because it has not measured one in a trial it can name.</span>
+              <span className="small block">Placed in the band, drilled at sowing, or side-dressed and watered in, the same bag puts <b>more of its nitrogen into the crop</b> than it does broadcast on a dry alkaline surface. The bag and the price are the same. Only the placement changes.</span>
               <span className="small block mt-1">The same holds for phosphate, DAP included: <b>the closer it goes to the root, the less of it the soil locks up</b> before the root arrives.</span>
               <a className="cap" href="#/crops/wheat#methods">The 5 methods, and what each one does →</a>
             </span>
@@ -138,14 +138,14 @@ export function LossLadder({ slug, compact = false }: { slug?: string; compact?:
           <span className="num shrink-0 w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'var(--gold)', color: 'var(--navy)' }}>{field ? 3 : 2}</span>
           <span>
             <b style={{ color: 'var(--navy)' }}>If you irrigate through the line, level the field first.</b>
-            <span className="small block">On unlevelled ground the water, and everything dissolved in it, reaches the low end of the field first and the high end last or not at all. Fertigation spreads the nutrient more evenly once the ground is level, and the levelling is doing part of that work, not the fertigation alone. No figure is put on it here, because VAN has not measured one in a trial it can name.</span>
+            <span className="small block">On unlevelled ground the water, and everything dissolved in it, reaches the low end of the field first and the high end last or not at all. Fertigation spreads the nutrient more evenly once the ground is level, and the levelling is doing part of that work, not the fertigation alone.</span>
           </span>
         </li>
         <li className="flex gap-3">
           <span className="num shrink-0 w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'var(--gold)', color: 'var(--navy)' }}>{field ? 4 : 3}</span>
           <span>
             <b style={{ color: 'var(--navy)' }}>Change the moment. Split it, and follow the water.</b>
-            <span className="small block">Nitrogen given in one early dose sits on the field waiting to be lost. Split against the crop's own demand and follow the irrigation with it.</span>
+            <span className="small block">Nitrogen given in 1 early dose sits on the field waiting to be lost. Split against the crop's own demand and follow the irrigation with it.</span>
           </span>
         </li>
         {/* 10 Sep 2026. This rung read "being written" for two days and was the last placeholder on
@@ -162,8 +162,8 @@ export function LossLadder({ slug, compact = false }: { slug?: string; compact?:
             <b style={{ color: 'var(--navy)' }}>Build the tank mix properly.</b>
             <span className="small block">A correct mix for foliar and fertigation drives uptake in its own right. 4 rules carry most of it.</span>
             <span className="small block mt-2">
-              <b>Fill the tank half full first, and keep the agitator running.</b> Products go in one at a time, each
-              one dispersed before the next arrives. Adding to an empty tank, or all at once, is how a mix curdles.
+              <b>Fill the tank half full first, and keep the agitator running.</b> Products go in 1 at a time, each
+              dispersed before the next arrives. Adding to an empty tank, or all at once, is how a mix curdles.
             </span>
             <span className="small block mt-1">
               <b>Add in order of how hard each one is to disperse:</b> wettable powders, then water-dispersible
@@ -190,8 +190,8 @@ export function LossLadder({ slug, compact = false }: { slug?: string; compact?:
 
       {!compact && (
         <p className="small mt-5 max-w-[140ch]">
-          <b>3 of those rungs cost nothing.</b> A farmer who buys not one extra bag and only moves where and
-          when he puts the one he has is already ahead. That is the point of publishing this.
+          <b>3 of these steps cost nothing.</b> A farmer who buys no extra bag and only changes where and
+          when he puts the one he has is already ahead.
         </p>
       )}
     </div>

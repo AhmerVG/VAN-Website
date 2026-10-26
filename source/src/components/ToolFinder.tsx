@@ -53,6 +53,7 @@ function Tile({ t }: { t: Tool }) {
   )
 }
 
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function ToolFinder() {
   const [q, setQ] = useState('')
   const [topic, setTopic] = useState<Topic | null>(null)
@@ -85,7 +86,7 @@ export function ToolFinder() {
         <div className="tf-switches">
           <label className="tf-switch">
             <input type="checkbox" checked={building} onChange={e => setBuilding(e.target.checked)} />
-            <span>Include the {buildingCount} we have not built yet</span>
+            <span>Include the {buildingCount} still coming</span>
           </label>
           {dirty && <button className="tf-clear" onClick={() => { setQ(''); setTopic(null); setBuilding(false) }}>Clear</button>}
         </div>
@@ -93,7 +94,7 @@ export function ToolFinder() {
 
       <p className="tf-count" role="status">
         {shown.length === 0
-          ? 'Nothing matches that. Clear the filters, or tell us what you were looking for, that is how the build order gets decided.'
+          ? 'Nothing matches that. Clear the filters, or tell us what you were looking for.'
           : <>Showing <b>{shown.length}</b> of {TOOLS.length} tools{topic ? <> in <b>{topic}</b></> : null}{q ? <> matching “{q}”</> : null}.</>}
       </p>
 

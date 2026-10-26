@@ -72,7 +72,8 @@ export default function Crops() {
     <div className="wrap py-8 lg:py-12">
       <span className="eyebrow">Crop plans</span>
       <h1>{CROPS.length} programmes. Per acre, stage by stage. Free.</h1>
-      <p className="lead mt-4">Sowing windows, nutrient needs, and stage-by-stage programmes for {CROPS.length} crops. Every one transcribed from VAN’s published plan, with the PDF a tap away. On sugarcane (February planting), the land preparation row follows VAN’s updated calculator and the published PDF is being reissued.</p>
+      {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */}
+      <p className="lead mt-4">Sowing windows, nutrient needs, and stage-by-stage programmes for {CROPS.length} crops. Each one is from VAN’s published plan, with the PDF a tap away.</p>
 
       <div className="flex flex-wrap items-center gap-2 mt-7">
         <div className="flex gap-1 p-1 rounded" style={{ background: 'var(--sand-2)' }} role="tablist" aria-label="View">
@@ -104,7 +105,7 @@ export default function Crops() {
         <div className="mt-5">
           <p className="cap mb-2" style={{ color: 'var(--gold-text)' }}>▸ Tap a row to open the programme · a window such as Dec–Feb wraps the year</p>
           <Calendar filter={filter} />
-          <p className="src"><b>Note ·</b> Sowing windows are read from each programme’s published sowing line (for example “Mar–Apr / Aug–Sep sowing”) and drawn as bars. Programme tags are the nutrient emphasis printed on the plan. Rates, methods and pack sizes are in the PDFs and, for wheat, transcribed on <a href="#/crops/wheat">the wheat page</a>.</p>
+          <p className="src"><b>Note ·</b> Each bar is the programme’s published sowing window (for example “Mar–Apr / Aug–Sep sowing”). Programme tags are the nutrient emphasis printed on the plan. Rates, methods and pack sizes are in the PDFs and, for wheat, also on <a href="#/crops/wheat">the wheat page</a>.</p>
         </div>
       )}
 
@@ -127,7 +128,7 @@ export default function Crops() {
 
       <div className="panel-green p-6 lg:p-8 mt-12 grid lg:grid-cols-[1fr_auto] gap-5 items-center">
         <div>
-          <h3>These programmes are transcribed from VAN’s published crop nutrition plans.</h3>
+          <h3>These programmes are VAN’s published crop nutrition plans.</h3>
           <p className="muted mt-2">They are per-acre guidelines. Adjust to your own soil test and local conditions. A PDF of each plan downloads from its card. For a plan against your own field, ask on WhatsApp.</p>
         </div>
         {/* D-192: quiet link (D-60). */}

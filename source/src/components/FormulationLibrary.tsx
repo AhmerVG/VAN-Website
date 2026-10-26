@@ -70,6 +70,7 @@ const meta = (code: string) => LIB_META[code] ?? { n: [] as [Nut, string?][] }
 
 /** D-197, 27 Sep 2026: pathOnly draws the ladder and a door to the full library on the Pipeline page. */
 /** phoneShort (Your Brand only, 18 Oct): on a phone the cards come before the ladder, 6 at first. */
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function FormulationLibrary({ pathOnly = false, phoneShort = false }: { pathOnly?: boolean; phoneShort?: boolean } = {}) {
   const [stage, setStage] = useState<PathKey | null>(null)
   const [nut, setNut] = useState<Nut | null>(null)
@@ -108,7 +109,7 @@ export function FormulationLibrary({ pathOnly = false, phoneShort = false }: { p
       <div className="panel p-4 lg:p-5 fl-ladder">
         <div className="flex items-baseline justify-between gap-3 flex-wrap mb-3">
           <span className="eyebrow navy">The path, from an idea to a registered product. Where the {LIBRARY.length} sit on it today</span>
-          <span className="cap">one dot is one formulation · colour is its family · a ring means registered and available · tap a stage to filter</span>
+          <span className="cap">1 dot is 1 formulation · colour is its family · a ring means registered and available · tap a stage to filter</span>
         </div>
         {/* On a phone the five rungs side by side put the two that matter, eight validated and
             eleven available, off the right-hand edge, so a reader on a phone met a library that
@@ -129,7 +130,7 @@ export function FormulationLibrary({ pathOnly = false, phoneShort = false }: { p
                   }}>
                   <span className="lib-dots flex flex-wrap gap-1 items-end">
                     {codes.length === 0
-                      ? <span className="cap" style={{ color: 'var(--muted)' }}>nothing published at this stage</span>
+                      ? <span className="cap" style={{ color: 'var(--muted)' }}>none at this stage</span>
                       : codes.map(c => (
                         <i key={c.code} title={`${c.code}, ${FAMILIES[c.family]} · ${c.status}`}
                           style={{ width: 11, height: 11, borderRadius: 6, background: FAMILY_COL[c.family], display: 'inline-block', outline: c.status === 'Available' ? `2px solid ${STATUS_COL.Available}` : 'none', outlineOffset: 1 }} />
@@ -190,9 +191,6 @@ export function FormulationLibrary({ pathOnly = false, phoneShort = false }: { p
             })}
             {/* Said out loud rather than hidden: the filter does not cover every code, and the
                 reason is VAN's own position on form, further down this same page. */}
-            <span className="cap" style={{ color: 'var(--muted)' }}>
-              The same composition is made in more than one form, so a form chip here means the library has fixed that form for this code.
-            </span>
           </span>
         </div>
         <div className="flex items-baseline justify-between gap-3 flex-wrap">
@@ -278,7 +276,7 @@ export function FormulationLibrary({ pathOnly = false, phoneShort = false }: { p
 
       {!list.length && (
         <div className="panel p-8 text-center mt-3">
-          <p className="muted">Nothing in the library matches all three filters at once.</p>
+          <p className="muted">Nothing in the library matches all 3 filters at once.</p>
           <button className="btn btn-navy btn-sm mt-3" onClick={clear}>Clear filters</button>
         </div>
       )}

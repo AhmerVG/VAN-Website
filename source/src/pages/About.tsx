@@ -43,7 +43,8 @@ export default function About() {
           <div>
             {/* D-181, Tahir 26 Sep: "trim the hero". The heading (VAN started with a research farm in 2009...) and
                 "Trials have run on that ground every season since" repeated the story's 2009 card; both gone. */}
-            <p className="ab-lead ab-lead-lg">VAN formulates, manufactures, registers and tests what it sells on one plant site in Lahore.</p>
+            {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */}
+            <p className="ab-lead ab-lead-lg">VAN formulates, manufactures, registers and tests what it sells on 1 plant site in Lahore.</p>
             <a className="btn btn-navy btn-sm mt-7" href="#/company-profile">Company profile and PDF →</a>
           </div>
           <div>

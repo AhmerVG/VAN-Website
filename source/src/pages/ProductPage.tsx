@@ -87,13 +87,13 @@ export default function ProductPage({ slug }: { slug: string }) {
           )}
           {/* Tahir 9 Sep: the two phosphates are offered as a choice, both ways round. Neither page
               tells the reader the other is better. It states what differs and links across. */}
+          {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction. The bag-count line came off here because the difference line under it already says it. */}
           {altPair && (
             <div className="panel-soft p-4 mt-5">
               <span className="eyebrow navy">Your choice</span>
               <p className="small mt-1 max-w-[140ch]">
                 <b>{p.name}</b> and <a href={`#/products/${altPair.otherSlug}`}>{altPair.otherName}</a> are both
-                offered against the phosphorus line in every programme that names one of them. The plan's
-                number of bags is the same either way; what goes on the field is not.
+                offered against the phosphorus line in every programme that names one of them.
               </p>
               <p className="cap mt-2 max-w-[140ch]">{altPair.difference}</p>
             </div>
@@ -105,7 +105,7 @@ export default function ProductPage({ slug }: { slug: string }) {
           {p.cat === 'K' && (
             <a className="pp-loop mt-4" href="#/circular-economy">
               <span className="pp-loop-k">Where VAN’s potash comes from</span>
-              <span>About 1 in 5 tonnes of the potash VAN uses is recovered from crop residue ash, not imported. It is used as a raw material across VAN’s potash grades, and VAN does not publish which, so no bag is marked with it.</span>
+              <span>About 1 in 5 tonnes of the potash VAN uses is recovered from crop residue ash, not imported. It is used as a raw material across VAN’s potash grades.</span>
               <span className="pp-loop-a">See how →</span>
             </a>
           )}
@@ -130,7 +130,7 @@ export default function ProductPage({ slug }: { slug: string }) {
                 cannot contradict the regulatory page. Each of the three now states its real status,
                 taken verbatim from the reason the regulatory page already gives.
                 Revert: delete REGISTRATION_EXCEPTIONS and restore the single blanket sentence. */}
-            <div className="k">Registration</div><div>{REGISTRATION_EXCEPTIONS[p.slug] ?? `Registered with PSQCA and released through VAN’s own PNAC-accredited laboratory, ISO/IEC 17025:2017, ${COUNTS.lab}.`}{!REGISTRATION_EXCEPTIONS[p.slug] && p.slug === 'v-phosphate' && <span className="cap block mt-1">Held on that licence as <strong>V-Phosphate 10:44:0</strong>, the name printed on the registration. Registered as V-Ammonium Phosphate 12:44:0 until July 2026. Same product.</span>}</div>
+            <div className="k">Registration</div><div>{REGISTRATION_EXCEPTIONS[p.slug] ?? `Registered with PSQCA and released through VAN’s own PNAC-accredited laboratory, ISO/IEC 17025:2017, ${COUNTS.lab}.`}{' '}{!REGISTRATION_EXCEPTIONS[p.slug] && p.slug === 'v-phosphate' && <span className="cap block mt-1">Held on that licence as <strong>V-Phosphate 10:44:0</strong>, the name printed on the registration. Registered as V-Ammonium Phosphate 12:44:0 until July 2026. Same product.</span>}</div>
             <div className="k">Lab report</div><div>Type the batch number off the bag and open the lab report for that batch. <a href="#/verify">Verify a bag →</a></div>
           </div>
 
@@ -159,14 +159,14 @@ export default function ProductPage({ slug }: { slug: string }) {
               both are real and that the page should say so, rather than one side being corrected to
               match the other. Green Sulfur also carries the crop-driven rate range, which he
               confirmed is deliberate. Revert: delete these two lines. */}
-          {p.slug === 'green-sulfur' && <p className="small mt-4 max-w-[140ch]">Green Sulfur goes on both ways. It is broadcast at land preparation in some programmes and fertigated in others. Broadcasting gives elemental sulfur soil contact, and weeks for soil microbes to oxidise it into the sulfate a root can take up. <b>The rate is crop-driven and ranges from about 2 kg an acre on wheat and the pulses to about 10 kg on cotton, maize, potato and garlic.</b> That spread is deliberate. Your crop’s programme shows the method and the rate.</p>}
-          {p.slug === 'green-sulfur' && <p className="small mt-3 max-w-[140ch]" data-sulfur-packs><b>Two packs: 1 kg and 20 kg.</b> A programme whose dose is 5 kg or less at each application lists the 1 kg pack. A programme with a larger dose lists the 20 kg bag. The programme and the shopping list say the dose in kg.</p>}
+          {p.slug === 'green-sulfur' && <p className="small mt-4 max-w-[140ch]">Green Sulfur goes on both ways. It is broadcast at land preparation in some programmes and fertigated in others. Broadcasting gives elemental sulfur soil contact, and weeks for soil microbes to oxidise it into the sulfate a root can take up. <b>The rate is crop-driven and ranges from about 2 kg an acre on wheat and the pulses to about 10 kg on cotton, maize, potato and garlic.</b> Your crop’s programme shows the method and the rate.</p>}
+          {p.slug === 'green-sulfur' && <p className="small mt-3 max-w-[140ch]" data-sulfur-packs><b>2 packs: 1 kg and 20 kg.</b> A programme whose dose is 5 kg or less at each application lists the 1 kg pack. A programme with a larger dose lists the 20 kg bag. The programme and the shopping list say the dose in kg.</p>}
           {p.slug === 'fusion-potash' && <p className="small mt-4 max-w-[140ch]">Fusion Potash goes on both ways. It is broadcast at land preparation in some programmes and fertigated in others. Your crop’s programme shows the method.</p>}
         </div>
       </div>
 
       <section className="grid lg:grid-cols-3 gap-4 mt-12">
-        {!p.family && <div className="panel p-5"><div className="cap uppercase tracking-[.08em] font-bold">Documents</div><div className="display text-[19px] mt-1">Deck, datasheet, safety data</div><p className="small muted mt-1">What it is, what it does in the soil, where it fits in the season and what VAN will not claim for it.</p><div className="flex flex-wrap gap-2 mt-3"><a className="btn btn-ghost btn-sm" href={lmsUrl(p)} target="_blank" rel="noopener">⬇ Deck (PDF)</a>{tdsUrls(p).map(([label, href]) => <a key={href} className="btn btn-ghost btn-sm" href={href} target="_blank" rel="noopener">{label}</a>)}<a className="btn btn-ghost btn-sm" href={sdsUrl(p)} target="_blank" rel="noopener">Safety data</a></div></div>}
+        {!p.family && <div className="panel p-5"><div className="cap uppercase tracking-[.08em] font-bold">Documents</div><div className="display text-[19px] mt-1">Deck, datasheet, safety data</div><p className="small muted mt-1">What it is, what it does in the soil, where it fits in the season and its limits.</p><div className="flex flex-wrap gap-2 mt-3"><a className="btn btn-ghost btn-sm" href={lmsUrl(p)} target="_blank" rel="noopener">⬇ Deck (PDF)</a>{tdsUrls(p).map(([label, href]) => <a key={href} className="btn btn-ghost btn-sm" href={href} target="_blank" rel="noopener">{label}</a>)}<a className="btn btn-ghost btn-sm" href={sdsUrl(p)} target="_blank" rel="noopener">Safety data</a></div></div>}
         <div className="panel-green p-5"><div className="cap uppercase tracking-[.08em] font-bold" style={{ color: 'var(--green-text)' }}>For distributors</div><div className="display text-[19px] mt-1">Carry it in your territory</div><div className="mt-3"><a className="btn btn-navy btn-sm" href="#/become-a-dealer">Range and territory →</a></div></div>
         <div className="panel-gold p-5"><div className="cap uppercase tracking-[.08em] font-bold" style={{ color: '#7A5A0E' }}>For farmers</div><div className="display text-[19px] mt-1">Which crop, which stage?</div><div className="mt-3 flex flex-wrap gap-2"><a className="btn btn-navy btn-sm" href="#/crops">The {COUNTS.cropPlans} crop plans</a></div></div>
       </section>

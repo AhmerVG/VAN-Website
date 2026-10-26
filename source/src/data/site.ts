@@ -1,3 +1,4 @@
+// D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction
 // Hand-transcribed from the live site (VAN Live Site, 31 Aug 2026 — van.com.pk).
 // RULE: every number and claim below exists on the live site or in its cited sources.
 // Nothing may be added here that is not already published by VAN. No performance claims.
@@ -100,7 +101,7 @@ export const COUNTS = {
 
 // Live home — hero slides (verbatim)
 export const HOME_SLIDES = [
-  { kicker: 'What this soil does', title: 'Made for Pakistani soil.', lead: 'Most of Punjab’s farmland is alkaline and calcareous: 69.1% of 770,160 samples are above pH 8. VAN builds a product against each loss.', cta: [['Find your crop’s plan', '#/crops'], ['See the 23 products', '#/products']] },
+  { kicker: 'What this soil does', title: 'Made for Pakistani soil.', lead: 'Most of Punjab’s farmland is alkaline and calcareous: 69.1% of 770,160 samples are above pH 8. VAN builds a product against each of the 3 losses.', cta: [['Find your crop’s plan', '#/crops'], ['See the 23 products', '#/products']] },
   { kicker: 'Since 2010', title: 'Tested on our own ground.', lead: 'The farm came first; the company was built around it. Every season since, VAN’s products have been tested on that ground before they are sold for yours.', cta: [['About VAN', '#/about'], ['All 28 crop plans', '#/crops']] },
   { kicker: 'Beta testing · wheat and potato live now', title: 'Nutrition decides about 1/4 of the yield. Sowing, seed, water, weeds and pests decide the rest.', lead: 'The simulator scores sowing date, irrigation and plant stand, and shows what each one costs the crop.', cta: [['Open the simulator', '#/simulator']] },
   { kicker: 'PNAC · ISO/IEC 17025:2017', title: 'Know what’s in the bag.', lead: 'Every batch VAN makes is tested before it ships, and the lab report for the batch you bought is yours for the asking.', cta: [['Verify a bag', '#/verify'], ['VAN Lab', '#/lab']] },
@@ -110,7 +111,7 @@ export const HOME_SLIDES = [
 export const LOSSES = [
   { n: 1, nutrient: 'Nitrogen', kicker: 'Nitrogen · loss 1 of 3', title: 'Up as ammonia, down as nitrate.', text: 'Above pH 8, surface urea leaves as ammonia before the crop can use it. What dissolves moves down with the irrigation water.', product: 'Vital Urea', slug: 'vital-urea', analysis: 'Sulfur Coated Urea · N 32% min · S 13% min', colour: '#2E7D4F' },
   { n: 2, nutrient: 'Phosphate', kicker: 'Phosphate · loss 2 of 3', title: 'Calcium closes in and locks it.', text: 'Calcareous soil binds phosphate with free calcium and takes most of it back before the root arrives.', product: 'Green Phosphate', slug: 'green-phosphate', analysis: 'P₂O₅ 32% · N 6%', colour: '#1B4A6B' },
-  { n: 3, nutrient: 'Potash', kicker: 'Potash · loss 3 of 3', title: 'The root goes looking.', text: 'Pakistan applies 83 kg of nitrogen for every 1 kg of potash, so the crop draws potash from the soil’s own reserve.', product: 'Vital Potash', slug: 'vital-potash', analysis: 'N 11 · K₂O 44 · boron coated', colour: '#B97F1C' },
+  { n: 3, nutrient: 'Potash', kicker: 'Potash · loss 3 of 3', title: 'The root goes looking.', text: 'Pakistan applies 83 kg of nitrogen for every 1 kg of potash, so the crop draws potash from the soil’s own reserve.', product: 'Vital Potash', slug: 'vital-potash', analysis: 'N 11% · K₂O 44% · boron coated', colour: '#B97F1C' },
 ]
 
 export const HOME_COPY = {
@@ -122,7 +123,7 @@ export const HOME_COPY = {
   beyondLead: 'The loop that brings nutrients back instead of importing them again.',
   beyondCard: 'VAN recovers potassium from crop residue ash, instead of importing it. Silicon from the same ash is still in development.',
   makeH2: 'Tell us the problem and we will work on it with you.',
-  makeLead: 'Or bring an idea and we shape it with you. Agronomy, chemistry, regulatory and quality sit on one site, so a problem does not get handed between four companies. Most of what leaves the plant carries a partner’s brand.',
+  makeLead: 'Or bring an idea and we shape it with you. Agronomy, chemistry, regulatory and quality sit on 1 site, so a problem does not get handed between 4 companies. Most of what leaves the plant carries a partner’s brand.',
   fourServices: [
     ['Agronomy', 'What the crop needs, at which stage, 28 published programmes'],
     ['Chemistry', 'Formulation to your brief: ratio, form, solubility, particle size'],
@@ -148,12 +149,12 @@ export const ABOUT = {
   // in the order it happened, which is his standing instruction for the whole site.
   // Old h1, for revert: 'Started as a research farm. Every claim here still has to survive one.'
   h1: 'VAN started with a research farm in 2009, a year before the company.',
-  lead: 'Trials have run on that ground every season since. VAN formulates, manufactures, registers and tests what it sells on one plant site in Lahore, and nothing goes on this website that a trial, a laboratory result or a published source cannot carry.',
+  lead: 'Trials have run on that ground every season since. VAN formulates, manufactures, registers and tests what it sells on 1 plant site in Lahore.',
   stats: [
     ['2009', 'Research farm founded, a year before the company. Trials have run on that ground every season since.'],
     ['17 years', 'Of trial data behind every formulation. Read against Punjab’s own 770,160-sample soil survey.'],
     // D-175: "drop biological" (Tahir 26 Sep); the plant runs granular, coated, liquid, water-soluble and compounded lines.
-    ['About 50,000\u00A0t', 'Made a year, on one plant site. Granular, coated, liquid, water-soluble and compounded, across shifts.'],
+    ['About 50,000\u00A0t', 'Made a year, on 1 plant site. Granular, coated, liquid, water-soluble and compounded, across shifts.'],
     // Audit, 9 Sep 2026: 22 licences are held across 20 brands, because a brand can hold more than
     // one. D-257, 18 Oct 2026: 34 in all, the 22 plus 12 on products ready for partners.
     ['34 licences', 'On 20 of the 23 VAN brands (22 licences, against 8 Pakistan Standards) and on 12 products ready for partners to launch under their own name. The 22 are published product by product.'],
@@ -165,7 +166,7 @@ export const ABOUT = {
   chain: 'A formulation is tried on the research farm, made at the plant, and tested in the laboratory before it ships. Most of what VAN makes is sold under other companies’ brands, for 14 national and multinational companies.',
   originH2: 'Crop nutrition was sold by the bag, not by what the crop needs at each stage.',
   origin1: 'Before VAN existed, nutrition was sold as 1 bag of this, 3 bags of that. The same prescription for a cotton grower on light soil and a rice grower on a heavy alkaline field in the next district. VAN’s founder saw that in the fields, season after season.',
-  origin2: 'In 2007, VAN’s founder produced humic acid in Pakistan from Pakistani leonardite, the oxidised lignite humic substances are drawn from, a material until then imported and, as far as VAN knows, not made here before. What followed built the rest: more chemistries were tried, then tested on ground VAN came to own. That research farm is what the company was built on.',
+  origin2: 'In 2007, VAN’s founder produced humic acid in Pakistan from Pakistani leonardite, the oxidised lignite that humic substances are drawn from, a material until then imported and, as far as VAN knows, not made here before. What followed built the rest: more chemistries were tried, then tested on ground VAN came to own. That research farm is what the company was built on.',
   // D-177, Tahir 26 Sep 2026, his own list: "2012 largest producer of humic acid in Pakistan, within 2 years;
   // launched boron coated nitropotash 2014 [on the coated line]; 2014 started soil analysis and baseline study;
   // 2015 adopted the framework for crop-specific and soil-specific nutrition; 2017 company-operated outlets
@@ -189,14 +190,14 @@ export const ABOUT = {
   ],
   evidenceH2: 'More went on. Less came back.',
   evidenceLead: 'Between 1999-2000 and 2023-24 Pakistan raised the nutrient it applies per acre by 68%. Wheat yield rose by 31%. Every kilogram now returns less than it did at the turn of the century, which is an argument about balance and timing, not about applying more.',
-  evidenceMethod: 'Yield per kilogram of nutrient is a yield index divided by a nutrient-per-acre index, 2000 = 100. It sets an all-crop nutrient denominator against a crop-specific yield, so it assumes the split of nutrient between crops has not shifted dramatically. It is a partial factor productivity indicator, not a nutrient balance. The direction is robust; the exact magnitude is not, and we would not defend it to the decimal.',
+  evidenceMethod: 'Yield per kilogram of nutrient is a yield index divided by a nutrient-per-acre index, 2000 = 100. It sets an all-crop nutrient denominator against a crop-specific yield, so it assumes the split of nutrient between crops has not shifted dramatically. It is a partial factor productivity indicator, not a nutrient balance. Read it for direction, not the exact figure.',
   // D-170: plain heading (Tahir 25 Sep: the old one and its helper line were "too poor"). Also used on Home.
   boardH2: 'Board of directors',
   board: [
     { key: 'imtiaz-anjum-chaudhary', name: 'Imtiaz Anjum Chaudhary', role: 'Chairman', line: 'With VAN since the beginning', brief: ['Imtiaz Sahib put in the seed capital when VAN was an experimental station and an argument. Before there was a product, a plant or a customer to point at.', '17 years later he is still here, and the company has stayed on that path.', 'A retired civil servant, professionally trained in tax and finance, with a career spent in tax administration, finance and administration.'] },
     { key: 'ahmed-umair', name: 'Ahmed Umair', role: 'Founder & Chief Executive Officer', line: 'Made VAN’s first product, humic acid, in 2007', brief: ['Founder and Chief Executive Officer of Vital Agri Nutrients, a co-founder of Vital Green, and the person who has led the company since it was incorporated.', 'He chose a hard part of the economy to build in, fragmented, unevenly regulated, chronically short of working capital, and built inside those constraints rather than waiting for them to ease.', 'Serves as Prime Minister’s Coordinator on Agriculture and as Chairman of the National Agri-trade and Food Safety Authority (NAFSA); also an Independent Director at the National Credit Guarantee Company Limited, a Director of PAMRA, and Adjunct Faculty at the Lahore University of Management Sciences.', 'Currently on sabbatical from the company while serving in federal government.'] },
     { key: 'faisal-dawood', name: 'Faisal Dawood', role: 'Director', line: 'Vice Chairman, Descon', brief: ['Vice Chairman of Descon, where he leads the Power and Chemicals businesses and manages the group’s diversification portfolio.', 'Sits on the boards of several Descon companies and of Descon Technical Institute, and on the Board of the National Management Foundation at LUMS.', 'BSc in Materials Science and Engineering, Cornell University; MBA, Columbia University.'] },
-    { key: 'ahmed-shoaib', name: 'Dr Ahmed Shoaib', role: 'Director', line: 'Product vision & R&D philosophy', brief: ['A medical doctor, with fifteen years working in the United Kingdom.', 'His part here has been larger than a board seat: he shapes the product vision and the R&D philosophy, that soil, food and human health sit on one chain, which places crop nutrition further upstream than the fertilizer industry usually places itself.', 'That reading is why fortifying the crop through its nutrition, not only raising the tonnage it yields, shapes what VAN develops.'] },
+    { key: 'ahmed-shoaib', name: 'Dr Ahmed Shoaib', role: 'Director', line: 'Product vision & R&D philosophy', brief: ['A medical doctor, with 15 years working in the United Kingdom.', 'His part here has been larger than a board seat: he shapes the product vision and the R&D philosophy, that soil, food and human health sit on the same chain, which places crop nutrition further upstream than the fertilizer industry usually places itself.', 'That reading is why fortifying the crop through its nutrition, not only raising the tonnage it yields, shapes what VAN develops.'] },
     { key: 'ahmed-uzair', name: 'Barrister Ahmed Uzair', role: 'Director', line: 'Legal, compliance & contracting', brief: ['The legal, compliance and contracting side of VAN is his work. The agreements, boundaries and protections that let VAN manufacture under somebody else’s brand without either side being exposed, across counterparties from national buyers to multinationals.', 'Barrister of Lincoln’s Inn and a Partner at AUC | Law since 2012, where he heads the firm’s corporate practice in technology and investment law.', 'Appointed by the Government of Pakistan to advise development finance institutions on a private equity and venture capital fund; has advised the SECP on Companies Act 2017 reform, and the Government of Punjab on the Lahore Smart City project.'] },
   ],
   whoToTalk: [
@@ -246,7 +247,7 @@ export const NATIONAL = {
       { crop: 'Cotton (lint)', y1: 6.5, y2: 7.3, change: '+12%', perKg: '−33%' },
       { crop: 'All cereals', y1: 24.3, y2: 36.8, change: '+51%', perKg: '−10%' },
     ],
-    method: 'The per-kilogram column is derived: a yield index divided by a nutrient-per-acre index, 2000 = 100. It is a partial factor productivity indicator, not a nutrient balance. The direction holds. The exact magnitude does not, and we would not defend it to the decimal.',
+    method: 'The per-kilogram column is derived: a yield index divided by a nutrient-per-acre index, 2000 = 100. It is a partial factor productivity indicator, not a nutrient balance. Read it for direction, not the exact figure.',
     source: 'Nutrient per hectare: World Bank AG.CON.FERT.ZS (FAO), 95.4 and 160.3 kg/ha. Yields: Pakistan Economic Survey Table 2.5 (2009-10 and 2024-25 editions); all-cereal yield World Bank AG.YLD.CREL.KG. Yields as published in kg/ha: wheat 2,491 and 3,264, rice 2,050 and 2,714, cotton lint 641 and 717, all cereals 2,404 and 3,634. Converted at 1 hectare = 2.471 acres and 40 kg = 1 maund. Ratio derived.',
   },
   nitrogen: { pk: 25, us: 72, text: 'of the nitrogen applied to Pakistan’s cropland is taken up by the crop. The United States converts about 72% of its nitrogen. The rest of ours leaves as ammonia gas, drains past the root zone as nitrate, or is lost to denitrification. The farmer pays for that nitrogen at the depot and the crop never gets it.', source: 'Lassaletta, Billen, Grizzetti, Anglade & Garnier (2014), Environmental Research Letters 9:105011. Corroborated by Shahzad et al. (2019), Nature Sustainability.' },
@@ -261,10 +262,10 @@ export const LAB = {
   why1: 'VAN Lab is built to return the same answer twice on the same sample. Written methods, calibrated instruments, reference standards run alongside every batch, 2 analysts on every sample, a manager who reviews the work and signs his name to it.',
   why2: 'All of that exists so that the number does not depend on who ran the test, on which day they ran it, or on what anybody hoped it would say.',
   stats: [['21', 'fertilizer tests, priced publicly, 8 of them accredited'], ['3 to 5', 'working days from confirmed booking to your report'], ['2', 'independent analysts on every single sample'], ['17025', 'PNAC ISO/IEC 17025:2017, LAB 336']],
-  scopeNote: '8 of the 21 tests VAN Lab performs are covered by PNAC ISO/IEC 17025:2017 accreditation, LAB 336. The other 13 are tests the laboratory runs which sit outside that granted scope. They are listed separately throughout this site so you always know which is which.',
-  report: [['The measured value', 'For every parameter you asked for, as found in the sample you sent.'], ['The method used to measure it', 'Named on the report. A measured value only means something alongside the method that produced it. Particularly for humic acid, where the extraction protocol defines what gets counted.'], ['A signature', 'Reviewed by the Assistant QC Manager and signed by the QC Manager, against a sample code.']],
+  scopeNote: '8 of the 21 tests VAN Lab performs are covered by PNAC ISO/IEC 17025:2017 accreditation, LAB 336. The other 13 are tests the laboratory runs outside that scope.',
+  report: [['The measured value', 'For every parameter you asked for, as found in the sample you sent.'], ['The method used to measure it', 'Named on the report. A measured value only means something alongside the method that produced it, particularly for humic acid, where the extraction protocol defines what gets counted.'], ['A signature', 'Reviewed by the Assistant QC Manager and signed by the QC Manager, against a sample code.']],
   who: [['Farmers', 'Counterfeit and quality verification on fertilizer you have already purchased.'], ['Distributors', 'Incoming-goods verification on anything you stock, not only VAN product.'], ['Importers', 'Consignment testing with a published turnaround and an accredited certificate.'], ['Laboratories', 'Reference and umpire analysis, under the same blind protocol as everything else.']],
-  cost: [['PKR 500 – 4,000', 'Per test, depending on the parameter. Every price for every test is on the price list. Nothing is “on request”.'], ['3 working days', 'For most tests, counted from confirmed booking. Humic acid is 4 days, because the determination itself runs 36 hours.'], ['500 g', 'The sample we need, by weight, whether solid or liquid. Enough for two analyses and a retained portion.']],
+  cost: [['PKR 500 – 4,000', 'Per test, depending on the parameter. Every price for every test is on the price list. Nothing is “on request”.'], ['3 working days', 'For most tests, counted from confirmed booking. Humic acid is 4 days, because the determination itself runs 36 hours.'], ['500 g', 'The sample we need, by weight, whether solid or liquid. Enough for 2 analyses and a retained portion.']],
   pricesEffective: 'Prices effective 15 August 2026, in PKR.',
 }
 
@@ -276,14 +277,14 @@ export const LAB = {
  */
 export const VERIFY = {
   h1: 'Every VAN batch is tested before it leaves the plant. The lab report is yours to see.',
-  lead: 'Type the batch number printed on the bag and the page gives you the approved laboratory report for that batch, as a PDF. The check reads the plant\u2019s own records. If they do not answer, the page says so on screen and gives you WhatsApp and email to reach VAN. No charge, no sample to post, no sign-in.',
+  lead: 'Type the batch number printed on the bag and the page gives you the approved laboratory report for that batch, as a PDF. The check reads the plant\u2019s own records. If the records cannot be reached, you get WhatsApp and email to reach VAN instead. No charge, no sample to post, no sign-in.',
   steps: [
     'Find the batch number printed on the bag.',
     'Type it above. The number is checked against the plant\u2019s own records.',
     'Open the lab report: physical status, moisture, particle size, pH and the chemical assays, each with its specification, its result and the method used. Every copy carries its batch number and the date it was downloaded.',
     'If the live check does not answer, the same number sent on WhatsApp +92 300 5003041 or to info@van.com.pk gets the same report back the same day.',
   ],
-  blind: 'If you would rather not take our own lab report for it, send 500 g of the product to Sample Reception as a normal priced test. It goes to the same desk, gets the same code, and is run by 2 analysts who will not know it is ours.',
+  blind: 'If you want an independent check, send 500 g of the product to Sample Reception as a normal priced test. It goes to the same desk, gets the same code, and is run by 2 analysts who will not know it is ours.',
   note: 'The laboratory is PNAC-accredited to ISO/IEC 17025:2017, Accreditation No. LAB 336. It is a quality-control function. It rejects any batch that fails its specification.',
 }
 
@@ -327,8 +328,8 @@ export const PARTNER = {
    */
   proof: { v: '100+', l: 'partner brands registered with VAN named as the manufacturer' },
 
-  routesH2: 'Two routes in.',
-  routesLead: 'Which one you take depends on one thing: whether the product you need already exists here.',
+  routesH2: '2 routes in.',
+  routesLead: 'Which route you take depends on 1 thing: whether the product you need already exists here.',
   /**
    * Stages carry a SHORT label for the rail and the full line for the panel. The rail has to read
    * left to right at a glance, so "Product deck and technical data" cannot be the label on a node.
@@ -385,11 +386,11 @@ export const PARTNER = {
    * 7 to 12 months for a brief, 2 to 17 months across 14 partners. Nothing new is claimed.
    */
   modelsH2: '3 ways to work with VAN for the long term.',
-  modelsLead: 'Every relationship on this page runs one of these 3 ways, and a partner often runs 2 of them at once. Commercial terms are agreed per project and are not published.',
+  modelsLead: 'Every partnership runs 1 of these 3 ways, and a partner often runs 2 of them at once. Commercial terms are agreed per project and are not published.',
   modelsHead: ['Model', 'What VAN provides', 'What you provide', 'Who holds the registration', 'Time to first bag'],
   models: [
     ['White labelling', 'A formulation VAN has already developed, trialled and registered, made, tested and packed under your brand. Label and claim review before print. Repeat lots to a frozen specification.', 'Your brand, your artwork, your market and the selling.', 'VAN files it under your brand, with VAN named as the manufacturer.', 'About 3 months to the first commercial batch, registration included.'],
-    ['Joint product development', 'The 6 stage path from your brief: feasibility, bench formulation in the VAN lab, pilot on the commercial line, trials on VAN\u2019s research farms and on your plots where wanted, the dossier and the registration.', 'The brief: market, crop, target price and the constraint you are trying to beat. Your own demonstration plots where you want them.', 'VAN files it under your brand, with VAN named as the manufacturer.', 'Most briefs take 7 to 12 months. Across all 14 partners the range has been 2 to 17 months.'],
+    ['Joint product development', 'The 6-stage path from your brief: feasibility, bench formulation in the VAN lab, pilot on the commercial line, trials on VAN\u2019s research farms and on your plots where wanted, the dossier and the registration.', 'The brief: market, crop, target price and the constraint you are trying to beat. Your own demonstration plots where you want them.', 'VAN files it under your brand, with VAN named as the manufacturer.', 'Most briefs take 7 to 12 months. Across all 14 partners the range has been 2 to 17 months.'],
     ['Toll manufacturing', 'Your own formulation, made on VAN\u2019s 5 lines to your specification, every lot tested in LAB 336 and released against a certificate of analysis.', 'The formulation, the specification, the brand and the market.', 'Agreed per project. VAN can file it either way.', 'Depends on the formulation and its registration. Agreed before the first lot.'],
   ] as string[][],
   modelsNote: 'Licensing of a VAN formulation for manufacture at another plant is not offered. The recipe and the process stay with VAN under every model above.',
@@ -399,7 +400,7 @@ export const PARTNER = {
   rangeLead: 'A brand that comes with no range of its own does not have to pick from a list. VAN designs the range around the crops, the regions and the channel you sell into, from what is already made here, and then keeps adding to it.',
   rangeSteps: [
     ['Your crops, regions and channel', 'Which crops your customers grow, which districts, and whether you sell through dealers, to estates or to corporate farms. That is the whole brief for a first range.', 'you'],
-    ['A launch range from the 23 brands', 'VAN proposes the products a first season needs, each with the stage it goes on at and the pack it comes in, built from the same programmes published on this site.', 'VAN'],
+    ['A launch range from the 23 brands', 'VAN proposes the products a first season needs, each with the stage it goes on at and the pack it comes in, built from VAN\u2019s published crop programmes.', 'VAN'],
     ['A roadmap from the library', 'What to add in the second and third season, from the 27 codes in the formulation library, and which of them would need a trial first.', 'VAN'],
     ['Each product on its own route', 'A library formulation reaches you in about 3 months. A product developed to your brief takes a season. The range grows on that clock, not all at once.', 'both'],
   ] as [string, string, string][],
@@ -419,7 +420,7 @@ export const PARTNER = {
     ['VAN does not hand over the formulation', 'You sell it under your name. The recipe and the process stay with VAN.'],
     ['VAN will not put a claim on your label that a trial does not support', 'This holds even when your marketing department wants the claim.'],
   ],
-  minimum: 'A batch runs from 1 tonne. A single lot goes up to 50 tonnes, and the line runs up to 4 lots a week to the same frozen specification, so 50 tonnes is the size of a lot and not the size of a relationship. There is no minimum on the order itself.',
+  minimum: 'No minimum order. A production batch is 1 tonne; smaller orders come from a batch. A single lot goes up to 50 tonnes, and the line runs up to 4 lots a week to the same frozen specification, so 50 tonnes is the size of a lot and not the size of a relationship.',   // D-317, Tahir's ruling 26 Oct 2026: was "A batch runs from 1 tonne. ... There is no minimum on the order itself."
 
   /**
    * THE PORTFOLIO, AS NUMBERS — 11 September 2026.
@@ -438,25 +439,25 @@ export const PARTNER = {
    *   launchRange   — the fastest and the slowest a product has actually gone from brief to market
    */
   portfolioH2: 'The portfolio, without the names.',
-  portfolioLead: 'VAN does not publish who its partners are, and will not. So here is the same thing measured a way that does not need a name on it.',
+  portfolioLead: 'VAN keeps its partners\u2019 names private. These numbers show the work without naming anyone.',
   portfolio: [
-    { v: '100+', l: 'partner brands registered with VAN named as the manufacturer', note: '14 companies hold them between them. One partner usually runs several brands off the same plant, and the largest holds 8. Every product sold under a partner\u2019s brand carries its own registration file against this plant.' },
-    { v: '8', l: 'products held by the largest single partner', note: 'The next largest holds 7. One relationship, 8 registration files.' },
+    { v: '100+', l: 'partner brands registered with VAN named as the manufacturer', note: '14 companies hold these brands. A partner usually runs several brands off the same plant, and the largest holds 8. Every product sold under a partner\u2019s brand carries its own registration file against this plant.' },
+    { v: '8', l: 'products held by the largest single partner', note: 'The next largest holds 7. 1 relationship, 8 registration files.' },
     { v: '27', l: 'unbranded formulations in the library, 11 ready to carry your name', note: 'A code you can put your own name on, with the terms written down.' },
     { v: '34', l: 'PSQCA licences', note: '22 on VAN’s own brands, against 8 Pakistan Standards, each listed with its licence number on the regulatory page; 12 on products ready for partners.' },
     { v: '12', l: 'products already PSQCA licensed, ready for a partner launch', note: 'Your name on the bag, in the market within 60 days. Separate from the 27 library formulations.' },
     { v: '5', l: 'production lines', note: 'Granular, coated, liquid, water-soluble and compounded. The analytical laboratory is on the same site; the biological laboratory opened in 2026.' },   // D-177, Tahir 26 Sep: 5 lines, lab and farm separate. Was 8 lines under one roof.
-    { v: 'About 50,000\u00A0t', l: 'made a year', note: 'A batch runs from 1 tonne; a single lot goes up to 50 tonnes and the line runs up to 4 lots a week. 3 to 5 days under 10 t, 7 to 18 days from 11 to 100 t.' },
+    { v: 'About 50,000\u00A0t', l: 'made a year', note: 'No minimum order; a production batch is 1 tonne. A single lot goes up to 50 tonnes and the line runs up to 4 lots a week. 3 to 5 days under 10 t, 7 to 18 days from 11 to 100 t.' },
   ] as { v: string; l: string; note: string }[],
   /** Filled by Tahir. Each renders only when it carries a value. */
   portfolioPending: { partners: '14', oldest: '2011', /* D-177: first blend 2011; was 2010 */ launchRange: '2 to 17 months' },
 
   whoH2: 'Who already works this way',
-  who: 'VAN does not publish client names, apart from the 2 named below with their agreement. It already manufactures for 14 national and multinational clients, and a partner under NDA can be given specifics in a meeting.',
+  who: 'VAN does not publish client names, apart from 2 named on the Vital Urea page with their agreement. It already manufactures for 14 national and multinational clients, and a partner under NDA can be given specifics in a meeting.',
   whoTypes: ['Multinational crop-protection companies', 'National agri-input companies', 'Sugar mills and corporate farms', 'Importers replacing a bought-in product'],
   firewall: 'Client names, formulations built to client briefs, and any data belonging to a client are not shown on this site and are never used to sell to anyone else. The named exceptions on the whole site are published because each agreed to it: the Khaliqabad field programme with Rafhan Maize Products on the Vital Urea page and the application systems page, and the 3 maize trials on the Vital Urea page (Rafhan Maize Products 2023, Descon Research Farm 2024; the 2025 trial partner is not named). Nothing else is named, and nothing is named without the client\u2019s word.',
   capability: [
-    ['Physical forms', 'Granular \u00b7 powder \u00b7 crystalline soluble \u00b7 liquid \u00b7 pellet \u00b7 water-dispersible granule \u00b7 coated prill. The same composition is made in more than one form rather than the form dictating the composition.'],
+    ['Physical forms', 'Granular \u00b7 powder \u00b7 crystalline soluble \u00b7 liquid \u00b7 pellet \u00b7 water-dispersible granule \u00b7 coated prill. The same composition is made in more than 1 form rather than the form dictating the composition.'],
     ['Pack range', 'From a 1 L bottle to a 1000 kg bulk bag and a 1000 L IBC. Trade packs, estate packs and contract-farming volumes are packed on the same line as the retail unit.'],
     ['Registration, run by us', 'VAN runs the PSQCA registration under your brand rather than handing you a specification and leaving you to it. The licence route is already worked.'],
     ['Quality control', 'A PNAC-accredited laboratory, ISO/IEC 17025:2017, Accreditation No. LAB 336. Every batch is tested. Batches outside the working window are rejected, not averaged into the ones that pass.'],
@@ -466,7 +467,7 @@ export const PARTNER = {
 // Pipeline & Formulation Library — 25 codes (verbatim names/analyses/status from the live page)
 // D-183, 26 Sep 2026: 'Feasibility' added for the dual release phosphate; every other status unchanged.
 export type FormulationStatus = 'Feasibility' | 'Concept' | 'In development' | 'Field trials' | 'Validated' | 'Available'
-export const PIPELINE_STAGES: [FormulationStatus, string, number][] = [['Feasibility', 'technically and commercially viable? literature, rough cost', 1], ['Concept', 'defined, not yet at the bench', 1], ['In development', 'bench formulation work', 3], ['Field trials', 'research farm and partner plots', 3], ['Validated', 'specification and data locked', 8], ['Available', 'ready to carry your name', 11]]
+export const PIPELINE_STAGES: [FormulationStatus, string, number][] = [['Feasibility', 'technical and cost check', 1], ['Concept', 'defined, not yet at the bench', 1], ['In development', 'bench formulation work', 3], ['Field trials', 'research farm and partner plots', 3], ['Validated', 'specification and data locked', 8], ['Available', 'ready to carry your name', 11]]
 export const FAMILIES: Record<string, string> = { N: 'Nitrogen efficiency', P: 'Phosphorus', K: 'Potash', PK: 'P+K synergy', MX: 'Micros & secondaries', BIO: 'Biologicals' }
 export const LIBRARY: { code: string; family: keyof typeof FAMILIES; title: string; text: string; status: FormulationStatus }[] = [
   { code: 'N-22S', family: 'N', title: 'Nitro Sulfur. N 22 · elemental S 18', text: 'Nitrogen carried with elemental sulfur rather than sulfate, so it releases over weeks instead of all at once.', status: 'Validated' },
@@ -474,9 +475,9 @@ export const LIBRARY: { code: string; family: keyof typeof FAMILIES; title: stri
   { code: 'N-17L', family: 'N', title: 'VAN Liquid CAN. N 17 · Ca 7.2', text: 'Liquid calcium ammonium nitrate: nitrogen delivered with calcium rather than beside it, for fertigated horticulture.', status: 'Available' },
   { code: 'N-15C', family: 'N', title: 'Calcium nitrate. N 15.5 · Ca 18.4', text: 'Nitrate nitrogen carried with a high calcium load, chloride-free: the class high-value horticulture buys imported.', status: 'Validated' },
   { code: 'P-44L', family: 'P', title: 'Liquid foliar phosphorus 44%', text: 'High-analysis foliar phosphorus with a Pakistan micronutrient pack. Bypasses soil fixation entirely by going through the leaf.', status: 'Available' },
-  { code: 'NP-540', family: 'P', title: 'NP 5:40. Dual-release phosphate', text: 'A phosphate that releases on 2 timescales from one placement.', status: 'Validated' },
+  { code: 'NP-540', family: 'P', title: 'NP 5:40. Dual-release phosphate', text: 'A phosphate that releases on 2 timescales from 1 placement.', status: 'Validated' },
   { code: 'NP-838S', family: 'P', title: 'NP 8:38 + sulfur. Slow-release, fixation-resistant', text: 'Sulfur acidifies the granule’s immediate soil environment; built against calcium phosphate fixation rather than around it.', status: 'Validated' },
-  { code: 'UP-44', family: 'P', title: 'Urea phosphate · 17:44:0 and 12:44:0', text: 'Nitrogen and phosphorus in one fully soluble salt, acidic in solution.', status: 'Validated' },
+  { code: 'UP-44', family: 'P', title: 'Urea phosphate · 17:44:0 and 12:44:0', text: 'Nitrogen and phosphorus in 1 fully soluble salt, acidic in solution.', status: 'Validated' },
   { code: 'KN-44', family: 'K', title: 'Potassium nitrate · 3 grades', text: 'Chloride-free potassium with nitrate nitrogen, for high-value horticulture and salt-sensitive crops.', status: 'Validated' },
   { code: 'K-45L', family: 'K', title: 'High-purity liquid foliar potash · K₂O 45%', text: 'Chloride-free potassium in a low-salt-index, neutral-pH liquid, built for foliar and drone application.', status: 'Validated' },
   { code: 'PK-82', family: 'PK', title: 'High P+K reproductive complex', text: 'P 42 · K 40, 82 nutrient units, for the window that sets yield and quality.', status: 'Available' },
@@ -486,7 +487,7 @@ export const LIBRARY: { code: string; family: keyof typeof FAMILIES; title: stri
   { code: 'V-Crop series', family: 'PK', title: 'Crop-specific NPK grades · 4 in development', text: 'V-Potato 10:5:35 · V-Citrus 16:6:28 · V-Rice 12:10:25 · V-Wheat 21:7:19 with zinc 1.5%.', status: 'In development' },
   { code: 'V-Stage series', family: 'PK', title: 'Stage-specific grades · 3 in trial', text: 'Vegetative 14:21:16 · Flowering Booster 8:34:14 · Fruiting Booster 12:8:32.', status: 'Field trials' },
   { code: 'MX-Z05', family: 'MX', title: 'Chelated zinc 5%', text: 'Chelated zinc that stays available at pH 8, where sulfate zinc largely precipitates.', status: 'Available' },
-  { code: 'MX-ZB3', family: 'MX', title: 'Zinc 12% + boron 3%', text: 'The two deficiencies that most often cap yield where NPK is already adequate, in a single foliar pass.', status: 'Available' },
+  { code: 'MX-ZB3', family: 'MX', title: 'Zinc 12% + boron 3%', text: 'The 2 deficiencies that most often cap yield where NPK is already adequate, in a single foliar pass.', status: 'Available' },
   { code: 'MX-F05', family: 'MX', title: 'Chelated iron', text: 'For the lime-induced chlorosis that shows up in orchards on calcareous ground.', status: 'Available' },
   { code: 'BIO-H50F', family: 'BIO', title: 'K-humate 50 + fulvic 10 + potash 10', text: 'Concentrated humate for soils under 1% organic matter.', status: 'Available' },
   { code: 'BIO-H40', family: 'BIO', title: 'K-humate 40 + fulvic 10 + potash 10', text: 'The established humate concentration in the library.', status: 'Available' },
@@ -531,17 +532,17 @@ export const SIMULATOR = {
     { key: 'sowing', label: 'Sowing date', options: ['Inside the window', '10 days late', '20 days late', 'A month late'] },
     { key: 'seed', label: 'Seed and stand', options: ['Certified seed, full stand', 'Own seed, full stand', 'Thin stand, gaps in the rows', 'Thin and patchy'] },
     { key: 'basal', label: 'Basal fertilizer', options: ['Placed at sowing', 'Broadcast at sowing', 'Broadcast after sowing', 'Skipped'] },
-    { key: 'irrigation', label: 'Irrigation', options: ['Every one on time', 'One delayed', 'One missed', 'Two missed', 'Two missed and one late'] },
-    { key: 'topdress', label: 'Top-dressing nitrogen', options: ['Split, each on time', 'Split, one late', 'All at once, early', 'All at once, late'] },
+    { key: 'irrigation', label: 'Irrigation', options: ['Every one on time', '1 delayed', '1 missed', '2 missed', '2 missed and 1 late'] },
+    { key: 'topdress', label: 'Top-dressing nitrogen', options: ['Split, each on time', 'Split, 1 late', 'All at once, early', 'All at once, late'] },
     { key: 'weeds', label: 'Weeds', options: ['Cleared in the window', 'Cleared late', 'Left in the crop'] },
     { key: 'micro', label: 'Zinc and boron', options: ['Applied at the right stage', 'Applied, wrong stage', 'Not applied'] },
-    { key: 'harvest', label: 'Harvest', options: ['At maturity', 'A week late', 'Two weeks or more late'] },
+    { key: 'harvest', label: 'Harvest', options: ['At maturity', 'A week late', '2 weeks or more late'] },
   ],
   onCourse: 'On course. Every practice in its window: the nutrition plan can deliver the target it was set for.',
-  previewNote: 'Directions only, and deliberately so. No figure is printed here. Wheat and potato have working simulators with their own 10 levers; the rest of the 26 follow as each crop’s lever set is built.',
-  betaNote: '26 more crops follow, each as its lever set is built and reviewed. If something is missing from this list that costs you yield on your own field, tell us before the next upgrade and it goes in.',
-  inputs: ['Crop and variety, from Pakistan’s list, not a generic one.', 'District and soil, the Punjab survey’s 770,160 samples and VAN’s own set the soil prior; a laboratory report overrides it.', 'Target yield, in maunds per acre, against what the district can carry.', 'Sowing date, the day, not the month.', 'Irrigation, canal, tube well or both, and the schedule you can keep.', 'Plant population, seed rate and stand.', 'Cropping pattern, what the field carried before: rice–wheat, cotton–wheat, cane and ratoon.', 'Practices. Weed window, top-dressing, harvest window.'],
-  outputs: ['Your attainable yield, with the discipline you described, on your field.', 'Your discipline score, which practices carry the target, and which one is costing you most.', 'The nutrients in kilograms. N, P₂O₅, K₂O, the secondaries and the micros, stage by stage, after the soil’s own contribution.', 'The VAN products that deliver them. Product, stage, method and pack, from the crop programmes already on this site.', 'What each slip costs, and the way back.'],
+  previewNote: 'Direction only, not a yield figure. Wheat and potato have working simulators, each with its own 10 practices; the other 26 crops follow.',
+  betaNote: '26 more crops are coming. If something is missing from this list that costs you yield on your own field, tell us before the next upgrade and it goes in.',
+  inputs: ['Crop and variety, from Pakistan’s list, not a generic one.', 'District and soil, from the Punjab survey’s 770,160 samples and VAN’s own; a laboratory report overrides it.', 'Target yield, in maunds per acre, against what the district can carry.', 'Sowing date, the day, not the month.', 'Irrigation, canal, tube well or both, and the schedule you can keep.', 'Plant population, seed rate and stand.', 'Cropping pattern, what the field carried before: rice–wheat, cotton–wheat, cane and ratoon.', 'Practices, weed window, top-dressing and harvest window.'],
+  outputs: ['Your attainable yield, with the discipline you described, on your field.', 'Your discipline score, which practices carry the target, and which one is costing you most.', 'The nutrients in kilograms. N, P₂O₅, K₂O, the secondaries and the micros, stage by stage, after the soil’s own contribution.', 'The VAN products that deliver them. Product, stage, method and pack, from VAN’s published crop programmes.', 'What each slip costs, and the way back.'],
   builtOn: [['17 years', 'of trial data from VAN’s research farms, counted from 2009'], ['770,160', 'Punjab soil samples, the provincial survey read with VAN’s own']],
 }
 
@@ -558,13 +559,13 @@ export const VITAL_UREA_RULE = 'Vital Urea is a coated slow-release urea and is 
 // Wheat crop page (verbatim)
 export const WHEAT = {
   h1: 'Wheat. Per acre, stage by stage.',
-  lead: 'VAN’s published wheat programme runs across 5 stages, from land preparation to grain formation. It uses 7 nutrient bands and mixes VAN products with commodity urea. Everything below is transcribed from the published plan.',
+  lead: 'VAN’s published wheat programme runs across 5 stages, from land preparation to grain formation. It uses 7 nutrient bands and mixes VAN products with commodity urea.',
   meta: ['5 stages', 'Per acre', 'Reissued Aug 2026'],
   pdf: 'plans/Wheat-Nutrition-Plan.pdf',
   tableNote: 'Rates are per acre. “1 bag” means 1 bag of the size printed under the rate. Greyed names are commodity inputs VAN does not manufacture.',
   gdd: [
-    { stage: 'Land Preparation', gdd: 'n/a', das: 'Before sowing', oct20: 'Before Oct 20', nov1: 'Before Nov 1', nov20: 'Before Nov 20', events: 'Soil preparation, incorporation of P, K, organic matter, basal N (Vital Urea). This is not a crop growth stage but a management stage.' },
-    { stage: 'Germination', gdd: '0–150', das: '0–13', oct20: 'Oct 20–Oct 30', nov1: 'Nov 1–Nov 13', nov20: 'Nov 20–Dec 8', events: 'Seed imbibition, radicle emergence, coleoptile emergence. Apply first N top-dress (commodity urea) at 8-10 DAS if soil moisture is adequate; otherwise wait for first irrigation.' },
+    { stage: 'Land Preparation', gdd: 'Before sowing', das: 'Before sowing', oct20: 'Before Oct 20', nov1: 'Before Nov 1', nov20: 'Before Nov 20', events: 'Soil preparation, incorporation of P, K, organic matter, basal N (Vital Urea). This is not a crop growth stage but a management stage.' },
+    { stage: 'Germination', gdd: '0–150', das: '0–13', oct20: 'Oct 20–Oct 30', nov1: 'Nov 1–Nov 13', nov20: 'Nov 20–Dec 8', events: 'Seed imbibition, radicle emergence, coleoptile emergence. Apply first N top-dress (commodity urea) at 8–10 days after sowing (DAS) if soil moisture is adequate; otherwise wait for first irrigation.' },
     { stage: 'Early Growth', gdd: '150–450', das: '13–55', oct20: 'Oct 30–Nov 27', nov1: 'Nov 13–Dec 25', nov20: 'Dec 8–Feb 13', events: 'Emergence of first true leaf; beginning of tiller formation. Critical period for zinc deficiency symptoms (especially in alkaline soils).' },
     { stage: 'Grand Growth', gdd: '450–900', das: '55–132', oct20: 'Nov 27–Feb 22', nov1: 'Dec 25–Mar 12', nov20: 'Feb 13–Mar 29', events: 'Maximum tiller formation and leaf expansion. The period of highest nutrient demand and the window for mid-season N applications. Foliar K and micronutrient sprays are applied here.' },
     { stage: 'Grain Formation & Maturity', gdd: '900–1400+', das: '132–167', oct20: 'Feb 22–Apr 6', nov1: 'Mar 12–Apr 16', nov20: 'Mar 29–Apr 28', events: 'Boot stage, anthesis, grain fill, dough stage and maturity. Minimal N applications after boot; no new nutrient applications after grain fill begins.' },
@@ -574,11 +575,11 @@ export const WHEAT = {
   // 1991-2020 normals. The days column is for a Nov 1 sowing. Revert: the v58 source zip.
   gddNote: 'Growing degree days are counted on a base of 10 °C: only the heat above 10 °C is added up, which is why a whole Punjab wheat season comes to about 1,400 and not the roughly 3,000 a base of 0 °C would give. The days and calendar dates are worked from the degree days, on Lahore’s 1991 to 2020 temperature normals, so they describe a normal season, not this year’s weather. The days-after-sowing column is for a November 1 sowing. A late sowing moves through the stages faster in days, which is why each sowing date has its own column.',
   deficiency: [
-    { nutrient: 'Nitrogen (N)', early: 'Older leaves (lower canopy) show uniform chlorosis. Chlorosis advances upward through the canopy as deficiency deepens.', timing: 'Most visible at Germination to Early Growth stages (7-30 DAS) if basal N was inadequate.', indicator: 'Affected plants are noticeably paler and shorter than neighbors receiving adequate N.' },
-    { nutrient: 'Phosphorus (P)', early: 'Young leaves may show purpling (anthocyanin accumulation), especially on leaf margins and stem bases. Root system stunted and fibrous.', timing: 'Most critical at Germination stage (7-14 DAS) when root demand for P is high; late diagnosis limits correction.', indicator: 'Stunted, dark-green plants with delayed growth. Purple discoloration of stems is diagnostic.' },
+    { nutrient: 'Nitrogen (N)', early: 'Older leaves (lower canopy) show uniform chlorosis. Chlorosis advances upward through the canopy as deficiency deepens.', timing: 'Most visible at Germination to Early Growth stages (7–30 DAS) if basal N was inadequate.', indicator: 'Affected plants are noticeably paler and shorter than neighbours receiving adequate N.' },
+    { nutrient: 'Phosphorus (P)', early: 'Young leaves may show purpling (anthocyanin accumulation), especially on leaf margins and stem bases. Root system stunted and fibrous.', timing: 'Most critical at Germination stage (7–14 DAS) when root demand for P is high; late diagnosis limits correction.', indicator: 'Stunted, dark-green plants with delayed growth. Purple discolouration of stems is diagnostic.' },
     { nutrient: 'Zinc (Zn)', early: 'Interveinal chlorosis first appears on new leaves and is most severe at boot stage. In Punjab’s alkaline soils zinc is chemically fixed, making it unavailable even when total soil Zn is adequate.', timing: 'Symptoms often appear abruptly at the move from Germination to Early Growth, or at boot stage.', indicator: 'Distinct interveinal chlorosis; plants may recover partially if corrected early with foliar Zn spray or Zn-enriched fertigation.' },
   ],
-  notTell: ['These are per-acre programmes, not a prescription for your field. A nutrition plan is built on a typical crop and a typical soil. It is not a substitute for a soil test.', 'VAN publishes no yield claim for this programme. We publish what to apply, at which stage, by which method.'],
+  notTell: ['These are per-acre programmes, not a prescription for your field. A nutrition plan is built on a typical crop and a typical soil. It is not a substitute for a soil test. It gives no yield figure.'],
 }
 
 // Circular economy (live home + circular page)

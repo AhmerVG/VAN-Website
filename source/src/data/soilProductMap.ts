@@ -1,3 +1,4 @@
+// D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction
 import type { SoilParameter } from './soilThresholds'
 
 /**
@@ -87,7 +88,7 @@ export const SOIL_ADVISORIES: SoilAdvisory[] = [
     // exclusion in cropSoilMap.ts, which is what stops the 0.3 kg being offered.
     parameter: 'K2O', bands: ['critical', 'weak', 'moderate'], crops: ['mango'],
     headline: 'Mango potash is worked out per tree, not per acre.',
-    body: 'A low potash reading on a mango orchard is answered with Vital Potash, which VAN publishes per tree rather than per acre. Turning that into a quantity needs your own tree count and spacing, so no per-acre figure is shown here rather than a small one that would be wrong. Vital Green works the dose out against your orchard. The foliar potash in the programme is a top-up and is not the answer to a soil deficiency.',
+    body: 'A low potash reading on a mango orchard is answered with Vital Potash, which VAN publishes per tree rather than per acre. Turning that into a quantity needs your own tree count and spacing. Vital Green works the dose out against your orchard. The foliar potash in the programme is a top-up and is not the answer to a soil deficiency.',
   },
 ]
 

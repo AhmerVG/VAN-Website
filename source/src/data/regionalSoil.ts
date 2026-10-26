@@ -1,3 +1,4 @@
+// D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction
 import { DISTRICT_PROFILES, PARAMETER_ANALYTE } from './districtSoil'
 import type { DistrictProfile } from './districtSoil'
 import { bandForValue } from './soilThresholds'
@@ -73,5 +74,5 @@ export const REGIONAL_SOURCE = {
   survey: 'Punjab soil testing programme',
   window: 'sampled c. 2016–2018',
   districts: REGIONAL_PROFILES.length,
-  caution: 'This is the middle reading for your district, not a reading from your land. Half the fields around you test worse than it. The survey is also around eight years old, and phosphorus in particular moves with fertiliser history. Start here, then change any row you know to be different. It does not replace a soil test.',
+  caution: 'This is the middle reading for your district, not a reading from your land. Half the fields around you test worse than it. The survey is also about 8 years old, and phosphorus in particular moves with fertilizer history. Start here, then change any row you know to be different. It does not replace a soil test.',
 }

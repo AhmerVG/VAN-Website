@@ -70,12 +70,13 @@ export default function Wheat({ district = null, card = null }: { district?: str
       {/* 03. The reference. Stays open: it is what a technical reader came for and what every other
           block points back to. */}
       <section className="wrap sec" id="programme">
-        <SectionHead eyebrow="The whole programme at a glance" title="7 bands, 5 stages." lead="The programme matrix. Every band across every stage, per acre, with commodity inputs greyed and every product shown as its real pack." />
+        {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */}
+        <SectionHead eyebrow="The whole programme at a glance" title="7 bands, 5 stages." lead="Every band at every stage, per acre. Grey names are not VAN products, and each VAN product is shown in its real pack." />
         {/* O-3: his ruling. Simple view folds the full stage-by-stage table. Full view is unchanged. */}
         <Detail bare label="The full 5-stage table. 7 bands, every stage">
           <PlanMatrix stages={WHEAT_STAGES} plan={WHEAT_PLAN} tableNote={WHEAT.tableNote} />
         </Detail>
-        <p className="cap mt-3">The 5 stages, their growing-degree-days and their days after sowing are in <a href="#gdd">the stage table below</a>. The same published table the block at the top of this page reads to work out where your crop is.</p>
+        <p className="cap mt-3">The 5 stages, their growing-degree-days and their days after sowing are in <a href="#gdd">the stage table below</a>.</p>
       </section>
 
       {/* 04. The action. */}
@@ -91,8 +92,8 @@ export default function Wheat({ district = null, card = null }: { district?: str
         {/* G6, Tahir 20 Oct 2026: arriving from the Soil Atlas card, the head names the card instead of "your soil" and "your
             soil report"; wording only. Without a card it reads as before. */}
         {fromCard
-          ? <SectionHead eyebrow="Adjust it for this soil card" title="The dynamic nutrition creator." lead="Set your acres and every quantity scales with it. The soil rows below are filled from the Soil Atlas card for the area near your land, and the quantities move with what that card shows. Type your own soil test numbers over any row if you have them. Sourced straight from VAN's own wheat calculator, not estimated." tone="navy" />
-          : <SectionHead eyebrow="Adjust it for your soil" title="The dynamic nutrition creator." lead="Set your acres and every quantity scales with it, then enter your soil report, or pick your district and it fills from the Punjab survey's own median, and the quantities move with what your ground actually shows. Sourced straight from VAN's own wheat calculator, not estimated." tone="navy" />}
+          ? <SectionHead eyebrow="Adjust it for this soil card" title="The nutrition creator." lead="Set your acres and every quantity scales with it. The soil rows below are filled from the Soil Atlas card for the area near your land, and the quantities move with what that card shows. Type your own soil test numbers over any row if you have them." tone="navy" />
+          : <SectionHead eyebrow="Adjust it for your soil" title="The nutrition creator." lead="Set your acres and every quantity scales with it, then enter your soil report, or pick your district and it fills from the Punjab survey's own median, and the quantities move with what your ground actually shows." tone="navy" />}
         <p className="small mb-3 max-w-[140ch]"><b>Which list to use:</b> the acres figure is shared with the shopping list above. The shopping list is the published plan; this list is VAN’s calculator, and it is the one to use {fromCard ? 'with this soil card' : 'if you have a soil report'}. Where the 2 differ, the totals below show a range.</p>{/* D-151 (A12): was "This is the same programme from VAN’s calculator; use it if you have a soil report." */}
         {/* Teesra Khata, 18 Oct 2026: a link from the Soil Atlas carries the district, and the soil rows open filled from it. */}
         {/* GPS grid card, D-279, 20 Oct 2026: a link from the card carries its readings too (line 13, Tahir's words). */}
@@ -127,7 +128,7 @@ export default function Wheat({ district = null, card = null }: { district?: str
           <div>
             <span className="eyebrow" style={{ color: 'var(--gold)' }}>Nutrition decides about 1/4 of the yield</span>
             <h2 className="text-[clamp(28px,2.8vw,38px)]">The farm discipline simulator.</h2>
-            <p className="mt-3" style={{ color: 'rgba(255,255,255,.8)' }}>Everything above is the nutrition lever. Set a yield target and score how the season is actually being run, sowing time, irrigation timing, seed quality and more, to see what is really holding yield back.</p>
+            <p className="mt-3" style={{ color: 'rgba(255,255,255,.8)' }}>Everything above is the nutrition lever. Set a yield target and score how the season is actually being run (sowing time, irrigation timing, seed quality and more) to see what is really holding yield back.</p>
           </div>
           <a className="btn btn-gold btn-lg" href="#/simulator/wheat">Open the simulator →</a>
         </div>
@@ -140,13 +141,13 @@ export default function Wheat({ district = null, card = null }: { district?: str
 
       <Detail label="The 5 stages in detail. Growing-degree-days, days after sowing, and the calendar">
         <section className="wrap sec" id="walk">
-          <SectionHead eyebrow="The 5 stages" title="Walk the season, one stage at a time." lead="Each stage shows its growing-degree-days, days after sowing and calendar dates for 3 sowing dates, and the products the published plan puts on at that stage, per acre." />
+          <SectionHead eyebrow="The 5 stages" title="Walk the season, 1 stage at a time." lead="Each stage shows its growing-degree-days, days after sowing and calendar dates for 3 sowing dates, and the products the published plan puts on at that stage, per acre." />
           <StageWalk />
-          <p className="cap mt-4">{WHEAT.tableNote} {WHEAT.gddNote}</p>
+          <p className="cap mt-4">{WHEAT.tableNote}</p>
         </section>
 
         <section className="wrap sec-tight" id="gdd">
-          <SectionHead eyebrow="The 5 stages, in one table" title="GDD, days after sowing, and the calendar for 3 sowing dates." lead="The same 5 stages the walk above steps through. Laid out so a season can be read in one glance. This is the table the block at the top of the page reads." tone="navy" />
+          <SectionHead eyebrow="The 5 stages, in 1 table" title="GDD, days after sowing, and the calendar for 3 sowing dates." lead="The same 5 stages the walk above steps through, so the season reads at a glance." tone="navy" />
           <div className="panel overflow-x-auto">
             <table className="tbl">
               <thead><tr><th>Stage</th><th className="r">GDD (base 10 °C)</th><th className="r">DAS</th><th>Sown Oct 20 · normal</th><th>Sown Nov 1 · late-normal</th><th>Sown Nov 20 · late</th><th>Key events</th></tr></thead>
@@ -172,8 +173,8 @@ export default function Wheat({ district = null, card = null }: { district?: str
         <SectionHead eyebrow="Read this before you buy" title="What this plan does not tell you." tone="soil" />
         <div className="grid md:grid-cols-2 gap-4">
           {WHEAT.notTell.map(t => <p key={t} className="panel p-5">{t}</p>)}
-          <p className="panel p-5">This programme is indicative. It is built on best practice and on the nutrient requirement of the crop, not on your field. VAN prepares farm-specific plans against a grower's own soil analysis, yield target and the other variables that decide a rate.</p>
-          <p className="panel p-5">The products and rates on this page come from VAN’s published wheat plan and from VAN’s own wheat calculator. Where the 2 differ, the page shows a range. Methods and pack sizes are read directly out of the published plan PDF.</p>
+          <p className="panel p-5">VAN prepares farm-specific plans against a grower's own soil analysis, yield target and the other variables that decide a rate.</p>
+          <p className="panel p-5">Source: VAN’s published wheat plan (<a href={pdf} target="_blank" rel="noopener">PDF</a>) and VAN’s wheat calculator. Where the 2 differ, the totals show a range.</p>
         </div>
       </div></section>
 

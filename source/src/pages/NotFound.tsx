@@ -25,7 +25,8 @@ const WAYS: { href: string; label: string; what: string; tone: string }[] = [
   { href: '#/crops', tone: 'green', label: 'Crop nutrition plans', what: `All ${CROPS.length} programmes. Stage by stage, with product, rate and application method for each.` },
   { href: '#/products', tone: 'navy', label: 'Products', what: `Every VAN brand, ${PRODUCTS.filter(p => !p.family).length} of them, with its registered analysis, pack sizes and where it fits in the season.` },
   { href: '#/soil', tone: 'soil', label: 'Soil Atlas', what: `${SOIL_HEADLINE.samples} soil samples across ${SOIL_HEADLINE.districts} districts, read district by district.` },
-  { href: '#/tools', tone: 'gold', label: 'Vitalytics', what: 'The nutrition creator, the discipline simulator, the unit and bag converter, and an honest list of what is not built yet.' },
+  // D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction
+  { href: '#/tools', tone: 'gold', label: 'Vitalytics', what: 'The nutrition creator, the discipline simulator, the unit and bag converter, and the tools still coming.' },
   { href: '#/knowledge', tone: 'rust', label: 'Knowledge', what: 'The national picture, the state of the soil, and how a nutrient is delivered. Every figure sourced and dated.' },
   { href: '#/lab', tone: 'navy', label: 'VAN Lab', what: 'All 21 tests with every price and turnaround published, and the blind chain behind them.' },
 ]

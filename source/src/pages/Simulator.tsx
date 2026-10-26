@@ -68,7 +68,8 @@ export default function Simulator({ slug }: { slug?: string | null } = {}) {
         <section style={{ background: 'linear-gradient(180deg, var(--gold-soft), var(--sand))' }}>
           <div className="wrap py-8 lg:py-12">
             <p className="cap"><a href="#/crops">Crop Plans</a> / {cropName} / Farm discipline simulator</p>
-            <span className="tag tag-gold mt-2">Farm discipline simulator · pilot · {cropName}</span>
+            {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction. "pilot" became "beta" to match the name used across the site. */}
+            <span className="tag tag-gold mt-2">Farm discipline simulator · beta · {cropName}</span>
             {/* D-151 (ruling 3): was "Nutrition is 1 lever of 10." and the lead "Yield isn't only nutrition. It's whether 10 things were each done well and on time. Set a target, score your season, see what's holding it back." */}
             <h1 className="mt-3 max-w-[26ch]">Nutrition decides about 1/4 of the yield.</h1>
             <p className="lead mt-4">Sowing, seed, water, weeds and pests decide the rest. Set a target, score your season across 10 levers, and see what is holding the yield back.</p>
@@ -108,7 +109,7 @@ export default function Simulator({ slug }: { slug?: string | null } = {}) {
           <h1 className="mt-3 max-w-[30ch]" style={{ fontSize: 'clamp(28px, 3.6vw, 48px)', lineHeight: 1.1 }}>{SIMULATOR.h1}</h1>
           <p className="lead mt-4">{SIMULATOR.lead}</p>
           {Object.keys(LIVE_CROPS).length > 0 && (
-            <p className="mt-3 small"><b>Wheat and potato are live</b>. <a href="#/simulator/wheat">wheat →</a> · <a href="#/simulator/potato">potato →</a></p>
+            <p className="mt-3 small"><b>Wheat and potato are live.</b> <a href="#/simulator/wheat">Wheat →</a> · <a href="#/simulator/potato">potato →</a></p>
           )}
           {/* His ruling: say beta, say when, and ask for what is missing before the next upgrade. */}
           <p className="small mt-2 max-w-[140ch]">{SIMULATOR.betaNote}</p>
@@ -127,7 +128,7 @@ export default function Simulator({ slug }: { slug?: string | null } = {}) {
         <div className="panel p-4 lg:p-5 mb-3">
           <div className="flex items-baseline justify-between gap-3 flex-wrap">
             <span className="eyebrow navy">Pick your crop</span>
-            <span className="cap">{Object.keys(LIVE_CROPS).length} live · {CROPS.length - Object.keys(LIVE_CROPS).length} in build</span>
+            <span className="cap">{Object.keys(LIVE_CROPS).length} live · {CROPS.length - Object.keys(LIVE_CROPS).length} coming</span>
           </div>
           <div className="flex flex-wrap gap-1.5 mt-2" role="radiogroup" aria-label="Crop">
             {CROPS.map(c => {
@@ -143,8 +144,8 @@ export default function Simulator({ slug }: { slug?: string | null } = {}) {
           </div>
           <p className="cap mt-2">
             {LIVE_CROPS[crop]
-              ? <><b>{LIVE_CROPS[crop]} has a working simulator.</b> 10 levers, its own weights, your own season. <a href={`#/simulator/${crop}`}>Open it →</a></>
-              : <>This crop does not have its own lever set yet, so what you see below is the preview. Its simulator is in build.</>}
+              ? <><b>{LIVE_CROPS[crop]} has a working simulator.</b> 10 levers, scored on your own season. <a href={`#/simulator/${crop}`}>Open it →</a></>
+              : <>This crop does not have its own simulator yet, so below is the preview. Its simulator is coming.</>}
           </p>
         </div>
         <div className="panel p-5 lg:p-8 grid lg:grid-cols-[1fr_1fr] gap-8 items-start" style={{ borderColor: 'var(--gold)', borderWidth: 2 }}>
@@ -160,9 +161,9 @@ export default function Simulator({ slug }: { slug?: string | null } = {}) {
             <button className="btn btn-ghost btn-sm self-start" onClick={() => setSel(RESET)}>Reset. Every practice in its window</button>
           </div>
           <div>
-            <div className="flex items-baseline justify-between"><span className="eyebrow">Attainable yield</span><span className="tag tag-gold">illustrative</span></div>
+            <div className="flex items-baseline justify-between"><span className="eyebrow">Attainable yield</span><span className="tag tag-gold">preview</span></div>
             <Gauge slips={slips} max={max} />
-            <p className="cap text-center" style={{ marginTop: -4 }}>directions only · no figure is printed</p>
+            <p className="cap text-center" style={{ marginTop: -4 }}>Direction only, not a yield figure</p>
             {/* The stand thins with the seed-and-stand dial and pales when water or nitrogen slipped,
                 so the drawing is driven by the reader's own answers rather than decorating them. */}
             <Stand
@@ -174,7 +175,7 @@ export default function Simulator({ slug }: { slug?: string | null } = {}) {
             <div className="panel-soft p-4 mt-3">
               {slips === 0
                 ? <p className="font-semibold" style={{ color: 'var(--green-text)' }}>{SIMULATOR.onCourse}</p>
-                : <p className="small"><b>Direction only.</b> {slipped.length} practice{slipped.length > 1 ? 's' : ''} outside {slipped.length > 1 ? 'their windows' : 'its window'}: {slipped.join('; ')}. The needle moves down; the simulator will print what each one costs, and the way back, when it opens.</p>}
+                : <p className="small"><b>Direction only.</b> {slipped.length} practice{slipped.length > 1 ? 's' : ''} outside {slipped.length > 1 ? 'their windows' : 'its window'}: {slipped.join('; ')}. The needle moves down. When this crop’s simulator is ready, it will show what each one costs and the way back.</p>}
             </div>
           </div>
         </div>
@@ -191,10 +192,10 @@ export default function Simulator({ slug }: { slug?: string | null } = {}) {
       <section className="wrap sec">
         <SectionHead eyebrow="What it is built on" title="The figures come from ground VAN owns and samples VAN read." lead="Every figure it prints carries its source: VAN’s own trials first, published Pakistani research with its citation second." />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          {[...SIMULATOR.builtOn, [`${CROPS.length} crop programmes`, 'already on this site, product by stage, with their PDF sheets'], [COUNTS.lab, 'the PNAC-accredited laboratory that tests the batches the plan names']].map(([v, l]) => <div key={v} className="panel p-5"><div className="num text-[30px]" style={{ color: 'var(--navy)' }}>{v}</div><p className="small muted mt-2">{l}</p></div>)}
+          {[...SIMULATOR.builtOn, [`${CROPS.length} crop programmes`, 'product by stage, with their PDF sheets'], [COUNTS.lab, 'the PNAC-accredited laboratory that tests the batches the plan names']].map(([v, l]) => <div key={v} className="panel p-5"><div className="num text-[30px]" style={{ color: 'var(--navy)' }}>{v}</div><p className="small muted mt-2">{l}</p></div>)}
         </div>
         <div className="panel-navy p-6 lg:p-8 mt-8 grid lg:grid-cols-[1fr_auto] gap-5 items-center">
-          <div><span className="eyebrow" style={{ color: 'var(--gold)' }}>Your crop next</span><h3>Wheat and potato run today. Tell us which crop you want next.</h3><p className="mt-2" style={{ color: 'rgba(255,255,255,.8)' }}>Leave your crop and district on WhatsApp or by email and we tell you when your crop is added.</p></div>
+          <div><span className="eyebrow" style={{ color: 'var(--gold)' }}>Your crop next</span><h3>Wheat and potato run today. Tell us which crop you want next.</h3><p className="mt-2" style={{ color: 'rgba(255,255,255,.8)' }}>Leave your crop and district on WhatsApp or by email and we will tell you when your crop is added.</p></div>
           <div className="grid gap-3"><WaButton href={WA.farmer} lg>WhatsApp {CONTACT.whatsapp}</WaButton><a className="btn" style={{ background: 'rgba(255,255,255,.14)', color: '#fff' }} href={`mailto:${CONTACT.email}?subject=${encodeURIComponent('VAN Yield & Discipline Simulator')}`}>{CONTACT.email}</a></div>
         </div>
       </section>

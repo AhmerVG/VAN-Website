@@ -1,3 +1,4 @@
+// D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction
 /**
  * THE 17 NUTRIENTS, FOR A GROWER — 26 September 2026, D-186.
  *
@@ -63,7 +64,7 @@ export const NUTRIENTS_17: NutrientEntry[] = [
     job: 'Nitrogen builds protein and chlorophyll. It decides how much leaf the crop grows and how green the leaf is, and the leaf is the factory that makes the grain.',
     short: 'Older leaves turn pale yellow first, from the tip back, because the plant moves nitrogen out of old leaves into new ones. Plants stay small and thin. Grain has less protein.',
     partners: 'Nitrogen needs sulfur to become protein. A crop short of sulfur cannot use the nitrogen it is given, and the unused nitrogen leaves the field. Nitrogen also needs potash: nitrogen grows the leaf, potash moves the sugar out of it. Nitrogen without potash gives soft, tall growth that falls over.',
-    pakistan: 'Nitrogen is the nutrient Pakistan applies most and keeps least. This site’s national pages set out where the applied nitrogen goes. Sulfur coated urea releases it over weeks, so more of it meets a root.',
+    pakistan: 'Nitrogen is the nutrient Pakistan applies most and keeps least. Sulfur coated urea releases it over days, so more of it meets a root.',
     van: ['vital-urea', 'cala-mag-v', 'vl-npk'],
   },
   {
@@ -79,7 +80,7 @@ export const NUTRIENTS_17: NutrientEntry[] = [
     job: 'Potash runs the plant’s plumbing. It opens and closes the pores in the leaf, moves sugar from the leaf to the grain, tuber or fruit, and thickens the cell wall. It is the nutrient of quality, weight and stress: heat, drought and disease all hit a potash-short crop harder.',
     short: 'Older leaves scorch along the edge and the tip while the middle stays green. Stems are weak, the crop lodges, grain is light, fruit is small and stores badly.',
     partners: 'Potash works with nitrogen: nitrogen grows the leaf, potash fills the grain from it. Too much potash pushes out magnesium and calcium, so the 3 are dosed together, never 1 alone.',
-    pakistan: 'The Crop Force bag prints the national figure: only 1% of all nutrient applied in Pakistan is potash. VAN’s wheat balance page shows what 60 maunds an acre takes off the field in potash when the bhusa is removed.',
+    pakistan: 'Only 1% of all nutrient applied in Pakistan is potash, a figure printed on VAN’s Crop Force bag. VAN’s wheat balance page shows what a 60-maund crop takes off the field in potash when the bhoosa is removed.',
     van: ['vital-potash', 'fusion-potash', 'v-potash-plus', 'sop', 'vl-potash-liquid'],
   },
 
@@ -103,7 +104,7 @@ export const NUTRIENTS_17: NutrientEntry[] = [
     job: 'Sulfur is in 3 of the amino acids the plant builds protein from, and in the oils of canola, mustard and sesame. It is the nutrient that turns applied nitrogen into grain protein.',
     short: 'Young leaves go pale yellow all over, the opposite of nitrogen, which starts with the old leaves. Plants are thin and slow. Oilseeds give less oil.',
     partners: 'Sulfur and nitrogen work as a pair, and without the sulfur the extra nitrogen goes to waste. Elemental sulfur also acidifies the soil around a granule, which frees locked phosphate and zinc there.',
-    pakistan: 'Sulfur is not a parameter on VAN’s soil report, so the Soil Atlas cannot show it. This site does not claim a national sulfur figure, because none exists on the public record.',
+    pakistan: 'Sulfur is not a parameter on VAN’s soil report, so the Soil Atlas cannot show it. No national sulfur figure exists on the public record.',
     van: ['green-sulfur', 'vital-urea', 'sop', 'fusion-potash'],
   },
 
@@ -112,7 +113,7 @@ export const NUTRIENTS_17: NutrientEntry[] = [
     job: 'Zinc makes the growth hormone that lengthens the stem and the enzymes that build protein. It decides plant height, leaf size and, in rice and wheat, grain set.',
     short: 'Young leaves come out small, narrow and yellow between the veins. Short internodes make the plant look bunched. In maize, a white band down the young leaf. In rice, brown spots on the older leaves in the nursery.',
     partners: 'Zinc and phosphorus pull against each other, so a soil low in zinc gets worse when phosphate is piled on. High pH locks zinc in the soil the same way it locks phosphate.',
-    pakistan: 'The Soil Atlas fills zinc from the survey median district by district; several districts read Critical. Read yours before deciding.',
+    pakistan: 'The Soil Atlas shows zinc district by district, from the survey median; several districts read Critical. Read yours before deciding.',
     van: ['v-transform', 'v-zinc', 'vl-micro-mix', 'v-phosphate'],
   },
   {
@@ -128,7 +129,7 @@ export const NUTRIENTS_17: NutrientEntry[] = [
     job: 'Iron makes chlorophyll and runs the enzymes that move electrons. A leaf without iron cannot turn light into sugar.',
     short: 'The youngest leaves go yellow between the veins with the veins sharply green, then whole leaves go white. Old leaves stay green, which separates it from magnesium.',
     partners: 'Iron and manganese compete, and high pH locks both. Bicarbonate in irrigation water and lime in the soil are the usual cause on Pakistani ground, so the soil can be full of iron the root cannot drink.',
-    pakistan: 'Iron is on VAN’s soil report and on the Soil Atlas. In 4 districts the survey figures are marked not comparable, and the Atlas says so rather than banding them.',
+    pakistan: 'Iron is on VAN’s soil report and on the Soil Atlas. In 4 districts the survey figures are not comparable.',
     van: ['vl-micro-mix', 'v-potash-plus', 'v-phosphate', 'v-germinator-pro'],
   },
   {
@@ -144,12 +145,12 @@ export const NUTRIENTS_17: NutrientEntry[] = [
     job: 'Copper runs the enzymes that build lignin, the woody part of the stem, and it is needed for pollen to form. Cereals short of copper set empty heads.',
     short: 'Young leaves twist and wilt at the tip, heads emerge empty or half filled, stems are weak. Rare on most Pakistani soil.',
     partners: 'Copper is held tightly by organic matter, so peaty and heavily manured ground can run short while a mineral soil does not.',
-    pakistan: 'Copper reads Healthy in every Punjab district where the survey figure is comparable (32 of 36; 4 are marked not comparable on the Soil Atlas). VAN checked its cutoff against the published literature and it holds. This site does not sell copper as a general shortage.',
+    pakistan: 'Copper reads Healthy in every Punjab district where the survey figure is comparable (32 of 36; 4 are marked not comparable on the Soil Atlas).',
     van: ['vl-micro-mix'], // D-214: V. Ammonium Phosphate carries iron only
   },
-  { key: 'Cl', symbol: 'Cl', name: 'Chlorine', group: 'micro', van: [], brief: 'Needed in small amounts for the leaf pores and for water balance. Rain, irrigation water and muriate of potash supply it. VAN’s soil report does not test it and this site claims no shortage.' },
-  { key: 'Mo', symbol: 'Mo', name: 'Molybdenum', group: 'micro', van: [], brief: 'Needed in the smallest amount of all, for the enzyme that turns nitrate into protein and for the bacteria that fix nitrogen in pulses. Unlike the other micronutrients it becomes more available as pH rises. VAN’s soil report does not test it and this site claims no shortage.' },
-  { key: 'Ni', symbol: 'Ni', name: 'Nickel', group: 'micro', van: [], brief: 'The last nutrient added to the list, in 1987. A trace is needed for the enzyme that breaks down urea inside the plant. VAN’s soil report does not test it and this site claims no shortage.' },
+  { key: 'Cl', symbol: 'Cl', name: 'Chlorine', group: 'micro', van: [], brief: 'Needed in small amounts for the leaf pores and for water balance. Rain, irrigation water and muriate of potash supply it. VAN’s soil report does not test it.' },
+  { key: 'Mo', symbol: 'Mo', name: 'Molybdenum', group: 'micro', van: [], brief: 'Needed in the smallest amount of all, for the enzyme that turns nitrate into protein and for the bacteria that fix nitrogen in pulses. Unlike the other micronutrients it becomes more available as pH rises. VAN’s soil report does not test it.' },
+  { key: 'Ni', symbol: 'Ni', name: 'Nickel', group: 'micro', van: [], brief: 'The last nutrient added to the list, in 1987. A trace is needed for the enzyme that breaks down urea inside the plant. VAN’s soil report does not test it.' },
 ]
 
 export const NUTRIENTS_FULL = NUTRIENTS_17.filter(n => !n.brief)
@@ -163,7 +164,7 @@ export const NUTRIENTS_FULL = NUTRIENTS_17.filter(n => !n.brief)
 export const LIEBIG = {
   h2: 'The barrel, and why a field full of urea can still stop at the zinc.',
   lead: 'In the 1840s the German chemist Justus von Liebig set out the Law of the Minimum: a crop grows to the limit of the nutrient it has least of, measured against what it needs, and adding more of anything else does nothing. The picture that explains it is a wooden barrel. Each stave is 1 nutrient. Water fills the barrel only to the shortest stave, and pours out over it. A grower who adds another bag of urea is making a tall stave taller. The water still leaves at the short one.',
-  how: 'Pick your crop and enter what you put on an acre this season. Each stave is drawn against what VAN’s published programme for that crop delivers per acre. The shortest stave is where your season leaks.',
+  how: 'Pick your crop and enter what you put on an acre this season. Each stave is measured against what VAN’s published programme for that crop delivers per acre. The shortest stave is where your season leaks.',
 }
 
 /** The why strip on the home page (D-187): 4 questions a grower asks, each answered on a page of this site. */
@@ -171,5 +172,5 @@ export const WHY_QUESTIONS: { q: string; a: string; href: string }[] = [
   { q: 'Why does a field full of urea still stop growing?', a: 'Because the crop grows to its shortest nutrient, not its tallest. Fill the barrel.', href: '#/knowledge/nutrients#barrel' },
   { q: 'Why does the phosphate I apply never reach the root?', a: 'Because calcareous soil above pH 8 locks it first. 69.1% of Punjab samples read above pH 8.', href: '#/soil' },
   { q: 'Why is a bag not a dose?', a: 'Because how a nutrient is delivered decides how much of it the crop gets.', href: '#/knowledge/application-systems' },
-  { q: 'Why does the plan change with my sowing date?', a: 'Because every stage moves with it, and the crop page reorders itself around your field.', href: '#/crops/wheat' },
+  { q: 'Why does the plan change with my sowing date?', a: 'Because the timing of every stage moves with it. The rates stay the same.', href: '#/crops/wheat' },
 ]

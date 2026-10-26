@@ -42,7 +42,7 @@ export default function Dealers() {
           <h1 className="max-w-[24ch]">9 places, and the districts where VAN has nobody yet.</h1>
           <p className="lead mt-4 max-w-[140ch]">
             {dealers.length} dealers and {centres.length} VAN shops, in {new Set(OUTLETS.map(o => o.city)).size} towns.
-            These are VAN’s dealers and its own shops. VAN also sells through distributors and a technical service team. <b>If none of them is near you, say where you are and we will deliver</b>,
+            VAN also sells through distributors and a technical service team. <b>If none of them is near you, say where you are and we will deliver</b>,
             or tell you plainly that we cannot yet.
           </p>
           {/* 11 Sep 2026 · the buying page had no way to act above the fold. In this trade the
@@ -74,7 +74,8 @@ export default function Dealers() {
       <section className="wrap sec">
         <div className="panel p-5 lg:p-6 max-w-[140ch]">
           <span className="eyebrow rust">If there is nobody near you</span>
-          <h2 className="max-w-[26ch] mt-1">That is most of the country, and we would rather say so.</h2>
+          {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */}
+          <h2 className="max-w-[26ch] mt-1">That is most of the country.</h2>
           <p className="mt-3">There is no VAN outlet in Faisalabad, Sargodha, Multan, Bahawalpur, Rahim Yar Khan or Dera Ghazi Khan. Tell us your district and what you grow, and we will either deliver to you or tell you plainly that we cannot yet.</p>
           <div className="flex flex-wrap gap-3 mt-4">
             <WaButton href={WA.dealer}>Tell us your district</WaButton>
@@ -98,7 +99,7 @@ export default function Dealers() {
           <div className="panel p-5 grid gap-2">
             <span className="eyebrow">Punjab and everywhere else</span>
             <p><b>The trade desk</b></p>
-            <p className="small muted">Territory, volume and terms are written down on the distributor page before you have to ask for them.</p>
+            <p className="small muted">Territory, volume and terms are written down on the dealership page before you have to ask for them.</p>
             <div className="flex flex-wrap gap-2 mt-1">
               <a className="btn btn-navy btn-sm" href="#/become-a-dealer">What a dealership involves →</a>
               <a className="btn btn-ghost btn-sm" href={`mailto:${CONTACT.partnerEmail}`}>{CONTACT.partnerEmail}</a>

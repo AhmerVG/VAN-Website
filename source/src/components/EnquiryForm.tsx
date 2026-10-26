@@ -17,6 +17,7 @@ export { normalisePkPhone } from '@/lib/forms'
  * The fields are his own right-hand sketch from 9 September, plus the two the reply depends on:
  * volume, company email, phone, territory, and a note nobody is required to write.
  */
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function EnquiryForm() {
   return (
     <VanForm
@@ -26,7 +27,7 @@ export function EnquiryForm() {
       submitLabel="Send the enquiry"
       to={CONTACT.partnerEmail}
       subject="Distributor enquiry from van.com.pk"
-      success="Someone from the commercial team answers within one working day. If you would rather talk it through first, the WhatsApp number on this page reaches the same team."
+      success="Someone from the commercial team answers within 1 working day. If you would rather talk it through first, the WhatsApp number on this page reaches the same team."
     />
   )
 }

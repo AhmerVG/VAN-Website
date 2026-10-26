@@ -9,6 +9,7 @@ import { PackShot, MethodIcon } from '@/components/bits'
  * shared by Wheat.tsx and the generic CropPage so every crop reads the same way. Added 8 Sep 2026
  * to replace the old text-and-tiny-method-icon-only table (the "small icons" fix).
  */
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function PlanMatrix({ stages, plan, tableNote }: { stages: string[]; plan: PlanRow[]; tableNote?: string }) {
   const bands = [...new Set(plan.map(r => r.band))]
   const products = [...new Map(plan.filter(r => r.slug).map(r => [r.slug as string, r.product])).entries()]
@@ -37,7 +38,7 @@ export function PlanMatrix({ stages, plan, tableNote }: { stages: string[]; plan
                               Phosphate. The plan row itself is untouched. This names the other bag. */}
                           {alternativeFor(r.slug) && (
                             <><br /><span className="cap" style={{ color: 'var(--navy)' }}>
-                              or <a href={`#/products/${alternativeFor(r.slug)!.altSlug}`}>{alternativeFor(r.slug)!.altName}</a>. Your choice
+                              or <a href={`#/products/${alternativeFor(r.slug)!.altSlug}`}>{alternativeFor(r.slug)!.altName}</a>, your choice.
                             </span></>
                           )}
                         </div>
@@ -53,7 +54,7 @@ export function PlanMatrix({ stages, plan, tableNote }: { stages: string[]; plan
       {tableNote && <p className="cap mt-3">{tableNote}</p>}
       <div className="flex flex-wrap gap-2 mt-4">
         {products.map(([slug, name]) => <a key={slug} className="chip chip-sm" href={`#/products/${slug}`}>{name}</a>)}
-        {hasCommodity && <span className="chip chip-sm" style={{ color: '#55645A', cursor: 'default' }}>Grey items. Commodity inputs, not VAN products</span>}
+        {hasCommodity && <span className="chip chip-sm" style={{ color: '#55645A', cursor: 'default' }}>Grey items: commodity inputs, not VAN products</span>}
       </div>
     </div>
   )

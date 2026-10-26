@@ -57,10 +57,11 @@ export default function Tools() {
           <p className="lead mt-4">
             {live} finished tools and {pilot} pilots. No login and nothing to install. Put in your crop,
             your acres, your sowing date or your soil reading, and each tool gives back an answer for
-            your own field. A pilot works, and says on the tool what it cannot do yet.
+            your own field.
           </p>
+          {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */}
           <p className="small mt-3">
-            The {soon} we have not built yet are here too, behind a switch, each saying what it is waiting on.
+            {soon} more tools are coming. Turn on the switch in the finder to see them.
           </p>
         </div>
       </section>
@@ -75,7 +76,7 @@ export default function Tools() {
         <div className="mb-6">
           <span className="eyebrow navy">Use it here</span>
           <h2 className="max-w-[26ch]">Land, weight, and what is in the bag.</h2>
-          <p className="lead mt-3">3 sums a farmer or a dealer does on paper every week. The bag tab reads VAN's own registered analyses, so the kilograms it gives you are the guaranteed figures off the label.</p>
+          <p className="lead mt-3">3 sums a farmer or a dealer does on paper every week. The bag section uses VAN's registered analyses, so the kilograms it gives you are the guaranteed figures off the label.</p>
         </div>
         <Converter />
       </div></section>
@@ -83,10 +84,10 @@ export default function Tools() {
       <section className="sec"><div className="wrap">
         <div className="panel p-5 lg:p-6">
           <span className="eyebrow navy">What they run on</span>
-          <p className="mt-2">VAN’s <b>{CROPS.length} published crop plans</b> and <b>{PRODUCTS.filter(p => !p.family).length} registered analyses</b>, the Punjab survey of <b>{SOIL_HEADLINE.samples} soil samples</b>, and public methods named on each tool: FAO Paper 56 for water, IPNI for what a harvest removes. Where a figure is an estimate or a starting model, the tool says so.</p>
+          <p className="mt-2">VAN’s <b>{CROPS.length} published crop plans</b> and <b>{PRODUCTS.filter(p => !p.family).length} registered analyses</b>, the Punjab survey of <b>{SOIL_HEADLINE.samples} soil samples</b>, and public methods named on each tool: FAO Paper 56 for water, IPNI for what a harvest removes. Estimates are marked as estimates.</p>
           <div className="mt-5">
             <span className="eyebrow navy">Pages, not tools</span>
-            <p className="small muted mt-1">These answer a question without a figure of your own.</p>
+            <p className="small muted mt-1">No figures needed from you.</p>
             <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-3">
               {TOOL_PAGES.map(([t, d, h]) => <li key={t}><a className="panel p-4 block" href={h}><b style={{ color: 'var(--navy)' }}>{t} →</b><span className="block small muted mt-1">{d}</span></a></li>)}
             </ul>

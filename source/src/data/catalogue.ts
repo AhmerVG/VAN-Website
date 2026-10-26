@@ -1,4 +1,5 @@
 // Auto-generated from the live site (VAN Live Site, 31 Aug 2026). Every figure here is transcribed from van.com.pk pages — do not edit numbers by hand.
+// D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction
 import { applySulfurRule } from '../lib/sulfurPack'
 export type Product = { slug:string; name:string; cat:'N'|'P'|'K'|'NPK'|'MICRO'|'SEC'|'BIO'; catLabel:string; analysis:string; methods:string[]; stages:string[]; exclusive:boolean; badge:string; family:boolean; png?:string|null }
 export const PRODUCTS: Product[] = [
@@ -111,7 +112,7 @@ export const PRODUCTS: Product[] = [
   "name": "Vital Potash",
   "cat": "K",
   "catLabel": "Potash",
-  "analysis": "N 11 · K₂O 44. Coated with boron in 2 forms",
+  "analysis": "N 11% · K₂O 44%. Coated with boron in 2 forms",
   "methods": [
    "Fertigation"
   ],
@@ -766,7 +767,7 @@ export const WHEAT_PLAN: PlanRow[] = [
   "product": "Urea",
   "analysis": "N 46%",
   "rate": "1 bag",
-  "method": "Side Dressing/Fertigation",
+  "method": "Side dressing/Fertigation",
   "pack": "Bag - 50 kg",
   "slug": null,
   "commodity": true
@@ -887,7 +888,7 @@ export const WHEAT_PLAN: PlanRow[] = [
   "product": "V-Transform",
   "analysis": "Zinc 21%",
   "rate": "1 bag",
-  "method": "Side Dressing/Fertigation",
+  "method": "Side dressing/Fertigation",
   "pack": "Bag - 3 kg",
   "slug": "v-transform",
   "commodity": false
@@ -993,11 +994,11 @@ export const BANANA_YEAR2_PLAN: PlanRow[] = [
  { "band": "Phosphorus", "stage": "Early Growth", "product": "V. Ammonium Phosphate (V-Phosphate)", "analysis": "NPK 10:44:0 + Fe", "rate": "1 bag", "method": "Fertigation", "pack": "Bag - 10 kg", "slug": "v-phosphate", "commodity": false },
  { "band": "Phosphorus", "stage": "Grand Growth", "product": "V. Ammonium Phosphate (V-Phosphate)", "analysis": "NPK 10:44:0 + Fe", "rate": "1 bag", "method": "Fertigation", "pack": "Bag - 10 kg", "slug": "v-phosphate", "commodity": false },
  { "band": "Nitrogen", "stage": "Land Preparation", "product": "Vital Urea", "analysis": "N 32% · S 13%", "rate": "1 bag", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 25 kg", "slug": "vital-urea", "commodity": false },
- { "band": "Nitrogen", "stage": "Land Preparation", "product": "Urea", "analysis": "N 46%", "rate": "½ bag", "method": "Side dressing/ Broadcasting", "pack": "Bag - 50 kg", "slug": null, "commodity": true },
+ { "band": "Nitrogen", "stage": "Land Preparation", "product": "Urea", "analysis": "N 46%", "rate": "½ bag", "method": "Side dressing/Broadcasting", "pack": "Bag - 50 kg", "slug": null, "commodity": true },
  { "band": "Nitrogen", "stage": "Germination", "product": "Urea", "analysis": "N 46%", "rate": "½ bag", "method": "Fertigation", "pack": "Bag - 50 kg", "slug": null, "commodity": true },
- { "band": "Nitrogen", "stage": "Early Growth", "product": "Vital Urea", "analysis": "N 32% · S 13%", "rate": "1 bag", "method": "Side dressing/ Broadcasting", "pack": "Bag - 25 kg", "slug": "vital-urea", "commodity": false },
- { "band": "Nitrogen", "stage": "Early Growth", "product": "Urea", "analysis": "N 46%", "rate": "½ bag", "method": "Side dressing/ Broadcasting", "pack": "Bag - 50 kg", "slug": null, "commodity": true },
- { "band": "Nitrogen", "stage": "Grand Growth", "product": "Urea", "analysis": "N 46%", "rate": "½ bag", "method": "Side dressing/ Broadcasting", "pack": "Bag - 50 kg", "slug": null, "commodity": true },
+ { "band": "Nitrogen", "stage": "Early Growth", "product": "Vital Urea", "analysis": "N 32% · S 13%", "rate": "1 bag", "method": "Side dressing/Broadcasting", "pack": "Bag - 25 kg", "slug": "vital-urea", "commodity": false },
+ { "band": "Nitrogen", "stage": "Early Growth", "product": "Urea", "analysis": "N 46%", "rate": "½ bag", "method": "Side dressing/Broadcasting", "pack": "Bag - 50 kg", "slug": null, "commodity": true },
+ { "band": "Nitrogen", "stage": "Grand Growth", "product": "Urea", "analysis": "N 46%", "rate": "½ bag", "method": "Side dressing/Broadcasting", "pack": "Bag - 50 kg", "slug": null, "commodity": true },
  { "band": "Potash", "stage": "Land Preparation", "product": "Fusion Potash", "analysis": "K₂O 50% · N 2% · S 1.5% · B 1% · Mg 1%", "rate": "1 bag", "method": "Fertigation", "pack": "Bag - 25 kg", "slug": "fusion-potash", "commodity": false },
  { "band": "Potash", "stage": "Germination", "product": "Fusion Potash", "analysis": "K₂O 50% · N 2% · S 1.5% · B 1% · Mg 1%", "rate": "1 bag", "method": "Fertigation", "pack": "Bag - 25 kg", "slug": "fusion-potash", "commodity": false },
  { "band": "Potash", "stage": "Grand Growth", "product": "Vital Potash", "analysis": "NPK 11:0:44, coated with B", "rate": "1 bag", "method": "Fertigation", "pack": "Bag - 20 kg", "slug": "vital-potash", "commodity": false },
@@ -1019,16 +1020,16 @@ export const CANOLA_PLAN: PlanRow[] = [
  { "band": "Phosphorus", "stage": "Land Preparation", "product": "Green Phosphate", "analysis": "P₂O₅ 32% · N 6%", "rate": "1 bag", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 50 kg", "slug": "green-phosphate", "commodity": false },
  { "band": "Phosphorus", "stage": "Early Growth", "product": "V. Ammonium Phosphate (V-Phosphate)", "analysis": "NPK 10:44:0 + Fe", "rate": "1 bag", "method": "Fertigation", "pack": "Bag - 10 kg", "slug": "v-phosphate", "commodity": false },
  { "band": "Nitrogen", "stage": "Land Preparation", "product": "Vital Urea", "analysis": "N 32% · S 13%", "rate": "1 bag", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 25 kg", "slug": "vital-urea", "commodity": false },
- { "band": "Nitrogen", "stage": "Germination", "product": "Urea", "analysis": "N 46%", "rate": "½ bag", "method": "Side dressing/ Broadcasting", "pack": "Bag - 50 kg", "slug": null, "commodity": true },
- { "band": "Nitrogen", "stage": "Early Growth", "product": "Urea", "analysis": "N 46%", "rate": "½ bag", "method": "Side dressing/ Broadcasting", "pack": "Bag - 50 kg", "slug": null, "commodity": true },
+ { "band": "Nitrogen", "stage": "Germination", "product": "Urea", "analysis": "N 46%", "rate": "½ bag", "method": "Side dressing/Broadcasting", "pack": "Bag - 50 kg", "slug": null, "commodity": true },
+ { "band": "Nitrogen", "stage": "Early Growth", "product": "Urea", "analysis": "N 46%", "rate": "½ bag", "method": "Side dressing/Broadcasting", "pack": "Bag - 50 kg", "slug": null, "commodity": true },
  { "band": "Nitrogen", "stage": "Grand Growth", "product": "Urea", "analysis": "N 46%", "rate": "½ bag", "method": "Fertigation or side dressing", "pack": "Bag - 50 kg", "slug": null, "commodity": true },
  { "band": "Potash", "stage": "Land Preparation", "product": "Fusion Potash", "analysis": "K₂O 50% · N 2% · S 1.5% · B 1% · Mg 1%", "rate": "1 bag", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 25 kg", "slug": "fusion-potash", "commodity": false },
  { "band": "Potash", "stage": "Early Growth", "product": "Vital Potash", "analysis": "NPK 11:0:44, coated with B", "rate": "¾ bag", "method": "Fertigation", "pack": "Bag - 20 kg", "slug": "vital-potash", "commodity": false },
  { "band": "Secondary Nutrient", "stage": "Land Preparation", "product": "Green Sulfur", "analysis": "Sulfur 70%", "rate": "5 bag", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 1 kg", "slug": "green-sulfur", "commodity": false },
- { "band": "Secondary Nutrient", "stage": "Germination", "product": "Green Sulfur", "analysis": "Sulfur 70%", "rate": "1.5 bag", "method": "Side dressing/ Broadcasting", "pack": "Bag - 1 kg", "slug": "green-sulfur", "commodity": false },
+ { "band": "Secondary Nutrient", "stage": "Germination", "product": "Green Sulfur", "analysis": "Sulfur 70%", "rate": "1.5 bag", "method": "Side dressing/Broadcasting", "pack": "Bag - 1 kg", "slug": "green-sulfur", "commodity": false },
  { "band": "Secondary Nutrient", "stage": "Early Growth", "product": "Green Sulfur", "analysis": "Sulfur 70%", "rate": "1.5 bag", "method": "Fertigation", "pack": "Bag - 1 kg", "slug": "green-sulfur", "commodity": false },
  { "band": "Soil Amendment", "stage": "Land Preparation", "product": "Humi Grow", "analysis": "Humic Acid 40% · K₂O 7%", "rate": "1 bag", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 8 kg", "slug": "humi-grow", "commodity": false },
- { "band": "Micronutrients", "stage": "Germination", "product": "V-Transform", "analysis": "Zinc 21%", "rate": "1 bag", "method": "Side dressing/ Broadcasting", "pack": "Bag - 3 kg", "slug": "v-transform", "commodity": false },
+ { "band": "Micronutrients", "stage": "Germination", "product": "V-Transform", "analysis": "Zinc 21%", "rate": "1 bag", "method": "Side dressing/Broadcasting", "pack": "Bag - 3 kg", "slug": "v-transform", "commodity": false },
  { "band": "Micronutrients", "stage": "Early Growth", "product": "VL-Boron", "analysis": "Boron 5%", "rate": "1 pack", "method": "Fertigation", "pack": "Pack - 1 L", "slug": "v-boron", "commodity": false }
 ]
 
@@ -1230,8 +1231,8 @@ export const MAIZE_PLAN: PlanRow[] = [
  { "band": "Phosphorus", "stage": "Land Preparation", "product": "Green Phosphate", "analysis": "P₂O₅ 32% · N 6%", "rate": "1.5 bag", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 50 kg", "slug": "green-phosphate", "commodity": false },
  { "band": "Phosphorus", "stage": "Grand Growth", "product": "V. Ammonium Phosphate (V-Phosphate)", "analysis": "NPK 10:44:0 + Fe", "rate": "1 bag", "method": "Fertigation", "pack": "Bag - 10 kg", "slug": "v-phosphate", "commodity": false },
  { "band": "Nitrogen", "stage": "Land Preparation", "product": "Vital Urea", "analysis": "N 32% · S 13%", "rate": "1 bag", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 25 kg", "slug": "vital-urea", "commodity": false },
- { "band": "Nitrogen", "stage": "Germination", "product": "Vital Urea", "analysis": "N 32% · S 13%", "rate": "1 bag", "method": "Side Dressing/Placement", "pack": "Bag - 25 kg", "slug": "vital-urea", "commodity": false },
- { "band": "Nitrogen", "stage": "Germination", "product": "Urea", "analysis": "N 46%", "rate": "½ bag", "method": "Side Dressing/Placement", "pack": "Bag - 50 kg", "slug": null, "commodity": true },
+ { "band": "Nitrogen", "stage": "Germination", "product": "Vital Urea", "analysis": "N 32% · S 13%", "rate": "1 bag", "method": "Side dressing/Placement", "pack": "Bag - 25 kg", "slug": "vital-urea", "commodity": false },
+ { "band": "Nitrogen", "stage": "Germination", "product": "Urea", "analysis": "N 46%", "rate": "½ bag", "method": "Side dressing/Placement", "pack": "Bag - 50 kg", "slug": null, "commodity": true },
  { "band": "Nitrogen", "stage": "Early Growth", "product": "Urea", "analysis": "N 46%", "rate": "1 bag", "method": "Fertigation", "pack": "Bag - 50 kg", "slug": null, "commodity": true },
  { "band": "Nitrogen", "stage": "Grand Growth", "product": "Urea", "analysis": "N 46%", "rate": "1 bag", "method": "Fertigation", "pack": "Bag - 50 kg", "slug": null, "commodity": true },
  { "band": "Potash", "stage": "Land Preparation", "product": "Fusion Potash", "analysis": "K₂O 50% · N 2% · S 1.5% · B 1% · Mg 1%", "rate": "½ bag", "method": "Fertigation", "pack": "Bag - 25 kg", "slug": "fusion-potash", "commodity": false },
@@ -1243,7 +1244,7 @@ export const MAIZE_PLAN: PlanRow[] = [
  { "band": "Secondary Nutrient", "stage": "Grand Growth", "product": "V-Mag Essential", "analysis": "Mg 8.5% · B 1%", "rate": "1 bag", "method": "Fertigation", "pack": "Bag - 5 kg", "slug": "v-mag-essential", "commodity": false },
  { "band": "Soil Amendment", "stage": "Land Preparation", "product": "Humi Grow", "analysis": "Humic Acid 40% · K₂O 7%", "rate": "1 bag", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 8 kg", "slug": "humi-grow", "commodity": false },
  { "band": "Soil Amendment", "stage": "Germination", "product": "Humi Grow Plus", "analysis": "Humic Acid 10% · Potash 3.5%", "rate": "2 Pack", "method": "Fertigation", "pack": "Pack - 4 L", "slug": "humi-grow-plus", "commodity": false },
- { "band": "Micronutrients", "stage": "Germination", "product": "V-Transform", "analysis": "Zinc 21%", "rate": "1 bag", "method": "Side Dressing/Placement", "pack": "Bag - 3 kg", "slug": "v-transform", "commodity": false },
+ { "band": "Micronutrients", "stage": "Germination", "product": "V-Transform", "analysis": "Zinc 21%", "rate": "1 bag", "method": "Side dressing/Placement", "pack": "Bag - 3 kg", "slug": "v-transform", "commodity": false },
  { "band": "Micronutrients", "stage": "Grand Growth", "product": "VL-Boron", "analysis": "Boron 5%", "rate": "1 pack", "method": "Foliar or Fertigation", "pack": "Pack - 1 L", "slug": "v-boron", "commodity": false }
 ]
 
@@ -1258,7 +1259,7 @@ export const MANGO_PLAN: PlanRow[] = [
  { "band": "Secondary Nutrient", "stage": "Grand Growth", "product": "Cala-Mag V", "analysis": "N 10% · Ca 6% · Mg 4% · B 1%", "rate": "1 pack", "method": "Fertigation", "pack": "Pack - 1 L", "slug": "cala-mag-v", "commodity": false },
  { "band": "Soil Amendment", "stage": "Land Preparation", "product": "Humi Grow", "analysis": "Humic Acid 40% · K₂O 7%", "rate": "1 pack", "method": "Broadcasting", "pack": "Bag - 8 kg", "slug": "humi-grow", "commodity": false },
  { "band": "Micronutrients", "stage": "Early Growth", "product": "V-Zinc", "analysis": "Zinc 10% w/v", "rate": "2 pack", "method": "Fertigation", "pack": "Pack - 3 L", "slug": "v-zinc", "commodity": false },
- { "band": "Foliar", "stage": "Grand Growth", "product": "VL-NPK", "analysis": "NPK 8:8:6 (w/v)", "rate": "1 pack", "method": "Spray. One application", "pack": "Pack - 1 L", "slug": "vl-npk", "commodity": false }
+ { "band": "Foliar", "stage": "Grand Growth", "product": "VL-NPK", "analysis": "NPK 8:8:6 (w/v)", "rate": "1 pack", "method": "Spray. 1 application", "pack": "Pack - 1 L", "slug": "vl-npk", "commodity": false }
 ]
 
 export const MUNGBEAN_MASH_STAGES = ["Land Preparation", "Germination", "Early Growth", "Grand Growth", "Maturity"]
@@ -1448,7 +1449,7 @@ export const SUGARCANE_RATOON_PLAN: PlanRow[] = [
  { "band": "Nitrogen", "stage": "Early Growth", "product": "CAN", "analysis": "N 26%", "rate": "1 bag in April", "method": "Placement", "pack": "Bag - 50 kg", "slug": null, "commodity": true },
  { "band": "Nitrogen", "stage": "Grand Growth", "product": "Urea", "analysis": "N 46%", "rate": "1 bag", "method": "Fertigation", "pack": "Bag - 50 kg", "slug": null, "commodity": true },
  { "band": "Potash", "stage": "Land Preparation", "product": "Fusion Potash", "analysis": "K₂O 50% · N 2% · S 1.5% · B 1% · Mg 1%", "rate": "1 bag", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 25 kg", "slug": "fusion-potash", "commodity": false },
- { "band": "Potash", "stage": "Early Growth", "product": "Vital Potash", "analysis": "NPK 11:0:44, coated with B", "rate": "½ bag + 1 bag (two applications)", "method": "Fertigation", "pack": "Bag - 20 kg", "slug": "vital-potash", "commodity": false },
+ { "band": "Potash", "stage": "Early Growth", "product": "Vital Potash", "analysis": "NPK 11:0:44, coated with B", "rate": "½ bag + 1 bag (2 applications)", "method": "Fertigation", "pack": "Bag - 20 kg", "slug": "vital-potash", "commodity": false },
  { "band": "Potash", "stage": "Grand Growth", "product": "Vital Potash", "analysis": "NPK 11:0:44, coated with B", "rate": "½ bag", "method": "Fertigation", "pack": "Bag - 20 kg", "slug": "vital-potash", "commodity": false },
  { "band": "Potash", "stage": "Maturity", "product": "VL-Potash Liquid", "analysis": "Potash 30%", "rate": "3 pack", "method": "Spray", "pack": "Pack - 1 L", "slug": "vl-potash-liquid", "commodity": false },
  { "band": "Secondary Nutrient", "stage": "Land Preparation", "product": "Green Sulfur", "analysis": "Sulfur 70%", "rate": "¼ bag", "method": "Fertigation", "pack": "Bag - 20 kg", "slug": "green-sulfur", "commodity": false },
@@ -1471,10 +1472,10 @@ export const SUGARCANE_PLAN: PlanRow[] = [
   // { "band": "Soil Amendment", "stage": "Land Preparation", "product": "Humi Grow", "analysis": "Soil Conditioner", "rate": "1–2 bag + 1 bag (two applications)", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 8 kg", "slug": "humi-grow", "commodity": false },
  { "band": "Phosphorus", "stage": "Land Preparation", "product": "Green Phosphate", "analysis": "P₂O₅ 32% · N 6%", "rate": "2 bag", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 50 kg", "slug": "green-phosphate", "commodity": false },
  { "band": "Phosphorus", "stage": "Early Growth", "product": "V. Ammonium Phosphate (V-Phosphate)", "analysis": "NPK 10:44:0 + Fe", "rate": "1 bag", "method": "Fertigation", "pack": "Bag - 10 kg", "slug": "v-phosphate", "commodity": false },
- { "band": "Nitrogen", "stage": "Germination", "product": "Vital Urea", "analysis": "N 32% · S 13%", "rate": "1 bag + ½ bag in March; 1 bag + ½ bag in April (two applications each month)", "method": "Placement/Broadcasting", "pack": "Bag - 25 kg", "slug": "vital-urea", "commodity": false },
+ { "band": "Nitrogen", "stage": "Germination", "product": "Vital Urea", "analysis": "N 32% · S 13%", "rate": "1 bag + ½ bag in March; 1 bag + ½ bag in April (2 applications each month)", "method": "Placement/Broadcasting", "pack": "Bag - 25 kg", "slug": "vital-urea", "commodity": false },
  { "band": "Nitrogen", "stage": "Early Growth", "product": "Urea", "analysis": "N 46%", "rate": "½ bag in May; 1 bag in June", "method": "Fertigation", "pack": "Bag - 50 kg", "slug": null, "commodity": true },
  { "band": "Potash", "stage": "Land Preparation", "product": "Fusion Potash", "analysis": "K₂O 50% · N 2% · S 1.5% · B 1% · Mg 1%", "rate": "1 bag", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 25 kg", "slug": "fusion-potash", "commodity": false },
- { "band": "Potash", "stage": "Early Growth", "product": "Vital Potash", "analysis": "NPK 11:0:44, coated with B", "rate": "½ bag + 1 bag (two applications)", "method": "Fertigation", "pack": "Bag - 20 kg", "slug": "vital-potash", "commodity": false },
+ { "band": "Potash", "stage": "Early Growth", "product": "Vital Potash", "analysis": "NPK 11:0:44, coated with B", "rate": "½ bag + 1 bag (2 applications)", "method": "Fertigation", "pack": "Bag - 20 kg", "slug": "vital-potash", "commodity": false },
  { "band": "Potash", "stage": "Grand Growth", "product": "Vital Potash", "analysis": "NPK 11:0:44, coated with B", "rate": "½ bag", "method": "Fertigation", "pack": "Bag - 20 kg", "slug": "vital-potash", "commodity": false },
  { "band": "Potash", "stage": "Maturity", "product": "VL-Potash Liquid", "analysis": "Potash 30%", "rate": "3 pack", "method": "Spray", "pack": "Pack - 1 L", "slug": "vl-potash-liquid", "commodity": false },
  { "band": "Secondary Nutrient", "stage": "Land Preparation", "product": "Green Sulfur", "analysis": "Sulfur 70%", "rate": "¼ bag", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 20 kg", "slug": "green-sulfur", "commodity": false },
@@ -1490,29 +1491,29 @@ export const SUNFLOWER_STAGES = ["Land Preparation", "Germination", "Early Growt
 export const SUNFLOWER_PLAN: PlanRow[] = [
  { "band": "Phosphorus", "stage": "Land Preparation", "product": "Fusion Phosphate", "analysis": "P₂O₅ 46%", "rate": "1.5 bag", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 50 kg", "slug": "fusion-phosphate", "commodity": false },
  { "band": "Phosphorus", "stage": "Early Growth", "product": "V. Ammonium Phosphate (V-Phosphate)", "analysis": "NPK 10:44:0 + Fe", "rate": "1 bag", "method": "Fertigation", "pack": "Bag - 10 kg", "slug": "v-phosphate", "commodity": false },
- { "band": "Nitrogen", "stage": "Germination", "product": "Vital Urea", "analysis": "N 32% · S 13%", "rate": "1 bag", "method": "Side Dressing/Broadcasting", "pack": "Bag - 25 kg", "slug": "vital-urea", "commodity": false },
- { "band": "Nitrogen", "stage": "Germination", "product": "Urea", "analysis": "N 46%", "rate": "½ bag", "method": "Side Dressing/Broadcasting", "pack": "Bag - 50 kg", "slug": null, "commodity": true },
- { "band": "Nitrogen", "stage": "Early Growth", "product": "Vital Urea", "analysis": "N 32% · S 13%", "rate": "1 bag", "method": "Side Dressing/Broadcasting", "pack": "Bag - 25 kg", "slug": "vital-urea", "commodity": false },
- { "band": "Nitrogen", "stage": "Early Growth", "product": "Urea", "analysis": "N 46%", "rate": "½ bag", "method": "Side Dressing/Broadcasting", "pack": "Bag - 50 kg", "slug": null, "commodity": true },
+ { "band": "Nitrogen", "stage": "Germination", "product": "Vital Urea", "analysis": "N 32% · S 13%", "rate": "1 bag", "method": "Side dressing/Broadcasting", "pack": "Bag - 25 kg", "slug": "vital-urea", "commodity": false },
+ { "band": "Nitrogen", "stage": "Germination", "product": "Urea", "analysis": "N 46%", "rate": "½ bag", "method": "Side dressing/Broadcasting", "pack": "Bag - 50 kg", "slug": null, "commodity": true },
+ { "band": "Nitrogen", "stage": "Early Growth", "product": "Vital Urea", "analysis": "N 32% · S 13%", "rate": "1 bag", "method": "Side dressing/Broadcasting", "pack": "Bag - 25 kg", "slug": "vital-urea", "commodity": false },
+ { "band": "Nitrogen", "stage": "Early Growth", "product": "Urea", "analysis": "N 46%", "rate": "½ bag", "method": "Side dressing/Broadcasting", "pack": "Bag - 50 kg", "slug": null, "commodity": true },
  { "band": "Nitrogen", "stage": "Grand Growth", "product": "CAN", "analysis": "N 26%", "rate": "1 bag", "method": "Fertigation", "pack": "Bag - 50 kg", "slug": null, "commodity": true },
  { "band": "Potash", "stage": "Land Preparation", "product": "Fusion Potash", "analysis": "K₂O 50% · N 2% · S 1.5% · B 1% · Mg 1%", "rate": "1 bag", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 25 kg", "slug": "fusion-potash", "commodity": false },
  { "band": "Potash", "stage": "Early Growth", "product": "Vital Potash", "analysis": "NPK 11:0:44, coated with B", "rate": "½ bag", "method": "Fertigation", "pack": "Bag - 20 kg", "slug": "vital-potash", "commodity": false },
  { "band": "Potash", "stage": "Grand Growth", "product": "Vital Potash", "analysis": "NPK 11:0:44, coated with B", "rate": "½ bag", "method": "Fertigation", "pack": "Bag - 20 kg", "slug": "vital-potash", "commodity": false },
  { "band": "Secondary Nutrient", "stage": "Land Preparation", "product": "Green Sulfur", "analysis": "Sulfur 70%", "rate": "5 bag", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 1 kg", "slug": "green-sulfur", "commodity": false },
- { "band": "Secondary Nutrient", "stage": "Germination", "product": "Green Sulfur", "analysis": "Sulfur 70%", "rate": "2.5 bag", "method": "Side Dressing/Broadcasting", "pack": "Bag - 1 kg", "slug": "green-sulfur", "commodity": false },
+ { "band": "Secondary Nutrient", "stage": "Germination", "product": "Green Sulfur", "analysis": "Sulfur 70%", "rate": "2.5 bag", "method": "Side dressing/Broadcasting", "pack": "Bag - 1 kg", "slug": "green-sulfur", "commodity": false },
  { "band": "Secondary Nutrient", "stage": "Early Growth", "product": "Green Sulfur", "analysis": "Sulfur 70%", "rate": "2.5 bag", "method": "Fertigation", "pack": "Bag - 1 kg", "slug": "green-sulfur", "commodity": false },
  { "band": "Secondary Nutrient", "stage": "Early Growth", "product": "V-Mag Essential", "analysis": "Mg 8.5% · B 1%", "rate": "½ bag", "method": "Fertigation", "pack": "Bag - 5 kg", "slug": "v-mag-essential", "commodity": false },
  { "band": "Secondary Nutrient", "stage": "Grand Growth", "product": "V-Mag Essential", "analysis": "Mg 8.5% · B 1%", "rate": "½ bag", "method": "Fertigation", "pack": "Bag - 5 kg", "slug": "v-mag-essential", "commodity": false },
  { "band": "Soil Amendment", "stage": "Land Preparation", "product": "Humi Grow", "analysis": "Humic Acid 40% · K₂O 7%", "rate": "1 bag", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 8 kg", "slug": "humi-grow", "commodity": false },
- { "band": "Micronutrients", "stage": "Germination", "product": "V-Transform", "analysis": "Zinc 21%", "rate": "2 bag", "method": "Side Dressing/Broadcasting", "pack": "Bag - 3 kg", "slug": "v-transform", "commodity": false },
+ { "band": "Micronutrients", "stage": "Germination", "product": "V-Transform", "analysis": "Zinc 21%", "rate": "2 bag", "method": "Side dressing/Broadcasting", "pack": "Bag - 3 kg", "slug": "v-transform", "commodity": false },
  { "band": "Micronutrients", "stage": "Grand Growth", "product": "VL-Boron", "analysis": "Boron 5%", "rate": "1 pack", "method": "Spray", "pack": "Pack - 1 L", "slug": "v-boron", "commodity": false },
  { "band": "Micronutrients", "stage": "Grand Growth", "product": "VL-Micromix", "analysis": "Zn 5% · Fe 2% · Mn 2% · Cu 1% (w/v)", "rate": "1 pack", "method": "Spray", "pack": "Pack - 1 L", "slug": "vl-micro-mix", "commodity": false }
 ]
 
 export const TOMATO_STAGES = ["Land Preparation/Transplantation", "Germination", "Early Growth", "Grand Growth", "Fruiting and Picking Phase"]
 export const TOMATO_PLAN: PlanRow[] = [
- { "band": "Phosphorus", "stage": "Land Preparation/Transplantation", "product": "Green Phosphate", "analysis": "P₂O₅ 32% · N 6%", "rate": "1 bag", "method": "Broadcasting/ Fertigation", "pack": "Bag - 50 kg", "slug": "green-phosphate", "commodity": false },
- { "band": "Phosphorus", "stage": "Germination", "product": "Green Phosphate", "analysis": "P₂O₅ 32% · N 6%", "rate": "1 bag", "method": "Broadcasting/ Fertigation", "pack": "Bag - 50 kg", "slug": "green-phosphate", "commodity": false },
+ { "band": "Phosphorus", "stage": "Land Preparation/Transplantation", "product": "Green Phosphate", "analysis": "P₂O₅ 32% · N 6%", "rate": "1 bag", "method": "Broadcasting/Fertigation", "pack": "Bag - 50 kg", "slug": "green-phosphate", "commodity": false },
+ { "band": "Phosphorus", "stage": "Germination", "product": "Green Phosphate", "analysis": "P₂O₅ 32% · N 6%", "rate": "1 bag", "method": "Broadcasting/Fertigation", "pack": "Bag - 50 kg", "slug": "green-phosphate", "commodity": false },
  { "band": "Phosphorus", "stage": "Grand Growth", "product": "V. Ammonium Phosphate (V-Phosphate)", "analysis": "NPK 10:44:0 + Fe", "rate": "1 bag", "method": "Fertigation", "pack": "Bag - 10 kg", "slug": "v-phosphate", "commodity": false },
  { "band": "Nitrogen", "stage": "Land Preparation/Transplantation", "product": "Vital Urea", "analysis": "N 32% · S 13%", "rate": "1 bag", "method": "Broadcasting", "pack": "Bag - 25 kg", "slug": "vital-urea", "commodity": false },
  { "band": "Nitrogen", "stage": "Germination", "product": "Urea", "analysis": "N 46%", "rate": "½ bag", "method": "Broadcasting or Fertigation", "pack": "Bag - 50 kg", "slug": null, "commodity": true },

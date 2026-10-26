@@ -17,6 +17,7 @@ const LEVEL_LABEL: Record<Level, string> = { bad: 'Bad', ok: 'OK', best: 'Best' 
  * in yet: the sample data in that sheet mixes selections in a way that doesn't cleanly resolve to one
  * formula from inspection alone, so it needs confirming with Tahir before it ships, rather than guessed.
  */
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function LeverScorecard() {
   const [levels, setLevels] = useState<Record<string, Level>>(() =>
     Object.fromEntries(WHEAT_LEVERS.map(l => [l.name, 'ok' as Level]))
@@ -85,7 +86,7 @@ export function LeverScorecard() {
           </div>
         ))}
       </div>
-      <p className="cap mt-4">Weights and thresholds: a starting, research-informed hypothesis. VAN has no historical yield-dose dataset yet to calibrate against. To be revisited after this season's pilot.</p>
+      <p className="cap mt-4">Weights and thresholds: a starting, research-informed hypothesis. VAN has no historical yield-dose dataset yet to calibrate against.</p>
     </div>
   )
 }

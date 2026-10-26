@@ -17,6 +17,7 @@ import { useSowing } from '@/lib/sowing'
  * lay the foundation now, "coming soon" is acceptable for what cannot yet be finished — but a
  * placeholder must name its blocker, or it is an advert for vapour.
  */
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function StandingCrop({ cropKey, cropName }: { cropKey: string; cropName: string }) {
   const [sown] = useSowing(cropKey)
   const counted = COUNTABLE.includes(cropKey)
@@ -24,7 +25,7 @@ export function StandingCrop({ cropKey, cropName }: { cropKey: string; cropName:
     <div className="panel p-5" id="standing" style={{ borderStyle: 'dashed' }}>
       <div className="grid md:grid-cols-[1fr_auto] gap-4 items-center">
         <div>
-          <span className="eyebrow">Not built yet · what it is waiting on</span>
+          <span className="eyebrow">Coming later</span>
           <h3 className="mt-1">What is actually standing in your field.</h3>
           <p className="muted mt-2 max-w-[140ch]">
             The programme above is what the crop should get. The simulator below is what your season
@@ -35,19 +36,14 @@ export function StandingCrop({ cropKey, cropName }: { cropKey: string; cropName:
           </p>
           <p className="cap mt-2 max-w-[140ch]">
             {counted
-              ? <>Waiting on one thing: a cane <b>weight model from girth and length</b>. VAN's own
-                  assessment sheet measures length, thickness, nodes and node length and then applies
-                  a flat weight to every cane regardless, and its two sheets disagree on that weight
-                  by a third. Until there is a measured relationship, a yield figure here would be a
-                  cane count wearing a yield's name.</>
-              : <>Waiting on the method for {cropName}, which is not sugarcane's. Grain crops are
-                  assessed on heads per square metre, grains per head and thousand-grain weight, 
-                  a different instrument wearing the same name.</>}
-            {sown?.kind === 'date' && <> Your sowing date is already saved, and this block will open
+              ? <>{/* D-317: was "Waiting on one thing: a cane weight model ... its two sheets disagree on that weight by a third ..." */}This needs a cane <b>weight model from girth and length</b>, which VAN does not have yet.</>
+              : <>This needs a method for {cropName}. Grain crops are assessed on heads per square
+                  metre, grains per head and 1,000-grain weight.</>}
+            {sown?.kind === 'date' && <> Your sowing date is already saved, and this section will open
               at the point in the season where there is something countable.</>}
           </p>
         </div>
-        <a className="btn btn-sm btn-ghost" href="#/tools">What else is being built →</a>
+        <a className="btn btn-sm btn-ghost" href="#/tools">What else is coming →</a>
       </div>
     </div>
   )

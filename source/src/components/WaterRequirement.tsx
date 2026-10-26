@@ -22,6 +22,7 @@ import { SectionHead } from './bits'
  *   this is crop water requirement, not irrigation requirement — no conveyance loss, no leaching,
  *   and the rain shown is total rain, not what the field keeps.
  */
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 const SEASON_DAYS: Record<string, number> = { maize: 125, onion: 210, lentil: 170 }
 
 export function WaterRequirement({ cropKey, cropName }: { cropKey: string; cropName: string }) {
@@ -79,7 +80,7 @@ export function WaterRequirement({ cropKey, cropName }: { cropKey: string; cropN
         eyebrow="Water"
         title={`How much water the ${cropName} season needs.`}
         tone="navy"
-        lead="A nutrition plan only works if the crop gets its water. This panel shows what the season needs, what rain normally gives, and what must come from irrigation."
+        lead="A nutrition plan only works if the crop gets its water. Here is what the season needs, what rain normally gives, and what must come from irrigation."
       />
 
       <div className="panel p-5 lg:p-6">
@@ -89,7 +90,7 @@ export function WaterRequirement({ cropKey, cropName }: { cropKey: string; cropN
             {sownIso
               ? <>Counting from your own sowing date, <b>{prettyDate(sownIso)}</b>.</>
               : windows.length
-                ? <>No sowing date given, so this counts from the middle of VAN’s published window ({MONTHS_LONG[windows[0].start]}). Answer the question at the top of the page and it uses your date instead.</>
+                ? <>{/* D-317: was "counts from the middle of VAN’s published window (May)"; the count starts on the 15th of the window’s first month */}No sowing date given, so this counts from mid-{MONTHS_LONG[windows[0].start]}, the start of VAN’s published window. Give your sowing date at the top and it uses your date instead.</>
                 : null}
           </p>
         </div>
@@ -97,14 +98,14 @@ export function WaterRequirement({ cropKey, cropName }: { cropKey: string; cropN
         {!district && (
           <p className="small mt-4 max-w-[140ch]">
             Pick your district and the figures appear. They come from the nearest weather station with
-            published normals, and the page tells you which one and how far away it is.
+            published normals; the station and its distance are shown.
           </p>
         )}
 
         {climate && (
           <p className="cap mt-4">
             Nearest station with published normals: <b>{climate.station.name}</b>, {climate.km} km away.{' '}
-            {climate.km > 100 && <>That is a long way, and the figures below are regional rather than local because of it.{' '}</>}
+            {climate.km > 100 && <>At that distance the figures below are regional, not local.{' '}</>}
             {CLIMATE_SOURCE.dataset}, {CLIMATE_SOURCE.computedBy}.
           </p>
         )}
@@ -119,8 +120,8 @@ export function WaterRequirement({ cropKey, cropName }: { cropKey: string; cropN
             <p className="small mt-4 max-w-[140ch]">
               That is <b>{mmToAcreInches(result.irrigationMm).toFixed(1)} acre-inches</b>. About{' '}
               <b>{mmToIrrigations(result.irrigationMm, 3).toFixed(1)} waterings</b> if a watering puts on
-              three inches, and <b>{(result.irrigationMm * LITRES_PER_MM_PER_ACRE / 1000).toFixed(0)} thousand
-              litres</b> an acre. The three inches is a common reckoning for a flood irrigation, not a
+              3 inches, and <b>{(result.irrigationMm * LITRES_PER_MM_PER_ACRE / 1000).toFixed(0)} thousand
+              litres</b> an acre. The 3 inches is a common reckoning for a flood irrigation, not a
               measurement of yours. Count your own and the number of waterings moves with it.
             </p>
 
@@ -157,48 +158,46 @@ export function WaterRequirement({ cropKey, cropName }: { cropKey: string; cropN
               <p className="small mt-4 max-w-[140ch]">
                 At its peak, FAO puts {cropName}’s water use at <b>{kcMid.toFixed(2)} times</b> that
                 reference, so around <b>{(eto(climate!.station, sownDoy! + 60) * kcMid).toFixed(1)} mm a
-                day</b> in mid-season here. What cannot be given is the season total, and the reason is
-                below.
+                day</b> in mid-season here.
               </p>
             )}
             <p className="cap mt-3 max-w-[140ch]">
-              <b>Why there is no season total for {cropName}.</b> {gap ?? 'FAO does not publish both of the two pieces this calculation needs for this crop, the stage lengths and the crop coefficients, so no season figure is given.'}
+              <b>Why there is no season total for {cropName}.</b> {gap ?? 'FAO does not publish the stage lengths and crop coefficients this calculation needs for this crop.'}
             </p>
           </>
         )}
 
         {district && !climate && (
-          <p className="small mt-4 max-w-[140ch]">No weather station is mapped to this district yet, so no figure is given.</p>
+          <p className="small mt-4 max-w-[140ch]">No weather station is linked to this district yet.</p>
         )}
 
         {district && climate && !result && !partial && (
           <p className="small mt-4 max-w-[140ch]">
-            {gap ?? `FAO Paper 56 does not publish both pieces this calculation needs for ${cropName}, the stage lengths and the crop coefficients, so no figure is given rather than a guessed one.`}
+            {gap ?? `FAO Paper 56 does not publish the stage lengths and crop coefficients this calculation needs for ${cropName}.`}
           </p>
         )}
       </div>
 
       <div className="panel-soft p-5 mt-4">
-        <span className="eyebrow">3 things this number is not</span>
+        <span className="eyebrow">Limits of this estimate</span>
         <ol className="grid gap-2 mt-2 max-w-[140ch]">
           <li><b>It is not measured with the full equation.</b> FAO’s standard method needs humidity,
-            wind and solar radiation. The Pakistan Meteorological Department normals this site carries
-            have temperature and rain and not those, so the reference figure uses <b>Hargreaves</b>, 
-            the method FAO itself gives for exactly this case. It is an estimate.</li>
+            wind and solar radiation. The Pakistan Meteorological Department normals this tool uses give only temperature
+            and rain, so the reference figure uses <b>Hargreaves</b>, the method FAO gives for this
+            case. It is an estimate.</li>
           <li><b>It is probably on the low side for Punjab.</b> FAO’s crop coefficients are published
             for a sub-humid climate. Its own caption says relative humidity around 45% and light wind.
             Punjab in the dry season is drier and windier than that, and FAO’s own correction for arid
-            climates <i>raises</i> the coefficient. Applying that correction needs humidity and wind
-            data this site does not have, so the figure above is closer to a floor than a ceiling.</li>
+            climates <i>raises</i> the coefficient. Without humidity and wind data that correction
+            cannot be applied, so the real need is likely higher than the figure above.</li>
           <li><b>It is what the crop uses, not what you have to pump.</b> Nothing here allows for what
             a watercourse loses on the way, for water running past the roots, or for the extra needed
             to leach a salty soil. And the rain shown is <i>all</i> the rain. How much of a July
-            downpour a field actually keeps depends on your soil and your slope, and there is no
-            honest way to work that out from here.</li>
+            downpour a field actually keeps depends on your soil and your slope.</li>
         </ol>
         <p className="cap mt-3">
           Method: {WATER_SOURCE.paper}, {WATER_SOURCE.tables}. Temperature and rainfall:{' '}
-          {CLIMATE_SOURCE.dataset} ({CLIMATE_SOURCE.period}), {CLIMATE_SOURCE.computedBy}. {CLIMATE_SOURCE.note}
+          {CLIMATE_SOURCE.dataset}, {CLIMATE_SOURCE.computedBy}. {CLIMATE_SOURCE.note}
         </p>
       </div>
     </div>

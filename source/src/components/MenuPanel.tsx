@@ -80,7 +80,7 @@ const PAGES: [string, string, string][] = [
   ['Company profile', 'The whole company on 1 page, and the profile as a PDF', '#/company-profile'],
   ['All products', `Every one of the ${PRODUCTS.filter(p => !p.family).length} registered brands`, '#/products'],
   ['All crop plans', `Every one of the ${CROPS.length} programmes`, '#/crops'],
-  ['Vitalytics', 'Every calculator on the site, under one name', '#/tools'],
+  ['Vitalytics', 'Every calculator on the site, under 1 name', '#/tools'],
 ]
 
 const JOBS: { job: string; note: string; links: [string, string][] }[] = [
@@ -107,7 +107,7 @@ const JOBS: { job: string; note: string; links: [string, string][] }[] = [
   },
   {
     job: 'Read the evidence',
-    note: 'Every figure on this site is transcribed, sourced, or marked derived.',
+    note: 'Every figure with its source.',
     links: [['Knowledge hub', '#/knowledge'], ['The 17 nutrients', '#/knowledge/nutrients'], ['Why Pakistan must shift', '#/knowledge/why-pakistan-must-shift'], ['Soil Atlas', '#/soil'], ['Circular economy', '#/circular-economy'], ['Product knowledge decks', '#/knowledge#decks']],
   },
   {
@@ -117,6 +117,7 @@ const JOBS: { job: string; note: string; links: [string, string][] }[] = [
   },
 ]
 
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function MenuPanel({ onClose, extras }: { onClose: () => void; extras?: React.ReactNode }) {
   const [q, setQ] = useState('')
   const [cur, setCur] = useState(0)

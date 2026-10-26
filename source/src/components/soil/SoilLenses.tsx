@@ -41,10 +41,10 @@ const LENSES: { key: LensKey; label: string; blurb: string; tone: string; beats:
     blurb: '1 province, 770,160 samples, and a single condition underneath all of it.',
     tone: 'rust',
     beats: [
-      { to: '#soil-map', title: 'The whole province, one colour at a time', why: 'Switch the analyte and watch the same ground re-colour. On pH almost none of it is green.' },
+      { to: '#soil-map', title: 'The whole province, 1 colour at a time', why: 'Switch the analyte and watch the same ground re-colour. On pH almost none of it is green.' },
       { to: '#soil-districts', title: 'Where it is worst, and where it is not', why: '36 districts, sorted by whatever you care about. The spread is wider than the average suggests.' },
       { to: '#soil-relations', title: 'What sits underneath it', why: 'Carbonate drives the alkalinity. That relationship holds cleanly. One that everybody assumes does not.' },
-      { to: '#soil-analytes', title: 'What was never measured at all', why: '13 determinations in every district file. Sulfur is in none of them, in any column, at any point.' },
+      { to: '#soil-analytes', title: 'What was never measured at all', why: '13 determinations in every district. Sulfur is not one of them.' },
       { to: '#soil-built', title: 'What this does to a bag of fertilizer', why: 'Above pH 8 surface urea leaves as ammonia. Calcareous ground binds phosphate. The same alkalinity locks zinc.' },
     ],
     close: 'This is the ground Pakistan farms on. The country applies more nutrient per acre every year and gets less of it into the crop. The argument, with every source named, is on the national page.',
@@ -56,8 +56,8 @@ const LENSES: { key: LensKey; label: string; blurb: string; tone: string; beats:
     tone: 'soil',
     beats: [
       { to: '#soil-districts', title: 'Start with your district', why: 'Pick it once and everything below reads for that district instead of the province.' },
-      { to: '#soil-myground', title: 'Then go one level down', why: 'Your district is not one soil. Its own cells can differ by a full point of pH, and by more than that on zinc.' },
-      { to: '#soil-map', title: 'See it on the ground', why: 'Every square is the median of the samples inside it. No boundary file, no interpolation, no smoothing.' },
+      { to: '#soil-myground', title: 'Then go 1 level down', why: 'Your district is not 1 soil. Its own cells can differ by a full point of pH, and by more than that on zinc.' },
+      { to: '#soil-map', title: 'See it on the ground', why: 'Each square shows the median of the samples taken inside it.' },
       { to: '#soil-built', title: 'What that soil does to what you buy', why: 'What your ground specifically does to urea, to phosphate and to zinc, before the root gets near them.' },
     ],
     close: 'A district average is a starting point, not your field. If you have a soil report, the crop pages will build your plan from it. If you do not, VAN Lab will test one for you.',
@@ -70,13 +70,14 @@ const LENSES: { key: LensKey; label: string; blurb: string; tone: string; beats:
     beats: [
       { to: '#soil-districts', title: 'Pick a region and read its condition', why: 'Sort by the analyte you formulate against, and the districts order themselves by need.' },
       { to: '#soil-relations', title: 'Understand what drives it there', why: 'A shortage caused by carbonate fixation needs a different product from one caused by low organic matter.' },
-      { to: '#soil-analytes', title: 'See what nobody has measured', why: 'Sulfur was never on the schedule. A nutrient that is never measured cannot appear deficient and cannot enter a plan.' },
+      { to: '#soil-analytes', title: 'See what nobody has measured', why: 'Sulfur was never on the schedule, so no soil report shows it as short and it cannot enter a plan.' },
       { to: '#soil-built', title: 'What VAN already makes against each condition', why: 'Both tiers: the branded range, and the unbranded formulations open for white labelling or joint development.' } /* D-296, Tahir 22 Oct 2026: licensing is not offered (D-185) */,
     ],
-    close: 'Where a condition is real and nothing on either tier is shaped for it, that is a gap worth building into. VAN would rather show you that than pretend the range is complete.',
+    close: 'Where a condition is real and nothing on either tier is shaped for it, that is a gap worth building into.',
   },
 ]
 
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function SoilLenses({ value, onChange }: { value: LensKey | null; onChange: (k: LensKey | null) => void }) {
   const active = LENSES.find(l => l.key === value) ?? null
   return (

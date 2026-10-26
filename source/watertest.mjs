@@ -44,7 +44,7 @@ ok('the station and its distance are given', /Multan.*km away|km away/.test(t))
 
 console.log('\n2 · the three caveats travel with the number')
 ok('Hargreaves is named, not hidden', /Hargreaves/.test(t))
-ok('it says the figure is probably low for Punjab', /closer to a floor than a ceiling/i.test(t))
+ok('it says the figure is probably low for Punjab', /likely higher than the figure above/i.test(t))
 ok('it says this is not irrigation requirement', /not what you have to pump/i.test(t))
 ok('rainfall is called total, not effective', /all\s*\n?\s*the rain/i.test(t))
 

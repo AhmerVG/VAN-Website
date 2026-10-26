@@ -36,6 +36,7 @@ function fmtValue(parameter: SoilParameter, value: number) {
  * fill is a starting point and is labelled as one on every row it touches — the farmer overrides any
  * row by tapping a band, and that row then reads as theirs, not the district's.
  */
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function SoilAdjustmentPanel({ crop, soilInputs, bandSource, district, card = null, onChange, onPickDistrict, onClear }: {
   crop: SoilCrop
   soilInputs: SoilInputs
@@ -56,7 +57,7 @@ export function SoilAdjustmentPanel({ crop, soilInputs, bandSource, district, ca
   return (
     <div className="panel-soft p-4">
       <div className="cap font-bold uppercase tracking-[.06em] mb-1">Have a soil test? Adjust the plan for it</div>
-      <p className="small muted mb-3">Type the number from your soil report, or pick its band, for any of these. The plan above adds product where your land is short. For phosphorus, potash and zinc it takes a quarter off where your reading is healthy, never on nitrogen. Leave a row blank if you have no reading for it. This adjustment is a pilot.</p>
+      <p className="small muted mb-3">Type the number from your soil report, or pick its band, for any of these. The plan above adds product where your land is short. For phosphorus, potash and zinc it cuts the rate by 1/4 where your reading is healthy. Nitrogen is not cut. Leave a row blank if you have no reading for it. This adjustment is a pilot.</p>
 
       <div className="panel p-3 mb-3" style={{ background: '#fff' }}>
         <div className="cap font-bold uppercase tracking-[.06em] mb-1">No soil test yet? Start from your district</div>

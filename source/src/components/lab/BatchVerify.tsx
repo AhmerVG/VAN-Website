@@ -132,8 +132,7 @@ function Offline({ batch }: { batch: string }) {
         <span className="tag tag-gold">coming</span>
       </div>
       <p className="small mt-2 max-w-[140ch]">
-        We are not going to show you a pass or a fail we have not read from the plant's own records. Send the number
-        and someone will look it up and answer you today.
+        Send the number and someone will look it up in the plant's records and answer you today.
       </p>
       <div className="flex flex-wrap gap-2 mt-3">
         <WaButton href={WA.verify(batch)} lg>Send {batch || 'the number'} on WhatsApp</WaButton>
@@ -146,6 +145,7 @@ function Offline({ batch }: { batch: string }) {
 /** The check's state: what is typed, what was asked, and the answer. Shared by BatchVerify and
  *  VerifyPanel (7 Oct 2026: the "Verify a bag" box on Home and /verify runs the check itself; its
  *  WhatsApp and email buttons came off, since they asked a person to do what the page now does). */
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function useBatchCheck() {
   const [batch, setBatch] = useState('')
   const [busy, setBusy] = useState(false)

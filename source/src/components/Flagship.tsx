@@ -30,6 +30,7 @@ import { cropSlug, tidyUnits } from '@/lib/season'
 
 const fmt = (n: number) => n >= 100 ? Math.round(n).toLocaleString('en-PK') : n >= 10 ? n.toFixed(0) : n.toFixed(1)
 
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 /* ─────────────────────────── shared frame ─────────────────────────── */
 function Frame({ question, answers, children, wontClaim, tool }: {
   question: string
@@ -82,16 +83,16 @@ function VitalUreaTool() {
           <button type="button" className={`btn btn-sm ${watered ? 'btn-navy' : 'btn-gold'}`} onClick={() => setWatered(w => !w)}>{watered ? 'Before the first water' : 'Give the first water'}</button>
           <span className="cap">{watered ? 'After the first irrigation or rain' : 'Nothing happens to a coated granule until water reaches it'}</span>
         </div>
-        <p className="cap mt-3">How it works, not a measurement. No day figures are drawn because VAN has no laboratory release curve, and says so on this page.</p>
+        {/* D-316, 26 Oct 2026. Tahir: "you are pasting the conversational text on the website?" Removed the caption "How it works, not a measurement. No day figures are drawn because VAN has no laboratory release curve, and says so on this page." */}
       </div>
-      <svg viewBox="0 0 520 200" className="fs-svg" role="img" aria-label="Plain urea dissolves in the first water at once; coated urea releases in steps over weeks">
+      <svg viewBox="0 0 520 200" className="fs-svg" role="img" aria-label="Plain urea dissolves in the first water at once; coated urea releases in steps over days">
         <rect width="520" height="200" fill="var(--paper)" />
         <text x="16" y="24" fontSize="12" fontWeight="700" fill="var(--navy)" fontFamily="Public Sans, sans-serif">Plain urea</text>
         <text x="16" y="112" fontSize="12" fontWeight="700" fill="var(--navy)" fontFamily="Public Sans, sans-serif">Vital Urea, sulfur coated</text>
         {/* time axis */}
         <line x1="16" y1="186" x2="504" y2="186" stroke="var(--line-2)" />
         <text x="16" y="198" fontSize="10" fill="var(--muted)" fontFamily="Public Sans, sans-serif">first water</text>
-        <text x="504" y="198" fontSize="10" fill="var(--muted)" textAnchor="end" fontFamily="Public Sans, sans-serif">weeks later</text>
+        <text x="504" y="198" fontSize="10" fill="var(--muted)" textAnchor="end" fontFamily="Public Sans, sans-serif">days later</text>
         {/* plain urea: one tall bar at the first water, then nothing */}
         <g opacity={watered ? 1 : 0.2}>
           <rect x="16" y="34" width="40" height="56" fill="var(--rust)" />
@@ -145,10 +146,10 @@ function VitalPotashTool() {
           <>
             <div className="fs-bar"><span>{fmt(tonnes)} t of {name.toLowerCase()} grain takes off</span><i style={{ width: `${Math.min(100, grainK / Math.max(k, grainK, grainK + (strawK ?? 0)) * 100)}%`, background: 'var(--gold)' }} /><b className="num">{fmt(grainK)} kg</b></div>
             {strawK !== null && <div className="fs-bar"><span>with the {rem?.residue?.label.toLowerCase()} taken off too</span><i style={{ width: `${Math.min(100, (grainK + strawK) / Math.max(k, grainK + strawK) * 100)}%`, background: 'var(--soil)' }} /><b className="num">{fmt(grainK + strawK)} kg</b></div>}
-            <p className="cap mt-2">Removal per tonne from IPNI’s tables, the same source as the crop page’s balance block; no Pakistani removal table exists on the public record. Your bags also carry {fmt(n)} kg of nitrogen. 1% of all nutrient applied in Pakistan is potash, as the Crop Force bag prints.</p>
+            <p className="cap mt-2">Removal per tonne from IPNI’s tables. Your bags also carry {fmt(n)} kg of nitrogen. 1% of all nutrient applied in Pakistan is potash, a figure printed on VAN’s Crop Force bag.</p>
           </>
         ) : (
-          <p className="cap mt-2">No published removal figure for {name.toLowerCase()} on this site, so only your own bags are shown. Your bags also carry {fmt(n)} kg of nitrogen. 1% of all nutrient applied in Pakistan is potash, as the Crop Force bag prints.</p>
+          <p className="cap mt-2">No published removal figure for {name.toLowerCase()}, so only your own bags are shown. Your bags also carry {fmt(n)} kg of nitrogen. 1% of all nutrient applied in Pakistan is potash, a figure printed on VAN’s Crop Force bag.</p>
         )}
       </div>
     </div>
@@ -176,15 +177,15 @@ function GreenPhosphateTool() {
             {ph !== undefined && ph >= 7.5 ? ' Above pH 7.5 with free lime, phosphate that dissolves out of a granule meets calcium within a few centimetres and drops out of solution before a root reaches it. That is where a bag of DAP goes.' : ' At this pH calcium fixation is slower; the acidic microsite still matters on limed ground.'}
             {' '}<a href="#/soil">Read the whole district on the Soil Atlas.</a>
           </p>
-        ) : <p className="small mt-3 muted">Pick your district and the page reads the Punjab survey’s median for it. A district median is not your field.</p>}
+        ) : <p className="small mt-3 muted">Pick your district to see the Punjab survey median for it. A district median is not your field.</p>}
       </div>
       <div>
         <div className="fs-row">
           <span className="small">Bag</span>
           {[50, 35].map(b => <button key={b} type="button" className={`btn btn-sm ${bag === b ? 'btn-navy' : 'btn-ghost'}`} onClick={() => setBag(b as 50 | 35)}>{b} kg</button>)}
         </div>
-        <p className="small mt-3">1 bag of {bag} kg carries <b className="num">{fmt(p2o5)} kg P₂O₅</b> and <b className="num">{fmt(nKg)} kg N</b>, from the declared 6:32:0. The same 50 kg of TSP carries 23 kg P₂O₅ and no nitrogen, and no coating. On the crop page you can switch between them; the plan’s bag count does not change on a switch, on purpose.</p>
-        <svg viewBox="0 0 320 120" className="fs-svg" role="img" aria-label="One granule with an acidic zone around it in alkaline soil">
+        <p className="small mt-3">1 bag of {bag} kg carries <b className="num">{fmt(p2o5)} kg P₂O₅</b> and <b className="num">{fmt(nKg)} kg N</b>, from the declared 6:32:0. The same 50 kg of TSP carries 23 kg P₂O₅ and no nitrogen, and no coating. On the crop page you can switch between them; the plan’s bag count stays the same.</p>
+        <svg viewBox="0 0 320 120" className="fs-svg" role="img" aria-label="1 granule with an acidic zone around it in alkaline soil">
           <rect width="320" height="120" fill="#EFE6DA" />
           <text x="10" y="18" fontSize="11" fill="var(--soil)" fontFamily="Public Sans, sans-serif">calcareous soil{ph ? `, pH ${ph.toFixed(1)}` : ', above pH 8'}</text>
           <circle cx="160" cy="66" r="42" fill="var(--gold-soft)" opacity=".9" />
@@ -208,13 +209,13 @@ export function Flagship({ slug }: { slug: string }) {
       question="I put 2 bags of urea on and the field goes yellow again in 3 weeks. Where did it go?"
       answers={[
         { h: 'A bag of urea has 3 claimants', p: 'The crop, the air and the water. Plain urea dissolves in the first irrigation and everything is exposed at once. Above pH 8 a share leaves as ammonia gas; what dissolves moves down with the water past the root. The farmer paid for all of it.' },
-        { h: 'The coating limits how much is exposed at once', p: 'Plain urea inside, fine elemental sulfur outside, held by a binder. Nothing happens until water reaches the granule. Then the coating breaks down in steps and the nitrogen is released over weeks, so the crop meets it while it is still there.' },
+        { h: 'The coating limits how much is exposed at once', p: 'Plain urea inside, fine elemental sulfur outside, held by a binder. Nothing happens until water reaches the granule. Then the coating breaks down in steps and the nitrogen is released over days, so the crop meets it while it is still there.' },
         // D-316, 26 Oct 2026, to Tahir's 27/28 Sep rulings: once, at the first application; trials named by year only, no yield.
         // Was: 'Half the weight, and more grain, in 3 maize trials' ... 'Rafhan Maize Products (2022, joint) ... at each application gave 5 to 15% more grain with less nitrogen applied.'
         { h: '1 bag, once, at the first application', p: '1 bag of Vital Urea (25 kg) takes the place of 1 bag of urea (50 kg) once in the crop cycle, at the first application; the rest of the nitrogen programme stays as it is. Used in maize trials at Rafhan Maize Products (2023, joint), Descon Research Farm (2024, joint) and an independent partner farm (2025, not named). Do not compare kilograms. Compare what reaches the crop in the weeks it can use it.' },
       ]}
       tool="Count from the water"
-      wontClaim={['A yield figure. The 3 maize trials on this page show the product in use; they are not printed as a yield result.', 'A laboratory release curve with days on it. VAN has none, so the picture above has no numbers.', 'That the coating stops volatilisation. It limits what is exposed at once; it does not change the soil.', 'A soil pH or soil test change. The acid effect is a zone around each granule for the weeks it is releasing.']}
+      wontClaim={['A yield figure.', 'A laboratory release curve with days on it.',  /* D-316: the explaining second sentences removed (Tahir, 26 Oct: no conversational text on the site) */ 'That the coating stops volatilisation. It limits what is exposed at once; it does not change the soil.', 'A soil pH or soil test change. The acid effect is a zone around each granule for the days it is releasing.']}
     ><VitalUreaTool /></Frame>
   )
   if (slug === 'vital-potash') return (
@@ -223,10 +224,10 @@ export function Flagship({ slug }: { slug: string }) {
       answers={[
         { h: 'The crop grows on nitrogen and fills on potash', p: 'Potash moves the sugar the leaf makes into the grain, the tuber or the fruit, and thickens the cell wall against heat, drought and disease. Pakistan applies about 1 kg of potash for every 83 kg of nitrogen.' },
         { h: 'Made for the fill window', p: 'N 11, K₂O 44, fully water soluble. It goes on at grand growth and maturity, through the fertigation or flood water, when the crop has stopped building leaf and started filling. The small nitrogen share keeps the plant working through fill without pushing new leaf.' },
-        { h: 'Boron rides on the granule, in 2 forms', p: 'Boron carries sugar to the flower and sets the seed and the fruit. Since 2014 VAN has coated it onto the potash granule on its own line, developed and built locally, in 2 forms on 1 granule: sodium borate for fast action and calcium borate for slow release. It lands where the potash lands and cannot separate in the bag. Named, never numbered, because no figure is on the bag.' },
+        { h: 'Boron rides on the granule, in 2 forms', p: 'Boron carries sugar to the flower and sets the seed and the fruit. Since 2014 VAN has coated it onto the potash granule on its own line, developed and built locally, in 2 forms on 1 granule: sodium borate for fast action and calcium borate for slow release. It lands where the potash lands and cannot separate in the bag.' },
       ]}
       tool="Your potash account"
-      wontClaim={['A boron percentage. None is printed on the pack.', 'A yield figure, a disease or immunity effect, or a fruit-setting claim.', 'A foliar rate. Foliar is a method the plan names; the rate is the plan’s.', 'That 2 applications are the season’s whole potash. Fusion Potash is the basal line; this is the fill line.']}
+      wontClaim={['A boron percentage.', 'A yield figure, a disease or immunity effect, or a fruit-setting claim.', 'A foliar rate. Use your crop plan’s rate.', /* D-317: was "A foliar rate. Foliar is a method the plan names; the rate is the plan’s." */ 'That 2 applications are the season’s whole potash. Fusion Potash is the basal line; this is the fill line.']}
     ><VitalPotashTool /></Frame>
   )
   if (slug === 'green-phosphate') return (
@@ -238,7 +239,7 @@ export function Flagship({ slug }: { slug: string }) {
         { h: 'Do not compare kilograms; compare what reaches the crop', p: 'A 50 kg bag of DAP carries more phosphate than a 50 kg bag of Green Phosphate. What the crop eats is what stays available, and on calcareous ground that is the smaller number by far. The humic seal, with a fraction of fulvic, feeds the soil and the root: across 81 published studies humic raised shoot and root growth, and Pakistani calcareous-soil trials found the consistent gain came from organic matter applied with the phosphate (Rose et al. 2014, Advances in Agronomy 124; Ahmad et al. 2022; Mussarat et al. 2021; Mehdi et al. 2003). VAN makes phosphate to be available, and that is the comparison that matters.' },
       ]}
       tool="Your district, and your bag"
-      wontClaim={['That 70 to 80% of applied phosphate is fixed. That was a recovery statistic misread as soil chemistry, and it is off the site.', 'That it beats DAP or TSP by source alone. The Pakistani field trials do not support that for any source.', 'A field-scale pH change, a soil-test change, or a percentage of phosphate saved.', 'A replicated independent field trial. None exists yet.']}
+      wontClaim={['That 70 to 80% of applied phosphate is fixed.', 'That it beats DAP or TSP by source alone. The Pakistani field trials do not support that for any source.', 'A field-scale pH change, a soil-test change, or a percentage of phosphate saved.', 'A replicated independent field trial. None exists yet.']}
     ><GreenPhosphateTool /></Frame>
   )
   return null

@@ -38,6 +38,7 @@ export function CropNow({ cropKey, cropName }: { cropKey: string; cropName: stri
   const cp = CROP_PLANS[cropKey]
   const check = windowCheck(cropKey, sown.iso)
 
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
   // Sown in the future, or typed wrong. Say so rather than printing "day −12".
   if (das < 0) {
     return (
@@ -120,8 +121,7 @@ export function CropNow({ cropKey, cropName }: { cropKey: string; cropName: stri
                   ))}
                 </ul>
                 <p className="cap mt-2">
-                  Read straight off VAN's published {cropName} plan. The same rows as the programme
-                  table below, filtered to this stage. Nothing here is calculated.
+                  From VAN's published {cropName} plan: the programme rows for this stage.
                 </p>
               </>
             )}
@@ -146,13 +146,7 @@ export function CropNow({ cropKey, cropName }: { cropKey: string; cropName: stri
           </h3>
           <p className="muted mt-2 max-w-[140ch]">
             VAN publishes the {cropName} programme stage by stage, but not how many days each stage
-            lasts, so this page will not tell you which stage you are in. Wheat's day ranges are
-            wheat's; borrowing them for {cropName} would be a guess wearing the look of a measurement.
-          </p>
-          <p className="cap mt-3 max-w-[140ch]">
-            What is missing is a stage model for {cropName}. The days after sowing at which each of
-            its published stages opens. When VAN has one, this block answers the same question here
-            that it answers on wheat.
+            lasts, so your current stage cannot be shown yet.
           </p>
         </div>
         <div>

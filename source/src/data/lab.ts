@@ -1,3 +1,4 @@
+// D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction
 /**
  * VAN LAB — ONE PAGE, ONE TELLING. D-166, 25 Sep 2026.
  *
@@ -24,15 +25,15 @@ export type ChainStep = { n: string; t: string; s: string; k: ChainKey; detail?:
 export const CHAIN: ChainStep[] = [
   { n: '01', t: 'Your parcel', s: 'You send it, with your name on it.', k: 'you' },
   { n: '02', t: 'Sample Reception', s: 'Separate address. Knows who you are. Never sees your result.', k: 'name',
-    detail: 'Somebody has to open the parcel; no arrangement removes that, and a laboratory claiming otherwise is describing something that cannot happen. So the parcel is not opened at the laboratory. Sample Reception is a separate place with its own address, independent of the laboratory both physically and organisationally. The people there know who you are. They will never see your result.' },
+    detail: 'The parcel is not opened at the laboratory. Sample Reception is a separate place with its own address, independent of the laboratory both physically and organisationally. The people there know who you are. They will never see your result.' },
   { n: '03', t: 'A code is issued', s: 'By the system, not a person. It encodes nothing about you.', k: 'code',
-    detail: 'Reception enters your details and the system generates a laboratory code. The system, not a person, because an assigned code can carry meaning and meaning leaks. The code encodes nothing about you: no initials, no district, no segment, no priority marker. Your form, the outer packaging, the courier documents and every brand marking stay at the desk.' },
+    detail: 'Reception enters your details and the system generates a laboratory code. The code encodes nothing about you: no initials, no district, no segment, no priority marker. Your form, the outer packaging, the courier documents and every brand marking stay at the desk.' },
   { n: '04', t: 'Split 3 ways', s: '2 portions forward, 1 retained untouched.', k: 'split',
-    detail: '2 portions go forward for analysis. One is retained, untouched, for 24 months, so a complete independent re-test is possible if you ever dispute the result. All 3 carry the code and nothing else.' },
+    detail: '2 portions go forward for analysis. The third is retained, untouched, for 24 months, so a complete independent re-test is possible if you ever dispute the result. All 3 carry the code and nothing else.' },
   { n: '05', t: '2 analysts', s: 'Working independently. Neither sees the other’s number.', k: 'code',
-    detail: 'VAN does not report on a single analysis. 2 different analysts each receive a portion and each runs the test, and neither sees the other’s result before both are submitted. If the two compared results first, their agreement would prove nothing.' },
+    detail: 'VAN does not report on a single analysis. 2 different analysts each receive a portion and each runs the test, and neither sees the other’s result before both are submitted. If the 2 compared results first, their agreement would prove nothing.' },
   { n: '06', t: 'Compared, then signed', s: 'Against a documented criterion. The QC Manager signs a code.', k: 'code',
-    detail: 'The two results are compared against a documented acceptance criterion. Where they agree, the result is reported. Where they do not, the QC Manager decides whether a third analysis is run or which result stands. The Assistant QC Manager reviews the work; the QC Manager signs the report digitally. He signs against a code and does not know whose sample he is approving, which is precisely what makes the signature worth having.' },
+    detail: 'The 2 results are compared against a documented acceptance criterion. Where they agree, the result is reported. Where they do not, the QC Manager decides whether a third analysis is run or which result stands. The Assistant QC Manager reviews the work; the QC Manager signs the report digitally. He signs against a code and does not know whose sample he is approving.' },
   { n: '07', t: 'The report finds you', s: 'The system reconnects the code to you at release, and logs it.', k: 'you',
     detail: 'Only at release does the code reconnect to you, and the system does it, not a person. The report reaches you and nobody in the laboratory learns who it went to.' },
 ]
@@ -100,7 +101,7 @@ export const PRICE_LEAD = '21 fertilizer tests. Nothing on this list is “on re
 export const SOIL_NOTE = 'VAN Lab also tests soil. The soil tests are not on this list yet, so the price is given when you book.'
 /** D-168: the Days column is the laboratory's own time for that test. Booking to report is 3 to 5 working days. */
 export const DAYS_NOTE = 'Days in the laboratory are the laboratory’s own working time for that test, not the time from booking to report (see Book a test).'
-export const PRICE_NOTE = 'All 21 are performed by the same laboratory, under the same blind chain, by the same 2 analysts. The 8 marked Accredited sit inside VAN Lab’s PNAC accreditation, LAB 336, ISO/IEC 17025:2017. The other 13 are outside the granted scope, and are marked so you are never in any doubt which is which.'
+export const PRICE_NOTE = 'All 21 are performed by the same laboratory, under the same blind chain, by the same 2 analysts. The 8 marked Accredited sit inside VAN Lab’s PNAC accreditation, LAB 336, ISO/IEC 17025:2017. The other 13 are outside the accredited scope.'
 
 /**
  * Booking, in the order it happens. The 4 steps (was SampleSteps) now carry the facts that only the
@@ -112,10 +113,10 @@ export const BOOK_STEPS: [string, string][] = [
   // D-168: "Bring it to the laboratory" and "hand it to your VAN dealer" are gone (his rulings: the
   // laboratory never receives from the public; no dealer route). Sample Reception's address is given.
   ['Send 500 g', 'Solid or liquid, by weight, in a sealed pack; liquids in a sealed bottle. That is enough for 2 independent analyses plus the portion we retain in case you ever dispute the result. Bring it by hand or courier it to Sample Reception; the address is below.'],
-  ['Get a reference', 'Sample Reception logs it and gives you a reference number. Anyone with a reference number can ask where a sample is, with no account, and you do not have to be a regular customer. Send it on WhatsApp and Sample Reception tells you where your sample is the same day.'],
+  ['Get a reference', 'Sample Reception logs it and gives you a reference number. Anyone with a reference number can ask where a sample is. No account is needed, and you do not have to be a regular customer. Send it on WhatsApp and Sample Reception tells you where your sample is the same day.'],
   // D-168, Tahir 25 Sep 2026: 3 to 5 working days from booking. The per-test days are laboratory time.
   ['3 to 5 working days', 'From confirmed booking to your report. Inside that, the laboratory’s own time is 3 working days for most tests and 4 for humic acid; the price list shows each test.'],
-  ['The result, with its method', 'The measured value for each parameter you asked for, and the method that produced it, because a value only means something beside its method. Particularly for humic acid, where the extraction protocol defines the number. It comes as a PDF on WhatsApp and by email; reports are digital only. If anything needs explaining, call Sample Reception with your reference number.'],
+  ['The result, with its method', 'The measured value for each parameter you asked for, and the method that produced it, because a value only means something beside its method, particularly for humic acid, where the extraction protocol defines the number. It comes as a PDF on WhatsApp and by email; reports are digital only. If anything needs explaining, call Sample Reception with your reference number.'],
 ]
 
 export const BOOK_INTRO = 'The laboratory works to a published price list and issues the same certificate to everybody. Booking first means the sample is expected, coded on arrival and not sitting on a desk.'
@@ -126,9 +127,9 @@ export const PAYING = 'Pay by bank transfer only. No cash is taken. Every price 
 export const WHO: { h: string; s: string; body?: string }[] = [
   { h: 'Farmers', s: 'Counterfeit and quality verification on fertilizer you have already purchased.' },
   { h: 'Distributors', s: 'Incoming-goods verification on anything you stock, not only VAN product.',
-    body: 'You are about to sell stock on your own name. If it is not what your supplier says it is, the farmer comes back to you, not to them. A laboratory that tested only its own company’s range would be no use to you for incoming goods.' },
+    body: 'You are about to sell stock under your own name. If it is not what your supplier says it is, the farmer comes back to you, not to them. A laboratory that tested only its own company’s range would be no use to you for incoming goods.' },
   { h: 'Importers', s: 'Consignment testing with a published turnaround and an accredited certificate.',
-    body: 'A consignment sitting at a port costs money every day it sits. What you need is a turnaround you can plan around and a certificate your buyer will accept: 3 to 5 working days from confirmed booking, printed on this page rather than quoted case by case, and PNAC ISO/IEC 17025:2017 LAB 336 for the accredited parameters. Non-accredited tests are identified as such on the price list and on the report.' },
+    body: 'A consignment sitting at a port costs money every day it sits. What you need is a turnaround you can plan around and a certificate your buyer will accept: 3 to 5 working days from confirmed booking, and PNAC ISO/IEC 17025:2017 LAB 336 for the accredited parameters. Non-accredited tests are identified as such on the price list and on the report.' },
   // D-168, Tahir 25 Sep 2026: umpire and referee analysis removed entirely ("we should remove ourselves
   // from this"). A laboratory stays as an ordinary customer. Revert: the v55 source zip.
   { h: 'Other laboratories', s: 'A sample from another laboratory is handled like anyone else’s: the same price list and the same blind chain.' },
@@ -136,4 +137,4 @@ export const WHO: { h: string; s: string; body?: string }[] = [
 
 // D-168, Tahir 25 Sep 2026: monthly and volume subscription plans with a customer lab record portal.
 // D-189, Tahir 26 Sep 2026: the month came off ("October 2026" was 5 days away with nothing built). Revert: put it back.
-export const VOLUME_NOTE = 'Testing more than the occasional sample? Monthly and volume subscription plans for distributors and importers are planned, with a customer portal that keeps your laboratory records in one place. Tell us roughly how many samples a season and we will talk.'
+export const VOLUME_NOTE = 'Testing more than the occasional sample? Monthly and volume subscription plans for distributors and importers are planned, with a customer portal that keeps your laboratory records in 1 place. Tell us roughly how many samples a season and we will talk.'

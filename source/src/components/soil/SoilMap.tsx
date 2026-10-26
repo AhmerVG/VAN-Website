@@ -34,6 +34,7 @@ type Props = {
 }
 
 /** The living map — SOIL_GRID cells drawn as squares on a canvas, coloured by the selected analyte. No boundary file, no interpolation. */
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function SoilMap({ initial = 'ph', mini = false, focus = null, onPick, autoplay = true, maxHeight = 640, className = '', analyte: driven, onAnalyte, urduLabels = false }: Props) {
   const rm = useReducedMotion()
   const desktop = useIsDesktop()
@@ -247,7 +248,7 @@ export function SoilMap({ initial = 'ph', mini = false, focus = null, onPick, au
           <span className="num">{A.hi.toFixed(A.dec)}{A.unit ? ` ${A.unit}` : ''}</span>
         </div>
         <div className="legend" style={{ marginTop: -6 }}><span /><span className="mid num">{mid.toFixed(A.dec)}</span><span /></div>
-        <p className="cap">{mini ? 'Every square is the median of the georeferenced samples inside it.' : SOIL_COPY.mapLead} {analyte === 'zn' ? 'Hatched squares carry no zinc determination (Jhelum). ' : ''}{thousands(GRID.cells.length)} cells of 0.05°, {mini ? 'no boundary file, no interpolation, ' : ''}no district polygons.</p>{/* D-244: on the full map the lead above already says no boundary file, no interpolation */}
+        <p className="cap">{mini ? 'Each square shows the median of the samples taken inside it.' : SOIL_COPY.mapLead} {analyte === 'zn' ? 'Hatched squares carry no zinc determination (Jhelum). ' : ''}{thousands(GRID.cells.length)} cells of 0.05°.</p>{/* D-244: on the full map the lead above already says no boundary file, no interpolation */}
         <p className="src"><b>Source ·</b> {SOIL_SOURCE.short}. <a href="#/soil#caveats">Read this before quoting ›</a></p>
       </div>
     </div>

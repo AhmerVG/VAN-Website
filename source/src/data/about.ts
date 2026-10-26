@@ -1,3 +1,4 @@
+// D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction
 /**
  * ABOUT PAGE COPY — D-173, 25 Sep 2026 (replaces D-170's copy).
  *
@@ -16,7 +17,7 @@
 
 export const ABOUT_HERO = {
   eyebrow: 'About VAN',
-  lead: 'Trials have run on that ground every season since. VAN formulates, manufactures, registers and tests what it sells on one plant site in Lahore.',
+  lead: 'Trials have run on that ground every season since. VAN formulates, manufactures, registers and tests what it sells on 1 plant site in Lahore.',
   facts: [
     ['2010', 'company incorporated'],
     ['23', 'registered brands'],

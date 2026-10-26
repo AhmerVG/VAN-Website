@@ -86,7 +86,8 @@ export default function CropPage({ slug, district = null, card = null }: { slug:
             <h1><Ur kind="crop" en={c.name} /></h1>
             <div className="flex flex-wrap gap-2 mt-4"><span className="tag tag-sky">{sowingLabel(c)} sowing</span><span className="tag tag-green">{c.programme}</span>{calc && <LiveCalcTag />}</div>
             {/* D-144: calculator crops say where their 2 sets of figures come from, as the wheat page does (M3). */}
-            <p className="lead mt-4">{cp && calc ? `The full stage-by-stage programme is below and in the PDF: what to put on, at which stage, by which method, and the pack it comes in. The programme is VAN’s published plan. The nutrition calculator further down reads VAN’s own ${cropLower} calculator. Where the 2 differ, the page shows a range.` : cp && planUpdateNote(slug) ? `The full stage-by-stage programme is below and in the PDF: what to put on, at which stage, by which method, and the pack it comes in. Every other figure is VAN’s published plan, not a calculation. ${planUpdateNote(slug)}` : cp ? 'The full stage-by-stage programme is below and in the PDF: what to put on, at which stage, by which method, and the pack it comes in. Every figure is VAN’s published plan, not a calculation.' : 'The full stage-by-stage programme is in the PDF: what to put on, at which stage, by which method, and the pack it comes in. Every figure in it is VAN’s published plan, not a calculation.'}</p>
+            {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */}
+            <p className="lead mt-4">{cp && calc ? `The full stage-by-stage programme is below and in the PDF: what to put on, at which stage, by which method, and the pack it comes in. The nutrition creator further down adjusts it to your soil. Where VAN’s 2 figures differ, both are shown as a range.` : cp && planUpdateNote(slug) ? `The full stage-by-stage programme is below and in the PDF: what to put on, at which stage, by which method, and the pack it comes in. ${planUpdateNote(slug)}` : cp ? 'The full stage-by-stage programme is below and in the PDF: what to put on, at which stage, by which method, and the pack it comes in.' : 'The full stage-by-stage programme is in the PDF: what to put on, at which stage, by which method, and the pack it comes in.'}</p>
             <div className="flex flex-wrap gap-3 mt-6">
               <a className="btn btn-gold btn-lg" href={pdf} target="_blank" rel="noopener">Download the {shortCropName(c.name)} plan (PDF) ↓</a>
               {/* Was a second "ask for my plan" WhatsApp button carrying the identical message to
@@ -120,7 +121,7 @@ export default function CropPage({ slug, district = null, card = null }: { slug:
           grid. It folds to one line and opens on a tap. Nothing is removed from either view. */}
       {cp && (
         <section className="wrap sec" id="programme">
-          <SectionHead eyebrow="The whole programme at a glance" title="Every band, every stage." lead="The programme matrix. Every band across every stage, per acre, with commodity inputs greyed and every product shown as its real pack." />
+          <SectionHead eyebrow="The whole programme at a glance" title="Every band, every stage." lead="Every band at every stage, per acre. Grey names are not VAN products, and each VAN product is shown in its real pack." />
           <Detail bare label={`The full ${cp.stages.length}-stage table. Every band, every stage`}>
             <PlanMatrix stages={cp.stages} plan={cp.plan} />
           </Detail>
@@ -134,15 +135,15 @@ export default function CropPage({ slug, district = null, card = null }: { slug:
             title={`What to buy for your acres.`}
             tone="navy"
             lead={cp.mode === 'age'
-              ? `Pick the age of your orchard, set your acres, and this is the ${shortCropName(c.name).toLowerCase()} programme turned into bags. A palm's requirement rises as it matures, so one age band applies at a time. The bands are not added together.`
-              : `Tick the stages you are planning, set your acres, and this is the ${shortCropName(c.name).toLowerCase()} programme turned into bags and packs. Published rate multiplied by your acres, no estimate in between.${planUpdateNote(slug) ? ' ' + planUpdateNote(slug) : ''}`} />
+              ? `Pick the age of your orchard, set your acres, and this is the ${shortCropName(c.name).toLowerCase()} programme turned into bags. A palm's requirement rises as it matures, so 1 age band applies at a time. The bands are not added together.`
+              : `Tick the stages you are planning, set your acres, and this is the ${shortCropName(c.name).toLowerCase()} programme turned into bags and packs.${planUpdateNote(slug) ? ' ' + planUpdateNote(slug) : ''}`} />
           <ListBuilder stages={cp.stages} plan={cp.plan} cropName={shortCropName(c.name).toLowerCase()} pdfPath={c.pdf} mode={cp.mode} cropKey={slug} soil={!calc && hasSoilLayer(slug)} published={calc} />
         </section>
       )}
 
       {calc && (
         <section className="wrap sec-tight" id="creator">
-          <SectionHead eyebrow="Scale it to your field" title="The dynamic nutrition creator." lead={`Set your acres and every quantity below scales with it. Sourced straight from VAN's own ${cropLower} calculator, not estimated.`} tone="navy" />
+          <SectionHead eyebrow="Scale it to your field" title="The nutrition creator." lead="Set your acres and every quantity below scales with it." tone="navy" />
           <p className="small mb-3 max-w-[140ch]"><b>Which list to use:</b> the acres figure is shared with the shopping list above. The shopping list is the published plan; this list is VAN’s calculator, and it is the one to use if you have a soil report. Where the 2 differ, the totals below show a range.</p>{/* D-151 (A12): was "This is the same programme from VAN’s calculator; use it if you have a soil report." */}
           <NutritionCreator crop={slug} cropName={cropLower} initialDistrict={district} />
         </section>
@@ -158,21 +159,20 @@ export default function CropPage({ slug, district = null, card = null }: { slug:
             <span className="eyebrow green">Live on this crop</span>
             <h3 className="mt-1">The list above reads your soil test, not just the crop.</h3>
             <p className="muted mt-2 max-w-[140ch]">
-              Enter your soil report in the list builder, or pick your district and it fills from the
+              Enter your soil report in the list above, or pick your district and it fills from the
               Punjab survey&rsquo;s own median across 770,160 samples, and the quantities move with
-              what your ground actually shows. On {shortCropName(c.name).toLowerCase()} it can answer{' '}
+              what your ground actually shows. On {shortCropName(c.name).toLowerCase()} it uses{' '}
               <b>{soilParams.length} readings</b>: {soilParams.map(p => SOIL_PARAMETER_LABEL[p]).join(', ')}.
             </p>
             {unanswered.length > 0 && (
               <p className="cap mt-2 max-w-[140ch]">
-                Not offered on this crop: {unanswered.map(p => soilParameterInline(p)).join(', ')}. The
+                Not used on this crop: {unanswered.map(p => soilParameterInline(p)).join(', ')}. The
                 published {shortCropName(c.name).toLowerCase()} programme carries no product that supplies{' '}
-                {unanswered.length > 1 ? 'them' : 'it'}, so the row is left out rather than offered and
-                doing nothing. Adding one is a change to the programme itself, not to this tool.
+                {unanswered.length > 1 ? 'them' : 'it'}.
               </p>
             )}
             <div className="flex flex-wrap gap-3 mt-4">
-              <a className="btn btn-sm" href="#list">Open the list builder →</a>
+              <a className="btn btn-sm" href="#list">Open the list →</a>
               <a className="btn btn-sm btn-ghost" href="#/soil">Soil Atlas →</a>
             </div>
           </div>
@@ -209,17 +209,16 @@ export default function CropPage({ slug, district = null, card = null }: { slug:
             <div>
               <span className="eyebrow" style={{ color: 'var(--gold)' }}>Nutrition decides about 1/4 of the yield</span>
               <h2 className="text-[clamp(28px,2.8vw,38px)]">The farm discipline simulator.</h2>
-              <p className="mt-3" style={{ color: 'rgba(255,255,255,.8)' }}>Everything above is the nutrition lever. Score how the season is actually being run, sowing time, seed, irrigation, disease, and see what is really holding yield back.</p>
+              <p className="mt-3" style={{ color: 'rgba(255,255,255,.8)' }}>Everything above is the nutrition lever. Score how the season is actually being run (sowing time, seed, irrigation, disease) and see what is really holding yield back.</p>
             </div>
             <a className="btn btn-gold btn-lg" href={`#/simulator/${slug}`}>Open the simulator →</a>
           </div>
         ) : (
           <p className="small max-w-[140ch]">
             Nutrition decides about 1/4 of the yield. Sowing, seed, water, weeds and pests decide the
-            rest. The farm discipline simulator scores a whole season across 10 levers, and it exists for wheat and potato, each with its own levers and its own
-            weights. It is not offered on {shortCropName(c.name).toLowerCase()} because wheat&rsquo;s
-            10 levers do not apply to {shortCropName(c.name).toLowerCase()}. Each crop needs its
-            own. <a href="#/tools">What is being built, and what each needs →</a>
+            rest. The farm discipline simulator scores a whole season across 10 levers. It covers
+            wheat and potato for now, each with its own levers and its own weights.{' '}
+            <a href="#/tools">The tools still coming →</a>
           </p>
         )}
       </section>
@@ -234,8 +233,8 @@ export default function CropPage({ slug, district = null, card = null }: { slug:
         <div className="panel p-5 lg:p-6 grid lg:grid-cols-[1fr_auto] gap-4 items-center" id="what-reaches">
           <div>
             <span className="eyebrow rust">What actually reaches your crop</span>
-            <h3 className="mt-1 max-w-[34ch]">About a quarter of the nitrogen in the bag feeds the crop. The rest leaves as gas or drains past the root.</h3>
-            <p className="small muted mt-2 max-w-[90ch]">Why it goes, what VAN builds against each loss, and the 17 nutrients and the barrel that show where your own season leaks. Written once, with its sources.</p>
+            <h3 className="mt-1 max-w-[34ch]">About 1/4 of the nitrogen in the bag feeds the crop. The rest leaves as gas or drains past the root.</h3>
+            <p className="small muted mt-2 max-w-[90ch]">Why it goes, what VAN builds against each loss, and the 17 nutrients and the barrel that show where your own season leaks.</p>
           </div>
           <div className="grid gap-2">
             <a className="btn btn-navy" href="#/knowledge/why-pakistan-must-shift#what-reaches">Where the nitrogen goes →</a>

@@ -13,6 +13,7 @@ const LEVEL_LABEL: Record<Level, string> = { bad: 'Bad', ok: 'OK', best: 'Best' 
  * weights, the Bad/OK/Best rationale, or the citations behind them. Those stay in leverScorecard.ts
  * and the internal master framework doc. See that data file for the yield formula's derivation.
  */
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function DisciplineSimulator({ crop = 'wheat' }: { crop?: string } = {}) {
   // Wheat and potato have real, sourced lever models. A crop without one does not get a simulator at
   // all — it is never quietly given wheat's levers, which would be a different crop's agronomy under
@@ -80,7 +81,7 @@ export function DisciplineSimulator({ crop = 'wheat' }: { crop?: string } = {}) 
         <div>
           <span className="eyebrow">{crop[0].toUpperCase() + crop.slice(1)} · {model.base.label}</span>
           <h2>What yield are you aiming for?</h2>
-          <p className="muted mt-2 small max-w-[140ch]">Default is {ceiling.toFixed(1)} maunds/acre. {model.base.label}. Know your own variety does better or worse? Type your own number. Then score how the season is actually being run below. The simulator shows what that gets you, and what would close the gap.</p>
+          <p className="muted mt-2 small max-w-[140ch]">Default: {ceiling.toFixed(1)} maunds/acre ({model.base.label}). If your variety does better or worse, type your own number. Then score your season below. The simulator shows what that gets you, and what would close the gap.</p>
           <div className="flex items-center gap-3 mt-4">
             <input
               type="range" min={0} max={targetMax} step={1} value={target}

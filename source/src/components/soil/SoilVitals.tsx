@@ -36,9 +36,10 @@ const TILES: Tile[] = [
   { key: 'p', title: 'Phosphorus', shareField: 'p_lt15', shareLabel: 'below adequate, 15 ppm' },
   { key: 'k', title: 'Potash', shareField: 'k_lt180', shareLabel: 'below 180 ppm' },
   { key: 'zn', title: 'Zinc', shareField: 'zn_lt10', shareLabel: 'below 1.0 ppm' },
-  { key: 'sulfur', title: 'Sulfur', shareLabel: 'samples tested, in any district file' },
+  { key: 'sulfur', title: 'Sulfur', shareLabel: 'samples tested' },
 ]
 
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function SoilVitals({ district, param, onParam }: {
   district: string | null
   param: SoilColKey
@@ -56,7 +57,7 @@ export function SoilVitals({ district, param, onParam }: {
         <span className="cap">
           Reading <b style={{ color: 'var(--navy)' }}>{where}</b> · <span className="num">{thousands(s.n)}</span> samples
         </span>
-        <span className="cap">▸ press one to draw the map on it</span>
+        <span className="cap">▸ press a reading to draw the map on it</span>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
@@ -109,10 +110,10 @@ export function SoilVitals({ district, param, onParam }: {
       </div>
 
       <p className="cap mt-2 max-w-[140ch]">
-        The large figure is the share of samples past Punjab's own working threshold. The chip classifies the
-        {d ? ' district' : ' province'} median, the typical field, against VAN's 5-band soil-test table, the same one printed on a
-        VAN soil report. The mean is shown beside it; a few very high samples pull the mean up. 2 different questions,
-        so the share and the chip can disagree, and where they do the tile says so.
+        The big figure is the share of samples past Punjab's own working threshold. The label shows where the
+        {d ? ' district' : ' province'} median, the typical field, falls on VAN's 5-band soil-test table, the one printed on a
+        VAN soil report. The mean is shown beside it; a few very high samples pull the mean up, so the share and the
+        label can disagree.
       </p>
     </div>
   )

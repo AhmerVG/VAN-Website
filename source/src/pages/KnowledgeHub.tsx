@@ -22,7 +22,7 @@ const ARTICLES: { href: string; kicker: string; title: string; lead: string; ton
     lead: 'Usage, balance, productivity, and where the nitrogen actually goes. Measured against India, Bangladesh, China and the United States, with every source named.' },
   { href: '#/knowledge/soil-and-sustainability', kicker: 'The state of the soil', tone: 'soil',
     title: 'We have been spending the soil’s capital, not its income.',
-    lead: 'A harvest is an export. 6 published surveys on where the soil has ended up, and an honest account of the national dataset that does not exist.' },
+    lead: 'A harvest is an export. 6 published surveys on where the soil has ended up, and the national dataset Pakistan does not have.' },
   { href: '#/knowledge/application-systems', kicker: 'Application systems', tone: 'navy',
     title: 'A bag is not a dose. How nutrient is delivered is part of the product.',
     lead: 'Pivot, drip, drone, broadcast, fertigation and foliar. What each one demands of the product, the 2 field programmes VAN has run of its own, and One Tank, the family built around the 20 litres a drone can carry.' },
@@ -36,7 +36,8 @@ export default function KnowledgeHub() {
         <div className="wrap py-8 lg:py-12">
           <span className="eyebrow rust">Knowledge</span>
           <h1 className="max-w-[24ch]">The evidence, and where it runs out.</h1>
-          <p className="lead mt-4 max-w-[140ch]">{ARTICLES.length} pieces of writing, every figure sourced and dated. Where a number is our own arithmetic on published inputs we say so, and where the data does not exist we say that too.</p>
+          {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */}
+          <p className="lead mt-4 max-w-[140ch]">{ARTICLES.length} pieces of writing, every figure sourced and dated.</p>
         </div>
       </section>
 
@@ -63,8 +64,8 @@ export default function KnowledgeHub() {
       </div></section>
 
       <section className="sec" style={{ background: 'var(--sand-2)', borderTop: '1px solid var(--line)' }}><div className="wrap">
-        <div className="mb-7"><span className="eyebrow soil">Measured, not assumed</span><h2 className="max-w-[24ch]">Soil Atlas. 770,160 samples, one province.</h2>
-          <p className="lead mt-3 max-w-[140ch]">{SOIL_HEADLINE.samples} samples across {SOIL_HEADLINE.districts} districts, read district by district. Conditions, not mechanism.</p></div>
+        <div className="mb-7"><span className="eyebrow soil">Measured, not assumed</span><h2 className="max-w-[24ch]">Soil Atlas. 770,160 samples, 1 province.</h2>
+          <p className="lead mt-3 max-w-[140ch]">{SOIL_HEADLINE.samples} samples across {SOIL_HEADLINE.districts} districts, read district by district.</p></div>
         <p className="src"><b>Source ·</b> {SOIL_SOURCE.short}. <a href="#/soil#caveats">Read this before quoting ›</a></p>
         <div className="flex flex-wrap gap-3 mt-4"><a className="btn btn-navy" href="#/soil">Open the soil lens →</a><a className="btn btn-ghost" href="#/soil?rel=p-ph">The relationship that does not hold →</a></div>
       </div></section>
@@ -75,8 +76,8 @@ export default function KnowledgeHub() {
       </div></section>
 
       <section className="sec" style={{ background: 'var(--sand-2)' }}><div className="wrap">
-        <div className="mb-7" id="decks"><span className="eyebrow navy">Product knowledge</span><h2 className="max-w-[24ch]">{decks.length} decks, one per product.</h2>
-          <p className="lead mt-3 max-w-[140ch]">A full deck per product. What it is, what it does in the soil, where it fits in the season and what VAN will not claim for it.</p></div>
+        <div className="mb-7" id="decks"><span className="eyebrow navy">Product knowledge</span><h2 className="max-w-[24ch]">{decks.length} decks, 1 per product.</h2>
+          <p className="lead mt-3 max-w-[140ch]">A full deck per product. What it is, what it does in the soil, where it fits in the season and its limits.</p></div>
         {/* D-151 (QA 16): 1 column under 400px, names wrap instead of truncating. Was grid-cols-2 and `truncate`. */}
         <div className="grid grid-cols-1 min-[400px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {decks.map(p => (
@@ -86,7 +87,7 @@ export default function KnowledgeHub() {
             </a>
           ))}
         </div>
-        <p className="cap mt-4">The hub indexes what VAN has already published: {CROPS.length} crop programmes, {decks.length} products, {CROPS.length} nutrition plans, {decks.length + 1} technical datasheets (Crop Force has 1 per grade) and {decks.length} safety data sheets. Datasheet and safety-data links sit on each product page. <a href="#/crops">The crop plans →</a></p>
+        <p className="cap mt-4">This section lists what VAN has already published: {CROPS.length} crop programmes, {decks.length} products, {CROPS.length} nutrition plans, {decks.length + 1} technical datasheets (Crop Force has 1 per grade) and {decks.length} safety data sheets. Datasheet and safety-data links sit on each product page. <a href="#/crops">The crop plans →</a></p>
       </div></section>
 
       <section className="wrap sec-tight">

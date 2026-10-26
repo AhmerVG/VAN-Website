@@ -16,7 +16,7 @@ import { useEffect, useState } from 'react'
 
 const ITEMS: [string, string][] = [
   ['library', 'The formulations'],   // D-254: first, as the section now is
-  ['journey', 'The two routes'],
+  ['journey', 'The 2 routes'],
   ['models', 'The 3 models'],   // D-185
   ['portfolio', 'The portfolio'],
   ['detail', 'In more detail'],
@@ -28,6 +28,7 @@ const ITEMS: [string, string][] = [
 
 /** D-147: `items` lets the company profile page use the same in-page bar with its own sections.
  *  With no argument the bar is exactly the Make With Us bar it always was. Revert: drop the prop. */
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function PartnerNav({ items = ITEMS }: { items?: [string, string][] } = {}) {
   const [here, setHere] = useState(items[0][0])
 

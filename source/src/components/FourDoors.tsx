@@ -57,6 +57,7 @@ const HERO_TIERS = [
 
 type Door = { key: string; title: string; body: React.ReactNode; go: [string, string][] }
 
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function FourDoors() {
   const partners = PARTNER.portfolioPending.partners
   const doors: Door[] = [
@@ -72,7 +73,7 @@ export function FourDoors() {
     },
     {
       key: 'brand', title: 'Made under my name',
-      body: <>{partners ? <><b>{partners}</b> partners and </> : null}<b>100+</b> brands already made on this site. You bring the market. VAN does everything from the formulation to the finished bag.</>,
+      body: <>{partners ? <><b>{partners}</b> partners and </> : null}<b>100+</b> brands already made at this plant. You bring the market. VAN does everything from the formulation to the finished bag.</>,
       go: [['Your Brand', '#/partner'], ['How we build a range', '#/partner#range']],
     },
     {

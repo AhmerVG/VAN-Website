@@ -39,6 +39,7 @@ export function SoilBelief() {
   )
 }
 
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 /** The five headline tiles — counted up on scroll-in; values read from SOIL.province, printed to the same precision as SOIL_HEADLINE. */
 export function HeadlineTiles({ compact = false }: { compact?: boolean }) {
   const { ref, inView } = useInView({ threshold: 0.3 })
@@ -52,7 +53,7 @@ export function HeadlineTiles({ compact = false }: { compact?: boolean }) {
     [`${gt75.toFixed(1)}%`, 'above pH 7.5', `${SOIL_HEADLINE.aboveEight} above 8.0 · ${SOIL_HEADLINE.aboveEightFive} above 8.5`, 'rust'],
     [`${om.toFixed(2)}%`, 'mean organic matter', `${SOIL_HEADLINE.omLow} below the 0.86% threshold`, 'soil'],
     [`${p15.toFixed(1)}%`, 'below adequate phosphorus', `below 15 ppm · ${SOIL_HEADLINE.pLow} below 7 ppm`, 'navy'],
-    [SOIL_HEADLINE.sulfurTested, 'samples tested for sulfur', 'not in any district file, in any column', 'rust'],
+    [SOIL_HEADLINE.sulfurTested, 'samples tested for sulfur', 'not tested in the Punjab survey', 'rust'],
   ]
   const col = (t: string) => (t === 'rust' ? 'var(--rust)' : t === 'soil' ? 'var(--soil)' : 'var(--navy)')
   return (
@@ -85,7 +86,7 @@ export function AnalyteList() {
   }
   return (
     <div ref={ref} className={`panel p-5 ${inView ? 'on' : ''}`}>
-      <div className="flex items-baseline justify-between gap-3"><h4>The 13 determinations, and the one that is missing.</h4><span className="cap">province means</span></div>
+      <div className="flex items-baseline justify-between gap-3"><h4>The 13 determinations, and 1 that is missing.</h4><span className="cap">province means</span></div>
       <div className="mt-2">
         {SOIL_ANALYTES.map(([name, v], i) => (
           <div key={name} className="an-row" style={{ transitionDelay: `${i * 110}ms` }}>

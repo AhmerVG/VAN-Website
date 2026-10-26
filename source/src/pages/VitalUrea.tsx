@@ -141,12 +141,12 @@ function TwoBags() {
         </div>
         <div className="grid grid-cols-[110px_1fr] gap-x-3 gap-y-2 mt-5 small">
           <div className="cap">on the label</div><div><span className="num text-[26px]" style={{ color: 'var(--navy)' }}>8 kg N</span><br />+ at least 3.25 kg of sulfur in the same granules</div>
-          <div className="cap">how it arrives</div><div>metered over weeks in this programme<br /><span className="muted">released over days after the first irrigation, not all at once. Nitrogen still inside a granule is not yet in the soil solution, so it cannot yet be lost</span></div>{/* D-151: was "metered over 7–18 days" / "released while there is a root ready to take it. What is still inside the granule cannot be lost yet" */}
+          <div className="cap">how it arrives</div><div>released over days<br /><span className="muted">after the first irrigation, not all at once. Nitrogen still inside a granule is not yet in the soil solution, so it cannot yet be lost</span></div>{/* D-151: was "metered over 7–18 days" / "released while there is a root ready to take it. What is still inside the granule cannot be lost yet" */}
         </div>
         <svg viewBox="0 0 300 70" width="100%" className="mt-3" aria-hidden="true">
           <rect x="0" y="0" width="300" height="70" fill="#fff" rx="6" />
           {Array.from({ length: 14 }).map((_, i) => <rect key={i} x={10 + i * 20} y="10" width="14" height="22" rx="3" fill="var(--green)" style={{ opacity: on ? 1 : 0, transition: rm ? 'none' : `opacity .3s ease ${0.2 + i * 0.09}s` }} />)}
-          <text x="12" y="50" fontSize="11" fill="var(--muted)">metered over weeks in this programme,</text><text x="12" y="64" fontSize="11" fill="var(--muted)">depending on climate and application method</text>
+          <text x="12" y="50" fontSize="11" fill="var(--muted)">released over days,</text><text x="12" y="64" fontSize="11" fill="var(--muted)">depending on climate and application method</text>
         </svg>
       </div>
     </div>
@@ -170,7 +170,7 @@ export default function VitalUrea() {
             <p className="display text-[clamp(22px,2.2vw,28px)] mt-2" style={{ color: 'var(--green)' }}>Sulfur Coated Urea. N 32% min · S 13% min</p>
             {/* D-140: the last clause was "and the sulfur itself conditions the root zone, temporarily
                 acidifying it to unlock fixed phosphorus and zinc." Revert: restore it. */}
-            <p className="lead mt-4">Vital Urea: nitrogen with a sulfur coating, 32% N and 13% S. In Pakistan’s alkaline, hot soils a large share of plain urea’s nitrogen is lost before the plant can use it. Vital Urea’s sulfur coating releases its nitrogen in steps over the weeks after the first irrigation, not all at once. As the sulfur oxidises it lowers the pH around the granule, which may help nearby phosphorus and zinc.</p>
+            <p className="lead mt-4">Vital Urea: nitrogen with a sulfur coating, 32% N and 13% S. In Pakistan’s alkaline, hot soils a large share of plain urea’s nitrogen is lost before the plant can use it. Vital Urea’s sulfur coating releases its nitrogen in steps over the days after the first irrigation, not all at once. As the sulfur oxidises it lowers the pH around the granule, which may help nearby phosphorus and zinc.</p>
             <div className="flex flex-wrap gap-2 mt-5">
               {/* D-130: was "Broadcast" and "Sowing / basal + top-dress". Revert: restore those 2 chips
                   with MethodIcon method="Broadcast" on the first.
@@ -191,7 +191,7 @@ export default function VitalUrea() {
       </section>
 
       <section className="wrap sec-tight grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-        {[['32% N · 13% S', 'guaranteed analysis, at least 8.0 kg of nitrogen and 3.25 kg of sulfur in every 25 kg bag'], ['Over weeks', 'released in steps after the first irrigation, not at once. VAN field observation, not a laboratory curve; no day figure is claimed'], ['No. 144684', 'Pakistan Patent on the sulfur-coating technology. Government of Pakistan Patent Office'], ['PS 217-2023', 'PSQCA standard · licence CM/L-4126/2025 · released through VAN’s PNAC-accredited laboratory, LAB 336']].map(([v, l]) => (
+        {[['32% N · 13% S', 'guaranteed analysis, at least 8.0 kg of nitrogen and 3.25 kg of sulfur in every 25 kg bag'], ['Over days', 'released in steps after the first irrigation, not at once'], ['No. 144684', 'Pakistan Patent on the sulfur-coating technology. Government of Pakistan Patent Office'], ['PS 217-2023', 'PSQCA standard · licence CM/L-4126/2025 · released through VAN’s PNAC-accredited laboratory, LAB 336']].map(([v, l]) => (
           <div key={v} className="panel p-5"><div className="num text-[clamp(26px,2.4vw,32px)]" style={{ color: 'var(--navy)' }}>{v}</div><p className="small muted mt-2">{l}</p></div>
         ))}
       </section>
@@ -202,14 +202,14 @@ export default function VitalUrea() {
       <section className="wrap sec-tight"><ApplicationMethods slug="vital-urea" compact /></section>
 
       <section className="wrap sec">
-        <SectionHead eyebrow="The problem" title="Only about a quarter of applied nitrogen ends up in Pakistan’s crops." tone="soil" />
+        <SectionHead eyebrow="The problem" title="Only about 25% of applied nitrogen ends up in Pakistan’s crops." tone="soil" />
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 items-start">
           <div className="grid gap-4">
-            <p>Nitrogen loss in Pakistani soil is caused by soil chemistry. Volatilisation, nitrification and leaching all act on nitrogen that is dissolved in the soil solution, and a granule of plain urea dissolves all at once, on ground that is hot and alkaline. Nitrogen still inside a granule is not yet in the soil solution, so it cannot yet be lost. The rest of this page follows from that.</p>
-            <p className="muted">The full case for moving off plain urea, with its sources, is on <a href="#/knowledge">the national picture page</a>. This page is about the coating: what it does, what it cannot do, and why it is made of sulfur.</p>
+            <p>Nitrogen loss in Pakistani soil is caused by soil chemistry. Volatilisation, nitrification and leaching all act on nitrogen that is dissolved in the soil solution, and a granule of plain urea dissolves all at once, on ground that is hot and alkaline. Nitrogen still inside a granule is not yet in the soil solution, so it cannot yet be lost.</p>
+            <p className="muted">The full case for moving off plain urea, with its sources, is on <a href="#/knowledge">the national picture page</a>.</p>
           </div>
           <div ref={ref} className="panel p-5">
-            <div className="font-bold">Roughly a quarter reaches the crop here. Against about 72% in the United States</div>
+            <div className="font-bold">About 25% reaches the crop here, against about 72% in the United States</div>
             <p className="cap">Share of applied nitrogen taken up by the crop, national cropland estimate</p>
             {[['Pakistan', 25, 'var(--gold)'], ['United States', 72, 'var(--green)']].map(([n, v, c]) => (
               <div key={n as string} className="mt-4">
@@ -226,7 +226,7 @@ export default function VitalUrea() {
           districtSoil.ts: all 36 district means above pH 7.5 and below 0.86% organic matter, checked
           by script), the owner's brief, and the sources listed. Revert: delete this section. */}
       <section className="sec" style={{ background: 'var(--soil-soft)' }}><div className="wrap">
-        <SectionHead eyebrow="Why Pakistani soil needs it" title="Punjab’s soil is alkaline, low in organic matter, and has never been tested for sulfur." tone="soil" lead="The Punjab soil testing programme has read 770,160 samples from 36 districts. These 4 facts come from those samples and from the national fertilizer record." />
+        <SectionHead eyebrow="Why Pakistani soil needs it" title="Punjab’s soil is alkaline, low in organic matter, and has not been tested for sulfur at scale." tone="soil" lead="The Punjab soil testing programme has read 770,160 samples from 36 districts. These 4 facts come from those samples and from the national fertilizer record." />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {[
             ['96.1%', 'of samples are above pH 7.5', 'All 36 district averages are above pH 7.5, and 69.1% of samples are above pH 8. Above pH 8, part of the urea left on the surface turns to ammonia gas and is lost to the air.'],
@@ -239,9 +239,9 @@ export default function VitalUrea() {
         </div>
         <div className="grid lg:grid-cols-2 gap-4 mt-4">
           <p className="panel p-5 small"><b>What the nearest tests show.</b> Across the border, on the same kind of soil, India does test for sulfur. 50.2% of soils in Indian Punjab and 78.2% in Rajasthan were deficient in sulfur, counting latent deficiency as the paper does (Shukla et al., 2021). This is indirect evidence about a neighbouring area and says nothing certain about any field in Pakistan.</p>
-          <p className="panel p-5 small" style={{ background: 'var(--gold-soft)' }}><b>What VAN does not claim.</b> A 2003 study of 45 samples from Punjab’s Kallar tract found sulfur adequate in most of them (Ahmad et al., 2003). So VAN says sulfur in Punjab has not been measured at scale. VAN does not say every Punjab field is short of sulfur.</p>
+          <p className="panel p-5 small" style={{ background: 'var(--gold-soft)' }}><b>Not every field is short of sulfur.</b> A 2003 study of 45 samples from Punjab’s Kallar tract found sulfur adequate in most of them (Ahmad et al., 2003).</p>
         </div>
-        <p className="cap mt-4">Soil figures: Punjab soil testing programme, 36 district workbooks, 770,160 samples, c. 2016 to 2018, as used across this site. National fertilizer ratio: NFDC Fertilizer Review 2024-25.</p>
+        <p className="cap mt-4">Soil figures: Punjab soil testing programme, 36 district workbooks, 770,160 samples, c. 2016 to 2018. National fertilizer ratio: NFDC Fertilizer Review 2024-25.</p>
       </div></section>
 
       <section className="sec" style={{ background: 'var(--sand-2)' }}><div className="wrap">
@@ -253,8 +253,7 @@ export default function VitalUrea() {
             nitrogen, with better uniformity of plant height, grain formation and milk-line development also observed.
             Cob size and length showed no difference. And what this was not: ..." */}
         <SectionHead eyebrow="What a bag buys" title="Khaliqabad, 2023: Vital Urea in the field with Rafhan Maize Products." lead="5 grower sites picked by their agronomy team, application in August through harvest in October." />
-        <p className="font-bold mb-1">2 bags, drawn to one scale of nitrogen. What the label says, and when it arrives</p>
-        <p className="cap mb-4">Kilograms of N are registered label contents. Release behaviour is the mechanism each product is built on.</p>
+        <p className="font-bold mb-1">2 bags on the same nitrogen scale: what the label says, and when it arrives</p>
         {/* 11 Sep 2026 · Tahir's ruling. This is the only client named anywhere on the site, against a
             partner page that promises names are not published. He chose to keep it and state the
             exception rather than take the name off, so the exception is stated in both places: here,
@@ -287,10 +286,10 @@ export default function VitalUrea() {
               <tr><td>Independent partner farm, not named</td><td className="num">2025</td><td>Independent</td></tr>
             </tbody>
           </table></div>
-          <p className="cap mt-3">The trials show the product in use in the field. VAN prints no yield figure from them. Trial summaries are available on request to partner@van.com.pk.</p>
+          <p className="cap mt-3">Trial summaries are available on request to partner@van.com.pk.</p>
         </div>
         <TwoBags />
-        <p className="mt-6 max-w-[140ch]">What Khaliqabad was: an observational field programme on 5 grower sites, not a replicated randomised trial, with no independent yield measurement recorded. It shows the product in use, and VAN prints no result from it. If you need replicated trial data for a purchasing decision, ask. Where it exists, you will get it.</p>
+        <p className="mt-6 max-w-[140ch]">What Khaliqabad was: an observational field programme on 5 grower sites, not a replicated randomised trial, with no independent yield measurement recorded. If you need replicated trial data for a purchasing decision, ask. Where it exists, you will get it.</p>
       </div></section>
 
       {/* D-130, 24 Sep 2026: new section, the product as the owner's brief states it. Revert: delete. */}
@@ -339,7 +338,7 @@ export default function VitalUrea() {
           {/* D-201, Tahir 27 Sep 2026: the whole page is qualitative on release; the day chart came off. The
               flagship block above carries the picture with no day figures. Revert: put <ReleaseChart /> back. */}
           <div className="grid gap-4">
-            <p className="panel p-5 small">When water reaches the granule, the carbohydrate binder breaks down. That lets go of the fine elemental sulfur, which spreads into the soil around the granule instead of staying on it, and the urea underneath starts to dissolve. In VAN’s field observation the release starts within the first day or two after water and runs over the following weeks, faster under good irrigation and slower when the ground is dry or cold. No day figure is claimed, because no laboratory release curve exists.</p>
+            <p className="panel p-5 small">When water reaches the granule, the carbohydrate binder breaks down. That lets go of the fine elemental sulfur, which spreads into the soil around the granule instead of staying on it, and the urea underneath starts to dissolve. In VAN’s field observation the release starts within the first day or two after water and runs over the following days, faster under good irrigation and slower when the ground is dry or cold.</p>
             <p className="panel p-5 small">3 things move it inside that range: water, because nothing starts until water arrives; soil temperature, because the reactions run faster when it is warm; and handling, because a granule crushed at spreading has lost its coating and behaves like plain urea.</p>
             <p className="panel p-5 small" style={{ background: 'var(--gold-soft)' }}><b>What it does not do.</b> A coating does not stop volatilisation. It reduces how much nitrogen is exposed to it at any one moment. Nitrogen released into hot alkaline soil behaves like any other nitrogen released into hot alkaline soil. Placement and irrigation timing still matter, and no coating substitutes for either.</p>
           </div>
@@ -347,9 +346,9 @@ export default function VitalUrea() {
       </section>
 
       <section className="sec" style={{ background: 'var(--sky)' }}><div className="wrap">
-        <SectionHead eyebrow="Why sulfur" title="3 ways to slow urea down. Only one of them is also plant food." tone="navy" />
+        <SectionHead eyebrow="Why sulfur" title="3 ways to slow urea down. Only 1 of them is also plant food." tone="navy" />
         <div className="grid md:grid-cols-3 gap-4">
-          {[['Polymer coating', 'accurate, inert', 'Controls release accurately and delivers nothing else. Adds no nutrient, and the polymer stays in the soil after the nitrogen has gone.', false], ['Chemical inhibitors', 'slow the reactions, not the release', 'Imported, dose-sensitive, temperature-sensitive, and they add no nutrient of their own.', false], ['Sulfur coating', 'the one VAN chose', 'Controls release and is the only one of the 3 that is itself a nutrient and itself chemically active in the soil. The next section is what that buys.', true]].map(([t, k, x, chosen]) => (
+          {[['Polymer coating', 'accurate, inert', 'Controls release accurately and delivers nothing else. Adds no nutrient, and the polymer stays in the soil after the nitrogen has gone.', false], ['Chemical inhibitors', 'slow the reactions, not the release', 'Imported, dose-sensitive, temperature-sensitive, and they add no nutrient of their own.', false], ['Sulfur coating', 'VAN’s choice', 'Controls release and is the only 1 of the 3 that is itself a nutrient and itself chemically active in the soil.', true]].map(([t, k, x, chosen]) => (
             <div key={t as string} className="panel p-5" style={chosen ? { borderColor: 'var(--green)', borderWidth: 2 } : undefined}>
               <span className="eyebrow" style={{ color: chosen ? 'var(--green)' : 'var(--muted)' }}>{k as string}</span>
               <h3>{t as string}</h3>
@@ -357,7 +356,7 @@ export default function VitalUrea() {
             </div>
           ))}
         </div>
-        <p className="mt-6 max-w-[140ch]">About a sixth of the bag is coating. 3.25 kg is the registered sulfur nutrient, 13% of 25 kg under PS 217-2023. The sulfur VAN charges to the coater is 80% pure, so delivering it means about 4.06 kg of sulfur material in the bag. Arithmetic, not a batch assay. What a certificate carries is the measured elemental sulfur, most recently 13.27% on batch VU25186.</p>
+        <p className="mt-6 max-w-[140ch]">About 16% of the bag is coating. 3.25 kg is the registered sulfur nutrient, 13% of 25 kg under PS 217-2023. The sulfur VAN uses is 80% pure, so the bag carries about 4.06 kg of sulfur material. What a certificate carries is the measured elemental sulfur, most recently 13.27% on batch VU25186.</p>
       </div></section>
 
       <section className="wrap sec">
@@ -374,7 +373,7 @@ export default function VitalUrea() {
               {[[140, 40], [170, 40], [155, 66], [125, 66], [185, 66]].map(([x, y]) => <circle key={`${x}${y}`} cx={x} cy={y} r="11" fill="#D9A21B" />)}<text x="155" y="102" textAnchor="middle" fontSize="11" fill="var(--muted)">granules</text>
               <circle cx="265" cy="55" r="30" fill="#fff" stroke="#D9A21B" strokeWidth="7" /><circle cx="265" cy="55" r="22" fill="#E6EEE8" /><text x="265" y="59" textAnchor="middle" fontSize="11" fontWeight="700" fill="var(--navy)">urea</text><text x="265" y="102" textAnchor="middle" fontSize="11" fill="var(--muted)">fine, on the granule</text>
             </svg>
-            <p className="small mt-3">Soil bacteria can only work on the outside of a sulfur particle. For the same kilogram of sulfur, halving the particle size doubles the surface they can reach. VAN grinds its sulfur to 350 mesh or finer, and water spreads it off the granule into the soil. Rapid oxidation calls for particles finer than about 20 µm, well dispersed (Bremer, 2022), so the finer the grind, the better. The reaction is biological and runs 3 to 4 times faster for every 10 °C of soil warming (Janzen & Bettany, 1987). Warm soil speeds up this reaction, and it also speeds up ammonia loss from surface urea. 2 S⁰ + 3 O₂ + 2 H₂O → 2 SO₄²⁻ + 4 H⁺. 4 protons per 2 atoms of sulfur.</p>
+            <p className="small mt-3">Soil bacteria can only work on the outside of a sulfur particle. For the same kilogram of sulfur, a particle 1/2 the size gives them twice the surface to reach. VAN grinds its sulfur to 350 mesh or finer, and water spreads it off the granule into the soil. Rapid oxidation calls for particles finer than about 20 µm, well dispersed (Bremer, 2022), so the finer the grind, the better. The reaction is biological and runs 3 to 4 times faster for every 10 °C of soil warming (Janzen & Bettany, 1987). Warm soil speeds up this reaction, and it also speeds up ammonia loss from surface urea. 2 S⁰ + 3 O₂ + 2 H₂O → 2 SO₄²⁻ + 4 H⁺. 4 protons per 2 atoms of sulfur.</p>
           </div>
           <div className="panel p-5">
             <h4>Without sulfur, the nitrogen a plant takes up cannot become protein</h4>
@@ -382,15 +381,15 @@ export default function VitalUrea() {
             <p className="small mt-3">2 of the amino acids that make up protein, cysteine and methionine, contain sulfur. When sulfur runs short, protein building slows and the nitrogen the plant has taken up builds up unused, as free amino acids such as asparagine, arginine and glutamine (Yu et al., 2018). On sulfur-deficient soil, adding sulfur raised wheat’s nitrogen use efficiency by more than 20% (Yu et al., 2021). On a poor-fertility site in Argentina, sulfur lifted wheat’s nitrogen recovery from 0.15 to 0.32 (Arata et al., 2017).</p>
             {/* D-195, Tahir 27 Sep 2026: the "12 to 15 kg N per kg S" ratio came off the page (INTERNAL in the
                 brand master, a derivation). Revert: the v60 zip. */}
-            <p className="small mt-3">Nitrogen needs sulfur to become protein. The protons from the sulfur’s oxidation lower the pH around the granule, where the nitrogen is, which may help nearby phosphorus and zinc. A microsite effect, a zone around each granule for the weeks it is releasing.</p>
-            <p className="small mt-3 p-3 rounded-lg" style={{ background: 'var(--gold-soft)' }}><b>Where this stops being certain.</b> Alkaline soil slows sulfur oxidation. In a laboratory comparison, elemental sulfur oxidised less in a slightly alkaline soil than in an acidic one, 12% against 20.9%, and it lowered the alkaline soil’s pH only where a sulfur-oxidising inoculant was added with it (Mattiello et al., 2017). Either way it is a microsite effect. A zone around each granule, for the weeks it is releasing. It will not move a soil test, and VAN does not claim it does. Raising that oxidation rate deliberately is a live VAN research track, not a product claim.</p>
+            <p className="small mt-3">Nitrogen needs sulfur to become protein. The protons from the sulfur’s oxidation lower the pH around the granule, where the nitrogen is, which may help nearby phosphorus and zinc. A microsite effect, a zone around each granule for the days it is releasing.</p>
+            <p className="small mt-3 p-3 rounded-lg" style={{ background: 'var(--gold-soft)' }}><b>Where this stops being certain.</b> Alkaline soil slows sulfur oxidation. In a laboratory comparison, elemental sulfur oxidised less in a slightly alkaline soil than in an acidic one, 12% against 20.9%, and it lowered the alkaline soil’s pH only where a sulfur-oxidising inoculant was added with it (Mattiello et al., 2017). It will not move a soil test. Raising that oxidation rate is a live VAN research track.</p>
           </div>
         </div>
       </section>
 
       {/* D-130, 24 Sep 2026: crop sulfur removal per acre. Revert: delete this section. */}
       <section className="wrap sec">
-        <SectionHead eyebrow="What a harvest takes away" title="Each crop takes sulfur from the soil every season." lead="1 bag of Vital Urea an acre puts 3.25 kg of sulfur on the field. A wheat crop of about 46 maunds an acre takes up about 8.9 kg of sulfur an acre, grain and straw together. One bag does not replace a season’s removal. It puts sulfur into the root zone beside the nitrogen, at the time the nitrogen goes on." />
+        <SectionHead eyebrow="What a harvest takes away" title="Each crop takes sulfur from the soil every season." lead="1 bag of Vital Urea an acre puts 3.25 kg of sulfur on the field. A wheat crop of about 46 maunds an acre takes up about 8.9 kg of sulfur an acre, grain and straw together. 1 bag does not replace a season’s removal. It puts sulfur into the root zone beside the nitrogen, at the time the nitrogen goes on." />
         <div className="panel overflow-x-auto">
           <table className="tbl">
             <thead><tr><th>Crop</th><th>Sulfur taken up or removed by the crop</th><th>Source (per hectare, as published)</th></tr></thead>
@@ -404,7 +403,7 @@ export default function VitalUrea() {
       </section>
 
       <section className="sec" style={{ background: 'var(--sand-2)' }}><div className="wrap">
-        <SectionHead eyebrow="One granule, not a blend" title="Every granule is coated." lead="Everything above needs the nitrogen and the sulfur in the same place at the same moment. A mixture cannot promise that." />
+        <SectionHead eyebrow="1 granule, not a blend" title="Every granule is coated." lead="Everything above needs the nitrogen and the sulfur in the same place at the same moment. A mixture cannot promise that." />
         <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-4 items-start">
           <div className="panel p-5">
             <div className="font-bold">A blend can separate in the bag. A coated granule cannot.</div>
@@ -417,7 +416,7 @@ export default function VitalUrea() {
             </svg>
             <p className="small mt-3">The fine sulfur on the granule is what creates the surface in the first figure. The same sulfur as a lump would still be in the soil next season.</p>
           </div>
-          <p className="panel p-5"><b>What is claimed here and what is not.</b> Uniformity is recorded batch by batch. What VAN publishes is the declared analysis, 32% N and 13% S, registered against PS 217-2023 and released through VAN’s PNAC-accredited laboratory. Coating weight is measured per batch; VAN does not publish the figure, and will provide it against a batch number on the same terms as the certificate. VAN does not publish a granule-to-granule figure.</p>
+          <p className="panel p-5"><b>Batch records.</b> Uniformity is recorded batch by batch. The declared analysis, 32% N and 13% S, is registered against PS 217-2023 and released through VAN’s PNAC-accredited laboratory. Coating weight is measured per batch and given against a batch number on the same terms as the certificate.</p>
         </div>
       </div></section>
 
@@ -428,13 +427,13 @@ export default function VitalUrea() {
               only as a fertilizer company's trial on its own research farm, peer-reviewed and published.
               Revert: restore the old h3. */}
           <h3>Published trial. Maize, 2024, a trial by a fertilizer company on its own research farm, peer-reviewed and published</h3>
-          <p className="mt-3">A randomised complete block design with 3 replications on DK-6321 maize compared nitrogen strategies. 2 stage-timed applications of sulfur-coated urea, at the 4–6 leaf stage and again 20 days later at the 8–12 leaf stage. Outperformed a 5-application programme of conventional urea followed by calcium ammonium nitrate across the growth and yield parameters measured.</p>
-          <p className="mt-3 small p-3 rounded-lg" style={{ background: 'var(--gold-soft)' }}><b>Why we cite it for the finding and not a headline number:</b> the paper reports its own yield inconsistently between its results table and its discussion. We would rather tell you that here than have you find it.</p>
+          <p className="mt-3">A randomised complete block design with 3 replications on DK-6321 maize compared nitrogen strategies. 2 stage-timed applications of sulfur-coated urea, at the 4–6 leaf stage and again 20 days later at the 8–12 leaf stage. It outperformed a 5-application programme of conventional urea followed by calcium ammonium nitrate across the growth and yield parameters measured.</p>
+          <p className="mt-3 small p-3 rounded-lg" style={{ background: 'var(--gold-soft)' }}><b>No yield number is quoted from this paper:</b> its yield figures differ between its results table and its discussion.</p>
           <p className="cap mt-3">Umair, A., Manzoor, M., Saleem, M. S., et al. (2025). Planta Animalia 4(3), 129–135. <a href="https://doi.org/10.71454/PA.004.03.0126" target="_blank" rel="noopener">DOI 10.71454/PA.004.03.0126</a>.</p>
         </div>
         <h4 className="mt-8">What the published research establishes about coated urea, not measurements of Vital Urea</h4>
         <div className="grid md:grid-cols-3 gap-4 mt-3">
-          {[['Coated urea raises nitrogen recovery against uncoated urea.', 'Zhao, Gao & Gao (2025), Agriculture 15(14):1554. A 2-year field study reporting higher nitrogen recovery efficiency, agronomic efficiency and grain yield for sulfur-coated urea than for conventional urea in rice.'], ['The effect holds in Pakistani conditions.', 'Ghafoor, Rahman & Ali et al. (2021), Environmental Science and Pollution Research. Coated urea sources improved growth, yield and nitrogen use efficiency and reduced nitrogen losses in wheat under an arid Pakistani environment.'], ['In one study, elemental sulfur with an inoculant raised phosphorus availability in calcareous soil.', 'Nadeem, Hanif & Khan (2022), Archives of Agronomy and Soil Science 69(9):1494–1502. Elemental sulfur with a sulfur-oxidising inoculant raised phosphorus availability and improved wheat growth and yield in calcareous soil.']].map(([h, t]) => (
+          {[['Coated urea raises nitrogen recovery against uncoated urea.', 'Zhao, Gao & Gao (2025), Agriculture 15(14):1554. A 2-year field study reporting higher nitrogen recovery efficiency, agronomic efficiency and grain yield for sulfur-coated urea than for conventional urea in rice.'], ['The effect holds in Pakistani conditions.', 'Ghafoor, Rahman & Ali et al. (2021), Environmental Science and Pollution Research. Coated urea sources improved growth, yield and nitrogen use efficiency and reduced nitrogen losses in wheat under an arid Pakistani environment.'], ['In 1 study, elemental sulfur with an inoculant raised phosphorus availability in calcareous soil.', 'Nadeem, Hanif & Khan (2022), Archives of Agronomy and Soil Science 69(9):1494–1502. Elemental sulfur with a sulfur-oxidising inoculant raised phosphorus availability and improved wheat growth and yield in calcareous soil.']].map(([h, t]) => (
             <div key={h} className="panel p-5"><div className="font-bold">{h}</div><p className="small muted mt-2">{t}</p></div>
           ))}
         </div>
@@ -473,7 +472,7 @@ export default function VitalUrea() {
             </table>
           </div>
           <div className="panel p-5">
-            <p className="small">Growing a different crop? The full stage-by-stage programme for 28 crops is in the crop nutrition plans, and how the bag is applied changes the answer, so the application guidance sits beside them.</p>
+            <p className="small">Growing a different crop? The full stage-by-stage programme for 28 crops is in the crop nutrition plans, with the application guidance beside them.</p>
             <a className="btn btn-gold mt-4" href="#/crops">Find your crop’s plan →</a>
           </div>
         </div>
@@ -508,7 +507,7 @@ export default function VitalUrea() {
           </div>
           <div className="flex flex-wrap gap-3"><WaButton href={WA.distributor} lg>Become a distributor →</WaButton><a className="btn btn-gold btn-lg" href="#/partner/brief-to-bag">Own-brand manufacturing →</a></div>
         </div>
-        <p className="cap mt-6"><b>Sources for this page.</b> Analysis, standard, licence and patent. The registered TDS and van.com.pk. Release mechanism and coating chemistry. The peer-reviewed sources listed in the evidence section, cited for the technologies they studied, under the conditions each study describes; none is a measurement of Vital Urea. Field programme, Khaliqabad 2023, with Rafhan Maize Products. Replicated trial, Umair et al. (2025), Planta Animalia 4(3). National nitrogen uptake, Lassaletta et al. (2014). Soil figures, the Punjab soil testing programme, 770,160 samples. Fertilizer ratio, NFDC Fertilizer Review 2024-25. Sulfur and protein, Yu et al. (2018, 2021), Randall et al. (1981), Arata et al. (2017). Crop sulfur removal, FAO Bulletin 16 (2006), IRRI (2003), Shukla & Lal (2004). Release timeline, VAN field observation, not a laboratory curve. Storage and safety, VAN SDS-VAN-001 Rev 3. Doses, VAN’s published crop nutrition plans, 2025 set. No performance percentage is claimed for Vital Urea anywhere on this page; the 2 records are reported with their limits stated.</p>
+        <p className="cap mt-6"><b>Sources.</b> Analysis, standard, licence and patent. The registered TDS and van.com.pk. Release mechanism and coating chemistry. The peer-reviewed sources listed in the evidence section, cited for the technologies they studied, under the conditions each study describes; none is a measurement of Vital Urea. Field programme, Khaliqabad 2023, with Rafhan Maize Products. Replicated trial, Umair et al. (2025), Planta Animalia 4(3). National nitrogen uptake, Lassaletta et al. (2014). Soil figures, the Punjab soil testing programme, 770,160 samples. Fertilizer ratio, NFDC Fertilizer Review 2024-25. Sulfur and protein, Yu et al. (2018, 2021), Randall et al. (1981), Arata et al. (2017). Crop sulfur removal, FAO Bulletin 16 (2006), IRRI (2003), Shukla & Lal (2004). Release timeline, VAN field observation. Storage and safety, VAN SDS-VAN-001 Rev 3. Doses, VAN’s published crop nutrition plans, 2025 set.</p>
       </section>
     </div>
   )

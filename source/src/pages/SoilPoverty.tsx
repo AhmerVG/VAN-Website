@@ -11,6 +11,8 @@ import { Source, Tip } from '@/components/Charts'
  * by email; headline leads with the date range; the Engro field claim stays out; the soil record is
  * not cited as Government of Punjab data in this report. Text is the report's final version (Word
  * file of 1 Oct 2026, Newspaper Submission folder). Change wording only at Tahir's word.
+ * D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction
+ * (numbers as digits, 2 "we say so openly" clauses, 1 cut-off chart title). The PDF is unchanged.
  */
 
 const NAVY = '#1F3A5F', RED = '#B42318', MUTED = '#5B6A5E', RULE = 'rgba(20,35,26,0.16)'
@@ -66,7 +68,7 @@ function BalanceLines() {
   const yrLab = (yr: number) => `${yr - 1}-${String(yr).slice(2)}`
   return (
     <div className="chart panel p-5">
-      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>Crops took {last[1].toLocaleString('en-US')} thousand tonnes in 2023-24; fertilizer put back {last[2]}</h4><span className="cap">thousand tonnes of K₂O a year</span></div>
+      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>Crops took {last[1].toLocaleString('en-US')} thousand tonnes in 2023-24; fertilizer put back {last[2]} thousand</h4><span className="cap">thousand tonnes of K₂O a year</span></div>
       <div ref={fit.ref}><svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ marginTop: 10 }} role="img" aria-label="Potash taken out by 5 crops and put back, Punjab, 1971-72 to 2023-24">
         {[0, 200, 400, 600, 800, 1000].map(g => <g key={g}><line x1={L} x2={W - R} y1={y(g)} y2={y(g)} stroke={RULE} strokeDasharray="2 3" /><text x={L - 8} y={y(g) + 4} textAnchor="end" fontSize={12} fill={MUTED}>{g}</text></g>)}
         {(fit.narrow ? [1980, 2000, 2020] : [1980, 1990, 2000, 2010, 2020]).map(t => <text key={t} x={x(t)} y={H - 10} textAnchor="middle" fontSize={12} fill={MUTED}>{t}</text>)}
@@ -104,7 +106,7 @@ function S({ id, n, kicker, title, children, bg }: { id: string; n?: string; kic
 const P = ({ children }: { children: ReactNode }) => <p className="mt-3">{children}</p>
 const Lead = ({ b, children }: { b: string; children: ReactNode }) => <p className="mt-3"><b>{b}</b> {children}</p>
 
-const INDEX: [string, string][] = [['sp-1', '1 Where Punjab stands'], ['sp-2', '2 Taken out, put back'], ['sp-3', '3 The projection'], ['sp-4', '4 How hard to undo'], ['sp-5', '5 Why it matters'], ['sp-6', '6 Two checks'], ['sp-int', 'International cross-check'], ['sp-7', '7 The message'], ['sp-8', '8 Method and limits'], ['sp-src', 'Sources']]
+const INDEX: [string, string][] = [['sp-1', '1 Where Punjab stands'], ['sp-2', '2 Taken out, put back'], ['sp-3', '3 The projection'], ['sp-4', '4 How hard to undo'], ['sp-5', '5 Why it matters'], ['sp-6', '6 Statistical checks'], ['sp-int', 'International cross-check'], ['sp-7', '7 The message'], ['sp-8', '8 Method and limits'], ['sp-src', 'Sources']]
 
 const REFS: [string, string][] = [
   ['Punjab soil testing record, 770,160 samples, 2016-18, validated and mapped by VAN: Soil Atlas', '/soil.html'],
@@ -167,15 +169,15 @@ export default function SoilPoverty() {
           <ul className="mt-2 sp-list">
             <li>Punjab crops now take about 940,000 tonnes of potash (K₂O) out of the soil every year. Farmers put back about 36,000 tonnes as fertilizer (2023-24), under 4%.</li>
             <li>After manure and irrigation water are counted, the soil is still short about 616,000 tonnes a year. That is 1.88 times the shortfall of 2003-09, the last years for which we found a published measured rate of potash loss in Punjab.</li>
-            <li>On the middle of our runs, about a third of Punjab&rsquo;s soil samples (34%; 28% to 51% across 8 in 10 runs) may now be below 100 ppm, against 18% measured in 2016-18. No test since 2016-18 confirms it.</li>
+            <li>On the middle of our runs, about 1/3 of Punjab&rsquo;s soil samples (34%; 28% to 51% across 8 in 10 runs) may now be below 100 ppm, against 18% measured in 2016-18. No test since 2016-18 confirms it.</li>
             <li>Raising potash use 12 times by 2034-35 delays the crossing by only about 2 years, because the soil still pays for the other half of the shortfall.</li>
           </ul>
-          <p className="small muted mt-3">These numbers come from a potash balance model built on Punjab and federal statistics. It is set to the only province-wide measured rate of potash loss in Punjab we found, and checked against 3 other methods (Section 3). It is a projection, not a measurement. Section 8 sets out what the model can and cannot tell.</p>
+          <p className="small muted mt-3">These numbers come from a potash balance model built on Punjab and federal statistics. It is set to the only province-wide measured rate of potash loss in Punjab we found, and checked against 3 other methods (Section 3). It is a projection, not a measurement. Section 8 sets out what the model cannot tell.</p>
         </div>
       </div></section>
 
       <S id="sp-1" n="1" kicker="Where Punjab stands" title="132 ppm in 2016-18, and 9 in 10 samples below the 180 ppm mark">
-        <P>Punjab tested 770,160 soil samples in 2016-18, in all 36 districts. VAN validated, normalised and mapped them. They are soil testing records, not a designed random survey, and one field may have more than one sample.</P>
+        <P>Punjab tested 770,160 soil samples in 2016-18, in all 36 districts. VAN validated, normalised and mapped them. They are soil testing records, not a designed random survey, and a field may have more than 1 sample.</P>
         <P>The average available potash was 132 ppm. Here ppm means mg of potassium (K) per kg of soil, extracted with ammonium acetate, as Punjab soil labs report it.</P>
         <P>About 88% of samples were below 180 ppm, the level Punjab labs treat as adequate. Labs grade below 80 ppm as poor and 80 to 180 ppm as satisfactory. This report uses 100 ppm as a warning line inside the satisfactory band, not as an official class, and gives the share below 80 ppm too. 18% of samples were already below 100 ppm, and 8% below 80 ppm. 656 of 4,911 grid squares (about 5 km by 5 km each) averaged below 100 ppm.</P>
         <T head={['District', 'Median potash, 2016-18 (ppm)', 'Samples']} rows={[['Mianwali', 81, '14,037'], ['Layyah', 84, '14,757'], ['Bhakkar', 90, '23,220'], ['Mandi Bahauddin', 92, '20,392'], ['Attock', 100, '12,002'], ['Sahiwal (highest)', 184, '25,164']]} />
@@ -211,7 +213,7 @@ export default function SoilPoverty() {
         <P>Share of soil samples below 100 ppm, by our estimate (18% measured in 2016-18): on the middle of the 20,000 runs about 34% now and 52% in 2034-35; in the fast case B, 46% now and 82% in 2034-35. These are projections, not new tests.</P>
         <P>Case B keeps the loss at the same percentage pace SFRI measured in 2003-09, scaled to today&rsquo;s shortfall. It is the simplest case and one of the faster ones. Across the 3 fixed cases the crossing falls between 2028-29 and 2036-37. The 20,000 runs also let the soil&rsquo;s reserve slow the loss as potash falls, and they give the middle estimate in the headline.</P>
         <Lead b="How sure is the date?">We ran the model 20,000 times, each time drawing every uncertain input from its range: potash in canal water (1.3 to 5 mg per litre, most likely 3, since Pakistani river data sit above the world median) and in tube-well water (2 to 8, most likely 5); how much of that water potash stays in the root zone (canal 25% to 75%; tube-well 10% to 50%, because much of it is the fields&rsquo; own potash, leached and pumped back); fodder and other removals not counted (0 to 600,000 tonnes a year, rising 1% to 3% a year); groundwater pumping (rising 1% to 4% a year); bhoosa and straw potash; the SFRI rate (plus or minus 50%); how strongly the soil reserve slows the loss; and crop growth.</Lead>
-        <Lead b="What the date depends on.">One input moves the date more than all the others together: how strongly the soil&rsquo;s mica reserve slows the loss as available potash falls. No Punjab measurement pins it down, so half the runs let the loss shrink in step with the level (middle 2031) and half let it shrink toward a floor of 60 to 80 ppm that the soil holds on to (middle 2038). The middle year of 2036 rests on giving the 2 forms equal weight. Next comes the exact SFRI rate. Water potash, fodder and crop growth hardly move the date, because each run is scaled to its own 2003-09 shortfall.</Lead>
+        <Lead b="What the date depends on.">1 input moves the date more than all the others together: how strongly the soil&rsquo;s mica reserve slows the loss as available potash falls. No Punjab measurement pins it down, so half the runs let the loss shrink in step with the level (middle 2031) and half let it shrink toward a floor of 60 to 80 ppm that the soil holds on to (middle 2038). The middle year of 2036 rests on giving the 2 forms equal weight. Next comes the exact SFRI rate. Water potash, fodder and crop growth hardly move the date, because each run is scaled to its own 2003-09 shortfall.</Lead>
         <T head={['How strongly the reserve slows the loss', 'Punjab average crosses 100 ppm (middle run)']} rows={[
           ['Not at all: the same ppm or more lost each year (unlikely on mica-rich soils)', 'about 2024'], ['Weakly', 'about 2026'], ['Moderately, up to the steady percentage pace of case B', 'about 2028'],
           ['Fairly strongly', 'about 2032'], ['Strongly', 'about 2037'], ['Very strongly', 'about 2045'], ['Toward a floor of 60 to 80 ppm', 'about 2038'],
@@ -224,7 +226,7 @@ export default function SoilPoverty() {
           ['SFRI 2003-09 rate held flat (case A)', '2036-37', 'Ignores today’s larger shortfall'],
           ['Indian long-term experiments on alluvial soils, no potash', 'About 2060, if their 0.61% a year applied from 129.8 ppm', 'Slowest. Applied as a flat rate: we did not have those plots’ potash balance, so we could not scale it to Punjab’s shortfall (Das et al. 2022)'],
         ]} />
-        <P>The Indian result is the strongest reason the date could be later, and we show it openly. It also shows the loss continues: the soil runs down more slowly there, but it still runs down.</P>
+        <P>The Indian result is the strongest reason the date could be later. It also shows the loss continues: the soil runs down more slowly there, but it still runs down.</P>
       </S>
 
       <S id="sp-4" n="4" kicker="How hard it is to undo" title="Raising potash use 12 times delays the crossing by only about 2 years" bg>
@@ -238,7 +240,7 @@ export default function SoilPoverty() {
       </S>
 
       <S id="sp-5" n="5" kicker="Why it matters" title="On a sandy, low-potash field in Mianwali, potash added 25% to wheat yield">
-        <P>Potash does not work alone, and neither do urea and DAP. In a 2-year wheat trial at the Adaptive Research Station, Mianwali, in the sandy, low-potash Thal, 93 kg of K₂O per hectare raised grain yield 25%, from 3,625 to 4,533 kg per hectare (Abbas et al. 2013, Pakistan Journal of Botany). One study on soil badly short of potash, quoted by IFPRI, shows why: adding potash raised the share of applied fertilizer the crop took up.</P>
+        <P>Potash does not work alone, and neither do urea and DAP. In a 2-year wheat trial at the Adaptive Research Station, Mianwali, in the sandy, low-potash Thal, 93 kg of K₂O per hectare raised grain yield 25%, from 3,625 to 4,533 kg per hectare (Abbas et al. 2013, Pakistan Journal of Botany). A study on soil badly short of potash, quoted by IFPRI, shows why: adding potash raised the share of applied fertilizer the crop took up.</P>
         <T head={['Nutrient', 'Taken up by the crop with N and P only (or N and K for potash)', 'Taken up with N, P and K together']} rows={[['Nitrogen', '16%', '76%'], ['Phosphorus', '1%', '13%'], ['Potash', '22%', '61%']]} />
         <p className="small muted">Source: Haerdter and Fairhurst (2003), as quoted in Ali et al. 2016, IFPRI Discussion Paper 01516. It is a single study, most likely on rice outside Pakistan, and we have not found the original. Its figures show what happens on soil badly short of potash; they are an illustration, not a Punjab average.</p>
         <P>Pakistan&rsquo;s own numbers point the same way, though potash is likely one of several causes:</P>
@@ -249,17 +251,17 @@ export default function SoilPoverty() {
         <P>A farmer short of potash pays for urea and DAP that his crop cannot fully use.</P>
       </S>
 
-      <S id="sp-6" n="6" kicker="Two statistical checks" title="Where land was measured twice, potash fell 1.5% to 2.3% a year" bg>
+      <S id="sp-6" n="6" kicker="2 statistical checks" title="Where land was measured twice, potash fell 1.5% to 2.3% a year" bg>
         <P>We also tried 2 statistical approaches. One is consistent with the model; the other cannot test it.</P>
         <Lead b="Check 1. The same ground, measured twice.">This is consistent with the model.</Lead>
         <T min={600} head={['Place', 'First reading', 'Second reading', 'Fall a year']} rows={[['SFRI monitoring sites, Punjab', '251 ppm (2003)', '230 ppm (2009)', '3.5 ppm, about 1.5%'], ['Gujar Khan tehsil, Rawalpindi', 'about 144 ppm (about 2000)', '103 ppm (2012-17)', 'about 2.8 ppm, about 2.3%']]} />
         <P>The balance model gives about 1.5% a year at the 2003-09 shortfall and about 2.8% at today&rsquo;s. Gujar Khan is rainfed, and its first reading is our estimate from the class shares reported in the paper, so it is a weak check.</P>
-        <Lead b="Check 2. Comparing districts is not a check.">It cannot detect depletion, and we say so openly. We compared the 769,578 cleaned samples district by district, after allowing for soil texture, organic matter and pH. If cropping alone drained potash, the most heavily cropped districts would hold the least. They do not: districts that take more potash out per hectare hold slightly more (about +0.18 ppm for each extra kg per hectare; not statistically firm). Sahiwal, Multan and Rahim Yar Khan are high; Mianwali, Bhakkar and Mandi Bahauddin are low.</Lead>
+        <Lead b="Check 2. Comparing districts cannot detect depletion.">We compared the 769,578 cleaned samples district by district, after allowing for soil texture, organic matter and pH. If cropping alone drained potash, the most heavily cropped districts would hold the least. They do not: districts that take more potash out per hectare hold slightly more (about +0.18 ppm for each extra kg per hectare; not statistically firm). Sahiwal, Multan and Rahim Yar Khan are high; Mianwali, Bhakkar and Mandi Bahauddin are low.</Lead>
         <P>The reason is how each soil was formed: parent material, river silt and groundwater set each district&rsquo;s starting level. A single snapshot cannot separate that from 50 years of cropping. So the rate of loss in this report comes only from places measured over time, not from district differences. It also means the districts already below 100 ppm are low partly by nature.</P>
       </S>
 
       <S id="sp-int" kicker="International cross-check" title="FAO, the World Bank and a peer-reviewed budget show the same deficit">
-        <P>The numbers above come from Pakistani government statistics. Three international sources, built separately, point the same way.</P>
+        <P>The numbers above come from Pakistani government statistics. 3 international sources, built separately, point the same way.</P>
         <Lead b="1. A peer-reviewed potash budget for Pakistan, 1970s to 2010s.">Pathak, Fagodiya and Singh 2024, Scientific Reports 14:29136, Table 5, built from FAOSTAT and national data. Million tonnes of potassium (K) a year, average for each decade:</Lead>
         <T head={['Decade', 'Taken out by crops', 'Fertilizer', 'Balance']} rows={[['1970s', '0.58', '0.00', '-0.37'], ['1980s', '0.77', '0.03', '-0.53'], ['1990s', '0.98', '0.02', '-0.72'], ['2000s', '1.19', '0.03', '-0.89'], ['2010s', '1.42', '0.03', '-1.09']]} />
         <P>Pakistan&rsquo;s deficit has deepened every decade. The paper puts Pakistan at 10% to 19% of South Asia&rsquo;s potash deficit, second after India.</P>
@@ -280,10 +282,10 @@ export default function SoilPoverty() {
         <ol className="sp-list sp-ol mt-2">
           <li>Crop output: Punjab production of wheat, rice, sugarcane, maize and cotton, every year from 1971-72 to 2023-24.</li>
           <li>Potash taken out: each tonne harvested carries a known amount of potash; we used figures at the low end of published ranges, and the 20,000 runs widen them (bhoosa 10 to 25 kg K₂O per tonne of grain; rice straw 15 to 25 per tonne of paddy, 10% to 50% of it removed). Bhoosa and maize stover are counted as leaving the field (fed to animals); rice straw and cane trash are mostly burnt in the field, so their potash stays; half of cotton sticks leave as firewood.</li>
-          <li>Potash put back: fertilizer (by year), farmyard manure (FAO: a quarter of it reaches fields) and canal and tube-well water.</li>
+          <li>Potash put back: fertilizer (by year), farmyard manure (FAO: 1/4 of it reaches fields) and canal and tube-well water.</li>
           <li>Speed of loss: the only province-wide measured Punjab rate we found, 3.52 ppm a year on SFRI sites in 2003-09 (about 1.5% of the level a year), raised or lowered each year in step with that year&rsquo;s shortfall. Cases A to C start from the 2016-18 average of 132.3 ppm; the 20,000 runs start from the area-weighted 129.8 ppm and add 2 forms of soil buffering (Section 3).</li>
         </ol>
-        <p className="mt-3"><b>The model workbook is available from the author on request:</b> <a href={`mailto:${SP_EMAIL}?subject=Soil%20Poverty%20model%20request`}>{SP_EMAIL}</a>. Every input sits on one sheet with its source; the judgement calls are marked and can be changed.</p>
+        <p className="mt-3"><b>The model workbook is available from the author on request:</b> <a href={`mailto:${SP_EMAIL}?subject=Soil%20Poverty%20model%20request`}>{SP_EMAIL}</a>. Every input sits on 1 sheet with its source; the judgement calls are marked and can be changed.</p>
         <p className="mt-4"><b>What the model cannot tell.</b></p>
         <ul className="sp-list mt-2">
           <li>We found only 1 province-wide measured rate of loss for Punjab, from 2003-09. The US drawdown method reproduces it, but Indian long-term experiments show a much slower loss. Scaling it to today&rsquo;s larger shortfall assumes the soil responds in step; the 20,000 runs test this. Mica releases potash as soils get poorer, so the fastest case may overstate the fall.</li>

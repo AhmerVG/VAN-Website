@@ -30,6 +30,7 @@ import { useShared, usePublishShared } from '@/lib/shareState'
  *  every crop with a calculator). There the page had 2 "Send this list on WhatsApp" buttons sending 2 different
  *  lists, unlabelled; this one now says it is VAN's published plan, in its button, its message and the line under it.
  *  Its quantities are unchanged. Revert: drop the prop and the 2 call sites' `published`. */
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function ListBuilder({ stages = WHEAT_STAGES, plan = WHEAT_PLAN, cropName = 'wheat', pdfPath = WHEAT.pdf, mode = 'stage', cropKey = 'wheat', soil = false, published = false }: { stages?: string[]; plan?: PlanRow[]; cropName?: string; pdfPath?: string; mode?: 'stage' | 'age'; cropKey?: string; soil?: boolean; published?: boolean } = {}) {
   // In AGE mode the list is not a set of stages a farmer passes through in one season — it is a set
   // of orchard-age bands, and exactly one applies. Ticking several would add a young palm's dose to a
@@ -192,16 +193,16 @@ export function ListBuilder({ stages = WHEAT_STAGES, plan = WHEAT_PLAN, cropName
     <div className="panel p-5 lg:p-8" style={{ borderColor: 'var(--navy)', borderWidth: 2 }}>
       <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-8 items-start">
         <div className="lg:sticky lg:top-24">
-          <span className="eyebrow">Per-acre list builder</span>
+          <span className="eyebrow">Per-acre shopping list</span>
           <h3>{isAge ? 'How old is the orchard? Set your acres. Send the list.' : 'Tick the stages. Set your acres. Send the list.'}</h3>
-          <p className="muted mt-2 small">{isAge ? 'One age band applies at a time. A palm is one age. Counts are that band’s published per-acre rates multiplied by your acres.' : 'Counts are the published per-acre rates added up across the stages you tick, multiplied by your acres.'} VAN confirms the final price, availability and delivery on WhatsApp.</p>
+          <p className="muted mt-2 small">{isAge ? 'Pick 1 age band; bands are not added together. Counts are that band’s published per-acre rates multiplied by your acres.' : 'Counts are the published per-acre rates added up across the stages you tick, multiplied by your acres.'} VAN confirms the final price, availability and delivery on WhatsApp.</p>
           <div className="grid gap-2 mt-5">
             {stages.map((s, k) => (
               <label key={s} className={`flex items-center gap-3 panel px-4 py-3 cursor-pointer st-${k}`} style={{ borderColor: ticked.has(s) ? 'var(--st)' : undefined, background: ticked.has(s) ? 'var(--st-soft)' : '#fff' }}>
                 <input type={isAge ? 'radio' : 'checkbox'} name={isAge ? 'van-age-band' : undefined} checked={ticked.has(s)} onChange={() => toggle(s)} style={{ width: 24, height: 24, accentColor: '#14231A' }} />
                 <span className="font-bold flex-1 min-w-0" style={{ overflowWrap: 'anywhere' }}><Ur kind="stage" en={s} /></span>
                 {/* D-151 (QA 28): a stage with no rows says so instead of "0 rows". */}
-                <span className="cap shrink-0 text-right" style={{ maxWidth: '45%' }}>{plan.filter(r => r.stage === s).length ? `${plan.filter(r => r.stage === s).length} rows` : 'nothing applied at this stage'}</span>
+                <span className="cap shrink-0 text-right" style={{ maxWidth: '45%' }}>{plan.filter(r => r.stage === s).length ? `${plan.filter(r => r.stage === s).length} ${plan.filter(r => r.stage === s).length === 1 ? 'row' : 'rows'}` : 'nothing applied at this stage'}</span>
               </label>
             ))}
           </div>
@@ -231,7 +232,7 @@ export function ListBuilder({ stages = WHEAT_STAGES, plan = WHEAT_PLAN, cropName
             <div className="font-bold">Your list · {acres} acre{acres > 1 ? 's' : ''}</div>
             <div className="cap">{van.length} VAN product{van.length === 1 ? '' : 's'}</div>
           </div>
-          {!lines.length && <p className="muted mt-3 p-4 panel-soft">{isAge ? 'Choose your orchard age to build a list.' : 'Tick at least one stage to build a list.'}</p>}
+          {!lines.length && <p className="muted mt-3 p-4 panel-soft">{isAge ? 'Choose your orchard age to build a list.' : 'Tick at least 1 stage to build a list.'}</p>}
           <ul className="list-none p-0 m-0 mt-2 grid gap-2">
             {van.map(l => (
               // D-151 (QA 2, 3): the row wraps; the stage caption breaks after "/" and anywhere it must; the
@@ -323,7 +324,7 @@ export function ListBuilder({ stages = WHEAT_STAGES, plan = WHEAT_PLAN, cropName
           {sprayBasis && (
             <p className="cap mt-3 p-3 panel-soft max-w-[140ch]">
               The spray rates in this programme are published <b>per 200 litres of water</b>, and are
-              counted here as one 200-litre tank to the acre. A larger canopy takes more water to cover,
+              counted as 1 tank of 200 litres an acre. A larger canopy takes more water to cover,
               so it takes more product. Tell VAN your tree size and spray volume and the count is
               adjusted.
             </p>
@@ -389,7 +390,7 @@ export function ListBuilder({ stages = WHEAT_STAGES, plan = WHEAT_PLAN, cropName
           <UrduReviewNotice />
           {/* D-263: was, on every page, "The message carries the list above. Add your district and VAN replies with price and the nearest dealer." */}
           {published
-            ? <p className="cap mt-3">This sends VAN’s published {cropName} plan for the stages you ticked{districtName ? `, with your district, ${districtName}` : ''}. It is not adjusted for your soil: the calculator below is, and its own button sends that plan.{districtName ? '' : ' Add your district and VAN replies with price and the nearest dealer.'}</p>
+            ? <p className="cap mt-3">This sends VAN’s published {cropName} plan for the stages you ticked{districtName ? `, with your district, ${districtName}` : ''}. This list is not adjusted for your soil. For that, use the calculator below.{districtName ? '' : ' Add your district and VAN replies with price and the nearest dealer.'}</p>
             : <p className="cap mt-3">The message carries the list above. {districtName ? `It names your district, ${districtName}, and VAN replies with price and the nearest dealer.` : 'Add your district and VAN replies with price and the nearest dealer.'}</p>}
         </div>
       </div>

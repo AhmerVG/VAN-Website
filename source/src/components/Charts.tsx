@@ -12,6 +12,7 @@ const fmt = (n: number) => n.toLocaleString('en-US')
 /** D-143: per-acre figures carry 1 decimal (33.0, not 33). */
 const fmt1 = (n: number) => n.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })
 
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function Source({ children, label = 'Source' }: { children: ReactNode; label?: string }) {
   return <p className="src"><b>{label} ·</b> {children}</p>
 }
@@ -139,7 +140,7 @@ export function IndexLinesChart() {
   return (
     <div ref={ref} className={`chart panel p-5 ${on ? 'in' : ''}`}>
       <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>Nutrient applied and wheat yield, 1999-2000 → 2023-24</h4><span className="cap">index, 2000 = 100</span></div>
-      <div ref={fit.ref}><svg viewBox={`0 0 ${W} ${H}`} width="100%" className="mt-3" role="img" aria-label="Two index lines, nutrient per acre and wheat yield">
+      <div ref={fit.ref}><svg viewBox={`0 0 ${W} ${H}`} width="100%" className="mt-3" role="img" aria-label="2 index lines, nutrient per acre and wheat yield">
         {[100, 120, 140, 160, 180].map(g => (
           <g key={g}><line x1={x0} x2={x1} y1={y(g)} y2={y(g)} stroke={g === 100 ? INK : RULE} strokeDasharray={g === 100 ? undefined : '2 3'} /><text x={x0 - 8} y={y(g) + 4} textAnchor="end" fontSize={12} fill={MUTED}>{g}</text></g>
         ))}
@@ -164,7 +165,7 @@ export function IndexLinesChart() {
         <div className="pt-3" style={{ borderTop: `2px solid ${RUST}` }}><div className="pull text-[clamp(28px,2.4vw,36px)]" style={{ color: RUST }}>{nV}</div><div className="cap">{n.label} · {n.from} → {n.to} {n.unit} ({n.pct}) · {n.source}</div></div>
         <div className="pt-3" style={{ borderTop: `2px solid ${GREEN}` }}><div className="pull text-[clamp(28px,2.4vw,36px)]" style={{ color: GREEN }}>{wV}</div><div className="cap">{w.label} · {fmt1(w.from)} → {fmt1(w.to)} {w.unit} ({w.pct}) · {w.source}</div></div>
       </div>
-      <p className="cap mt-3">2 published end points, index 2000 = 100 (derived). Each line is drawn straight between its 2 end points, no intermediate years are published here, and none are implied.</p>
+      <p className="cap mt-3">Index 2000 = 100 (derived), from the 2 published end years only.</p>
       <Source>{NATIONAL.productivity.source}</Source>
     </div>
   )

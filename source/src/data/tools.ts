@@ -1,3 +1,4 @@
+// D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction
 import { CROPS, PRODUCTS } from '@/data/catalogue'
 
 /** M8, 24 Sep 2026: search words a reader types that the tool text does not contain. The placeholder
@@ -62,9 +63,9 @@ export type Tool = {
 export const TOOL_STATE_LABEL: Record<ToolState, string> = { live: 'Ready now', pilot: 'Pilot', building: 'Not built yet' }
 export const TOOL_STATE_COLOUR: Record<ToolState, string> = { live: 'var(--green)', pilot: 'var(--gold-text)', building: 'var(--muted)' }
 export const TOOL_STATE_NOTE: Record<ToolState, string> = {
-  live: 'Finished, on every crop it claims.',
-  pilot: 'Works, and is honest about which crops it cannot answer yet.',
-  building: 'Not built. Each one says what it is waiting on.',
+  live: 'Finished.',
+  pilot: 'Works; not every crop is covered yet.',
+  building: 'Not built yet.',
 }
 
 // D-177: 'For the trade' and 'Reading this site' had no tools left after the honest list, so their chips are gone.
@@ -89,7 +90,7 @@ export const TOOLS: Tool[] = [
     one: 'Pick your crop, tick the stages, set your acres: the bags and packs to buy.',
     state: 'live', href: '#/crops', topics: ['Rates and quantities'],
     keywords: `${NUTRIENT_WORDS} ${PRODUCT_WORDS} buy quantity calculator cost price acres shopping list ${LIVE_CALC_NAMES.join(' ')}`,
-    what: `Any of the ${CROPS.length} published crop plans turns into bags and packs for your acres: the published rate multiplied by your acres, nothing estimated in between. On ${LIVE_CALC_CROPS.length} crops (${LIVE_CALC_NAMES.slice(0, -1).join(', ')} and ${LIVE_CALC_NAMES[LIVE_CALC_NAMES.length - 1]}) it reads VAN's own calculator sheet for that crop and can price the VAN products in it. Acres are whole numbers from 1 to 50.`,
+    what: `Any of the ${CROPS.length} published crop plans turns into bags and packs for your acres: the published rate multiplied by your acres. On ${LIVE_CALC_CROPS.length} crops (${LIVE_CALC_NAMES.slice(0, -1).join(', ')} and ${LIVE_CALC_NAMES[LIVE_CALC_NAMES.length - 1]}) it uses VAN's own calculator for that crop and can price the VAN products in it. Acres are whole numbers from 1 to 50.`,
   },
   {
     // D-186, 26 Sep 2026: the Liebig barrel on the nutrients page.
@@ -97,7 +98,7 @@ export const TOOLS: Tool[] = [
     one: 'Enter what you put on 1 acre and see which nutrient your season stops at.',
     state: 'live', href: '#/knowledge/nutrients#barrel', topics: ['Rates and quantities', 'Soil'],
     keywords: `${NUTRIENT_WORDS} ${PRODUCT_WORDS} liebig law of the minimum barrel drum shortest stave balance urea dap`,
-    what: `Liebig’s Law of the Minimum as a tool. Pick your crop, type the bags and packs you applied per acre, and each nutrient is drawn as a stave against what VAN’s published programme delivers. The shortest stave is where the season leaks. For wheat and potato it also says how much of the quarter of yield that nutrition decides your mix reaches, as a model estimate.`,
+    what: `Liebig’s Law of the Minimum as a tool. Pick your crop, type the bags and packs you applied per acre, and each nutrient is drawn as a stave against what VAN’s published programme delivers. The shortest stave is where the season leaks. For wheat and potato it also says how much of the 1/4 of yield that nutrition decides your mix reaches, as a model estimate.`,
   },
   {
     name: 'Unit and bag converter',
@@ -111,13 +112,14 @@ export const TOOLS: Tool[] = [
     one: 'Your soil reading or your district moves the plan’s quantities.',
     state: 'pilot', href: '#/crops/wheat#creator', topics: ['Soil', 'Rates and quantities'],
     keywords: `${NUTRIENT_WORDS} soil test report district`,
-    what: `Inside the crop plan calculator. Choose the band your soil report shows for each reading, or pick your Punjab district and it fills from the survey median across ${SOIL_HEADLINE.samples} samples. Where the soil reads short, the plan adds product. This is VAN’s starting model and has not yet been checked against field results; it adds and never subtracts.`,
+    what: `Inside the crop plan calculator. Choose the band your soil report shows for each reading, or pick your Punjab district to use the survey median across ${SOIL_HEADLINE.samples} samples. Where the soil reads short, the plan adds product; where phosphorus, potash or zinc reads Healthy, it takes 1/4 off, and nitrogen is never cut. This is VAN’s starting model and has not yet been checked against field results.`,
+    // D-317: was "...field results; it adds and never subtracts." The calculator also takes 1/4 off on a Healthy P, K or Zn reading (lib/soilAdjustment.ts, D-181).
   },
   {
     name: 'Nutrient balance',
     one: 'What the plan puts on, against what your harvest takes off.',
     state: 'pilot', href: '#/crops/wheat#balance', topics: ['What the harvest takes'],
-    what: 'Enter the yield you expect. You see the kilograms of N, P₂O₅ and K₂O per acre the plan puts on, against what that harvest takes off. The removal side uses IPNI’s North American table, named on the page, because no Pakistani removal table is published. 10 crops have a removal figure; the others say why they do not.',
+    what: 'Enter the yield you expect. You see the kilograms of N, P₂O₅ and K₂O per acre the plan puts on, against what that harvest takes off. The removal side uses IPNI’s North American table, because no Pakistani removal table is published. 10 crops have a removal figure.',
   },
   {
     name: 'Crop water need',
@@ -151,14 +153,14 @@ export const TOOLS: Tool[] = [
     one: 'Count the canes in a measured area and get an estimated yield per acre.',
     state: 'building', topics: ['What the harvest takes'],
     what: 'Count what is standing in a measured area and read the yield off the count: a measurement of the crop that exists, against the simulator’s estimate of how the season was farmed.',
-    needs: 'A cane weight model from girth and length. VAN’s own sheets apply a flat weight to every cane, and the two sheets disagree on it by a third.',
+    needs: 'A cane weight model from girth and length.',
   },
 ]
 
 /** Pages that answer a question but are not tools: the reader does not put in a figure of his own. */
 export const TOOL_PAGES: [string, string, string][] = [
   ['Soil Atlas', `Punjab’s soil, district by district, from ${SOIL_HEADLINE.samples} samples.`, '#/soil'],
-  ['Compare products', 'Every VAN analysis, pack and method in one table.', '#/products#table'],
+  ['Compare products', 'Every VAN analysis, pack and method in 1 table.', '#/products#table'],
   ['Lab tests and prices', 'All 21 fertilizer tests, what each costs and how long it takes.', '#/lab#prices'],
   ['Formulation library', '27 unbranded formulations you could launch under your own name.', '#/partner#library'],
   ['Where to buy', 'Every VAN dealer and Vital Agri Center, with the person who answers.', '#/where-to-buy'],

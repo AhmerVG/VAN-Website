@@ -79,19 +79,20 @@ function useSlides(): Slide[] {
       key: 'partner', tone: 'rust',
       kicker: 'If you want it made under your name',
       title: 'Formulated, made, registered and tested here. Sold under your brand.',
-      body: <>{partners ? <><b>{partners}</b> partners and </> : null}<b>100+</b> brands already made on this site. You bring the market. VAN does everything from the formulation to the finished bag.</>,
+      body: <>{partners ? <><b>{partners}</b> partners and </> : null}<b>100+</b> brands already made at this plant. You bring the market. VAN does everything from the formulation to the finished bag.</>,
       cta: [['Your Brand', '#/partner'], ['The formulation library', '#/partner#library']],
     },
     {
       key: 'evidence', tone: 'soil',
       kicker: 'If you want the evidence',
       title: `${SOIL_HEADLINE.samples} soil samples. 17 years of trials on VAN’s research farms.`,
-      body: <>Every figure on this site carries its source. Where a figure does not exist, the page says so.</>,
+      body: <>Every figure carries its source.</>,
       cta: [['Soil Atlas', '#/soil'], ['Why Pakistan must shift', '#/knowledge/why-pakistan-must-shift']],
     },
   ]
 }
 
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function IdentitySlider() {
   const slides = useSlides()
   const [i, setI] = useState(0)

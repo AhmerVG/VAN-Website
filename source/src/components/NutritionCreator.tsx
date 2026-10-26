@@ -58,6 +58,7 @@ const packUnit = (slug: string | null) => (slug && LIQUID_SLUGS.has(slug) ? 'L' 
  * put through bandForValue, exactly as a number typed into "Your reading" is, and calcPlan, the bands, the bumps and
  * the swap are not touched. The link is read by parseCardParam (src/lib/gpsCard.ts).
  */
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function NutritionCreator({ crop, cropName = crop, initialDistrict = null, initialCard = null, onCardRows }: { crop: string; cropName?: string; initialDistrict?: string | null; initialCard?: string | null; onCardRows?: (on: boolean) => void }) {
   const [acres, setAcres] = useSharedAcres(crop)   // M1: shared with the shopping list
   const [soilInputs, setSoilInputs] = useState<SoilInputs>({})
@@ -228,9 +229,9 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
     <div className="panel p-5 lg:p-8" style={{ borderColor: 'var(--navy)', borderWidth: 2 }}>
       <div className="flex flex-wrap items-start justify-between gap-4 mb-2">
         <div>
-          <span className="eyebrow">Dynamic nutrition creator · beta</span>
+          <span className="eyebrow">Nutrition creator · beta</span>
           <h3>Set your acres. Watch the plan scale.</h3>
-          <p className="muted mt-2 small max-w-[140ch]">Every quantity below comes straight out of VAN's own {cropName} calculator, scaled by your acres, not estimated.{' '}Add your soil test below, or just pick your district, to adjust it further.</p>
+          <p className="muted mt-2 small max-w-[140ch]">Every quantity below is VAN’s {cropName} rate, scaled by your acres.{' '}Add your soil test below, or just pick your district, to adjust it further.</p>
         </div>
         <div className="flex items-center gap-3 shrink-0">
           <span className="font-bold">Acres</span>
@@ -302,23 +303,19 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
                     ))}
                   </tbody>
                 </table>
-                <p className="cap mt-2">kg in total. The recommended dose is the general figure in VAN’s own calculator sheet for this crop. VAN’s plan puts on less than it on most nutrients because VAN’s products lose less of what is applied, so the crop needs less of them for the same result.</p>
+                <p className="cap mt-2">kg in total. The recommended dose is the general figure for this crop. VAN’s plan uses less of most nutrients because VAN’s products lose less of what is applied, so the crop needs less of them for the same result.</p>
               </div>
             ) : null}
             <p className="cap mt-3" style={{ color: 'var(--muted)' }}>
               {ranged
                 ? <>{/* D-151 (A11, A27): was "The lower end and the higher end are VAN's calculator sheet and VAN's published plan ... The plans are being brought onto the calculator crop by crop, and each range closes to one number as that is done." */}
-                    A figure written as a range has 2 VAN documents behind it: VAN's {cropName} calculator
-                    sheet and VAN's published {cropName} plan, which do not carry an identical product list
-                    on this crop. Which of the 2 is higher depends on the nutrient. Both ends are arithmetic
-                    on VAN's own printed analyses. Nothing here is estimated.</>
-                : <>These totals are VAN's own arithmetic on VAN's {cropName} calculator sheet, and VAN's published {cropName} plan gives the same figures. Nothing
-                    is estimated.{LIST_DIFFS[crop] ? <> {LIST_DIFFS[crop]}</> : null}</>}
+                    A range shows where VAN’s 2 product lists for {cropName} differ.</>
+                : <>VAN’s published {cropName} plan gives the same totals.{LIST_DIFFS[crop] ? <> {LIST_DIFFS[crop]}</> : null}</>}
             </p>
             <div className="mt-4 pt-3" style={{ borderTop: '1px dashed var(--line)' }}>
               {/* D-151 (QA 8, A27): was "Coming next" in var(--gold-2) and "Yield-target scaling, telling the plan you are aiming above or below the standard crop, is being calibrated against VAN's own trial data before it goes in." */}
               <div className="cap" style={{ color: 'var(--gold-text)' }}>Not in this calculator</div>
-              <div className="small muted mt-1">Yield-target scaling is not in this calculator. The quantities are for the standard crop in VAN's plan.</div>
+              <div className="small muted mt-1">Yield targets. The quantities are for a standard crop.</div>
             </div>
           </div>
           <SoilAdjustmentPanel
@@ -338,7 +335,7 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
         <div className="panel-soft p-4 mt-5" style={{ borderLeft: '4px solid var(--green)' }}>
           <div className="cap font-bold uppercase tracking-[.06em] mb-1">Same nitrogen, carried differently</div>
           <p className="small max-w-[140ch]">{totals.swaps[0].note} The swap itself adds no nitrogen: exactly as much leaves the urea line as arrives on the Vital Urea line, which is why one falls as the other rises. If the nitrogen total above moves slightly, that is the phosphate line, which carries a little nitrogen of its own.</p>
-          <p className="cap mt-2 max-w-[140ch]">Sulfur goes up as a result, Vital Urea is 13% sulfur, which on alkaline calcareous ground is a second benefit rather than a side effect.</p>
+          <p className="cap mt-2 max-w-[140ch]">Sulfur goes up as a result: Vital Urea is 13% sulfur, which on alkaline calcareous ground is a second benefit rather than a side effect.</p>
         </div>
       )}
 

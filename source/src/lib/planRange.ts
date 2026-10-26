@@ -1,3 +1,4 @@
+// D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction
 import { COST_PLANS } from '@/data/costPlans'
 import { programmeSupply, allStages, type Nutrient } from '@/lib/nutrientBalance'
 import { calcPlan } from '@/lib/planCalc'
@@ -117,7 +118,7 @@ export function cropHasRange(cropKey: string): boolean {
  * The one sentence that explains every range on the site. Written once here so the two places that
  * print a range cannot drift into explaining it two ways.
  */
-export const RANGE_NOTE = 'A range means VAN’s calculator sheet and the published plan use slightly different product lists.'
+export const RANGE_NOTE = 'A range means VAN’s calculator and its published plan use slightly different product lists for this crop.'
 // D-311 (Tahir, 23 Oct 2026: short plain notes for the live site): was 'Where a figure is shown as a range, it is because VAN
 // holds 2 documents for this crop: the crop calculator sheet and the published crop plan. They do not carry an identical
 // product list, so they do not deliver an identical kilogram of nutrient. Both ends are VAN’s own arithmetic on VAN’s own

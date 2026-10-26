@@ -39,6 +39,7 @@ import { phWord } from '@/data/soilUrdu'
 
 const SHOWN: AnalyteKey[] = ['ph', 'om', 'p', 'k', 'zn', 'b']
 
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function MyGround({ selected }: { selected: string | null }) {
   const d = districtByKey(selected)
   const cells = useMemo(() => (d ? GRID.cells.filter(c => c.dist === d.key) : []), [d])
@@ -46,8 +47,8 @@ export function MyGround({ selected }: { selected: string | null }) {
   if (!d) {
     return (
       <div className="panel p-5" id="soil-myground">
-        <span className="eyebrow soil">One level down</span>
-        <h3 className="mt-1">Pick your district above and this reads the ground inside it.</h3>
+        <span className="eyebrow soil">1 level down</span>
+        <h3 className="mt-1">Pick your district above to see the ground inside it.</h3>
         <p className="small muted mt-2 max-w-[140ch]">
           The survey is not only district averages. It carries <b>{GRID.cells.length.toLocaleString()} cells</b> of
           about 5.5 by 4.8 kilometres, roughly 6,500 acres each, and every district has its own. That is closer
@@ -78,10 +79,10 @@ export function MyGround({ selected }: { selected: string | null }) {
   return (
     <div className="panel p-5" id="soil-myground">
       <div className="flex items-baseline justify-between gap-3 flex-wrap">
-        <span className="eyebrow soil">One level down · {d.name}</span>
+        <span className="eyebrow soil">1 level down · {d.name}</span>
         <span className="cap">{cells.length} cells · {d.summary.n.toLocaleString()} samples</span>
       </div>
-      <h3 className="mt-1 max-w-[30ch]">Your district is not one soil.</h3>
+      <h3 className="mt-1 max-w-[30ch]">Your district is not 1 soil.</h3>
 
       {widest && (
         <p className="lead mt-3 max-w-[140ch]">
@@ -119,7 +120,7 @@ export function MyGround({ selected }: { selected: string | null }) {
         {/* Teesra Khata, 18 Oct 2026: this opened all 28 crops. It now opens the wheat calculator with this district's soil rows filled (Tahir's wording). */}
         <a className="btn btn-gold btn-sm" href={`#/crops/wheat?district=${encodeURIComponent(d.key)}`}><span className="urdu">{KHATA_UR.planButton}</span> <span className="cap" style={{ color: 'inherit' }}>· the wheat plan for {d.name}</span></a>
       </div>
-      <p className="src mt-3"><b>Source ·</b> {SOIL_SOURCE.short}. Cells of {GRID.deg}° with at least three samples; no interpolation and no boundary file. A farmer knows his tehsil rather than his cell: the tehsil readings ({DISTRICT_UR[d.key]}, {d.name}) are in the farmer screens at the top of this page, from the same workbooks.</p>
+      <p className="src mt-3"><b>Source ·</b> {SOIL_SOURCE.short}. Cells of {GRID.deg}° with at least 3 samples. The tehsil readings ({DISTRICT_UR[d.key]}, {d.name}) are at the top of this page, from the same survey.</p>
     </div>
   )
 }

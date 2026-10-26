@@ -46,12 +46,13 @@ const KCOL: Record<string, string> = { you: 'var(--gold)', name: 'var(--rust)', 
 // D-151 (QA 9): step numbers as text, >= 4.5:1.
 const KTEXT: Record<string, string> = { you: 'var(--gold-text)', name: 'var(--rust-text)', code: 'var(--navy)', split: 'var(--green-text)' }
 
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function ChainDiagram() {
   return (
     <div className="panel p-5">
       <div className="flex items-baseline justify-between gap-3 flex-wrap">
         <h4>Where your name goes, and where it stops</h4>
-        <span className="cap">one parcel, 7 steps</span>
+        <span className="cap">1 parcel, 7 steps</span>
       </div>
 
       <div className="overflow-x-auto mt-3">
@@ -175,7 +176,7 @@ export function SampleTracker() {
         <h4>Where is my sample?</h4>
         {!(O2S.enabled && O2S.samplesEnabled) && <span className="tag tag-gold">not connected yet</span>}
       </div>
-      <p className="small muted mt-1 max-w-[140ch]">Anyone with a reference number can ask, without an account. The stages are the same seven the diagram shows.</p>
+      <p className="small muted mt-1 max-w-[140ch]">Anyone with a reference number can ask, without an account. The stages are the same 7 the diagram shows.</p>
       <form className="flex flex-wrap gap-2 mt-3" onSubmit={submit}>
         <input className="input" style={{ maxWidth: 260 }} value={ref} onChange={e => setRef(e.target.value)} placeholder="Reference or batch number" aria-label="Reference or batch number" />
         <button className="btn btn-navy btn-sm" type="submit" disabled={!clean || busy}>{busy ? 'Checking…' : 'Check'}</button>
@@ -193,7 +194,7 @@ export function SampleTracker() {
             <p className="small">
               {res.reason === 'not-found'
                 ? <><b>No sample with that reference.</b> Check the number on the receipt and try again.</>
-                : <><b>This is not connected to the laboratory system yet, so we are not going to show you a status we have not read.</b>{' '}Send <b>{clean || 'your reference number'}</b> on WhatsApp and someone will look it up and tell you today.</>}
+                : <><b>The sample tracker is not connected to the laboratory system yet.</b>{' '}Send <b>{clean || 'your reference number'}</b> on WhatsApp and someone will look it up and tell you today.</>}
             </p>
             <a className="btn btn-wa btn-sm mt-3" href="https://wa.me/923005003041" target="_blank" rel="noopener">Ask on WhatsApp</a>
           </div>

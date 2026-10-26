@@ -56,6 +56,7 @@ const ART: Record<string, () => ReactElement> = {
 }
 
 /** The 5 methods, drawn and moving. Tap one to read it. They are 5 different things. */
+/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 export function MethodsStrip({ compact = false }: { compact?: boolean }) {
   const { ref, inView } = useInView({ threshold: 0.2 })
   const rm = useReducedMotion()
@@ -86,7 +87,7 @@ export function MethodsStrip({ compact = false }: { compact?: boolean }) {
         <div className="display text-[26px]">{name}</div>
         <div>
           <p>{text}</p>
-          <p className="small mt-3 p-3 rounded-lg" style={{ background: 'var(--gold-soft)' }}><b>1 product rule overrides the table.</b> {VITAL_UREA_RULE}</p>
+          <p className="small mt-3 p-3 rounded-lg" style={{ background: 'var(--gold-soft)' }}><b>A separate rule applies to Vital Urea.</b> {VITAL_UREA_RULE}</p>
         </div>
       </div>
     </div>

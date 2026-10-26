@@ -37,7 +37,7 @@ check('cotton (5 kg a dose): plan says 5 kg and the list is 10 packs of 1 kg', /
 check('canola: 5, 1.5 and 1.5 kg, list 8 packs of 1 kg', /Green Sulfur 1 kg pack · Land Preparation, Germination, Early Growth 8 packs · 8 kg/.test(flat('crops/canola.html')) && /· 1\.5 kg · 1 kg/.test(flat('crops/canola.html')))
 const noOldSulfur = crops.filter(f => /Green Sulfur Sulfur 70% · (?:[¼½¾]|[\d.]+) (?:bags?|packs?)\b/.test(text.get(f)))
 check('no crop page still prints Green Sulfur as bags or packs in the plan', noOldSulfur.length === 0, noOldSulfur.slice(0, 3).join(', '))
-check('Green Sulfur product page names both packs', /Two packs: 1 kg and 20 kg/.test(flat('brands/green-sulfur.html')))
+check('Green Sulfur product page names both packs', /2 packs: 1 kg and 20 kg/.test(flat('brands/green-sulfur.html')))
 
 // D-293 Vital Potash: 11:0:44 is always "coated with B" and never "+ Fe" (iron is V-Potash Plus).
 const vp = crops.filter(f => /11:0:44/.test(text.get(f)))

@@ -110,7 +110,8 @@ console.log('\n4 · the shared WhatsApp link carries the tehsil, and opens at it
   await page.locator('#teesra-khata button.tk-wa').first().tap()
   const wa = await popup
   // D-316: the popup can still be about:blank when it is first seen; wait until it has the WhatsApp address (the test raced, about 1 run in 3).
-  try { await wa.waitForURL(u => u.href.startsWith('http'), { timeout: 15000 }) } catch {}
+  try { await wa.waitForURL(u => u.href.startsWith('http'), { timeout: 30000 }) } catch {}
+  try { await wa.waitForLoadState('domcontentloaded', { timeout: 30000 }) } catch {}
   const url = new URL(wa.url())
   const text = url.searchParams.get('text') || ''
   const link = (text.match(/https:\/\/www\.van\.com\.pk\/soil\.html\?[^\s]+/) || [''])[0]
