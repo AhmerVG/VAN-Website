@@ -4,7 +4,7 @@ import { READING_UR, KHATA_UR, phWord, GPS_UR, type KhataKey } from '@/data/soil
 import { SOIL_BAND_LABEL, bandOf } from '@/lib/soilSeverity'
 import { wa } from '@/data/site'
 import { TEHSILS, DISTRICT_UR } from '@/data/soilTehsils'
-import { Khata, MiniMap } from './TeesraKhata'
+import { Khata, MiniMap, VanLabNowrap } from './TeesraKhata'
 import { MAP_LATIN, boxFree, haloText, useMapFonts, type MapBox, type MapName } from '@/lib/mapText'
 import {
   cardAt, cardNear, cardLink, cardText, districtPoints, inPakistan, inPunjab, km, kmToPunjab, latticePos, isChakLabel, loadIndex, loadUcs, parsePin, searchKey, searchUcs, tehsilUcs, ucById,
@@ -152,7 +152,7 @@ function FineMap({ points, center, halfKm, pin, circleKm, accKm, square, labels,
         const x = X(l.lon), y = Y(l.lat)
         if (x < 6 || y < 6 || x > width - 6 || y > width - 6) continue
         g.fillStyle = '#14231A'; g.beginPath(); g.arc(x, y, 3, 0, Math.PI * 2); g.fill()
-        g.font = MAP_LATIN(11)
+        g.font = MAP_LATIN(10)   // D-313, Tahir 24 Oct 2026: the names on the card map in smaller text (was 11 px)
         const tw = g.measureText(l.name).width
         const left = Math.max(2, Math.min(width - 2 - tw - 6, x - tw / 2 - 3))
         let box: MapBox = [left, y - 20, left + tw + 6, y - 6]
@@ -161,7 +161,7 @@ function FineMap({ points, center, halfKm, pin, circleKm, accKm, square, labels,
           if (box[3] > width - 2 || !boxFree(placed, box)) continue
         }
         placed.push(box)
-        haloText(g, l.name, (box[0] + box[2]) / 2, box[3] - 3, MAP_LATIN(11))
+        haloText(g, l.name, (box[0] + box[2]) / 2, box[3] - 3, MAP_LATIN(10))
       }
       g.strokeStyle = '#14231A'; g.lineWidth = 3; g.lineCap = 'butt'
       g.beginPath(); g.moveTo(bx, by); g.lineTo(bx + bar * s, by); g.stroke()
@@ -656,7 +656,7 @@ export function GpsCard({ onActive, onDistrictTehsil, scope, autoLocate = false,
           <button className="btn tk-btn gps-alt" onClick={toDistrictTehsil}><span className="urdu">{GPS_UR.pickDistrictTehsil}</span><span className="tk-btn-en">Pick district and tehsil</span></button>
           {/* Low finding: "VAN Lab" was printed 3 times here (the message, the English link text and the live Urdu line);
               now only the live Urdu line names it. */}
-          <a className="tk-link" href="#/lab"><span className="urdu" dir="rtl">{KHATA_UR.ownTest}</span></a>
+          <a className="tk-link" href="#/lab"><span className="urdu" dir="rtl"><VanLabNowrap text={KHATA_UR.ownTest} /></span></a>
         </div>
       )}
 
@@ -704,6 +704,7 @@ export function GpsCard({ onActive, onDistrictTehsil, scope, autoLocate = false,
           {/* not on an outside-Punjab card: G11 puts no km on a survey area there (review, 23 Oct 2026) */}
           {pin && !outside && near.length > 0 && (
             <div className="gps-near" data-gps="near">
+              {!fixedUc && <p className="urdu tk-sub tk-strong">{GPS_UR.nearYourLand}</p>}
               <p className="gps-near-h">{fixedUc ? `Near ${fixedUc.label}` : 'Near your land'}</p>
               <ol>{near.map(u => <li key={u.id}>{u.label}{u.tehsil ? `, ${u.tehsil}` : ''}: {fmtNear(u.km)} {u.dir}{u.own ? ' (this card’s Union Council)' : ''}</li>)}</ol>
               <p className="tk-en">{fixedUc ? `From the centre of ${fixedUc.label}` : 'From your land'} to each Union Council’s centre, the middle of its survey samples.{!fixedUc && near.length && !near[0].own ? ' The card is named for the survey sample nearest your land, so its Union Council’s centre can be farther away than others.' : ''}</p>
@@ -733,7 +734,7 @@ export function GpsCard({ onActive, onDistrictTehsil, scope, autoLocate = false,
           )}
           {/* D-302, 22 Oct 2026: "VAN Lab" kept on one line (it broke as "VAN" / "Lab" on a phone); the words are unchanged. */}
           <p className="urdu tk-survey">{(() => { const t = GPS_UR.areaNotField; const i = t.indexOf('VAN Lab'); return i < 0 ? t : <>{t.slice(0, i)}<span style={{ whiteSpace: 'nowrap' }}>VAN Lab</span>{t.slice(i + 7)}</> })()}</p>
-          <p className="tk-en">An area reading from the Punjab government survey, about 2016 to 2018, mapped by VAN. Not a test of your field. Your own test: VAN Lab.</p>
+          <p className="tk-en">An area reading from the Punjab government survey, about 2016 to 2018, mapped by VAN. Not a test of your field.</p>
           <a className="btn tk-btn tk-wa tk-wa-van" href={wa(vanText)} target="_blank" rel="noopener" data-gps="van"><span className="urdu" dir="rtl">{GPS_UR.sendToVan}</span><span className="tk-btn-en">Send this card to VAN to discuss your soil</span></a>
           {/* D-295, Tahir 22 Oct 2026: the English says what his Urdu says; the privacy line moves under the button. */}
           <p className="tk-en">Your card leaves your device only when you send it.</p>

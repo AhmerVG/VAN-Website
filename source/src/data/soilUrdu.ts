@@ -68,22 +68,32 @@ export const KHATA_UR = {
   planButton: 'اپنی مٹی کے حساب سے گندم کا پلان دیکھیں',
   planTitle: 'اپنی مٹی کے حساب سے گندم کا پلان',
   planLine: 'مٹی کے جائزے سے یہ پلان بنا ہے',
-  bundle: 'گندم بنڈل، فی ایکڑ',
+  // D-313 (Tahir's Urdu review, 24 to 25 Oct 2026): the bundle is the minimum every farmer needs, before the soil adds more
+  bundle: 'گندم کا بنیادی بنڈل، فی ایکڑ',
   notTested: 'اس سروے میں ٹیسٹ ہی نہیں ہوا',
   survey: 'یہ پنجاب حکومت کا سروے ہے، تقریباً 2016 سے 2018 کا۔ یہ آپ کے علاقے کا حساب ہے، آپ کے کھیت کا نہیں۔',
-  averageNotField: 'ضلع کی ایوریج آپ کے کھیت کا نمبر نہیں۔',
+  averageNotField: 'ضلع کی اوسط آپ کے کھیت کی ریڈنگ نہیں۔',
   fewSamples: (n: number) => `اس علاقے میں نمونے کم ہیں: ${n}`,
   rangeLine: (district: string, reading: string, lo: string, hi: string) => `${district} کے علاقوں میں ${reading}: ${lo} سے ${hi} تک`,
-  ownTest: 'کھیت کا اپنا ٹیسٹ: VAN Lab',
-  fold: 'پورا اٹلس دیکھیں',
-  open: 'اپنے علاقے کا تیسرا کھاتہ کھولیں',
+  ownTest: 'اپنے کھیت کی مٹی کے ٹیسٹ کے لیے VAN Lab سے رابطہ کریں',
+  fold: 'پورے صوبے کا اٹلس دیکھیں',
+  open: 'اپنے علاقے کا تیسرا کھاتہ (مٹی) کھولیں',
   back: 'واپس',
   border: 'یہ علاقہ ضلع کی سرحد پر ہے: اس کے زیادہ نمونے ساتھ والے ضلع کی تحصیل کے ہیں۔',
-  noReading: 'ریڈنگ نہیں',
-  bundleNote: 'اس سیزن کا VAN گندم بنڈل: ہر کسان کے لیے ایک ہی۔',
-  calcTitle: 'کیلکولیٹر میں پورا پلان',
-  calcExplain: 'یہ VAN کا پورا گندم پلان ہے، بنڈل سے زیادہ۔ آپ کے ضلع کی مٹی سے اس میں یہ بدلتا ہے؛ مقدار کیلکولیٹر بتاتا ہے۔',
-  calcDistrict: 'کیلکولیٹر آپ کا ضلع پڑھتا ہے، آپ کا علاقہ نہیں۔',
+  noReading: 'ریڈنگ نہیں ہے',
+  // was 'اس سیزن کا VAN گندم بنڈل: ہر کسان کے لیے ایک ہی۔' (Tahir: misleading; the soil adds to it)
+  bundleNote: 'یہ ہر کسان کے لیے کم از کم گندم بنڈل ہے؛ مٹی کی ریڈنگ کے حساب سے اس میں اضافہ ہوتا ہے۔',
+  calcTitle: 'کیلکولیٹر میں آپ کا پورا پلان',
+  calcExplain: 'یہ VAN کا تجویز کردہ گندم پلان ہے۔ آپ کے ضلع کی مٹی کے حساب سے اس میں یہ تبدیلیاں آتی ہیں؛ مقدار کیلکولیٹر بتاتا ہے۔',
+  calcDistrict: 'کیلکولیٹر آپ کا ضلع پڑھتا ہے، آپ کی زمین نہیں۔',
+  /** D-313, Tahir's words 24 Oct 2026: the line over the calculator's product changes */
+  changesLead: 'مٹی کی ریڈنگ میں غذائی اجزا کے حساب سے پروڈکٹس میں تبدیلی آتی ہے:',   // پروڈکٹ, as the site spells it elsewhere
+  /** D-313, Tahir's words 24 Oct 2026, for the urea swap (was: عام یوریا کی جگہ Vital Urea: pH کی وجہ سے، نائٹروجن اتنی ہی رہتی ہے۔) */
+  vitalUreaPh: 'زیادہ pH والی زمین میں Vital Urea (سلفر کوٹڈ) بہتر ہے۔',
+  /** D-313, Tahir 24 Oct 2026: kallar, without gypsum (was: ... پہلے پانی، نکاس اور جپسم۔) */
+  kallar: 'کلر (حل پذیر نمکیات 4 یا زیادہ): پہلے مشورہ، بوری نہیں۔',
+  /** D-313, Tahir 24 Oct 2026 */
+  pShort: 'آپ کی زمین میں فاسفورس کم ہے: بنڈل میں Green Phosphate 50 کلو (1 بوری) تک۔',
 }
 
 /**
@@ -97,7 +107,7 @@ export const KHATA_UR = {
  */
 export const GPS_UR = {
   /** 1, heading, Tahir's words */
-  heading: 'آپ کی قریبی زمین کی مٹی کا ریکارڈ',
+  heading: 'آپ کی زمین کے قریبی علاقے کی مٹی کا ریکارڈ',   // D-313, Tahir 24 Oct 2026 (was 'آپ کی قریبی زمین کی مٹی کا ریکارڈ')
   /** 2, note, Tahir's words */
   note: 'کارڈ آپ کی زمین کے قریبی علاقے کی ریڈنگ ہے۔ آپ کی لوکیشن چیک نہیں کی جاتی۔',
   /** 3, button, Tahir's words */
@@ -119,7 +129,7 @@ export const GPS_UR = {
   /** 9, under the slider */
   dragRadius: 'دائرہ بڑا یا چھوٹا کرنے کے لیے کھینچیں',
   /** 11, the card's bottom line */
-  areaNotField: 'یہ علاقے کا حساب ہے، آپ کے کھیت کا ٹیسٹ نہیں۔ اپنا ٹیسٹ: VAN Lab',
+  areaNotField: 'یہ علاقے کا حساب ہے، آپ کے کھیت کا ٹیسٹ نہیں۔',   // D-313, Tahir 24 Oct 2026: 'اپنا ٹیسٹ: VAN Lab' removed
   /** 12, button, Tahir's words (D-294, 22 Oct 2026; was: رہنمائی اور مٹی کے حساب سے کھاد کی ڈسکشن کے لیے یہ کارڈ VAN کو بھیجیں) */
   sendToVan: 'مٹی کی ڈسکشن کے لیے یہ کارڈ VAN کو بھیجیں',
   /** 13, button, Tahir's words */
@@ -134,4 +144,6 @@ export const GPS_UR = {
   atYourLand: 'کیا آپ اس وقت اپنی زمین پر موجود ہیں؟',
   /** 16, the place line; Union Council, tehsil and district fill in */
   cardFor: (uc: string, tehsil: string, district: string) => `یہ کارڈ اس زمین کا ہے: ${uc}، ${tehsil}، ${district}`,
+  /** D-313, Tahir's words 24 Oct 2026 ("App ki zameen kay qareebi alaqay"), over the card's "Near your land" list */
+  nearYourLand: 'آپ کی زمین کے قریبی علاقے',
 }

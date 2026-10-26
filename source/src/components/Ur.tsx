@@ -21,7 +21,7 @@ export function Ur({ kind, en, className = '' }: { kind: 'crop' | 'stage' | 'ban
 /** Urdu on its own, for a button or a heading that already carries its English elsewhere. */
 export function UrOnly({ k, className = '' }: { k: keyof typeof UR_UI; className?: string }) {
   const [urdu] = useUrduMode()
-  if (!urdu) return null
+  if (!urdu || !UR_UI[k]) return null   // D-313: a line with no Urdu (2 doors, at Tahir's word) draws nothing
   return <span dir="rtl" lang="ur" className={`block urdu ${className}`}>{UR_UI[k]}</span>
 }
 

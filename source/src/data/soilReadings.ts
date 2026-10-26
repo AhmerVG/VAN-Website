@@ -89,6 +89,8 @@ export const SOIL_READINGS: SoilReading[] = [
     share: { field: 'ec_gt4', words: 'of samples are saline, above 4 dS/m' },
     crop: 'On saline ground this is a salinity problem before it is a nutrition problem. Adding fertilizer adds salt to ground that already has too much of it.',
     groundLabel: 'What a saline field needs first',
-    ground: 'A gypsum requirement worked out against its own analysis, and enough water to leach the salt below the root zone, with drainage to take it away.',
+    // D-313 (Tahir, 24 to 25 Oct 2026: "Don't talk about gypsum etc"): was 'A gypsum requirement worked out against its own
+    // analysis, and enough water to leach the salt below the root zone, with drainage to take it away.'
+    ground: 'Advice worked out against its own soil analysis, not a bag of fertilizer.',
   },
 ]

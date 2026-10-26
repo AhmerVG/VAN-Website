@@ -1184,7 +1184,8 @@ export const GARLIC_PLAN: PlanRow[] = [
  { "band": "Micronutrients", "stage": "Maturity", "product": "VL-Micromix", "analysis": "Zn 5% · Fe 2% · Mn 2% · Cu 1% (w/v)", "rate": "1 pack", "method": "Fertigation", "pack": "Pack - 1 L", "slug": "vl-micro-mix", "commodity": false }
 ]
 
-export const GUAVA_STAGES = ["September", "October, flowering starts", "November, fruiting", "December", "January", "February. Harvest"]
+// D-314 (Tahir 25 Oct 2026): guava is picked, not harvested; the last stage was "February. Harvest"
+export const GUAVA_STAGES = ["September", "October, flowering starts", "November, fruiting", "December", "January", "February, picking"]
 export const GUAVA_PLAN: PlanRow[] = [
  { "band": "Potash", "stage": "September", "product": "V-Potash Plus", "analysis": "N 10% · K₂O 40% · Mg · B · chelated Fe", "rate": "10 kg", "method": "Fertigation", "pack": "Bag - 10 kg", "slug": "v-potash-plus", "commodity": false },
  { "band": "Potash", "stage": "October, flowering starts", "product": "VL-Potash Liquid", "analysis": "Potash 30%", "rate": "1 pack", "method": "Foliar, 1 L per 100 L water", "pack": "Pack - 1 L", "slug": "vl-potash-liquid", "commodity": false },
@@ -1199,13 +1200,13 @@ export const GUAVA_PLAN: PlanRow[] = [
  { "band": "Micronutrients", "stage": "November, fruiting", "product": "VL-Micromix", "analysis": "Zn 5% · Fe 2% · Mn 2% · Cu 1% (w/v)", "rate": "1 pack", "method": "Foliar, 1 L per 100 L water", "pack": "Pack - 1 L", "slug": "vl-micro-mix", "commodity": false },
  { "band": "Micronutrients", "stage": "December", "product": "VL-Micromix", "analysis": "Zn 5% · Fe 2% · Mn 2% · Cu 1% (w/v)", "rate": "1 pack", "method": "Foliar, 1 L per 100 L water", "pack": "Pack - 1 L", "slug": "vl-micro-mix", "commodity": false },
  { "band": "Micronutrients", "stage": "January", "product": "VL-Micromix", "analysis": "Zn 5% · Fe 2% · Mn 2% · Cu 1% (w/v)", "rate": "1 pack", "method": "Foliar, 1 L per 100 L water", "pack": "Pack - 1 L", "slug": "vl-micro-mix", "commodity": false },
- { "band": "Micronutrients", "stage": "February. Harvest", "product": "VL-Micromix", "analysis": "Zn 5% · Fe 2% · Mn 2% · Cu 1% (w/v)", "rate": "1 pack", "method": "Foliar, 1 L per 100 L water", "pack": "Pack - 1 L", "slug": "vl-micro-mix", "commodity": false },
+ { "band": "Micronutrients", "stage": "February, picking", "product": "VL-Micromix", "analysis": "Zn 5% · Fe 2% · Mn 2% · Cu 1% (w/v)", "rate": "1 pack", "method": "Foliar, 1 L per 100 L water", "pack": "Pack - 1 L", "slug": "vl-micro-mix", "commodity": false },
  { "band": "Foliar", "stage": "September", "product": "VL-NPK", "analysis": "NPK 8:8:6 (w/v)", "rate": "1 pack", "method": "Spray", "pack": "Pack - 1 L", "slug": "vl-npk", "commodity": false },
  { "band": "Foliar", "stage": "October, flowering starts", "product": "VL-NPK", "analysis": "NPK 8:8:6 (w/v)", "rate": "1 pack", "method": "Spray. Repeat 15 days after flowering", "pack": "Pack - 1 L", "slug": "vl-npk", "commodity": false },
  { "band": "Foliar", "stage": "November, fruiting", "product": "VL-NPK", "analysis": "NPK 8:8:6 (w/v)", "rate": "1 pack", "method": "Spray. Repeat 15 days after fruiting", "pack": "Pack - 1 L", "slug": "vl-npk", "commodity": false },
  { "band": "Foliar", "stage": "December", "product": "VL-NPK", "analysis": "NPK 8:8:6 (w/v)", "rate": "1 pack", "method": "Spray", "pack": "Pack - 1 L", "slug": "vl-npk", "commodity": false },
  { "band": "Foliar", "stage": "January", "product": "VL-NPK", "analysis": "NPK 8:8:6 (w/v)", "rate": "1 pack", "method": "Spray", "pack": "Pack - 1 L", "slug": "vl-npk", "commodity": false },
- { "band": "Foliar", "stage": "February. Harvest", "product": "VL-NPK", "analysis": "NPK 8:8:6 (w/v)", "rate": "1 pack", "method": "Spray", "pack": "Pack - 1 L", "slug": "vl-npk", "commodity": false }
+ { "band": "Foliar", "stage": "February, picking", "product": "VL-NPK", "analysis": "NPK 8:8:6 (w/v)", "rate": "1 pack", "method": "Spray", "pack": "Pack - 1 L", "slug": "vl-npk", "commodity": false }
 ]
 
 export const LENTIL_STAGES = ["Land Preparation", "Germination", "Early Growth", "Grand Growth", "Maturity"]

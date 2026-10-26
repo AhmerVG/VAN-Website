@@ -140,7 +140,7 @@ export const NUTRIENTS_17: NutrientEntry[] = [
     van: ['vl-micro-mix'], // D-214: V. Ammonium Phosphate carries iron only
   },
   {
-    key: 'Cu', symbol: 'Cu', name: 'Copper', urdu: 'تانبا', group: 'micro',
+    key: 'Cu', symbol: 'Cu', name: 'Copper', urdu: 'کاپر', group: 'micro',
     job: 'Copper runs the enzymes that build lignin, the woody part of the stem, and it is needed for pollen to form. Cereals short of copper set empty heads.',
     short: 'Young leaves twist and wilt at the tip, heads emerge empty or half filled, stems are weak. Rare on most Pakistani soil.',
     partners: 'Copper is held tightly by organic matter, so peaty and heavily manured ground can run short while a mineral soil does not.',

@@ -299,7 +299,7 @@ async function drawCard(name: { d: string; t?: string }, vals: Vals, n: number |
   })
   // The caveat in Urdu first (independent review: an Urdu reader must see it), then the English source line.
   g.direction = 'rtl'; g.textAlign = 'right'; g.fillStyle = '#14231A'; g.font = '500 28px "Noto Nastaliq Urdu", serif'
-  g.fillText('یہ علاقے کا حساب ہے، آپ کے کھیت کا ٹیسٹ نہیں۔ اپنا ٹیسٹ: VAN Lab', W - 80, BOTTOM + 48)
+  g.fillText(GPS_UR.areaNotField, W - 80, BOTTOM + 48)   // D-313: the same line as the card's, without 'اپنا ٹیسٹ: VAN Lab' (Tahir 24 to 25 Oct 2026)
   g.direction = 'ltr'; g.textAlign = 'left'; g.fillStyle = '#5B6A5E'; g.font = '400 21px "Public Sans", sans-serif'
   g.fillText('Punjab government soil record, about 2016 to 2018, mapped by VAN.', 80, BOTTOM + 84)
   g.fillText(n != null ? `Square of about 6,500 acres, ${thousands(n)} samples. An area reading, not your field’s test.` : 'An area reading, not your field’s test.', 80, BOTTOM + 110)
@@ -655,6 +655,11 @@ const PARAM_UR: Partial<Record<SoilParameter, { ur: string; en: string }>> = {
   P2O: { ur: 'فاسفورس', en: 'phosphorus' }, K2O: { ur: 'پوٹاش', en: 'potash' }, Zn: { ur: 'زنک', en: 'zinc' }, B: { ur: 'بوران', en: 'boron' },
   OM: { ur: 'نامیاتی مادہ', en: 'organic matter' }, Fe: { ur: 'آئرن', en: 'iron' }, Cu: { ur: 'کاپر', en: 'copper' }, Mn: { ur: 'مینگنیز', en: 'manganese' }, pH: { ur: 'pH', en: 'pH' },
 }
+/** D-302 kept "VAN Lab" on 1 line on a phone; D-313 puts it inside a longer Urdu line, so it is kept whole there too. */
+export function VanLabNowrap({ text }: { text: string }) {
+  const i = text.indexOf('VAN Lab')
+  return i < 0 ? <>{text}</> : <>{text.slice(0, i)}<span style={{ whiteSpace: 'nowrap' }}>VAN Lab</span>{text.slice(i + 7)}</>
+}
 /** Urdu text with Latin product names kept whole and left to right inside it. */
 function UrLine({ text }: { text: string }) {
   const parts = text.split(/([A-Za-z][A-Za-z0-9-]*(?: [A-Z][A-Za-z0-9-]*)*)/)
@@ -679,8 +684,8 @@ function Plan({ dist, distName }: { dist: string; distName: string }) {
     if (up) lines.push({ ur: `${l.product} بڑھتا ہے: ${ur} کی ریڈنگ کی وجہ سے۔`, en: `${l.product} goes up, for the ${en} reading.` })
     else if (l.soilBumpQtyPerAcre < 0) lines.push({ ur: `${l.product} کم ہوتا ہے: ${ur} پوری ہے۔`, en: `${l.product} comes down: ${en} reads Healthy.` })
   }
-  for (const w of totals.swaps) lines.push({ ur: 'عام یوریا کی جگہ Vital Urea: pH کی وجہ سے، نائٹروجن اتنی ہی رہتی ہے۔', en: `Nitrogen moves from plain ${w.fromProduct.toLowerCase()} to Vital Urea, for the pH reading, at the same total nitrogen.` })
-  for (const a of totals.advisories) if (a.parameter === 'EC') lines.push({ ur: 'کلر (حل پذیر نمکیات 4 یا زیادہ): پہلے مشورہ، بوری نہیں۔ پہلے پانی، نکاس اور جپسم۔', en: 'Salty ground (EC 4 or more): advice first, no extra bag: water, drainage and gypsum come first.' })
+  if (totals.swaps.length) lines.push({ ur: KHATA_UR.vitalUreaPh, en: 'In high-pH ground, Vital Urea (sulfur coated) is better.' })
+  for (const a of totals.advisories) if (a.parameter === 'EC') lines.push({ ur: KHATA_UR.kallar, en: 'Salty ground (EC 4 or more): advice first, no extra bag.' })
   return (
     <div className="tk-screen">
       <h2 className="tk-h urdu">{KHATA_UR.planTitle}</h2>
@@ -688,28 +693,29 @@ function Plan({ dist, distName }: { dist: string; distName: string }) {
       <div className="tk-bundle">
         <p className="urdu tk-strong">{KHATA_UR.bundle}</p>
         <p className="urdu tk-survey">{KHATA_UR.bundleNote}</p>
-        <p className="tk-en">VAN’s wheat bundle for this season, per acre: the same base for every farmer</p>
+        <p className="tk-en">VAN’s minimum wheat bundle, per acre; the soil reading adds to it</p>
         <table><tbody>
           <tr><td>Green Phosphate</td><td className="num">35 kg</td></tr>
           <tr><td>Vital Urea</td><td className="num">25 kg</td></tr>
           <tr><td>Vital Potash</td><td className="num">10 kg</td></tr>
         </tbody></table>
-        {pShort && <p className="tk-bline"><UrLine text="فاسفورس کم ہے: بنڈل میں Green Phosphate 50 کلو (1 بوری) تک۔" /><span className="tk-en">Phosphorus is short: in the bundle, Green Phosphate goes up to 50 kg (1 bag).</span></p>}
+        {pShort && <p className="tk-bline"><UrLine text={KHATA_UR.pShort} /><span className="tk-en">Phosphorus is short in your ground: in the bundle, Green Phosphate goes up to 50 kg (1 bag).</span></p>}
         {/* D-284 (21 Oct 2026, Tahir's wording, from the reviewer's alternative): the bundle and the calculator below it are 2 different quantities; the farmer is told so beside the bundle's own number. English only until Tahir gives the Urdu. */}
-        <p className="tk-en" data-bundle-vs-calc>The bundle is VAN’s starting pack for this season. The calculator below uses VAN’s full wheat plan, so its Green Phosphate is a different figure.</p>
+        <p className="tk-en" data-bundle-vs-calc>The bundle is VAN’s minimum for this season. The calculator below uses VAN’s recommended wheat plan, so its Green Phosphate is a different figure.</p>
       </div>
       <div className="tk-calc">
       <p className="urdu tk-strong">{KHATA_UR.calcTitle}</p>
       <p className="urdu tk-strong">{KHATA_UR.planLine}</p>
       <p className="urdu tk-survey">{KHATA_UR.calcExplain}</p>
-      <p className="tk-en">The full plan is VAN’s wheat calculator, which starts from VAN’s published wheat plan, more than the bundle. With your district’s figures it changes this (pilot, the calculator’s existing soil rules; the calculator shows how much):</p>
+      <p className="tk-en">This is VAN’s recommended wheat plan. Your district’s soil makes these changes in it; the calculator gives the quantity.</p>
+      {(totals.swaps.length > 0 || totals.lines.some(l => l.slug && bumps[l.slug] && l.soilBumpQtyPerAcre !== 0)) && <p className="tk-bline"><UrLine text={KHATA_UR.changesLead} /><span className="tk-en">The products change with the nutrients in the soil reading:</span></p>}
       <ul className="tk-adds">{lines.map(l => <li key={l.en}><UrLine text={l.ur} /><span className="tk-en">{l.en}</span></li>)}</ul>
       {!lines.length && <p className="tk-en">Your district’s figures change nothing in the calculator’s plan.</p>}
       <p className="urdu tk-survey">{KHATA_UR.calcDistrict}</p>
-      <p className="tk-en">The calculator reads your district, not your square, which is the closest the survey can be read today.</p>
+      <p className="tk-en">The calculator reads your district, not your own land.</p>
       </div>
       <a className="btn btn-gold tk-btn" href={`#/crops/wheat?district=${encodeURIComponent(dist)}`}><span className="urdu">{KHATA_UR.planButton}</span><span className="tk-btn-en">Open the wheat calculator with your district filled in</span></a>
-      <p className="tk-en">Price shows only inside the calculator. Your own field’s test: <a href="#/lab">VAN Lab</a> · <span className="urdu" dir="rtl">{KHATA_UR.ownTest}</span></p>
+      <p className="tk-en">Price shows only inside the calculator. For your own field’s soil test, contact <a href="#/lab">VAN Lab</a> · <span className="urdu" dir="rtl"><VanLabNowrap text={KHATA_UR.ownTest} /></span></p>
     </div>
   )
 }

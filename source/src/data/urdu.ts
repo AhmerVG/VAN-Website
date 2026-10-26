@@ -36,13 +36,15 @@
  * same mistake as publishing an unreviewed yield model.
  */
 
+/* D-313, 24 to 25 Oct 2026: every line below was checked by Tahir Abbas line by line (review page "VAN Urdu Review",
+ * then "VAN Site Open Questions"); his corrections are applied wherever the same word appears. */
 export const UR_CROP: Record<string, string> = {
   'Wheat': 'گندم',
   'Maize (Corn)': 'مکئی',
   'Basmati Rice': 'باسمتی چاول',
   'Hybrid Rice': 'ہائبرڈ چاول',
   'Cotton': 'کپاس',
-  'Sugarcane, February planting': 'گنا, فروری کی کاشت',
+  'Sugarcane, February planting': 'گنا، فروری کاشت',
   'Ratoon Sugarcane': 'مونڈھی گنا',
   'Canola': 'کینولا',
   'Sesame': 'تل',
@@ -58,9 +60,9 @@ export const UR_CROP: Record<string, string> = {
   'Watermelon': 'تربوز',
   'Turmeric': 'ہلدی',
   'Onion': 'پیاز',
-  'Banana, 1st year': 'کیلا, پہلا سال',
-  'Banana, 2nd year': 'کیلا, دوسرا سال',
-  'Citrus, 5 years and over': 'کینو, پانچ سال اور اس سے زیادہ',
+  'Banana, 1st year': 'کیلا، پہلا سال',
+  'Banana, 2nd year': 'کیلا، دوسرا سال',
+  'Citrus, 5 years and over': 'کینو کے پودے، پانچ سال اور اس سے زیادہ',
   'Date Palm': 'کھجور',
   'Mango': 'آم',
   'Strawberry': 'اسٹرابیری',
@@ -70,31 +72,31 @@ export const UR_CROP: Record<string, string> = {
 /** Growth stages, exactly as the plans name them. Date-palm age bands included. */
 export const UR_STAGE: Record<string, string> = {
   'Land Preparation': 'زمین کی تیاری',
-  'Land Preparation/Transplantation': 'زمین کی تیاری / منتقلی',
-  'Land Preparation/Transplanting': 'زمین کی تیاری / منتقلی',
+  'Land Preparation/Transplantation': 'زمین کی تیاری / پنیری کی منتقلی',
+  'Land Preparation/Transplanting': 'زمین کی تیاری / پنیری کی منتقلی',
   'Germination': 'اُگاؤ',
-  'Establishment': 'جماؤ',
-  'Early Growth': 'ابتدائی نشوونما',
-  'Early Growth (20 DOT)': 'ابتدائی نشوونما (منتقلی کے ۲۰ دن بعد)',
-  'Grand Growth': 'بھرپور نشوونما',
-  'Grand Growth (40 DOT)': 'بھرپور نشوونما (منتقلی کے ۴۰ دن بعد)',
-  'Maturity': 'پکائی',
-  'Maturity (50 DOT)': 'پکائی (منتقلی کے ۵۰ دن بعد)',
-  'Boll Formation & Maturity': 'ٹینڈے بننا اور پکائی',
-  'Grain Formation & Maturity': 'دانہ بننا اور پکائی',
+  'Establishment': 'جڑ پکڑنا',
+  'Early Growth': 'ابتدائی بڑھوتری',
+  'Early Growth (20 DOT)': 'ابتدائی بڑھوتری (پنیری لگانے کے 20 دن بعد)',
+  'Grand Growth': 'بھرپور بڑھوتری',
+  'Grand Growth (40 DOT)': 'بھرپور بڑھوتری (پنیری لگانے کے 40 دن بعد)',
+  'Maturity': 'پکنے کا مرحلہ',
+  'Maturity (50 DOT)': 'پکنے کا مرحلہ (پنیری لگانے کے 50 دن بعد)',
+  'Boll Formation & Maturity': 'ٹینڈے بننا اور پکنے کا مرحلہ',
+  'Grain Formation & Maturity': 'دانہ بننا اور پکنے کا مرحلہ',
   'Fruiting and Picking Phase': 'پھل اور چنائی کا مرحلہ',
   'After Picking': 'چنائی کے بعد',
   'September': 'ستمبر',
-  'October, flowering starts': 'اکتوبر, پھول آنا شروع',
-  'November, fruiting': 'نومبر, پھل بننا',
+  'October, flowering starts': 'اکتوبر، پھول آنا شروع',
+  'November, fruiting': 'نومبر، پھل بننا',
   'December': 'دسمبر',
   'January': 'جنوری',
-  'February, harvest': 'فروری, کٹائی',
-  'Year 1–2 · newly planted': 'سال ۱–۲ · نئی لگائی ہوئی',
-  'Year 3–4 · establishing': 'سال ۳–۴ · جڑ پکڑتی ہوئی',
-  'Year 5–6 · first bearing': 'سال ۵–۶ · پہلا پھل',
-  'Year 7–8 · building yield': 'سال ۷–۸ · پیداوار بڑھتی ہوئی',
-  'Year 9+ · mature bearing': 'سال ۹ سے زائد · بھرپور پھل',
+  'February, picking': 'فروری، چنائی',   // D-314: Tahir 25 Oct 2026, guava is picked, not cut; was 'February. Harvest' / 'February, harvest': 'فروری، کٹائی'
+  'Year 1–2 · newly planted': 'سال 1 سے 2 · نئے لگائے ہوئے پودے',
+  'Year 3–4 · establishing': 'سال 3 سے 4 · جڑ پکڑتے ہوئے پودے',
+  'Year 5–6 · first bearing': 'سال 5 سے 6 · پہلا پھل',
+  'Year 7–8 · building yield': 'سال 7 سے 8 · بڑھتی ہوئی پیداوار',
+  'Year 9+ · mature bearing': 'سال 9 سے زیادہ · بھرپور پھل',
 }
 
 /** Nutrient bands as the plan tables head them. */
@@ -103,8 +105,8 @@ export const UR_BAND: Record<string, string> = {
   'Phosphorus': 'فاسفورس',
   'Potash': 'پوٹاش',
   'Secondary Nutrient': 'ثانوی غذائی اجزا',
-  'Micronutrients': 'خوردبینی غذائی اجزا',
-  'Soil Amendment': 'زمین کی اصلاح',
+  'Micronutrients': 'خورد غذائی اجزا (مائیکرو نیوٹرینٹس)',
+  'Soil Amendment': 'زمینی اصلاح کار',
   'Foliar': 'پتوں پر سپرے',
 }
 
@@ -114,11 +116,11 @@ export const UR_BAND: Record<string, string> = {
  * is worse than one in English.
  */
 export const UR_METHOD: Record<string, string> = {
-  'Broadcasting': 'چھٹہ',
-  'Drill at sowing; broadcast if no drill': 'بوائی پر ڈرل سے؛ ڈرل نہ ہو تو چھٹہ',
-  'Placement': 'جگہ پر ڈالنا',
+  'Broadcasting': 'چھٹا',
+  'Drill at sowing; broadcast if no drill': 'بجائی پر ڈرل سے؛ ڈرل نہ ہو تو چھٹا',
+  'Placement': 'قطار کے ساتھ ڈالنا',
   'Side dressing': 'سائیڈ ڈریسنگ',
-  'Fertigation': 'آبپاشی کے ساتھ کھاد',
+  'Fertigation': 'بذریعہ آبپاشی',
   'Spray': 'سپرے',
   'Foliar': 'پتوں پر سپرے',
 }
@@ -129,12 +131,12 @@ export const UR_SOIL: Record<string, string> = {
   K2O: 'پوٹاش',
   Zn: 'زنک',
   B: 'بوران',
-  Fe: 'فولاد',
-  Cu: 'تانبا',
+  Fe: 'آئرن',
+  Cu: 'کاپر',
   Mn: 'مینگنیز',
   OM: 'نامیاتی مادہ',
-  pH: 'پی ایچ',
-  EC: 'نمکیات (ای سی)',
+  pH: 'pH',
+  EC: 'حل پذیر نمکیات (EC)',
 }
 
 /** The interface's own words — the verbs and units a farmer acts on. */
@@ -142,8 +144,8 @@ export const UR_UI: Record<string, string> = {
   // D-184, 26 Sep 2026: the 4 doors on the home page. Reviewed 27 Sep 2026 (D-211): masculine first person, as the rest of the UI layer.
   'I grow': 'میں اگاتا ہوں',
   'I sell': 'میں بیچتا ہوں',
-  'Made under my name': 'میرے نام سے بنا',
-  'I want to do it differently': 'میں کچھ الگ کرنا چاہتا ہوں',
+  // D-313 (Tahir's Urdu review, 24 Oct 2026): "No need to translate these parts" for these 2 doors; they show English only
+  // (were 'میرے نام سے بنا' and 'میں کچھ الگ کرنا چاہتا ہوں').
   acres: 'ایکڑ',
   perAcre: 'فی ایکڑ',
   bag: 'بوری',
@@ -153,24 +155,24 @@ export const UR_UI: Record<string, string> = {
   rate: 'مقدار',
   method: 'طریقہ',
   yourList: 'آپ کی فہرست',
-  cropPlans: 'فصلوں کے منصوبے',
+  cropPlans: 'فصلوں کے پلان',
   shoppingList: 'خریداری کی فہرست',
   sendWhatsApp: 'واٹس ایپ پر بھیجیں',
   downloadPdf: 'پی ڈی ایف ڈاؤن لوڈ کریں',
   soilTest: 'مٹی کا ٹیسٹ',
   district: 'ضلع',
-  sowing: 'بوائی',
+  sowing: 'بجائی',
   price: 'قیمت',
   perPlant: 'فی پودا',
   language: 'اردو',
   // Block 01/02 of the crop page — the sowing question and "where your crop is now" (9 Sep 2026).
-  whenSown: 'آپ نے بوائی کب کی؟',
-  sowingDate: 'بوائی کی تاریخ',
-  notSownYet: 'ابھی بوائی نہیں کی',
+  whenSown: 'آپ نے بجائی کب کی؟',
+  sowingDate: 'بجائی کی تاریخ',
+  notSownYet: 'ابھی بجائی نہیں کی',
   dontRemember: 'یاد نہیں',
-  cropNow: 'آپ کی فصل اس وقت کہاں ہے',
-  daysAfterSowing: 'بوائی کے بعد دن',
-  dueNow: 'اس مرحلے میں کیا لگانا ہے',
+  cropNow: 'آپ کی فصل اس وقت کس مرحلے میں ہے؟',
+  daysAfterSowing: 'بجائی کے بعد دن',
+  dueNow: 'اس مرحلے میں کیا ڈالنا ہے؟',
   nextStage: 'اگلا مرحلہ',
 }
 
@@ -189,5 +191,7 @@ export function untranslated(kind: 'crop' | 'stage' | 'band' | 'method', keys: s
 }
 
 /** Shown, in Urdu, wherever the Urdu layer is switched on. It is not a disclaimer in small print. */
-export const UR_REVIEW_NOTICE = 'یہ اردو ترجمہ ابتدائی ہے اور ابھی ماہرِ زراعت سے نظرثانی نہیں کرائی گئی۔ اگر کوئی لفظ غلط لگے تو براہِ کرم واٹس ایپ پر بتائیں۔'
-export const UR_REVIEW_NOTICE_EN = 'This Urdu is a first pass and has not yet been reviewed by a Urdu-speaking agronomist. Product names, analyses, rates and pack sizes are never translated. They stay exactly as printed on the bag. If a word is wrong, tell us on WhatsApp and it gets fixed.'
+// D-313 (Tahir's Urdu review, 24 Oct 2026): the review is done, so the notice no longer says the Urdu is unreviewed
+// (was 'یہ اردو ترجمہ ابتدائی ہے اور ابھی ماہرِ زراعت سے نظرثانی نہیں کرائی گئی۔ اگر کوئی لفظ غلط لگے تو براہِ کرم واٹس ایپ پر بتائیں۔').
+export const UR_REVIEW_NOTICE = 'اگر کوئی لفظ غلط لگے تو براہِ کرم واٹس ایپ پر بتائیں۔'
+export const UR_REVIEW_NOTICE_EN = 'Product names, analyses, rates and pack sizes are never translated. They stay exactly as printed on the bag. If a word is wrong, tell us on WhatsApp and it gets fixed.'

@@ -133,7 +133,8 @@ console.log('\n5 · taps from the link to the WhatsApp button (a phone)')
 }
 console.log('\n6 · C1: the wheat bundle screen says the calculator can differ (D-284), once, beside the bundle')
 {
-  const LINE = 'The bundle is VAN’s starting pack for this season. The calculator below uses VAN’s full wheat plan, so its Green Phosphate is a different figure.'
+  // D-313 (Tahir, 24 to 25 Oct 2026): the bundle is the minimum; the calculator's plan is VAN's recommended plan
+  const LINE = 'The bundle is VAN’s minimum for this season. The calculator below uses VAN’s recommended wheat plan, so its Green Phosphate is a different figure.'
   for (const [q, label] of [['?district=SHEIKHUPURA&tehsil=Muridke&from=mitti', 'Sheikhupura (phosphorus short)'], ['?district=KASUR&tehsil=Kasur&from=mitti', 'Kasur (phosphorus not short)'], ['?district=SHEIKHUPURA&from=mitti&tehsil=Muridke', 'parameters in another order']]) {
     const { ctx, page, errors } = await open(q)
     await page.locator('#teesra-khata button:has-text("See your area")').first().tap(); await page.waitForTimeout(500)

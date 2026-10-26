@@ -76,7 +76,8 @@ export const SOIL_ADVISORIES: SoilAdvisory[] = [
   {
     parameter: 'EC', bands: ['critical', 'weak', 'average'],   // D-177: the site calls ground saline above 4 dS/m (Soil page); the warning started at 8
     headline: 'This is a salinity problem before it is a nutrition problem.',
-    body: 'At this reading, adding fertilizer adds salt to ground that already has too much of it. What the field needs first is a gypsum requirement worked out against its own analysis, and enough water to leach the salt below the root zone, with drainage to take it away. VAN will not sell you a bag as the answer to this. Send the soil report and the agronomy team will tell you what the field actually needs.',
+    // D-313 (Tahir, 24 to 25 Oct 2026: "Don't talk about gypsum etc"): the gypsum, leaching and drainage sentence is out of the body.
+    body: 'At this reading, adding fertilizer adds salt to ground that already has too much of it. VAN will not sell you a bag as the answer to this. Send the soil report and the agronomy team will tell you what the field actually needs.',
   },
   {
     // 11 Sep 2026, Tahir's ruling. Mango's real potash lines are published PER TREE and are correctly
