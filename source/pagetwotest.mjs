@@ -1,7 +1,7 @@
 /**
  * PAGE 2 CLEAN-UP CHECK, 21 Oct 2026 (D-286 to D-289). Run after the build: `node pagetwotest.mjs`.
  * Reads the built HTML (no browser): no "(D-207)", one nutrient separator (colon) in visible text, units
- * pluralised by quantity, canola Vital Potash reads ¾, and the live-calculator crops (16 since D-320) carry a category label.
+ * pluralised by quantity, canola Vital Potash reads ¾, and the live-calculator crops (19 since D-322) carry a category label.
  */
 import fs from 'node:fs'
 import path from 'node:path'
@@ -28,7 +28,7 @@ check('no capitalised "Bag" or "Pack" after a number on crop pages', cap.length 
 const canola = text.get(path.join(OUT, 'crops/canola.html')) || ''
 check('canola Vital Potash stage line reads ¾ bag · 15 kg', /Vital Potash 20 kg bag · Early Growth ¾ bag · 15 kg/.test(canola), (canola.match(/Vital Potash 20 kg bag[^G]{0,60}/) || [''])[0])
 const idx = fs.readFileSync(path.join(OUT, 'crops/index.html'), 'utf8')
-check('crops index: 16 live-calculator cards carry a category label (12, then 4 more in D-320)', (idx.match(/data-crop-category/g) || []).length === 16, String((idx.match(/data-crop-category/g) || []).length))
+check('crops index: 19 live-calculator cards carry a category label (12, then 4 more in D-320, 3 more in D-322)', (idx.match(/data-crop-category/g) || []).length === 19, String((idx.match(/data-crop-category/g) || []).length))
 
 // D-292 Green Sulfur: kg on the plan, one pack per crop (5 kg or less a dose = 1 kg packs, more = the 20 kg bag).
 const flat = f => (text.get(path.join(OUT, f)) || '')

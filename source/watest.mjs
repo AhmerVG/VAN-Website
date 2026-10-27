@@ -295,6 +295,14 @@ console.log('\n7c · D-320 how VAN competes, the published maize trial removed, 
     const t = await page.evaluate(() => ({ notes: [...document.querySelectorAll('#creator p.cap')].map(x => x.innerText).join(' | '), npk: [...document.querySelectorAll('#creator .panel-soft .num')].slice(0, 3).map(x => x.innerText) }))
     check(`crops/${c}.html: N, P₂O₅ and K₂O are single figures and the panel says the plan gives the same totals`, t.npk.length === 3 && t.npk.every(v => !/–/.test(v)) && /plan gives the same totals\./.test(t.notes) && !/range shows|product lists differ|V.Zinc|after each picking/.test(t.notes), JSON.stringify(t).slice(0, 240))
   }
+  // D-322, 27 Oct 2026 (Tahir: "take sunflower, mung and mash, and watermelon live now"): a live calculator, the same
+  // totals as the published plan, and no recommended dose table (as for the 4 crops of D-320).
+  for (const c of ['sunflower', 'mungbean-mash', 'watermelon']) {
+    await page.goto(`${BASE}/crops/${c}.html`, { waitUntil: 'networkidle' })
+    const live = await page.waitForSelector('#creator ul li', { timeout: 10000 }).then(() => true).catch(() => false)
+    const t = await page.evaluate(() => ({ notes: [...document.querySelectorAll('#creator p.cap')].map(x => x.innerText).join(' | '), npk: [...document.querySelectorAll('#creator .panel-soft .num')].slice(0, 3).map(x => x.innerText), gap: document.querySelectorAll('table.nc-gap tbody tr').length }))
+    check(`crops/${c}.html: live calculator, single N, P₂O₅ and K₂O figures, "plan gives the same totals", no recommended dose table`, live && t.npk.length === 3 && t.npk.every(v => !/–/.test(v)) && /plan gives the same totals\./.test(t.notes) && t.gap === 0, JSON.stringify(t).slice(0, 240))
+  }
   check('no console error or failed request on these pages', errors.length === 0, errors.join(' | '))
   await ctx.close()
 }

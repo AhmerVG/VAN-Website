@@ -7,7 +7,8 @@ import type { TeamCalcBand } from './teamCalculators'
  * no table for the 4 crops added that day ("No table for these 4": sugarcane February planting, hybrid rice, tomato,
  * strawberry). These are the figures the site printed up to D-319, read from the team's 24 Sep workbook. The V2 workbook's
  * SFRI Guide 2021 bands are imported into teamCalculators.ts for the engine report only and are not printed.
- * A crop not listed here shows no table.
+ * A crop not listed here shows no table. D-322, 27 Oct 2026: sunflower, mung and mash, and watermelon, taken live the same
+ * day, are treated like the 4 and show none.
  */
 export const RECOMMENDED_BANDS: Record<string, TeamCalcBand[]> = {
   'sugarcane-ratoon': [{"label": "Less fertile", "N": 150, "P": 90, "K": 65}, {"label": "Average Fertile", "N": 134, "P": 74, "K": 65}, {"label": "Very Fertile", "N": 113, "P": 60, "K": 49}],

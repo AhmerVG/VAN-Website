@@ -293,7 +293,7 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
                 carries a general recommended dose per acre (by soil fertility on sugarcane, cotton and maize). The
                 plan puts on less P and K than it on most crops. His reason: VAN's products need less. Shown as
                 his reason, beside both sets of figures, per acre times the acres set above. */}
-            {/* D-320, 27 Oct 2026: the figures come from RECOMMENDED_BANDS (today's figures kept; no table for the 4 new crops), not from the V2 sheet's bands. */}
+            {/* D-320, 27 Oct 2026: the figures come from RECOMMENDED_BANDS (today's figures kept; no table for the 4 new crops of D-320 or the 3 of D-322), not from the V2 sheet's bands. */}
             {RECOMMENDED_BANDS[crop]?.length ? (
               <div className="mt-3 pt-3" style={{ borderTop: '1px dashed var(--line)' }}>
                 <div className="cap font-bold uppercase tracking-[.06em]">Against the general recommended dose · {acres} acre{acres > 1 ? 's' : ''}</div>

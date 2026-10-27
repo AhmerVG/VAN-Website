@@ -4,9 +4,6 @@ Sheets: 28. Run: 2026-10-27. Script: tools/import-team-calculator.py
 Analysis and pack: the site's (MASTER_PRODUCTS, crop plan). Prices: never read from the sheet.
 
 -- Soybean: not a candidate in ruling 1, not wired.
--- Sunflower: not a candidate in ruling 1, not wired.
--- Mung, Mash bean: not a candidate in ruling 1, not wired.
--- Watermelon: not a candidate in ruling 1, not wired.
 -- Turmeric: not a candidate in ruling 1, not wired.
 -- Onion: not a candidate in ruling 1, not wired.
 -- Banana (Year 1): not a candidate in ruling 1, not wired.
@@ -175,5 +172,35 @@ Analysis and pack: the site's (MASTER_PRODUCTS, crop plan). Prices: never read f
   row 8 Sarsabz CAN: "Sarsabz CAN" shown as the plan's "CAN" with the plan's printed analysis (N 26); the sheet has N 26, K 0.09, Ca 10, S 0.4.
   WIRED: every check passed.
 
-WIRED 15: sugarcane-ratoon, cotton, maize, rice-basmati, canola, sesame, chickpea, lentil, chili, garlic, citrus, sugarcane, rice-hybrid, tomato, strawberry
+=== Sunflower -> sunflower ===
+  rows with a quantity: 13   mapped: 13
+  quantity header: "QTY Bags per acre (Website Nutrition Plan)"
+  sheet totals (sheet analysis x sheet pack), kg an acre: N 55.70 · P2O5 38.90 · K2O 21.90
+  site totals (site analysis x site pack), kg an acre:   N 55.70 · P2O5 38.90 · K2O 21.86
+  recommended dose on the sheet, "Poor soil": N 60 · P2O5 40 · K2O 25  (report only; never printed on the site)
+  recommended dose on the sheet, "Medium soil": N 48 · P2O5 34 · K2O 25  (report only; never printed on the site)
+  row 8 Sarsabz CAN: "Sarsabz CAN" shown as the plan's "CAN" with the plan's printed analysis (N 26); the sheet has N 26, K 0.09, Ca 10, S 0.4.
+  WIRED: every check passed.
+
+=== Mung, Mash bean -> mungbean-mash ===
+  rows with a quantity: 12   mapped: 11
+  quantity header: "QTY Bags per acre (Website Nutrition Plan)"
+  sheet totals (sheet analysis x sheet pack), kg an acre: N 20.18 · P2O5 12.48 · K2O 4.46
+  site totals (site analysis x site pack), kg an acre:   N 20.18 · P2O5 12.48 · K2O 4.46
+  recommended dose on the sheet, "Mung": N 9 · P2O5 23 · K2O 12  (report only; never printed on the site)
+  recommended dose on the sheet, "Mash": N 9 · P2O5 23 · K2O 12  (report only; never printed on the site)
+  row 30 V-Mag Essential: quantity 0 on the sheet and no V-Mag Essential row in the published plan; not used on this crop.
+  row 33 V-Compost: analysis from the site's V-Compost record.
+  WIRED: every check passed.
+
+=== Watermelon -> watermelon ===
+  rows with a quantity: 12   mapped: 12
+  quantity header: "QTY Bags per acre (Website Nutrition Plan)"
+  sheet totals (sheet analysis x sheet pack), kg an acre: N 39.95 · P2O5 31.05 · K2O 35.51
+  site totals (site analysis x site pack), kg an acre:   N 39.95 · P2O5 31.05 · K2O 35.51
+  recommended dose on the sheet, "All soils": N 64 · P2O5 46 · K2O 50  (report only; never printed on the site)
+  recommended dose on the sheet, "Medium (maira) soils": N 69 · P2O5 46 · K2O 50  (report only; never printed on the site)
+  WIRED: every check passed.
+
+WIRED 18: sugarcane-ratoon, cotton, maize, rice-basmati, canola, sesame, chickpea, lentil, chili, garlic, citrus, sugarcane, rice-hybrid, tomato, strawberry, sunflower, mungbean-mash, watermelon
 SKIPPED 0: 

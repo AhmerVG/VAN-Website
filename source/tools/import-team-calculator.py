@@ -70,6 +70,10 @@ CANDIDATES = [
     ('Rice (Hybrid)', 'rice-hybrid'),
     ('Tomato', 'tomato'),
     ('Strawberry', 'strawberry'),
+    # D-322, 27 Oct 2026 (Tahir: "take sunflower, mung and mash, and watermelon live now").
+    ('Sunflower', 'sunflower'),
+    ('Mung, Mash bean', 'mungbean-mash'),
+    ('Watermelon', 'watermelon'),
 ]
 # Never wired from this workbook: per-tree or age-band programmes (the owner's rule: no per-tree and
 # per-acre mixing). Listed so the report says so rather than leaving them silently out.
@@ -357,6 +361,14 @@ def main():
             nm = w['name']
             for k in ('N', 'P', 'K'):
                 sheet_tot[k] += w['qty'] * (w['sheetPack'] or 0) * w['sheetAnalysis'].get(k, 0) / 100
+            # D-322, 27 Oct 2026: a quantity of exactly 0 means the team does not use the product on this crop
+            # (Mung, Mash bean row 30 V-Mag Essential). Allowed only when the published plan has no row for that
+            # product either; it adds nothing to any total.
+            if w['qty'] == 0 and nm in NAME_MAP and NAME_MAP[nm] != 'plan:CAN':
+                m0 = mbyname.get(NAME_MAP[nm])
+                if m0 and not any(r['slug'] == m0['slug'] for r in plan_rows):
+                    log.append(f'  row {w["row"]} {nm}: quantity 0 on the sheet and no {m0["product"]} row in the published plan; not used on this crop.')
+                    continue
             if w['qty'] <= 0 or not math.isfinite(w['qty']):
                 fails.append(f'row {w["row"]} {nm}: quantity {w["raw"]!r} is not a positive number')
                 continue
