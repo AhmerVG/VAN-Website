@@ -53,12 +53,12 @@ export const OUTLETS: Outlet[] = [
   { code: 'VAC-SN-TAY', name: 'Vital Agri Center, Tando Allahyar', kind: 'centre', city: 'Tando Allahyar', province: 'Sindh', contact: 'Muhammad Irfan', role: 'Regional Business Head, Sindh', phone: '+92 300 8299001' },
 
   // ── The seven dealers, read from the O2S Customer Master.
-  { code: 'DLR-PB-JHN-001', name: 'Kissan Zarai Merkaz', kind: 'dealer', city: 'Jhang', province: 'Punjab', contact: 'Rana Shahab', phone: '0300 3503000' },
+  { code: 'DLR-PB-JHN-001', name: 'Kissan Zarai Markaz', kind: 'dealer', city: 'Jhang', province: 'Punjab', contact: 'Rana Shahab', phone: '0300 3503000' },
   { code: 'DLR-PB-KTA-002', name: 'Ubaid Agro Traders', kind: 'dealer', city: 'Kot Addu', province: 'Punjab', contact: 'Ch Abdul Zahoor', phone: '0300 7486986' },
   { code: 'DLR-PB-CNT-004', name: 'Chiniot Agri Center', kind: 'dealer', city: 'Chiniot', province: 'Punjab', contact: 'Nafay Arabi', phone: '0307 6666513' },
   { code: 'DLR-PB-LHR-005', name: 'Bilal & Co', kind: 'dealer', city: 'Lahore', province: 'Punjab', contact: 'Muhammad Bilal', phone: '0322 4604653' },
-  { code: 'DLR-PB-KSR-006', name: 'Afaq Zari Merkaz', kind: 'dealer', city: 'Kasur', province: 'Punjab', contact: 'Saadat Munir', phone: '0322 4991479' },
-  { code: 'DLR-SN-TAY-003', name: 'Ghfar Zari Merkaz', kind: 'dealer', city: 'Tando Allahyar', province: 'Sindh', contact: 'Saim Sagheer', phone: '0300 3241663' },
+  { code: 'DLR-PB-KSR-006', name: 'Afaq Zari Markaz', kind: 'dealer', city: 'Kasur', province: 'Punjab', contact: 'Saadat Munir', phone: '0322 4991479' },
+  { code: 'DLR-SN-TAY-003', name: 'Ghaffar Zari Markaz', kind: 'dealer', city: 'Tando Allahyar', province: 'Sindh', contact: 'Saim Sagheer', phone: '0300 3241663' },
   // Arain Traders has no number in O2S. Rather than print a blank or invent one, the row says so and
   // routes through VAN's own line — which is the honest version and still reaches the shop.
   { code: 'DLR-SN-TAN-008', name: 'Arain Traders', kind: 'dealer', city: 'Tando Allahyar', province: 'Sindh', contact: 'Muhammad Afzal', phone: null, note: 'No number on record. Reach them through VAN and we will connect you.' },

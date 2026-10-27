@@ -168,7 +168,8 @@ export default function CompanyProfile() {
         <SectionHead eyebrow="What VAN is" tone="green"
           title="VAN runs research farms, a plant and a laboratory."
           lead={`The farm came first, in ${COUNTS.since}, and the company was incorporated in ${COUNTS.incorporated}. A trial on the farm sets a formulation, the plant makes it, the laboratory tests every batch before it ships, and each product is registered against a Pakistan Standard before it is sold.`} />
-        <AboutScene exclude={['Today']} initial="" />
+        {/* D-318, Tahir 26 Oct: the profile's rail starts at 2009 (the research farm); the founder's 2007 humic acid stays on the About page only. */}
+        <AboutScene exclude={['Today', '2007']} initial="" />
         <div className="grid md:grid-cols-2 gap-3 mt-4">
           <div className="panel p-5"><h4>Most of what VAN makes carries a partner&rsquo;s brand</h4><p className="small muted mt-1">VAN is mainly a business-to-business manufacturer. It makes and registers products for {partners} national and multinational companies, and does not publish their names.</p></div>
           <div className="panel p-5"><h4>Vital Green carries the rest to the farm</h4><p className="small muted mt-1">Vital Green, founded in 2019, takes VAN&rsquo;s range direct to growers.</p></div>

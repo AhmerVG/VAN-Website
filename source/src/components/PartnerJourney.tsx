@@ -179,7 +179,7 @@ export function PartnerJourney() {
             </div>
           ))}
         </div>
-        <p className="cap mt-2">Registration and label review run alongside every stage above, in your name.</p>
+        <p className="cap mt-2">{isDev ? 'Label review runs alongside every stage above, in your name.' : 'Registration and label review run alongside every stage above, in your name.'}</p>{/* D-318: on the 6-stage card registration is a stage of its own */}
 
         <div className="flex flex-wrap gap-2 mt-4">
           {route.key === 'library'

@@ -103,7 +103,7 @@ const JOBS: { job: string; note: string; links: [string, string][] }[] = [
   {
     job: 'Manufacture with VAN',
     note: 'Toll manufacturing, private label, and the formulation library.',
-    links: [['Your Brand', '#/partner'], ['The formulation library', '#/partner#library'], ['How a product gets made here', '#/partner/manufacturing'], ['Registration and standards', '#/partner/regulatory'], ['7 steps, brief to bag', '#/partner/brief-to-bag'], ['Company profile and PDF', '#/company-profile']],   // D-147
+    links: [['Your Brand', '#/partner'], ['The formulation library', '#/partner#library'], ['How a product gets made here', '#/partner/manufacturing'], ['Registration and standards', '#/partner/regulatory'], ['6 stages, brief to bag', '#/partner/brief-to-bag'], ['Company profile and PDF', '#/company-profile']],   // D-147
   },
   {
     job: 'Read the evidence',

@@ -344,13 +344,14 @@ export const PARTNER = {
       timeNote: 'About 1 crop cycle. The trial has to run through a season and that is the part nobody can compress. Most briefs take 7 to 12 months; across all 14 partners the range has been 2 to 17 months.',
       text: 'You bring the market, the crop, the price point and the constraint. VAN brings the chemistry, the plant, the trial and the registration.',
       stages: [
-        { s: 'Your brief', t: 'Your brief', d: 'What the product has to do, for which crop, at what price.', own: 'you' },
+        // D-318, Tahir 26 Oct: "Change it to the 6 stages" (was 7: Your brief, Feasibility, Formulation, Field trial,
+        // Registration, Test market, Commercial launch). Every line below reuses a sentence already on the site.
         { s: 'Feasibility', t: 'Feasibility', d: 'Whether it can be made here, at that cost, to that specification.' },
-        { s: 'Formulation', t: 'Formulation', d: 'Bench work: ratio, form, coating, chelation, solubility, pH, compatibility.' },
-        { s: 'Field trial', t: 'Field trial', d: 'On your crop, in the districts you sell into. This is the season you cannot compress.' },
+        { s: 'Bench', t: 'Bench', d: 'Bench work: ratio, form, coating, chelation, solubility, pH, compatibility.' },
+        { s: 'Pilot', t: 'Pilot', d: 'Produced on the same equipment that will run the commercial lot, so what works in the pilot still works at scale.' },
+        { s: 'Trials', t: 'Trials', d: 'On your crop, in the districts you sell into. This is the season you cannot compress.' },
+        { s: 'Dossier', t: 'Dossier', d: 'PSQCA standard selection and the dossier.' },
         { s: 'Registration', t: 'Registration', d: 'Filed under your brand, with VAN named as the manufacturer.' },
-        { s: 'Test market', t: 'Test market', d: 'A limited launch in your own territory.', own: 'you' },
-        { s: 'Launch', t: 'Commercial launch', d: 'Full volumes, repeat production, agreed lead times.' },
       ],
     },
     {
@@ -447,7 +448,7 @@ export const PARTNER = {
     { v: '34', l: 'PSQCA licences', note: '22 on VAN’s own brands, against 8 Pakistan Standards, each listed with its licence number on the regulatory page; 12 on products ready for partners.' },
     { v: '12', l: 'products already PSQCA licensed, ready for a partner launch', note: 'Your name on the bag, in the market within 60 days. Separate from the 27 library formulations.' },
     { v: '5', l: 'production lines', note: 'Granular, coated, liquid, water-soluble and compounded. The analytical laboratory is on the same site; the biological laboratory opened in 2026.' },   // D-177, Tahir 26 Sep: 5 lines, lab and farm separate. Was 8 lines under one roof.
-    { v: 'About 50,000\u00A0t', l: 'made a year', note: 'No minimum order; a production batch is 1 tonne. A single lot goes up to 50 tonnes and the line runs up to 4 lots a week. 3 to 5 days under 10 t, 7 to 18 days from 11 to 100 t.' },
+    { v: 'About 50,000\u00A0t', l: 'made a year', note: 'No minimum order; a production batch is 1 tonne. A single lot goes up to 50 tonnes and the line runs up to 4 lots a week. Ready to dispatch in 3 to 5 days up to 10 t, and 7 to 18 days from 11 to 100 t.' },  // D-318: was "3 to 5 days under 10 t, 7 to 18 days from 11 to 100 t." (Tahir, 26 Oct)
   ] as { v: string; l: string; note: string }[],
   /** Filled by Tahir. Each renders only when it carries a value. */
   portfolioPending: { partners: '14', oldest: '2011', /* D-177: first blend 2011; was 2010 */ launchRange: '2 to 17 months' },

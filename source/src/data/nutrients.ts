@@ -80,7 +80,7 @@ export const NUTRIENTS_17: NutrientEntry[] = [
     job: 'Potash runs the plant’s plumbing. It opens and closes the pores in the leaf, moves sugar from the leaf to the grain, tuber or fruit, and thickens the cell wall. It is the nutrient of quality, weight and stress: heat, drought and disease all hit a potash-short crop harder.',
     short: 'Older leaves scorch along the edge and the tip while the middle stays green. Stems are weak, the crop lodges, grain is light, fruit is small and stores badly.',
     partners: 'Potash works with nitrogen: nitrogen grows the leaf, potash fills the grain from it. Too much potash pushes out magnesium and calcium, so the 3 are dosed together, never 1 alone.',
-    pakistan: 'Only 1% of all nutrient applied in Pakistan is potash, a figure printed on VAN’s Crop Force bag. VAN’s wheat balance page shows what a 60-maund crop takes off the field in potash when the bhoosa is removed.',
+    pakistan: 'Only 1% of all nutrient applied in Pakistan is potash, a figure printed on VAN’s Crop Force bag. VAN’s wheat balance page shows what a 60-maund crop takes off the field in potash when the wheat straw (bhoosa) is removed.',
     van: ['vital-potash', 'fusion-potash', 'v-potash-plus', 'sop', 'vl-potash-liquid'],
   },
 

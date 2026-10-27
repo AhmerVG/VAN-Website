@@ -249,8 +249,8 @@ export const APPLICATION_SYSTEMS: RebuiltPage = {
         { k: 'p', text: 'Drone and ultra-low-volume grades are in commercial production today under their existing VAN brand names: VL-Micromix · VL-Boron · V-Zinc · Tornado · V-Germinator Pro · Cala-Mag V. Those products keep their names. One Tank is the family for products designed around the drone from the start rather than qualified for it afterwards.' },
         { k: 'tags', items: ['VL-Micromix', 'VL-Boron', 'V-Zinc', 'Tornado', 'V-Germinator Pro', 'Cala-Mag V'] },
         { k: 'h3', text: 'What is settled so far' },
-        // D-317: was "... carries no separate licence. The potash grade is VL-Potash." Owner ruling 4: drone grades carry codes, not VAN brand names; the brand-name sentence is removed.
-        { k: 'p', text: 'The ultra-low-volume rate is settled: 1 litre of product per 20-litre tank, per acre. So is the registration position: a One Tank code is a formulation and grade variant of an already-registered VAN product, so it is covered by that product’s registration and carries no separate licence.' },
+        // D-318: "The potash grade is VL-Potash." restored. Tahir, 26 Oct: the 6 VAN brands already sold for drones keep their names; One Tank codes are for drone-first products.
+        { k: 'p', text: 'The ultra-low-volume rate is settled: 1 litre of product per 20-litre tank, per acre. So is the registration position: a One Tank code is a formulation and grade variant of an already-registered VAN product, so it is covered by that product’s registration and carries no separate licence. The potash grade is VL-Potash.' },
         { k: 'note', text: 'The analysis of a One Tank code is the analysis of the registered VAN grade it is built from. It is printed on that grade’s own page, with its pack size. What a code adds on top of that grade is its delivery package: additional ingredients for ultra-low-volume spraying, not a different raw material. That package is still being set against VAN’s own drone work. No drift, coverage or spray-efficiency figure exists yet.' },
         { k: 'cta', label: 'The products that fly today →', href: '#/products' },
       ],
@@ -444,7 +444,8 @@ export const PARTNER_BRIEF_TO_BAG: RebuiltPage = {
   slug: 'brief-to-bag', livePath: '/partner/brief-to-bag.html',
   eyebrow: 'Your Brand · the process',
   h1: 'From brief to bag.',
-  lead: '7 steps from an idea to a registered product in a dealer’s shop. VAN runs all 7, including PSQCA registration.',
+  // D-318, Tahir 26 Oct: "Use the 6 stages everywhere" (was 7 steps: Brief, Ground, Bench, Pilot, Field, Registration, Launch).
+  lead: '6 stages from an idea to a registered product in a dealer’s shop. VAN runs all 6, including PSQCA registration.',
   tone: 'navy',
   sections: [
     {
@@ -457,19 +458,18 @@ export const PARTNER_BRIEF_TO_BAG: RebuiltPage = {
           head: ['', 'What happens'],
           minWidth: 640,
           rows: [
-            ['Brief', 'Market, crop, stage, target price, pack format, and the constraint you are actually trying to beat.'],
-            ['Ground', 'Soil, crop and water context for the territory the product is aimed at, so the formulation answers that ground rather than an average one.'],
+            ['Feasibility', 'Market, crop, stage, target price, pack format, and the constraint you are actually trying to beat. It also covers the soil, crop and water of the territory the product is aimed at, so the formulation answers that ground rather than an average one.'],
             ['Bench', 'Bench work in the VAN lab: ratio, form, coating, chelation, solubility, pH and compatibility.'],
             ['Pilot', 'Produced on the same equipment that will run the commercial lot, so what works in the pilot still works at scale.'],
-            ['Field', 'Trials on VAN’s research farms and, where you want them, on your own demonstration plots.'],
-            ['Registration', 'PSQCA standard selection, dossier and licensing. Handled by VAN. 1 certificate, valid nationwide.'],
-            ['Launch', 'Commercial production, certificate of analysis per lot, technical documentation and training material for your field team.'],
+            ['Trials', 'Trials on VAN’s research farms and, where you want them, on your own demonstration plots.'],
+            ['Dossier', 'PSQCA standard selection and the dossier.'],
+            ['Registration', 'Licensing, handled by VAN. 1 certificate, valid nationwide.'],
           ],
         } },
         // 11 Sep 2026 · the page was headed "Seven steps" and listed eight. Tahir ruled that repeat
         // ordering is the relationship after launch, not a step on the way to it, so it comes out of
         // the numbered list and is said here instead. Restore it as a row to go back.
-        { k: 'note', text: 'After launch, repeat batches run to the frozen specification. Any change to that specification is a documented change, not a quiet one.' },
+        { k: 'note', text: 'After registration: commercial production, a certificate of analysis per lot, technical documentation and training material for your field team. Repeat batches run to the frozen specification. Any change to that specification is a documented change, not a quiet one.' },
       ],
     },
     {
@@ -518,7 +518,7 @@ export const PARTNER_ENGINEERING: RebuiltPage = {
             ['Soil', 'pH, calcareousness, organic matter, texture and the fixation behaviour they cause.'],
             ['Growth stage', 'Germination, early growth, mid-life, reproductive, maturity: each takes a different product.'],
             ['Coating', 'Release control and deficiency correction built onto the granule rather than blended beside it.'],
-            ['Stress', 'Moderate through severe. Heat at grain fill and cold nights in storage are both formulation problems.'],
+            ['Stress', 'Moderate through severe. Heat at grain fill is a formulation problem.'],  // D-318: "and cold nights in storage" removed (Tahir, 26 Oct)
             ['Water and delivery', 'Canal, tube well or hybrid; and increasingly drip, pivot and drone, which dictate solubility and salt index.'],
           ],
         } },

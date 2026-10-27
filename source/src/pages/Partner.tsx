@@ -139,7 +139,7 @@ export default function Partner() {
       <section id="detail" className="sec pnav-target"><div className="wrap">
         <div className="mb-7"><span className="eyebrow navy">In more detail</span><h2 className="max-w-[24ch]">5 pages, 1 for each part of the decision.</h2></div>
         <div className="grid md:grid-cols-2 gap-3">
-          {[['From brief to bag', 'brief-to-bag', '7 steps from an idea to a registered product in a dealer\u2019s shop.'],
+          {[['From brief to bag', 'brief-to-bag', '6 stages from an idea to a registered product in a dealer\u2019s shop.'],
             ['VAN Engineering', 'engineering', 'The dials and their ranges: batch size, coating, chelation, solubility, pack.'],
             ['Manufacturing & quality', 'manufacturing', 'What is on site, how a lot is released, and the research farms behind it.'],
             ['Pipeline & formulation library', 'pipeline', `${LIBRARY.length} unbranded codes, the 6-stage path, and what is published before an agreement.`],
