@@ -198,17 +198,15 @@ export const APPLICATION_SYSTEMS: RebuiltPage = {
       ],
     },
     {
-      id: 'field', n: '04', kicker: 'What VAN has actually put in a field', title: '2 programmes of our own.', bg: true,
-      lead: 'Testing the 2 halves of the same idea: that form changes how much nitrogen survives, and that timing changes how much of it is used.',
+      id: 'field', n: '04', kicker: 'What VAN has actually put in a field', title: '3 maize trials of our own.', bg: true,   // D-320 (Tahir, 27 Oct 2026, multiple choice): was '2 programmes of our own.' with the lead 'Testing the 2 halves of the same idea: that form changes how much nitrogen survives, and that timing changes how much of it is used.'
       blocks: [
+        // D-320: the 3 trials named as on the Vital Urea page, so the title's count is on the page.
+        { k: 'p', text: 'Rafhan Maize Products, 2023, joint; Descon Research Farm, 2024, joint; an independent partner farm, 2025, not named.' },
         { k: 'h3', text: 'With Rafhan Maize Products' },
         { k: 'p', text: 'Across 5 grower sites at Khaliqabad, from application in August 2023 to harvest in October.' },
         // D-316, 26 Oct 2026 (Tahir: "The Khaliqabad, change it"). Was: 'Across the parameters assessed, shoot length, colour, leaf number and vigour, the single 25 kg bag produced comparable crop growth on roughly a third of the applied nitrogen, ... better disease tolerance. Cob size and length showed no difference.' and the line above ended 'assessed at 12 and 24 days. The comparison was deliberately uneven.'
         { k: 'p', text: 'An observational field programme, not a replicated trial.' },
-        { k: 'h3', text: 'The replicated trial' },
-        { k: 'p', text: 'A replicated maize trial at VAN’s trial station: 2 stage-timed applications of sulfur-coated urea, at the 4–6 leaf stage and again 20 days later at 8–12 leaf, against a conventional programme of 5 applications of uncoated urea followed by calcium ammonium nitrate.' },
-        { k: 'p', text: 'Coated nitrogen is released over days instead of all at once, so less of it is exposed to volatilisation at any one moment, and fewer, better-timed applications deliver more to the plant than more frequent applications of a form that does not stay put.' },
-        { k: 'source', text: 'Umair, A., Manzoor, M., Saleem, M. S., Akram, S., Ali, M., Batool, A., Javaid, T., Javaid, A., Sharif, M. N. & Haider, M. S. (2025). Efficacy Evaluation of Different Doses of Nitrogenous Fertilizers on the Growth and Yield of Maize (Zea mays). Planta Animalia 4(3), 129–135. DOI 10.71454/PA.004.03.0126. Randomised complete block design, 3 replications, DK-6321 hybrid, spring season 2024.' },
+        // D-320, 27 Oct 2026 (Tahir: remove the replicated trial from the application systems page, then "Remove everywhere"): the published 2024 maize trial (Umair et al. 2025, Planta Animalia 4(3)), its heading, 2 lines and source are removed. Revert: the D-319 source.
         { k: 'cta', label: 'Vital Urea. The evidence in full →', href: '#/products/vital-urea' },
       ],
     },

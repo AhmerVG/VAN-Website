@@ -4,7 +4,7 @@ import { useSharedAcres } from '@/lib/sharedAcres'
 import { CROP_PLANS, type PlanRow } from '@/data/catalogue'
 import { FARMER_PRICE_SOURCE, NO_PRICE_REASON, NO_PACK_PRICE_REASON, priceForPack } from '@/data/pricing'
 import { COST_PLANS } from '@/data/costPlans'
-import { TEAM_CALCULATORS } from '@/data/teamCalculators'
+import { RECOMMENDED_BANDS } from '@/data/recommendedBands'   // D-320
 import { calcPlan, NUTRIENT_LABELS, MACRO_ORDER, nutrientKey } from '@/lib/planCalc'
 import { nutrientDelta, cropHasRange, fmtPair } from '@/lib/planRange'
 import type { SoilInputs } from '@/lib/soilAdjustment'
@@ -24,6 +24,15 @@ const PLANS = COST_PLANS
  *  same product list, so no range shows the difference. From __teamcalccheck. Revert: delete. */
 const LIST_DIFFS: Record<string, string> = {
   'rice-basmati': 'The product lists differ: the published plan also has Humi Grow, 1 bag, and 2 packs of Tornado where the calculator has 1. Neither changes the N, P₂O₅ or K₂O total.',
+}
+
+/** D-320, 27 Oct 2026: notes for the 4 crops added that day, printed whether or not a range shows. V-Zinc 10% w/v x 3 L against
+ * V-Transform 21% x 3 kg, per acre: sugarcane and hybrid rice 1.88 and 1.89 kg, tomato 1.28 and 1.26, strawberry 0.60 and 0.63. */
+const PLAN_NOTES: Record<string, string> = {
+  'sugarcane': 'The published plan gives zinc as V‑Zinc (liquid, 3 L packs) where the calculator counts V‑Transform (granular, 3 kg bags); each gives about 1.9 kg of zinc an acre.',
+  'rice-hybrid': 'The published plan gives zinc as V‑Zinc (liquid, 3 L packs) where the calculator counts V‑Transform (granular, 3 kg bags); each gives about 1.9 kg of zinc an acre.',
+  'tomato': 'The published plan gives zinc as V‑Zinc (liquid, 3 L packs) where the calculator counts V‑Transform (granular, 3 kg bags); each gives about 1.3 kg of zinc an acre. VL‑Potash Liquid: the published plan lists 1 pack, given after each picking; the calculator counts 6 packs, for 6 pickings.',
+  'strawberry': 'The published plan gives zinc as V‑Zinc (liquid, 3 L packs) where the calculator counts V‑Transform (granular, 3 kg bags); each gives about 0.6 kg of zinc an acre.',
 }
 
 function fmtQty(n: number) {
@@ -291,14 +300,15 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
                 carries a general recommended dose per acre (by soil fertility on sugarcane, cotton and maize). The
                 plan puts on less P and K than it on most crops. His reason: VAN's products need less. Shown as
                 his reason, beside both sets of figures, per acre times the acres set above. */}
-            {TEAM_CALCULATORS[crop]?.bands?.length ? (
+            {/* D-320, 27 Oct 2026: the figures come from RECOMMENDED_BANDS (today's figures kept; no table for the 4 new crops), not from the V2 sheet's bands. */}
+            {RECOMMENDED_BANDS[crop]?.length ? (
               <div className="mt-3 pt-3" style={{ borderTop: '1px dashed var(--line)' }}>
                 <div className="cap font-bold uppercase tracking-[.06em]">Against the general recommended dose · {acres} acre{acres > 1 ? 's' : ''}</div>
                 <table className="nc-gap mt-2">
                   <thead><tr><th></th><th>N</th><th>P₂O₅</th><th>K₂O</th></tr></thead>
                   <tbody>
                     <tr className="nc-gap-plan"><th>This plan</th>{(['N', 'P', 'K'] as const).map(k => <td key={k} className="num">{Math.round(totals.nutrientKg[k] ?? 0)}</td>)}</tr>
-                    {TEAM_CALCULATORS[crop].bands.map(b => (
+                    {RECOMMENDED_BANDS[crop].map(b => (
                       <tr key={b.label}><th>{b.label === 'Recommended' ? 'General recommended dose' : `Recommended, ${b.label.toLowerCase()} soil`}</th>{(['N', 'P', 'K'] as const).map(k => <td key={k} className="num">{Math.round(b[k] * acres)}</td>)}</tr>
                     ))}
                   </tbody>
@@ -309,8 +319,8 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
             <p className="cap mt-3" style={{ color: 'var(--muted)' }}>
               {ranged
                 ? <>{/* D-151 (A11, A27): was "The lower end and the higher end are VAN's calculator sheet and VAN's published plan ... The plans are being brought onto the calculator crop by crop, and each range closes to one number as that is done." */}
-                    A range shows where VAN’s 2 product lists for {cropName} differ.</>
-                : <>VAN’s published {cropName} plan gives the same totals.{LIST_DIFFS[crop] ? <> {LIST_DIFFS[crop]}</> : null}</>}
+                    A range shows where VAN’s 2 product lists for {cropName} differ.{PLAN_NOTES[crop] ? <> {PLAN_NOTES[crop]}</> : null}</>
+                : <>VAN’s published {cropName} plan gives the same totals.{LIST_DIFFS[crop] ? <> {LIST_DIFFS[crop]}</> : null}{PLAN_NOTES[crop] ? <> {PLAN_NOTES[crop]}</> : null}</>}
             </p>
             <div className="mt-4 pt-3" style={{ borderTop: '1px dashed var(--line)' }}>
               {/* D-151 (QA 8, A27): was "Coming next" in var(--gold-2) and "Yield-target scaling, telling the plan you are aiming above or below the standard crop, is being calibrated against VAN's own trial data before it goes in." */}

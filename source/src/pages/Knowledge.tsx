@@ -30,7 +30,6 @@ const SOURCE_TABLE: [string, string, string][] = [
   ['India. Nutrient subsidy design', 'Planning Commission of India, Twelfth Five Year Plan, Vol. II, para 12.37', '2013'],
   ['India. Urea vs potash consumption', 'Comptroller and Auditor General of India, Report No. 16 of 2015', '2015'],
   ['India. Urea retail price', 'Department of Fertilizers, Government of India', 'held since 2018'],
-  ['Sulfur-coated urea field trial', 'Umair et al., Planta Animalia 4(3) 129–135', '2025'],
   ['Punjab soil survey', SOIL_SOURCE.short, 'c. 2016–2018'],
 ]
 const K_INDEX: [string, string][] = [['k-usage', '01 Usage'], ['k-balance', '02 Balance'], ['k-productivity', '03 Productivity'], ['k-where', '04 Where it goes'], ['k-soil', '05 The soil'], ['cases', '06 Cases'], ['k-application', '07 Application'], ['k-builds', '08 What VAN builds'], ['k-evidence', '09 Evidence'], ['k-sources', '10 Sources']]
@@ -182,18 +181,12 @@ export default function Knowledge() {
       </K>
 
       <K id="k-evidence" n="09" kicker="Evidence" title="How to read the evidence.">
-        <div className="grid lg:grid-cols-2 gap-5">
+        {/* D-320, 27 Oct 2026: the published 2024 maize trial line and its panel removed (Tahir: remove everywhere). */}
+        <div className="grid gap-5 max-w-[100ch]">
           <div className="grid gap-3 small">
             <p>Everything in sections 1 to 6 is national data from public sources.</p>
             <p><b>What is independently established:</b> that coated and controlled-release nitrogen reduces losses and improves nitrogen recovery against uncoated urea, and that elemental sulfur raises phosphorus availability in calcareous soil. Both are peer-reviewed findings about the technology, not measurements of our product.</p>
-            <p><b>What we have of our own:</b> a replicated field trial at VAN’s trial station, spring 2024, published in 2025, in which 2 stage-timed applications of sulfur-coated urea outperformed a 5-application conventional urea and CAN programme on maize.</p>
             <p><b>Trial data.</b> If you need trial data for a specific product before you buy it, ask. Where a trial exists, you will get it.</p>
-          </div>
-          <div className="panel p-5" style={{ borderColor: 'var(--navy)', borderWidth: 2 }}>
-            <span className="eyebrow navy">The trial</span>
-            <p className="small">Umair, A., Manzoor, M., Saleem, M. S., Akram, S., Ali, M., Batool, A., Javaid, T., Javaid, A., Sharif, M. N. &amp; Haider, M. S. (2025). Efficacy Evaluation of Different Doses of Nitrogenous Fertilizers on the Growth and Yield of Maize (Zea mays). Planta Animalia 4(3), 129–135. <a href="https://doi.org/10.71454/PA.004.03.0126" target="_blank" rel="noopener">DOI 10.71454/PA.004.03.0126</a>.</p>
-            <p className="cap mt-3">Randomised complete block design, 3 replications, DK-6321 hybrid, VAN’s trial station, spring 2024.</p>
-            <a className="btn btn-gold btn-sm mt-4" href="#/products/vital-urea">Vital Urea. The evidence in full →</a>
           </div>
         </div>
       </K>

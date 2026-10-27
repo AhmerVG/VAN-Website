@@ -47,7 +47,7 @@ import sys
 import openpyxl
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DEFAULT_XLSX = '/mnt/user-data/uploads/VAN Web APP/Output 24 Sep 2026/Fertilizer Nutrient Calculator For Economic Nutrition Planning.xlsx'
+DEFAULT_XLSX = '/mnt/user-data/uploads/VAN Web and App/Excel Models/Team Calculator/Fertilizer Nutrient Calculator V2 live 27 Oct 2026.xlsx'   # D-320, 27 Oct 2026: the 1 live workbook (old copies removed at Tahir's request)
 OUT_TS = os.path.join(ROOT, 'src', 'data', 'teamCalculators.ts')
 OUT_REPORT = os.path.join(ROOT, 'tools', 'team-calculator-import-report.txt')
 
@@ -65,6 +65,11 @@ CANDIDATES = [
     ('Chili', 'chili'),
     ('Garlic', 'garlic'),
     ('Citrus (5 years)', 'citrus'),
+    # D-320, 27 Oct 2026 (Tahir: "4 to be done", then "All 4 live now"), from the team's V2 sheet of 22 Oct.
+    ('Sugarcane (Feb)', 'sugarcane'),
+    ('Rice (Hybrid)', 'rice-hybrid'),
+    ('Tomato', 'tomato'),
+    ('Strawberry', 'strawberry'),
 ]
 # Never wired from this workbook: per-tree or age-band programmes (the owner's rule: no per-tree and
 # per-acre mixing). Listed so the report says so rather than leaving them silently out.

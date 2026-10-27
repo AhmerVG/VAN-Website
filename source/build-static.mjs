@@ -43,6 +43,8 @@ const STATIC_ROUTES = [
   { hash: '#/products', out: 'brands/index.html', title: 'Products' },
   // D-202, 27 Sep 2026: the composition chart, brands and library codes with their analysis.
   { hash: '#/composition', out: 'composition.html', title: 'Composition chart · every VAN brand and library code, with what is in it', description: '23 registered brands and 27 unbranded formulations, each with its declared analysis by nutrient, packs and documents. No prices.' },
+  // D-320, 27 Oct 2026: how VAN competes, VAN's own commitment under the CropLife Pakistan Antitrust Guidelines.
+  { hash: '#/how-van-competes', out: 'how-van-competes.html', title: 'How VAN competes', description: 'VAN sets its own prices and runs its own business. It does not agree any of it with a competitor. A full member of CropLife Pakistan since 2024.' },
   { hash: '#/crops', out: 'crops/index.html', title: 'Crop nutrition plans' },
   { hash: '#/soil', out: 'soil.html', title: 'Soil Atlas · 770,160 Punjab soil samples, read row by row' },
   { hash: '#/lab', out: 'lab/index.html', title: 'VAN Lab · tests, prices and the blind chain' },

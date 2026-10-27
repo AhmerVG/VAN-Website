@@ -321,6 +321,7 @@ export function Footer() {
         <div className="ft-bottom">
           <span>© 2026 {CONTACT.company}</span>
           <span>{CONTACT.membership}</span>{/* D-316 */}
+          <a href="#/how-van-competes" className="ft-tap">How VAN competes</a>{/* D-320 (Tahir, 26 Oct 2026): the antitrust page, next to the CropLife line */}
           <span className="ft-social">
             <a href={CONTACT.linkedin} target="_blank" rel="noopener" className="ft-tap">LinkedIn</a>
             <a href={CONTACT.facebook} target="_blank" rel="noopener" className="ft-tap">Facebook</a>

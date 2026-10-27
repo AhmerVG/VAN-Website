@@ -421,17 +421,7 @@ export default function VitalUrea() {
       </div></section>
 
       <section className="wrap sec">
-        <SectionHead eyebrow="The evidence" title="What has been tested, and how it was tested." lead="The field programme above is 1 of the 2 records VAN reports. The second is a published, replicated trial." />
-        <div className="panel p-6" style={{ borderColor: 'var(--navy)', borderWidth: 2 }}>
-          {/* D-130: was "Published trial. Maize, VAN’s trial station, 2024". The owner's brief allows this trial
-              only as a fertilizer company's trial on its own research farm, peer-reviewed and published.
-              Revert: restore the old h3. */}
-          <h3>Published trial. Maize, 2024, a trial by a fertilizer company on its own research farm, peer-reviewed and published</h3>
-          <p className="mt-3">A randomised complete block design with 3 replications on DK-6321 maize compared nitrogen strategies. 2 stage-timed applications of sulfur-coated urea, at the 4–6 leaf stage and again 20 days later at the 8–12 leaf stage. It outperformed a 5-application programme of conventional urea followed by calcium ammonium nitrate across the growth and yield parameters measured.</p>
-          <p className="mt-3 small p-3 rounded-lg" style={{ background: 'var(--gold-soft)' }}><b>No yield number is quoted from this paper:</b> its yield figures differ between its results table and its discussion.</p>
-          <p className="cap mt-3">Umair, A., Manzoor, M., Saleem, M. S., et al. (2025). Planta Animalia 4(3), 129–135. <a href="https://doi.org/10.71454/PA.004.03.0126" target="_blank" rel="noopener">DOI 10.71454/PA.004.03.0126</a>.</p>
-        </div>
-        <h4 className="mt-8">What the published research establishes about coated urea, not measurements of Vital Urea</h4>
+        <SectionHead eyebrow="The evidence" title="What the published research establishes about coated urea, not measurements of Vital Urea." />{/* D-320, 27 Oct 2026 (Tahir: remove the published 2024 maize trial everywhere): its lead line and panel removed. */}
         <div className="grid md:grid-cols-3 gap-4 mt-3">
           {[['Coated urea raises nitrogen recovery against uncoated urea.', 'Zhao, Gao & Gao (2025), Agriculture 15(14):1554. A 2-year field study reporting higher nitrogen recovery efficiency, agronomic efficiency and grain yield for sulfur-coated urea than for conventional urea in rice.'], ['The effect holds in Pakistani conditions.', 'Ghafoor, Rahman & Ali et al. (2021), Environmental Science and Pollution Research. Coated urea sources improved growth, yield and nitrogen use efficiency and reduced nitrogen losses in wheat under an arid Pakistani environment.'], ['In 1 study, elemental sulfur with an inoculant raised phosphorus availability in calcareous soil.', 'Nadeem, Hanif & Khan (2022), Archives of Agronomy and Soil Science 69(9):1494–1502. Elemental sulfur with a sulfur-oxidising inoculant raised phosphorus availability and improved wheat growth and yield in calcareous soil.']].map(([h, t]) => (
             <div key={h} className="panel p-5"><div className="font-bold">{h}</div><p className="small muted mt-2">{t}</p></div>
@@ -507,7 +497,7 @@ export default function VitalUrea() {
           </div>
           <div className="flex flex-wrap gap-3"><WaButton href={WA.distributor} lg>Become a distributor →</WaButton><a className="btn btn-gold btn-lg" href="#/partner/brief-to-bag">Own-brand manufacturing →</a></div>
         </div>
-        <p className="cap mt-6"><b>Sources.</b> Analysis, standard, licence and patent. The registered TDS and van.com.pk. Release mechanism and coating chemistry. The peer-reviewed sources listed in the evidence section, cited for the technologies they studied, under the conditions each study describes; none is a measurement of Vital Urea. Field programme, Khaliqabad 2023, with Rafhan Maize Products. Replicated trial, Umair et al. (2025), Planta Animalia 4(3). National nitrogen uptake, Lassaletta et al. (2014). Soil figures, the Punjab soil testing programme, 770,160 samples. Fertilizer ratio, NFDC Fertilizer Review 2024-25. Sulfur and protein, Yu et al. (2018, 2021), Randall et al. (1981), Arata et al. (2017). Crop sulfur removal, FAO Bulletin 16 (2006), IRRI (2003), Shukla & Lal (2004). Release timeline, VAN field observation. Storage and safety, VAN SDS-VAN-001 Rev 3. Doses, VAN’s published crop nutrition plans, 2025 set.</p>
+        <p className="cap mt-6"><b>Sources.</b> Analysis, standard, licence and patent. The registered TDS and van.com.pk. Release mechanism and coating chemistry. The peer-reviewed sources listed in the evidence section, cited for the technologies they studied, under the conditions each study describes; none is a measurement of Vital Urea. Field programme, Khaliqabad 2023, with Rafhan Maize Products. National nitrogen uptake, Lassaletta et al. (2014). Soil figures, the Punjab soil testing programme, 770,160 samples. Fertilizer ratio, NFDC Fertilizer Review 2024-25. Sulfur and protein, Yu et al. (2018, 2021), Randall et al. (1981), Arata et al. (2017). Crop sulfur removal, FAO Bulletin 16 (2006), IRRI (2003), Shukla & Lal (2004). Release timeline, VAN field observation. Storage and safety, VAN SDS-VAN-001 Rev 3. Doses, VAN’s published crop nutrition plans, 2025 set.</p>
       </section>
     </div>
   )

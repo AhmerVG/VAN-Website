@@ -14,6 +14,7 @@ import Nutrients from '@/pages/Nutrients'
 import SoilPoverty from '@/pages/SoilPoverty'
 import DataHub from '@/pages/DataHub'
 import Composition from '@/pages/Composition'
+import HowVanCompetes from '@/pages/HowVanCompetes'   // D-320
 import Article from '@/pages/Article'
 import { PotashLoop } from '@/components/story/PotashLoop'
 import { KNOWLEDGE_ARTICLES, CIRCULAR_HUB, CIRCULAR_PAGES, PARTNER_PAGES } from '@/data/rebuilt'
@@ -32,6 +33,7 @@ export default function App() {
   switch (route.name) {
     case 'products': page = <Products />; break
     case 'composition': page = <Composition />; break   // D-202
+    case 'competes': page = <HowVanCompetes />; break   // D-320
     case 'product': page = <ProductPage slug={route.slug} />; break
     case 'crops': page = <Crops />; break
     case 'crop': page = <CropPage slug={route.slug} district={route.district} card={route.card ?? null} />; break

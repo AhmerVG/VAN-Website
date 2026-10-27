@@ -20,6 +20,7 @@ export type Route =
   | { name: 'composition' }   // D-202
   | { name: 'dealers' }
   | { name: 'becomeDealer' }
+  | { name: 'competes' }   // D-320
   | { name: 'notfound' }
 
 /** `#/path/slug?key=value#anchor` → route + optional in-page anchor. Unknown paths → null (the shell sends them home). */
@@ -94,6 +95,8 @@ export function parseHash(hash: string): { route: Route; anchor: string | null }
     // dealers and distributors." The content and the enquiry form are unchanged; only its home moved,
     // and .htaccess 301s the old /partner/distributor.html so nothing indexed breaks.
     case 'become-a-dealer': return { route: { name: 'becomeDealer' }, anchor: a }
+    // D-320, 27 Oct 2026: how VAN competes (Tahir's antitrust page, linked from the footer next to the CropLife line).
+    case 'how-van-competes': return { route: { name: 'competes' }, anchor: a }
     // The build's own 404 file declares itself as #/404 (see build-static.mjs). Without this
     // case the router would treat it as an unknown path and reset the visitor to the home
     // page — which is exactly the silent redirect a 404 page exists to avoid.

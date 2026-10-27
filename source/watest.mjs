@@ -261,6 +261,38 @@ console.log('\n7b · D-319 the Soil Atlas for a visitor without a campaign link,
   }
 }
 
+// ── 7c: D-320, the antitrust page, the published trial removed, the 4 new calculators ─────────────────────────
+console.log('\n7c · D-320 how VAN competes, the published maize trial removed, 4 new calculators')
+{
+  const { ctx, page, errors } = await newPage({ width: 412, height: 860 })
+  await page.goto(`${BASE}/index.html`, { waitUntil: 'networkidle' })
+  const foot = await page.evaluate(() => { const a = [...document.querySelectorAll('.ft-bottom a')].find(x => x.textContent.trim() === 'How VAN competes'); const m = [...document.querySelectorAll('.ft-bottom span')].find(x => /CropLife Pakistan since 2024/.test(x.textContent)); return { href: a?.getAttribute('href') ?? '', next: !!(a && m && m.nextElementSibling === a) } })
+  check('footer: "How VAN competes" sits right after the CropLife line and links to the page', /how-van-competes\.html$/.test(foot.href) && foot.next, JSON.stringify(foot))
+  await page.goto(`${BASE}/how-van-competes.html`, { waitUntil: 'networkidle' })
+  const t = await page.evaluate(() => document.querySelector('#root').innerText)
+  for (const s of ['VAN sets its own prices and runs its own business. It does not agree any of it with a competitor.', 'CropLife Pakistan Antitrust Guidelines (revised October 2023)', 'Bids and tenders', 'leaves the meeting and says why.', 'Questions about how VAN competes: partner@van.com.pk'])
+    check(`how-van-competes.html carries: "${s.slice(0, 60)}"`, t.includes(s))
+  check('how-van-competes.html quotes no line of the confidential guidelines ("RED FLAGS", "Confidential", "DO NOT")', !/RED FLAGS|Confidential|DO NOT/.test(t))
+  for (const u of ['/knowledge/application-systems.html', '/brands/vital-urea.html', '/knowledge/why-pakistan-must-shift.html']) {
+    await page.goto(`${BASE}${u}`, { waitUntil: 'networkidle' })
+    const x = await page.evaluate(() => document.querySelector('#root').innerText)
+    check(`${u}: the published 2024 maize trial is gone (Planta Animalia, DK-6321, "replicated trial at VAN")`, !/Planta Animalia|DK-6321|replicated (field )?trial at VAN|The replicated trial|2 programmes of our own/.test(x))
+  }
+  for (const c of ['sugarcane', 'rice-hybrid', 'tomato', 'strawberry']) {
+    await page.goto(`${BASE}/crops/${c}.html`, { waitUntil: 'networkidle' })
+    check(`crops/${c}.html has a live calculator`, await page.waitForSelector('#creator ul li', { timeout: 10000 }).then(() => true).catch(() => false))
+  }
+  // Tahir, 27 Oct 2026: "Keep today's figures" on the live crops; "No table for these 4".
+  const gap = async c => { await page.goto(`${BASE}/crops/${c}.html`, { waitUntil: 'networkidle' }); await page.waitForSelector('#creator ul li', { timeout: 10000 }).catch(() => {}); return page.evaluate(() => [...document.querySelectorAll('table.nc-gap tbody tr')].map(r => r.innerText.replace(/\s+/g, ' ').trim())) }
+  for (const [c, want] of [['sesame', ['General recommended dose 34 23 12']], ['sugarcane-ratoon', ['Recommended, less fertile soil 150 90 65', 'Recommended, average fertile soil 134 74 65', 'Recommended, very fertile soil 113 60 49']], ['chickpea', ['General recommended dose 13 34 12']]]) {
+    const rows = (await gap(c)).filter(r => !/^This plan/.test(r))
+    check(`crops/${c}.html: the recommended dose table is today's (${want.length} row${want.length > 1 ? 's' : ''})`, JSON.stringify(rows) === JSON.stringify(want), JSON.stringify(rows))
+  }
+  for (const c of ['sugarcane', 'rice-hybrid', 'tomato', 'strawberry']) check(`crops/${c}.html: no recommended dose table`, (await gap(c)).length === 0)
+  check('no console error or failed request on these pages', errors.length === 0, errors.join(' | '))
+  await ctx.close()
+}
+
 // ── 8: districts written the way people write them ─────────────────────────────────────────────────────────────
 console.log('\n8 · ?district= in any case, with spaces or dots, or by name')
 for (const [q, name] of [['sheikhupura', 'Sheikhupura'], ['d.g.%20khan', 'Dera Ghazi Khan'], ['DG-Khan', 'Dera Ghazi Khan'], ['rahim%20yar%20khan', 'Rahim Yar Khan'], ['Toba%20Tek%20Singh', 'Toba Tek Singh']]) {

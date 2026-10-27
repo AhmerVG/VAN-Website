@@ -28,7 +28,8 @@ import { normaliseSulfurCost } from '../lib/sulfurPack'
  * Revert: remove the slug from this list.
  */
 export const TEAM_CALC_WAITING: Record<string, string> = {
-  citrus: "V-Mag Essential 0.16 bag on the team sheet against 1.16 in the published plan; the sheet looks to carry only the 2 x 400 g foliar part. Waiting for the team's answer.",
+  // D-320, 27 Oct 2026: the team's 22 Oct sheet now carries 1.2 bags (6 kg); the published plan has 1.16 (5.8 kg). Citrus was not in Tahir's 4 crops.
+  citrus: "V-Mag Essential 1.2 bags (6 kg) on the team sheet of 22 Oct against 1.16 (5.8 kg) in the published plan. Not in the 4 crops taken live on 27 Oct.",
 }
 
 const sulfur = (slug: string, rows: CostRow[]) => normaliseSulfurCost(rows, SULFUR_PACK_BY_CROP[slug] ?? null, kg => priceForPack('green-sulfur', kg)?.pricePkr)
