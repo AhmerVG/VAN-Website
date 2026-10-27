@@ -358,11 +358,12 @@ function linkedTehsil(districtKey: string | null, raw: string | null | undefined
   return i >= 0 ? i : null
 }
 
-export function TeesraKhata({ district, tehsil = null, englishFirst }: { district: string | null; tehsil?: string | null; englishFirst: boolean }) {
+export function TeesraKhata({ district, tehsil = null, englishFirst, campaign = true }: { district: string | null; tehsil?: string | null; englishFirst: boolean; campaign?: boolean }) {
   const linked = districtByKey(district)
   const linkedT = linkedTehsil(linked ? linked.key : null, tehsil)
   const [saved] = useState(readSaved)
-  const [folded, setFolded] = useState(saved ? saved.folded : englishFirst)
+  // D-319 (Tahir, 27 Oct 2026: Teesra Khata is for campaign visitors): a visitor without a campaign link gets the band folded and the Soil Atlas first. Was: open for everyone but ?from=mitti-en.
+  const [folded, setFolded] = useState(saved ? saved.folded : englishFirst || !campaign)
   const [step, setStep] = useState<Step>(saved ? saved.step : linked ? (linkedT != null ? 'tehsil' : 'khata') : 'district')
   const [d, setD] = useState<string | null>(saved ? saved.d : linked ? linked.key : null)
   const [t, setT] = useState<number | null>(saved ? saved.t : linkedT)
@@ -505,7 +506,7 @@ export function TeesraKhata({ district, tehsil = null, englishFirst }: { distric
           <span className="tk-name urdu">{KHATA_UR.name}</span>
           <span className="cap">Teesra Khata · the third ledger</span>
           <button className="tk-link ml-auto" onClick={() => { setFolded(true); requestAnimationFrame(() => document.getElementById('soil-map')?.scrollIntoView({ block: 'start' })) }}>
-            <span className="urdu">{KHATA_UR.fold}</span> ↓
+            <span className="urdu">{KHATA_UR.fold}</span> · see the whole Punjab Soil Atlas ↓
           </button>
         </div>
         <div className="tk-steps" aria-hidden="true">{STEPS.map((s, i) => <i key={s} className={i <= stepNo ? 'on' : ''} />)}</div>

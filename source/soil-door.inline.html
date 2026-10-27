@@ -1,11 +1,11 @@
-<!-- VAN soil door: start. The Teesra Khata door that plays before the Soil Atlas on every visit (Tahir, 18 Oct 2026). Source: source/soil-door.inline.html; build-static.mjs puts it here for soil.html only. Plan: F:\Story and Marketing\Mitti Ka hissab\Soil Atlas Plan 18 Oct 2026.md, item 1. -->
-<script>(function(){try{var h=document.documentElement,q=location.search||'',f=/[?&]door=1(&|$)/.test(q),n=/[?&]door=0(&|$)/.test(q),bk=false;try{var ne=performance.getEntriesByType('navigation');bk=ne&&ne[0]?ne[0].type==='back_forward':!!(performance.navigation&&performance.navigation.type===2)}catch(e){}var w=navigator.webdriver,i=window.top!==window.self,dl=!!location.hash||/[?&]rel=/.test(q)||(/[?&]district=/.test(q)&&!/[?&]from=/.test(q));/* deep links into the page (an anchor, a relation, an old district link) keep their place: no door */if(!f&&(n||bk||w||i||dl)){h.classList.add('sd-skip');return}h.classList.add('sd-locked');if(/[?&]from=mitti-en(&|$)/.test(q))h.classList.add('sd-en')}catch(e){document.documentElement.classList.add('sd-skip')}})();</script>
+<!-- VAN soil door: start. The Teesra Khata door that plays before the Soil Atlas for a visitor from a campaign link, ?from=mitti, mitti-wa, mitti-en or gps-wa (Tahir, 18 Oct 2026; D-319, 27 Oct 2026: campaign links only, was every visit). Source: source/soil-door.inline.html; build-static.mjs puts it here for soil.html only. Plan: F:\Story and Marketing\Mitti Ka hissab\Soil Atlas Plan 18 Oct 2026.md, item 1. -->
+<script>(function(){try{var h=document.documentElement,q=location.search||'',c=/[?&]from=(mitti|mitti-en|mitti-wa|gps-wa)(&|$)/.test(q)/* D-319: campaign links only; the same test is in router.ts and Soil.tsx */,f=/[?&]door=1(&|$)/.test(q),n=/[?&]door=0(&|$)/.test(q),bk=false;try{var ne=performance.getEntriesByType('navigation');bk=ne&&ne[0]?ne[0].type==='back_forward':!!(performance.navigation&&performance.navigation.type===2)}catch(e){}var w=navigator.webdriver,i=window.top!==window.self,dl=!!location.hash||/[?&]rel=/.test(q)||(/[?&]district=/.test(q)&&!/[?&]from=/.test(q));/* deep links into the page (an anchor, a relation, an old district link) keep their place: no door */if(!f&&(!c||n||bk||w||i||dl)){h.classList.add('sd-skip');return}h.classList.add('sd-locked');if(/[?&]from=mitti-en(&|$)/.test(q))h.classList.add('sd-en')}catch(e){document.documentElement.classList.add('sd-skip')}})();</script>
 <style>
 #sd-door{display:none}
 html.sd-locked #sd-door{display:flex}
 html.sd-skip #sd-door{display:none}
 html.sd-locked,html.sd-locked body{overflow:hidden!important}
-#sd-door{--sky:#e6eee8;--sand:#fbf9f3;--soil:#c9a77c;--furrow:#9b7650;--ink:#14231a;--muted:#5b6a5e;--gold:#d9a21b;--van:#005994;--urdu:"Noto Nastaliq Urdu","Jameel Noori Nastaleeq","Urdu Typesetting",serif;--ui:"Public Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;position:fixed;inset:0;z-index:2147483000;background:var(--sand);color:var(--ink);flex-direction:column;font:16px/1.5 var(--ui);overflow:hidden}
+#sd-door{--sky:#e6eee8;--sand:#fbf9f3;--soil:#c9a77c;--furrow:#9b7650;--ink:#14231a;--muted:#5b6a5e;--gold:#d9a21b;--van:#005994;--urdu:"Noto Nastaliq Urdu","Jameel Noori Nastaleeq","Urdu Typesetting",serif;--ui:"Public Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;position:fixed;inset:0;z-index:2147483000;background:var(--sand);color:var(--ink);flex-direction:column;font:16px/1.5 var(--ui);overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain}
 #sd-door .sd-scene{position:relative;flex:0 0 auto;height:min(60vh,max(64vw,40vh));min-height:150px;background:var(--sky)}
 #sd-door .sd-scene>svg.sd-field{position:absolute;inset:0;width:100%;height:100%;display:block}
 #sd-door .sd-mark{position:absolute;top:max(14px,env(safe-area-inset-top,0px));right:max(14px,env(safe-area-inset-right,0px));width:clamp(64px,12vw,120px);height:auto;opacity:0;transition:opacity .9s ease}
@@ -27,6 +27,7 @@ html.sd-en #sd-door .sd-ur{font-size:clamp(18px,4.6vw,26px)}
 #sd-door .sd-fur path{transition:stroke-dashoffset 1.1s ease}
 #sd-door #sd-khal{transition:stroke-dashoffset 1.3s ease}
 #sd-door #sd-trees,#sd-door #sd-shoots{transition:opacity 1.2s ease}
+@media (min-aspect-ratio:4/3){#sd-door .sd-scene{height:min(45vh,max(64vw,40vh))}}
 @media (max-height:520px){#sd-door .sd-scene{height:34vh;min-height:110px}}
 </style>
 <div id="sd-door" role="dialog" aria-modal="true" aria-label="Teesra Khata: a drawn wheat field. This time, wheat according to the soil. Pick your district, or go straight to the Soil Atlas.">
@@ -70,7 +71,7 @@ html.sd-en #sd-door .sd-ur{font-size:clamp(18px,4.6vw,26px)}
 <button class="sd-map" id="sd-map" type="button">سیدھا نقشہ دیکھیں · <span>go straight to the Soil Atlas</span></button>
 </div>
 </div>
-<script>(function(){var h=document.documentElement;if(!h.classList.contains('sd-locked'))return;var d=document.getElementById('sd-door');if(!d)return;var still=false,T=[];/* D-253 (Tahir, 18 Oct 2026): the door plays in full for everyone; reduced motion does not decide */function at(ms,fn){T.push(setTimeout(fn,still?0:ms))}
+<script>(function(){var h=document.documentElement;if(!h.classList.contains('sd-locked'))return;var d=document.getElementById('sd-door');if(!d)return;/* D-319: on a wide scene, frame the picture from the trees down so the sky, trees and house stay whole */try{var fv=d.querySelector('svg.sd-field'),sc=d.querySelector('.sd-scene');if(fv&&sc&&sc.clientWidth>1.6*sc.clientHeight){fv.setAttribute('viewBox','0 66 480 234');fv.setAttribute('preserveAspectRatio','xMidYMin slice')}}catch(e){}var still=false,T=[];/* D-253 (Tahir, 18 Oct 2026): the door plays in full for everyone; reduced motion does not decide */function at(ms,fn){T.push(setTimeout(fn,still?0:ms))}
 var NS='http://www.w3.org/2000/svg',fur=document.getElementById('sd-fur'),sh=document.getElementById('sd-shoots'),xs=[-40,20,80,140,200,280,340,400,460,520];
 xs.forEach(function(x,i){var p=document.createElementNS(NS,'path');p.setAttribute('d','M240 112 L'+x+' 300');var L=Math.round(Math.sqrt((x-240)*(x-240)+188*188));p.setAttribute('stroke-dasharray',L);p.setAttribute('stroke-dashoffset',still?0:L);p.style.transitionDelay=(0.1+i*0.08)+'s';fur.appendChild(p)});
 var seed=7;function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647}

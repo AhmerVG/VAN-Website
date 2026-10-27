@@ -122,7 +122,7 @@ const esc = t => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(
   // the React app and every other page are untouched. Record: F:\Story and Marketing\Working Record.md.
   const DOOR = fs.readFileSync(path.join(ROOT, 'door.inline.html'), 'utf8').replace(/\r\n?/g, '\n').replace(/\n*$/, '\n') // LF whatever the checkout did
   if (!/^<!-- VAN door: start/.test(DOOR) || !/<!-- VAN door: end -->\n$/.test(DOOR)) throw new Error('door.inline.html is not the door block (markers missing)')
-  // Teesra Khata, 18 Oct 2026: the soil door. Plays before the Soil Atlas on every visit (Tahir's ruling), full screen
+  // Teesra Khata, 18 Oct 2026: the soil door. Plays before the Soil Atlas for a campaign link only (?from=mitti, mitti-wa, mitti-en, gps-wa; D-319, 27 Oct 2026, was every visit), full screen
   // like the home door, then hands over to the farmer screens at the top of the page. One self-contained block in
   // soil-door.inline.html, put at the top of <body> of soil.html only. Record: F:\Story and Marketing\Mitti Ka hissab.
   const SOIL_DOOR = fs.readFileSync(path.join(ROOT, 'soil-door.inline.html'), 'utf8').replace(/\r\n?/g, '\n').replace(/\n*$/, '\n')

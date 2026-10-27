@@ -168,9 +168,9 @@ console.log('\n4, 5, 6 · soil card, the VAN message, Back, the bar on the Soil 
     CanvasRenderingContext2D.prototype.fillText = function (t, x, y, ...r) { if (this.canvas && this.canvas.width === 1080) window.__card.push({ t: String(t), x, y }); return fill.call(this, t, x, y, ...r) }
   }
   const { ctx, page, errors } = await newPage({ width: 412, height: 860 }, hook)
-  await page.goto(`${BASE}/soil.html`, { waitUntil: 'networkidle' })
+  await page.goto(`${BASE}/soil.html?from=mitti`, { waitUntil: 'networkidle' })   // D-319: the door and the open screens are for campaign links
   const doorFirst = await page.evaluate(() => document.documentElement.className)
-  check('first visit: the soil door plays', /sd-locked/.test(doorFirst) && !/sd-skip/.test(doorFirst), doorFirst)
+  check('first visit from a campaign link: the soil door plays', /sd-locked/.test(doorFirst) && !/sd-skip/.test(doorFirst), doorFirst)
   await page.click('#sd-go')
   await page.waitForSelector('#teesra-khata .tk-row')
   check('Soil Atlas bar before a district: My crop’s plan opens the crop list', /crops\/(index\.html)?$/.test(await dockHref(page)), await dockHref(page))
@@ -223,6 +223,42 @@ console.log('\n4, 5, 6 · soil card, the VAN message, Back, the bar on the Soil 
   } catch (e) { check('…and one step back the card is there again, for the same square', false, String(e).split('\n')[0]) }
   check('no console error or failed request on the soil path', errors.length === 0, errors.join(' | '))
   await ctx.close()
+}
+
+// ── 7b: D-319, a visitor without a campaign link ───────────────────────────────────────────────────────────────
+console.log('\n7b · D-319 the Soil Atlas for a visitor without a campaign link, and the door skip on a laptop')
+{
+  const hook = () => { try { Object.defineProperty(Navigator.prototype, 'webdriver', { get: () => false }) } catch { /* */ } }
+  for (const vp of [{ width: 412, height: 860 }, { width: 1366, height: 800 }]) {
+    const { ctx, page, errors } = await newPage(vp, hook)
+    await page.goto(`${BASE}/soil.html`, { waitUntil: 'networkidle' })
+    const st = await page.evaluate(() => ({ cls: document.documentElement.className, folded: !!document.querySelector('#teesra-khata.tk-fold'), list: !!document.querySelector('#teesra-khata .tk-row'), mapTop: Math.round(document.getElementById('soil-map')?.getBoundingClientRect().top ?? 9999) }))
+    check(`${vp.width}px, plain soil.html: no door`, /sd-skip/.test(st.cls) && !/sd-locked/.test(st.cls), st.cls)
+    check(`${vp.width}px, plain soil.html: Teesra Khata folded, no district list`, st.folded && !st.list, JSON.stringify(st))
+    check(`${vp.width}px, plain soil.html: the Soil Atlas map starts on the first screen`, st.mapTop < vp.height / 2, JSON.stringify(st))
+    await page.click('#teesra-khata.tk-fold button')
+    await page.waitForSelector('#teesra-khata .tk-row')
+    check(`${vp.width}px, plain soil.html: the band opens the district list`, true)
+    await page.click('#teesra-khata .tk-head .tk-link')
+    await page.waitForSelector('#teesra-khata.tk-fold')
+    check(`${vp.width}px: the skip line folds it again`, true)
+    await page.goto(`${BASE}/soil.html?from=mitti`, { waitUntil: 'networkidle' })
+    await page.waitForTimeout(4500)
+    const box = await page.evaluate(() => { const r = document.getElementById('sd-map').getBoundingClientRect(); return { top: Math.round(r.top), bottom: Math.round(r.bottom), h: innerHeight, cls: document.documentElement.className } })
+    check(`${vp.width}x${vp.height}, campaign link: the door plays and its skip is on screen`, /sd-locked/.test(box.cls) && box.bottom <= box.h && box.top >= 0, JSON.stringify(box))
+    await page.click('#sd-map')
+    await page.waitForSelector('#teesra-khata.tk-fold')
+    check(`${vp.width}px: the door skip folds Teesra Khata`, true)
+    check(`${vp.width}px: no console error or failed request`, errors.length === 0, errors.join(' | '))
+    await ctx.close()
+  }
+  for (const [u, door] of [['/soil.html#caveats', false], ['/soil.html?rel=ph-p', false], ['/soil.html?district=lahore', false], ['/soil.html?from=x&district=LAHORE', false], ['/soil.html?from=mitti-wa', true], ['/soil.html?from=gps-wa', true]]) {
+    const { ctx, page } = await newPage({ width: 412, height: 860 }, hook)
+    await page.goto(`${BASE}${u}`, { waitUntil: 'networkidle' })
+    const s = await page.evaluate(() => ({ cls: document.documentElement.className, folded: !!document.querySelector('#teesra-khata.tk-fold') }))
+    check(`${u}: ${door ? 'the door plays and the screens are open' : 'no door, Teesra Khata folded'}`, door ? /sd-locked/.test(s.cls) && !s.folded : /sd-skip/.test(s.cls) && s.folded, JSON.stringify(s))
+    await ctx.close()
+  }
 }
 
 // ── 8: districts written the way people write them ─────────────────────────────────────────────────────────────

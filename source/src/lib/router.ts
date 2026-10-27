@@ -58,10 +58,12 @@ export function parseHash(hash: string): { route: Route; anchor: string | null }
     case 'soil': {
       const rel = query.get('rel')
       const district = canonicalDistrict(query.get('district'))   // D-268
-      // Teesra Khata (18 Oct 2026): `?from=` names the campaign link (mitti, mitti-en, mitti-wa). A campaign link with a
+      // Teesra Khata (18 Oct 2026): `?from=` names the campaign link (mitti, mitti-en, mitti-wa, gps-wa). A campaign link with a
       // district lands on the farmer screens at the top, opened at that district; any other `?district=` keeps landing on
       // the district panel, as before.
       const from = query.get('from')
+      // D-319 (27 Oct 2026): only these 4 are campaign links. The same test is in Soil.tsx and in soil-door.inline.html; keep the 3 the same.
+      const campaign = !!from && /^(mitti|mitti-en|mitti-wa|gps-wa)$/.test(from)
       // D-283 (21 Oct 2026): `?tehsil=` names the tehsil inside that district; the farmer screens open at it. Checked against the data in TeesraKhata; an unknown tehsil is ignored.
       // D-316, 26 Oct 2026 (Tahir: move it after the "#", yes): the link the farmer shares now carries the tehsil as
       // `#tehsil=NAME` after the page address, so the browser keeps it on the phone and the server never gets it. A link
@@ -73,7 +75,7 @@ export function parseHash(hash: string): { route: Route; anchor: string | null }
         anc = null
       }
       // `?rel=` pre-selects the relation explorer and lands on it; `?district=` lands on the district panel.
-      return { route: { name: 'soil', rel, district, from, tehsil }, anchor: anc ?? (rel ? 'soil-relations' : from && district ? 'teesra-khata' : district ? 'soil-districts' : null) }
+      return { route: { name: 'soil', rel, district, from, tehsil }, anchor: anc ?? (rel ? 'soil-relations' : campaign && district ? 'teesra-khata' : district ? 'soil-districts' : null) }
     }
     case 'partner': return { route: { name: 'partner', slug: b || null }, anchor: a }
     case 'circular-economy': return { route: { name: 'circular', slug: b || null }, anchor: a }

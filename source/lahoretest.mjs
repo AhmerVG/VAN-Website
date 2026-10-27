@@ -146,7 +146,7 @@ console.log('\n4 · the tehsil data in the bundle')
 {
   const { ctx, page } = await newPage()
   // Sum the sample counts over every district's tehsil list as the screen shows it.
-  await page.goto(`${BASE}/soil.html`, { waitUntil: 'networkidle' })
+  await page.goto(`${BASE}/soil.html?from=mitti`, { waitUntil: 'networkidle' })   // D-319: the screens open for campaign links
   await page.waitForSelector('#teesra-khata .tk-row')
   const dists = await page.evaluate(() => [...document.querySelectorAll('#teesra-khata .tk-list .tk-row .tk-en-name')].map(e => e.textContent.trim()))
   let tehsils = 0, samples = 0
