@@ -77,7 +77,7 @@ export const TEAM_CALCULATORS: Record<string, TeamCalculator> = {
   },
   "rice-basmati": {
     slug: "rice-basmati", sheet: "Rice (Basmati)",
-    sheetTotals: {"N": 48.95, "P": 20.4, "K": 15.05},
+    sheetTotals: {"N": 48.95, "P": 20.4, "K": 15.61},
     bands: [{"label": "Basmati varieties", "N": 55, "P": 36, "K": 25}, {"label": "All soils", "N": 55, "P": 35, "K": 25}],
     rows: [
       {"product": "Vital Urea", "slug": "vital-urea", "analysisPct": {"N": 32, "S": 13}, "packKg": 25, "qtyPerAcre": 1, "unitPricePkr": 0, "sheetRow": 3, "sheetName": "Vital Urea", "sheetQty": "1", "note": ""},
@@ -90,6 +90,7 @@ export const TEAM_CALCULATORS: Record<string, TeamCalculator> = {
       {"product": "V-Transform", "slug": "v-transform", "analysisPct": {"Zn": 21}, "packKg": 3, "qtyPerAcre": 3, "unitPricePkr": 0, "sheetRow": 28, "sheetName": "V-Transform", "sheetQty": "3", "note": ""},
       {"product": "V-Mag Essential", "slug": "v-mag-essential", "analysisPct": {"Mg": 8.5, "B": 1}, "packKg": 5, "qtyPerAcre": 1, "unitPricePkr": 0, "sheetRow": 30, "sheetName": "V-Mag Essential", "sheetQty": "1", "note": ""},
       {"product": "Green Sulfur", "slug": "green-sulfur", "analysisPct": {"S": 70}, "packKg": 1, "qtyPerAcre": 4, "unitPricePkr": 0, "sheetRow": 31, "sheetName": "Green Sulfur", "sheetQty": "4", "note": ""},
+      {"product": "Humi Grow", "slug": "humi-grow", "analysisPct": {"K": 7, "HA": 40}, "packKg": 8, "qtyPerAcre": 1, "unitPricePkr": 0, "sheetRow": 34, "sheetName": "Humi Grow", "sheetQty": "1", "note": ""},
       {"product": "Tornado", "slug": "tornado", "analysisPct": {"AA": 10}, "packKg": 0.5, "qtyPerAcre": 1, "unitPricePkr": 0, "sheetRow": 36, "sheetName": "Tornado", "sheetQty": "1", "note": ""},
     ],
   },
@@ -265,7 +266,7 @@ export const TEAM_CALCULATORS: Record<string, TeamCalculator> = {
   },
   "tomato": {
     slug: "tomato", sheet: "Tomato",
-    sheetTotals: {"N": 69.8, "P": 36.4, "K": 41.305},
+    sheetTotals: {"N": 69.8, "P": 36.4, "K": 40.405},
     bands: [{"label": "Hybrid varieties", "N": 90, "P": 46, "K": 100}, {"label": "Non-hybrid varieties", "N": 58, "P": 23, "K": 32}],
     rows: [
       {"product": "Vital Urea", "slug": "vital-urea", "analysisPct": {"N": 32, "S": 13}, "packKg": 25, "qtyPerAcre": 1, "unitPricePkr": 0, "sheetRow": 3, "sheetName": "Vital Urea", "sheetQty": "1", "note": ""},
@@ -275,7 +276,7 @@ export const TEAM_CALCULATORS: Record<string, TeamCalculator> = {
       {"product": "Green Phosphate", "slug": "green-phosphate", "analysisPct": {"N": 6, "P": 32}, "packKg": 50, "qtyPerAcre": 2, "unitPricePkr": 0, "sheetRow": 11, "sheetName": "Green Phosphate", "sheetQty": "2", "note": ""},
       {"product": "Vital Potash", "slug": "vital-potash", "analysisPct": {"N": 11, "K": 44}, "packKg": 20, "qtyPerAcre": 3, "unitPricePkr": 0, "sheetRow": 15, "sheetName": "Vital Potash", "sheetQty": "3", "note": ""},
       {"product": "Fusion Potash", "slug": "fusion-potash", "analysisPct": {"N": 2, "K": 50, "S": 1.5, "B": 1, "Mg": 1}, "packKg": 25, "qtyPerAcre": 1, "unitPricePkr": 0, "sheetRow": 16, "sheetName": "Fusion Potash", "sheetQty": "1", "note": ""},
-      {"product": "VL-Potash Liquid", "slug": "vl-potash-liquid", "analysisPct": {"K": 30}, "packKg": 1, "qtyPerAcre": 6, "unitPricePkr": 0, "sheetRow": 20, "sheetName": "VL-Potash", "sheetQty": "6", "note": ""},
+      {"product": "VL-Potash Liquid", "slug": "vl-potash-liquid", "analysisPct": {"K": 30}, "packKg": 1, "qtyPerAcre": 3, "unitPricePkr": 0, "sheetRow": 20, "sheetName": "VL-Potash", "sheetQty": "3", "note": ""},
       {"product": "VL-Boron", "slug": "v-boron", "analysisPct": {"B": 5}, "packKg": 1, "qtyPerAcre": 1, "unitPricePkr": 0, "sheetRow": 26, "sheetName": "VL-Boron", "sheetQty": "1", "note": ""},
       {"product": "V-Transform", "slug": "v-transform", "analysisPct": {"Zn": 21}, "packKg": 3, "qtyPerAcre": 2, "unitPricePkr": 0, "sheetRow": 28, "sheetName": "V-Transform", "sheetQty": "2", "note": ""},
       {"product": "Cala-Mag V", "slug": "cala-mag-v", "analysisPct": {"N": 10, "Ca": 6, "Mg": 4, "B": 1}, "packKg": 1, "qtyPerAcre": 2, "unitPricePkr": 0, "sheetRow": 29, "sheetName": "Cala-Mag V", "sheetQty": "2", "note": ""},
@@ -300,7 +301,7 @@ export const TEAM_CALCULATORS: Record<string, TeamCalculator> = {
       {"product": "VL-Boron", "slug": "v-boron", "analysisPct": {"B": 5}, "packKg": 1, "qtyPerAcre": 1, "unitPricePkr": 0, "sheetRow": 26, "sheetName": "VL-Boron", "sheetQty": "1", "note": ""},
       {"product": "V-Transform", "slug": "v-transform", "analysisPct": {"Zn": 21}, "packKg": 3, "qtyPerAcre": 1, "unitPricePkr": 0, "sheetRow": 28, "sheetName": "V-Transform", "sheetQty": "1", "note": ""},
       {"product": "Cala-Mag V", "slug": "cala-mag-v", "analysisPct": {"N": 10, "Ca": 6, "Mg": 4, "B": 1}, "packKg": 1, "qtyPerAcre": 5, "unitPricePkr": 0, "sheetRow": 29, "sheetName": "Cala-Mag V", "sheetQty": "5", "note": ""},
-      {"product": "V-Mag Essential", "slug": "v-mag-essential", "analysisPct": {"Mg": 8.5, "B": 1}, "packKg": 5, "qtyPerAcre": 1.2, "unitPricePkr": 0, "sheetRow": 30, "sheetName": "V-Mag Essential", "sheetQty": "1.2", "note": ""},
+      {"product": "V-Mag Essential", "slug": "v-mag-essential", "analysisPct": {"Mg": 8.5, "B": 1}, "packKg": 5, "qtyPerAcre": 1.5, "unitPricePkr": 0, "sheetRow": 30, "sheetName": "V-Mag Essential", "sheetQty": "=(3/4)+(3/4)", "note": ""},
       {"product": "Green Sulfur", "slug": "green-sulfur", "analysisPct": {"S": 70}, "packKg": 1, "qtyPerAcre": 8, "unitPricePkr": 0, "sheetRow": 31, "sheetName": "Green Sulfur", "sheetQty": "8", "note": ""},
       {"product": "Humi Grow", "slug": "humi-grow", "analysisPct": {"K": 7, "HA": 40}, "packKg": 8, "qtyPerAcre": 1, "unitPricePkr": 0, "sheetRow": 34, "sheetName": "Humi Grow", "sheetQty": "1", "note": ""},
       {"product": "Humi Grow Plus", "slug": "humi-grow-plus", "analysisPct": {"K": 3.5, "HA": 10}, "packKg": 4, "qtyPerAcre": 4, "unitPricePkr": 0, "sheetRow": 35, "sheetName": "Humi Grow Plus", "sheetQty": "4", "note": ""},

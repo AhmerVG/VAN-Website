@@ -22,18 +22,11 @@ const PLANS = COST_PLANS
 
 /** D-151 (A13): crops whose calculator and published plan give the same N, P₂O₅ and K₂O totals but not the
  *  same product list, so no range shows the difference. From __teamcalccheck. Revert: delete. */
-const LIST_DIFFS: Record<string, string> = {
-  'rice-basmati': 'The product lists differ: the published plan also has Humi Grow, 1 bag, and 2 packs of Tornado where the calculator has 1. Neither changes the N, P₂O₅ or K₂O total.',
-}
-
-/** D-320, 27 Oct 2026: notes for the 4 crops added that day, printed whether or not a range shows. V-Zinc 10% w/v x 3 L against
- * V-Transform 21% x 3 kg, per acre: sugarcane and hybrid rice 1.88 and 1.89 kg, tomato 1.28 and 1.26, strawberry 0.60 and 0.63. */
-const PLAN_NOTES: Record<string, string> = {
-  'sugarcane': 'The published plan gives zinc as V‑Zinc (liquid, 3 L packs) where the calculator counts V‑Transform (granular, 3 kg bags); each gives about 1.9 kg of zinc an acre.',
-  'rice-hybrid': 'The published plan gives zinc as V‑Zinc (liquid, 3 L packs) where the calculator counts V‑Transform (granular, 3 kg bags); each gives about 1.9 kg of zinc an acre.',
-  'tomato': 'The published plan gives zinc as V‑Zinc (liquid, 3 L packs) where the calculator counts V‑Transform (granular, 3 kg bags); each gives about 1.3 kg of zinc an acre. VL‑Potash Liquid: the published plan lists 1 pack, given after each picking; the calculator counts 6 packs, for 6 pickings.',
-  'strawberry': 'The published plan gives zinc as V‑Zinc (liquid, 3 L packs) where the calculator counts V‑Transform (granular, 3 kg bags); each gives about 0.6 kg of zinc an acre.',
-}
+// D-321, 27 Oct 2026 (Tahir's rulings on the team sheet): the published plans and the calculator now carry the same products, so the
+// notes that explained the differences are gone (basmati rice: Humi Grow and Tornado; sugarcane Feb, hybrid rice, tomato,
+// strawberry: V-Zinc against V-Transform, tomato VL-Potash). Kept as empty maps for the next difference.
+const LIST_DIFFS: Record<string, string> = {}
+const PLAN_NOTES: Record<string, string> = {}
 
 function fmtQty(n: number) {
   const r = Math.round(n * 100) / 100

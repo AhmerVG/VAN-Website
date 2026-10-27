@@ -289,6 +289,12 @@ console.log('\n7c · D-320 how VAN competes, the published maize trial removed, 
     check(`crops/${c}.html: the recommended dose table is today's (${want.length} row${want.length > 1 ? 's' : ''})`, JSON.stringify(rows) === JSON.stringify(want), JSON.stringify(rows))
   }
   for (const c of ['sugarcane', 'rice-hybrid', 'tomato', 'strawberry']) check(`crops/${c}.html: no recommended dose table`, (await gap(c)).length === 0)
+  // D-321, 27 Oct 2026: Tahir's rulings brought the published plans and the calculator to the same products on these crops.
+  for (const c of ['sugarcane', 'rice-hybrid', 'tomato', 'strawberry', 'maize', 'rice-basmati']) {
+    await page.goto(`${BASE}/crops/${c}.html`, { waitUntil: 'networkidle' }); await page.waitForSelector('#creator ul li', { timeout: 10000 }).catch(() => {})
+    const t = await page.evaluate(() => ({ notes: [...document.querySelectorAll('#creator p.cap')].map(x => x.innerText).join(' | '), npk: [...document.querySelectorAll('#creator .panel-soft .num')].slice(0, 3).map(x => x.innerText) }))
+    check(`crops/${c}.html: N, P₂O₅ and K₂O are single figures and the panel says the plan gives the same totals`, t.npk.length === 3 && t.npk.every(v => !/–/.test(v)) && /plan gives the same totals\./.test(t.notes) && !/range shows|product lists differ|V.Zinc|after each picking/.test(t.notes), JSON.stringify(t).slice(0, 240))
+  }
   check('no console error or failed request on these pages', errors.length === 0, errors.join(' | '))
   await ctx.close()
 }

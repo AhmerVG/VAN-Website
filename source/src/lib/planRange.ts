@@ -51,6 +51,10 @@ export type NutrientRange = {
 /** Below this the two documents are the same answer written twice, and a range would be noise. */
 const TOLERANCE_KG = 0.05
 
+/** D-321 (Tahir, 27 Oct 2026: "Compare only what both read"): the published-plan side (programmeSupply) reads these nutrients
+ *  only. Calcium, humic acid, organic matter and amino acids are counted by the calculator alone, so they are never a range. */
+const PLAN_READS = new Set(['N', 'P', 'K', 'S', 'Mg', 'Zn', 'B', 'Fe', 'Mn', 'Cu'])
+
 export const hasTwoSources = (cropKey: string): boolean => cropKey in COST_PLANS
 
 /**
@@ -67,8 +71,8 @@ export function nutrientRanges(cropKey: string): Partial<Record<Nutrient, Nutrie
   const out: Partial<Record<Nutrient, NutrientRange>> = {}
   const keys = new Set<string>([...Object.keys(plan), ...Object.keys(calc)])
   for (const k of keys) {
-    const p = plan[k as Nutrient] ?? 0
     const c = calc[k] ?? 0
+    const p = PLAN_READS.has(k) ? plan[k as Nutrient] ?? 0 : c   // D-321: not read on the plan side, so no comparison
     out[k as Nutrient] = {
       calc: c,
       plan: p,

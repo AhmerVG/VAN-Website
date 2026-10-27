@@ -979,9 +979,9 @@ export const BANANA_YEAR1_PLAN: PlanRow[] = [
  { "band": "Soil Amendment", "stage": "Land Preparation", "product": "V-Compost", "analysis": "OM 25% + N 5%", "rate": "1 bag", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 20 kg", "slug": "v-compost", "commodity": false },
  { "band": "Soil Amendment", "stage": "Land Preparation", "product": "Humi Grow", "analysis": "Humic Acid 40% · K₂O 7%", "rate": "1 bag", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 8 kg", "slug": "humi-grow", "commodity": false },
  { "band": "Soil Amendment", "stage": "Germination", "product": "Humi Grow", "analysis": "Humic Acid 40% · K₂O 7%", "rate": "1 bag", "method": "Broadcasting", "pack": "Bag - 8 kg", "slug": "humi-grow", "commodity": false },
- { "band": "Micronutrients", "stage": "Germination", "product": "V-Zinc", "analysis": "Zinc 10% w/v", "rate": "4¼ pack", "method": "Fertigation", "pack": "Pack - 3 L", "slug": "v-zinc", "commodity": false },
+ { "band": "Micronutrients", "stage": "Germination", "product": "V-Transform", "analysis": "Zinc 21%", "rate": "2 bag", "method": "Side dressing", "pack": "Bag - 3 kg", "slug": "v-transform", "commodity": false },
  { "band": "Micronutrients", "stage": "Germination", "product": "VL-Boron", "analysis": "Boron 5%", "rate": "2 pack", "method": "Fertigation", "pack": "Pack - 1 L", "slug": "v-boron", "commodity": false },
- { "band": "Micronutrients", "stage": "Grand Growth", "product": "V-Zinc", "analysis": "Zinc 10% w/v", "rate": "2 pack", "method": "Fertigation", "pack": "Pack - 3 L", "slug": "v-zinc", "commodity": false },
+ { "band": "Micronutrients", "stage": "Grand Growth", "product": "V-Transform", "analysis": "Zinc 21%", "rate": "1 bag", "method": "Side dressing", "pack": "Bag - 3 kg", "slug": "v-transform", "commodity": false },
  { "band": "Micronutrients", "stage": "Grand Growth", "product": "VL-Boron", "analysis": "Boron 5%", "rate": "2 pack", "method": "Fertigation", "pack": "Pack - 1 L", "slug": "v-boron", "commodity": false },
  { "band": "Micronutrients", "stage": "Maturity", "product": "Crop Force", "analysis": "NPK 15:15:15", "rate": "1 bag", "method": "Side dressing/Placement", "pack": "Bag - 20 kg", "slug": "crop-force", "commodity": false },
  { "band": "Foliar", "stage": "Early Growth", "product": "VL-Micromix", "analysis": "Zn 5% · Fe 2% · Mn 2% · Cu 1% (w/v)", "rate": "1-2 pack", "method": "Fertigation", "pack": "Pack - 1 L", "slug": "vl-micro-mix", "commodity": false }
@@ -1009,9 +1009,9 @@ export const BANANA_YEAR2_PLAN: PlanRow[] = [
  { "band": "Secondary Nutrient", "stage": "Maturity", "product": "V-Mag Essential", "analysis": "Mg 8.5% · B 1%", "rate": "1 bag", "method": "Fertigation", "pack": "Bag - 5 kg", "slug": "v-mag-essential", "commodity": false },
  { "band": "Soil Amendment", "stage": "Land Preparation", "product": "V-Compost", "analysis": "OM 25% + N 5%", "rate": "1 bag", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 20 kg", "slug": "v-compost", "commodity": false },
  { "band": "Soil Amendment", "stage": "Early Growth", "product": "Humi Grow", "analysis": "Humic Acid 40% · K₂O 7%", "rate": "1 bag", "method": "Broadcasting", "pack": "Bag - 8 kg", "slug": "humi-grow", "commodity": false },
- { "band": "Micronutrients", "stage": "Germination", "product": "V-Zinc", "analysis": "Zinc 10% w/v", "rate": "4¼ pack", "method": "Fertigation", "pack": "Pack - 3 L", "slug": "v-zinc", "commodity": false },
+ { "band": "Micronutrients", "stage": "Germination", "product": "V-Transform", "analysis": "Zinc 21%", "rate": "2 bag", "method": "Side dressing", "pack": "Bag - 3 kg", "slug": "v-transform", "commodity": false },
  { "band": "Micronutrients", "stage": "Germination", "product": "VL-Boron", "analysis": "Boron 5%", "rate": "2 pack", "method": "Fertigation", "pack": "Pack - 1 L", "slug": "v-boron", "commodity": false },
- { "band": "Micronutrients", "stage": "Grand Growth", "product": "V-Zinc", "analysis": "Zinc 10% w/v", "rate": "4¼ pack", "method": "Fertigation", "pack": "Pack - 3 L", "slug": "v-zinc", "commodity": false },
+ { "band": "Micronutrients", "stage": "Grand Growth", "product": "V-Transform", "analysis": "Zinc 21%", "rate": "2 bag", "method": "Side dressing", "pack": "Bag - 3 kg", "slug": "v-transform", "commodity": false },
  { "band": "Micronutrients", "stage": "Grand Growth", "product": "VL-Boron", "analysis": "Boron 5%", "rate": "1 pack", "method": "Fertigation", "pack": "Pack - 1 L", "slug": "v-boron", "commodity": false }
 ]
 
@@ -1240,7 +1240,6 @@ export const MAIZE_PLAN: PlanRow[] = [
  { "band": "Potash", "stage": "Maturity", "product": "Vital Potash", "analysis": "NPK 11:0:44, coated with B", "rate": "½ bag", "method": "Fertigation", "pack": "Bag - 20 kg", "slug": "vital-potash", "commodity": false },
  { "band": "Secondary Nutrient", "stage": "Land Preparation", "product": "Green Sulfur", "analysis": "Sulfur 70%", "rate": "¼ bag", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 20 kg", "slug": "green-sulfur", "commodity": false },
  { "band": "Secondary Nutrient", "stage": "Germination", "product": "Green Sulfur", "analysis": "Sulfur 70%", "rate": "¼ bag", "method": "Fertigation", "pack": "Bag - 20 kg", "slug": "green-sulfur", "commodity": false },
- { "band": "Secondary Nutrient", "stage": "Early Growth", "product": "V-Mag Essential", "analysis": "Mg 8.5% · B 1%", "rate": "1 bag", "method": "Fertigation", "pack": "Bag - 5 kg", "slug": "v-mag-essential", "commodity": false },
  { "band": "Secondary Nutrient", "stage": "Grand Growth", "product": "V-Mag Essential", "analysis": "Mg 8.5% · B 1%", "rate": "1 bag", "method": "Fertigation", "pack": "Bag - 5 kg", "slug": "v-mag-essential", "commodity": false },
  { "band": "Soil Amendment", "stage": "Land Preparation", "product": "Humi Grow", "analysis": "Humic Acid 40% · K₂O 7%", "rate": "1 bag", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 8 kg", "slug": "humi-grow", "commodity": false },
  { "band": "Soil Amendment", "stage": "Germination", "product": "Humi Grow Plus", "analysis": "Humic Acid 10% · Potash 3.5%", "rate": "2 Pack", "method": "Fertigation", "pack": "Pack - 4 L", "slug": "humi-grow-plus", "commodity": false },
@@ -1348,7 +1347,7 @@ export const RICE_BASMATI_PLAN: PlanRow[] = [
  { "band": "Foliar", "stage": "Early Growth", "product": "VL-Micromix", "analysis": "Zn 5% · Fe 2% · Mn 2% · Cu 1% (w/v)", "rate": "1 pack", "method": "Spray", "pack": "Pack - 1 L", "slug": "vl-micro-mix", "commodity": false },
  // 10 Sep 2026, Tahir: "yes, we price only 0.5 L, they can buy 2 bottles." Same litre either way;
  // the row was simply written against a 1 L bottle VAN does not sell, so it could not be costed.
- { "band": "Foliar", "stage": "Early Growth", "product": "Tornado", "analysis": "Bio-stimulant", "rate": "2 pack", "method": "Spray", "pack": "Pack - 0.5 L", "slug": "tornado", "commodity": false }
+ { "band": "Foliar", "stage": "Early Growth", "product": "Tornado", "analysis": "Bio-stimulant", "rate": "1 pack", "method": "Spray", "pack": "Pack - 0.5 L", "slug": "tornado", "commodity": false }
 ]
 
 export const RICE_HYBRID_STAGES = ["Land Preparation", "Germination", "Early Growth", "Grand Growth", "Maturity"]
@@ -1365,7 +1364,7 @@ export const RICE_HYBRID_PLAN: PlanRow[] = [
  { "band": "Secondary Nutrient", "stage": "Grand Growth", "product": "Green Sulfur", "analysis": "Sulfur 70%", "rate": "2 bag", "method": "Fertigation", "pack": "Bag - 1 kg", "slug": "green-sulfur", "commodity": false },
  { "band": "Secondary Nutrient", "stage": "Maturity", "product": "V-Mag Essential", "analysis": "Mg 8.5% · B 1%", "rate": "1 bag", "method": "Fertigation", "pack": "Bag - 5 kg", "slug": "v-mag-essential", "commodity": false },
  { "band": "Soil Amendment", "stage": "Land Preparation", "product": "Humi Grow", "analysis": "Humic Acid 40% · K₂O 7%", "rate": "1 bag", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 8 kg", "slug": "humi-grow", "commodity": false },
- { "band": "Micronutrients", "stage": "Germination", "product": "V-Zinc", "analysis": "Zinc 10% w/v", "rate": "6¼ pack", "method": "Fertigation", "pack": "Pack - 3 L", "slug": "v-zinc", "commodity": false },
+ { "band": "Micronutrients", "stage": "Germination", "product": "V-Transform", "analysis": "Zinc 21%", "rate": "3 bag", "method": "Side dressing", "pack": "Bag - 3 kg", "slug": "v-transform", "commodity": false },
  { "band": "Micronutrients", "stage": "Maturity", "product": "VL-Boron", "analysis": "Boron 5%", "rate": "1 pack", "method": "Fertigation", "pack": "Pack - 1 L", "slug": "v-boron", "commodity": false },
  { "band": "Foliar", "stage": "Early Growth", "product": "VL-Micromix", "analysis": "Zn 5% · Fe 2% · Mn 2% · Cu 1% (w/v)", "rate": "1 pack", "method": "Spray", "pack": "Pack - 1 L", "slug": "vl-micro-mix", "commodity": false }
 ]
@@ -1393,7 +1392,7 @@ export const SOYBEAN_PLAN: PlanRow[] = [
  { "band": "Potash", "stage": "Grand Growth", "product": "Vital Potash", "analysis": "NPK 11:0:44, coated with B", "rate": "½ bag", "method": "Fertigation", "pack": "Bag - 20 kg", "slug": "vital-potash", "commodity": false },
  { "band": "Secondary Nutrient", "stage": "Grand Growth", "product": "Green Sulfur", "analysis": "Sulfur 70%", "rate": "¼ bag", "method": "Fertigation", "pack": "Bag - 20 kg", "slug": "green-sulfur", "commodity": false },
  { "band": "Soil Amendment", "stage": "Land Preparation", "product": "V-Compost", "analysis": "OM 25% + N 5%", "rate": "1 bag", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 20 kg", "slug": "v-compost", "commodity": false },
- { "band": "Micronutrients", "stage": "Early Growth", "product": "V-Zinc", "analysis": "Zinc 10% w/v", "rate": "½ pack", "method": "Fertigation", "pack": "Pack - 3 L", "slug": "v-zinc", "commodity": false },
+ { "band": "Micronutrients", "stage": "Early Growth", "product": "V-Transform", "analysis": "Zinc 21%", "rate": "¼ bag", "method": "Side dressing", "pack": "Bag - 3 kg", "slug": "v-transform", "commodity": false },
  { "band": "Micronutrients", "stage": "Early Growth", "product": "VL-Boron", "analysis": "Boron 5%", "rate": "1/5 pack", "method": "Spray", "pack": "Pack - 1 L", "slug": "v-boron", "commodity": false },
  { "band": "Foliar", "stage": "Land Preparation", "product": "VL-Micromix", "analysis": "Zn 5% · Fe 2% · Mn 2% · Cu 1% (w/v)", "rate": "1 pack", "method": "Spray", "pack": "Pack - 1 L", "slug": "vl-micro-mix", "commodity": false },
  { "band": "Foliar", "stage": "Germination", "product": "VL-Micromix", "analysis": "Zn 5% · Fe 2% · Mn 2% · Cu 1% (w/v)", "rate": "1 pack", "method": "Spray", "pack": "Pack - 1 L", "slug": "vl-micro-mix", "commodity": false },
@@ -1419,16 +1418,16 @@ export const STRAWBERRY_PLAN: PlanRow[] = [
  { "band": "Potash", "stage": "Maturity", "product": "Vital Potash", "analysis": "NPK 11:0:44, coated with B", "rate": "½ bag", "method": "Fertigation", "pack": "Bag - 20 kg", "slug": "vital-potash", "commodity": false },
  { "band": "Secondary Nutrient", "stage": "Germination", "product": "Green Sulfur", "analysis": "Sulfur 70%", "rate": "2 bag", "method": "Fertigation", "pack": "Bag - 1 kg", "slug": "green-sulfur", "commodity": false },
  { "band": "Secondary Nutrient", "stage": "Early Growth", "product": "Green Sulfur", "analysis": "Sulfur 70%", "rate": "2 bag", "method": "Fertigation", "pack": "Bag - 1 kg", "slug": "green-sulfur", "commodity": false },
- { "band": "Secondary Nutrient", "stage": "Grand Growth", "product": "V-Mag Essential", "analysis": "Mg 8.5% · B 1%", "rate": "⅗ bag", "method": "Fertigation", "pack": "Bag - 5 kg", "slug": "v-mag-essential", "commodity": false },
+ { "band": "Secondary Nutrient", "stage": "Grand Growth", "product": "V-Mag Essential", "analysis": "Mg 8.5% · B 1%", "rate": "¾ bag", "method": "Fertigation", "pack": "Bag - 5 kg", "slug": "v-mag-essential", "commodity": false },
  { "band": "Secondary Nutrient", "stage": "Grand Growth", "product": "Green Sulfur", "analysis": "Sulfur 70%", "rate": "2 bag", "method": "Fertigation", "pack": "Bag - 1 kg", "slug": "green-sulfur", "commodity": false },
- { "band": "Secondary Nutrient", "stage": "Maturity", "product": "V-Mag Essential", "analysis": "Mg 8.5% · B 1%", "rate": "⅗ bag", "method": "Fertigation", "pack": "Bag - 5 kg", "slug": "v-mag-essential", "commodity": false },
+ { "band": "Secondary Nutrient", "stage": "Maturity", "product": "V-Mag Essential", "analysis": "Mg 8.5% · B 1%", "rate": "¾ bag", "method": "Fertigation", "pack": "Bag - 5 kg", "slug": "v-mag-essential", "commodity": false },
  { "band": "Secondary Nutrient", "stage": "Maturity", "product": "Green Sulfur", "analysis": "Sulfur 70%", "rate": "2 bag", "method": "Fertigation", "pack": "Bag - 1 kg", "slug": "green-sulfur", "commodity": false },
  { "band": "Soil Amendment", "stage": "Land Preparation", "product": "Humi Grow", "analysis": "Humic Acid 40% · K₂O 7%", "rate": "1 bag", "method": "Broadcasting", "pack": "Bag - 8 kg", "slug": "humi-grow", "commodity": false },
  { "band": "Soil Amendment", "stage": "Early Growth", "product": "Humi Grow Plus", "analysis": "Humic Acid 10% · Potash 3.5%", "rate": "2 Pack", "method": "Fertigation", "pack": "Pack - 4 L", "slug": "humi-grow-plus", "commodity": false },
  { "band": "Secondary Nutrient", "stage": "Early Growth", "product": "Cala-Mag V", "analysis": "N 10% · Ca 6% · Mg 4% · B 1%", "rate": "4 pack", "method": "Fertigation", "pack": "Pack - 1 L", "slug": "cala-mag-v", "commodity": false },
  { "band": "Secondary Nutrient", "stage": "Grand Growth", "product": "Cala-Mag V", "analysis": "N 10% · Ca 6% · Mg 4% · B 1%", "rate": "1 pack", "method": "Fertigation", "pack": "Pack - 1 L", "slug": "cala-mag-v", "commodity": false },
  { "band": "Soil Amendment", "stage": "Maturity", "product": "Humi Grow Plus", "analysis": "Humic Acid 10% · Potash 3.5%", "rate": "2 Pack", "method": "Fertigation", "pack": "Pack - 4 L", "slug": "humi-grow-plus", "commodity": false },
- { "band": "Micronutrients", "stage": "Germination", "product": "V-Zinc", "analysis": "Zinc 10% w/v", "rate": "2 pack", "method": "Fertigation", "pack": "Pack - 3 L", "slug": "v-zinc", "commodity": false },
+ { "band": "Micronutrients", "stage": "Germination", "product": "V-Transform", "analysis": "Zinc 21%", "rate": "1 bag", "method": "Side dressing", "pack": "Bag - 3 kg", "slug": "v-transform", "commodity": false },
  { "band": "Micronutrients", "stage": "Early Growth", "product": "Tornado", "analysis": "Bio-stimulant", "rate": "1 pack", "method": "Spray", "pack": "Pack - 0.5 L", "slug": "tornado", "commodity": false },
  { "band": "Micronutrients", "stage": "Grand Growth", "product": "VL-Boron", "analysis": "Boron 5%", "rate": "1 Pack", "method": "Spray", "pack": "Pack - 1 L", "slug": "v-boron", "commodity": false },
  { "band": "Foliar", "stage": "Land Preparation", "product": "VL-Micromix", "analysis": "Zn 5% · Fe 2% · Mn 2% · Cu 1% (w/v)", "rate": "1 pack", "method": "Spray", "pack": "Pack - 1 L", "slug": "vl-micro-mix", "commodity": false },
@@ -1483,7 +1482,7 @@ export const SUGARCANE_PLAN: PlanRow[] = [
  { "band": "Secondary Nutrient", "stage": "Grand Growth", "product": "V-Mag Essential", "analysis": "Mg 8.5% · B 1%", "rate": "1 bag", "method": "Fertigation", "pack": "Bag - 5 kg", "slug": "v-mag-essential", "commodity": false },
  { "band": "Soil Amendment", "stage": "Land Preparation", "product": "V-Compost", "analysis": "OM 25% + N 5%", "rate": "1 bag", "method": "Drill at sowing; broadcast if no drill", "pack": "Bag - 20 kg", "slug": "v-compost", "commodity": false },
  { "band": "Soil Amendment", "stage": "Early Growth", "product": "Humi Grow", "analysis": "Humic Acid 40% · K₂O 7%", "rate": "½ pack in June", "method": "Broadcasting", "pack": "Bag - 8 kg", "slug": "humi-grow", "commodity": false },
- { "band": "Micronutrients", "stage": "Germination", "product": "V-Zinc", "analysis": "Zinc 10% w/v", "rate": "6¼ pack", "method": "Fertigation", "pack": "Pack - 3 L", "slug": "v-zinc", "commodity": false },
+ { "band": "Micronutrients", "stage": "Germination", "product": "V-Transform", "analysis": "Zinc 21%", "rate": "3 bag", "method": "Side dressing", "pack": "Bag - 3 kg", "slug": "v-transform", "commodity": false },
  { "band": "Micronutrients", "stage": "Early Growth", "product": "VL-Boron", "analysis": "Boron 5%", "rate": "1 pack", "method": "Fertigation", "pack": "Pack - 1 L", "slug": "v-boron", "commodity": false }
 ]
 
@@ -1525,13 +1524,13 @@ export const TOMATO_PLAN: PlanRow[] = [
  { "band": "Potash", "stage": "Germination", "product": "Vital Potash", "analysis": "NPK 11:0:44, coated with B", "rate": "1 bag", "method": "Fertigation", "pack": "Bag - 20 kg", "slug": "vital-potash", "commodity": false },
  { "band": "Potash", "stage": "Early Growth", "product": "Vital Potash", "analysis": "NPK 11:0:44, coated with B", "rate": "1 bag", "method": "Fertigation", "pack": "Bag - 20 kg", "slug": "vital-potash", "commodity": false },
  { "band": "Potash", "stage": "Grand Growth", "product": "Vital Potash", "analysis": "NPK 11:0:44, coated with B", "rate": "1 bag", "method": "Fertigation", "pack": "Bag - 20 kg", "slug": "vital-potash", "commodity": false },
- { "band": "Potash", "stage": "Fruiting and Picking Phase", "product": "VL-Potash Liquid", "analysis": "Potash 30%", "rate": "1 pack after each picking", "method": "Spray", "pack": "Pack - 1 L", "slug": "vl-potash-liquid", "commodity": false },
+ { "band": "Potash", "stage": "Fruiting and Picking Phase", "product": "VL-Potash Liquid", "analysis": "Potash 30%", "rate": "3 pack (1 after each picking, 3 pickings at most)", "method": "Spray", "pack": "Pack - 1 L", "slug": "vl-potash-liquid", "commodity": false },
  { "band": "Secondary Nutrient", "stage": "Germination", "product": "V-Mag Essential", "analysis": "Mg 8.5% · B 1%", "rate": "1 bag", "method": "Fertigation", "pack": "Bag - 5 kg", "slug": "v-mag-essential", "commodity": false },
  { "band": "Secondary Nutrient", "stage": "Early Growth", "product": "Cala-Mag V", "analysis": "N 10% · Ca 6% · Mg 4% · B 1%", "rate": "1 pack", "method": "Spray", "pack": "Pack - 1 L", "slug": "cala-mag-v", "commodity": false },
  { "band": "Secondary Nutrient", "stage": "Grand Growth", "product": "V-Mag Essential", "analysis": "Mg 8.5% · B 1%", "rate": "1 bag", "method": "Fertigation", "pack": "Bag - 5 kg", "slug": "v-mag-essential", "commodity": false },
  { "band": "Secondary Nutrient", "stage": "Grand Growth", "product": "Cala-Mag V", "analysis": "N 10% · Ca 6% · Mg 4% · B 1%", "rate": "1 pack", "method": "Spray", "pack": "Pack - 1 L", "slug": "cala-mag-v", "commodity": false },
  { "band": "Soil Amendment", "stage": "Land Preparation/Transplantation", "product": "Humi Grow", "analysis": "Humic Acid 40% · K₂O 7%", "rate": "1 bag", "method": "Broadcasting", "pack": "Bag - 8 kg", "slug": "humi-grow", "commodity": false },
- { "band": "Micronutrients", "stage": "Germination", "product": "V-Zinc", "analysis": "Zinc 10% w/v", "rate": "4¼ pack", "method": "Fertigation", "pack": "Pack - 3 L", "slug": "v-zinc", "commodity": false },
+ { "band": "Micronutrients", "stage": "Germination", "product": "V-Transform", "analysis": "Zinc 21%", "rate": "2 bag", "method": "Side dressing", "pack": "Bag - 3 kg", "slug": "v-transform", "commodity": false },
  { "band": "Micronutrients", "stage": "Early Growth", "product": "VL-Boron", "analysis": "Boron 5%", "rate": "1 pack", "method": "Spray", "pack": "Pack - 1 L", "slug": "v-boron", "commodity": false },
 ]
 

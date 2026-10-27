@@ -59,10 +59,10 @@ Analysis and pack: the site's (MASTER_PRODUCTS, crop plan). Prices: never read f
   WIRED: every check passed.
 
 === Rice (Basmati) -> rice-basmati ===
-  rows with a quantity: 11   mapped: 11
+  rows with a quantity: 12   mapped: 12
   quantity header: "QTY Bags per acre (Website Nutrition Plan)"
-  sheet totals (sheet analysis x sheet pack), kg an acre: N 48.95 · P2O5 20.40 · K2O 15.05
-  site totals (site analysis x site pack), kg an acre:   N 48.95 · P2O5 20.40 · K2O 15.05
+  sheet totals (sheet analysis x sheet pack), kg an acre: N 48.95 · P2O5 20.40 · K2O 15.61
+  site totals (site analysis x site pack), kg an acre:   N 48.95 · P2O5 20.40 · K2O 15.61
   recommended dose on the sheet, "Basmati varieties": N 55 · P2O5 36 · K2O 25  (report only; never printed on the site)
   recommended dose on the sheet, "All soils": N 55 · P2O5 35 · K2O 25  (report only; never printed on the site)
   WIRED: every check passed.
@@ -159,8 +159,8 @@ Analysis and pack: the site's (MASTER_PRODUCTS, crop plan). Prices: never read f
 === Tomato -> tomato ===
   rows with a quantity: 13   mapped: 13
   quantity header: "QTY Bags per acre (Website Nutrition Plan)"
-  sheet totals (sheet analysis x sheet pack), kg an acre: N 69.80 · P2O5 36.40 · K2O 41.30
-  site totals (site analysis x site pack), kg an acre:   N 69.80 · P2O5 36.40 · K2O 41.26
+  sheet totals (sheet analysis x sheet pack), kg an acre: N 69.80 · P2O5 36.40 · K2O 40.41
+  site totals (site analysis x site pack), kg an acre:   N 69.80 · P2O5 36.40 · K2O 40.36
   recommended dose on the sheet, "Hybrid varieties": N 90 · P2O5 46 · K2O 100  (report only; never printed on the site)
   recommended dose on the sheet, "Non-hybrid varieties": N 58 · P2O5 23 · K2O 32  (report only; never printed on the site)
   row 8 Sarsabz CAN: "Sarsabz CAN" shown as the plan's "CAN" with the plan's printed analysis (N 26); the sheet has N 26, K 0.09, Ca 10, S 0.4.
