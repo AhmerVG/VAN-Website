@@ -80,7 +80,7 @@ export const MASTER_PRODUCTS: MasterProduct[] = [
   // D-215, Tahir 27 Sep 2026: V-Compost is 1 grade, 20 kg, organic matter 25% + N 5% (the 8 Sep 2-record reading is withdrawn).
   { product: "V-Compost", slug: "v-compost", analysisPct: { N: 5, OM: 25 }, packKg: 20 },
   { product: "Tornado", slug: "tornado", analysisPct: { AA: 10 }, packKg: 0.5, packUnit: 'L' },
-  { product: "Crop Force (15:15:15)", slug: "crop-force", analysisPct: { N: 15, P: 15, K: 15 }, packKg: 1 },
+  // D-323, 27 Oct 2026, Tahir: Crop Force 15:15:15 is discontinued ("Discontinued, change all 4"); only 12:12:18 remains.
   { product: "Crop Force (12:12:18)", slug: "crop-force", analysisPct: { N: 12, P: 12, K: 18 }, packKg: 10 },
   { product: "SOP", slug: "sop", analysisPct: { K: 50 }, packKg: 25 },
   // Commodity materials — in the plans, no VAN product page.
@@ -236,7 +236,10 @@ export const FARMER_PRICE: Record<string, PackPrice[]> = {
   // list. Do not 'fix' this by adding a 10 kg row to a plan.
   // STILL OPEN: the 5 kg pack has no price, and GARLIC is the one plan that asks for it (Soil
   // Amendment, 1 pack). That single line shows "ask on WhatsApp" instead of a figure.
-  'crop-force': [{ size: 1, unit: 'kg', pricePkr: 750 }, { size: 10, unit: 'kg', pricePkr: 4900 }, { size: 20, unit: 'kg', pricePkr: 9000 }],
+  // D-323, 27 Oct 2026, Tahir: 15:15:15 discontinued; its 1 kg (750) and 20 kg (9,000) packs are gone. The 10 kg
+  // 12:12:18 bag is now in the plans (banana year 1 2 bags; garlic, watermelon, citrus 1 bag each, "Round up to 1 bag"),
+  // which replaces the 10 Sep "let it stay out of plan" note above.
+  'crop-force': [{ size: 10, unit: 'kg', pricePkr: 4900 }],
   // Organic and bio
   'humi-grow': [{ size: 8, unit: 'kg', pricePkr: 2750 }],
   // 4 L confirmed by Tahir 8 Sep — the calculator is right here and the sheet's 2,050 is not. The

@@ -3,10 +3,6 @@ Workbook: /tmp/claude-0/b/v2new/Fertilizer Nutrient Calculator V2 live 27 Oct 20
 Sheets: 28. Run: 2026-10-27. Script: tools/import-team-calculator.py
 Analysis and pack: the site's (MASTER_PRODUCTS, crop plan). Prices: never read from the sheet.
 
--- Soybean: not a candidate in ruling 1, not wired.
--- Turmeric: not a candidate in ruling 1, not wired.
--- Onion: not a candidate in ruling 1, not wired.
--- Banana (Year 1): not a candidate in ruling 1, not wired.
 -- Banana (Year 2): not a candidate in ruling 1, not wired.
 -- Date Palm: not a candidate in ruling 1, not wired.
 -- Mango: not a candidate in ruling 1, not wired.
@@ -112,18 +108,17 @@ Analysis and pack: the site's (MASTER_PRODUCTS, crop plan). Prices: never read f
 === Garlic -> garlic ===
   rows with a quantity: 13   mapped: 13
   quantity header: "QTY Bags per acre (Website Nutrition Plan)"
-  sheet totals (sheet analysis x sheet pack), kg an acre: N 52.50 · P2O5 43.15 · K2O 28.79
-  site totals (site analysis x site pack), kg an acre:   N 53.10 · P2O5 43.75 · K2O 29.35
+  sheet totals (sheet analysis x sheet pack), kg an acre: N 53.55 · P2O5 44.20 · K2O 30.45
+  site totals (site analysis x site pack), kg an acre:   N 53.55 · P2O5 44.20 · K2O 30.40
   recommended dose on the sheet, "All soils": N 64 · P2O5 46 · K2O 25  (report only; never printed on the site)
   row 8 Sarsabz CAN: "Sarsabz CAN" shown as the plan's "CAN" with the plan's printed analysis (N 26); the sheet has N 26, K 0.09, Ca 10, S 0.4.
-  row 22 Crop Force (15:15:15): pack: sheet 1, site plan 20; site used. sheet 1 x 1; Owner, 10 Sep 2026: "Garlic 5 kg, is 1/4 bag of same 20 kg bag." The workbook still has 1 x 1 kg. Site figure used (0.25 x 20 kg = 5 kg).
   WIRED: every check passed.
 
 === Citrus (5 years) -> citrus ===
   rows with a quantity: 15   mapped: 15
   quantity header: "QTY Bags per acre (Website Nutrition Plan)"
-  sheet totals (sheet analysis x sheet pack), kg an acre: N 66.93 · P2O5 20.63 · K2O 22.81
-  site totals (site analysis x site pack), kg an acre:   N 66.93 · P2O5 20.63 · K2O 22.77
+  sheet totals (sheet analysis x sheet pack), kg an acre: N 67.98 · P2O5 21.68 · K2O 24.46
+  site totals (site analysis x site pack), kg an acre:   N 67.98 · P2O5 21.68 · K2O 24.42
   recommended dose on the sheet, "Recommended": N 45 · P2O5 25 · K2O 15  (report only; never printed on the site)
   recommended dose on the sheet, "Per plant (kg)": N 1 · P2O5 0.5 · K2O 0.5  (report only; never printed on the site)
   row 8 Sarsabz CAN: "Sarsabz CAN" shown as the plan's "CAN" with the plan's printed analysis (N 26); the sheet has N 26, K 0.09, Ca 10, S 0.4.
@@ -196,11 +191,49 @@ Analysis and pack: the site's (MASTER_PRODUCTS, crop plan). Prices: never read f
 === Watermelon -> watermelon ===
   rows with a quantity: 12   mapped: 12
   quantity header: "QTY Bags per acre (Website Nutrition Plan)"
-  sheet totals (sheet analysis x sheet pack), kg an acre: N 39.95 · P2O5 31.05 · K2O 35.51
-  site totals (site analysis x site pack), kg an acre:   N 39.95 · P2O5 31.05 · K2O 35.51
+  sheet totals (sheet analysis x sheet pack), kg an acre: N 40.70 · P2O5 31.80 · K2O 36.86
+  site totals (site analysis x site pack), kg an acre:   N 40.70 · P2O5 31.80 · K2O 36.86
   recommended dose on the sheet, "All soils": N 64 · P2O5 46 · K2O 50  (report only; never printed on the site)
   recommended dose on the sheet, "Medium (maira) soils": N 69 · P2O5 46 · K2O 50  (report only; never printed on the site)
   WIRED: every check passed.
 
-WIRED 18: sugarcane-ratoon, cotton, maize, rice-basmati, canola, sesame, chickpea, lentil, chili, garlic, citrus, sugarcane, rice-hybrid, tomato, strawberry, sunflower, mungbean-mash, watermelon
+=== Soybean -> soybean ===
+  rows with a quantity: 11   mapped: 11
+  quantity header: "QTY Bags per acre (Website Nutrition Plan)"
+  sheet totals (sheet analysis x sheet pack), kg an acre: N 20.35 · P2O5 12.40 · K2O 10.65
+  site totals (site analysis x site pack), kg an acre:   N 20.35 · P2O5 12.40 · K2O 10.65
+  recommended dose on the sheet, "All soils": N 12.5 · P2O5 32 · K2O 0  (report only; never printed on the site)
+  row 33 V-Compost: analysis from the site's V-Compost record.
+  WIRED: every check passed.
+
+=== Onion -> onion ===
+  rows with a quantity: 12   mapped: 12
+  quantity header: "QTY Bags per acre (Website Nutrition Plan)"
+  sheet totals (sheet analysis x sheet pack), kg an acre: N 37.78 · P2O5 24.88 · K2O 21.96
+  site totals (site analysis x site pack), kg an acre:   N 37.78 · P2O5 24.88 · K2O 21.92
+  recommended dose on the sheet, "All soils": N 50 · P2O5 35 · K2O 35  (report only; never printed on the site)
+  recommended dose on the sheet, "All soils": N 50 · P2O5 35 · K2O 25  (report only; never printed on the site)
+  row 9 Sarsabz CAN: "Sarsabz CAN" shown as the plan's "CAN" with the plan's printed analysis (N 26); the sheet has N 26, K 0.09, Ca 10, S 0.4.
+  row 34 V-Compost: analysis from the site's V-Compost record.
+  WIRED: every check passed.
+
+=== Turmeric -> turmeric ===
+  rows with a quantity: 13   mapped: 13
+  quantity header: "QTY Bags per acre (Website Nutrition Plan)"
+  sheet totals (sheet analysis x sheet pack), kg an acre: N 63.90 · P2O5 24.80 · K2O 30.66
+  site totals (site analysis x site pack), kg an acre:   N 63.90 · P2O5 24.80 · K2O 30.66
+  recommended dose on the sheet, "All soils": N 120 · P2O5 50 · K2O 80  (report only; never printed on the site)
+  row 37 FeSO4: unbranded, shown as the plan's "FeSO4" (Fe 30, S 18), in the sheet's 1 kg pack.
+  WIRED: every check passed.
+
+=== Banana (Year 1) -> banana-year1 ===
+  rows with a quantity: 14   mapped: 14
+  quantity header: "QTY Bags per acre (Website Nutrition Plan)"
+  sheet totals (sheet analysis x sheet pack), kg an acre: N 74.30 · P2O5 35.20 · K2O 59.82
+  site totals (site analysis x site pack), kg an acre:   N 74.30 · P2O5 35.20 · K2O 59.82
+  recommended dose on the sheet, "kg/acre": N 76.9 · P2O5 36.8 · K2O 183.7  (report only; never printed on the site)
+  row 33 V-Compost: analysis from the site's V-Compost record.
+  WIRED: every check passed.
+
+WIRED 22: sugarcane-ratoon, cotton, maize, rice-basmati, canola, sesame, chickpea, lentil, chili, garlic, citrus, sugarcane, rice-hybrid, tomato, strawberry, sunflower, mungbean-mash, watermelon, soybean, onion, turmeric, banana-year1
 SKIPPED 0: 

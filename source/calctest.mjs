@@ -9,10 +9,11 @@
  *      Vehari pH 8.5 and Nankana Sahib boron 1.0 in the sheet's band.
  *   2  D-271, iron and copper in Faisalabad, Jhang, Chiniot and Toba Tek Singh: the district fill leaves both rows
  *      blank, says why, and the plan equals the same district's other readings entered by hand (so iron and copper add
- *      nothing to VL-Micromix); wheat and basmati, and the published-plan list on soybean. Lahore still fills both.
- *   2b D-273, a district change: Lahore then Faisalabad equals Faisalabad picked first (wheat calculator, soybean list);
+ *      nothing to VL-Micromix); wheat and basmati, and the published-plan list on guava (soybean until D-323,
+ *      when soybean went live; citrus became mango the same day). Lahore still fills both.
+ *   2b D-273, a district change: Lahore then Faisalabad equals Faisalabad picked first (wheat calculator, guava list);
  *      a farmer's own iron reading stays and the note then names copper only; the Soil Atlas iron/copper note wording.
- *   3  D-272, price panel: the note is there (calculator and soybean published-plan list), and the wheat total at 1 acre
+ *   3  D-272, price panel: the note is there (calculator and guava published-plan list), and the wheat total at 1 acre
  *      is unchanged (PKR 46,300).
  *   and no console error or failed request on soil.html, crops/wheat.html, crops/rice-basmati.html, crops/potato.html
  *   at 412x860 and 1366x900 (favicon-32x32.png is left out: it lives only in the repo root, as sweep.mjs reports).
@@ -179,31 +180,31 @@ for (const crop of ['wheat', 'rice-basmati']) {
 }
 {
   const { ctx, page } = await newPage()
-  await page.goto(`${BASE}/crops/soybean.html`, { waitUntil: 'networkidle' })
+  await page.goto(`${BASE}/crops/guava.html`, { waitUntil: 'networkidle' })
   await page.waitForSelector('#list ul li')
   await page.selectOption('#list select[aria-label="Your district"]', 'FAISALABAD')
   await page.waitForTimeout(100)
   const on = await pressed(page, '#list')
   const hasRows = (await page.locator('#list input[aria-label^="Iron reading"]').count()) === 1 && (await page.locator('#list input[aria-label^="Copper reading"]').count()) === 1
-  check('soybean published-plan list, FAISALABAD: the iron and copper rows are there, and left blank', hasRows && on.length > 0 && !on.some(l => /^(Iron|Copper): /.test(l)), JSON.stringify(on))
+  check('guava published-plan list, FAISALABAD: the iron and copper rows are there, and left blank', hasRows && on.length > 0 && !on.some(l => /^(Iron|Copper): /.test(l)), JSON.stringify(on))
   await ctx.close()
 }
 {
   // Citrus shows no iron or copper row, so its district line must not talk about rows it does not show.
   const { ctx, page } = await newPage()
-  await page.goto(`${BASE}/crops/citrus.html`, { waitUntil: 'networkidle' })
+  await page.goto(`${BASE}/crops/mango.html`, { waitUntil: 'networkidle' })
   await page.waitForSelector('#list ul li')
   await page.selectOption('#list select[aria-label="Your district"]', 'FAISALABAD')
   await page.waitForTimeout(100)
   const note = await page.$eval('#list select[aria-label="Your district"]', s => s.closest('.panel').querySelector('p.cap')?.innerText ?? '')
   const rowsShown = await page.locator('#list input[aria-label^="Iron reading"], #list input[aria-label^="Copper reading"]').count()
-  check('citrus published-plan list, FAISALABAD: no iron or copper row, so no not comparable note', rowsShown === 0 && /51,556 samples in Faisalabad/.test(note) && !/not comparable/.test(note), `rows ${rowsShown}; ${note}`)
+  check('mango published-plan list, FAISALABAD: no iron or copper row, so no not comparable note', rowsShown === 0 && /51,556 samples in Faisalabad/.test(note) && !/not comparable/.test(note), `rows ${rowsShown}; ${note}`)
   await ctx.close()
 }
 
 // ── 2b: D-273, switching district clears what the new district leaves blank; the farmer's own rows stay ─────────
 console.log('\n2b · D-273 a district change clears rows the new district leaves blank')
-for (const [crop, scope, sel] of [['wheat', '#creator', '#creator ul li'], ['soybean', '#list', '#list ul li']]) {
+for (const [crop, scope, sel] of [['wheat', '#creator', '#creator ul li'], ['guava', '#list', '#list ul li']]) {
   const { ctx, page } = await newPage()
   await page.goto(`${BASE}/crops/${crop}.html`, { waitUntil: 'networkidle' })
   await page.waitForSelector(sel)
@@ -269,11 +270,11 @@ for (const crop of ['wheat', 'lentil']) {
 {
   // D-272 extended, Tahir 19 Oct 2026: the same note on the published-plan list's price panel.
   const { ctx, page } = await newPage()
-  await page.goto(`${BASE}/crops/soybean.html`, { waitUntil: 'networkidle' })
+  await page.goto(`${BASE}/crops/guava.html`, { waitUntil: 'networkidle' })
   await page.waitForSelector('#list ul li')
   await page.click('#list button:has-text("What will this cost me?")')
   const note = await page.$eval('#list [data-price-note]', el => el.textContent).catch(() => '')
-  check('soybean published-plan list: the price note is there, no em dash', note === 'This cost is for the amount used on the field. Where the plan says half a bag, 1 bag covers 2 acres.', note)
+  check('guava published-plan list: the price note is there, no em dash', note === 'This cost is for the amount used on the field. Where the plan says half a bag, 1 bag covers 2 acres.', note)
   await ctx.close()
 }
 

@@ -87,7 +87,7 @@ export default function KnowledgeHub() {
             </a>
           ))}
         </div>
-        <p className="cap mt-4">This section lists what VAN has already published: {CROPS.length} crop programmes, {decks.length} products, {CROPS.length} nutrition plans, {decks.length + 1} technical datasheets (Crop Force has 1 per grade) and {decks.length} safety data sheets. Datasheet and safety-data links sit on each product page. <a href="#/crops">The crop plans →</a></p>
+        <p className="cap mt-4">This section lists what VAN has already published: {CROPS.length} crop programmes, {decks.length} products, {CROPS.length} nutrition plans, {decks.length} technical datasheets and {decks.length} safety data sheets. Datasheet and safety-data links sit on each product page. <a href="#/crops">The crop plans →</a></p>
       </div></section>
 
       <section className="wrap sec-tight">

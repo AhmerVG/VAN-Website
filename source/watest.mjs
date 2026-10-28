@@ -303,6 +303,23 @@ console.log('\n7c · D-320 how VAN competes, the published maize trial removed, 
     const t = await page.evaluate(() => ({ notes: [...document.querySelectorAll('#creator p.cap')].map(x => x.innerText).join(' | '), npk: [...document.querySelectorAll('#creator .panel-soft .num')].slice(0, 3).map(x => x.innerText), gap: document.querySelectorAll('table.nc-gap tbody tr').length }))
     check(`crops/${c}.html: live calculator, single N, P₂O₅ and K₂O figures, "plan gives the same totals", no recommended dose table`, live && t.npk.length === 3 && t.npk.every(v => !/–/.test(v)) && /plan gives the same totals\./.test(t.notes) && t.gap === 0, JSON.stringify(t).slice(0, 240))
   }
+  // D-323, 27 Oct 2026: Tahir's answers to the follow-up questions, round 2.
+  for (const c of ['citrus', 'soybean', 'onion', 'turmeric', 'banana-year1']) {
+    await page.goto(`${BASE}/crops/${c}.html`, { waitUntil: 'networkidle' })
+    const live = await page.waitForSelector('#creator ul li', { timeout: 10000 }).then(() => true).catch(() => false)
+    const t = await page.evaluate(() => ({ notes: [...document.querySelectorAll('#creator p.cap')].map(x => x.innerText).join(' | '), npk: [...document.querySelectorAll('#creator .panel-soft .num')].slice(0, 3).map(x => x.innerText), gap: document.querySelectorAll('table.nc-gap tbody tr').length }))
+    check(`crops/${c}.html: live calculator, single N, P₂O₅ and K₂O figures, "plan gives the same totals", no recommended dose table`, live && t.npk.length === 3 && t.npk.every(v => !/–/.test(v)) && /plan gives the same totals\./.test(t.notes) && t.gap === 0, JSON.stringify(t).slice(0, 240))
+  }
+  const body = async u => { await page.goto(`${BASE}${u}`, { waitUntil: 'networkidle' }); await page.waitForTimeout(300); return page.evaluate(() => document.querySelector('#root').innerText) }
+  for (const c of ['garlic', 'watermelon', 'citrus', 'banana-year1']) {
+    const x = await body(`/crops/${c}.html`)
+    check(`crops/${c}.html: Crop Force is NPK 12:12:18 in the 10 kg bag; no 15:15:15`, /NPK 12:12:18/.test(x) && !/15:15:15/.test(x))
+  }
+  { const x = await body('/brands/crop-force.html'); check('brands/crop-force.html: 12:12:18 only, no 15:15:15 and no 15-15-15 datasheet', /12:12:18/.test(x) && !/15:15:15/.test(x) && !(await page.$('a[href*="15-15-15"]'))) }
+  { const x = await body('/crops/onion.html'); check('crops/onion.html: no Zinc Coated Urea, no "Repeat after 15 days"', !/Zinc Coated Urea|Repeat after 15 days/.test(x)) }
+  { const x = await body('/crops/turmeric.html'); check('crops/turmeric.html: V-Transform in place of V-Zinc; FeSO4 printed as Fe 30% · S 18%', /V-Transform/.test(x) && !/V-Zinc/.test(x.split('VAN products in those nutrient groups')[0]) && /Fe 30% · S 18%/.test(x)) }
+  { const x = await body('/crops/guava.html'); check('crops/guava.html: V-Mag Essential in place of MgSO₄', /V-Mag Essential/.test(x) && !/MgSO₄/.test(x)) }
+  { const x = await body('/crops/banana-year1.html'); check('crops/banana-year1.html: Green Phosphate in 50 kg bags, no 35 kg bag, no "1-2 pack"', !/35 kg/.test(x) && !/1-2 pack/.test(x)) }
   check('no console error or failed request on these pages', errors.length === 0, errors.join(' | '))
   await ctx.close()
 }

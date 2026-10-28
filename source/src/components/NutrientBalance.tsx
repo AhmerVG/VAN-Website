@@ -208,7 +208,9 @@ function SupplyTable({ supply, cropName, cropKey }: { supply: ReturnType<typeof 
       <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
         {rows.map(n => (
           <div key={n}>
-            <div className="display text-[22px]">{ranges?.[n]?.differs ? fmtRange(ranges[n]) : `${supply.perAcre[n]!.toFixed(1)} kg`}</div>
+            {/* D-323, 27 Oct 2026: on a crop with a calculator this prints through fmtRange, as the calculator does, so the 2
+                figures on one page cannot round apart (garlic N is exactly 53.55: 53.5 here and 53.6 in the calculator before). */}
+            <div className="display text-[22px]">{ranges?.[n] ? fmtRange(ranges[n]) : `${supply.perAcre[n]!.toFixed(1)} kg`}</div>
             <div className="cap">{NUTRIENT_LABEL[n]}</div>
           </div>
         ))}

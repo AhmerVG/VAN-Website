@@ -19,7 +19,8 @@ const DOC_STEM_BY_SLUG: Record<string, string> = { 'v-phosphate': 'V-Phosphate' 
 const docStem = (p: { name: string; slug: string }) => DOC_STEM_BY_SLUG[p.slug] ?? p.name.replace(/%/g, '').replace(/\s+/g, '-')
 // D-188, 26 Sep 2026: Crop Force has 2 datasheets, 1 per grade, already on the server in spec-sheets/.
 // They were committed but never linked. tdsUrls() returns 1 link for every other product and 2 here.
-const CROP_FORCE_TDS: [string, string][] = [['Datasheet 15:15:15', 'https://www.van.com.pk/spec-sheets/VAN-TDS-Crop-Force-15-15-15.pdf'], ['Datasheet 12:12:18', 'https://www.van.com.pk/spec-sheets/VAN-TDS-Crop-Force-12-12-18.pdf']]
+// D-323, 27 Oct 2026: 15:15:15 discontinued (Tahir); only the 12:12:18 datasheet is linked.
+const CROP_FORCE_TDS: [string, string][] = [['Datasheet 12:12:18', 'https://www.van.com.pk/spec-sheets/VAN-TDS-Crop-Force-12-12-18.pdf']]
 const tdsUrls = (p: { name: string; slug: string }): [string, string][] => (p.slug === 'crop-force' ? CROP_FORCE_TDS : [['Datasheet', `https://www.van.com.pk/spec-sheets/VAN-TDS-${docStem(p)}.pdf`]])
 const sdsUrl = (p: { name: string; slug: string }) => `https://www.van.com.pk/sds/VAN-SDS-${docStem(p)}.pdf`
 

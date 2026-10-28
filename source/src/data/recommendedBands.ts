@@ -21,5 +21,6 @@ export const RECOMMENDED_BANDS: Record<string, TeamCalcBand[]> = {
   'lentil': [{"label": "Recommended", "N": 13, "P": 23, "K": 12}],
   'chili': [{"label": "Recommended", "N": 58, "P": 23, "K": 25}],
   'garlic': [{"label": "Recommended", "N": 64, "P": 46, "K": 25}],
-  'citrus': [{"label": "Recommended", "N": 45, "P": 25, "K": 15}],
+  // D-323, 27 Oct 2026: citrus removed. It was held until today, so it never showed this table, and Tahir ruled
+  // "No table on new crops".
 }

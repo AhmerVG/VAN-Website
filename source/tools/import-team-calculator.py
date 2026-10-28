@@ -74,6 +74,11 @@ CANDIDATES = [
     ('Sunflower', 'sunflower'),
     ('Mung, Mash bean', 'mungbean-mash'),
     ('Watermelon', 'watermelon'),
+    # D-323, 27 Oct 2026 (Tahir's answers to the follow-up questions, round 2).
+    ('Soybean', 'soybean'),
+    ('Onion', 'onion'),
+    ('Turmeric', 'turmeric'),
+    ('Banana (Year 1)', 'banana-year1'),
 ]
 # Never wired from this workbook: per-tree or age-band programmes (the owner's rule: no per-tree and
 # per-acre mixing). Listed so the report says so rather than leaving them silently out.
@@ -90,6 +95,9 @@ NAME_MAP = {
     'Ammonium Sulphate': 'Ammonium Sulphate',
     'V-Ammonium Phosphate': 'V. Ammonium Phosphate (V-Phosphate)',
     'Sarsabz CAN': 'plan:CAN',
+    # D-323, 27 Oct 2026 (Tahir: FeSO4 counted at the sheet's analysis, "Fe 30%, S 18% (sheet)"): unbranded iron
+    # sulphate, shown with the plan's own name and printed analysis, in the sheet's pack.
+    'FeSO4': 'plan:FeSO4',
     'Green Phosphate': 'Green Phosphate',
     'Fusion Phosphate': 'Fusion Phosphate',
     'Vital Potash': 'Vital Potash',
@@ -117,7 +125,6 @@ NAME_MAP = {
 # Names in the workbook with no site product. Never invented.
 UNMAPPED = {
     'Zinc Coated Urea': 'no zinc-coated grade exists at VAN (D-100) and the sheet gives it no analysis or pack',
-    'FeSO4': 'not a VAN product and the sheet gives it no analysis',
     'Ammonium Phosphate': 'the 12-44 grade is out of date; the owner ruled V-Ammonium Phosphate is 10-44-0 (8 Sep 2026)',
     'Sarsabz NP': 'a third-party product in no VAN plan',
     'DAP': 'a commodity in no VAN plan', 'SSP': 'a commodity in no VAN plan',
@@ -126,11 +133,8 @@ UNMAPPED = {
 
 # Owner's rulings the workbook has not caught up with. (crop slug, workbook name) -> what to use.
 RULING_OVERRIDES = {
-    ('garlic', 'Crop Force (15:15:15)'): {
-        'qtyPerAcre': 0.25, 'packKg': 20,
-        'plan_rate': '¼ bag', 'plan_pack': 'Bag - 20 kg',
-        'why': 'Owner, 10 Sep 2026: "Garlic 5 kg, is 1/4 bag of same 20 kg bag." The workbook still has 1 x 1 kg. Site figure used (0.25 x 20 kg = 5 kg).',
-    },
+    # D-323, 27 Oct 2026: the garlic Crop Force 15:15:15 override (10 Sep) is gone; Tahir ruled 15:15:15 discontinued
+    # and garlic now has 1 bag of Crop Force 12:12:18 (10 kg) in both the workbook and the plan.
 }
 
 # Sane per-acre bounds, kg. Wider than any published Pakistani recommendation for these crops; a total
@@ -230,7 +234,7 @@ def pack_of(pack_str):
 def plan_analysis(text):
     """Parse a plan row's printed analysis for a commodity ('N 26%', 'N 21% · S 24%')."""
     out = {}
-    for k, v in re.findall(r'\b(N|S|K|Ca|Mg)\s+([\d.]+)%', text):
+    for k, v in re.findall(r'\b(N|S|K|Ca|Mg|Fe)\s+([\d.]+)%', text):
         out[k] = float(v)
     return out
 
@@ -386,6 +390,17 @@ def main():
                 product, slug_, analysis = can[0]['product'], None, plan_analysis(can[0]['analysis'])
                 pack, _ = pack_of(can[0]['pack'])
                 note.append(f'"{nm}" shown as the plan\'s "{product}" with the plan\'s printed analysis ({fmt_an(analysis)}); the sheet has {fmt_an(w["sheetAnalysis"])}.')
+            elif target == 'plan:FeSO4':
+                fe = [r for r in plan_rows if r['commodity'] and re.search(r'FeSO4|iron sulph', r['product'], re.I)]
+                if not fe or not w['sheetPack']:
+                    fails.append(f'row {w["row"]} {nm}: the site plan has no FeSO4 row, or the sheet gives no pack')
+                    continue
+                product, slug_, analysis = fe[0]['product'], None, plan_analysis(fe[0]['analysis'])
+                pack = w['sheetPack']
+                if analysis != {k: v for k, v in w['sheetAnalysis'].items() if v}:
+                    fails.append(f'row {w["row"]} {nm}: the plan prints {fmt_an(analysis)}, the sheet has {fmt_an(w["sheetAnalysis"])}')
+                    continue
+                note.append(f'unbranded, shown as the plan\'s "{product}" ({fmt_an(analysis)}), in the sheet\'s {pack:g} kg pack.')
             else:
                 m = next((x for x in master if x['slug'] == target[5:]), None) if target.startswith('slug:') else mbyname.get(target)
                 if not m:

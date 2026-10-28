@@ -23,7 +23,7 @@ const COLS: [string, string][] = [['N', 'N'], ['P', 'P₂O₅'], ['K', 'K₂O'],
 const DOC_STEM_BY_SLUG: Record<string, string> = { 'v-phosphate': 'V-Phosphate' }
 const docStem = (p: Product) => DOC_STEM_BY_SLUG[p.slug] ?? p.name.replace(/%/g, '').replace(/\s+/g, '-')
 const tds = (p: Product): [string, string][] => p.slug === 'crop-force'
-  ? [['TDS 15:15:15', 'https://www.van.com.pk/spec-sheets/VAN-TDS-Crop-Force-15-15-15.pdf'], ['TDS 12:12:18', 'https://www.van.com.pk/spec-sheets/VAN-TDS-Crop-Force-12-12-18.pdf']]
+  ? [['TDS 12:12:18', 'https://www.van.com.pk/spec-sheets/VAN-TDS-Crop-Force-12-12-18.pdf']]
   : [['TDS', `https://www.van.com.pk/spec-sheets/VAN-TDS-${docStem(p)}.pdf`]]
 const sds = (p: Product) => `https://www.van.com.pk/sds/VAN-SDS-${docStem(p)}.pdf`
 
