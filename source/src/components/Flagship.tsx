@@ -26,16 +26,20 @@ import { cropSlug, tidyUnits } from '@/lib/season'
  *   Vital Urea: the "12 to 15 kg N per kg S" ratio comes off; the release calendar is qualitative,
  *     no day figures, labelled how it works and not a measurement.
  *   Vital Potash: boron is named, and the 2 forms, never a percentage.
+ *
+ * D-324 (30 Oct 2026): Green Phosphate shows 1 named wheat trial with its yields, by Tahir's ruling,
+ * explained by its chemistry and agronomy; still no "better than".
  */
 
 const fmt = (n: number) => n >= 100 ? Math.round(n).toLocaleString('en-PK') : n >= 10 ? n.toFixed(0) : n.toFixed(1)
 
 /* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 /* ─────────────────────────── shared frame ─────────────────────────── */
-function Frame({ question, answers, children, wontClaim, tool }: {
+function Frame({ question, answers, children, wontClaim, tool, evidence }: {
   question: string
   answers: { h: string; p: string }[]
   children: React.ReactNode
+  evidence?: React.ReactNode
   tool: string
   wontClaim: string[]
 }) {
@@ -54,6 +58,7 @@ function Frame({ question, answers, children, wontClaim, tool }: {
           </div>
         ))}
       </div>
+      {evidence}
       <div className="fs-tool">
         <span className="eyebrow">{tool}</span>
         {children}
@@ -198,6 +203,37 @@ function GreenPhosphateTool() {
   )
 }
 
+/* ─────────────────────────── Green Phosphate: the wheat trial ─────────────────────────── */
+/* D-324, 30 Oct 2026, Tahir: publish the Green Phosphate wheat trial on this page. Show the result and
+   explain why it is chemically and agronomically plausible; never "beats DAP". Trial facts as he gave them:
+   independent partner company, its own research farm (not named), Sheikhupura, Rabi 2024-25, 2 replications,
+   yields averaged, rates per acre, only the phosphate product changed, plot soil pH 8.43 and available P 7 ppm,
+   no significance test reported. Copy revised after the independent review: no diminishing-returns sentence
+   (the 35 kg plot did not meet the crop's P removal), no humic causal claim, no implied significant difference. P2O5 and N carried are from the declared analyses: DAP 18:46:0, Green Phosphate 6:32:0. */
+const GP_TRIAL: { label: string; p2o5: string; yieldMd: string }[] = [
+  { label: 'DAP, 50 kg', p2o5: '23 kg', yieldMd: '54.17' },
+  { label: 'Green Phosphate, 50 kg', p2o5: '16 kg', yieldMd: '57.19' },
+  { label: 'Green Phosphate, 35 kg', p2o5: '11.2 kg', yieldMd: '56.97' },
+]
+
+function GreenPhosphateTrial() {
+  return (
+    <div className="fs-ev">
+      <span className="eyebrow">A wheat trial</span>
+      <h3 className="fs-ah mt-2">Sheikhupura, Rabi 2024-25</h3>
+      <p className="small mt-2">Run by an independent partner company (not named) on its own research farm. 2 replications, yields averaged; no significance test was reported. Only the phosphate product changed; urea, potash, seed, sowing date and water were the same on every plot.</p>
+      <div className="fs-ev-tbl mt-3">
+        <table className="tbl">
+          <thead><tr><th>Phosphate, an acre</th><th className="r">P₂O₅ it carried</th><th className="r">Wheat, maunds an acre</th></tr></thead>
+          <tbody>{GP_TRIAL.map(r => <tr key={r.label}><td>{r.label}</td><td className="r num">{r.p2o5}</td><td className="r num">{r.yieldMd}</td></tr>)}</tbody>
+        </table>
+      </div>
+      <p className="small mt-3"><b>Why it is plausible.</b> The plot’s soil read pH 8.43 and 7 ppm available phosphorus, below the 15 ppm the Punjab soil survey counts as adequate. On such ground the crop is short of phosphorus and calcium works against every granule. Around a DAP granule the soil stays alkaline; around a Green Phosphate granule it starts acidic. So how long the phosphate stays within the root’s reach can count as much as how much the bag carries. That is the soil this granule is made for.</p>
+      <p className="small mt-2">The DAP plot also got more nitrogen from its own bag (9 kg an acre, against 3 kg and 2.1 kg), so extra nitrogen does not explain the Green Phosphate plots’ yields.</p>
+    </div>
+  )
+}
+
 /* ─────────────────────────── the 3, wired by slug ─────────────────────────── */
 export function Flagship({ slug }: { slug: string }) {
   /* 28 Sep 2026: the "5 to 15% more grain at half the weight per application" clause that used to
@@ -239,7 +275,8 @@ export function Flagship({ slug }: { slug: string }) {
         { h: 'Do not compare kilograms; compare what reaches the crop', p: 'A 50 kg bag of DAP carries more phosphate than a 50 kg bag of Green Phosphate. What the crop eats is what stays available, and on calcareous ground that is the smaller number by far. The humic seal, with a fraction of fulvic, feeds the soil and the root: across 81 published studies humic raised shoot and root growth, and Pakistani calcareous-soil trials found the consistent gain came from organic matter applied with the phosphate (Rose et al. 2014, Advances in Agronomy 124; Ahmad et al. 2022; Mussarat et al. 2021; Mehdi et al. 2003). VAN makes phosphate to be available, and that is the comparison that matters.' },
       ]}
       tool="Your district, and your bag"
-      wontClaim={['That 70 to 80% of applied phosphate is fixed.', 'That it beats DAP or TSP by source alone. The Pakistani field trials do not support that for any source.', 'A field-scale pH change, a soil-test change, or a percentage of phosphate saved.', 'A replicated independent field trial. None exists yet.']}
+      evidence={<GreenPhosphateTrial />}
+      wontClaim={[/* D-324: was 'That it beats DAP or TSP by source alone. The Pakistani field trials do not support that for any source.' and 'A replicated independent field trial. None exists yet.' */ 'That 70 to 80% of applied phosphate is fixed.', 'A yield gain over DAP or TSP. The trial above is 1 season on 1 farm, and TSP was not in it.', 'A field-scale pH change, a soil-test change, or a percentage of phosphate saved.']}
     ><GreenPhosphateTool /></Frame>
   )
   return null

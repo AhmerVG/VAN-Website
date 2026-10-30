@@ -1442,6 +1442,10 @@ svg g[role="button"]:focus-visible { outline: 2px solid var(--navy); outline-off
 .fs-bar { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 10px; align-items: center; font-size: 13.5px; color: var(--muted); }
 .fs-bar i { grid-column: 1 / -1; display: block; height: 12px; background: var(--line); border-radius: 2px; min-width: 2px; }
 .fs-bar b { color: var(--navy); font-variant-numeric: tabular-nums; }
+/* D-324: the Green Phosphate wheat trial block */
+.fs-ev { padding: 18px 22px 20px; border-bottom: 1px solid var(--line); }
+.fs-ev-tbl { overflow-x: auto; max-width: 640px; }
+.fs-ev p { max-width: 78ch; }
 .fs-wont { padding: 16px 22px 20px; }
 .fs-wont-list { margin: 8px 0 0; padding-left: 18px; font-size: 14px; line-height: 1.5; color: var(--muted); }
 .fs-wont-list li { margin-bottom: 4px; }
