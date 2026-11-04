@@ -12,6 +12,7 @@ import Knowledge from '@/pages/Knowledge'
 import KnowledgeHub from '@/pages/KnowledgeHub'
 import Nutrients from '@/pages/Nutrients'
 import SoilPoverty from '@/pages/SoilPoverty'
+import NitrogenReport from '@/pages/NitrogenReport'
 import DataHub from '@/pages/DataHub'
 import Composition from '@/pages/Composition'
 import HowVanCompetes from '@/pages/HowVanCompetes'   // D-320
@@ -54,6 +55,8 @@ export default function App() {
       if (route.slug === 'nutrients') { page = <Nutrients />; break }
       // D-245: Soil Poverty Series No. 1, Tahir Abbas's potash report, a bespoke page because it carries the charts.
       if (route.slug === 'soil-poverty-punjab-potash') { page = <SoilPoverty />; break }
+      // D-325, 4 Nov 2026: The real price of nitrogen, a Vital Agri Nutrients report, a bespoke page because it carries the charts.
+      if (route.slug === 'real-price-of-nitrogen') { page = <NitrogenReport />; break }
       // D-246: Knowledge > Data, the index of every interactive lens.
       if (route.slug === 'data') { page = <DataHub />; break }
       const a = KNOWLEDGE_ARTICLES.find(x => x.slug === route.slug)

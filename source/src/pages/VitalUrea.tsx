@@ -40,7 +40,7 @@ const SOURCES = [
   'Mattiello, E. M., et al. (2017). Journal of Agricultural and Food Chemistry 65(6), 1108–1115. doi:10.1021/acs.jafc.6b04586.',
   // D-151 (A4): 2 entries deleted, their DOIs resolve to other papers: 'Zapałowska, A., et al. (2026). Molecules 31(1), 160. Doi:10.3390/molecules31010160. The N:S optima, summarising Sedlár et al.' and 'Wan, Y., Shewry, P. R., & Hawkesford, M. J. (2012). Journal of Cereal Science 56(1), 72–80. Doi:10.1016/j.jcs.2011.10.014. Critical grain S 1.2 mg/g and N:S 17:1.'
   'Antille, D. L., Sakrabani, R., & Tyrrel, S. (2013). Applied and Environmental Soil Science 2013, 694597. Doi:10.1155/2013/694597. Reporting the segregation thresholds of Miserque and Pirard.',
-  'Lassaletta, L., et al. (2014). Environmental Research Letters 9:105011. The national nitrogen uptake shares.',
+  'FAOSTAT (2025). Cropland Nutrient Balance, December 2025 release. The national nitrogen shares, 2023.',
   // D-130, 24 Sep 2026: the sources below were added with the soil, product, release, N-S and
   // removal sections. Revert: delete from here to the end of the array.
   'Yu, Z., Juhasz, A., Islam, S., Diepeveen, D., et al. (2018). Scientific Reports 8:2499. doi:10.1038/s41598-018-20935-8. Sulfur in cysteine and methionine; free amino acids such as asparagine, arginine and glutamine build up when sulfur is short; grain protein N:S.',
@@ -202,22 +202,23 @@ export default function VitalUrea() {
       <section className="wrap sec-tight"><ApplicationMethods slug="vital-urea" compact /></section>
 
       <section className="wrap sec">
-        <SectionHead eyebrow="The problem" title="Only about 25% of applied nitrogen ends up in Pakistan’s crops." tone="soil" />
+        {/* D-325, 4 Nov 2026: FAO 2023. Was "Only about 25% of applied nitrogen ends up in Pakistan’s crops." and bars 25/72 (Lassaletta et al. 2014). */}
+        <SectionHead eyebrow="The problem" title="Only about 29 of every 100 kg of nitrogen added to Pakistan’s cropland leave the field in the harvest." tone="soil" />
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 items-start">
           <div className="grid gap-4">
             <p>Nitrogen loss in Pakistani soil is caused by soil chemistry. Volatilisation, nitrification and leaching all act on nitrogen that is dissolved in the soil solution, and a granule of plain urea dissolves all at once, on ground that is hot and alkaline. Nitrogen still inside a granule is not yet in the soil solution, so it cannot yet be lost.</p>
             <p className="muted">The full case for moving off plain urea, with its sources, is on <a href="#/knowledge">the national picture page</a>.</p>
           </div>
           <div ref={ref} className="panel p-5">
-            <div className="font-bold">About 25% reaches the crop here, against about 72% in the United States</div>
-            <p className="cap">Share of applied nitrogen taken up by the crop, national cropland estimate</p>
-            {[['Pakistan', 25, 'var(--gold)'], ['United States', 72, 'var(--green)']].map(([n, v, c]) => (
+            <div className="font-bold">About 29% leaves in the harvest here, against about 71% in the United States</div>
+            <p className="cap">Nitrogen removed in the harvest as a share of all nitrogen added to cropland, 2023</p>
+            {[['Pakistan', 29, 'var(--gold)'], ['United States', 71, 'var(--green)']].map(([n, v, c]) => (
               <div key={n as string} className="mt-4">
                 <div className="flex justify-between small"><span className="font-semibold">{n}</span><span className="num">~{v}%</span></div>
                 <div className="h-6 rounded-md mt-1" style={{ background: 'var(--sand-2)' }}><div className="h-6 rounded-md" style={{ width: on ? `${v}%` : 0, background: c as string, transition: rm ? 'none' : 'width 1.1s cubic-bezier(.2,.8,.2,1)' }} /></div>
               </div>
             ))}
-            <p className="cap mt-4" style={{ borderTop: '1px solid var(--line)', paddingTop: 8 }}>Source: Lassaletta et al. (2014), Environmental Research Letters 9:105011.</p>
+            <p className="cap mt-4" style={{ borderTop: '1px solid var(--line)', paddingTop: 8 }}>Source: FAOSTAT, Cropland Nutrient Balance, December 2025 release (2023, FAO estimates).</p>
           </div>
         </div>
       </section>
@@ -497,7 +498,7 @@ export default function VitalUrea() {
           </div>
           <div className="flex flex-wrap gap-3"><WaButton href={WA.distributor} lg>Become a distributor →</WaButton><a className="btn btn-gold btn-lg" href="#/partner/brief-to-bag">Own-brand manufacturing →</a></div>
         </div>
-        <p className="cap mt-6"><b>Sources.</b> Analysis, standard, licence and patent. The registered TDS and van.com.pk. Release mechanism and coating chemistry. The peer-reviewed sources listed in the evidence section, cited for the technologies they studied, under the conditions each study describes; none is a measurement of Vital Urea. Field programme, Khaliqabad 2023, with Rafhan Maize Products. National nitrogen uptake, Lassaletta et al. (2014). Soil figures, the Punjab soil testing programme, 770,160 samples. Fertilizer ratio, NFDC Fertilizer Review 2024-25. Sulfur and protein, Yu et al. (2018, 2021), Randall et al. (1981), Arata et al. (2017). Crop sulfur removal, FAO Bulletin 16 (2006), IRRI (2003), Shukla & Lal (2004). Release timeline, VAN field observation. Storage and safety, VAN SDS-VAN-001 Rev 3. Doses, VAN’s published crop nutrition plans, 2025 set.</p>
+        <p className="cap mt-6"><b>Sources.</b> Analysis, standard, licence and patent. The registered TDS and van.com.pk. Release mechanism and coating chemistry. The peer-reviewed sources listed in the evidence section, cited for the technologies they studied, under the conditions each study describes; none is a measurement of Vital Urea. Field programme, Khaliqabad 2023, with Rafhan Maize Products. National nitrogen in the harvest, FAOSTAT Cropland Nutrient Balance, December 2025 release (2023). Soil figures, the Punjab soil testing programme, 770,160 samples. Fertilizer ratio, NFDC Fertilizer Review 2024-25. Sulfur and protein, Yu et al. (2018, 2021), Randall et al. (1981), Arata et al. (2017). Crop sulfur removal, FAO Bulletin 16 (2006), IRRI (2003), Shukla & Lal (2004). Release timeline, VAN field observation. Storage and safety, VAN SDS-VAN-001 Rev 3. Doses, VAN’s published crop nutrition plans, 2025 set.</p>
       </section>
     </div>
   )

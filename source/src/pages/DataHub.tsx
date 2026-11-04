@@ -24,7 +24,7 @@ const GROUPS: { kicker: string; tone: string; title: string; href: string; lense
     { name: 'Phosphate and yield', finding: 'Across 107 farming countries in 2023, more phosphate per acre went with more cereal per acre (rank correlation 0.60). Pakistan already uses more phosphate than most.' },
   ] },
   { kicker: 'The national picture · 04 Where it goes', tone: 'rust', title: 'Where the nitrogen goes', href: `${NAT}#k-where`, lenses: [
-    { name: 'Nitrogen in the harvest', finding: 'In 2014, 26.7% of the nitrogen added to Pakistan’s cropland came out in the harvested crop. About 73 of every 100 kg was not removed in the harvest.' },
+    { name: 'Nitrogen in the harvest', finding: 'In 2023, 29.1% of the nitrogen added to Pakistan’s cropland left the field in the harvest. About 71 of every 100 kg was not removed in the harvest. The world: 55.3%.' },
   ] },
   { kicker: 'The state of the soil · 01 The overdraft', tone: 'soil', title: 'Punjab’s own record', href: '#/knowledge/soil-and-sustainability#overdraft', lenses: [
     { name: 'Punjab potash balance', finding: 'In 2023-24, Punjab’s 5 main crops took about 940,000 tonnes of potash out of the soil. Fertilizer put back 36,000 tonnes. Model estimates, 1971-72 to 2023-24.' },
@@ -63,7 +63,7 @@ export default function DataHub() {
             </div>
           ))}
         </div>
-        <p className="src mt-6"><b>Source ·</b> FAO, Land, Inputs and Sustainability, via Our World in Data (CC BY 4.0): fertilizer by nutrient, crop yields, cropland. Lassaletta, Billen, Grizzetti, Anglade and Garnier (2014), Environmental Research Letters 9:105011, for nitrogen in the harvest. Punjab balance and outlook: Tahir Abbas, Soil Poverty Series No. 1 (2026), model estimates. Converted from per hectare to per acre (1 acre = 0.4047 hectare; 1 maund = 40 kg).</p>
+        <p className="src mt-6"><b>Source ·</b> FAO, Land, Inputs and Sustainability, via Our World in Data (CC BY 4.0): fertilizer by nutrient, crop yields, cropland. FAOSTAT, Cropland Nutrient Balance, December 2025 release, for nitrogen in the harvest (China is mainland China). Punjab balance and outlook: Tahir Abbas, Soil Poverty Series No. 1 (2026), model estimates. Converted from per hectare to per acre (1 acre = 0.4047 hectare; 1 maund = 40 kg).</p>
       </div></section>
     </div>
   )

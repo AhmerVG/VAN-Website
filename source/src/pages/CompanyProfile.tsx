@@ -143,7 +143,7 @@ export default function CompanyProfile() {
           <div className="ns-fig"><div className="ns-n num" style={{ color: 'var(--navy)' }}>{PK_ACRE}<span className="ns-u">kg/acre</span></div><p className="ns-c">of nutrient on an acre of cropland in Pakistan in 2023. The world average is {WORLD_ACRE} kg.</p></div>
           <div className="ns-fig"><div className="ns-n num" style={{ color: 'var(--rust)' }}>{NATIONAL.productivity.nutrientChange.pct}</div><p className="ns-c">nutrient on an acre, 1999-2000 to 2023-24. Wheat yield rose by {String(NATIONAL.productivity.wheatChange.pct).replace(/^\+/, '')} over the same years.</p></div>
           <div className="ns-fig"><div className="ns-n num" style={{ color: 'var(--rust)' }}>{N_PER_K}<span className="ns-u">:1</span></div><p className="ns-c">tonnes of nitrogen for every tonne of potash that Pakistan applied in 2023.</p></div>
-          <div className="ns-fig"><div className="ns-n num" style={{ color: 'var(--soil)' }}>{NATIONAL.nitrogen.pk}%</div><p className="ns-c">of the nitrogen put on the country&rsquo;s cropland is taken up by the crop. In the United States it is about {NATIONAL.nitrogen.us}%.</p></div>
+          <div className="ns-fig"><div className="ns-n num" style={{ color: 'var(--soil)' }}>{NATIONAL.nitrogen.pk}%</div><p className="ns-c">of the nitrogen added to the country&rsquo;s cropland leaves the field in the harvest (FAO, 2023). In the United States it is about {NATIONAL.nitrogen.us}%.</p></div>
         </div>
         <div className="ns-soil">
           <div className="ns-soil-figs">
@@ -159,7 +159,7 @@ export default function CompanyProfile() {
             </div>
           </div>
         </div>
-        <p className="src">Sources: Our World in Data / FAO (2025), published per hectare (Pakistan 156 kg, world 117 kg) and divided by 2.471 for kg an acre; World Bank AG.CON.FERT.ZS and the Pakistan Economic Survey for the change since 1999-2000; FAOSTAT (2023) for nitrogen against potash; Lassaletta et al. (2014) for nitrogen taken up; the Punjab soil testing programme, 36 district workbooks. Each is charted and cited on the knowledge page.</p>
+        <p className="src">Sources: Our World in Data / FAO (2025), published per hectare (Pakistan 156 kg, world 117 kg) and divided by 2.471 for kg an acre; World Bank AG.CON.FERT.ZS and the Pakistan Economic Survey for the change since 1999-2000; FAOSTAT (2023) for nitrogen against potash; FAOSTAT Cropland Nutrient Balance (2023) for nitrogen in the harvest; the Punjab soil testing programme, 36 district workbooks. Each is charted and cited on the knowledge page.</p>
       </div></section>
 
       {/* 02 · What VAN is, with the site's own drawing and timeline. 'Today' is left out of the rail

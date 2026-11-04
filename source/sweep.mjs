@@ -53,7 +53,9 @@ const RUPEE = /(?:PKR|Rs\.?|₨|﷼)\s?[\d,]{3,}/
 
 for (const rel of files) {
   const raw = fs.readFileSync(path.join(OUT, rel.slice(1)), 'utf8')
-  const m = raw.match(RUPEE)
+  // D-325, 4 Nov 2026: the nitrogen report quotes NFDC's published urea price (Rs 193 a kg of N) and national
+  // rupee equivalents; these are public statistics, not VAN prices, so the 2 pages that carry them are exempt.
+  const m = ['/knowledge/real-price-of-nitrogen.html', '/knowledge/index.html'].includes(rel) ? null : raw.match(RUPEE)
   if (m) problems.push(`${rel} · RUPEE FIGURE IN SOURCE: "${m[0]}"`)
 
   for (const vp of [{ width: 1280, height: 900, n: 'desktop' }, { width: 360, height: 740, n: 'mobile' }]) {

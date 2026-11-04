@@ -81,13 +81,14 @@ export function LossLadder({ slug, compact = false }: { slug?: string; compact?:
   return (
     <div className="panel p-5 lg:p-6" id="what-reaches">
       <span className="eyebrow rust">What actually reaches your crop</span>
-      <h3 className="mt-1 max-w-[30ch]">You pay for the whole bag. About 1/4 of the nitrogen in it feeds the crop.</h3>
+      <h3 className="mt-1 max-w-[30ch]">You pay for the whole bag. About 29 of every 100 kg of nitrogen added leave the field in the harvest.</h3>
 
       <p className="lead mt-3 max-w-[140ch]">
-        Across Pakistan's cropland, roughly <b>1 kg of applied nitrogen in 4</b> is taken up by the
-        crop. In the United States it is about {NATIONAL.nitrogen.us} in 100. The rest of ours leaves as
-        ammonia gas, drains past the roots as nitrate, or goes to gas in waterlogged ground. The farmer pays
-        for that nitrogen at the depot and the crop never gets it.
+        {/* D-325, 4 Nov 2026: FAO 2023. Was "roughly 1 kg of applied nitrogen in 4 is taken up by the crop" (Lassaletta et al. 2014). */}
+        Across Pakistan's cropland, about <b>29 of every 100 kg of nitrogen added</b> leave the field in
+        the harvest (FAO, 2023). In the United States it is about {NATIONAL.nitrogen.us} in 100. FAO estimates that
+        about 26 of our 100 go to the air and 11 to water: the farmer pays for that nitrogen at the depot and the
+        crop never gets it. Some more leaves in straw and stalks, and the rest is not accounted for.
       </p>
       <p className="src"><b>Source ·</b> {NATIONAL.nitrogen.source}</p>
 

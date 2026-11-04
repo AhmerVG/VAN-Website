@@ -127,10 +127,10 @@ export default function Soil({ rel, district, from = null, tehsil = null }: { re
           <p className="mt-3">
             Punjab's ground is alkaline and calcareous. <b>96.1% of samples above pH 7.5</b>, mean carbonate 6.53%.
             Across Pakistan, nutrient applied per acre has risen by 68% since 2000 while wheat yield
-            rose by 31%. <b>Roughly 1 kg of applied nitrogen in 4 reaches the crop.</b>
+            rose by 31%. <b>About 29 of every 100 kg of nitrogen added leave the field in the harvest.</b>
           </p>
           {/* D-297, 22 Oct 2026: the 3 national figures carry their sources here too, as on the national page. */}
-          <p className="src mt-2"><b>Sources ·</b> nutrient per acre of arable land 1999-2000 to 2023-24: World Bank; wheat yield: Pakistan Economic Survey; nitrogen reaching the crop: Lassaletta et al. (2014), Environmental Research Letters 9:105011.</p>
+          <p className="src mt-2"><b>Sources ·</b> nutrient per acre of arable land 1999-2000 to 2023-24: World Bank; wheat yield: Pakistan Economic Survey; nitrogen in the harvest: FAOSTAT, Cropland Nutrient Balance, December 2025 release (2023).</p>
           <p className="mt-2">
             What changes the outcome is <b>the form the nutrient arrives in and where it is put</b>, not the tonnage.
           </p>

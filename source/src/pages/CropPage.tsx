@@ -233,7 +233,8 @@ export default function CropPage({ slug, district = null, card = null }: { slug:
         <div className="panel p-5 lg:p-6 grid lg:grid-cols-[1fr_auto] gap-4 items-center" id="what-reaches">
           <div>
             <span className="eyebrow rust">What actually reaches your crop</span>
-            <h3 className="mt-1 max-w-[34ch]">About 1/4 of the nitrogen in the bag feeds the crop. The rest leaves as gas or drains past the root.</h3>
+            {/* D-325, 4 Nov 2026: FAO 2023. Was "About 1/4 of the nitrogen in the bag feeds the crop. The rest leaves as gas or drains past the root." */}
+            <h3 className="mt-1 max-w-[34ch]">About 29 of every 100 kg of nitrogen added to Pakistan&rsquo;s cropland leave the field in the harvest. Much of the rest goes to the air or drains past the root.</h3>
             <p className="small muted mt-2 max-w-[90ch]">Why it goes, what VAN builds against each loss, and the 17 nutrients and the barrel that show where your own season leaks.</p>
           </div>
           <div className="grid gap-2">

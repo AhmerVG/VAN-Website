@@ -81,7 +81,7 @@ export function NationalStrip() {
     { n: String(Math.round(kgha)), unit: 'kg/acre', tone: 'var(--navy)', cap: `Nutrient Pakistan puts on an acre of cropland in a year. The world average is ${Math.round(world)}. FAO publishes these as 156 and 117 kg a hectare.` },
     { n: '83', unit: ':1', tone: 'var(--rust)', cap: 'Nitrogen against potash, by tonne. Crops are not fed on 1 nutrient.' },
     { n: wheat?.perKg ?? '', tone: 'var(--rust)', cap: 'What a kilogram of nutrient returns in wheat now, against the year 2000. Derived.' },
-    { n: `≈${NATIONAL.nitrogen.pk}%`, tone: 'var(--soil)', cap: `The share of that nitrogen a crop actually takes up. In the United States it is about ${NATIONAL.nitrogen.us}%.` },
+    { n: `≈${NATIONAL.nitrogen.pk}%`, tone: 'var(--soil)', cap: `The share of the nitrogen added to cropland that leaves the field in the harvest (FAO, 2023). In the United States it is about ${NATIONAL.nitrogen.us}%.` },
   ]
   return (
     <section className="sec" id="picture" style={{ background: 'var(--sand-2)' }}>
@@ -103,7 +103,7 @@ export function NationalStrip() {
             page and /soil carry them); the sources paragraph went with the charts it belongs to.
             The block is the 4 figures, the knowledge link and 1 line of sources. Revert: the v61 zip. */}
         <p className="src ns-src">
-          Sources: Our World in Data / FAO, FAOSTAT, the Pakistan Economic Survey, Lassaletta et&nbsp;al. 2014. The soil data, {SOIL_HEADLINE.samples} Punjab samples across {SOIL_HEADLINE.districts} districts, is on <a href="#/soil">the soil page</a>.
+          Sources: Our World in Data / FAO, FAOSTAT (including the Cropland Nutrient Balance, December 2025 release), the Pakistan Economic Survey. The soil data, {SOIL_HEADLINE.samples} Punjab samples across {SOIL_HEADLINE.districts} districts, is on <a href="#/soil">the soil page</a>.
         </p>
       </div>
     </section>

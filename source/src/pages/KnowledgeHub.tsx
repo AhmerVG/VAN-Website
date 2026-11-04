@@ -13,6 +13,10 @@ const ARTICLES: { href: string; kicker: string; title: string; lead: string; ton
   { href: '#/knowledge/soil-poverty-punjab-potash', kicker: 'Soil Poverty Series · No. 1', tone: 'rust',
     title: 'Soil Poverty: Punjab’s Potash. As potash runs short, urea and DAP buy less yield.',
     lead: 'Punjab’s crops take about 940,000 tonnes of potash out of the soil a year; fertilizer puts back 36,000. Most of 20,000 model runs put the Punjab average below 100 ppm between 2027 and 2044. A report by Tahir Abbas, with the full PDF.' },
+  // D-325, 4 Nov 2026: The real price of nitrogen, a Vital Agri Nutrients report (Tahir's ruling: its own Knowledge piece, the 6th).
+  { href: '#/knowledge/real-price-of-nitrogen', kicker: 'A Vital Agri Nutrients report', tone: 'rust',
+    title: 'The real price of nitrogen. 29 of every 100 kg of nitrogen added to Pakistan’s cropland leave the field in the harvest.',
+    lead: 'Rs 193 a kg on the bag; an illustrative urea-price equivalent of about Rs 660 for each kg in the harvest. Where the 5.7 million tonnes went, what China, the EU and India did, and where the gain can come from: technology, timing, placement and balance. With the full PDF.' },
   // D-186, 26 Sep 2026: the 17 nutrients, first in the list because it is the one a grower asks for.
   { href: '#/knowledge/nutrients', kicker: 'The 17 nutrients', tone: 'green',
     title: 'Every nutrient a crop eats, and why the shortest one decides the harvest.',

@@ -25,7 +25,7 @@ const SOURCE_TABLE: [string, string, string][] = [
   ['N, P₂O₅, K₂O tonnages', 'FAOSTAT Fertilizers by Nutrient, via Our World in Data', '2023'],
   ['Crop yields', 'Pakistan Economic Survey Table 2.5 (2009-10 and 2024-25 editions)', '1999-2000 and 2023-24'],
   ['All-cereal yield and production', 'World Bank AG.YLD.CREL.KG · AG.PRD.CREL.MT (FAO)', '2000–2023'],
-  ['Nitrogen use efficiency', 'Lassaletta et al., Environmental Research Letters 9:105011', '2014'],
+  ['Nitrogen use efficiency', 'FAOSTAT, Cropland Nutrient Balance, December 2025 release', '1961 to 2023'],
   ['Nitrogen surplus, partial factor productivity', 'Shahzad et al., Nature Sustainability', '2019'],
   ['India. Nutrient subsidy design', 'Planning Commission of India, Twelfth Five Year Plan, Vol. II, para 12.37', '2013'],
   ['India. Urea vs potash consumption', 'Comptroller and Auditor General of India, Report No. 16 of 2015', '2015'],
@@ -60,7 +60,7 @@ export default function Knowledge() {
           <span className="eyebrow rust">The national case</span>
           <h1 className="max-w-[22ch]">The nutrition Pakistan pays for.</h1>
           <p className="lead mt-4 max-w-[140ch]">{NATIONAL.h1a} {NATIONAL.h1b} {NATIONAL.lead}</p>
-          <p className="mt-4 max-w-[140ch]"><b>Roughly 1 kg of nitrogen in 4 is taken up by the crop.</b> The country buys the other 3, carries them to the field, and loses them there.</p>
+          <p className="mt-4 max-w-[140ch]"><b>About 29 of every 100 kg of nitrogen added to Pakistan&rsquo;s cropland leave the field in the harvest.</b> The country buys the rest, carries it to the field, and does not get it back as crop.</p>
           <div className="flex flex-wrap gap-2 mt-6">{K_INDEX.map(([id, l]) => <a key={id} className="chip chip-xs" href={`#${id}`}>{l}</a>)}</div>
           {/* national → soil, saying WHY it is there. A link that says "learn more" does not get
               followed; one that names what is on the other side does. */}
@@ -119,13 +119,15 @@ export default function Knowledge() {
       </K>
 
       <K id="k-where" n="04" kicker="Where it goes" title="The loss nobody invoices for." tone="rust" bg="var(--sand-2)">
-        {/* D-246: the fixed Chart 4 (UptakeSplit) is now the interactive lens on the same source, Lassaletta et al. (2014). */}
+        {/* D-246: the fixed Chart 4 (UptakeSplit) is now the interactive lens. D-325, 4 Nov 2026: the lens moved from Lassaletta et al. (2014) to FAO's Cropland Nutrient Balance, 1961 to 2023. */}
         <Lens label="Nitrogen in the harvest, Pakistan against other countries" countries={['India', 'United States', 'Bangladesh', 'China']} specs={[
-          { id: 'nitrogen', opts: ['nue'], year: 2014, tab: 'Nitrogen in the harvest', topic: 'NITROGEN IN THE HARVEST' },
+          { id: 'nitrogen', opts: ['nue'], year: 2023, tab: 'Nitrogen in the harvest', topic: 'NITROGEN IN THE HARVEST' },
         ]} />
         {/* D-247, Tahir 2 Oct 2026: matches the lens above (Lassaletta et al. 2014, Pakistan 26.72% in 2014). Was ≈{NATIONAL.nitrogen.pk}% (25) with "of the nitrogen applied ... is taken up by the crop"; the rest of the sentence is NATIONAL.nitrogen.text unchanged. */}
-        <p className="lead mt-6"><b style={{ color: 'var(--navy)' }}>About 27%</b> of the nitrogen added to Pakistan’s cropland came out in the harvest (2014). {NATIONAL.nitrogen.text.slice(NATIONAL.nitrogen.text.indexOf('. ') + 2)}</p>
-        <Source>{NATIONAL.nitrogen.source.replace(/\.$/, '')}, which places Pakistan at the lowest partial factor productivity and the highest nitrogen surplus in its comparison set.</Source>
+        {/* D-325: FAO 2023 (29.1%). Was 'About 27% ... (2014)' on Lassaletta et al. 2014. */}
+        <p className="lead mt-6"><b style={{ color: 'var(--navy)' }}>About 29%</b> of the nitrogen added to Pakistan’s cropland left the field in the harvest (2023). {NATIONAL.nitrogen.text.slice(NATIONAL.nitrogen.text.indexOf('. ') + 2)}</p>
+        <Source>{NATIONAL.nitrogen.source}</Source>
+        <p className="mt-4"><b>What it costs, where the 5.7 million tonnes went, what other countries did, and where the gain can come from:</b> <a href="#/knowledge/real-price-of-nitrogen">The real price of nitrogen →</a></p>
         {/* O-21: the ladder. The national page states the loss; this is what a reader can do about it,
             and it is the same component the crop pages carry so the two can never drift apart. */}
         <div className="mt-6"><LossLadder /></div>
