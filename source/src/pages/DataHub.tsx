@@ -63,7 +63,7 @@ export default function DataHub() {
             </div>
           ))}
         </div>
-        <p className="src mt-6"><b>Source ·</b> FAO, Land, Inputs and Sustainability, via Our World in Data (CC BY 4.0): fertilizer by nutrient, crop yields, cropland. FAOSTAT, Cropland Nutrient Balance, December 2025 release, for nitrogen in the harvest (China is mainland China). Punjab balance and outlook: Tahir Abbas, Soil Poverty Series No. 1 (2026), model estimates. Converted from per hectare to per acre (1 acre = 0.4047 hectare; 1 maund = 40 kg).</p>
+        <p className="src mt-6"><b>Source ·</b> FAO, Land, Inputs and Sustainability, via Our World in Data (CC BY 4.0): fertilizer by nutrient, crop yields, cropland. FAOSTAT, Cropland Nutrient Balance, December 2025 release, for nitrogen in the harvest (China is mainland China). Punjab balance and outlook: Tahir Abbas, Soil Poverty Series No. 1 (2026), model estimates. Converted from per hectare to per acre (1 acre = 0.4047 hectare; 1 maund = 40 kg). &ldquo;Excluded territory&rdquo; in the country lists: (A Territory Excluded per Passport Directive).</p>
       </div></section>
     </div>
   )

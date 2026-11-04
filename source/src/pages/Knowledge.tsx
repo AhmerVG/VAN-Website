@@ -198,7 +198,7 @@ export default function Knowledge() {
           <thead><tr><th>Figure</th><th>Source</th><th>Year</th></tr></thead>
           <tbody>{SOURCE_TABLE.map(([f, s, y]) => <tr key={f}><td className="font-semibold">{f}</td><td>{s}</td><td className="num whitespace-nowrap">{y}</td></tr>)}</tbody>
         </table></div>
-        <p className="cap mt-4 max-w-[140ch]">Derived figures are our arithmetic on the published inputs shown. Section 1 uses cropland; sections 3 and 6 use arable land.</p>
+        <p className="cap mt-4 max-w-[140ch]">Derived figures are our arithmetic on the published inputs shown. Section 1 uses cropland; sections 3 and 6 use arable land. &ldquo;Excluded territory&rdquo; in the country lists: (A Territory Excluded per Passport Directive).</p>
       </K>
 
       <section className="wrap sec-tight">

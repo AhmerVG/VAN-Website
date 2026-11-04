@@ -126,7 +126,7 @@ export const REMOVAL: RemovalRow[] = [
   },
 ]
 
-const BANANA_GAP = 'Removal figures for banana exist only on a whole-bunch basis (Israeli intensive culture) or per hectare at stated yields (India). Neither is a per-tonne figure this programme can be compared with.'
+const BANANA_GAP = 'Removal figures for banana exist only on a whole-bunch basis, from intensive culture in (A Territory Excluded per Passport Directive), or per hectare at stated yields (India). Neither is a per-tonne figure this programme can be compared with.'
 
 /**
  * Crops deliberately left without a removal figure, and why. This list is published, because on a
@@ -149,7 +149,7 @@ export const REMOVAL_GAPS: { crop: string; why: string }[] = [
   { crop: 'mungbean-mash', why: 'No published removal figure was found.' },
   { crop: 'banana-year1', why: BANANA_GAP },
   { crop: 'banana-year2', why: BANANA_GAP },
-  { crop: 'citrus', why: 'Per-tonne removal figures for orange, tangerine, lemon and grapefruit come from 1 commercial source (Israeli), not from an independent compilation.' },
+  { crop: 'citrus', why: 'Per-tonne removal figures for orange, tangerine, lemon and grapefruit come from 1 commercial source in (A Territory Excluded per Passport Directive), not from an independent compilation.' },
   { crop: 'mango', why: 'A peer-reviewed Mexican study gives per-tonne removal for 3 cultivars, but the mango programme is per tree, not per acre, so the 2 cannot be set against each other.' },
   { crop: 'date-palm', why: 'No published removal figure was found. The programme is also set by orchard age, so a season balance would need the orchard’s age and tree count.' },
   { crop: 'guava', why: 'No published removal figure was found.' },

@@ -57,6 +57,8 @@ for (const rel of files) {
   // rupee equivalents; these are public statistics, not VAN prices, so the 2 pages that carry them are exempt.
   const m = ['/knowledge/real-price-of-nitrogen.html', '/knowledge/index.html'].includes(rel) ? null : raw.match(RUPEE)
   if (m) problems.push(`${rel} · RUPEE FIGURE IN SOURCE: "${m[0]}"`)
+  // D-326, 4 Nov 2026, Tahir: the site never carries that word; write "Excluded territory" or (A Territory Excluded per Passport Directive).
+  if (new RegExp(String.fromCharCode(105, 115, 114, 97, 101, 108), 'i').test(raw)) problems.push(`${rel} · FORBIDDEN NAME IN SOURCE`)
 
   for (const vp of [{ width: 1280, height: 900, n: 'desktop' }, { width: 360, height: 740, n: 'mobile' }]) {
     const ctx = await browser.newContext({ viewport: { width: vp.width, height: vp.height }, reducedMotion: 'reduce' })
