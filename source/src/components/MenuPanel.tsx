@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { CROPS, PRODUCTS } from '@/data/catalogue'
-import { cropSlug } from '@/lib/season'
+import { cropSlug, sowingLabel, seasonWords } from '@/lib/season'
 import { hasCalculator, liveFirst } from '@/data/costPlans'
-import { LiveCalcTag } from './bits'
+import { LiveCalcTag, noStop } from './bits'
 import { TOOLS } from '@/data/tools'
 import { DISTRICT_PROFILES } from '@/data/districtSoil'
 import { COVERED } from '@/data/dealers'
@@ -51,7 +51,8 @@ const PAGE_KEYS: Record<string, string> = {
 function index(): Hit[] {
   const out: Hit[] = []
   // D-144: crops with a live calculator are indexed first and carry the tag.
-  for (const c of liveFirst(CROPS, cropSlug)) out.push({ label: c.name, sub: `${c.sowing} · ${c.programme}`, href: `#/crops/${cropSlug(c)}`, kind: 'Crop plan', live: hasCalculator(cropSlug(c)), keys: CROP_WORDS[cropSlug(c)] })
+  // Tahir 7 Nov 2026 (CR-11): the menu line uses each crop's own word (sowing, planting, season start), not the raw "... sowing" text.
+  for (const c of liveFirst(CROPS, cropSlug)) out.push({ label: c.name, sub: `${sowingLabel(c)} ${seasonWords(cropSlug(c)).tag} · ${c.programme}`, href: `#/crops/${cropSlug(c)}`, kind: 'Crop plan', live: hasCalculator(cropSlug(c)), keys: CROP_WORDS[cropSlug(c)] })
   for (const p of PRODUCTS) if (!p.family) out.push({ label: p.name, sub: p.analysis, href: `#/products/${p.slug}`, kind: 'Product', keys: productWords(p.slug, p.cat) })   // D-255
   for (const t of TOOLS) if (t.href) out.push({ label: t.name, sub: t.one, href: t.href, kind: 'Tool', keys: t.keywords })
   for (const [label, sub, href] of PAGES) out.push({ label, sub, href, kind: 'Page', keys: PAGE_KEYS[href] })
@@ -71,15 +72,16 @@ const PAGES: [string, string, string][] = [
   ['Knowledge', 'Decks, evidence and the sources under them', '#/knowledge'],
   ['The 17 nutrients', 'What each does, and the barrel you fill with your own bags', '#/knowledge/nutrients'],
   ['Why Pakistan must shift', 'The national case, with every chart', '#/knowledge/why-pakistan-must-shift'],
-  ['Circular economy', 'Potash recovered from crop residue ash', '#/circular-economy'],
+  ['Circular economy', 'Potassium recovered from crop residue ash', '#/circular-economy'],   // Tahir 7 Nov 2026 (KN-11): was 'Potash recovered ...'
   ['Farm discipline simulator', '10 levers, wheat and potato', '#/simulator'],
-  ['Wheat discipline simulator', 'Score a wheat season across 10 levers', '#/simulator/wheat'],
-  ['Potato discipline simulator', 'Score a potato season across 10 levers', '#/simulator/potato'],
+  // Tahir 9 Nov 2026: "farm discipline simulator" everywhere, as the page titles. Was 'Wheat discipline simulator' and 'Potato discipline simulator'.
+  ['Wheat farm discipline simulator', 'Score a wheat season across 10 levers', '#/simulator/wheat'],
+  ['Potato farm discipline simulator', 'Score a potato season across 10 levers', '#/simulator/potato'],
   ['About VAN', 'The site, the plant, the board', '#/about'],
   // D-147
   ['Company profile', 'The whole company on 1 page, and the profile as a PDF', '#/company-profile'],
   ['All products', `Every one of the ${PRODUCTS.filter(p => !p.family).length} registered brands`, '#/products'],
-  ['All crop plans', `Every one of the ${CROPS.length} programmes`, '#/crops'],
+  ['All crop plans', `Every one of the ${CROPS.length} crop plans`, '#/crops'],
   ['Vitalytics', 'Every calculator on the site, under 1 name', '#/tools'],
 ]
 
@@ -88,7 +90,7 @@ const JOBS: { job: string; note: string; links: [string, string][] }[] = [
     job: 'Work out what to apply',
     note: 'Per acre, stage by stage, for the crop you actually grow.',
     // D-144: was Wheat, Cotton, Sugarcane (February planting has no calculator). Live-calculator crops first.
-    links: [['All 28 crop programmes', '#/crops'], ['Crops with a live calculator', '#/crops#live'], ['Wheat', '#/crops/wheat'], ['Cotton', '#/crops/cotton'], ['Ratoon sugarcane', '#/crops/sugarcane-ratoon'], ['Adjust a plan to my soil report', '#/crops/wheat#creator'], ['What my soil is like here', '#/soil']],
+    links: [['All 28 crop plans', '#/crops'], ['Crops with the Nutrition creator', '#/crops#live'], ['Wheat', '#/crops/wheat'], ['Cotton', '#/crops/cotton'], ['Ratoon sugarcane', '#/crops/sugarcane-ratoon'], ['Adjust a plan to my soil report', '#/crops/wheat#creator'], ['What my soil is like here', '#/soil']],
   },
   {
     job: 'Check what you have been sold',
@@ -197,7 +199,7 @@ export function MenuPanel({ onClose, extras }: { onClose: () => void; extras?: R
         <div className="mp-jobs">
           {JOBS.map(j => (
             <section key={j.job} className="mp-job">
-              <h3 className="mp-job-h">{j.job}</h3>
+              <h3 className="mp-job-h">{noStop(j.job)}</h3>
               <p className="mp-job-n">{j.note}</p>
               <ul>{j.links.map(([l, h]) => <li key={l + h}><a href={h} onClick={onClose}>{l}</a></li>)}</ul>
             </section>

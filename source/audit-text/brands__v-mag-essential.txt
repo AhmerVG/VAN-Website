@@ -2,14 +2,14 @@ PAGE: /brands/v-mag-essential.html
 ======================================================================
 Products
 Crop Plans
-Soil
-Tools
+Your Brand
+Soil Atlas
+Vitalytics
 VAN Lab
 Knowledge
 About
-Make with us
-For farmers
-Menu ☰
+Search
+☰
 View
 Simple view
 Our brands
@@ -28,10 +28,10 @@ Mid-life
 What the soil does to this
 Sulfur: not determined in 770,160 samples
 See it on the map →
-A nutrient that is never measured cannot appear deficient
+Sulfur is not tested, so no soil report shows it as short
 .
 Punjab soil testing programme · 36 district workbooks · 770,160 valid samples · c. 2016–2018
-. A condition of the soil, not a claim for the product.
+. The figure describes the soil. It is not a claim for the product.
 Order on WhatsApp
 Verify a bag
 Tell us the quantity and your district. We reply with price, availability and delivery. Every batch is tested in
@@ -54,12 +54,12 @@ Availability
 Own-brand available
 Same specification, your brand name. Same line, same QC, your label.
 Registration
-Under registration with PSQCA. Not yet licensed, and we will not say otherwise until it is. Released through VAN’s own PNAC-accredited laboratory, ISO/IEC 17025:2017, LAB 336.
-Certificate
-Send the batch number off the bag and VAN sends the certificate of analysis for that batch.
+No PSQCA licence. It carries a conformance report instead. Released through VAN’s own PNAC-accredited laboratory, ISO/IEC 17025:2017, LAB 336.
+Lab report
+Type the batch number off the bag and open the lab report for that batch.
 Verify a bag →
 Programmes that use it
-From the published wheat programme. Per acre. “1 bag” means one bag of the size printed under the rate.
+From the published wheat programme. Per acre. “1 bag” means 1 bag of the size printed under the rate.
 Crop
 Stage
 Band
@@ -81,7 +81,7 @@ Bag · 5 kg
 Open the wheat programme →
 Documents
 Deck, datasheet, safety data
-What it is, what it does in the soil, where it fits in the season and what VAN will not claim for it.
+What it is, what it does in the soil, where it fits in the season and its limits.
 ⬇ Deck (PDF)
 Datasheet
 Safety data
@@ -98,19 +98,13 @@ Secondary Nutrients
 Cala-Mag V
 Green Sulfur
 Crop nutrition engineered, manufactured, registered and tested in Pakistan.
-Plant
-·
-49-Km Multan Road, Phool Nagar Bypass, Lahore
-Head office
-·
-605 Al-Hafeez Heights, Gulberg III, Lahore 54660
++92 42 35762215
 WhatsApp
 +92 300 5003041
-Landline
-+92 42 35762215
 info@van.com.pk
 Products
 All 23 brands
+Compare them
 Vital Urea
 Where to buy
 Verify a bag
@@ -118,20 +112,25 @@ Crops
 28 crop plans
 Wheat
 How you apply it
+Soil Atlas
 Knowledge
 Why Pakistan must shift
-The soil, measured
-Product knowledge decks
+Product decks
 Circular economy
+Vitalytics tools
 Company
-Make with us
+Your Brand
 VAN Lab
-Tools
-About & contact
+About
+Company profile
+Head office
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+Plant
+49-Km Multan Road, Phool Nagar Bypass, Lahore
 © 2026
 Vital Agri Nutrients (Pvt) Ltd
-·
-www.van.com.pk
+Full member of CropLife Pakistan since 2024
+How VAN competes
 LinkedIn
 Facebook
 Instagram

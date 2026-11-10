@@ -95,19 +95,19 @@ export function waterModelFor(crop: string): CropWaterModel | undefined {
  * FAO's, not this site's, and saying which piece is missing is more use than a plausible figure.
  */
 export const WATER_GAPS: Record<string, string> = {
-  wheat: 'FAO tabulates the stage lengths for a November wheat crop in this region (15 / 25 / 50 / 30 = 120 days, Central India) but leaves the initial crop coefficient as a dash for spring-type wheat, because it depends on how often the soil surface is wetted. Punjab wheat is sown in November and harvested in April, not an overwintering dormant crop, so the printed winter-wheat coefficient belongs to a different crop cycle and is not borrowed here. FAO does print the mid-season coefficient: 1.15.',
+  wheat: 'FAO tabulates the stage lengths for a November wheat crop in this region (15 / 25 / 50 / 30 = 120 days, Central India) but leaves the initial crop coefficient as a dash for spring-type wheat, because it depends on how often the soil surface is wetted. Punjab wheat, sown in November and harvested in April, is not an overwintering dormant crop, so the printed winter-wheat coefficient belongs to a different crop cycle and is not used here. FAO does print the mid-season coefficient: 1.15.',
   maize: 'FAO tabulates the stage lengths (20 / 35 / 40 / 30 = 125 days for an October crop in dry, cool India) but leaves the initial crop coefficient as a dash. FAO does print the mid-season coefficient: 1.20.',
   potato: 'FAO tabulates the stage lengths for a January or November crop in a semi-arid climate (25 / 30 / 30–45 / 30) but leaves the initial crop coefficient as a dash. FAO does print the mid-season coefficient: 1.15.',
   onion: 'FAO tabulates the stage lengths for an arid-region crop (20 / 35 / 110 / 45 = 210 days) but leaves the initial crop coefficient as a dash. FAO does print the mid-season coefficient: 1.05.',
-  canola: 'FAO prints crop coefficients for rapeseed and canola (Kc ini 0.35, mid 1.0–1.15, end 0.35) but Table 11 carries no stage lengths for it at all, so there is no season to spread them over.',
-  chickpea: 'FAO prints crop coefficients for chick pea (Kc ini 0.4, mid 1.00, end 0.35) but Table 11 carries no chickpea row, so there is no season to spread them over.',
+  canola: 'FAO prints crop coefficients for rapeseed and canola (Kc ini 0.35, mid 1.0–1.15, end 0.35) but Table 11 gives no stage lengths for it, so the coefficients cannot be spread over a season.',
+  chickpea: 'FAO prints crop coefficients for chick pea (Kc ini 0.4, mid 1.00, end 0.35) but Table 11 has no chickpea row, so the coefficients cannot be spread over a season.',
   lentil: 'FAO tabulates the stage lengths for an October–November lentil crop in an arid region (25 / 35 / 70 / 40 = 170 days) but leaves the initial crop coefficient as a dash. FAO does print the mid-season coefficient: 1.10.',
 }
 /** The mid-season coefficient FAO does print, for crops with no complete model. */
 export const KC_MID_ONLY: Record<string, number> = { wheat: 1.15, maize: 1.20, potato: 1.15, onion: 1.05, canola: 1.075, chickpea: 1.00, lentil: 1.10 }
 
 export const WATER_SOURCE = {
-  paper: 'FAO Irrigation and Drainage Paper 56. Crop evapotranspiration',
+  paper: 'FAO Irrigation and Drainage Paper 56, Crop evapotranspiration',
   url: 'https://www.fao.org/4/x0490e/x0490e0b.htm',
   tables: 'Table 11 (lengths of crop development stages) and Table 12 (single crop coefficients)',
   kcCaption: 'Single (time-averaged) crop coefficients, Kc, and mean maximum plant heights for non stressed, well-managed crops in subhumid climates (RHmin ≈ 45%, u2 ≈ 2 m/s) for use with the FAO Penman-Monteith ETo.',

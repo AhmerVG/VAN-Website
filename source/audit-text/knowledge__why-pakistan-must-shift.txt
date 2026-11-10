@@ -2,23 +2,23 @@ PAGE: /knowledge/why-pakistan-must-shift.html
 ======================================================================
 Products
 Crop Plans
-Soil
-Tools
+Your Brand
+Soil Atlas
+Vitalytics
 VAN Lab
 Knowledge
 About
-Make with us
-For farmers
-Menu ☰
+Search
+☰
 View
 Simple view
 The national case
 The nutrition Pakistan pays for.
 Pakistan is not short of fertilizer.
 It is short of nutrition that reaches the crop.
-Ask why yields are flat and the reflex answer is that farmers need to apply more. The published data says something harder. Pakistan already applies more nutrient per hectare than the world average and more than the United States. What has fallen is how much crop each kilogram of that nutrient produces.
-Roughly one kilogram of nitrogen in four is taken up by the crop.
-The country buys the other three, carries them to the field, and loses them there. Every figure below names its source and its year.
+Ask why yields are flat and the reflex answer is that farmers need to apply more. The published data says something harder. Pakistan already applies more nutrient per acre than the world average and more than the United States. What has fallen is how much crop each kilogram of that nutrient produces.
+About 29 of every 100 kg of nitrogen added to Pakistan’s cropland leave the field in the harvest.
+The country buys the rest, carries it to the field, and does not get it back as crop.
 01 Usage
 02 Balance
 03 Productivity
@@ -29,9 +29,9 @@ The country buys the other three, carries them to the field, and loses them ther
 08 What VAN builds
 09 Evidence
 10 Sources
-The ground underneath this argument
+The soil underneath these numbers
 Punjab's soil, measured 770,160 times →
-This page says alkalinity is why the nutrient does not arrive. That is not an opinion here: it is measured across 36 districts, and you can read your own.
+Alkalinity is why the nutrient does not arrive. It is measured across 36 districts, and you can read your own.
 ← All knowledge
 ·
 The state of the soil
@@ -40,30 +40,264 @@ Application systems
 01
 Usage
 Pakistan is not under-fertilised.
-The first thing to establish, because almost every other conclusion depends on it.
-Fertilizer use per hectare of cropland, 2023
-kg of nutrient per hectare of cropland
-India
-182
+Fertilizer per acre
+FAO
+Where Pakistan stands
+FAO
+FERTILIZER PER ACRE
+In 2023, Pakistan used
+63.3 kg
+of fertilizer nutrient (N, P2O5 and K2O together) per acre of cropland. The world average was 47.1 kg. Pakistan used 1.3 times the world average.
+Potash
+Nitrogen
+Phosphate
+All 3 together
+Over time
+In 1 year
 Pakistan
-156
-United Kingdom
-149
-World average
-117
-United States
-108
-Pakistan sits above the world average and above the United States, and within a few kilograms of the United Kingdom.
-Source
-·
-Our World in Data / FAO (2025), fertilizer use per hectare of cropland.
+India
+×
+UK
+×
+World
+×
+USA
+×
++ Add a country
+Southern Asia (FAO)
+Afghanistan
+Albania
+Algeria
+Angola
+Antigua and Barbuda
+Argentina
+Armenia
+Aruba
+Australia
+Austria
+Azerbaijan
+Bahamas
+Bahrain
+Bangladesh
+Barbados
+Belarus
+Belgium
+Belize
+Benin
+Bermuda
+Bhutan
+Bolivia
+Bosnia and Herzegovina
+Botswana
+Brazil
+Brunei
+Bulgaria
+Burkina Faso
+Burundi
+Cambodia
+Cameroon
+Canada
+Cape Verde
+Central African Republic
+Chad
+Chile
+China
+Colombia
+Comoros
+Congo
+Cook Islands
+Costa Rica
+Cote d'Ivoire
+Croatia
+Cuba
+Cyprus
+Czechia
+Democratic Republic of Congo
+Denmark
+Djibouti
+Dominica
+Dominican Republic
+Ecuador
+Egypt
+El Salvador
+Equatorial Guinea
+Eritrea
+Estonia
+Eswatini
+Ethiopia
+Excluded territory
+Faroe Islands
+Fiji
+Finland
+France
+French Guiana
+French Polynesia
+Gabon
+Gambia
+Georgia
+Germany
+Ghana
+Greece
+Grenada
+Guadeloupe
+Guatemala
+Guinea
+Guinea-Bissau
+Guyana
+Haiti
+Honduras
+Hong Kong
+Hungary
+Iceland
+Indonesia
+Iran
+Iraq
+Ireland
+Italy
+Jamaica
+Japan
+Jordan
+Kazakhstan
+Kenya
+Kiribati
+Kuwait
+Kyrgyzstan
+Laos
+Latvia
+Lebanon
+Lesotho
+Liberia
+Libya
+Lithuania
+Luxembourg
+Madagascar
+Malawi
+Malaysia
+Maldives
+Mali
+Malta
+Martinique
+Mauritania
+Mauritius
+Mexico
+Micronesia (country)
+Moldova
+Mongolia
+Montenegro
+Morocco
+Mozambique
+Myanmar
+Namibia
+Nauru
+Nepal
+Netherlands
+New Caledonia
+New Zealand
+Nicaragua
+Niger
+Nigeria
+North Korea
+North Macedonia
+Norway
+Oman
+Palau
+Palestine
+Panama
+Papua New Guinea
+Paraguay
+Peru
+Philippines
+Poland
+Portugal
+Puerto Rico
+Qatar
+Reunion
+Romania
+Russia
+Rwanda
+Saint Kitts and Nevis
+Saint Lucia
+Saint Vincent and the Grenadines
+Samoa
+Sao Tome and Principe
+Saudi Arabia
+Senegal
+Serbia
+Seychelles
+Sierra Leone
+Singapore
+Slovakia
+Slovenia
+Solomon Islands
+South Africa
+South Korea
+South Sudan
+Spain
+Sri Lanka
+Sudan
+Suriname
+Sweden
+Switzerland
+Syria
+Taiwan
+Tajikistan
+Tanzania
+Thailand
+Togo
+Tonga
+Trinidad and Tobago
+Tunisia
+Turkey
+Turkmenistan
+Tuvalu
+Uganda
+Ukraine
+United Arab Emirates
+Uruguay
+Uzbekistan
+Vanuatu
+Venezuela
+Vietnam
+Yemen
+Zambia
+Zimbabwe
+Year
+2023
+1965
+1970
+1975
+1980
+1985
+1990
+1995
+2000
+2005
+2010
+2015
+2020
+0
+20
+40
+60
+80
+100
+120
+kg per acre of cropland
+India 73.7
+Pakistan 63.3
+UK 60.3
+World 47.1
+USA 43.6
+Each line is a country. Hover over the chart to see every country in that year. Switch to "In 1 year" to see where Pakistan ranks among all countries and territories with data.
+Source: FAO, Land, Inputs and Sustainability: Fertilizers by Nutrient, via Our World in Data (CC BY 4.0). Cropland = arable land plus permanent crops. Converted from per hectare to per acre (1 acre = 0.4047 hectare).
+Show the numbers
 Pakistan sits above the world average and above the United States, and within a few kilograms of the United Kingdom.
 If low application were the binding constraint, the countries below Pakistan on this chart would be the ones with a yield problem. They are not. So the question is what happens to the nutrient after it goes on the field.
-Note where India sits. It is the heaviest applier in this comparison, and it is not the target, for reasons set out in the next section.
+India is the heaviest applier in this comparison.
 02
 Balance
 A nitrogen habit, not a nutrition plan.
-Crops do not eat one nutrient. Pakistan very nearly feeds them one. Share of total nutrient applied, Pakistan against India. The nearest large neighbour growing comparable crops on comparable soils.
+Crops do not eat 1 nutrient. Pakistan very nearly feeds them only 1. Share of total nutrient applied, Pakistan against India, the nearest large neighbour growing comparable crops on comparable soils.
 What the nutrient actually consists of, 2023
 share of total nutrient applied · hover a segment
 Nitrogen (N)
@@ -111,72 +345,294 @@ Potash is
 % of nutrient use in Pakistan and
 6.13
 % in India.
-Potash builds cell walls, moves sugar, runs the plant’s water economy and is most of what stands between a crop and lodging, heat or drought. Pakistan applies eighty-three tonnes of nitrogen for every tonne of potash. Sulfur, magnesium, zinc and boron sit outside this chart entirely, because at national level they barely register.
+Potash builds cell walls, moves sugar, runs the plant’s water economy and is most of what stands between a crop and lodging, heat or drought. Pakistan applies 83 tonnes of nitrogen for every 1 tonne of potash. Sulfur, magnesium, zinc and boron sit outside this chart entirely, because at national level they barely register.
 A crop given that ratio grows fast, soft and vulnerable, and then cannot convert the nitrogen it was given.
-India is on this page as a warning, not as a model
-India appears here because it is the nearest large neighbour farming comparable crops on comparable soils, not because its position is one to aim at. India is the heaviest applier per hectare in section 1, and its own nutrient ratio has been repeatedly judged a policy failure at home. India’s Twelfth Five Year Plan called the design of its nutrient subsidy “seriously flawed” for distorting the balance between nutrients (Planning Commission of India, Twelfth Five Year Plan, Vol. II, para 12.37). The Comptroller and Auditor General found that between 2010-11 and 2013-14 urea consumption rose slightly while muriate of potash consumption fell sharply, as potash prices rose and urea’s did not (CAG of India, Report No. 16 of 2015). The retail price of a 45 kg bag of urea in India has been held at ₹242 since 1 March 2018 (Department of Fertilizers, Government of India).
+Potash against nitrogen
+FAO
+Nitrogen against phosphate
+FAO
+POTASH AGAINST NITROGEN
+In 2023, Pakistan used
+1.2 kg of potash
+for every 100 kg of nitrogen. The world used 34.1 kg.
+Potash per 100 kg nitrogen
+Phosphate per 100 kg nitrogen
+Over time
+In 1 year
+Pakistan
+India
+×
+Bangladesh
+×
+China
+×
+World
+×
++ Add a country
+Southern Asia (FAO)
+Afghanistan
+Albania
+Algeria
+Angola
+Antigua and Barbuda
+Argentina
+Armenia
+Aruba
+Australia
+Austria
+Azerbaijan
+Bahamas
+Bahrain
+Barbados
+Belarus
+Belgium
+Belize
+Benin
+Bermuda
+Bhutan
+Bolivia
+Bosnia and Herzegovina
+Botswana
+Brazil
+Brunei
+Bulgaria
+Burkina Faso
+Burundi
+Cambodia
+Cameroon
+Canada
+Cape Verde
+Central African Republic
+Chad
+Chile
+Colombia
+Comoros
+Congo
+Cook Islands
+Costa Rica
+Cote d'Ivoire
+Croatia
+Cuba
+Cyprus
+Czechia
+Democratic Republic of Congo
+Denmark
+Djibouti
+Dominica
+Dominican Republic
+Ecuador
+Egypt
+El Salvador
+Equatorial Guinea
+Eritrea
+Estonia
+Eswatini
+Ethiopia
+Excluded territory
+Faroe Islands
+Fiji
+Finland
+France
+French Guiana
+French Polynesia
+Gabon
+Gambia
+Georgia
+Germany
+Ghana
+Greece
+Grenada
+Guadeloupe
+Guatemala
+Guinea
+Guinea-Bissau
+Guyana
+Haiti
+Honduras
+Hong Kong
+Hungary
+Iceland
+Indonesia
+Iran
+Iraq
+Ireland
+Italy
+Jamaica
+Japan
+Jordan
+Kazakhstan
+Kenya
+Kiribati
+Kuwait
+Kyrgyzstan
+Laos
+Latvia
+Lebanon
+Lesotho
+Liberia
+Libya
+Lithuania
+Luxembourg
+Madagascar
+Malawi
+Malaysia
+Maldives
+Mali
+Malta
+Martinique
+Mauritania
+Mauritius
+Mexico
+Micronesia (country)
+Moldova
+Mongolia
+Montenegro
+Morocco
+Mozambique
+Myanmar
+Namibia
+Nauru
+Nepal
+Netherlands
+New Caledonia
+New Zealand
+Nicaragua
+Niger
+Nigeria
+North Korea
+North Macedonia
+Norway
+Oman
+Palau
+Palestine
+Panama
+Papua New Guinea
+Paraguay
+Peru
+Philippines
+Poland
+Portugal
+Puerto Rico
+Qatar
+Reunion
+Romania
+Russia
+Rwanda
+Saint Kitts and Nevis
+Saint Lucia
+Saint Vincent and the Grenadines
+Samoa
+Sao Tome and Principe
+Saudi Arabia
+Senegal
+Serbia
+Seychelles
+Sierra Leone
+Singapore
+Slovakia
+Slovenia
+Solomon Islands
+South Africa
+South Korea
+South Sudan
+Spain
+Sri Lanka
+Sudan
+Suriname
+Sweden
+Switzerland
+Syria
+Taiwan
+Tajikistan
+Tanzania
+Thailand
+Togo
+Tonga
+Trinidad and Tobago
+Tunisia
+Turkey
+Turkmenistan
+Tuvalu
+Uganda
+Ukraine
+United Arab Emirates
+United Kingdom
+United States
+Uruguay
+Uzbekistan
+Vanuatu
+Venezuela
+Vietnam
+Yemen
+Zambia
+Zimbabwe
+Year
+2023
+1965
+1970
+1975
+1980
+1985
+1990
+1995
+2000
+2005
+2010
+2015
+2020
+0
+10
+20
+30
+40
+50
+60
+70
+80
+kg per 100 kg of nitrogen
+Bangladesh 37
+China 35.9
+World 34.1
+India 9.2
+Pakistan 1.2
+This shows the balance of what goes on the field: how much potash (or phosphate) is applied alongside each 100 kg of nitrogen. A line near zero means almost all the nitrogen goes on without potash.
+Source: Calculated from FAO nutrient use per area of cropland (potash or phosphate divided by nitrogen, times 100; the result is the same per acre or per hectare), via Our World in Data (CC BY 4.0).
+Show the numbers
+India: a warning, not a model
+India is the nearest large neighbour farming comparable crops on comparable soils. Its position is not one to aim at. India is the heaviest applier per acre in section 1, and its own nutrient ratio has been repeatedly judged a policy failure at home. India’s Twelfth Five Year Plan called the design of its nutrient subsidy “seriously flawed” for distorting the balance between nutrients (Planning Commission of India, Twelfth Five Year Plan, Vol. II, para 12.37). The Comptroller and Auditor General found that between 2010-11 and 2013-14 urea consumption rose slightly while muriate of potash consumption fell sharply, as potash prices rose and urea’s did not (CAG of India, Report No. 16 of 2015). The retail price of a 45 kg bag of urea in India has been held at ₹242 since 1 March 2018 (Department of Fertilizers, Government of India).
 The lesson is not to apply more like India. A distorted price signal buys volume and imbalance rather than conversion, and Pakistan is closer to that position than to escaping it.
 03
 Productivity
 More went on, less came back.
-The two lines that matter, and they point in opposite directions.
+The 2 lines that matter: nutrient on an acre up 68%, wheat yield up 31%.
 More went on. Less came back.
 1999-2000 → 2023-24
-Nutrient applied per hectare of arable land, 1999-2000 → 2023-24
-95.4
+Nutrient applied per acre of arable land, 1999-2000 → 2023-24
+38.6
 →
-160.3
-kg/ha
+64.9
+kg/acre
 +68%
-95.4
+38.6
 1999-2000
-160.3
+64.9
 2023-24
-kg/ha
+kg/acre
 ·
 World Bank
 Wheat yield over the same period
-2491
+25.2
 →
-3264
-kg/ha
+33.0
+maunds/acre
 +31%
-2,491
+25.2
 1999-2000
-3,264
+33.0
 2023-24
-kg/ha
+maunds/acre
 ·
 Pakistan Economic Survey
-Crop
-1999-2000
-2023-24
-Yield change
-Per kg of nutrient
-Wheat
-2,491
-3,264
-+31%
-−22%
-Rice (cleaned basis)
-2,050
-2,714
-+32%
-−21%
-Cotton (lint)
-641
-717
-+12%
-−33%
-All cereals
-2,404
-3,634
-+51%
-−10%
-The per-kilogram column is derived: a yield index divided by a nutrient-per-hectare index, 2000 = 100. It is a partial factor productivity indicator, not a nutrient balance. The direction holds. The exact magnitude does not, and we would not defend it to the decimal.
-Source
-·
-Nutrient per hectare: World Bank AG.CON.FERT.ZS (FAO). Yields: Pakistan Economic Survey Table 2.5 (2009-10 and 2024-25 editions); all-cereal yield World Bank AG.YLD.CREL.KG. Ratio derived.
 Nutrient applied and wheat yield, 1999-2000 → 2023-24
 index, 2000 = 100
 100
@@ -188,25 +644,17 @@ index, 2000 = 100
 2023-24
 +68%
 ·
-Nutrient per hectare
-95.4
-→
-160.3
-kg/ha
+nutrient
 +31%
 ·
-Wheat yield
-2,491
-→
-3,264
-kg/ha
+wheat
 168
-Nutrient applied per hectare of arable land, 1999-2000 → 2023-24
+Nutrient applied per acre of arable land, 1999-2000 → 2023-24
 ·
-95.4
+38.6
 →
-160.3
-kg/ha
+64.9
+kg/acre
 (
 +68%
 ) ·
@@ -214,92 +662,571 @@ World Bank
 131
 Wheat yield over the same period
 ·
-2,491
+25.2
 →
-3,264
-kg/ha
+33.0
+maunds/acre
 (
 +31%
 ) ·
 Pakistan Economic Survey
-Two published end points, index 2000 = 100 (derived). Each line is drawn straight between its two end points, no intermediate years are published here, and none are implied.
+Index 2000 = 100 (derived), from the 2 published end years only.
 Source
 ·
-Nutrient per hectare: World Bank AG.CON.FERT.ZS (FAO). Yields: Pakistan Economic Survey Table 2.5 (2009-10 and 2024-25 editions); all-cereal yield World Bank AG.YLD.CREL.KG. Ratio derived.
+Nutrient per hectare: World Bank AG.CON.FERT.ZS (FAO), 95.4 and 160.3 kg/ha. Yields: Pakistan Economic Survey Table 2.5 (2009-10 and 2024-25 editions); all-cereal yield World Bank AG.YLD.CREL.KG. Yields as published in kg/ha: wheat 2,491 and 3,264, rice 2,050 and 2,714, cotton lint 641 and 717, all cereals 2,404 and 3,634. Converted at 1 hectare = 2.471 acres and 40 kg = 1 maund. Ratio derived.
 Yield per kilogram of nutrient applied. The change since 2000
-yield in kg/ha, 1999-2000 against 2023-24 · the last column is derived
+yield in maunds an acre, 1999-2000 against 2023-24 · the last column is derived
 Crop
 1999-2000
 2023-24
 Change
 Per kg nutrient
 Wheat
-2,491
-3,264
+25.2
+33.0
 +31%
 −22%
 Rice (cleaned basis)
-2,050
-2,714
+20.7
+27.5
 +32%
 −21%
 Cotton (lint)
-641
-717
+6.5
+7.3
 +12%
 −33%
 All cereals
-2,404
-3,634
+24.3
+36.8
 +51%
 −10%
 How this is calculated, and its limit
-The per-kilogram column is derived: a yield index divided by a nutrient-per-hectare index, 2000 = 100. It is a partial factor productivity indicator, not a nutrient balance. The direction holds. The exact magnitude does not, and we would not defend it to the decimal.
+The per-kilogram column is derived: a yield index divided by a nutrient-per-acre index, 2000 = 100. It is a partial factor productivity indicator, not a nutrient balance. Read it for direction, not the exact figure.
 Yields rose. Nutrient use rose faster. Every major crop now returns less for each kilogram applied than it did at the turn of the century.
 Source
 ·
-Nutrient per hectare: World Bank AG.CON.FERT.ZS (FAO). Yields: Pakistan Economic Survey Table 2.5 (2009-10 and 2024-25 editions); all-cereal yield World Bank AG.YLD.CREL.KG. Ratio derived.
+Nutrient per hectare: World Bank AG.CON.FERT.ZS (FAO), 95.4 and 160.3 kg/ha. Yields: Pakistan Economic Survey Table 2.5 (2009-10 and 2024-25 editions); all-cereal yield World Bank AG.YLD.CREL.KG. Yields as published in kg/ha: wheat 2,491 and 3,264, rice 2,050 and 2,714, cotton lint 641 and 717, all cereals 2,404 and 3,634. Converted at 1 hectare = 2.471 acres and 40 kg = 1 maund. Ratio derived.
+Grain per kg of fertilizer
+FAO
+Fertilizer and yield
+FAO
+Crop yields
+FAO
+Grain per kg of nitrogen
+FAO
+Phosphate and yield
+FAO
+GRAIN PER KG OF FERTILIZER
+In 2023, Pakistan got about
+23 kg of cereal grain
+for each kg of fertilizer nutrient it used. The world got 36 kg.
+Over time
+In 1 year
+Pakistan
+India
+×
+Bangladesh
+×
+China
+×
+World
+×
++ Add a country
+Southern Asia (FAO)
+Afghanistan
+Albania
+Algeria
+Angola
+Antigua and Barbuda
+Argentina
+Armenia
+Aruba
+Australia
+Austria
+Azerbaijan
+Bahamas
+Bahrain
+Barbados
+Belarus
+Belgium
+Belize
+Benin
+Bermuda
+Bhutan
+Bolivia
+Bosnia and Herzegovina
+Botswana
+Brazil
+Brunei
+Bulgaria
+Burkina Faso
+Burundi
+Cambodia
+Cameroon
+Canada
+Cape Verde
+Central African Republic
+Chad
+Chile
+Colombia
+Comoros
+Congo
+Cook Islands
+Costa Rica
+Cote d'Ivoire
+Croatia
+Cuba
+Cyprus
+Czechia
+Democratic Republic of Congo
+Denmark
+Djibouti
+Dominica
+Dominican Republic
+Ecuador
+Egypt
+El Salvador
+Equatorial Guinea
+Eritrea
+Estonia
+Eswatini
+Ethiopia
+Excluded territory
+Faroe Islands
+Fiji
+Finland
+France
+French Guiana
+French Polynesia
+Gabon
+Gambia
+Georgia
+Germany
+Ghana
+Greece
+Grenada
+Guadeloupe
+Guatemala
+Guinea
+Guinea-Bissau
+Guyana
+Haiti
+Honduras
+Hong Kong
+Hungary
+Iceland
+Indonesia
+Iran
+Iraq
+Ireland
+Italy
+Jamaica
+Japan
+Jordan
+Kazakhstan
+Kenya
+Kiribati
+Kuwait
+Kyrgyzstan
+Laos
+Latvia
+Lebanon
+Lesotho
+Liberia
+Libya
+Lithuania
+Luxembourg
+Madagascar
+Malawi
+Malaysia
+Maldives
+Mali
+Malta
+Martinique
+Mauritania
+Mauritius
+Mexico
+Micronesia (country)
+Moldova
+Mongolia
+Montenegro
+Morocco
+Mozambique
+Myanmar
+Namibia
+Nauru
+Nepal
+Netherlands
+New Caledonia
+New Zealand
+Nicaragua
+Niger
+Nigeria
+North Korea
+North Macedonia
+Norway
+Oman
+Palau
+Palestine
+Panama
+Papua New Guinea
+Paraguay
+Peru
+Philippines
+Poland
+Portugal
+Puerto Rico
+Qatar
+Reunion
+Romania
+Russia
+Rwanda
+Saint Kitts and Nevis
+Saint Lucia
+Saint Vincent and the Grenadines
+Samoa
+Sao Tome and Principe
+Saudi Arabia
+Senegal
+Serbia
+Seychelles
+Sierra Leone
+Singapore
+Slovakia
+Slovenia
+Solomon Islands
+South Africa
+South Korea
+South Sudan
+Spain
+Sri Lanka
+Sudan
+Suriname
+Sweden
+Switzerland
+Syria
+Taiwan
+Tajikistan
+Tanzania
+Thailand
+Togo
+Tonga
+Trinidad and Tobago
+Tunisia
+Turkey
+Turkmenistan
+Tuvalu
+Uganda
+Ukraine
+United Arab Emirates
+United Kingdom
+United States
+Uruguay
+Uzbekistan
+Vanuatu
+Venezuela
+Vietnam
+Yemen
+Zambia
+Zimbabwe
+Year
+2023
+1965
+1970
+1975
+1980
+1985
+1990
+1995
+2000
+2005
+2010
+2015
+2020
+10
+20
+30
+100
+200
+300
+1,000
+kg of cereal grain per kg of fertilizer nutrient
+World 36
+Pakistan 23
+India 20
+China 19
+Bangladesh 15
+A rough measure of what fertilizer gives back: cereal yield per acre (in kg) divided by fertilizer nutrient used per acre of all cropland. The answer is the same whether worked per acre or per hectare. It is an indicator, not a crop trial. Countries using very little fertilizer show very high values, so the scale is stretched: 10 to 100 takes the same space as 100 to 1,000.
+Source: Calculated from FAO cereal yield and FAO fertilizer nutrient use per area of cropland, via Our World in Data (CC BY 4.0).
+Show the numbers
 04
 Where it goes
 The loss nobody invoices for.
-Share of applied nitrogen taken up by the crop
-national cropland estimate
-Taken up by the crop
-Lost. Ammonia, nitrate, denitrification
+Nitrogen in the harvest
+FAO
+NITROGEN IN THE HARVEST
+In 2023,
+29.1%
+of the nitrogen added to Pakistan's cropland came out in the harvested crop. India: 43%. So about 71 of every 100 kg added was not removed in the harvest.
+Over time
+In 1 year
 Pakistan
-≈
-25
-%
-≈
-75
-% lost
-United States
-≈
-72
-%
-≈
-28
-% lost
+India
+×
+USA
+×
+Bangladesh
+×
+China
+×
++ Add a country
+World
+Southern Asia (FAO)
+Afghanistan
+Albania
+Algeria
+Angola
+Antigua and Barbuda
+Argentina
+Armenia
+Aruba
+Australia
+Austria
+Azerbaijan
+Bahamas
+Bahrain
+Barbados
+Belarus
+Belgium
+Belize
+Benin
+Bermuda
+Bhutan
+Bolivia
+Bosnia and Herzegovina
+Botswana
+Brazil
+Brunei
+Bulgaria
+Burkina Faso
+Burundi
+Cambodia
+Cameroon
+Canada
+Cape Verde
+Central African Republic
+Chad
+Chile
+Colombia
+Comoros
+Congo
+Cook Islands
+Costa Rica
+Cote d'Ivoire
+Croatia
+Cuba
+Cyprus
+Czechia
+Democratic Republic of Congo
+Denmark
+Djibouti
+Dominica
+Dominican Republic
+Ecuador
+Egypt
+El Salvador
+Equatorial Guinea
+Eritrea
+Estonia
+Eswatini
+Ethiopia
+Excluded territory
+Faroe Islands
+Fiji
+Finland
+France
+French Guiana
+French Polynesia
+Gabon
+Gambia
+Georgia
+Germany
+Ghana
+Greece
+Grenada
+Guadeloupe
+Guatemala
+Guinea
+Guinea-Bissau
+Guyana
+Haiti
+Honduras
+Hong Kong
+Hungary
+Iceland
+Indonesia
+Iran
+Iraq
+Ireland
+Italy
+Jamaica
+Japan
+Jordan
+Kazakhstan
+Kenya
+Kiribati
+Kuwait
+Kyrgyzstan
+Laos
+Latvia
+Lebanon
+Lesotho
+Liberia
+Libya
+Lithuania
+Luxembourg
+Madagascar
+Malawi
+Malaysia
+Maldives
+Mali
+Malta
+Martinique
+Mauritania
+Mauritius
+Mexico
+Micronesia (country)
+Moldova
+Mongolia
+Montenegro
+Morocco
+Mozambique
+Myanmar
+Namibia
+Nauru
+Nepal
+Netherlands
+New Caledonia
+New Zealand
+Nicaragua
+Niger
+Nigeria
+North Korea
+North Macedonia
+Norway
+Oman
+Palau
+Palestine
+Panama
+Papua New Guinea
+Paraguay
+Peru
+Philippines
+Poland
+Portugal
+Puerto Rico
+Qatar
+Reunion
+Romania
+Russia
+Rwanda
+Saint Kitts and Nevis
+Saint Lucia
+Saint Vincent and the Grenadines
+Samoa
+Sao Tome and Principe
+Saudi Arabia
+Senegal
+Serbia
+Seychelles
+Sierra Leone
+Singapore
+Slovakia
+Slovenia
+Solomon Islands
+South Africa
+South Korea
+South Sudan
+Spain
+Sri Lanka
+Sudan
+Suriname
+Sweden
+Switzerland
+Syria
+Taiwan
+Tajikistan
+Tanzania
+Thailand
+Togo
+Tonga
+Trinidad and Tobago
+Tunisia
+Turkey
+Turkmenistan
+Tuvalu
+Uganda
+Ukraine
+United Arab Emirates
+United Kingdom
+Uruguay
+Uzbekistan
+Vanuatu
+Venezuela
+Vietnam
+Yemen
+Zambia
+Zimbabwe
+Year
+2023
+1965
+1970
+1975
+1980
+1985
+1990
+1995
+2000
+2005
+2010
+2015
+2020
+0
+10
+20
+30
+40
+50
+60
+70
+80
+% of nitrogen added that leaves in the harvest
+USA 71.4
+China 47.3
+India 43
+Bangladesh 40.3
+Pakistan 29.1
+Of all nitrogen added to cropland (fertilizer, manure, fixation by legumes, rain and dust, seed), the share removed in the harvested crop. The rest stays in the soil, leaves in straw and stalks, or is lost to air and water. FAO estimates; China is mainland China. These charts show association, not the effect of fertilizer: seed, irrigation, varieties and weather changed over the same years. The yield response to N or P can only be measured in field trials.
+Source: FAOSTAT, Cropland Nutrient Balance, December 2025 release (FAO estimates). A share, so it is the same per acre or per hectare.
+Show the numbers
+About 29%
+of the nitrogen added to Pakistan’s cropland left the field in the harvest (2023).
+The world’s figure is 55% and the United States’ about 71%. FAO estimates that about 26 of our 100 kg go to the air and 11 to water. The farmer pays for that nitrogen at the depot and the crop never gets it.
 Source
 ·
-Lassaletta, Billen, Grizzetti, Anglade & Garnier (2014), Environmental Research Letters 9:105011. Corroborated by Shahzad et al. (2019), Nature Sustainability.
-≈
-25
-%
-of the nitrogen applied to Pakistan’s cropland is taken up by the crop. The United States converts about 72% of its nitrogen. The rest of ours leaves as ammonia gas, drains past the root zone as nitrate, or is lost to denitrification. The farmer pays for that nitrogen at the depot and the crop never gets it.
-Source
-·
-Lassaletta, Billen, Grizzetti, Anglade & Garnier (2014), Environmental Research Letters 9:105011. Corroborated by Shahzad et al. (2019), Nature Sustainability.
-, which places Pakistan at the lowest partial factor productivity and the highest nitrogen surplus in its comparison set.
+FAOSTAT, Cropland Nutrient Balance, December 2025 release (2023, FAO estimates). Shahzad et al. (2019), Nature Sustainability, places Pakistan at the lowest nitrogen use efficiency in its comparison set.
+What it costs, where the 5.7 million tonnes went, what other countries did, and where the gain can come from:
+The real price of nitrogen →
 What actually reaches your crop
-You pay for the whole bag. About a quarter of the nitrogen in it feeds the crop.
-Across Pakistan's cropland, roughly
-one kilogram of applied nitrogen in four
-is taken up by the crop. In the United States it is about
-72
-in a hundred. The rest of ours leaves as ammonia gas, drains past the roots as nitrate, or goes to gas in waterlogged ground. The farmer pays for that nitrogen at the depot and the crop never gets it.
+You pay for the whole bag. About 29 of every 100 kg of nitrogen added leave the field in the harvest.
+Across Pakistan's cropland, about
+29 of every 100 kg of nitrogen added
+leave the field in the harvest (FAO, 2023). In the United States it is about
+71
+in 100. FAO estimates that about 26 of our 100 go to the air and 11 to water: the farmer pays for that nitrogen at the depot and the crop never gets it. Some more leaves in straw and stalks, and the rest is not accounted for.
 Source ·
-Lassaletta, Billen, Grizzetti, Anglade & Garnier (2014), Environmental Research Letters 9:105011. Corroborated by Shahzad et al. (2019), Nature Sustainability.
+FAOSTAT, Cropland Nutrient Balance, December 2025 release (2023, FAO estimates). Shahzad et al. (2019), Nature Sustainability, places Pakistan at the lowest nitrogen use efficiency in its comparison set.
 Why it goes
 Some of it is your soil, and that part is not your fault.
 Above pH 8, and about
@@ -308,55 +1235,46 @@ of Punjab's samples are above pH 8, urea left on the surface turns to ammonia an
 The soil, measured 770,160 times →
 Some of it is how the bag was used, and that part you can change.
 Where it was placed, when it was split, whether the water followed it, and what it was mixed with. None of that is printed on a bag, and it is where a large share of the loss happens.
-We are not going to tell you how the quarter splits between those two.
-Nobody has measured that for Pakistan, VAN included, and a number invented for the sake of a tidy page is worse than no number.
+Nobody has yet measured how this loss splits between soil and practice in Pakistan.
 What you can do, in the order it costs you
 1
 Change the form.
-A coated urea releases across the crop's demand instead of all at once on a hot surface. This is the rung that costs money, and it is deliberately first only because it is the largest.
+A coated urea releases over days instead of all at once on a hot surface. This step costs money, and it comes first because it does the most.
 2
 If you cannot change the product, change the method.
-·
-VAN field experience
 Placed in the band, drilled at sowing, or side-dressed and watered in, the same bag puts
-about a tenth more of its nitrogen into the crop
+more of its nitrogen into the crop
 than it does broadcast on a dry alkaline surface. The bag and the price are the same. Only the placement changes.
 The same holds for phosphate, DAP included:
 the closer it goes to the root, the less of it the soil locks up
 before the root arrives.
-The five methods, and what each one does →
+The 5 methods, and what each one does →
 3
 If you irrigate through the line, level the field first.
-·
-VAN field experience
-Fertigation on laser-levelled ground spreads the nutrient
-more than 15% more evenly
-and lifts yield by
-more than 10%
-. The levelling is doing part of that work, not the fertigation alone.
+On unlevelled ground the water, and everything dissolved in it, reaches the low end of the field first and the high end last or not at all. Fertigation spreads the nutrient more evenly once the ground is level, and the levelling is doing part of that work, not the fertigation alone.
 4
 Change the moment. Split it, and follow the water.
-Nitrogen given in one early dose sits on the field waiting to be lost. Split against the crop's own demand and follow the irrigation with it.
+Nitrogen given in 1 early dose sits on the field waiting to be lost. Split against the crop's own demand and follow the irrigation with it.
 5
 Build the tank mix properly.
-A correct mix for foliar and fertigation drives uptake in its own right. Four rules carry most of it.
+A correct mix for foliar and fertigation drives uptake in its own right. 4 rules carry most of it.
 Fill the tank half full first, and keep the agitator running.
-Products go in one at a time, each one dispersed before the next arrives. Adding to an empty tank, or all at once, is how a mix curdles.
+Products go in 1 at a time, each dispersed before the next arrives. Adding to an empty tank, or all at once, is how a mix curdles.
 Add in order of how hard each one is to disperse:
 wettable powders, then water-dispersible granules, then suspensions and flowables, then anything already in solution, then emulsifiable concentrates, and adjuvants and surfactants last of all.
 Jar-test anything you have not mixed before.
-The same products in the same order, at the same ratio, in a clear jar. Leave it fifteen minutes. Curdling, flakes, a layer on top or sludge at the bottom means it will do the same in a 200-litre tank, and you will find out with a blocked boom.
+The same products in the same order, at the same ratio, in a clear jar. Leave it 15 minutes. Curdling, flakes, a layer on top or sludge at the bottom means it will do the same in a 200-litre tank, and you will find out with a blocked boom.
 Spray it the day you mix it, and not into the middle of the day.
 A mix left standing separates, and a leaf takes far less in heat with the stomata shut. Early morning or late afternoon.
 This is general spray practice, not a VAN compatibility chart. Which VAN products must not share a tank, at what concentration, and what your own water does to them are answered product by product by the agronomy team, and in full for partners.
-Three of those rungs cost nothing.
-A farmer who buys not one extra bag and only moves where and when he puts the one he has is already ahead. That is the point of publishing this.
+3 of these steps cost nothing.
+A farmer who buys no extra bag and only changes where and when he puts the one he has is already ahead.
 Why Pakistani conditions make it worse
-This is soil chemistry, not farmer error. Urea applied to a surface above pH 8, which is most cultivated ground in this country, hydrolyses rapidly and escapes as ammonia before it can be taken up. What survives nitrifies to nitrate, which is mobile and leaves with the irrigation water. In waterlogged ground the remainder denitrifies to gas. Meanwhile the same alkalinity locks up phosphorus and zinc as calcium and carbonate compounds the root cannot reach. High pH is therefore doing two kinds of damage at once: it wastes the nitrogen that is applied, and it withholds the nutrients that already are.
+This is soil chemistry, not farmer error. Urea applied to a surface above pH 8, which is most cultivated ground in this country, hydrolyses rapidly and escapes as ammonia before it can be taken up. What survives nitrifies to nitrate, which is mobile and leaves with the irrigation water. In waterlogged ground the remainder denitrifies to gas. Meanwhile the same alkalinity locks up phosphorus and zinc as calcium and carbonate compounds the root cannot reach. High pH is therefore doing 2 kinds of damage at once: it wastes the nitrogen that is applied, and it withholds the nutrients that are already there.
 05
 The soil underneath the argument
 The soil underneath these numbers.
-In Punjab, that sentence is measured rather than assumed. Across 770,160 samples the province-weighted mean is pH 8.22. Seven samples in ten sit above pH 8.0; the share below neutral is 979 samples out of three-quarters of a million.
+In Punjab, this is measured. Across 770,160 samples the province-weighted mean is pH 8.22. 7 samples in 10 sit above pH 8.0; the share below neutral is 979 samples out of 770,160.
 8.22
 mean pH
 province-weighted, all 770,160 samples
@@ -371,23 +1289,19 @@ below adequate phosphorus
 below 15 ppm · 59.1% below 7 ppm
 0
 samples tested for sulfur
-not in any district file, in any column
+not tested in the Punjab survey
 Source ·
 Punjab soil testing programme · 36 district workbooks · 770,160 valid samples · c. 2016–2018
 .
-770,160
-samples across
-36
-districts; conditions, not mechanism.
 Read this before quoting ›
 The soil underneath these numbers →
 The relationship that does not hold →
 06
 The cases worth studying
 Other countries have raised how much of their nutrient reaches the crop.
-Several countries have moved it, in different ways, at different scales. India is not among them.
+Several countries have raised it, in different ways, at different scales. India is not among them.
 6.1 · Rice, and the neighbour that should worry us
-One crop, grown across the same region, measured one way: how much rice each kilogram of nitrogen produces.
+1 crop, grown across the same region, measured 1 way: how much rice each kilogram of nitrogen produces.
 Paddy produced per kilogram of nitrogen applied to rice
 kg of paddy per kg N
 Bangladesh
@@ -404,80 +1318,79 @@ India
 31.8
 Source
 ·
-N rates: IFA Fertilizer Use by Crop 2017/18, via Ludemann, Gruère, Heffer & Dobermann (2022), Scientific Data 9. Paddy yields: FAOSTAT via Our World in Data (2023). Farm size: PBS 7th Agricultural Census 2024 (Pakistan); BBS Agricultural Census 2019 via FAO WCA-2020 (Bangladesh). Paddy per kg N derived.
+N rates: IFA Fertilizer Use by Crop 2017/18, via Ludemann, Gruère, Heffer & Dobermann (2022), Scientific Data 9. Paddy yields: FAOSTAT via Our World in Data (2023). Farm size: PBS 7th Agricultural Census 2024 (Pakistan); BBS Agricultural Census 2019 via FAO WCA-2020 (Bangladesh). Paddy per kg N derived. Published per hectare (N applied, kg/ha: Bangladesh 91.8, Vietnam 127.6, China 177.6, Pakistan 120.6, Thailand 92.5, India 135.4; paddy, t/ha: 5.21, 6.11, 7.14, 4.07, 2.99, 4.31) and converted at 1 hectare = 2.471 acres, 40 kg = 1 maund.
 Country
 N applied to rice
 Paddy yield
 Paddy per kg N
 Avg farm size
 Bangladesh
-91.8 kg/ha
-5.21 t/ha
+37.2 kg/acre
+52.7 maunds/acre
 56.8
 kg
 1.29 acres
 Vietnam
-127.6 kg/ha
-6.11 t/ha
+51.6 kg/acre
+61.8 maunds/acre
 47.9
 kg
 n/a
 China
-177.6 kg/ha
-7.14 t/ha
+71.9 kg/acre
+72.2 maunds/acre
 40.2
 kg
 n/a
 Pakistan
-120.6 kg/ha
-4.07 t/ha
+48.8 kg/acre
+41.2 maunds/acre
 33.7
 kg
 5.3 acres
 Thailand
-92.5 kg/ha
-2.99 t/ha
+37.4 kg/acre
+30.3 maunds/acre
 32.3
 kg
 n/a
 India
-135.4 kg/ha
-4.31 t/ha
+54.8 kg/acre
+43.6 maunds/acre
 31.8
 kg
 n/a
 Bangladesh grows 68% more rice per kilogram of nitrogen than Pakistan, on farms averaging 1.29 acres against Pakistan’s 5.3. India sits below Pakistan.
-What this comparison can and cannot carry.
-Nitrogen rates are survey estimates for the 2017/18 season; paddy yields are 2023. Recalculating both on a same-year 2018 basis changes the values but not the ranking. Bangladesh and Vietnam still convert nitrogen into rice better than Pakistan, and India still sits below us. Myanmar is excluded: it applies almost no nitrogen at all, which produces a flattering ratio and a poor harvest, and it is not a model for anything.
-Bangladesh is the uncomfortable case, and the useful one. Smaller farms, less capital, the same monsoon, and its paddy yield rose from 3.40 to 5.21 tonnes per hectare since 2000 while using less nitrogen per hectare than Pakistan. Nothing about that is explained by money or land. It is explained by balance, variety and how nutrient is delivered.
+Limits of this comparison.
+Nitrogen rates are survey estimates for the 2017/18 season; paddy yields are 2023. Recalculating both on a same-year 2018 basis changes the values but not the ranking. Bangladesh and Vietnam still convert nitrogen into rice better than Pakistan, and India still sits below us. Myanmar is excluded: it applies almost no nitrogen at all, which produces a flattering ratio and a poor harvest.
+Bangladesh is the uncomfortable case, and the useful one. Smaller farms, less capital, the same monsoon, and its paddy yield rose from 34.4 to 52.7 maunds an acre since 2000 (3.40 to 5.21 t/ha, FAOSTAT) while using less nitrogen per acre than Pakistan. Nothing about that is explained by money or land. It is explained by balance, variety and how nutrient is delivered.
 6.2 · Decoupling at national scale
 China
-Cut total nutrient use 22.6% between 2014 and 2023 and still raised cereal yield 8.9%. Its national programme to halt growth in fertilizer use took effect in 2015. The year the two lines separate. China’s own measured nutrient utilisation rate on rice, wheat and maize rose from 35.2% in 2015 to 42.6% in 2024.
+Cut total nutrient use 22.6% between 2014 and 2023 and still raised cereal yield 8.9%. Its national programme to halt growth in fertilizer use took effect in 2015, the year the 2 lines separate. China’s own measured nutrient utilisation rate on rice, wheat and maize rose from 35.2% in 2015 to 42.6% in 2024.
 United States
-Raised cereal production 35% between 2000 and 2023 on a fertilizer use that rose about 1%. Nutrient productivity 20.8 → 27.8 kg of cereal per kg of nutrient. Two and a half times Pakistan’s.
+Raised cereal production 35% between 2000 and 2023 on a fertilizer use that rose about 1%. Nutrient productivity rose from 20.8 to 27.8 kg of cereal per kg of nutrient, 2.5 times Pakistan’s.
 Balance
-Feeding the whole nutrient basket instead of pushing nitrogen. Soil-test-based, crop-specific formulations rather than one blend for everything.
+Feeding the whole nutrient basket instead of pushing nitrogen. Soil-test-based, crop-specific formulations rather than 1 blend for everything.
 Use efficiency
 The same nutrient, more of it reaching the plant. China’s own measured utilisation rate, 35.2% (2015) to 42.6% (2024).
 Right stage
 Splitting and timing applications to the crop’s demand curve instead of front-loading the season.
 Right method
 Deep placement, banding and fertigation in place of surface broadcast. Putting nutrient where the root is rather than where the loss is.
-The part we will not overstate.
-China still applies roughly two and a half times as much nutrient per hectare as Pakistan, 394 against 160 kg per hectare of arable land in 2023 (World Bank). This is an argument about conversion, not volume. China’s own use peaked in 2014, the year before its programme was issued, so the policy consolidated a turn already under way rather than causing it single-handedly.
+China still applies roughly 2.5 times as much nutrient per acre as Pakistan, 159 against 65 kg an acre of arable land in 2023 (World Bank, published as 394 and 160 kg/ha). This is an argument about conversion, not volume. China’s own use peaked in 2014, the year before its programme was issued, so the policy consolidated a turn already under way rather than causing it single-handedly.
 Source
 ·
 World Bank AG.PRD.CREL.MT and AG.YLD.CREL.KG (FAO); FAOSTAT nutrient use via Our World in Data. Nutrient utilisation rate: Ministry of Agriculture and Rural Affairs, China, January 2021 and January 2025. Ratios derived.
 07
 Application
 The half of the problem nobody buys.
-A bag is not a dose. The same nutrient, in the same quantity, does different things depending on the form it is in, the moment it is given, and the way it is placed. Surface-broadcast urea on hot alkaline ground volatilises; the identical nitrogen in a coated form, released across the crop’s demand curve, does not. A micronutrient sprayed at the wrong growth stage is an expense; the same spray at the right stage is a yield.
+A bag is not a dose. The same nutrient, in the same quantity, does different things depending on the form it is in, the moment it is given, and the way it is placed. Surface-broadcast urea on hot alkaline ground volatilises; the identical nitrogen in a coated form is released over days, so less of it is exposed at any one moment. A micronutrient sprayed at the wrong growth stage is an expense; the same spray at the right stage is a yield.
 Pakistan buys fertilizer by the bag and by the nutrient percentage printed on it. Almost nothing in that purchase describes when, how or in what form it will be delivered, which is where most of the loss happens.
-How application changes the answer. The five methods →
+How application changes the answer. The 5 methods →
 08
 What VAN builds against each of these
-Five gaps, and what each one actually requires.
-Every product below is released through VAN’s own PNAC-accredited laboratory. Twenty of the twenty-three brands also hold a live PSQCA manufacturing licence; the other three say on their own pages why they do not.
+5 gaps, and what each one actually requires.
+Every product below is released through VAN’s own PNAC-accredited laboratory. 20 of the 23 brands also hold a live PSQCA manufacturing licence.
 The gap
 What it requires
 What we make
@@ -500,9 +1413,9 @@ VL-Boron
 VL-Micromix
 Nitrogen loss
 Nitrogen held in the soil long enough for the crop to reach it, on ground where plain urea volatilises
-Vital Urea. Sulfur-coated, patented, released across 7–18 days
+Vital Urea. Sulfur-coated, patented, released in steps once water reaches the granule
 Locked phosphorus and zinc
-Local, temporary acidification at the root zone to release what alkaline soil has bound
+Local, temporary acidification at the root zone, which may help phosphorus and zinc that alkaline soil has bound
 The sulfur coating on Vital Urea
 ·
 Green Sulfur
@@ -516,23 +1429,15 @@ A programme that says what to apply, at which growth stage, at what rate, not a 
 Delivery
 Forms that suit how the nutrient is actually going out. Fertigated, foliar, drone, broadcast, side-dressed
 Water-soluble, liquid and foliar grades across the range
-The same seven, read against the soil data →
+What VAN makes against each soil condition →
 09
-The evidence behind this page
-How to read the evidence on this page.
-Everything in sections 1 to 6 is national data from public sources. It establishes the problem. The evidence for VAN’s own answer is set out separately.
+Evidence
+How to read the evidence.
+Everything in sections 1 to 6 is national data from public sources.
 What is independently established:
 that coated and controlled-release nitrogen reduces losses and improves nitrogen recovery against uncoated urea, and that elemental sulfur raises phosphorus availability in calcareous soil. Both are peer-reviewed findings about the technology, not measurements of our product.
-What we have of our own:
-a replicated field trial at VAN’s trial station, spring 2024, published in 2025, in which two stage-timed applications of sulfur-coated urea outperformed a five-application conventional urea and CAN programme on maize. We cite that finding as the paper states it.
-Where the trials stand:
-each product page prints the trial it has, and only that. If you need trial data for a specific product before you buy it, ask. Where a trial exists, you will get it.
-The trial
-Umair, A., Manzoor, M., Saleem, M. S., Akram, S., Ali, M., Batool, A., Javaid, T., Javaid, A., Sharif, M. N. & Haider, M. S. (2025). Efficacy Evaluation of Different Doses of Nitrgenous Fertilizers on the Growth and Yield of Maize (Zea mays). Planta Animalia 4(3), 129–135.
-DOI 10.71454/PA.004.03.0126
-.
-Randomised complete block design, three replications, DK-6321 hybrid, VAN’s trial station, spring 2024.
-Vital Urea. The evidence in full →
+Trial data.
+If you need trial data for a specific product before you buy it, ask. Where a trial exists, you will get it.
 10
 Sources
 Every figure, its source, its year.
@@ -555,8 +1460,8 @@ All-cereal yield and production
 World Bank AG.YLD.CREL.KG · AG.PRD.CREL.MT (FAO)
 2000–2023
 Nitrogen use efficiency
-Lassaletta et al., Environmental Research Letters 9:105011
-2014
+FAOSTAT, Cropland Nutrient Balance, December 2025 release
+1961 to 2023
 Nitrogen surplus, partial factor productivity
 Shahzad et al., Nature Sustainability
 2019
@@ -569,30 +1474,21 @@ Comptroller and Auditor General of India, Report No. 16 of 2015
 India. Urea retail price
 Department of Fertilizers, Government of India
 held since 2018
-Sulfur-coated urea field trial
-Umair et al., Planta Animalia 4(3) 129–135
-2025
 Punjab soil survey
 Punjab soil testing programme · 36 district workbooks · 770,160 valid samples · c. 2016–2018
 c. 2016–2018
-Figures marked derived are our arithmetic on the published inputs shown, not published figures in themselves. Where two series use different denominators, cropland in section 1, arable land in sections 3 and 6, we say so rather than presenting them as the same measure.
+Derived figures are our arithmetic on the published inputs shown. Section 1 uses cropland; sections 3 and 6 use arable land. “Excluded territory” in the country lists: (A Territory Excluded per Passport Directive).
 Have a question the charts don’t answer?
 The agronomy team answers on the same WhatsApp line as everything else.
 Ask on WhatsApp
 Crop nutrition engineered, manufactured, registered and tested in Pakistan.
-Plant
-·
-49-Km Multan Road, Phool Nagar Bypass, Lahore
-Head office
-·
-605 Al-Hafeez Heights, Gulberg III, Lahore 54660
++92 42 35762215
 WhatsApp
 +92 300 5003041
-Landline
-+92 42 35762215
 info@van.com.pk
 Products
 All 23 brands
+Compare them
 Vital Urea
 Where to buy
 Verify a bag
@@ -600,20 +1496,25 @@ Crops
 28 crop plans
 Wheat
 How you apply it
+Soil Atlas
 Knowledge
 Why Pakistan must shift
-The soil, measured
-Product knowledge decks
+Product decks
 Circular economy
+Vitalytics tools
 Company
-Make with us
+Your Brand
 VAN Lab
-Tools
-About & contact
+About
+Company profile
+Head office
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+Plant
+49-Km Multan Road, Phool Nagar Bypass, Lahore
 © 2026
 Vital Agri Nutrients (Pvt) Ltd
-·
-www.van.com.pk
+Full member of CropLife Pakistan since 2024
+How VAN competes
 LinkedIn
 Facebook
 Instagram

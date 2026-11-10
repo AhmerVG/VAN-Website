@@ -51,17 +51,17 @@ export default function Tools() {
               who it is for and what it costs to use, in that order.
               Old headline, for revert: "Instruments, not brochures." */}
           <span className="eyebrow navy">Vitalytics · VAN’s tools</span>
-          <h1 className="max-w-[24ch]">Work out your own numbers.</h1>
+          <h1 className="max-w-[24ch]">Tools that work out fertiliser quantities, crop water needs and other figures for your own field</h1>
           {/* D-177, Tahir 26 Sep 2026: "are we not trying to say more and doing less?" The lead said "14 tools
               you can use right now ... what to apply, when to apply it". It is now the honest count. */}
           <p className="lead mt-4">
-            {live} finished tools and {pilot} pilots. No login and nothing to install. Put in your crop,
-            your acres, your sowing date or your soil reading, and each tool gives back an answer for
+            VAN has {live} finished tools and {pilot} pilot tools. The pilot tools work, but they do not yet cover every crop. You do not need to sign in to any of them or install anything. Enter your crop,
+            your acres, your sowing date or your soil test reading, and each tool works out a result for
             your own field.
           </p>
           {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */}
           <p className="small mt-3">
-            {soon} more tools are coming. Turn on the switch in the finder to see them.
+            {soon} more tools are being built. To see them, turn on the switch “Include the {soon} still being built” below.
           </p>
         </div>
       </section>
@@ -75,19 +75,19 @@ export default function Tools() {
       <section className="sec" style={{ background: 'var(--sand-2)' }} id="tools-converter"><div className="wrap">
         <div className="mb-6">
           <span className="eyebrow navy">Use it here</span>
-          <h2 className="max-w-[26ch]">Land, weight, and what is in the bag.</h2>
-          <p className="lead mt-3">3 sums a farmer or a dealer does on paper every week. The bag section uses VAN's registered analyses, so the kilograms it gives you are the guaranteed figures off the label.</p>
+          <h2 className="max-w-[26ch]">Convert land, weight and the nutrients in a bag</h2>
+          <p className="lead mt-3">This converter does 3 calculations that farmers and dealers otherwise do on paper. The “What's in the bag” tab uses the declared analyses of VAN’s brands, so the kilograms it shows are the guaranteed figures printed on the label.</p>
         </div>
         <Converter />
       </div></section>
 
       <section className="sec"><div className="wrap">
         <div className="panel p-5 lg:p-6">
-          <span className="eyebrow navy">What they run on</span>
-          <p className="mt-2">VAN’s <b>{CROPS.length} published crop plans</b> and <b>{PRODUCTS.filter(p => !p.family).length} registered analyses</b>, the Punjab survey of <b>{SOIL_HEADLINE.samples} soil samples</b>, and public methods named on each tool: FAO Paper 56 for water, IPNI for what a harvest removes. Estimates are marked as estimates.</p>
+          <span className="eyebrow navy">What the tools are based on</span>
+          <p className="mt-2">The tools are based on 5 sources: VAN’s <b>{CROPS.length} published crop plans</b>; the declared analyses of VAN’s <b>{PRODUCTS.filter(p => !p.family).length} brands</b>; the Punjab soil survey of <b>{SOIL_HEADLINE.samples} samples</b>, tested in about 2016 to 2018; FAO Irrigation and Drainage Paper 56, for crop water needs; and figures from the International Plant Nutrition Institute (IPNI), for the nutrients taken out in the harvested crop. Wherever a tool shows an estimate, the figure is labelled as an estimate.</p>
           <div className="mt-5">
             <span className="eyebrow navy">Pages, not tools</span>
-            <p className="small muted mt-1">No figures needed from you.</p>
+            <p className="small muted mt-1">These pages do not need any figures from you.</p>
             <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-3">
               {TOOL_PAGES.map(([t, d, h]) => <li key={t}><a className="panel p-4 block" href={h}><b style={{ color: 'var(--navy)' }}>{t} →</b><span className="block small muted mt-1">{d}</span></a></li>)}
             </ul>
@@ -97,8 +97,8 @@ export default function Tools() {
 
       <section className="wrap sec-tight">
         <div className="panel-navy p-6 lg:p-8 grid lg:grid-cols-[1fr_auto] gap-5 items-center">
-          <div><h3>Want one of these sooner?</h3><p className="mt-2" style={{ color: 'rgba(255,255,255,.8)' }}>Tell us which, and what you would use it for. That is how the order gets decided.</p></div>
-          <WaButton href={WA.farmer} lg>Tell us on WhatsApp</WaButton>
+          <div><h3>Ask for a tool to be built sooner</h3><p className="mt-2" style={{ color: 'rgba(255,255,255,.8)' }}>Tell VAN which tool you need and what you would use it for. VAN uses these requests to decide the order in which tools are built.</p></div>
+          <WaButton href={WA.farmer} lg>Send VAN a WhatsApp message</WaButton>
         </div>
       </section>
     </div>

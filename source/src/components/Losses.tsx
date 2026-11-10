@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react'
 import { LOSSES, HOME_COPY } from '@/data/site'
 import { PACK_PNG } from '@/data/assets'
 import { useInView } from '@/hooks/useInView'
-import { SectionHead } from './bits'
+import { SectionHead, noStop } from './bits'
 
 /** Loss 1: ammonia rising off the surface, nitrate sinking with the water. */
 function AmmoniaSvg() {
@@ -63,7 +63,7 @@ function RootSvg() {
         <path key={i} d={d} className="a-draw-loop" stroke="#F0EEE5" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeDasharray="200" strokeDashoffset="200" style={{ animationDelay: `${i * 0.3}s` }} />
       ))}
       <g className="a-pulse"><circle cx="196" cy="112" r="10" fill="#B0841A" /><text x="196" y="116" textAnchor="middle" fontSize="11" fontWeight="700" fill="#fff" fontFamily="Public Sans, sans-serif">K</text></g>
-      <text x="8" y="122" fontSize="11" fill="#fff">1 kg K for every 83 kg N</text>
+      <text x="8" y="122" fontSize="11" fill="#fff">1 kg K₂O for every 83 kg N</text>{/* Tahir 9 Nov 2026: the 83 to 1 ratio is per kg of potash as K₂O (FAOSTAT 2023); was "1 kg K" */}
     </svg>
   )
 }
@@ -84,7 +84,7 @@ export function Losses() {
                 <div className="p-5 pb-3">
                   {/* 28 Sep 2026: the amber loss colour (#B97F1C) fails WCAG AA at this text size; the gold-text token is the passing equivalent already used elsewhere for the same hue. */}
                   <span className="eyebrow" style={{ color: l.colour === '#B97F1C' ? 'var(--gold-text)' : l.colour }}>{l.kicker}</span>
-                  <h3>{l.title}</h3>
+                  <h3>{noStop(l.title)}</h3>
                   <p className="mt-3 muted">{l.text}</p>
                 </div>
                 <div className="mx-5 rounded-lg overflow-hidden" style={{ background: 'var(--sand-2)' }}><Art /></div>

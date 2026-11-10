@@ -1,6 +1,6 @@
 import { CROP_PLANS } from '@/data/catalogue'
 import { useSowing, daysAfterSowing, addDays, prettyDate, stageNow, hasStageModel, rowsDue, windowCheck } from '@/lib/sowing'
-import { rateLabel } from '@/lib/season'
+import { ratePackLabel, seasonWords } from '@/lib/season'
 import { PackShot } from './bits'
 import { Ur, UrLabel } from './Ur'
 
@@ -37,16 +37,17 @@ export function CropNow({ cropKey, cropName }: { cropKey: string; cropName: stri
   if (das === null) return null
   const cp = CROP_PLANS[cropKey]
   const check = windowCheck(cropKey, sown.iso)
+  const sw = seasonWords(cropKey)   // 6 Nov 2026: orchards and planted crops are not "sown"
 
 /* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
   // Sown in the future, or typed wrong. Say so rather than printing "day −12".
   if (das < 0) {
     return (
       <Panel>
-        <p className="lead">That date is still ahead. {prettyDate(sown.iso)}.</p>
+        <p className="lead">{prettyDate(sown.iso)} is in the future.</p>
         <p className="small mt-2 max-w-[140ch]">
-          The programme and the shopping list below are what you want before sowing. Come back once
-          the crop is in.
+          {sw.before}, use the plan and the shopping list below. Come back to this question
+          {' '}{sw.done}.
         </p>
       </Panel>
     )
@@ -64,11 +65,11 @@ export function CropNow({ cropKey, cropName }: { cropKey: string; cropName: stri
           <div>
             <div className="flex items-baseline gap-3 flex-wrap">
               <span className="tag tag-green">Stage {st.index} of {st.total}</span>
-              <span className="cap">day {das} after sowing</span>
+              <span className="cap">day {das} {sw.after}</span>
             </div>
             <h3 className="mt-2 text-[clamp(22px,2.2vw,30px)]">
               {st.past
-                ? <>Your {cropName} is at or past maturity.</>
+                ? <>Your {cropName} is at or past maturity</>
                 : <Ur kind="stage" en={st.stage} />}
             </h3>
             {!st.past && (
@@ -76,9 +77,9 @@ export function CropNow({ cropKey, cropName }: { cropKey: string; cropName: stri
             )}
             {st.past && (
               <p className="muted mt-2 max-w-[140ch]">
-                On a normal Lahore season your crop has passed the 1,400 degree days the wheat table
-                puts at maturity, and you are on day {das}. Nothing below is due. The programme stays
-                here for next season.
+                In a normal Lahore season, your crop has passed the 1,400 growing degree days at which
+                the wheat stage table places maturity. Your crop is on day {das} after sowing. Nothing
+                in the plan below is due this season, and it stays here for next season.
               </p>
             )}
             {!st.past && nextIso && st.next && (
@@ -87,11 +88,12 @@ export function CropNow({ cropKey, cropName }: { cropKey: string; cropName: stri
                 <b>{prettyDate(nextIso)}</b> (day {st.nextAt}).
               </p>
             )}
+            {/* Tahir 7 Nov 2026 (CR-9): was "...so they move with the temperatures your crop actually meets." The dates use Lahore's 1991-2020 normals, not this season's weather. */}
             {check && !check.inWindow && (
               <p className="cap mt-3 max-w-[140ch]">
-                Sown about {check.monthsOut} month{check.monthsOut === 1 ? '' : 's'} {check.direction === 'early' ? 'before' : 'after'}
-                VAN's published {check.label} window. The stage dates above are worked in degree days from
-                your own sowing date, so they move with the temperatures your crop actually meets.
+                Sown about {check.monthsOut} month{check.monthsOut === 1 ? '' : 's'} {check.direction === 'early' ? 'before' : 'after'}{' '}
+                VAN’s published {check.label} sowing window. The stage dates above are calculated in growing
+                degree days from your own sowing date, so they follow normal Lahore temperatures after your sowing date.
               </p>
             )}
           </div>
@@ -101,10 +103,10 @@ export function CropNow({ cropKey, cropName }: { cropKey: string; cropName: stri
               <UrLabel k="dueNow" en={`Due at this stage · per acre`} />
             </div>
             {st.past ? (
-              <p className="small">Nothing is due. The season’s applications are all behind you.</p>
+              <p className="small">Nothing is due. All of this season’s applications have passed.</p>
             ) : due.length === 0 ? (
               <p className="small">
-                The published {cropName} programme puts nothing on at this stage.
+                The published {cropName} plan applies nothing at this stage.
                 {st.next ? <> The next application is at {st.next}.</> : null}
               </p>
             ) : (
@@ -115,13 +117,13 @@ export function CropNow({ cropKey, cropName }: { cropKey: string; cropName: stri
                       {r.slug && <PackShot slug={r.slug} style={{ height: 42, width: 'auto' }} />}
                       <span className="flex-1">
                         <b style={{ color: r.commodity ? 'var(--muted)' : 'inherit' }}>{r.product}</b>
-                        <span className="block cap">{rateLabel(r)} · {r.method}</span>
+                        <span className="block cap">{ratePackLabel(r)} · {r.method}</span>{/* L1 10 Nov 2026 (crops 2): the pack size is named with the rate ("½ of a 10 kg bag"). Was the rate alone. */}
                       </span>
                     </li>
                   ))}
                 </ul>
                 <p className="cap mt-2">
-                  From VAN's published {cropName} plan: the programme rows for this stage.
+                  These are the rows of VAN’s published {cropName} plan for this stage.
                 </p>
               </>
             )}
@@ -140,12 +142,12 @@ export function CropNow({ cropKey, cropName }: { cropKey: string; cropName: stri
     <Panel>
       <div className="grid md:grid-cols-[1fr_1fr] gap-6">
         <div>
-          <span className="cap">Sown {prettyDate(sown.iso)}</span>
+          <span className="cap">{sw.started} {prettyDate(sown.iso)}</span>
           <h3 className="mt-1 text-[clamp(22px,2.2vw,30px)]">
-            Day {das} of your {cropName}.
+            Your {cropName}: day {das} {sw.after}
           </h3>
           <p className="muted mt-2 max-w-[140ch]">
-            VAN publishes the {cropName} programme stage by stage, but not how many days each stage
+            VAN publishes the {cropName} plan stage by stage, but not how many days each stage
             lasts, so your current stage cannot be shown yet.
           </p>
         </div>
@@ -161,8 +163,8 @@ export function CropNow({ cropKey, cropName }: { cropKey: string; cropName: stri
           </ol>
           {check && !check.inWindow && (
             <p className="cap mt-3">
-              Your date is about {check.monthsOut} month{check.monthsOut === 1 ? '' : 's'} {check.direction === 'early' ? 'before' : 'after'}
-              VAN's published {check.label} window.
+              Your date is about {check.monthsOut} month{check.monthsOut === 1 ? '' : 's'} {check.direction === 'early' ? 'before' : 'after'}{' '}
+              VAN’s published {check.label} {sw.window}.
             </p>
           )}
           <div className="flex flex-wrap gap-2 mt-3">

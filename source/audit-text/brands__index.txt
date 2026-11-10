@@ -2,14 +2,14 @@ PAGE: /brands/index.html
 ======================================================================
 Products
 Crop Plans
-Soil
-Tools
+Your Brand
+Soil Atlas
+Vitalytics
 VAN Lab
 Knowledge
 About
-Make with us
-For farmers
-Menu ☰
+Search
+☰
 View
 Simple view
 Our brands
@@ -19,7 +19,7 @@ Sell it as a VAN brand, or make it yours. All
 23
 are open for own-brand manufacturing, Vital Urea included.
 22
-PSQCA licences
+PSQCA licences on these brands
 8
 Pakistan Standards
 LAB 336
@@ -27,9 +27,10 @@ LAB 336
 24
 of
 24
-cards.
+shown.
 23
-brands plus the NP Range family card
+brands and the NP Range
+Composition chart →
 Cards
 Table
 All
@@ -62,24 +63,21 @@ Early growth
 Phosphorus
 Own-brand
 V. Ammonium Phosphate
-10-44-0 + Fe·Mn·Cu
+10:44:0 + Fe
 Fertigation
 Mid-life
-6-32
-5-40
-8-38
 Phosphorus
 Own-brand
 VAN NP Range
-the NP Range · a family of three grades
-6-32 (Green Phosphate) · 5-40 · 8-38. Engineered against calcium fixation
+a family of 3 grades
+6:32 (Green Phosphate) · 5:40 · 8:38. Engineered against calcium fixation
 Broadcast
 Basal
 Sowing
 Phosphorus
 Own-brand
 Green Phosphate
-6-32-0 · humic-coated acidic. The NP Range 6-32 grade
+6:32:0 · humic-coated acidic. The NP Range 6:32 grade
 Broadcast
 Sowing
 Phosphorus
@@ -97,13 +95,14 @@ Mid-life
 Potash
 Own-brand
 Vital Potash
-N 11 · K₂O 44. Coated with boron in two forms
+N 11% · K₂O 44%. Coated with boron in 2 forms
 Fertigation
 Mid-life
 Potash
 Own-brand
 Fusion Potash
-2-0-50 + S 1.5% · B 1% · Mg 1% · two forms
+2:0:50 + S 1.5% · B 1% · Mg 1% · 2 forms
+Broadcast
 Fertigation
 Sowing
 Potash
@@ -122,21 +121,21 @@ Maturity
 Potash
 Own-brand
 V-Potash Plus
-10-0-40 + Mg · B · chelated Fe
+10:0:40 + Mg · B · chelated Fe
 Fertigation
 Mid-life
-NPK Blends
+NPK
 Own-brand
 Crop Force
-NPK 15-15-15 · 12-12-18
+NPK 12:12:18
 Drilling
 Side dressing
 Band placement
 Early growth
-NPK Blends
+NPK
 Own-brand
 VL-NPK
-Liquid 8-8-6 w/v. N8 · P8 · K6
+Liquid 8:8:6 w/v. N8 · P8 · K6
 Foliar
 Mid-life
 Micronutrients
@@ -155,6 +154,7 @@ Micronutrients
 Own-brand
 V-Zinc 10%
 Zinc sulfate 10% w/v
+Fertigation
 Foliar
 Germination
 Early growth
@@ -184,6 +184,7 @@ Secondary Nutrients
 Own-brand
 Green Sulfur
 Sulfur 70% WDG
+Broadcast
 Fertigation
 Sowing
 Soil Health & Biologicals
@@ -196,7 +197,7 @@ Soil prep
 Soil Health & Biologicals
 Own-brand
 Humi Grow
-Potassium humate pellets
+Potassium humate pellets · Humic Acid 40% · K₂O 7%
 Broadcast
 Sowing
 Soil Health & Biologicals
@@ -221,19 +222,13 @@ Same specification, your brand name.
 All 23 are open for own-brand manufacturing, Vital Urea included. Same line, same QC, your label.
 Make it your brand →
 Crop nutrition engineered, manufactured, registered and tested in Pakistan.
-Plant
-·
-49-Km Multan Road, Phool Nagar Bypass, Lahore
-Head office
-·
-605 Al-Hafeez Heights, Gulberg III, Lahore 54660
++92 42 35762215
 WhatsApp
 +92 300 5003041
-Landline
-+92 42 35762215
 info@van.com.pk
 Products
 All 23 brands
+Compare them
 Vital Urea
 Where to buy
 Verify a bag
@@ -241,20 +236,25 @@ Crops
 28 crop plans
 Wheat
 How you apply it
+Soil Atlas
 Knowledge
 Why Pakistan must shift
-The soil, measured
-Product knowledge decks
+Product decks
 Circular economy
+Vitalytics tools
 Company
-Make with us
+Your Brand
 VAN Lab
-Tools
-About & contact
+About
+Company profile
+Head office
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+Plant
+49-Km Multan Road, Phool Nagar Bypass, Lahore
 © 2026
 Vital Agri Nutrients (Pvt) Ltd
-·
-www.van.com.pk
+Full member of CropLife Pakistan since 2024
+How VAN competes
 LinkedIn
 Facebook
 Instagram

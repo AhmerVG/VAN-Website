@@ -1,6 +1,7 @@
 import { SOIL } from '@/data/soil'
 import { SOIL_READINGS } from '@/data/soilReadings'
 import { analyteByKey, districtByKey, fmtVal as fmtRaw, medianStats, type AnalyteKey } from '@/lib/soil'
+import { noStop } from '@/components/bits'   // Tahir 7 Nov 2026 (CR-23): no full stop at the end of a heading
 
 // '0.62%' not '0.62 %': a percent sign sits on the number.
 const fmtVal = (a: AnalyteKey, v: number | null) => fmtRaw(a, v).replace(' %', '%')
@@ -23,11 +24,11 @@ export function SoilReadingPanel({ analyte, district }: { analyte: AnalyteKey; d
   const dShare = d && r.share ? (d.summary[r.share.field] as number | null) : null
   return (
     <div className="panel-soil p-5" aria-live="polite">
-      <span className="eyebrow soil">Reading it · <span style={{ textTransform: /[a-z]H\b|pH/.test(r.name) ? 'none' : undefined }}>{r.name}</span></span>
-      <h3>{headline}</h3>
+      <span className="eyebrow soil">About this soil test · <span style={{ textTransform: /[a-z]H\b|pH/.test(r.name) ? 'none' : undefined }}>{r.name}</span></span>
+      <h3>{noStop(headline)}</h3>
       <dl className="rd-list mt-3">
-        <dt>The colour</dt>
-        <dd>{A.note.charAt(0).toUpperCase() + A.note.slice(1)}.{r.noMedianLine ? '' : ` Half of Punjab’s samples read below ${medP}, the median.`}{r.extra ? ` ${r.extra}` : ''}</dd>
+        <dt>Colour scale and median</dt>
+        <dd>{A.note.charAt(0).toUpperCase() + A.note.slice(1)}.{r.noMedianLine ? '' : ` The median was ${medP}: half of Punjab’s samples were below this value.`}{r.extra ? ` ${r.extra}` : ''}</dd>
         <dt>Why it matters for the crop</dt>
         <dd>{r.crop}</dd>
         <dt>{r.groundLabel}</dt>
@@ -39,7 +40,7 @@ export function SoilReadingPanel({ analyte, district }: { analyte: AnalyteKey; d
           </>
         )}
       </dl>
-      <p className="cap mt-3">Sulfur has no map, because it was never measured. See the analyte list below.</p>
+      <p className="cap mt-3">Sulfur has no map because the survey did not test it. See the list of soil tests below.</p>
     </div>
   )
 }

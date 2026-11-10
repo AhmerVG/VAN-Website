@@ -5,6 +5,7 @@ import { PACK_PNG } from '@/data/assets'
 import { SOIL_HEADLINE } from '@/data/soilLens'
 import { useInView, useReducedMotion, useSectionIndex } from '@/hooks/useInView'
 import { scrollToId } from '@/lib/router'
+import { noStop } from '@/components/bits'   // Tahir 7 Nov 2026 (CR-23): no full stop at the end of a heading
 
 /* ————— The act index: B's pill row, A's rail ————— */
 /**
@@ -48,7 +49,7 @@ export function ActHead({ n, kicker, title, lead, tone = 'navy', right }: { n: s
     <div className="flex flex-col lg:flex-row lg:items-end gap-4 lg:gap-10 mb-7 lg:mb-9">
       <div className="flex-1 min-w-0">
         <span className={`eyebrow ${tone}`}><span className="k-num">{n}</span>{kicker}</span>
-        <h2 className="max-w-[22ch]">{title}</h2>
+        <h2 className="max-w-[22ch]">{noStop(title)}</h2>
         {lead && <p className="lead mt-3">{lead}</p>}
       </div>
       {right && <div className="shrink-0">{right}</div>}
@@ -78,18 +79,19 @@ export function NationalStrip() {
   const wheat = NATIONAL.productivity.rows.find(r => r.crop === 'Wheat')
   const figures: { n: string; unit?: string; cap: string; tone: string }[] = [
     // D-143: was n String(kgha) with unit 'kg/ha' (156) and 'a hectare'. usePerHa now holds kg per acre. Revert: with usePerHa.
-    { n: String(Math.round(kgha)), unit: 'kg/acre', tone: 'var(--navy)', cap: `Nutrient Pakistan puts on an acre of cropland in a year. The world average is ${Math.round(world)}. FAO publishes these as 156 and 117 kg a hectare.` },
-    { n: '83', unit: ':1', tone: 'var(--rust)', cap: 'Nitrogen against potash, by tonne. Crops are not fed on 1 nutrient.' },
-    { n: wheat?.perKg ?? '', tone: 'var(--rust)', cap: 'What a kilogram of nutrient returns in wheat now, against the year 2000. Derived.' },
-    { n: `≈${NATIONAL.nitrogen.pk}%`, tone: 'var(--soil)', cap: `The share of the nitrogen added to cropland that leaves the field in the harvest (FAO, 2023). In the United States it is about ${NATIONAL.nitrogen.us}%.` },
+    // Tahir 7 Nov 2026 (CO-23): FAO 2023 is a calendar year and 1999-2000 to 2023-24 are fiscal years (July to June), named once. CO-20: potash as K₂O.
+    { n: String(Math.round(kgha)), unit: 'kg per acre', tone: 'var(--navy)', cap: `of fertiliser nutrients (nitrogen, phosphate as P₂O₅ and potash as K₂O, added together) applied to each acre of Pakistan’s cropland in 2023 (calendar year), against a world average of ${Math.round(world)} kg per acre. We converted FAO’s figures from per hectare to per acre.` },
+    { n: '83', unit: ':1', tone: 'var(--rust)', cap: 'tonnes of nitrogen (N) applied in Pakistan in 2023 for every tonne of potash (K₂O).' },
+    { n: wheat?.perKg ?? '', tone: 'var(--rust)', cap: 'change between fiscal years 1999-2000 and 2023-24 (July to June) in the wheat yield obtained for each kg of fertiliser nutrient: wheat yield per acre divided by the fertiliser nutrient applied per acre of arable land, which covers all crops, not only wheat. We calculated it from published figures.' },   // L1 editor fix 7 Nov 2026 (company-a M1): the measure spelled out (method as in NATIONAL.productivity).
+    { n: `${NATIONAL.nitrogen.pk}%`, tone: 'var(--soil)', cap: `Pakistan’s nitrogen use efficiency in 2023: the share of the nitrogen added to cropland that was taken out in the harvested crop (FAO estimate). In the United States it was about ${NATIONAL.nitrogen.us}%.` },
   ]
   return (
     <section className="sec" id="picture" style={{ background: 'var(--sand-2)' }}>
       <div className="wrap">
         <ActHead
           n="01" kicker="The national picture" tone="rust"
-          title={<>{NATIONAL.h1a} <span style={{ color: 'var(--rust)' }}>{NATIONAL.h1b}</span></>}
-          right={<a className="btn btn-navy" href="#/knowledge/why-pakistan-must-shift">The whole case, with every chart and source →</a>}
+          title={<>{NATIONAL.h1a} <span style={{ color: 'var(--rust)' }}>{noStop(NATIONAL.h1b)}</span></>}
+          right={<a className="btn btn-navy" href="#/knowledge/why-pakistan-must-shift">The full analysis, with every chart and source →</a>}
         />
         <div ref={ref} className={`ns-row ${inView ? 'on' : ''}`}>
           {figures.map(f => (
@@ -103,7 +105,7 @@ export function NationalStrip() {
             page and /soil carry them); the sources paragraph went with the charts it belongs to.
             The block is the 4 figures, the knowledge link and 1 line of sources. Revert: the v61 zip. */}
         <p className="src ns-src">
-          Sources: Our World in Data / FAO, FAOSTAT (including the Cropland Nutrient Balance, December 2025 release), the Pakistan Economic Survey. The soil data, {SOIL_HEADLINE.samples} Punjab samples across {SOIL_HEADLINE.districts} districts, is on <a href="#/soil">the soil page</a>.
+          Sources: Our World in Data / FAO, which publishes fertiliser use per hectare (Pakistan 156 kg, world 117 kg); we divided these figures by 2.471 to give kg per acre; FAOSTAT (including the Cropland Nutrient Balance, December 2025 release); World Bank indicator AG.CON.FERT.ZS; the Pakistan Economic Survey.{/* L2 fix 9 Nov 2026 (company W11): World Bank source added */} The soil data, {SOIL_HEADLINE.samples} Punjab samples from {SOIL_HEADLINE.districts} districts, tested in about 2016 to 2018, are on <a href="#/soil">the soil page</a>.
         </p>
       </div>
     </section>
@@ -167,18 +169,18 @@ function StripArt({ active }: { active: number }) {
         </g>
         <path d="M350 82 c0 24 -10 34 -6 60 M350 82 c0 -22 -6 -34 -14 -48 M350 82 c0 -26 8 -36 16 -44" stroke="#2F6B3A" strokeWidth="3" fill="none" strokeLinecap="round" />
         <path d="M350 100 c20 10 40 18 62 34" className="a-draw-loop" stroke="#F0EEE5" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeDasharray="120" strokeDashoffset="120" />
-        <text x="312" y="198" fontSize="11" fill="#fff">before the root arrives</text>
+        <text x="312" y="198" fontSize="11" fill="#fff">before the root reaches it</text>
       </g>
       {/* zone 3. Potash: the root goes looking */}
       <g className={zone(2)}>
         <text x="612" y="20" fontSize="12" fontWeight="700" fill="#14231A">3 · Potash</text>
-        <text x="612" y="36" fontSize="11" fill="#5B6A5E">1 kg K for every 83 kg N</text>
+        <text x="612" y="36" fontSize="11" fill="#5B6A5E">83 kg N for every 1 kg K₂O</text>
         <path d="M700 82 v-30 M700 60 c-9 -4 -13 -11 -14 -18 M700 54 c9 -4 13 -11 14 -18" stroke="#2F6B3A" strokeWidth="3.5" fill="none" strokeLinecap="round" />
         {['M700 82 c-4 20 -22 30 -44 44 c-10 8 -18 22 -22 40', 'M700 82 c4 22 24 30 44 46 c8 8 14 20 18 36', 'M700 82 c0 30 -6 50 -4 90', 'M700 82 c-10 14 -32 16 -54 18', 'M700 82 c10 16 34 20 62 24', 'M700 82 c30 20 70 30 120 60'].map((d, i) => (
           <path key={i} d={d} className="a-draw-loop" stroke="#F0EEE5" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeDasharray="220" strokeDashoffset="220" style={{ animationDelay: `${i * 0.3}s` }} />
         ))}
         <g className="a-pulse"><circle cx="866" cy="176" r="11" fill="#B0841A" /><text x="866" y="180" textAnchor="middle" fontSize="12" fontWeight="700" fill="#fff" fontFamily="Public Sans, sans-serif">K</text></g>
-        <text x="612" y="198" fontSize="11" fill="#fff">the crop draws on the soil’s potash</text>
+        <text x="612" y="198" fontSize="11" fill="#fff">the crop takes potassium the soil already holds</text>
       </g>
     </svg>
   )
@@ -198,11 +200,11 @@ export function LossStrip() {
   return (
     <section className="sec" id="builds" style={{ background: 'var(--sand-2)' }}>
       <div className="wrap">
-        <ActHead n="02" kicker="What VAN builds against it" title={HOME_COPY.lossesH2} lead={HOME_COPY.lossesLead} tone="soil" right={<a className="btn btn-ghost" href="#/soil#soil-built">All 7 conditions, against the soil data →</a>} />
+        <ActHead n="02" kicker="What we make" title={HOME_COPY.lossesH2} lead={HOME_COPY.lossesLead} tone="soil" right={<a className="btn btn-ghost" href="#/soil#soil-built">The 7 soil conditions our products are made for, with the soil data →</a>} />
         <div ref={ref} className={`panel overflow-hidden ${inView ? 'on' : ''} ${run ? '' : 'paused'}`}>
           <div className="flex flex-wrap items-center gap-3 px-4 pt-3 pb-2">
             <button className={`btn btn-sm ${run ? 'btn-navy' : 'btn-gold'}`} onClick={() => setPlaying(p => !p)} aria-pressed={playing}>{playing ? '❚❚ Pause' : '▶ Play'}</button>
-            <span className="cap" style={{ color: 'var(--gold-text)' }}>▸ Tap a loss to hold it · 1 cross-section, 3 losses, left to right</span>
+            <span className="cap" style={{ color: 'var(--gold-text)' }}>▸ Tap a problem to keep it open · 1 soil cross-section, 3 problems, left to right</span>
           </div>
           <div className="strip-scroll"><StripArt active={active} /></div>
           <div className="grid md:grid-cols-3 gap-3 p-4">
@@ -220,7 +222,7 @@ export function LossStrip() {
                   </button>
                   <p className="small muted mt-1">{l.text}</p>
                   <div className="mt-2 pt-2" style={{ borderTop: '1px solid var(--line)' }}>
-                    <div className="cap uppercase tracking-[.08em] font-bold" style={{ color: 'var(--navy)' }}>Built against it</div>
+                    <div className="cap uppercase tracking-[.08em] font-bold" style={{ color: 'var(--navy)' }}>Our product for this problem</div>
                     <div className="font-bold">{l.product} <span className="cap font-normal">· {l.analysis}</span></div>
                     <a href={`#/products/${l.slug}`} className="small font-bold inline-block mt-1" style={{ color: 'var(--navy)' }} onClick={e => e.stopPropagation()}>Read the evidence →</a>
                   </div>
@@ -235,14 +237,13 @@ export function LossStrip() {
 }
 
 /* ————— 07 · The method — six stations, a travelling batch token ————— */
-const lc = (t: string) => t.charAt(0).toLowerCase() + t.slice(1)
 const NODES: { t: string; s: string; body: string[] }[] = [
-  { t: 'Research farm', s: `since ${COUNTS.since}`, body: [ABOUT.timeline[1].text, `${ABOUT.stats[1][0]} ${lc(ABOUT.stats[1][1])}`] },
-  { t: 'Formulation', s: '17 years of trial data', body: ['What a trial shows sets the formulation. The formulation is then made on VAN’s own plant.', PARTNER.capability[0][1]] },
+  { t: 'Research farm', s: `since ${COUNTS.since}`, body: [ABOUT.timeline[1].text, 'We base every formulation on 17 years of trial results and on the Punjab soil survey of 770,160 samples, tested in about 2016 to 2018.'] },
+  { t: 'Formulation', s: '17 years of trial data', body: ['We set each formulation from the trial results and then make it at our own plant.', PARTNER.capability[0][1]] },
   { t: 'Plant', s: COUNTS.capacity, body: [ABOUT.stats[2][1], PARTNER.capability[1][1]] },
   { t: 'Laboratory', s: `${COUNTS.lab} · ISO/IEC 17025`, body: [LAB.why1, PARTNER.capability[3][1]] },
-  { t: 'PSQCA registration', s: `${COUNTS.licences} licences`, body: [`${ABOUT.stats[3][0]} ${lc(ABOUT.stats[3][1])}`, PARTNER.capability[2][1]] },
-  { t: 'Lab report with the bag', s: 'by batch number, no charge', body: [VERIFY.lead, VERIFY.note] },
+  { t: 'PSQCA registration', s: `${COUNTS.licences} licences`, body: ['We hold 34 PSQCA licences. 22 of them cover 20 of our 23 brands, under 8 Pakistan Standards, and 12 cover products that are ready for partner companies to launch under their own names. The regulatory page lists the licence number of each of our 20 licensed brands.', PARTNER.capability[2][1]] },   // L2 fix 9 Nov 2026 (profile W3, CO-8): was "The 22 licences on our brands are published product by product."
+  { t: 'Lab report online', s: 'by batch number, free', body: [VERIFY.lead, VERIFY.note] },
 ]
 const STEP_MS = 5000
 export function MethodJourney() {
@@ -268,18 +269,20 @@ export function MethodJourney() {
       <div className="wrap">
         {/* ABOUT.chain was the lead here and on /about. The same paragraph on two pages. It belongs on
             /about, where the company describes itself. Here the lead says what the drawing below shows,
-            which is what a lead is for. */}
+            which is what a lead is for.
+            L2 fix 9 Nov 2026 (company W9): the bag prints the month only; the batch number "links it to
+            the record of the day the batch was made" (was "gives the day the batch was made"). */}
         <ActHead n="03" kicker="The method" title={ABOUT.h1} tone="green"
-          lead={<>6 stations. A bag of VAN product passes every one of them before it reaches a dealer, and the batch number printed on it is what ties the bag in your hand back to the day it was made and the analysis that released it. Tap a station to see what happens there.</>}
-          right={<a className="btn btn-ghost" href="#/about">How VAN is built →</a>} />
+          lead={<>Each product goes through 6 steps before it reaches a dealer, from trials on our research farms to the lab report for each batch. The batch number printed on each bag links it to the record of the day the batch was made, and typing it on our website opens the lab report on which the batch was approved for dispatch. Tap a step to see what happens there.</>}
+          right={<a className="btn btn-ghost" href="#/about">About VAN →</a>} />
         <div ref={ref} className={`panel p-4 lg:p-6 ${inView ? 'on' : ''} ${run ? '' : 'paused'}`}>
           <div className="flex flex-wrap items-center gap-3 mb-2">
             <button className={`btn btn-sm ${run ? 'btn-navy' : 'btn-gold'}`} onClick={() => setPlaying(p => !p)} aria-pressed={playing}>{playing ? '❚❚ Pause' : '▶ Play'}</button>
-            <span className="cap" style={{ color: 'var(--gold-text)' }}>▸ Tap a station · the batch travels the line</span>
-            <span className="cap ml-auto">Station {active + 1} of {NODES.length}</span>
+            <span className="cap" style={{ color: 'var(--gold-text)' }}>▸ Tap a step · the batch moves along the line</span>
+            <span className="cap ml-auto">Step {active + 1} of {NODES.length}</span>
           </div>
           <div className="journey" ref={fit.ref}>
-            <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={narrow ? { minWidth: 0 } : undefined} role="group" aria-label="The method: 6 stations from the research farm to the certificate">
+            <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={narrow ? { minWidth: 0 } : undefined} role="group" aria-label="The method: 6 steps from the research farm to the lab report">
               <line x1={sx(0)} x2={sx(NODES.length - 1)} y1={ly} y2={ly} stroke="var(--line-2)" strokeWidth="3" />
               <line x1={sx(0)} x2={sx(active)} y1={ly} y2={ly} stroke="var(--green)" strokeWidth="3" style={{ transition: rm ? 'none' : 'x2 1.3s cubic-bezier(.4,.05,.2,1)' }} />
               {NODES.map((n, i) => (
@@ -305,7 +308,7 @@ export function MethodJourney() {
           </div>
           <div className="journey-bar mt-1"><i key={`${active}-${run}`} className={run ? 'run' : ''} style={{ ['--dur' as string]: `${STEP_MS}ms`, width: run ? undefined : `${((active + 1) / NODES.length) * 100}%` } as CSSProperties} /></div>
           <div key={active} className="grid lg:grid-cols-[220px_minmax(0,1fr)] gap-4 lg:gap-8 mt-5 items-start a-fade">
-            <div><span className="eyebrow" style={{ marginBottom: 4 }}>Station {active + 1} of {NODES.length}</span><h3>{N.t}</h3><div className="cap num mt-1">{N.s}</div></div>
+            <div><span className="eyebrow" style={{ marginBottom: 4 }}>Step {active + 1} of {NODES.length}</span><h3>{noStop(N.t)}</h3><div className="cap num mt-1">{N.s}</div></div>
             <div>{N.body.map((p, i) => <p key={i} className={i === 0 ? 'lead' : 'mt-3 small'}>{p}</p>)}</div>
           </div>
         </div>

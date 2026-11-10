@@ -8,15 +8,17 @@ export type AnalyteKey = 'ph' | 'om' | 'p' | 'k' | 'zn' | 'caco3' | 'b' | 'ec'
 
 /** Colour scales, sequential, one per analyte. `lo`/`hi` name the legend ends (values are clamped to them). */
 // D-299, 22 Oct 2026: each note now names the colours the scale really draws (lo, middle, hi), then Punjab's line.
+// Tahir 7 Nov 2026 (KN-8): each note says the colours only show differences between squares and are not Punjab's thresholds
+// (reviser's wording, same pattern for all 8). Was: 'map colours: rust at 3 ppm or less, ... Punjab’s thresholds: ...'. No final full stop: the reading panel adds it.
 export const ANALYTES: { key: AnalyteKey; label: string; short: string; unit: string; lo: number; hi: number; dec: number; stops: string[]; note: string }[] = [
-  { key: 'ph', label: 'pH', short: 'pH', unit: '', lo: 7.4, hi: 8.8, dec: 2, stops: ['#2E7D4F', '#E3A93C', '#B5522A'], note: 'green at 7.4 and below, gold at 8.1, rust from 8.8' },
-  { key: 'om', label: 'Organic matter', short: 'OM', unit: '%', lo: 0.3, hi: 1.0, dec: 2, stops: ['#F3EDDD', '#C9A86A', '#5A3A20'], note: 'sand where there is almost none, deep brown at 1%' },
-  { key: 'p', label: 'Phosphorus, available', short: 'P', unit: 'ppm', lo: 3, hi: 12, dec: 1, stops: ['#B5522A', '#E3A93C', '#2E7D4F'], note: 'rust at 3 ppm and below, gold at 7.5, green from 12; Punjab calls below 7 low and 15 adequate' },
-  { key: 'k', label: 'Potash, available', short: 'K', unit: 'ppm', lo: 60, hi: 200, dec: 0, stops: ['#B5522A', '#E3A93C', '#2E7D4F'], note: 'rust at 60 ppm and below, gold at 130, green from 200; Punjab calls below 180 low' },
-  { key: 'zn', label: 'Zinc', short: 'Zn', unit: 'ppm', lo: 0.3, hi: 2.0, dec: 2, stops: ['#B5522A', '#E3A93C', '#2E7D4F'], note: 'rust at 0.30 ppm and below, gold at 1.15, green from 2.0; Punjab calls below 1.0 low' },
-  { key: 'caco3', label: 'Calcium carbonate', short: 'CaCO₃', unit: '%', lo: 1, hi: 14, dec: 1, stops: ['#FBF7EE', '#9FB8CC', '#0E3550'], note: 'pale where there is little carbonate, navy where it is heavy' },
-  { key: 'b', label: 'Boron', short: 'B', unit: 'ppm', lo: 0.2, hi: 1.2, dec: 2, stops: ['#B5522A', '#E3A93C', '#2E7D4F'], note: 'rust at 0.20 ppm and below, gold at 0.70, green from 1.2; Punjab calls below 0.5 low' },
-  { key: 'ec', label: 'Electrical conductivity', short: 'EC', unit: 'dS/m', lo: 0, hi: 6, dec: 2, stops: ['#DCEBF5', '#E3A93C', '#B5522A'], note: 'sky where fresh, gold at 3, rust from 6; saline above 4 dS/m' },
+  { key: 'ph', label: 'pH', short: 'pH', unit: '', lo: 7.4, hi: 8.8, dec: 2, stops: ['#2E7D4F', '#E3A93C', '#B5522A'], note: 'Map colours run from green (pH 7.4 and below) through gold (8.1) to rust (8.8 and above). They show differences between squares' },
+  { key: 'om', label: 'Organic matter', short: 'OM', unit: '%', lo: 0.3, hi: 1.0, dec: 2, stops: ['#F3EDDD', '#C9A86A', '#5A3A20'], note: 'Map colours run from sand colour, where there is almost no organic matter, to deep brown (1%). They show differences between squares' },
+  { key: 'p', label: 'Phosphorus, available', short: 'P', unit: 'ppm', lo: 3, hi: 12, dec: 1, stops: ['#B5522A', '#E3A93C', '#2E7D4F'], note: 'Map colours run from rust (3 ppm or less) through gold (7.5 ppm) to green (12 ppm or more). They show differences between squares and are not Punjab’s thresholds. Under Punjab’s thresholds, less than 7 ppm is low and 15 ppm or more is adequate, so a green square can still be below the adequate level' },
+  { key: 'k', label: 'Potassium, available', short: 'K', unit: 'ppm', lo: 60, hi: 200, dec: 0, stops: ['#B5522A', '#E3A93C', '#2E7D4F'], note: 'Map colours run from rust (60 ppm or less) through gold (130 ppm) to green (200 ppm or more). They show differences between squares and are not Punjab’s thresholds. Under Punjab’s threshold, less than 180 ppm is low' },
+  { key: 'zn', label: 'Zinc', short: 'Zn', unit: 'ppm', lo: 0.3, hi: 2.0, dec: 2, stops: ['#B5522A', '#E3A93C', '#2E7D4F'], note: 'Map colours run from rust (0.30 ppm or less) through gold (1.15 ppm) to green (2.0 ppm or more). They show differences between squares and are not Punjab’s thresholds. Under Punjab’s threshold, less than 1.0 ppm is low' },
+  { key: 'caco3', label: 'Calcium carbonate', short: 'CaCO₃', unit: '%', lo: 1, hi: 14, dec: 1, stops: ['#FBF7EE', '#9FB8CC', '#0E3550'], note: 'Map colours run from pale, where there is little calcium carbonate, to navy, where there is a lot. They show differences between squares' },
+  { key: 'b', label: 'Boron', short: 'B', unit: 'ppm', lo: 0.2, hi: 1.2, dec: 2, stops: ['#B5522A', '#E3A93C', '#2E7D4F'], note: 'Map colours run from rust (0.20 ppm or less) through gold (0.70 ppm) to green (1.2 ppm or more). They show differences between squares and are not Punjab’s thresholds. Under Punjab’s threshold, less than 0.5 ppm is low' },
+  { key: 'ec', label: 'Electrical conductivity', short: 'EC', unit: 'dS/m', lo: 0, hi: 6, dec: 2, stops: ['#DCEBF5', '#E3A93C', '#B5522A'], note: 'Map colours run from sky blue, where the soil is not saline, through gold (3 dS/m) to rust (6 dS/m or more). They show differences between squares. Soil above 4 dS/m is saline' },
 ]
 export const analyteByKey = (k: AnalyteKey) => ANALYTES.find(a => a.key === k)!
 
@@ -88,16 +90,16 @@ export const PROVINCE_HIST = (() => {
 
 export type Band = { key: string; label: string; stats: BandStats }
 export const X_AXES: { key: 'phband' | 'omband' | 'cacoband' | 'texture'; label: string; short: string; caption: string }[] = [
-  { key: 'phband', label: 'pH band', short: 'pH', caption: 'pH bands 7.0–7.5 · 7.5–8.0 · 8.0–8.5 · ≥ 8.5' },
-  { key: 'omband', label: 'Organic-matter band', short: 'OM', caption: 'organic matter bands, %' },
-  { key: 'cacoband', label: 'Calcium-carbonate band', short: 'CaCO₃', caption: 'calcium carbonate bands, %' },
+  { key: 'phband', label: 'pH group', short: 'pH', caption: 'pH groups 7.0–7.5 · 7.5–8.0 · 8.0–8.5 · ≥ 8.5' },
+  { key: 'omband', label: 'Organic matter group', short: 'OM', caption: 'organic matter groups, %' },
+  { key: 'cacoband', label: 'Calcium carbonate group', short: 'CaCO₃', caption: 'calcium carbonate groups, %' },
   { key: 'texture', label: 'Texture class', short: 'Texture', caption: 'texture classes as recorded in the workbooks' },
 ]
 export const Y_AXES: { key: 'caco3' | 'zn' | 'p' | 'k' | 'b' | 'om'; label: string; unit: string; dec: number; colour: string }[] = [
   { key: 'caco3', label: 'Calcium carbonate', unit: '%', dec: 2, colour: '#0E3550' },
   { key: 'zn', label: 'Zinc', unit: 'ppm', dec: 2, colour: '#2E7D4F' },
   { key: 'p', label: 'Phosphorus', unit: 'ppm', dec: 2, colour: '#1B4A6B' },
-  { key: 'k', label: 'Potash', unit: 'ppm', dec: 0, colour: '#B97F1C' },
+  { key: 'k', label: 'Potassium', unit: 'ppm', dec: 0, colour: '#B97F1C' },
   { key: 'b', label: 'Boron', unit: 'ppm', dec: 2, colour: '#7A5230' },
   { key: 'om', label: 'Organic matter', unit: '%', dec: 2, colour: '#5A3A20' },
 ]
@@ -117,7 +119,7 @@ export function bandsFor(x: (typeof X_AXES)[number]['key'], d: District | null):
   const labels = SOIL.meta.bands[x]
   const keys = x === 'phband' ? PH_DRAWN : Object.keys(labels)
   const bands = keys.filter(k => src[k] && src[k].n > 0).map(k => ({ key: k, label: labels[k] ?? k, stats: src[k] }))
-  const note = x === 'phband' ? 'The 4 bands shown cover 99.9% of Punjab’s samples.' : ''
+  const note = x === 'phband' ? 'The 4 pH groups shown cover 99.9% of Punjab’s samples.' : ''
   return { bands, note }
 }
 
@@ -131,7 +133,7 @@ export function shareRows(s: BandStats): { label: string; threshold: string; v: 
     { label: 'Organic matter', threshold: 'below 0.86%', v: s.om_lt086 },
     { label: 'Phosphorus', threshold: 'below 15 ppm (adequate)', v: s.p_lt15 },
     { label: 'Phosphorus', threshold: 'below 7 ppm (low)', v: s.p_lt7 },
-    { label: 'Potash', threshold: 'below 180 ppm', v: s.k_lt180 },
+    { label: 'Potassium', threshold: 'below 180 ppm', v: s.k_lt180 },
     { label: 'Zinc', threshold: 'below 1.0 ppm', v: s.zn_lt10 },
     { label: 'Boron', threshold: 'below 0.5 ppm', v: s.b_lt05 },
     { label: 'Salinity', threshold: 'EC above 4 dS/m', v: s.ec_gt4 },

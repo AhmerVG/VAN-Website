@@ -5,11 +5,13 @@ import { SOIL_BAND_ORDER, SOIL_BAND_LABEL, SOIL_BAND_COLOR, SOIL_PARAMETER_LABEL
 import type { SoilBand, SoilParameter } from '@/data/soilThresholds'
 import { REGIONAL_PROFILES, REGIONAL_SOURCE, regionalProfile } from '@/data/regionalSoil'
 import { mappedParameters } from '@/lib/soilAdjustment'
+import { soilReadingSentence } from '@/lib/cropSoilMap'   // Tahir 9 Nov 2026
 import { cardTextByParam, type CardInfo } from '@/lib/gpsCard'
 import type { SoilInputs, SoilCrop } from '@/lib/soilAdjustment'
 
 /** D-151: labels that fit a 5-column row on a 360px phone. */
-const SOIL_BAND_SHORT: Record<string, string> = { critical: 'Crit', weak: 'Weak', average: 'Avg', moderate: 'Mod', healthy: 'Good' }
+// Tahir 7 Nov 2026 (CR-18): the top band's short label is 'Hlthy', not 'Good', so it has 1 name. Was healthy: 'Good'.
+const SOIL_BAND_SHORT: Record<string, string> = { critical: 'Crit', weak: 'Weak', average: 'Avg', moderate: 'Mod', healthy: 'Hlthy' }
 
 /** Where a band on screen came from: the farmer's own report, their district's survey average, or (D-279) the Soil
  *  Atlas card for the area near his land. */
@@ -49,6 +51,7 @@ export function SoilAdjustmentPanel({ crop, soilInputs, bandSource, district, ca
 }) {
   const profile = useMemo(() => regionalProfile(district), [district])
   const parameters = useMemo(() => mappedParameters(crop), [crop])
+  const readingSentence = useMemo(() => soilReadingSentence(crop), [crop])   // Tahir 9 Nov 2026: per-crop pH, EC and organic matter sentence
   const anySet = Object.keys(soilInputs).length > 0
   // D-181, Tahir 26 Sep 2026: let the farmer type the number off his report. The number is read into
   // VAN's band for it with the same cutoffs the band buttons stand for; the buttons still work as before.
@@ -57,7 +60,12 @@ export function SoilAdjustmentPanel({ crop, soilInputs, bandSource, district, ca
   return (
     <div className="panel-soft p-4">
       <div className="cap font-bold uppercase tracking-[.06em] mb-1">Have a soil test? Adjust the plan for it</div>
-      <p className="small muted mb-3">Type the number from your soil report, or pick its band, for any of these. The plan above adds product where your land is short. For phosphorus, potash and zinc it cuts the rate by 1/4 where your reading is healthy. Nitrogen is not cut. Leave a row blank if you have no reading for it. This adjustment is a pilot.</p>
+      {/* Tahir 7 Nov 2026 (CR-17): added the size of the addition and what the pH, EC and organic matter readings do. */}
+      {/* Tahir 9 Nov 2026: the pH, EC and organic matter sentences are written from this crop's own soil rules (soilReadingSentence in
+          cropSoilMap.ts), so each page names only what its calculator does. Was, on all 28 pages: "A high pH reading also adds phosphate
+          and zinc and moves part of the urea to Vital Urea; a high EC reading shows a salinity warning instead. The organic matter
+          reading adds Humi Grow." */}
+      <p className="small muted mb-3">This soil adjustment is a pilot. For each reading below, type the number from your soil report or choose its level. If a reading is below Healthy, the plan adds more of the product that supplies that nutrient. The lower the level, the larger the addition, up to 1/2 of the standard rate at Critical. If the phosphorus, potash or zinc reading is Healthy, the plan cuts the rate of the product that supplies that nutrient by 1/4. {readingSentence} The soil adjustment never reduces the nitrogen rate. Leave a reading blank if your report does not give it.</p>
 
       <div className="panel p-3 mb-3" style={{ background: '#fff' }}>
         <div className="cap font-bold uppercase tracking-[.06em] mb-1">No soil test yet? Start from your district</div>
@@ -79,12 +87,12 @@ export function SoilAdjustmentPanel({ crop, soilInputs, bandSource, district, ca
             list, so it now says how; was "Pick your district again above to use the district instead." */}
         {profile && card && Object.values(bandSource).includes('card') && (
           <p className="cap mt-2" data-card-note style={{ lineHeight: 1.5 }}>
-            Filled in from the Soil Atlas card for the area near your land: the {REGIONAL_SOURCE.survey}, {REGIONAL_SOURCE.window}, readings within {card.r} km, {card.n.toLocaleString('en-US')} samples. Not a test of your field. Rows the card has no reading for are left blank, not filled from the district. To use the district’s readings instead, press Clear all, then choose your district.
+            These rows are filled in from the Soil Atlas card for the area near your land: the {REGIONAL_SOURCE.survey}, {REGIONAL_SOURCE.window}, readings within {card.r} km, {card.n.toLocaleString('en-US')} samples. They are not a test of your field. Rows for which the card has no reading are left blank and are not filled from the district. To use the district’s readings instead, press Clear all, then choose your district.
           </p>
         )}
         {profile && !(card && Object.values(bandSource).includes('card')) && (
           <p className="cap mt-2" style={{ lineHeight: 1.5 }}>
-            Filled in from the {REGIONAL_SOURCE.survey}, {REGIONAL_SOURCE.window}. {profile.n.toLocaleString()} samples in {profile.name}.
+            These rows are filled in from the {REGIONAL_SOURCE.survey}, {REGIONAL_SOURCE.window}: {profile.n.toLocaleString()} samples in {profile.name}.
             {' '}{REGIONAL_SOURCE.caution}
             {/* D-316: names only rows this crop shows that are actually blank, never a row the farmer filled himself (was every missing analyte). */}
             {(() => { const miss = profile.missing.filter(m => parameters.includes(m) && soilInputs[m] === undefined); return miss.length > 0 && <> The survey has no valid {miss.map(m => soilParameterInline(m)).join(', ')} reading here, so {miss.length > 1 ? 'those rows are' : 'that row is'} left blank.</> })()}
@@ -98,12 +106,14 @@ export function SoilAdjustmentPanel({ crop, soilInputs, bandSource, district, ca
                 : hasCu ? 'Copper here reads far below every other district,'
                 : hasFe ? 'Iron here reads far below most districts,'
                 : `${nc.map((m, i) => (i ? soilParameterInline(m) : SOIL_PARAMETER_LABEL[m])).join(' and ')} here ${nc.length > 1 ? 'read' : 'reads'} far below other districts,`
-              return <> {lead} which points to a different laboratory method rather than different soil. {nc.length > 1 ? 'They are' : 'It is'} not comparable, so {nc.length > 1 ? 'those rows are' : 'that row is'} left blank.</>
+              return <> {lead} which suggests a different laboratory method rather than a different soil. {nc.length > 1 ? 'The readings are' : 'The reading is'} not comparable, so {nc.length > 1 ? 'those rows are' : 'that row is'} left blank.</>
             })()}
           </p>
         )}
       </div>
 
+      {/* Tahir 7 Nov 2026 (CR-18): VAN's band names are kept and their order is stated once, above the buttons. */}
+      <p className="cap mb-2">Levels, from lowest to highest: Critical, Weak, Average, Moderate, Healthy.</p>
       <div className="grid gap-2.5">
         {parameters.map(param => {
           const fromDistrict = bandSource[param] === 'district'
@@ -121,7 +131,14 @@ export function SoilAdjustmentPanel({ crop, soilInputs, bandSource, district, ca
                     extract, and the panel now says so, the same way the micronutrient rows name their
                     extractant question rather than leaving it silent. */}
                 {param === 'EC' && (
-                  <span className="cap block" style={{ fontWeight: 400 }}>Read as saturation extract, ECe. A 1:2 soil-to-water reading is a different scale and is not comparable to these bands.</span>
+                  <span className="cap block" style={{ fontWeight: 400 }}>Enter the EC measured in a saturation extract (ECe). A reading from a 1:2 soil-to-water extract is on a different scale and cannot be compared with these levels.</span>
+                )}
+                {/* Tahir 7 Nov 2026 (CR-15): VAN's report labels stay; the cut-offs are elemental P and K in ppm (8 Sep 2026 ruling), so each row says so. */}
+                {param === 'P2O' && (
+                  <span className="cap block" style={{ fontWeight: 400 }}>Enter the figure exactly as your lab report gives it, as phosphorus (P) in ppm, not as P₂O₅.</span>
+                )}
+                {param === 'K2O' && (
+                  <span className="cap block" style={{ fontWeight: 400 }}>Enter the figure exactly as your lab report gives it, as potassium (K) in ppm, not as K₂O.</span>
                 )}
                 {fromDistrict && districtValue !== undefined && (
                   <span className="cap block" style={{ fontWeight: 400 }}>{profile?.name} typical · {fmtValue(param, districtValue)}</span>
@@ -144,7 +161,7 @@ export function SoilAdjustmentPanel({ crop, soilInputs, bandSource, district, ca
                   {SOIL_PARAMETER_UNIT[param] && <span>{SOIL_PARAMETER_UNIT[param]}</span>}
                 </label>
                 {typed[param] && !bandForValue(param, Number(typed[param])) && (
-                  <span className="cap" style={{ color: 'var(--rust)' }}>Outside VAN's table for this reading, so the plan does not change for it.</span>
+                  <span className="cap" style={{ color: 'var(--rust)' }}>This reading is outside VAN’s table, so the plan does not change for it.</span>
                 )}
               </div>
               <div className="grid gap-1" style={{ gridTemplateColumns: 'repeat(5, minmax(0, 1fr))' }}>
@@ -176,10 +193,10 @@ export function SoilAdjustmentPanel({ crop, soilInputs, bandSource, district, ca
         })}
       </div>
       {Object.values(bandSource).includes('district') && (
-        <p className="cap mt-3">Rows marked <em>typical</em> are the survey's middle reading for your area, not a reading from your land. Tap any band to replace it with your own.</p>
+        <p className="cap mt-3">Rows marked <em>typical</em> show the survey’s median reading for your district, not a reading from your land. Tap any level to replace it with your own reading.</p>
       )}
       {Object.values(bandSource).includes('card') && (
-        <p className="cap mt-3">Rows marked <em>soil card</em> are the survey's middle reading for the area near your land, not a reading from your land. Tap any band to replace it with your own.</p>
+        <p className="cap mt-3">Rows marked <em>soil card</em> show the survey’s median reading for the area near your land, not a reading from your land. Tap any level to replace it with your own reading.</p>
       )}
     </div>
   )

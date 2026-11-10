@@ -2,7 +2,6 @@ import { useMemo, useState } from 'react'
 import { CROPS, CROP_PLANS, shortCropName } from '@/data/catalogue'
 import { MASTER_PRODUCTS } from '@/data/pricing'
 import { programmeSupply, allStages, NUTRIENTS, NUTRIENT_LABEL, type Nutrient } from '@/lib/nutrientBalance'
-import { WHEAT_YIELD_BASE, POTATO_YIELD_BASE } from '@/data/leverScorecard'
 import { cropSlug } from '@/lib/season'
 import { LIEBIG } from '@/data/nutrients'
 
@@ -22,7 +21,7 @@ import { LIEBIG } from '@/data/nutrients'
  *   Stave  = Given ÷ Need, capped at 1. Extra above the programme is reported, not credited.
  *   Level  = the shortest stave. That is the law: the crop grows to its scarcest nutrient.
  *
- * THE YIELD LINE, and its 2 sources. Tahir chose a yield estimate (26 Sep). It rests on exactly
+ * THE YIELD LINE (withdrawn 7 Nov 2026, CR-1: the 1/4 share is no longer used; history kept below), and its 2 sources. Tahir chose a yield estimate (26 Sep). It rests on exactly
  * 2 of his rulings and nothing else: (1) one yield number per crop, "what a good progressive farmer
  * achieves", 60 maunds for wheat and 300 for potato (D-103); (2) "nutrition decides about 1/4 of
  * the yield" (24 Sep). So the barrel says: of the quarter of that yield which nutrition decides,
@@ -34,11 +33,8 @@ import { LIEBIG } from '@/data/nutrients'
  * Nothing here prices anything. Nothing here is stored.
  */
 
-const CEILING: Record<string, { maunds: number; label: string }> = {
-  wheat: { maunds: WHEAT_YIELD_BASE.operativeMaunds, label: WHEAT_YIELD_BASE.label },
-  potato: { maunds: POTATO_YIELD_BASE.operativeMaunds, label: 'what a good progressive farmer achieves' },
-}
-const NUTRITION_SHARE = 0.25   // Tahir, 24 Sep 2026: nutrition decides about 1/4 of yield
+// Tahir 7 Nov 2026 (CR-1): CEILING (60 maunds wheat, 300 potato) and NUTRITION_SHARE = 0.25 removed with
+// the maunds line below; the 1/4 share is withdrawn. See the note at the yield paragraph.
 
 /** The rows a grower can type into: the commodity bags first, then VAN's own brands. */
 const INPUTS = MASTER_PRODUCTS.filter(p => Object.keys(p.analysisPct).some(k => (NUTRIENTS as readonly string[]).includes(k)))
@@ -78,7 +74,6 @@ export function LiebigBarrel() {
   const anyInput = Object.values(qty).some(v => v > 0)
   const level = staves.length ? Math.min(...staves.map(s => s.ratio)) : 0
   const weakest = staves.length ? staves.reduce((a, b) => (b.ratio < a.ratio ? b : a)) : null
-  const ceiling = CEILING[crop]
   const cropName = shortCropName(CROPS.find(c => cropSlug(c) === crop)?.name ?? crop)
   const surplus = staves.filter(s => s.given > s.need * 1.05)
 
@@ -97,7 +92,7 @@ export function LiebigBarrel() {
           <select id="lb-crop" className="input input-sm" value={crop} onChange={e => { setCrop(e.target.value); setQty({}) }}>
             {CROPS.filter(c => CROP_PLANS[cropSlug(c)]).map(c => <option key={cropSlug(c)} value={cropSlug(c)}>{c.name}</option>)}
           </select>
-          <p className="cap mt-3">What you put on 1 acre this season. Packs or bags of each, as printed on the bag.</p>
+          <p className="cap mt-3">Enter the number of packs or bags of each product you applied to 1 acre this season. Each pack size is shown as printed on the pack.</p>
           {/* D-191: VAN's own products first, then the general commodity grades. No competitor brand names. */}
           <p className="lb-lab mt-3">VAN products</p>
           <div className="lb-rows">
@@ -149,26 +144,33 @@ export function LiebigBarrel() {
               const i = staves.findIndex(s => s.n === weakest.n); const x = left + i * sw + sw / 2
               return <g fill="#9CC4D8"><circle cx={x} cy={waterY + 14} r="3.5" /><circle cx={x + 8} cy={waterY + 30} r="2.5" /><circle cx={x - 6} cy={waterY + 44} r="2" /></g>
             })()}
-            <text x={W / 2} y="18" textAnchor="middle" fontSize="12" fill="var(--muted)" fontFamily="Public Sans, sans-serif">{anyInput ? `Full to the shortest stave: ${Math.round(level * 100)}% of the programme` : `Each stave is 1 nutrient. Full height = what VAN’s ${cropName.toLowerCase()} programme delivers per acre`}</text>
+            <text x={W / 2} y="18" textAnchor="middle" fontSize="12" fill="var(--muted)" fontFamily="Public Sans, sans-serif">{anyInput ? `Water level at the shortest stave: ${Math.round(level * 100)}% of the crop plan` : `Each stave is 1 nutrient. Full height is the amount in VAN’s ${cropName.toLowerCase()} crop plan per acre`}</text>
           </svg>
 
           <div className="lb-read">
-            {!anyInput && <p className="small muted">Type what you applied and the staves fill. The dotted line on each is the programme’s figure; the label under it is that figure in kilograms an acre.</p>}
+            {!anyInput && <p className="small muted">Enter what you applied and the staves fill. The dotted outline of each stave shows the crop plan’s amount, and the label under it gives that amount in kilograms an acre.</p>}
             {anyInput && weakest && (
               <>
                 <p className="lb-verdict">
-                  Your shortest stave is <b>{NUTRIENT_LABEL[weakest.n]}</b>: {fmt(weakest.given)} of {fmt(weakest.need)} kg an acre, {Math.round(weakest.ratio * 100)}% of the programme.
-                  {level < 1 ? ' Everything else you applied is held back by it.' : ' Every stave is full. The programme is met.'}
+                  Your shortest stave is <b>{NUTRIENT_LABEL[weakest.n]}</b>: {fmt(weakest.given)} of {fmt(weakest.need)} kg an acre, {Math.round(weakest.ratio * 100)}% of the crop plan.
+                  {level < 1 ? ' Everything else you applied is held back by it.' : ' Every stave is full. The crop plan is met.'}
                 </p>
-                {ceiling ? (
-                  <p className="small mt-2">
-                    <b>Model estimate.</b> Nutrition decides about 1/4 of the yield. For {cropName.toLowerCase()} the yield number used is <b>{ceiling.maunds} maunds an acre</b> ({ceiling.label}), so nutrition decides about <b>{Math.round(ceiling.maunds * NUTRITION_SHARE)} maunds</b> of it. Your mix reaches about <b>{fmt(ceiling.maunds * NUTRITION_SHARE * level)}</b> of those {Math.round(ceiling.maunds * NUTRITION_SHARE)}. The other {Math.round(ceiling.maunds * (1 - NUTRITION_SHARE))} are decided by sowing, seed, water, weeds and pests, which the <a href={`#/simulator/${crop}`}>discipline simulator</a> scores.{level < 0.15 ? ' A stave at 0 pulls the whole barrel to 0. A real field is never quite there, because the soil itself supplies some of every nutrient and this barrel does not count the soil. Read it as a direction, and let the crop page adjust for your district.' : ''}
-                  </p>
-                ) : (
-                  <p className="small mt-2"><b>Share only, no maunds.</b> A yield figure is available for wheat and potato only. For {cropName.toLowerCase()} the barrel shows the share of the programme met.</p>
-                )}
-                {surplus.length > 0 && <p className="cap mt-2">Above the programme: {surplus.map(s => `${NUTRIENT_LABEL[s.n]} ${fmt(s.given)} of ${fmt(s.need)} kg`).join(', ')}. Extra is not credited. A tall stave does not hold water.</p>}
-                <p className="cap mt-2">Figures are kilograms of nutrient per acre from the declared analysis of each bag. Litres are counted as kilograms. Need is VAN’s published {cropName.toLowerCase()} programme for the whole season. Your soil’s own supply is not counted here; the <a href={`#/crops/${crop}`}>crop page</a> adjusts for your district.</p>
+                {/* Tahir 7 Nov 2026 (CR-1): "1/4 is an incorrect assertion". The barrel no longer turns the
+                    stave level into maunds (it took 1/4 of the 60 or 300 maund yield as "nutrition's share"
+                    and showed how many of those maunds the mix reached). Was, for wheat and potato: "Model
+                    estimate. In VAN’s model estimate from the wheat simulator, nutrition accounts for about
+                    1/4 of the yield. For {crop} the yield used is {maunds} maunds an acre ({label}), so
+                    nutrition accounts for about {maunds × 0.25} maunds of it. Your mix reaches about ... The
+                    other ... maunds depend on sowing, seed, water, weeds and pests, which the discipline
+                    simulator scores."; for other crops: "Share only, no maunds. A yield figure is available
+                    only for wheat and potato. ..." Revert: restore CEILING, NUTRITION_SHARE, the import from
+                    leverScorecard and the 2 branches from git history. */}
+                {/* L1 7 Nov 2026 (crops-a 7, crops-b M1, shared CR-1 line): link text "VAN’s farm discipline simulator", was "VAN simulator". */}
+                <p className="small mt-2">
+                  Yield depends on doing every task on time: sowing date, seed and plant population, fertiliser at the right stage, irrigation on schedule, and control of weeds, pests and disease. Crop nutrition is 1 of these tasks. A task missed at its time can cost yield that extra work later may not recover. VAN’s <a href="#/simulator">farm discipline simulator</a> shows how each task, and its timing, changes the yield.{level < 0.15 ? ' A stave at 0 brings the whole barrel to 0. A real field never falls that low, because the soil itself supplies some of every nutrient and this barrel does not count the soil. Treat the result as a direction, and use the crop page to adjust for your district.' : ''}
+                </p>
+                {surplus.length > 0 && <p className="cap mt-2">Above the crop plan: {surplus.map(s => `${NUTRIENT_LABEL[s.n]} ${fmt(s.given)} of ${fmt(s.need)} kg`).join(', ')}. The amount above the crop plan is not counted, because a taller stave does not raise the water level.</p>}
+                <p className="cap mt-2">Figures are kilograms of nutrient per acre, worked out from the declared analysis of each bag. Litres are counted as kilograms. The need is VAN’s published {cropName.toLowerCase()} crop plan for the whole season. The barrel does not count the nutrients your own soil supplies; the <a href={`#/crops/${crop}`}>crop page</a> adjusts for your district.</p>
               </>
             )}
           </div>

@@ -2,14 +2,14 @@ PAGE: /brands/vital-potash.html
 ======================================================================
 Products
 Crop Plans
-Soil
-Tools
+Your Brand
+Soil Atlas
+Vitalytics
 VAN Lab
 Knowledge
 About
-Make with us
-For farmers
-Menu ☰
+Search
+☰
 View
 Simple view
 Our brands
@@ -20,7 +20,7 @@ Vital Potash
 Potash
 Own-brand available
 Vital Potash
-N 11 · K₂O 44. Coated with boron in two forms
+N 11% · K₂O 44%. Coated with boron in 2 forms
 How it is applied
 Fertigation
 Stage
@@ -31,7 +31,10 @@ See it on the map →
 Lowest on sandy loam (102 ppm). Texture sets what the soil can hold
 .
 Punjab soil testing programme · 36 district workbooks · 770,160 valid samples · c. 2016–2018
-. A condition of the soil, not a claim for the product.
+. The figure describes the soil. It is not a claim for the product.
+Where VAN’s potash comes from
+About 1 in 5 tonnes of the potash VAN uses is recovered from crop residue ash, not imported. It is used as a raw material across VAN’s potash grades.
+See how →
 Order on WhatsApp
 Verify a bag
 Tell us the quantity and your district. We reply with price, availability and delivery. Every batch is tested in
@@ -43,7 +46,7 @@ Specification
 Product
 Vital Potash
 Analysis
-N 11 · K₂O 44. Coated with boron in two forms
+N 11% · K₂O 44%. Coated with boron in 2 forms
 Category
 Potash
 Application
@@ -55,11 +58,84 @@ Own-brand available
 Same specification, your brand name. Same line, same QC, your label.
 Registration
 Registered with PSQCA and released through VAN’s own PNAC-accredited laboratory, ISO/IEC 17025:2017, LAB 336.
-Certificate
-Send the batch number off the bag and VAN sends the certificate of analysis for that batch.
+Lab report
+Type the batch number off the bag and open the lab report for that batch.
 Verify a bag →
+Flagship · a grower’s question
+I fed the crop well and it still filled light. The bolls dropped, the grain stayed thin. Why?
+1
+The crop grows on nitrogen and fills on potash
+Potash moves the sugar the leaf makes into the grain, the tuber or the fruit, and thickens the cell wall against heat, drought and disease. Pakistan applies about 1 kg of potash for every 83 kg of nitrogen.
+2
+Made for the fill window
+N 11, K₂O 44, fully water soluble. It goes on at grand growth and maturity, through the fertigation or flood water, when the crop has stopped building leaf and started filling. The small nitrogen share keeps the plant working through fill without pushing new leaf.
+3
+Boron rides on the granule, in 2 forms
+Boron carries sugar to the flower and sets the seed and the fruit. Since 2014 VAN has coated it onto the potash granule on its own line, developed and built locally, in 2 forms on 1 granule: sodium borate for fast action and calcium borate for slow release. It lands where the potash lands and cannot separate in the bag.
+Your potash account
+Your crop
+Wheat
+Maize (Corn)
+Basmati Rice
+Hybrid Rice
+Cotton
+Sugarcane, February planting
+Ratoon Sugarcane
+Canola
+Sesame
+Soybean
+Sunflower
+Chickpea
+Lentil
+Mungbean & Mash
+Potato
+Tomato
+Chili
+Garlic
+Watermelon
+Turmeric
+Onion
+Banana, 1st year
+Banana, 2nd year
+Citrus, 5 years and over
+Date Palm
+Mango
+Strawberry
+The published
+wheat
+programme puts Vital Potash on at
+Grand Growth
+, by
+fertigation
+,
+½ bag
+. That is the fill window: the stage where the crop stops growing leaf and starts filling grain, tuber or fruit.
+Bags (20 kg) on 1 acre
+Yield you expect, maunds an acre
+You put on, K₂O
+18
+kg
+1.6
+t of
+wheat
+grain takes off
+7.7
+kg
+with the
+wheat straw (bhoosa)
+taken off too
+40
+kg
+Removal per tonne from IPNI’s tables. Your bags also carry
+4.4
+kg of nitrogen. 1% of all nutrient applied in Pakistan is potash, a figure printed on VAN’s Crop Force bag.
+What VAN will not claim for it
+A boron percentage.
+A yield figure, a disease or immunity effect, or a fruit-setting claim.
+A foliar rate. Use your crop plan’s rate.
+That 2 applications are the season’s whole potash. Fusion Potash is the basal line; this is the fill line.
 Programmes that use it
-From the published wheat programme. Per acre. “1 bag” means one bag of the size printed under the rate.
+From the published wheat programme. Per acre. “1 bag” means 1 bag of the size printed under the rate.
 Crop
 Stage
 Band
@@ -75,7 +151,7 @@ Bag · 20 kg
 Open the wheat programme →
 Documents
 Deck, datasheet, safety data
-What it is, what it does in the soil, where it fits in the season and what VAN will not claim for it.
+What it is, what it does in the soil, where it fits in the season and its limits.
 ⬇ Deck (PDF)
 Datasheet
 Safety data
@@ -94,19 +170,13 @@ SOP
 VL-Potash Liquid
 V-Potash Plus
 Crop nutrition engineered, manufactured, registered and tested in Pakistan.
-Plant
-·
-49-Km Multan Road, Phool Nagar Bypass, Lahore
-Head office
-·
-605 Al-Hafeez Heights, Gulberg III, Lahore 54660
++92 42 35762215
 WhatsApp
 +92 300 5003041
-Landline
-+92 42 35762215
 info@van.com.pk
 Products
 All 23 brands
+Compare them
 Vital Urea
 Where to buy
 Verify a bag
@@ -114,20 +184,25 @@ Crops
 28 crop plans
 Wheat
 How you apply it
+Soil Atlas
 Knowledge
 Why Pakistan must shift
-The soil, measured
-Product knowledge decks
+Product decks
 Circular economy
+Vitalytics tools
 Company
-Make with us
+Your Brand
 VAN Lab
-Tools
-About & contact
+About
+Company profile
+Head office
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+Plant
+49-Km Multan Road, Phool Nagar Bypass, Lahore
 © 2026
 Vital Agri Nutrients (Pvt) Ltd
-·
-www.van.com.pk
+Full member of CropLife Pakistan since 2024
+How VAN competes
 LinkedIn
 Facebook
 Instagram

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { ABOUT, CONTACT, WA } from '@/data/site'
 import { BOARD_PHOTOS } from '@/data/assets'
-import { WaButton } from '@/components/bits'
+import { WaButton, noStop } from '@/components/bits'
 import { GrowthStory } from '@/components/story/GrowthStory'
 import { ABOUT_HERO, B2B, MADE_STEPS, HOLDS, ORIGIN, WHO_NOTE, WHO_LAB } from '@/data/about'
 
@@ -32,7 +32,8 @@ export default function About() {
         <div className="wrap">
           <span className="eyebrow">{ABOUT_HERO.eyebrow}</span>
           {/* V5, Tahir 18 Oct 2026: open with 2009, as the story does. 2007 stays on the timeline. */}
-          <h1 className="ab-story-h1">From a research farm in 2009 to about 50,000 t a year.</h1>
+          {/* Tahir 7 Nov 2026 (CO-19): plant capacity; was "in 2026 we make about 50,000 tonnes of product a year". */}
+          <h1 className="ab-story-h1">We began with a research farm in 2009, and in 2026 our plant can make about 50,000 tonnes of product a year</h1>
           <div className="mt-6"><GrowthStory /></div>
         </div>
       </section>
@@ -44,7 +45,7 @@ export default function About() {
             {/* D-181, Tahir 26 Sep: "trim the hero". The heading (VAN started with a research farm in 2009...) and
                 "Trials have run on that ground every season since" repeated the story's 2009 card; both gone. */}
             {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */}
-            <p className="ab-lead ab-lead-lg">VAN formulates, manufactures, registers and tests what it sells on 1 plant site in Lahore.</p>
+            <p className="ab-lead ab-lead-lg">Vital Agri Nutrients (VAN) makes crop nutrition products at 1 plant site in Lahore. We formulate, manufacture and test them there, and we register them for sale.</p>
             <a className="btn btn-navy btn-sm mt-7" href="#/company-profile">Company profile and PDF →</a>
           </div>
           <div>
@@ -61,11 +62,11 @@ export default function About() {
       <section className="ab-b2b">
         <div className="wrap">
           <span className="eyebrow" style={{ color: 'var(--gold)' }}>{B2B.eyebrow}</span>
-          <h2>{B2B.h2}</h2>
+          <h2>{noStop(B2B.h2)}</h2>
           <p>{B2B.p}</p>
           <div className="flex flex-wrap gap-3 mt-5">
             <a className="btn btn-gold" href="#/partner">Your Brand →</a>
-            <a className="btn ab-btn-line" href="#/products">VAN’s own brands →</a>
+            <a className="btn ab-btn-line" href="#/products">Our own brands →</a>
           </div>
         </div>
       </section>
@@ -73,12 +74,12 @@ export default function About() {
       {/* 3 · How a product is made, on one line */}
       <section className="sec ab-sec"><div className="wrap">
         <span className="eyebrow navy">How it is made</span>
-        <h2 className="ab-h2">How a VAN product is made</h2>
+        <h2 className="ab-h2">How we make a product</h2>
         <ol className="ab-line">
           {MADE_STEPS.map(s => (
             <li key={s.n}>
               <span className="ab-dot num" aria-hidden="true">{s.n}</span>
-              <h3>{s.t}</h3>
+              <h3>{noStop(s.t)}</h3>
               <p>{s.d}</p>
               {s.href && <a href={s.href}>{s.link} →</a>}
             </li>
@@ -89,7 +90,7 @@ export default function About() {
       {/* 4 · Licences, accreditation and patent */}
       <section className="sec ab-sec" style={{ background: 'var(--sand-2)' }}><div className="wrap">
         <span className="eyebrow navy">Licences, accreditation and patent</span>
-        <h2 className="ab-h2">What VAN holds</h2>
+        <h2 className="ab-h2">Our licences, accreditation and patent</h2>
         <div className="ab-holds">
           {HOLDS.map(h => (
             <div key={h.t}>
@@ -105,7 +106,7 @@ export default function About() {
       {/* 5 · Why VAN started */}
       <section className="sec ab-sec"><div className="wrap">
         <span className="eyebrow soil">Origin</span>
-        <h2 className="ab-h2">{ORIGIN.h2}</h2>
+        <h2 className="ab-h2">{noStop(ORIGIN.h2)}</h2>
         <div className="ab-cols ab-cols-2">
           <p>{ORIGIN.p1}</p>
           <p>{ORIGIN.p2}</p>
@@ -120,7 +121,7 @@ export default function About() {
       {/* 6 · Board */}
       <section className="sec ab-sec" id="board" style={{ background: 'var(--sand-2)' }}><div className="wrap">
         <span className="eyebrow navy">The board</span>
-        <h2 className="ab-h2">{ABOUT.boardH2}</h2>
+        <h2 className="ab-h2">{noStop(ABOUT.boardH2)}</h2>
         <div className="ab-board">
           {ABOUT.board.map(b => (
             <button key={b.key} className={`ab-person ${open === b.key ? 'on' : ''}`} aria-expanded={open === b.key}

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { ABOUT } from '@/data/site'
 import { useStepper } from './useStepper'
+import { noStop } from '@/components/bits'   // Tahir 7 Nov 2026 (CR-23): no full stop at the end of a heading
 
 /**
  * THE GROWTH STORY — top of the About page. D-178, 26 Sep 2026.
@@ -24,7 +25,7 @@ const yr = (y: string) => (y === 'Today' ? 2027 : Number(y))
 const PEOPLE: [number, number][] = [[2011, 1], [2012, 2], [2014, 4], [2015, 5], [2017, 7], [2019, 9], [2023, 11], [2024, 12], [2026, 13], [2027, 16]]
 /** Where in the drawing each year's change sits, so a phone (which pans the drawing) scrolls to it. */
 const FOCUS_X: Record<string, number> = { '2007': 390, '2009': 180, '2010': 640, '2011': 550, '2012': 660, '2014': 700, '2015': 180, '2017': 1100, '2019': 820, '2023': 680, '2024': 960, '2026': 540, Today: 640 }
-const LINES_ORDER = ['Water-soluble', 'Liquid', 'Granular', 'Coated (2014)', 'Compounded', 'then the biological laboratory (2026)']
+const LINES_ORDER = ['water-soluble', 'liquid', 'granular', 'coated (2014)', 'compounded']
 
 export function GrowthStory() {
   const T = ABOUT.timeline
@@ -173,7 +174,7 @@ export function GrowthStory() {
               <text x="352" y="470" className={`gs-el ${on(2007) ? 'on' : ''}`}>2007</text>
               <text x="474" y="470" className={`gs-el ${on(2011) ? 'on' : ''}`}>THE PLANT</text>
               <text x="908" y="470" className={`gs-el ${on(2024) ? 'on' : ''}`}>LAB 336</text>
-              <text x="1188" y="470" textAnchor="end" className={`gs-el ${on(2017) ? 'on' : ''}`}>VAN SHOPS</text>
+              <text x="1188" y="470" textAnchor="end" className={`gs-el ${on(2017) ? 'on' : ''}`}>OUR SHOPS</text>
             </g>
           </svg>
         </div>
@@ -185,7 +186,7 @@ export function GrowthStory() {
             <div key={t.year} className={`gs-cell ${k === i ? 'on' : ''}`} aria-hidden={k !== i}>
               <div className="gs-year num">{t.year}</div>
               <div>
-                <h2 className="gs-title">{t.title}</h2>
+                <h2 className="gs-title">{noStop(t.title)}</h2>
                 <p className="gs-text">{t.text}</p>
               </div>
             </div>
@@ -207,7 +208,7 @@ export function GrowthStory() {
           ))}
         </div>
       </div>
-      <p className="gs-lines"><b>Production lines added, in order:</b> {LINES_ORDER.slice(0, -1).join(' → ')}, {LINES_ORDER[LINES_ORDER.length - 1]}.</p>
+      <p className="gs-lines"><b>We added our 5 production lines in this order:</b> {LINES_ORDER.slice(0, -1).join(', ')} and {LINES_ORDER[LINES_ORDER.length - 1]}.</p>
     </div>
   )
 }

@@ -90,13 +90,22 @@ export function nutrientDelta(cropKey: string, n: Nutrient): number {
   return r && r.differs ? r.plan - r.calc : 0
 }
 
-const fmt = (v: number, digits = 1) => v.toFixed(digits)
+// L2 fact check 9 Nov 2026 (crops-a W11): exact halves now round up. toFixed rounds some of them down because of how
+// decimals are stored (74.35 printed 74.3, 48.65 printed 48.6, 81.55 printed 81.5) and others up (74.15 printed 74.2).
+// The 1e-9 nudge only moves a figure that sits on a half. Exported so the balance table rounds the same way.
+// Was: const fmt = (v: number, digits = 1) => v.toFixed(digits)
+export const fmt = (v: number, digits = 1) => {
+  const m = Math.pow(10, digits)
+  return (Math.round(v * m + (v >= 0 ? 1e-9 : -1e-9)) / m).toFixed(digits)
+}
 
-/** "16.0–20.4 kg" where the two documents disagree, "11.4 kg" where they do not. */
+/** "16.0 to 20.4 kg" where the two documents disagree, "11.4 kg" where they do not. */
+// L1 7 Nov 2026 (crops-a 13, crops-b M3): now printed through fmtPair, so a total under 0.05 kg reads "under 0.1 kg" here
+// too (chickpea boron 0.013 kg and sesame boron 0.015 kg printed "0.0 kg"), and a range whose 2 ends print the same
+// reads as 1 figure. Was: !differs -> fmt(high); else fmt(low)–fmt(high). No figure is changed.
 export function fmtRange(r: NutrientRange | undefined, unit = ' kg', digits = 1): string {
   if (!r) return 'n/a'
-  if (!r.differs) return `${fmt(r.high, digits)}${unit}`
-  return `${fmt(r.low, digits)}–${fmt(r.high, digits)}${unit}`
+  return fmtPair(r.low, r.high, unit, digits)
 }
 
 /** A pair of figures already scaled (by acreage, or by a soil adjustment) into one printed range. */
@@ -109,7 +118,32 @@ export function fmtPair(a: number, b: number, unit = ' kg', digits = 1): string 
   if (hi - lo <= TOLERANCE_KG) return hi > 0 && hi < small ? `under ${fmt(small * 2, digits)}${unit}` : `${fmt(hi, digits)}${unit}`
   if (hi < small) return `under ${fmt(small * 2, digits)}${unit}`
   if (lo < small) return `up to ${fmt(hi, digits)}${unit}`
-  return `${fmt(lo, digits)}–${fmt(hi, digits)}${unit}`
+  // L1 7 Nov 2026 (crops-a 2, crops-b m7): where the 2 ends print the same ("81.5–81.5 kg" on maize, "49.0–49.0 kg" on
+  // basmati, "20.4–20.4 kg" on soybean), 1 figure is shown. The figures themselves are unchanged.
+  if (fmt(lo, digits) === fmt(hi, digits)) return `${fmt(hi, digits)}${unit}`
+  // L1 10 Nov 2026 (crops 5): house format, a range is written with "to" ("35.4 to 36.5 kg"), as the balance column beside it
+  // ("−10.2 to −9.1 kg"). Was `${lo}–${hi}`. No figure is changed.
+  return `${fmt(lo, digits)} to ${fmt(hi, digits)}${unit}`
+}
+
+/** L1 10 Nov 2026 (crops 4): which end of a printed range is which list. A range prints its lower figure first, whichever
+ *  list it comes from, so on a crop where the published plan is lower for some nutrients and higher for others the
+ *  sentence names each group. Read from the same figures the ranges are printed from, so it cannot drift from them.
+ *  Potato today: nitrogen, phosphate and potash, the published plan is lower; zinc, the published plan is higher.
+ *  Only the nutrients the Nutrition creator panel prints (MACRO_ORDER) are named. */
+const RANGE_WORD: Record<string, string> = { N: 'nitrogen', P: 'phosphate', K: 'potash', S: 'sulfur', Ca: 'calcium', Mg: 'magnesium', Zn: 'zinc', B: 'boron' }
+export function rangeEndsSentence(cropKey: string): string {
+  const rs = nutrientRanges(cropKey)
+  if (!rs) return ''
+  const shown = ['N', 'P', 'K', 'S', 'Ca', 'Mg', 'Zn', 'B'].filter(k => { const r = rs[k as Nutrient]; return r && r.differs && r.calc > 0.01 })
+  const planLow = shown.filter(k => rs[k as Nutrient]!.plan < rs[k as Nutrient]!.calc)
+  const planHigh = shown.filter(k => rs[k as Nutrient]!.plan > rs[k as Nutrient]!.calc)
+  const names = (ks: string[]) => ks.map(k => RANGE_WORD[k]).reduce((a, w, i, all) => i === 0 ? w : `${a}${i === all.length - 1 ? ' or ' : ', '}${w}`, '')
+  const which = (ks: string[]) => ks.length === 1 ? `the ${names(ks)} total below is` : `a ${names(ks)} total below is`
+  const hi = planHigh.length ? `Where ${which(planHigh)} a range, the higher figure comes from the published plan and the lower figure from the Nutrition creator.` : ''
+  const lo = planLow.length ? `Where ${which(planLow)} a range, the lower figure comes from the published plan and the higher figure from the Nutrition creator.` : ''
+  // The larger group is named first.
+  return (planLow.length > planHigh.length ? [lo, hi] : [hi, lo]).filter(Boolean).join(' ')
 }
 
 /** True where any nutrient on this crop is printed as a range. */
@@ -122,7 +156,8 @@ export function cropHasRange(cropKey: string): boolean {
  * The one sentence that explains every range on the site. Written once here so the two places that
  * print a range cannot drift into explaining it two ways.
  */
-export const RANGE_NOTE = 'A range means VAN’s calculator and its published plan use slightly different product lists for this crop.'
+// D-311 wording kept; only the tool's name changed, by Tahir's 6 Nov 2026 term ruling 2 ("Nutrition creator" everywhere).
+export const RANGE_NOTE = 'A range means the Nutrition creator and VAN’s published plan use slightly different product lists for this crop.'
 // D-311 (Tahir, 23 Oct 2026: short plain notes for the live site): was 'Where a figure is shown as a range, it is because VAN
 // holds 2 documents for this crop: the crop calculator sheet and the published crop plan. They do not carry an identical
 // product list, so they do not deliver an identical kilogram of nutrient. Both ends are VAN’s own arithmetic on VAN’s own

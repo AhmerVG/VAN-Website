@@ -118,7 +118,7 @@ export function SoilMatrix({ selected, onSelect, param, onParam }: {
             : mv > v ? 'the simple average, pulled up by a few very high samples' : 'the simple average, pulled down by a few very low samples'
           const lines: [string, string][] = [
             ['mx-tip-h', `${name} · ${c.label}`],
-            ['mx-tip-l', v == null ? 'Not determined in this survey.' : `${fmt(c.key, v)}${u} (big) = median, the typical field.${nc ? ' No colour band: likely a different laboratory method.' : b ? ` Sets the colour: ${SOIL_BAND_LABEL[b]}.` : ' No band in VAN’s table.'}`],
+            ['mx-tip-l', v == null ? 'Not determined in this survey.' : `${fmt(c.key, v)}${u} (large) = median, the typical field.${nc ? ' No colour band: probably a different laboratory method.' : b ? ` Sets the colour: ${SOIL_BAND_LABEL[b]}.` : ' No band on VAN’s scale.'}`],
           ]
           if (v != null) lines.push(['mx-tip-l', `${fmt(c.key, mv)}${u} (small) = mean, ${pull}.`])
           const label = lines.map(l => l[1]).join(' ')
@@ -181,23 +181,24 @@ export function SoilMatrix({ selected, onSelect, param, onParam }: {
       </div>
 
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-3">
-        <span className="cap">Each cell: the median, coloured by band; the mean below it in small type.</span>
-        <span className="cap" style={{ fontWeight: 700, color: 'var(--navy)' }}>How bad</span>
-        {SOIL_BAND_ORDER.map(b => (
+        <span className="cap">Each cell: the median, coloured by VAN band; the mean below it in small type.</span>
+        <span className="cap" style={{ fontWeight: 700, color: 'var(--navy)' }}>VAN band</span>
+        {/* Tahir 7 Nov 2026 (CR-18): each legend item reads "1 of 5: Critical" ... "5 of 5: Healthy". Was the name alone. */}
+        {SOIL_BAND_ORDER.map((b, i) => (
           <span key={b} className="cap inline-flex items-center gap-1.5">
             <i style={{ width: 13, height: 13, borderRadius: 3, background: `${SOIL_BAND_COLOR[b]}2E`, border: `2px solid ${SOIL_BAND_COLOR[b]}`, display: 'inline-block' }} />
-            {SOIL_BAND_LABEL[b]}
+            {i + 1} of 5: {SOIL_BAND_LABEL[b]}
           </span>
         ))}
       </div>
+      {/* L1 editor 7 Nov 2026 (m15): the 2 bold labels are now sentences. Were 'Missing values.' and 'Values that suggest a different laboratory method.' */}
       <p className="cap mt-2 max-w-[140ch]">
-        Worst overall weighs the 8 main columns equally; tap a column head to sort by that reading.
-        The bands are VAN's own 5-band soil-test table, the same one printed on a VAN soil report,
-        read against the district median, the typical field; the mean sits under each value. Calcium carbonate has no row in that table, so it carries a value and no
-        colour. Copper and manganese have 3 bands there rather than 5. N.d. = not determined; Jhelum returns no
-        valid zinc. * Copper in Faisalabad, Jhang, Chiniot and Toba Tek Singh reads far below every other district, and iron far below most,
-        which points to a different laboratory method rather than different soil. * Phosphorus samples in Kasur read 2.5 to 5 times the samples within 1 km of them across the district line (median 14.5 ppm against Lahore 4.2 and Okara 5.9; 16.6 against Nankana Sahib 3.2), and all 4 of its tehsils read the same, which points the same way. They are shown as surveyed, without a colour band.
-        <b> Tap any cell</b> to take that district and that parameter to the map and the readings above.
+        <b>How the table is ranked and coloured. </b>“Worst overall” ranks districts by the average of their VAN bands on the 8 main columns (pH, organic matter, P, K, Zn, B, Fe and EC), each column counted equally; cells without a colour band are left out. Tap a column heading to sort by that soil test.
+        Each cell is coloured by the band in which the district median falls on VAN’s 5-band soil-test scale, the scale used on a VAN soil report; the mean is shown under it. Calcium carbonate has no row on that scale, so it has a value but no
+        colour. Copper and manganese have 3 bands on that scale rather than 5. <b>Some values are missing. </b>N.d. means not determined; Jhelum has no
+        valid zinc data. <b>Some values suggest a different laboratory method. </b>* In Faisalabad, Jhang, Chiniot and Toba Tek Singh, the iron values (shown) and the copper values (under “Add Cu · Mn · CaCO₃”) are far lower than elsewhere: copper is lower than in every other district, and iron lower than in most.
+        VAN reads this pattern as the result of a different laboratory method rather than different soil. * Kasur’s phosphorus values are 2.5 to 5 times higher than those of samples within 1 km across the district boundary. Near the Lahore and Okara boundaries the Kasur median is 14.5 ppm, against 4.2 ppm in Lahore and 5.9 ppm in Okara; near the Nankana Sahib boundary it is 16.6 ppm, against 3.2 ppm. All 4 Kasur tehsils show the same pattern of high values. This also suggests a different laboratory method. The starred iron and copper values and Kasur’s phosphorus values are shown as surveyed, without a colour band.
+        <b> Tap any cell</b> to show that district and soil test on the map and in the summary tiles above.
       </p>
     </div>
   )

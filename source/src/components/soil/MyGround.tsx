@@ -47,12 +47,12 @@ export function MyGround({ selected }: { selected: string | null }) {
   if (!d) {
     return (
       <div className="panel p-5" id="soil-myground">
-        <span className="eyebrow soil">1 level down</span>
-        <h3 className="mt-1">Pick your district above to see the ground inside it.</h3>
+        <span className="eyebrow soil">Inside your district</span>
+        <h3 className="mt-1">Pick your district above to see the results inside it</h3>
         <p className="small muted mt-2 max-w-[140ch]">
-          The survey is not only district averages. It carries <b>{GRID.cells.length.toLocaleString()} cells</b> of
-          about 5.5 by 4.8 kilometres, roughly 6,500 acres each, and every district has its own. That is closer
-          to a neighbourhood than to a district, and it is where a district average starts to fall apart.
+          The map also shows the soil below district level. It divides Punjab into <b>{GRID.cells.length.toLocaleString()} grid squares</b> of
+          about 5.5 by 4.8 km, roughly 6,500 acres each. Inside a district, the soil in a single square often differs from
+          the district median.
         </p>
       </div>
     )
@@ -79,15 +79,15 @@ export function MyGround({ selected }: { selected: string | null }) {
   return (
     <div className="panel p-5" id="soil-myground">
       <div className="flex items-baseline justify-between gap-3 flex-wrap">
-        <span className="eyebrow soil">1 level down · {d.name}</span>
+        <span className="eyebrow soil">Inside the district · {d.name}</span>
         <span className="cap">{cells.length} cells · {d.summary.n.toLocaleString()} samples</span>
       </div>
-      <h3 className="mt-1 max-w-[30ch]">Your district is not 1 soil.</h3>
+      <h3 className="mt-1 max-w-[30ch]">The soil varies within your district</h3>
 
       {widest && (
         <p className="lead mt-3 max-w-[140ch]">
           {d.name}'s median {widest.a.label.toLowerCase()} is <b>{fmtVal(widest.k, widest.median)}</b>.
-          Across its own {widest.n} cells it runs from <b>{fmtVal(widest.k, widest.lo)}</b> to <b>{fmtVal(widest.k, widest.hi)}</b>.
+          Across the district’s {widest.n} cells it ranges from <b>{fmtVal(widest.k, widest.lo)}</b> to <b>{fmtVal(widest.k, widest.hi)}</b>.
         </p>
       )}
 
@@ -111,9 +111,9 @@ export function MyGround({ selected }: { selected: string | null }) {
       </div>
 
       <p className="small mt-4 max-w-[140ch]">
-        <b>Every one of those numbers is real, and none of them is your field.</b> A cell is the median of the
-        samples that fell inside about 6,500 acres. Your own ground sits somewhere in that range, and the only
-        way to know where is to test it.
+        <b>Each of these numbers is a real survey reading, but none of them is a test of your field.</b> A cell value is the
+        median of the samples taken within about 6,500 acres. Your own field lies somewhere in this range, and only a
+        soil test can show where.
       </p>
       <div className="flex flex-wrap gap-3 mt-4">
         <a className="btn btn-navy btn-sm" href="#/lab">Have your field tested →</a>

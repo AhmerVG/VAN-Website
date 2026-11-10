@@ -1,4 +1,4 @@
-import { rateLabel } from '@/lib/season'
+import { ratePackLabel } from '@/lib/season'
 import { useEffect, useState } from 'react'
 import { WHEAT_STAGES, WHEAT_PLAN } from '@/data/catalogue'
 import { WHEAT } from '@/data/site'
@@ -31,10 +31,10 @@ export function BagCard({ row }: { row: (typeof WHEAT_PLAN)[number] }) {
       <div className="min-w-0">
         <div className="cap uppercase tracking-[.08em] font-bold" style={{ color: row.commodity ? '#55645A' : 'var(--st-text, var(--st, var(--green)))' }}>{row.band}</div>
         <div className="display text-[19px] leading-tight mt-0.5">{row.product}</div>
-        <div className="cap mt-0.5">{row.analysis}{row.commodity ? ' · commodity urea, not a VAN product' : ''}</div>
+        <div className="cap mt-0.5">{row.analysis}{row.commodity ? ' · ordinary urea, not made by VAN' : ''}</div>
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-2">
-          <span className="num text-[20px]" style={{ color: 'var(--navy)' }}>{rateLabel(row)}</span>
-          <span className="small muted">{row.pack.replace(' - ', ' · ')}</span>
+          {/* L1 10 Nov 2026 (crops 2): rate and pack size in 1 phrase ("½ of a 25 kg bag"). Was the rate, then "Bag · 25 kg" beside it. */}
+          <span className="num text-[20px]" style={{ color: 'var(--navy)' }}>{ratePackLabel(row)}</span>
           <span className="small inline-flex items-center gap-1 muted"><MethodIcon method={row.method} size={18} />{row.method}</span>
         </div>
       </div>
@@ -42,7 +42,7 @@ export function BagCard({ row }: { row: (typeof WHEAT_PLAN)[number] }) {
   )
   return row.slug
     ? <a href={`#/products/${row.slug}`} className="panel bag-card">{inner}</a>
-    : <div className="panel bag-card grey" title="Commodity urea, not a VAN product">{inner}</div>
+    : <div className="panel bag-card grey" title="Ordinary urea, not made by VAN">{inner}</div>
 }
 
 /** Five stages, one walk. Autoplays when it scrolls into view; tap a stage to hold it. */
@@ -63,7 +63,7 @@ export function StageWalk({ limit, teaser = false }: { limit?: number; teaser?: 
   return (
     <div ref={ref} className={`st-${i} ${inView ? 'on' : ''}`}>
       <div className="flex flex-wrap items-center gap-3 mb-3">
-        <button className={`btn btn-sm ${playing ? 'btn-navy' : 'btn-gold'}`} onClick={() => setPlaying(p => !p)} aria-pressed={playing}>{playing ? '❚❚ Pause' : '▶ Play the walk'}</button>
+        <button className={`btn btn-sm ${playing ? 'btn-navy' : 'btn-gold'}`} onClick={() => setPlaying(p => !p)} aria-pressed={playing}>{playing ? '❚❚ Pause' : '▶ Play through the stages'}</button>
         <span className="cap" style={{ color: 'var(--gold-text)' }}>▸ Tap a stage</span>
         <div className="ml-auto flex gap-2">
           <button className="btn btn-ghost btn-sm" onClick={() => pick((i - 1 + stages.length) % stages.length)} aria-label="Previous stage">‹</button>
@@ -88,27 +88,27 @@ export function StageWalk({ limit, teaser = false }: { limit?: number; teaser?: 
               <span className="eyebrow" style={{ color: 'var(--st-text, var(--st))' }}>Stage {i + 1} of {WHEAT_STAGES.length}</span>
               <h3 className="text-[clamp(26px,2.6vw,34px)]">{stages[i]}</h3>
               <div className="flex flex-wrap gap-2 mt-3">
-                {/\d/.test(g.gdd) && <span className="tag tag-navy" title="Growing degree days, base 10 °C">GDD {g.gdd}</span>}{/* D-317: no GDD tag before sowing (was "GDD n/a") */}
-                <span className="tag tag-navy">DAS {g.das}</span>
+                {/\d/.test(g.gdd) && <span className="tag tag-navy" title="Growing degree days, base 10 °C">Growing degree days {g.gdd}</span>}{/* D-317: no GDD tag before sowing (was "GDD n/a") */}
+                <span className="tag tag-navy">Days after sowing (DAS): {g.das}</span>
               </div>
             </div>
           </div>
           <table className="tbl mt-4" style={{ fontSize: 15 }}>
-            <thead><tr><th>Sown Oct 20</th><th>Sown Nov 1</th><th>Sown Nov 20</th></tr></thead>
+            <thead><tr><th>Sown 20 Oct</th><th>Sown 1 Nov</th><th>Sown 20 Nov</th></tr></thead>
             <tbody><tr><td className="font-semibold">{g.oct20}</td><td className="font-semibold">{g.nov1}</td><td className="font-semibold">{g.nov20}</td></tr></tbody>
           </table>
           <p className="small mt-4">{g.events}</p>
         </div>
         <div>
           <div className="flex items-baseline justify-between mb-2">
-            <div className="font-bold">What goes on at this stage · per acre</div>
-            <div className="cap shrink-0 nowrap">{rows.length} row{rows.length === 1 ? '' : 's'}</div>
+            <div className="font-bold">Applied at this stage · per acre</div>
+            <div className="cap shrink-0 nowrap">{rows.length} product{rows.length === 1 ? '' : 's'}</div>
           </div>
           <div className="grid sm:grid-cols-2 gap-3">
             {rows.map((r, k) => <BagCard key={k} row={r} />)}
           </div>
-          {!rows.length && <div className="panel-soft p-5"><p className="font-bold">The published plan puts nothing new on at this stage.</p><p className="small muted mt-1">Minimal N applications after boot; no new nutrient applications after grain fill begins. The season's work is done by the 4 stages before it.</p></div>}
-          {teaser && <a className="btn btn-gold mt-4" href="#/crops/wheat">Walk all 5 stages of wheat →</a>}
+          {!rows.length && <div className="panel-soft p-5"><p className="font-bold">The published plan applies nothing new at this stage.</p><p className="small muted mt-1">All of the season’s applications are made in the 4 stages before this one.</p></div>}
+          {teaser && <a className="btn btn-gold mt-4" href="#/crops/wheat">See all 5 stages of wheat →</a>}
         </div>
       </div>
     </div>

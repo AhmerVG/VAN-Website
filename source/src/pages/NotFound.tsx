@@ -22,13 +22,14 @@ import { HorseMark } from '@/components/HorseMark'
  * (products and crop plans), the tools, and the WhatsApp line the whole site ends in.
  */
 const WAYS: { href: string; label: string; what: string; tone: string }[] = [
-  { href: '#/crops', tone: 'green', label: 'Crop nutrition plans', what: `All ${CROPS.length} programmes. Stage by stage, with product, rate and application method for each.` },
-  { href: '#/products', tone: 'navy', label: 'Products', what: `Every VAN brand, ${PRODUCTS.filter(p => !p.family).length} of them, with its registered analysis, pack sizes and where it fits in the season.` },
-  { href: '#/soil', tone: 'soil', label: 'Soil Atlas', what: `${SOIL_HEADLINE.samples} soil samples across ${SOIL_HEADLINE.districts} districts, read district by district.` },
+  { href: '#/crops', tone: 'green', label: 'Crop plans', what: `All ${CROPS.length} crop plans. For every crop stage, each plan gives the product to apply, the quantity per acre and the method of application.` },
+  { href: '#/products', tone: 'navy', label: 'Products', what: `All ${PRODUCTS.filter(p => !p.family).length} VAN brands, each with its declared analysis, its pack sizes and the crop stage at which it is applied.` },
+  { href: '#/soil', tone: 'soil', label: 'Soil Atlas', what: `Results of ${SOIL_HEADLINE.samples} soil samples from ${SOIL_HEADLINE.districts} districts of Punjab, tested in about 2016 to 2018, shown district by district.` },
   // D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction
-  { href: '#/tools', tone: 'gold', label: 'Vitalytics', what: 'The nutrition creator, the discipline simulator, the unit and bag converter, and the tools still coming.' },
-  { href: '#/knowledge', tone: 'rust', label: 'Knowledge', what: 'The national picture, the state of the soil, and how a nutrient is delivered. Every figure sourced and dated.' },
-  { href: '#/lab', tone: 'navy', label: 'VAN Lab', what: 'All 21 tests with every price and turnaround published, and the blind chain behind them.' },
+  // L1 editor fix 7 Nov 2026 (company-a m21): the tool's name is 'Nutrition creator'. The simulator's name is left to the crops fixer.
+  { href: '#/tools', tone: 'gold', label: 'Vitalytics', what: 'All our farm tools, including the Nutrition creator, the farm discipline simulator and the unit and bag converter, and the tools still being built.' },
+  { href: '#/knowledge', tone: 'rust', label: 'Knowledge', what: 'Articles on Pakistan’s fertiliser use, the condition of its soil and how nutrients are applied, with a source and date for every figure.' },
+  { href: '#/lab', tone: 'navy', label: 'VAN Lab', what: 'All 21 fertiliser tests, with their published prices and turnaround times, and how every sample is coded so that the analysts do not know whose it is.' },
 ]
 
 export default function NotFound() {
@@ -40,8 +41,8 @@ export default function NotFound() {
           <HorseMark className="nf-horse" size={96} />
           <span className="eyebrow rust">404 · page not found</span>
           {/* D-151 (QA 38): was "This page isn’t here. The field still is." */}
-          <h1 className="max-w-[22ch]">This page is not here. <span style={{ color: 'var(--rust-text)' }}>The links below go to the main parts of the site.</span></h1>
-          <p className="lead mt-4 max-w-[140ch]">Either the address has a typo in it, or we moved the page when the site was rebuilt and did not leave a forwarding note. Both are ours to fix. If you followed a link to get here, send it to us on WhatsApp and we will.</p>
+          <h1 className="max-w-[22ch]">We cannot find this page</h1>
+          <p className="lead mt-4 max-w-[140ch]">Either the address has a typing error, or the page moved when we rebuilt the site and the old address no longer leads to it. The links below go to the main parts of the site.</p>
           <div className="flex flex-wrap gap-3 mt-6">
             <a className="btn btn-navy" href="#/">Back to the home page</a>
             <a className="btn btn-ghost" href="#/crops">Find your crop →</a>
@@ -51,8 +52,8 @@ export default function NotFound() {
 
       <section className="sec"><div className="wrap">
         <div className="mb-7 lg:mb-9">
-          <span className="eyebrow navy"><span className="k-num">01</span>Where you were probably going</span>
-          <h2 className="max-w-[24ch]">6 places, and what is in each.</h2>
+          <span className="eyebrow navy"><span className="k-num">01</span>Main links</span>
+          <h2 className="max-w-[24ch]">The 6 main parts of the site</h2>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {WAYS.map(w => (
@@ -67,7 +68,7 @@ export default function NotFound() {
 
       <section className="wrap sec-tight">
         <div className="panel-navy p-6 lg:p-8 grid lg:grid-cols-[1fr_auto] gap-5 items-center">
-          <div><h3>Followed a link and landed here?</h3><p className="mt-2" style={{ color: 'rgba(255,255,255,.8)' }}>Send us the address you clicked. A broken link on our own site is a fault we want reported, and the agronomy team answers on the same line as everything else.</p></div>
+          <div><h3>Report a broken link</h3><p className="mt-2" style={{ color: 'rgba(255,255,255,.8)' }}>If a link brought you here, send us that link on WhatsApp and we will fix it. Our agronomy team reads the messages on our WhatsApp number and will pass your message on.</p></div>
           <WaButton href={WA.farmer} lg>Tell us on WhatsApp</WaButton>
         </div>
       </section>

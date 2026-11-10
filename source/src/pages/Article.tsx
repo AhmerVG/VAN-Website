@@ -3,6 +3,7 @@ import { Lens } from '@/components/Lens'
 import { FormulationLibrary } from '@/components/FormulationLibrary'
 import { EnquiryForm } from '@/components/EnquiryForm'
 import { Source } from '@/components/Charts'
+import { noStop } from '@/components/bits'   // Tahir 7 Nov 2026 (CR-23): no full stop at the end of a heading
 
 /**
  * Generic renderer for the pages carried across from the live site (see rebuilt.ts). One component
@@ -33,7 +34,7 @@ function Blocks({ blocks }: { blocks: Block[] }) {
         switch (b.k) {
           case 'lead': return <p key={i} className="lead max-w-[140ch]">{b.text}</p>
           case 'p': return <p key={i} className="small max-w-[140ch]">{b.text}</p>
-          case 'h3': return <h3 key={i} className="mt-2">{b.text}</h3>
+          case 'h3': return <h3 key={i} className="mt-2">{noStop(b.text)}</h3>
           case 'table': return <Table key={i} t={b.t} />
           case 'note': return <p key={i} className="cap max-w-[140ch]">{b.text}</p>
           case 'source': return <Source key={i}>{b.text}</Source>
@@ -75,7 +76,7 @@ export function ArticleSections({ sections }: { sections: RebuiltPage['sections'
           <div className="wrap">
             <div className="mb-7 lg:mb-9">
               <span className={`eyebrow ${s.tone ?? 'navy'}`}><span className="k-num">{s.n}</span>{s.kicker}</span>
-              <h2 className="max-w-[24ch]">{s.title}</h2>
+              <h2 className="max-w-[24ch]">{noStop(s.title)}</h2>
               {s.lead && <p className="lead mt-3 max-w-[140ch]">{s.lead}</p>}
             </div>
             <Blocks blocks={s.blocks} />
@@ -92,7 +93,7 @@ export default function Article({ page }: { page: RebuiltPage }) {
       <section style={{ background: 'linear-gradient(180deg, var(--sand-2), var(--sand))' }}>
         <div className="wrap py-8 lg:py-12">
           <span className={`eyebrow ${page.tone}`}>{page.eyebrow}</span>
-          <h1 className="max-w-[26ch]">{page.h1}{page.h1accent && <> <span style={{ color: 'var(--rust)' }}>{page.h1accent}</span></>}</h1>
+          <h1 className="max-w-[26ch]">{page.h1accent ? page.h1 : noStop(page.h1)}{page.h1accent && <> <span style={{ color: 'var(--rust)' }}>{noStop(page.h1accent)}</span></>}</h1>
           <p className="lead mt-4 max-w-[140ch]">{page.lead}</p>
           {/* O-11: chips are places ON this page. Other pages are listed separately below, because a
               numbered chip that navigates away is what broke the circular economy hub. */}
@@ -120,7 +121,7 @@ export default function Article({ page }: { page: RebuiltPage }) {
           <div className="wrap">
             <div className="mb-7 lg:mb-9">
               <span className={`eyebrow ${s.tone ?? 'navy'}`}><span className="k-num">{s.n}</span>{s.kicker}</span>
-              <h2 className="max-w-[24ch]">{s.title}</h2>
+              <h2 className="max-w-[24ch]">{noStop(s.title)}</h2>
               {s.lead && <p className="lead mt-3 max-w-[140ch]">{s.lead}</p>}
             </div>
             <Blocks blocks={s.blocks} />

@@ -124,8 +124,8 @@ export function SeasonRing({ size = 520, month = currentMonth(), selected, onSel
         <g>
           <text x={CX} y={CY - 18} textAnchor="middle" fontSize="12" fontWeight="700" letterSpacing="1.5" fill="var(--green)">{picked === null ? 'THIS MONTH' : 'PICKED'}</text>
           <text x={CX} y={CY + 6} textAnchor="middle" fontSize="20" fontWeight="700" fontFamily="Public Sans, sans-serif" fill="var(--navy)">{MONTHS_LONG[view]}</text>
-          <text x={CX} y={CY + 28} textAnchor="middle" fontSize="12" fill="var(--muted)">{picked === null ? `${now.length} sown now · ${next.length} next` : `${viewCount} crops sown, listed below`}</text>
-          <text x={CX} y={CY + 48} textAnchor="middle" fontSize="11" fill="var(--muted)">▸ tap a month or an arc</text>
+          <text x={CX} y={CY + 28} textAnchor="middle" fontSize="12" fill="var(--muted)">{picked === null ? `Sown this month: ${now.length} · next month: ${next.length} more` : `${viewCount} crops sown, listed below`}</text>
+          <text x={CX} y={CY + 48} textAnchor="middle" fontSize="11" fill="var(--muted)">▸ tap a month or a crop’s arc</text>
         </g>
       )}
       {compact && <circle cx={CX} cy={CY} r={10} fill={active ? GROUP_COLOUR[active.group] ?? 'var(--green)' : 'var(--gold)'} />}
@@ -141,7 +141,7 @@ export function SeasonRing({ size = 520, month = currentMonth(), selected, onSel
         ) : (
           <>
             <div className="cap font-bold" style={{ color: 'var(--green-text)', letterSpacing: '.1em' }}>{picked === null ? `THIS MONTH · ${MONTHS_LONG[view].toUpperCase()}` : MONTHS_LONG[view].toUpperCase()}</div>
-            <div className="cap">{picked === null ? `${now.length} sown now · ${next.length} next · tap a month or an arc` : `${viewCount} crops sown, listed below`}</div>
+            <div className="cap">{picked === null ? `Sown this month: ${now.length} · next month: ${next.length} more · tap a month or a crop’s arc` : `${viewCount} crops sown, listed below`}</div>
           </>
         )}
       </div>

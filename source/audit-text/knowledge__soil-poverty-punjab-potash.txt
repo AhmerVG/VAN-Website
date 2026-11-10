@@ -1,0 +1,476 @@
+PAGE: /knowledge/soil-poverty-punjab-potash.html
+======================================================================
+Products
+Crop Plans
+Your Brand
+Soil Atlas
+Vitalytics
+VAN Lab
+Knowledge
+About
+Search
+☰
+View
+Simple view
+Soil Poverty Series · No. 1
+Soil Poverty: Punjab’s Potash
+As potash runs short, urea and DAP buy less yield.
+If nothing changes, most of our model runs put Punjab’s average soil potash below 100 ppm between 2027 and 2044, with the middle around 2036.
+The date depends mainly on how strongly the soil’s mineral reserve slows the loss; other published methods give dates from the early 2020s to about 2060. In 2016-18 it stood at 132 ppm.
+Tahir Abbas
+· October 2026. Tahir Abbas is the co-founder of Vital Green and serves as COO of Vital Agri Nutrients, a specialty crop nutrients research company.
+Download the full report (PDF)
+Request the model:
+info@van.com.pk
+1 Where Punjab stands
+2 Taken out, put back
+3 The projection
+4 How hard to undo
+5 Why it matters
+6 Statistical checks
+International cross-check
+7 The message
+8 Method and limits
+Sources
+← All knowledge
+·
+The Soil Atlas this report reads
+Key findings
+Punjab crops now take about 940,000 tonnes of potash (K₂O) out of the soil every year. Farmers put back about 36,000 tonnes as fertilizer (2023-24), under 4%.
+After manure and irrigation water are counted, the soil is still short about 616,000 tonnes a year. That is 1.88 times the shortfall of 2003-09, the last years for which we found a published measured rate of potash loss in Punjab.
+On the middle of our runs, about 1/3 of Punjab’s soil samples (34%; 28% to 51% across 8 in 10 runs) may now be below 100 ppm, against 18% measured in 2016-18. No test since 2016-18 confirms it.
+Raising potash use 12 times by 2034-35 delays the crossing by only about 2 years, because the soil still pays for the other half of the shortfall.
+These numbers come from a potash balance model built on Punjab and federal statistics. It is set to the only province-wide measured rate of potash loss in Punjab we found, and checked against 3 other methods (Section 3). It is a projection, not a measurement. Section 8 sets out what the model cannot tell.
+1
+Where Punjab stands
+132 ppm in 2016-18, and 9 in 10 samples below the 180 ppm mark
+Punjab tested 770,160 soil samples in 2016-18, in all 36 districts. VAN validated, normalised and mapped them. They are soil testing records, not a designed random survey, and a field may have more than 1 sample.
+The average available potash was 132 ppm. Here ppm means mg of potassium (K) per kg of soil, extracted with ammonium acetate, as Punjab soil labs report it.
+About 88% of samples were below 180 ppm, the level Punjab labs treat as adequate. Labs grade below 80 ppm as poor and 80 to 180 ppm as satisfactory. This report uses 100 ppm as a warning line inside the satisfactory band, not as an official class, and gives the share below 80 ppm too. 18% of samples were already below 100 ppm, and 8% below 80 ppm. 656 of 4,911 grid squares (about 5 km by 5 km each) averaged below 100 ppm.
+District
+Median potash, 2016-18 (ppm)
+Samples
+Mianwali
+81
+14,037
+Layyah
+84
+14,757
+Bhakkar
+90
+23,220
+Mandi Bahauddin
+92
+20,392
+Attock
+100
+12,002
+Sahiwal (highest)
+184
+25,164
+The low districts are mostly in the sandy Thal (Mianwali, Layyah, Bhakkar). Mandi Bahauddin is not in the Thal. Section 6 shows that much of the difference between districts comes from how the soil was formed, not only from cropping.
+Weighted by each district’s cultivated area, the 2016-18 average is 129.8 ppm instead of 132.3, because some low-potash districts are large. The fixed cases A to C start from 132.3 ppm; the 20,000 model runs start from 129.8 ppm.
+Why 100 ppm.
+In a study of 8 alluvial soil series of Pakistan, wheat responded to added potash wherever clay was up to 20% and the same test read up to 120 mg per kg (Ranjha, Mehdi and Qureshi 1992). A 100 ppm line is therefore a cautious warning line, set below the level where wheat still responded. On VAN’s soil scale, 100 ppm is where soil moves from Average to Weak.
+There is no single world standard.
+Each country sets its own grades for the same test. India grades available potash below 110 to 120 kg per hectare as low and up to 280 as medium (ICAR-IISS; TNAU). Converted at about 2.24 kg per hectare per ppm for a 15 cm soil layer, that puts India’s “low” at about 50 to 54 ppm and “medium” up to about 125 ppm. The US Tri-State system puts the critical level at 100 to 120 ppm, by soil type (Ohio State University).
+What experts said, decade by decade.
+No repeat survey exists, but the statements move one way:
+Period
+What was said
+Source
+Today
+30% of Punjab soils deficient in potash; losing 3 ppm a year
+SFRI Punjab website (undated)
+2006
+20 to 60% of soils short of potash
+Ahmad and Khan 2006, IFA, as quoted by Akram et al. 2014
+2005
+Potash deficiency "up to 40 percent" of soils
+NFDC authors in FAO 2006
+About 1990
+50% of soils short of potash (date not certain)
+Bajwa, as quoted by Imran et al. 2010
+1978
+"Most of the cultivated soils in Pakistan have sufficient supply of available potassium"
+Bhatti 1978, ARC Islamabad, as quoted by Mehdi et al. 2001
+These statements use different methods and cannot be read as a measured trend. The older primary records (Punjab soil lab annual reports of the 1980s) exist only in print. SFRI’s 30% does not state which cutoff it uses, so it cannot be set against our shares.
+2
+What crops take out and what goes back
+The shortfall is 1.88 times its 2003-09 level
+Between 1971-72 and 2023-24, the potash carried off Punjab’s fields by 5 crops rose from about 203,000 to 940,000 tonnes a year. Wheat with its straw (bhoosa) is half of it; maize has risen fastest. On the NFDC figures we used, fertilizer has not put back more than 53,000 tonnes in any year.
+Crops took
+940
+thousand tonnes in 2023-24; fertilizer put back
+36
+thousand
+thousand tonnes of K₂O a year
+0
+200
+400
+600
+800
+1000
+1980
+1990
+2000
+2010
+2020
+Taken out 940
+Put back, all 324
+Fertilizer 36
+Navy: potash taken out by wheat, rice, sugarcane, maize and cotton. Dashed: all potash put back (fertilizer, manure and irrigation water). Red: fertilizer alone.
+Source
+·
+Author’s balance model on Bureau of Statistics Punjab crop data and NFDC fertilizer data.
+Manure and irrigation water return more than fertilizer does: about 85,000 and 203,000 tonnes a year by our estimate (Section 8). Even with them counted, the soil was short about 328,000 tonnes a year in 2003-09, when SFRI measured the loss, and about 616,000 tonnes in 2023-24.
+3
+The projection to 2050
+Most runs cross 100 ppm between 2027 and 2044; the middle is about 2036
+Most runs cross 100 ppm between 2027 and 2044; the middle run crosses in
+2035-36
+ppm, no action taken
+0
+40
+80
+100
+120
+140
+2020
+2025
+2030
+2035
+2040
+2045
+2050
+100 ppm
+2035-36
+129.8
+81
+Below 100 ppm: urea and DAP buy less yield
+Line: the middle run, red below 100 ppm. Dark band: the middle half of runs. Light band: 8 in 10 runs. Band edges are not single runs. Start: the area-weighted 2016-18 average, 129.8 ppm.
+Source
+·
+Author’s model, 20,000 runs with every uncertain input varied; loss rate set to SFRI Punjab 2003-09.
+Scenario
+Punjab average now (2025-26)
+Crosses 100 ppm
+2049-50
+Middle of 20,000 runs: no action
+116 ppm
+2035-36 (8 in 10 runs: 2026-27 to 2043-44)
+81 ppm
+B. No action, fast case: crops keep growing, potash use stays where it is, loss keeps a steady percentage pace
+109 ppm
+2028-29
+41 ppm
+C. Action: potash use rises to 416,000 tonnes by 2034-35
+109 ppm
+2029-30
+63 ppm
+A. Loss stays at the 2003-09 pace, whatever crops do
+118 ppm
+2036-37
+83 ppm
+Share of soil samples below 100 ppm, by our estimate (18% measured in 2016-18): on the middle of the 20,000 runs about 34% now and 52% in 2034-35; in the fast case B, 46% now and 82% in 2034-35. These are projections, not new tests.
+Case B keeps the loss at the same percentage pace SFRI measured in 2003-09, scaled to today’s shortfall. It is the simplest case and one of the faster ones. Across the 3 fixed cases the crossing falls between 2028-29 and 2036-37. The 20,000 runs also let the soil’s reserve slow the loss as potash falls, and they give the middle estimate in the headline.
+How sure is the date?
+We ran the model 20,000 times, each time drawing every uncertain input from its range: potash in canal water (1.3 to 5 mg per litre, most likely 3, since Pakistani river data sit above the world median) and in tube-well water (2 to 8, most likely 5); how much of that water potash stays in the root zone (canal 25% to 75%; tube-well 10% to 50%, because much of it is the fields’ own potash, leached and pumped back); fodder and other removals not counted (0 to 600,000 tonnes a year, rising 1% to 3% a year); groundwater pumping (rising 1% to 4% a year); potash in wheat straw (bhoosa) and other straw; the SFRI rate (plus or minus 50%); how strongly the soil reserve slows the loss; and crop growth.
+What the date depends on.
+1 input moves the date more than all the others together: how strongly the soil’s mica reserve slows the loss as available potash falls. No Punjab measurement pins it down, so half the runs let the loss shrink in step with the level (middle 2031) and half let it shrink toward a floor of 60 to 80 ppm that the soil holds on to (middle 2038). The middle year of 2036 rests on giving the 2 forms equal weight. Next comes the exact SFRI rate. Water potash, fodder and crop growth hardly move the date, because each run is scaled to its own 2003-09 shortfall.
+How strongly the reserve slows the loss
+Punjab average crosses 100 ppm (middle run)
+Not at all: the same ppm or more lost each year (unlikely on mica-rich soils)
+about 2024
+Weakly
+about 2026
+Moderately, up to the steady percentage pace of case B
+about 2028
+Fairly strongly
+about 2032
+Strongly
+about 2037
+Very strongly
+about 2045
+Toward a floor of 60 to 80 ppm
+about 2038
+The stronger the reserve, the later the date. Neither form we tested lets the soil settle above 100 ppm, and we did not test one that does. In only about 2 of every 100 runs does the Punjab average stay above 100 ppm to 2050.
+Other methods.
+Other published methods, applied to the same Punjab balance, give earlier and later dates:
+Method
+Punjab average crosses 100 ppm
+Note
+US soil-test drawdown factor (5.6 to 9 kg K₂O per hectare removes 1 ppm)
+Already, about 2021 to 2024
+Fastest, and an upper bound: it is set to reproduce SFRI’s measured 3.5 ppm a year at the 2003-09 shortfall, so it is not independent, and it lets no reserve slow the loss (Purdue University 2008)
+This report, 20,000 runs
+Middle 2036; 8 in 10 runs between 2027 and 2044
+Middle of the range
+SFRI 2003-09 rate held flat (case A)
+2036-37
+Ignores today’s larger shortfall
+Indian long-term experiments on alluvial soils, no potash
+About 2060, if their 0.61% a year applied from 129.8 ppm
+Slowest. Applied as a flat rate: we did not have those plots’ potash balance, so we could not scale it to Punjab’s shortfall (Das et al. 2022)
+The Indian result is the strongest reason the date could be later. It also shows the loss continues: the soil runs down more slowly there, but it still runs down.
+4
+How hard it is to undo
+Raising potash use 12 times delays the crossing by only about 2 years
+In the action case, Punjab’s potash use rises steadily from 34,000 tonnes (2024-25) to 416,000 tonnes a year by 2034-35, enough to cover half of that year’s expected shortfall (about 830,000 tonnes). That is 12 times 2024-25 use.
+Even then, in case C the Punjab average still crosses 100 ppm in 2029-30, only 1 year later than with no action. Across the 20,000 runs the delay is about 2 years (0 to 5 years in 8 of 10 runs).
+In case C it keeps falling after that, to about 63 ppm by 2049-50 (22 ppm above case B’s 41 ppm), because the other half of the shortfall is still taken from the soil.
+Covering the whole shortfall would need about 616,000 tonnes of potash a year, about 17 times Punjab’s use in 2023-24 (36,000 tonnes): about 20.5 million 50 kg bags of MOP (60% K₂O), or 24.6 million of SOP (50% K₂O).
+Punjab’s alluvial soils are rich in mica and illite, which hold potash between their layers. Cropping without putting potash back draws this reserve down; this is why the soil test falls more slowly than the balance alone would suggest. The same weathered illite and vermiculite clays can also lock up part of any potash later put on, for a time (Wakeel and Ishfaq 2022).
+5
+Why it matters
+On a sandy, low-potash field in Mianwali, potash added 25% to wheat yield
+Potash does not work alone, and neither do urea and DAP. In a 2-year wheat trial at the Adaptive Research Station, Mianwali, in the sandy, low-potash Thal, 93 kg of K₂O per hectare raised grain yield 25%, from 3,625 to 4,533 kg per hectare (Abbas et al. 2013, Pakistan Journal of Botany). A study on soil badly short of potash, quoted by IFPRI, shows why: adding potash raised the share of applied fertilizer the crop took up.
+Nutrient
+Taken up by the crop with N and P only (or N and K for potash)
+Taken up with N, P and K together
+Nitrogen
+16%
+76%
+Phosphorus
+1%
+13%
+Potash
+22%
+61%
+Source: Haerdter and Fairhurst (2003), as quoted in Ali et al. 2016, IFPRI Discussion Paper 01516. It is a single study, most likely on rice outside Pakistan, and we have not found the original. Its figures show what happens on soil badly short of potash; they are an illustration, not a Punjab average.
+Pakistan’s own numbers point the same way, though potash is likely one of several causes:
+Producing 100 kg of wheat took 4 kg of fertilizer nutrient in 1980-81 and 7.9 kg by 2014 (IFPRI 2016).
+For every kg of nitrogen, Pakistan used 0.036 kg of potash in 1985-86 and 0.007 kg in 2013-14 (IFPRI 2016).
+A farmer short of potash pays for urea and DAP that his crop cannot fully use.
+6
+2 statistical checks
+Where land was measured twice, potash fell 1.5% to 2.3% a year
+We also tried 2 statistical approaches. One is consistent with the model; the other cannot test it.
+Check 1. The same ground, measured twice.
+This is consistent with the model.
+Place
+First reading
+Second reading
+Fall a year
+SFRI monitoring sites, Punjab
+251 ppm (2003)
+230 ppm (2009)
+3.5 ppm, about 1.5%
+Gujar Khan tehsil, Rawalpindi
+about 144 ppm (about 2000)
+103 ppm (2012-17)
+about 2.8 ppm, about 2.3%
+The balance model gives about 1.5% a year at the 2003-09 shortfall and about 2.8% at today’s. Gujar Khan is rainfed, and its first reading is our estimate from the class shares reported in the paper, so it is a weak check.
+Check 2. Comparing districts cannot detect depletion.
+We compared the 769,578 cleaned samples district by district, after allowing for soil texture, organic matter and pH. If cropping alone drained potash, the most heavily cropped districts would hold the least. They do not: districts that take more potash out per hectare hold slightly more (about +0.18 ppm for each extra kg per hectare; not statistically firm). Sahiwal, Multan and Rahim Yar Khan are high; Mianwali, Bhakkar and Mandi Bahauddin are low.
+The reason is how each soil was formed: parent material, river silt and groundwater set each district’s starting level. A single snapshot cannot separate that from 50 years of cropping. So the rate of loss in this report comes only from places measured over time, not from district differences. It also means the districts already below 100 ppm are low partly by nature.
+International cross-check
+FAO, the World Bank and a peer-reviewed budget show the same deficit
+The numbers above come from Pakistani government statistics. 3 international sources, built separately, point the same way.
+1. A peer-reviewed potash budget for Pakistan, 1970s to 2010s.
+Pathak, Fagodiya and Singh 2024, Scientific Reports 14:29136, Table 5, built from FAOSTAT and national data. Million tonnes of potassium (K) a year, average for each decade:
+Decade
+Taken out by crops
+Fertilizer
+Balance
+1970s
+0.58
+0.00
+-0.37
+1980s
+0.77
+0.03
+-0.53
+1990s
+0.98
+0.02
+-0.72
+2000s
+1.19
+0.03
+-0.89
+2010s
+1.42
+0.03
+-1.09
+Pakistan’s deficit has deepened every decade. The paper puts Pakistan at 10% to 19% of South Asia’s potash deficit, second after India.
+2. FAO fertilizer data.
+In 2023 Pakistan used 1.48 kg of potash (K₂O) per hectare of cropland, against 23.1 kg for the world, 11.2 for India, 63.0 for Bangladesh and 69.1 for China. It used 122.9 kg of nitrogen per hectare, 83 times its potash (FAOSTAT via Our World in Data).
+3. World Bank.
+Pakistan’s total fertilizer use was 160 kg per hectare of arable land in 2023, above the world’s 138 (World Development Indicators, AG.CON.FERT.ZS, via Our World in Data). Pakistan does not use too little fertilizer; it uses too little potash.
+How our Punjab model compares.
+In the 2010s our model puts Punjab’s 5-crop potash removal at about 724,000 tonnes of K₂O a year and its net shortfall at about 412,000 tonnes. The peer-reviewed budget puts all of Pakistan at 1.71 million and 1.31 million tonnes of K₂O. Punjab grows most of Pakistan’s crops, so our Punjab figure is the more cautious of the two: it counts only 5 crops and gives more credit to water and manure. The gap is mostly scope: the peer-reviewed budget covers every crop in all of Pakistan, and it has about 23% of crop removal coming back, against about 43% in ours.
+7
+The message
+Count potash, or keep paying for urea and DAP the crop cannot use
+To the farmer.
+Get your soil tested before the next sowing. If your soil test shows potash below 100 ppm, especially on sandy land, part of your urea and DAP money may be wasted until potash is added. Put potash on a strip of the field and compare.
+To the government.
+The last published measurement of Punjab’s soil potash over time that we could find is from 2003-09. Bring back fixed monitoring sites, re-test them every 2 to 3 years, and publish the results. Fertilizer policy should count potash next to nitrogen and phosphate, not after them.
+To the industry.
+Closing Punjab’s potash shortfall would take about 17 times what it bought in 2023-24. Pakistan has no commercial potash mine, so a gap that size needs import supply, potash recovered at home and products farmers can afford to use.
+Punjab’s soil still holds potash. But the part crops can use is being spent faster than it is being repaid. On present trends the Punjab average is likely to reach the 100 ppm warning line between 2027 and 2044, middle about 2036, while the sandy districts are below it already.
+8
+Method, limits and sources
+How the model works and what it cannot tell
+The model in 4 steps.
+Crop output: Punjab production of wheat, rice, sugarcane, maize and cotton, every year from 1971-72 to 2023-24.
+Potash taken out: each tonne harvested carries a known amount of potash; we used figures at the low end of published ranges, and the 20,000 runs widen them (wheat straw, the bhoosa, 10 to 25 kg K₂O per tonne of grain; rice straw 15 to 25 per tonne of paddy, 10% to 50% of it removed). Bhoosa and maize stover are counted as leaving the field (fed to animals); rice straw and cane trash are mostly burnt in the field, so their potash stays; half of cotton sticks leave as firewood.
+Potash put back: fertilizer (by year), farmyard manure (FAO: 1/4 of it reaches fields) and canal and tube-well water.
+Speed of loss: the only province-wide measured Punjab rate we found, 3.52 ppm a year on SFRI sites in 2003-09 (about 1.5% of the level a year), raised or lowered each year in step with that year’s shortfall. Cases A to C start from the 2016-18 average of 132.3 ppm; the 20,000 runs start from the area-weighted 129.8 ppm and add 2 forms of soil buffering (Section 3).
+The model workbook is available from the author on request:
+info@van.com.pk
+. Every input sits on 1 sheet with its source; the judgement calls are marked and can be changed.
+What the model cannot tell.
+We found only 1 province-wide measured rate of loss for Punjab, from 2003-09. The US drawdown method reproduces it, but Indian long-term experiments show a much slower loss. Scaling it to today’s larger shortfall assumes the soil responds in step; the 20,000 runs test this. Mica releases potash as soils get poorer, so the fastest case may overstate the fall.
+The SFRI monitoring sites averaged about 240 ppm, nearly twice the Punjab average. How far their rate applies to poorer soils is assumed, not measured. We took the SFRI figures from IFPRI 2016.
+How strongly the soil reserve slows the loss is an assumed range, not a measured one. Half the runs use a form in which the loss shrinks with the level, half a form with a floor of 60 to 80 ppm. Weighting the 2 forms differently moves the middle year between 2031 and 2038.
+Irrigation water is the largest and least certain return. No measured potash figure exists for Punjab canals; the fixed cases use the world river median (1.3 mg per litre) and half the potash in tube-well water; the 20,000 runs use 1.3 to 5 mg per litre for canals and 2 to 8 for tube-wells. Much tube-well potash is the fields’ own potash, leached and pumped back up, so only part of it is a true return; the runs count 10% to 50% of it. Higher water potash moves case B’s crossing earlier, to 2025-2028, not later: the model is set to the 2003-09 rate, so more water potash makes today’s shortfall larger compared with 2003-09.
+Fodder (berseem, sorghum, maize fodder), potato, pulses, oilseeds and vegetables are not counted, and neither are leaching from sandy Thal soils or erosion on rainfed land. The real shortfall is larger. Potato and vegetables receive much of the potash applied, which sits in the fertilizer figure while their removal does not.
+Manure and water returns are held at today’s levels through history, so the shortfall in early years is understated.
+The share of samples below 100 ppm is estimated by lowering every 2016-18 sample in step with the Punjab average. It is not a new measurement.
+Every year after 2023-24 is a projection of present trends, not a forecast of what will happen.
+Data notes.
+The Punjab 50-year statistics book prints wheat for 2017-18 as 16,210 thousand tonnes; Punjab Agriculture Statistics 2024 prints 19,179, which we used. For potash use in 2017-18 the book prints 64,800 tonnes and NFDC 37,000; we used NFDC from 2016-17. The Sheikhupura soil workbook has its values shifted 1 column against its headings; we corrected it.
+Sources
+Every figure, where it came from
+Punjab soil testing record, 770,160 samples, 2016-18, validated and mapped by VAN: Soil Atlas
+.
+van.com.pk/soil
+Bureau of Statistics Punjab, Punjab Development Statistics for 50 Years, 1972-2021, Tables 1.4 and 1.18
+.
+opendata.com.pk
+Bureau of Statistics Punjab, Punjab Agriculture Statistics 2024
+.
+bos.punjab.gov.pk
+Bureau of Statistics Punjab, Punjab Agriculture Statistics 2023
+.
+bos.punjab.gov.pk
+NFDC Fertilizer Review 2024-25, Table 4
+.
+mnfsr.gov.pk
+NFDC Fertilizer Review 2020-21, Table 4
+.
+mnfsr.gov.pk
+Ali, Ahmed, Channa and Davies 2016, IFPRI Discussion Paper 01516 (Figure 6.2, from SFRI 2013, Nutrient Depletion over Time)
+.
+hdl.handle.net
+SFRI Punjab, salient achievements
+.
+sfri.punjab.gov.pk
+Ranjha, Mehdi and Qureshi 1992, Potassium behaviour in some alluvial soil series of Pakistan, Journal of Agricultural Research 30(1)
+.
+agris.fao.org
+ICAR-IISS, soil fertility ratings
+.
+iiss.icar.gov.in
+TNAU Agritech, soil test ratings
+.
+agritech.tnau.ac.in
+Ohio State University, Corn Newsletter 2022, managing P and K
+.
+agcrops.osu.edu
+Akram et al. 2014, quoting Ahmad and Khan 2006
+.
+www.hrpub.org
+FAO 2006, Plant nutrition for food security (NFDC authors)
+.
+www.fao.org
+Imran et al. 2010, quoting Bajwa
+.
+asianpubs.org
+Mehdi et al. 2001, quoting Bhatti 1978
+.
+scialert.net
+Purdue University 2008, P and K fertilizer
+.
+www.agry.purdue.edu
+Das et al. 2022, Agronomy for Sustainable Development
+.
+link.springer.com
+Wakeel and Ishfaq 2022, Potash Research in Pakistan
+.
+www.researchgate.net
+Abbas et al. 2013, Pakistan Journal of Botany 45(3)
+.
+www.pakbs.org
+Pathak, Fagodiya and Singh 2024, Scientific Reports 14:29136
+.
+www.nature.com
+FAOSTAT via Our World in Data, potash use per hectare of cropland
+.
+ourworldindata.org
+World Bank WDI AG.CON.FERT.ZS via Our World in Data
+.
+ourworldindata.org
+FAO, Fertilizer use by crop in Pakistan, chapter 5
+.
+www.fao.org
+FAO Fertilizer and Plant Nutrition Bulletin 16
+.
+www.fao.org
+Mississippi State University P3968, crop nutrient removal
+.
+extension.msstate.edu
+PARC 2022, straw management in Pakistan
+.
+un-csam.org
+Ahmed et al. 2019, residue burning in Punjab
+.
+www.aerc.edu.pk
+Obaid ur Rehman et al. 2021, Gujar Khan
+.
+v3.pjsir.org
+Qureshi et al. 2001, Gujar Khan
+.
+agris.fao.org
+Fayyaz et al. 2025, Scientific Reports
+.
+www.nature.com
+Iqbal et al. 2021, Khanewal groundwater, Water 13(24)
+.
+www.mdpi.com
+Zakir-Hassan et al. 2026, Vehari groundwater, Geosciences 16(1)
+.
+www.mdpi.com
+Download the full report (PDF)
+Open the Soil Atlas →
+Tahir Abbas · Soil Poverty Series No. 1 · Model available on request:
+info@van.com.pk
+Crop nutrition engineered, manufactured, registered and tested in Pakistan.
++92 42 35762215
+WhatsApp
++92 300 5003041
+info@van.com.pk
+Products
+All 23 brands
+Compare them
+Vital Urea
+Where to buy
+Verify a bag
+Crops
+28 crop plans
+Wheat
+How you apply it
+Soil Atlas
+Knowledge
+Why Pakistan must shift
+Product decks
+Circular economy
+Vitalytics tools
+Company
+Your Brand
+VAN Lab
+About
+Company profile
+Head office
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+Plant
+49-Km Multan Road, Phool Nagar Bypass, Lahore
+© 2026
+Vital Agri Nutrients (Pvt) Ltd
+Full member of CropLife Pakistan since 2024
+How VAN competes
+LinkedIn
+Facebook
+Instagram

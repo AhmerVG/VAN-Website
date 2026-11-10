@@ -50,9 +50,9 @@ const HERO_TIERS = [
   // building with a layer, and a farmer reads "layer" physically (the product goes into the soil, not
   // on top of the crop). He chose the cycle the lines already described, and lines that add to the
   // label instead of repeating it.
-  { k: 'Soil', role: 'what it holds', a: 'Its pH, its organic matter, and the nutrients already gone.' },
-  { k: 'Crop', role: 'what it takes', a: 'Every nutrient it carries out of the field at harvest.' },
-  { k: 'Product', role: 'what we put back', a: 'Made for that crop, on that soil.' },
+  { k: 'Soil', role: 'what it holds', a: 'Its pH, its organic matter and the nutrients it still holds.' },
+  { k: 'Crop', role: 'what it takes', a: 'The nutrients taken out in the harvested crop.' },
+  { k: 'Product', role: 'what we put back', a: 'A product made for that crop, on that soil.' },
 ]
 
 type Door = { key: string; title: string; body: React.ReactNode; go: [string, string][] }
@@ -63,35 +63,36 @@ export function FourDoors() {
   const doors: Door[] = [
     {
       key: 'grow', title: 'I grow',
-      body: <><b>{CROPS.length}</b> crop programmes, per acre, stage by stage. Your soil, your sowing date, your plan.</>,
+      body: <>We publish <b>{CROPS.length}</b> crop plans, each giving the amount to apply per acre at every crop stage. The dates of the stages are set from your sowing date. 24 of the plans also have the Nutrition creator, which adjusts the amounts to your soil.</>,
       go: [['Crop plans', '#/crops'], ['Soil Atlas', '#/soil']],
     },
     {
       key: 'sell', title: 'I sell',
-      body: <>A dealership with the plant behind it. <b>{COUNTS.brands}</b> brands, every batch tested before it ships, a bag a farmer can verify by its number.</>,
+      // L1 editor fix 7 Nov 2026 (company-a B1, m11): SOP is bought in (PR-1), so not 'direct from our plant'; 'On our website' moved to the front.
+      body: <>As a dealer, you can stock all <b>{COUNTS.brands}</b> of our brands, and we supply them to you directly. We test every batch before it ships. On our website, a farmer can type the batch number printed on any bag and open the lab report for that batch.</>,
       go: [['Become a dealer', '#/become-a-dealer'], ['Where to buy', '#/where-to-buy']],
     },
     {
       key: 'brand', title: 'Made under my name',
-      body: <>{partners ? <><b>{partners}</b> partners and </> : null}<b>100+</b> brands already made at this plant. You bring the market. VAN does everything from the formulation to the finished bag.</>,
+      body: <>At our plant in Lahore we already make products sold under more than <b>100</b> brands{partners ? <> owned by <b>{partners}</b> partner companies</> : null}. We can make a product for your brand in the same way, from the formulation to the finished bag; under toll manufacturing, you supply the formulation.</>,   // L2 fix 9 Nov 2026 (company W10, CO-4)
       go: [['Your Brand', '#/partner'], ['How we build a range', '#/partner#range']],
     },
     {
       key: 'differently', title: 'I want to do it differently',
-      body: <>For the grower who wants to test the practice against the numbers, and for the company that wants a product nobody sells yet.</>,
+      body: <>Our free tools, called Vitalytics, are for growers: enter your crop, acreage, sowing date or soil test reading, and the tools work out fertiliser quantities, water needs and other figures for your own field. A company that wants a product that is not yet on the market can develop it with us.</>,
       go: [['Vitalytics, the tools', '#/tools'], ['The formulation path', '#/partner#library']],
     },
   ]
   return (
     <section className="fd" aria-label="Who VAN is, and who it is for">
       <div className="wrap fd-top">
-        <span className="fd-kicker">{CONTACT.company} · Lahore · since {COUNTS.incorporated}</span>
+        <span className="fd-kicker">{CONTACT.company} (VAN) · Lahore · since {COUNTS.incorporated}</span>
         {/* D-235, 1 Oct 2026. Tahir: the old identity line ("Crop nutrition engineered, manufactured,
             registered and tested in Pakistan.") read average. Golden Circle, sell me the pen: the h1 is
             the order VAN works in, then what the soil holds, what the crop takes, what VAN puts
             back (D-239). No soil sample count here, at his word. The tagline itself (footer, menu, profile)
             is unchanged. */}
-        <h1 className="fd-title fd-title-3"><span>Soil first.</span> <span>Then the crop.</span> <span>Then the bag.</span></h1>
+        <h1 className="fd-title fd-title-3"><span>Soil first.</span> <span>Then the crop.</span> <span>Then the bag</span></h1>
         {/* P1, 18 Oct 2026 (D-255). Audit: on a phone the first screen showed no action at all; the 4
             doors started below it and the first sat under the bottom bar. On a phone or tablet (up to
             1023 px) the 4 doors now also appear here as 4 buttons, each naming the visitor and its
@@ -112,7 +113,9 @@ export function FourDoors() {
             </li>
           ))}
         </ol>
-        <p className="fd-body">1 plant site. <b>{COUNTS.brands}</b> registered brands, <b>{COUNTS.licences}</b> PSQCA licences, a PNAC-accredited laboratory, about <b>50,000 t</b> made a year.</p>
+        {/* Tahir 7 Nov 2026 (CO-19): plant capacity; was "We make about 50,000 tonnes of product a year at 1 plant site in Lahore." */}
+        {/* L1 editor fix 7 Nov 2026 (company-a m22): the 34 licences split into 22 and 12, as on the profile. */}
+        <p className="fd-body">Our plant site in Lahore can make about <b>50,000 tonnes</b> of product a year. We have <b>{COUNTS.brands}</b> registered brands of our own and hold <b>{COUNTS.licences}</b> licences from the Pakistan Standards and Quality Control Authority (PSQCA): <b>{COUNTS.licencesOwn}</b> on our own brands and <b>{COUNTS.licencesPartnerReady}</b> on products ready for partner companies. Our laboratory is accredited by the Pakistan National Accreditation Council (PNAC). Figures as of July 2026.</p>{/* Tahir 10 Nov 2026 (CO-N8, CO-30): the counts dated once on the Home page. */}
         {/* D-192: no button pair here. The header pill (D-181) and the 4 doors below carry it. */}
       </div>
       <LandScene />

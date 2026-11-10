@@ -2,51 +2,53 @@ PAGE: /partner/manufacturing.html
 ======================================================================
 Products
 Crop Plans
-Soil
-Tools
+Your Brand
+Soil Atlas
+Vitalytics
 VAN Lab
 Knowledge
 About
-For farmers
-Menu ☰
+Talk to us
+Search
+☰
 View
 Simple view
-Make with us · the plant
+Your Brand · the plant
 Manufacturing & quality.
-The whole chain sits under one roof: blending, coating, liquids, biology, filling, quality control and a research farm to test the result on actual soil.
+The plant runs 5 production lines: granular, coated, liquid, water-soluble and compounded. Quality control sits beside them in the analytical laboratory, and every formulation is tried first on VAN’s research farms.
 01
 What is on site
 02
 Quality control
 03
-The research farm
+The research farms
 01
 What is on site
-Nine lines, one roof.
+5 production lines, 2 laboratories.
 Line
 What it does
-Compound granulation
-Granulation in which every granule carries the complete declared analysis, so nothing segregates between the bag and the field.
-Bulk blending
+Granular
 Physical blending of single-nutrient and specialty granules to a target ratio, with compatibility checked before the batch rather than after it.
-Sulfur coating
-Commercial scale. The line behind VAN’s sulfur-coated urea, running since before the grade had a market in Pakistan.
-Liquids
+Coated
+Sulfur coating at commercial scale, the line behind Vital Urea, and micronutrient coating: boron and iron coated directly onto the granule, so the micronutrient cannot separate in the bag and lands wherever the granule lands. Added in 2014.
+Liquid
 The full VL liquid range, from foliar concentrates to fertigation grades.
-Organics and humates
-Compost and organic-carbon carriers, humate in crystal, powder, pellet and liquid forms.
-Biological laboratory
-Established, with test production alongside it. Phosphorus-solubilizing bacteria today; a liquid inoculant and a mycorrhizal product in development, all on locally isolated strains.
-Micronutrient coating
-Boron and iron coated directly onto the granule. The house speciality. The micronutrient cannot segregate in the bag, and it lands wherever the granule lands. Biological coating is in development.
-Filling and storage
-Pack formats from one litre to bulk, with finished-goods storage on site.
+Water-soluble
+Fully soluble grades for fertigation and foliar feeding.
+Compounded
+Compound granulation, in which every granule carries the complete declared analysis, so nothing separates between the bag and the field.
 Repeat lots
-Orders above a single lot run as repeat batches to the same frozen specification.
+Orders above a single lot run as repeat batches to the same frozen specification. Pack formats run from 1 litre to bulk, with finished-goods storage on site.
+Laboratory
+What it does
+Analytical laboratory
+PNAC-accredited, LAB 336, ISO/IEC 17025:2017. Every lot is tested here before it ships.
+Biological laboratory
+Opened in 2026. Phosphorus-solubilizing bacteria in field trials; a liquid inoculant and a mycorrhizal product in development, all on locally isolated strains.
 02
 Quality control
 The method column is the one that matters in an audit.
-Every production lot is released against a certificate of analysis from VAN’s own laboratory. The format is consistent across the catalogue: physical status, moisture, particle size and pH, followed by the chemical assays, each carrying its specification, its result and the method used to obtain it. That is why COA data, not marketing copy, is the source for every physical property published on this site.
+Every production lot is released against a certificate of analysis from VAN’s own laboratory. The format is consistent across the catalogue: physical status, moisture, particle size and pH, followed by the chemical assays, each carrying its specification, its result and the method used to obtain it.
 Rule
 What it means
 No lot ships without a COA
@@ -55,30 +57,21 @@ Every assay names its method
 So a third-party result can be compared like for like.
 A specification change is documented
 The partner is told before it takes effect. VAN does not substitute silently.
-How the lab tests. The blind chain →
+How VAN Lab tests. The blind chain →
 03
-The research farm
+The research farms
 Every formulation is tested on calcareous field soil, not only on the bench.
-VAN’s first agricultural experimental station was established in 2009 and the company runs its own research farm, staffed by agricultural scientists, for product trials. The farm is where a failure gets found out before a client’s season depends on it.
-Recognition for the R&D programme has come from the Pakistan Innovation Foundation and from the Market Development Facility of the Government of Australia.
-Standards the plant works to: certificate numbers and issuing bodies are provided on request and in any partner audit pack. Plant visits are part of most partner conversations, and for a co-manufacturing decision they are usually the point at which it becomes a real one.
-A question this page doesn’t answer?
-The agronomy team answers on the same WhatsApp line as everything else.
-Ask on WhatsApp
+VAN’s first agricultural experimental station was established in 2009 and the company runs its own research farms, staffed by agricultural scientists, for product trials. The farm is where a failure gets found out before a client’s season depends on it.
+Standards the plant works to: 34 PSQCA manufacturing licences, 22 of them on VAN’s own brands against 8 Pakistan Standards, each listed by brand with its licence number on the regulatory page, and 12 on products ready for partners; and a PNAC-accredited laboratory, ISO/IEC 17025:2017, Accreditation No. LAB 336. An ISO 9001 quality management certification is in progress with System Certification Centre (SCC), expected during 2027, and VAN does not claim it until the certificate is issued.
+Plant visits are part of most partner conversations, and for a co-manufacturing decision they are usually the point at which it becomes a real one.
 Crop nutrition engineered, manufactured, registered and tested in Pakistan.
-Plant
-·
-49-Km Multan Road, Phool Nagar Bypass, Lahore
-Head office
-·
-605 Al-Hafeez Heights, Gulberg III, Lahore 54660
++92 42 35762215
 WhatsApp
 +92 300 5003041
-Landline
-+92 42 35762215
 info@van.com.pk
 Products
 All 23 brands
+Compare them
 Vital Urea
 Where to buy
 Verify a bag
@@ -86,20 +79,27 @@ Crops
 28 crop plans
 Wheat
 How you apply it
+Soil Atlas
 Knowledge
 Why Pakistan must shift
-The soil, measured
-Product knowledge decks
+Product decks
 Circular economy
+Vitalytics tools
 Company
-Make with us
+Your Brand
 VAN Lab
-Tools
-About & contact
+About
+Company profile
+Head office
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+Plant
+49-Km Multan Road, Phool Nagar Bypass, Lahore
 © 2026
 Vital Agri Nutrients (Pvt) Ltd
-·
-www.van.com.pk
+Full member of CropLife Pakistan since 2024
+How VAN competes
 LinkedIn
 Facebook
 Instagram
+Talk to VAN
+Talk to VAN

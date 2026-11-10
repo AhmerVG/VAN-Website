@@ -216,13 +216,13 @@ export function SoilMap({ initial = 'ph', mini = false, focus = null, onPick, au
               {ANALYTES.filter(a => NUTRIENT_KEYS.includes(a.key)).map(a => <button key={a.key} role="tab" aria-selected={analyte === a.key} className={`chip chip-xs ${analyte === a.key ? 'soil on' : ''}`} onClick={() => pick(a.key)} title={a.label}>{a.short}</button>)}
             </span>
             <span className="flex flex-wrap items-center gap-1.5">
-              <span className="cap" style={{ fontWeight: 700, color: 'var(--navy)' }}>The ground</span>
+              <span className="cap" style={{ fontWeight: 700, color: 'var(--navy)' }}>Soil properties</span>
               {ANALYTES.filter(a => !NUTRIENT_KEYS.includes(a.key)).map(a => <button key={a.key} role="tab" aria-selected={analyte === a.key} className={`chip chip-xs ${analyte === a.key ? 'soil on' : ''}`} onClick={() => pick(a.key)} title={a.label}>{a.short}</button>)}
             </span>
           </div>
           <div className="flex flex-wrap items-center gap-2">
             <button className={`btn btn-sm ${cycling ? 'btn-navy' : 'btn-gold'}`} onClick={togglePlay} aria-pressed={cycling}>{cycling ? '❚❚ Pause' : done ? '▶ Play the cycle again' : '▶ Play'}</button>
-            <span className="cap" style={{ color: 'var(--gold-text)' }}>▸ Pick an analyte · hover · tap for a district</span>
+            <span className="cap" style={{ color: 'var(--gold-text)' }}>▸ Choose a soil test · hover · tap for a district</span>
             {desktop && <button className={`chip chip-xs ml-auto ${labels ? 'on' : ''}`} onClick={() => setLabels(l => !l)} aria-pressed={labels}>Labels {labels ? 'on' : 'off'}</button>}
           </div>
         </div>
@@ -239,7 +239,7 @@ export function SoilMap({ initial = 'ph', mini = false, focus = null, onPick, au
       </div>
       <div className="mt-3 grid gap-2">
         <div className="flex items-baseline justify-between gap-3 flex-wrap">
-          <div className="font-bold" style={{ fontSize: 15 }}>{A.label}{A.unit ? ` · ${A.unit}` : ''} <span className="cap font-normal">· {A.note}</span></div>
+          <div className="font-bold" style={{ fontSize: 15 }}>{A.label}{A.unit ? ` · ${A.unit}` : ''} <span className="cap font-normal">· {A.note}.</span>{/* L1 editor 7 Nov 2026 (m15): closing full stop; the notes carry none because the reading panel adds its own */}</div>
           {!mini && cycling && <div className="cap">cycling · {Math.min((cycle ?? 0) + 1, ANALYTES.length)} of {ANALYTES.length}</div>}
         </div>
         <div className="legend">
@@ -248,8 +248,8 @@ export function SoilMap({ initial = 'ph', mini = false, focus = null, onPick, au
           <span className="num">{A.hi.toFixed(A.dec)}{A.unit ? ` ${A.unit}` : ''}</span>
         </div>
         <div className="legend" style={{ marginTop: -6 }}><span /><span className="mid num">{mid.toFixed(A.dec)}</span><span /></div>
-        <p className="cap">{mini ? 'Each square shows the median of the samples taken inside it.' : SOIL_COPY.mapLead} {analyte === 'zn' ? 'Hatched squares carry no zinc determination (Jhelum). ' : ''}{thousands(GRID.cells.length)} cells of 0.05°.</p>{/* D-244: on the full map the lead above already says no boundary file, no interpolation */}
-        <p className="src"><b>Source ·</b> {SOIL_SOURCE.short}. <a href="#/soil#caveats">Read this before quoting ›</a></p>
+        <p className="cap">{mini ? 'Each square shows the median of the samples taken inside it.' : SOIL_COPY.mapLead} {analyte === 'zn' ? 'Hatched squares have no zinc result (Jhelum). ' : ''}There are {thousands(GRID.cells.length)} squares.</p>{/* D-244: on the full map the lead above already says no boundary file, no interpolation */}
+        <p className="src"><b>Source ·</b> {SOIL_SOURCE.short}. <a href="#/soil#caveats">Read the method and limitations before quoting these figures ›</a></p>
       </div>
     </div>
   )

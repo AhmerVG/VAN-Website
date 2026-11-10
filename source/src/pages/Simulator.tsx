@@ -7,7 +7,7 @@ import { CROPS, shortCropName } from '@/data/catalogue'
 const pickerName = (name: string) => CROPS.filter(x => shortCropName(x.name) === shortCropName(name)).length > 1 ? name : shortCropName(name)
 import { Stand, familyFor } from '@/components/CropShapes'
 import { useReducedMotion } from '@/hooks/useInView'
-import { SectionHead, WaButton } from '@/components/bits'
+import { SectionHead, WaButton, noStop } from '@/components/bits'
 import { DisciplineSimulator } from '@/components/DisciplineSimulator'
 
 /**
@@ -33,8 +33,8 @@ function Gauge({ slips, max }: { slips: number; max: number }) {
   return (
     <svg viewBox="0 0 300 175" width="100%" style={{ maxWidth: 420 }} role="img" aria-label="Discipline dial, directions only">
       {arc(-90, -30, '#9C4E2A')}{arc(-30, 30, 'var(--gold)')}{arc(30, 90, 'var(--green)')}
-      <text x="28" y="168" fontSize="12" fontWeight="700" fill="#9C4E2A">OFF COURSE</text>
-      <text x="272" y="168" textAnchor="end" fontSize="12" fontWeight="700" fill="var(--green)">ON COURSE</text>
+      <text x="28" y="168" fontSize="12" fontWeight="700" fill="#9C4E2A">LOWER YIELD</text>
+      <text x="272" y="168" textAnchor="end" fontSize="12" fontWeight="700" fill="var(--green)">NO LOSS</text>
       <g style={{ transform: `rotate(${ang}deg)`, transformOrigin: `${cx}px ${cy}px`, transition: rm ? 'none' : 'transform .8s cubic-bezier(.2,.8,.2,1)' }}>
         <path d={`M${cx} ${cy} L${cx - 7} ${cy} L${cx} ${cy - 108} L${cx + 7} ${cy} Z`} fill="var(--navy)" />
       </g>
@@ -71,11 +71,13 @@ export default function Simulator({ slug }: { slug?: string | null } = {}) {
             {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction. "pilot" became "beta" to match the name used across the site. */}
             <span className="tag tag-gold mt-2">Farm discipline simulator · beta · {cropName}</span>
             {/* D-151 (ruling 3): was "Nutrition is 1 lever of 10." and the lead "Yield isn't only nutrition. It's whether 10 things were each done well and on time. Set a target, score your season, see what's holding it back." */}
-            <h1 className="mt-3 max-w-[26ch]">Nutrition decides about 1/4 of the yield.</h1>
-            <p className="lead mt-4">Sowing, seed, water, weeds and pests decide the rest. Set a target, score your season across 10 levers, and see what is holding the yield back.</p>
+            <h1 className="mt-3 max-w-[26ch]">{cropName} farm discipline simulator</h1>
+            {/* Tahir 7 Nov 2026 (CR-1): the '1/4 of the yield' sentence replaced by the timing text and the watering example. */}
+            {/* L1 7 Nov 2026 (crops-b M1): "The farm discipline simulator shows ...", was "The VAN simulator shows ..." (1 name for the tool). */}
+            <p className="lead mt-4">Set a yield target, score 10 farm practices for your season, and see which practices are lowering your yield. Yield depends on doing every task on time: sowing date, seed and plant population, fertiliser at the right stage, irrigation on schedule, and control of weeds, pests and disease. Crop nutrition is 1 of these tasks. A task missed at its time can cost yield that extra work later may not recover. The farm discipline simulator shows how each task, and its timing, changes the yield. For example, a crop that needs water every week and misses 2 waterings early in the season does not get that yield back from extra waterings later, even if the season’s total is the same.</p>
             <div className="flex flex-wrap gap-3 mt-6">
               <a className="btn btn-ghost" href={`#/crops/${slug}`}>← {cropName} crop page</a>
-              <a className="btn btn-ghost" href={`#/crops/${slug}#creator`}>Open the {cropName.toLowerCase()} nutrition creator →</a>
+              <a className="btn btn-ghost" href={`#/crops/${slug}#creator`}>Open the {cropName.toLowerCase()} Nutrition creator →</a>
             </div>
           </div>
         </section>
@@ -86,12 +88,12 @@ export default function Simulator({ slug }: { slug?: string | null } = {}) {
           <div className="panel-navy p-6 lg:p-10 grid lg:grid-cols-[1fr_auto] gap-6 items-center">
             <div>
               <span className="eyebrow" style={{ color: 'var(--gold)' }}>A plan for your own field</span>
-              <h2 className="text-[clamp(26px,2.6vw,34px)]">Want VAN's agronomy team to score your actual field?</h2>
-              <p className="mt-3" style={{ color: 'rgba(255,255,255,.8)' }}>Send your soil analysis, your district and what you've done so far this season.</p>
+              <h2 className="text-[clamp(26px,2.6vw,34px)]">VAN’s agronomy team can score your own field</h2>
+              <p className="mt-3" style={{ color: 'rgba(255,255,255,.8)' }}>Send your soil analysis, your district and the work you have done so far this season.</p>
             </div>
             <div className="grid gap-3">
               <WaButton href={WA.farmer} lg>Ask on WhatsApp</WaButton>
-              <a className="btn btn-lg" style={{ background: 'rgba(255,255,255,.14)', color: '#fff' }} href={`mailto:${CONTACT.cropEmail}?subject=${encodeURIComponent(cropName + ' discipline scorecard')}`}>{CONTACT.cropEmail}</a>
+              <a className="btn btn-lg" style={{ background: 'rgba(255,255,255,.14)', color: '#fff' }} href={`mailto:${CONTACT.cropEmail}?subject=${encodeURIComponent(cropName + ' farm discipline simulator')}`}>{CONTACT.cropEmail}</a>
             </div>
           </div>
         </section>
@@ -106,22 +108,23 @@ export default function Simulator({ slug }: { slug?: string | null } = {}) {
           <span className="tag tag-gold">{SIMULATOR.kicker}</span>
           {/* D-136: the ruling-3 sentence is 2 sentences long, so the h1 is set smaller and wider than the
               site default to stay at 4 to 5 lines on a phone. Revert: className "mt-3 max-w-[20ch]", no style. */}
-          <h1 className="mt-3 max-w-[30ch]" style={{ fontSize: 'clamp(28px, 3.6vw, 48px)', lineHeight: 1.1 }}>{SIMULATOR.h1}</h1>
+          <h1 className="mt-3 max-w-[30ch]" style={{ fontSize: 'clamp(28px, 3.6vw, 48px)', lineHeight: 1.1 }}>{noStop(SIMULATOR.h1)}</h1>
           <p className="lead mt-4">{SIMULATOR.lead}</p>
           {Object.keys(LIVE_CROPS).length > 0 && (
-            <p className="mt-3 small"><b>Wheat and potato are live.</b> <a href="#/simulator/wheat">Wheat →</a> · <a href="#/simulator/potato">potato →</a></p>
+            <p className="mt-3 small"><b>The wheat and potato simulators are live.</b> <a href="#/simulator/wheat">Wheat →</a> · <a href="#/simulator/potato">Potato →</a></p>
           )}
           {/* His ruling: say beta, say when, and ask for what is missing before the next upgrade. */}
           <p className="small mt-2 max-w-[140ch]">{SIMULATOR.betaNote}</p>
           <div className="flex flex-wrap gap-3 mt-6">
-            <WaButton href={WA.farmer} lg>Tell us which crop you want next</WaButton>
-            <a className="btn btn-ghost btn-lg" href={`mailto:${CONTACT.email}?subject=${encodeURIComponent('VAN Yield & Discipline Simulator')}`}>Write to {CONTACT.email}</a>
+            <WaButton href={WA.farmer} lg>Tell VAN which crop you want next</WaButton>
+            {/* Tahir 9 Sep 2026 (CR-30, settled): kisan@van.com.pk for farmers on /simulator. Was CONTACT.email (info@van.com.pk) here and in the closing panel. */}
+            <a className="btn btn-ghost btn-lg" href={`mailto:${CONTACT.cropEmail}?subject=${encodeURIComponent('VAN farm discipline simulator')}`}>Write to {CONTACT.cropEmail}</a>
           </div>
         </div>
       </section>
 
       <section className="wrap sec">
-        <SectionHead eyebrow="Discipline dial · preview" title="Move the practices. Watch the needle and the row." lead={SIMULATOR.previewNote} tone="gold" />
+        <SectionHead eyebrow="Discipline dial · preview" title="Preview: which practices are lowering the yield." lead={SIMULATOR.previewNote} tone="gold" />
         {/* O-10: the crop list Tahir asked for. Picking a crop redraws the stand as that crop, and
             says plainly whether that crop has a real simulator yet or only this preview, so nobody
             reads the preview as the product. */}
@@ -144,8 +147,9 @@ export default function Simulator({ slug }: { slug?: string | null } = {}) {
           </div>
           <p className="cap mt-2">
             {LIVE_CROPS[crop]
-              ? <><b>{LIVE_CROPS[crop]} has a working simulator.</b> 10 levers, scored on your own season. <a href={`#/simulator/${crop}`}>Open it →</a></>
-              : <>This crop does not have its own simulator yet, so below is the preview. Its simulator is coming.</>}
+              // L1 7 Nov 2026 (crops-b B1): was "The full wheat simulator"; "full" now names only the version being built (section below).
+              ? <><b>The {LIVE_CROPS[crop].toLowerCase()} farm discipline simulator</b> scores 10 farm practices for your own season. <a href={`#/simulator/${crop}`}>Open it →</a></>
+              : <>This crop does not have its own simulator yet, so only the preview below applies. A simulator for this crop is being built.</>}
           </p>
         </div>
         <div className="panel p-5 lg:p-8 grid lg:grid-cols-[1fr_1fr] gap-8 items-start" style={{ borderColor: 'var(--gold)', borderWidth: 2 }}>
@@ -158,10 +162,10 @@ export default function Simulator({ slug }: { slug?: string | null } = {}) {
                 </div>
               </div>
             ))}
-            <button className="btn btn-ghost btn-sm self-start" onClick={() => setSel(RESET)}>Reset. Every practice in its window</button>
+            <button className="btn btn-ghost btn-sm self-start" onClick={() => setSel(RESET)}>Reset all practices</button>
           </div>
           <div>
-            <div className="flex items-baseline justify-between"><span className="eyebrow">Attainable yield</span><span className="tag tag-gold">preview</span></div>
+            <div className="flex items-baseline justify-between"><span className="eyebrow">Direction of yield</span><span className="tag tag-gold">preview</span></div>
             <Gauge slips={slips} max={max} />
             <p className="cap text-center" style={{ marginTop: -4 }}>Direction only, not a yield figure</p>
             {/* The stand thins with the seed-and-stand dial and pales when water or nitrogen slipped,
@@ -175,28 +179,33 @@ export default function Simulator({ slug }: { slug?: string | null } = {}) {
             <div className="panel-soft p-4 mt-3">
               {slips === 0
                 ? <p className="font-semibold" style={{ color: 'var(--green-text)' }}>{SIMULATOR.onCourse}</p>
-                : <p className="small"><b>Direction only.</b> {slipped.length} practice{slipped.length > 1 ? 's' : ''} outside {slipped.length > 1 ? 'their windows' : 'its window'}: {slipped.join('; ')}. The needle moves down. When this crop’s simulator is ready, it will show what each one costs and the way back.</p>}
+                : <p className="small"><b>Direction only.</b> {slipped.length} practice{slipped.length > 1 ? 's are' : ' is'} lowering the yield: {slipped.join('; ')}. The needle moves towards lower yield. When this crop’s simulator is ready, it will show how much yield each practice loses and how to correct it.</p>}
             </div>
           </div>
         </div>
       </section>
 
       <section className="sec" style={{ background: 'var(--sand-2)' }}><div className="wrap">
-        <SectionHead eyebrow="How it works" title="8 things you tell it. 5 things it tells you." tone="navy" />
+        {/* Tahir 7 Nov 2026 (CR-2): the section describes the full simulator now being built, not the live one. Was h2 "The simulator design: 8 inputs and 5 results." and h3 "What you enter" / "What the simulator shows you". */}
+        {/* Tahir 9 Nov 2026 (T2, answer (a)): h2 was "The full simulator, now being built: 8 inputs and 5 results", lead was "The wheat and potato simulators now take a yield target and 10 practice scores." and h3 "What the full simulator will show you"; the list under it is now in the future tense (SIMULATOR.outputs in site.ts). */}
+        <SectionHead eyebrow="How it works" title="The next version of the simulator, now being built: 8 inputs and 5 results" lead="Today, the wheat and potato simulators take a yield target and 10 practice scores." tone="navy" />
         <div className="grid lg:grid-cols-2 gap-5">
-          <div className="panel p-5"><h3>Your field, as it is</h3><ol className="grid gap-2 mt-3 pl-0 list-none">{SIMULATOR.inputs.map((t, i) => <li key={t} className="flex gap-3 small"><span className="num shrink-0 w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: 'var(--sky)', color: 'var(--navy)' }}>{i + 1}</span><span>{t}</span></li>)}</ol></div>
-          <div className="panel p-5"><h3>Your yield, your score, your plan</h3><ol className="grid gap-2 mt-3 pl-0 list-none">{SIMULATOR.outputs.map((t, i) => <li key={t} className="flex gap-3 small"><span className="num shrink-0 w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: 'var(--gold)', color: 'var(--navy)' }}>{i + 1}</span><span>{t}</span></li>)}</ol></div>
+          <div className="panel p-5"><h3>What you will enter</h3><ol className="grid gap-2 mt-3 pl-0 list-none">{SIMULATOR.inputs.map((t, i) => <li key={t} className="flex gap-3 small"><span className="num shrink-0 w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: 'var(--sky)', color: 'var(--navy)' }}>{i + 1}</span><span>{t}</span></li>)}</ol></div>
+          <div className="panel p-5"><h3>What the next version will show you</h3><ol className="grid gap-2 mt-3 pl-0 list-none">{SIMULATOR.outputs.map((t, i) => <li key={t} className="flex gap-3 small"><span className="num shrink-0 w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: 'var(--gold)', color: 'var(--navy)' }}>{i + 1}</span><span>{t}</span></li>)}</ol></div>
         </div>
       </div></section>
 
       <section className="wrap sec">
-        <SectionHead eyebrow="What it is built on" title="The figures come from ground VAN owns and samples VAN read." lead="Every figure it prints carries its source: VAN’s own trials first, published Pakistani research with its citation second." />
+        {/* Tahir 7 Nov 2026 (CR-3): lead deleted. Was "Every figure in the simulator states its source. VAN’s own trials are used first, and published Pakistani research, with its citation, second." */}
+        {/* L1 7 Nov 2026 (crops-b M7): lab tile was "..., which tests the batches the plans name". */}
+        {/* Tahir 9 Nov 2026 (L2 crops-b W5): was "The simulator draws on VAN’s research farms and the Punjab soil survey." The live wheat and potato simulators read no soil or trial data, so the heading names what the next version will draw on. The tiles are kept. */}
+        <SectionHead eyebrow="What it is built on" title={`What the next version will draw on: VAN’s research farms, the Punjab soil survey, VAN’s ${CROPS.length} crop plans and VAN’s laboratory`} />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          {[...SIMULATOR.builtOn, [`${CROPS.length} crop programmes`, 'product by stage, with their PDF sheets'], [COUNTS.lab, 'the PNAC-accredited laboratory that tests the batches the plan names']].map(([v, l]) => <div key={v} className="panel p-5"><div className="num text-[30px]" style={{ color: 'var(--navy)' }}>{v}</div><p className="small muted mt-2">{l}</p></div>)}
+          {[...SIMULATOR.builtOn, [`${CROPS.length} crop plans`, 'each listing VAN’s brands for every stage, each with a PDF'], [COUNTS.lab, 'VAN’s laboratory, accredited by the Pakistan National Accreditation Council (PNAC). It tests batches of the products named in the crop plans.']].map(([v, l]) => <div key={v} className="panel p-5"><div className="num text-[30px]" style={{ color: 'var(--navy)' }}>{v}</div><p className="small muted mt-2">{l}</p></div>)}
         </div>
         <div className="panel-navy p-6 lg:p-8 mt-8 grid lg:grid-cols-[1fr_auto] gap-5 items-center">
-          <div><span className="eyebrow" style={{ color: 'var(--gold)' }}>Your crop next</span><h3>Wheat and potato run today. Tell us which crop you want next.</h3><p className="mt-2" style={{ color: 'rgba(255,255,255,.8)' }}>Leave your crop and district on WhatsApp or by email and we will tell you when your crop is added.</p></div>
-          <div className="grid gap-3"><WaButton href={WA.farmer} lg>WhatsApp {CONTACT.whatsapp}</WaButton><a className="btn" style={{ background: 'rgba(255,255,255,.14)', color: '#fff' }} href={`mailto:${CONTACT.email}?subject=${encodeURIComponent('VAN Yield & Discipline Simulator')}`}>{CONTACT.email}</a></div>
+          <div><span className="eyebrow" style={{ color: 'var(--gold)' }}>Your crop next</span><h3>Ask for a simulator for your crop</h3><p className="mt-2" style={{ color: 'rgba(255,255,255,.8)' }}>Leave your crop and district on WhatsApp or by email, and VAN will tell you when a simulator for your crop is added.</p></div>
+          <div className="grid gap-3"><WaButton href={WA.farmer} lg>WhatsApp {CONTACT.whatsapp}</WaButton><a className="btn" style={{ background: 'rgba(255,255,255,.14)', color: '#fff' }} href={`mailto:${CONTACT.cropEmail}?subject=${encodeURIComponent('VAN farm discipline simulator')}`}>{CONTACT.cropEmail}</a></div>
         </div>
       </section>
     </div>

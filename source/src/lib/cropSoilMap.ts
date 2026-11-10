@@ -168,11 +168,12 @@ export function unknownAnalysis(cropSlug: string): string[] {
 
 /**
  * Commodity materials are matched by name, and only where the name is unambiguous. Spelling variants
- * are allowed ("Ammonium Sulfate" for VAN's "Ammonium Sulphate"); a generic name is NOT matched to a
+ * are allowed ("Ammonium Sulphate" for VAN's "Ammonium Sulfate"); a generic name is NOT matched to a
  * branded record, because giving generic CAN the analysis of Sarsabz CAN would be attributing one
  * company's figures to another's material.
  */
-const COMMODITY_ALIASES: Record<string, string> = { 'ammonium sulfate': 'ammonium sulphate' }
+// L1 editor 7 Nov 2026 (m5): the master record is now spelt "Ammonium Sulfate", so the alias runs the other way.
+const COMMODITY_ALIASES: Record<string, string> = { 'ammonium sulphate': 'ammonium sulfate' }
 const normName = (n: string) => n.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
 function commodityMaster(product: string) {
   const want = COMMODITY_ALIASES[normName(product)] ?? normName(product)
@@ -234,7 +235,7 @@ function responderFor(parameter: SoilParameter, candidates: NutCandidate[]): Nut
 export type SoilRuling = { slug: string; product: string; note: string }
 
 const MIDLIFE_P: SoilRuling = {
-  slug: 'v-phosphate', product: 'V. Ammonium Phosphate (V-Phosphate)',
+  slug: 'v-phosphate', product: 'V-Phosphate',   // Tahir 10 Nov 2026 (FU-1): was 'V. Ammonium Phosphate (V-Phosphate)'
   // O21 (24 Sep 2026): internal note moved out of the shipped bundle. Original: 'Tahir, 9 Sep 2026: V-Phosphate is the mid-life phosphate, and this crop needs additional phosphorus at mid-life. Green Phosphate remains the basal line in the programme; the soil-test correction goes on through the fertigated mid-life line instead.'
   note: 'V-Phosphate is the mid-life phosphate line. Green Phosphate remains the basal line in the programme; the soil-test correction goes on through the fertigated mid-life line.',
 }
@@ -431,4 +432,47 @@ export function validateDerivedMaps(): string[] {
     )
   }
   return problems
+}
+
+/**
+ * Tahir 9 Nov 2026 (L2 crops-a W3, his answer (a) to Q2): the soil panel's pH and organic matter sentence is written
+ * from each crop's own rules, so each page names exactly what its calculator does. Read from the same sources the
+ * calculator acts on: soilMapForCrop() for the pH and organic matter products, and, for the urea move, the cost rows
+ * the page's calculator passes to computeSoilSwaps (the Nutrition creator's COST_PLANS row set where the crop has one,
+ * otherwise the published plan's rows, as the shopping list does).
+ */
+export type SoilReadingEffects = { phPhosphate: boolean; phZinc: boolean; phUreaMove: boolean; omProduct: string | null }
+
+export function soilReadingEffects(cropSlug: string): SoilReadingEffects {
+  const map = soilMapForCrop(cropSlug)
+  const slugFor = (p: SoilParameter) => map.find(e => e.parameter === p)?.slug
+  const pSlug = slugFor('P2O'), znSlug = slugFor('Zn')
+  const ph = map.filter(e => e.parameter === 'pH')
+  const rows = (COST_PLANS[cropSlug] ?? costRowsForCrop(cropSlug)) as { product: string; slug: string | null; analysisPct: Record<string, number>; qtyPerAcre: number }[]
+  const phUreaMove = SOIL_SUBSTITUTIONS.some(s => {
+    if (s.parameter !== 'pH') return false
+    const from = rows.find(r => r.product === s.fromProduct)
+    const to = rows.find(r => r.slug === s.toSlug)
+    return !!from && !!to && from.qtyPerAcre > 0 && (from.analysisPct[s.nutrient] ?? 0) > 0 && (to.analysisPct[s.nutrient] ?? 0) > 0
+  })
+  const om = map.find(e => e.parameter === 'OM')
+  const omRow = om ? rows.find(r => r.slug === om.slug) : undefined
+  return {
+    phPhosphate: !!pSlug && ph.some(e => e.slug === pSlug),
+    phZinc: !!znSlug && ph.some(e => e.slug === znSlug),
+    phUreaMove,
+    // The name the farmer sees in this crop's own list, where the row carries one; otherwise the map's name.
+    omProduct: om ? (omRow?.product ?? om.product) : null,
+  }
+}
+
+/** Tahir 9 Nov 2026 (L2 crops-a W3): his CR-17 sentence, with only the products and actions true for this crop. */
+export function soilReadingSentence(cropSlug: string): string {
+  const e = soilReadingEffects(cropSlug)
+  const adds = [e.phPhosphate && 'phosphate', e.phZinc && 'zinc'].filter(Boolean) as string[]
+  const acts = [adds.length ? `adds ${adds.join(' and ')}` : '', e.phUreaMove ? 'moves part of the urea to Vital Urea' : ''].filter(Boolean)
+  const ph = acts.length
+    ? `A high pH reading also ${acts.join(' and ')}; a high EC reading shows a salinity warning instead.`
+    : 'A high EC reading shows a salinity warning.'
+  return e.omProduct ? `${ph} The organic matter reading adds ${e.omProduct}.` : ph
 }

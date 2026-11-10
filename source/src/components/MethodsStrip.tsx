@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { CSSProperties, ReactElement } from 'react'
-import { METHODS, VITAL_UREA_RULE } from '@/data/site'
+import { METHODS as METHODS_FIELD, VITAL_UREA_RULE, METHODS_ORCHARD, VITAL_UREA_RULE_ORCHARD } from '@/data/site'
 import { useInView, useReducedMotion } from '@/hooks/useInView'
 import { SectionHead } from './bits'
 
@@ -57,7 +57,9 @@ const ART: Record<string, () => ReactElement> = {
 
 /** The 5 methods, drawn and moving. Tap one to read it. They are 5 different things. */
 /* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
-export function MethodsStrip({ compact = false }: { compact?: boolean }) {
+export function MethodsStrip({ compact = false, orchard = false }: { compact?: boolean; orchard?: boolean }) {
+  // 6 Nov 2026: an orchard plan with no sowing and no drilling gets the texts without them (site.ts METHODS_ORCHARD).
+  const METHODS = orchard ? METHODS_ORCHARD : METHODS_FIELD
   const { ref, inView } = useInView({ threshold: 0.2 })
   const rm = useReducedMotion()
   const [sel, setSel] = useState(0)
@@ -70,7 +72,7 @@ export function MethodsStrip({ compact = false }: { compact?: boolean }) {
   const [name, text] = METHODS[sel]
   return (
     <div ref={ref} className={inView ? 'on' : ''}>
-      {!compact && <SectionHead eyebrow="How you apply it" title="5 ways the bag reaches the crop, and they are not interchangeable." lead="Broadcasting, placement, side dressing, fertigation and spray are 5 different methods. The plan names which one for every row." tone="navy" id="methods" />}
+      {!compact && <SectionHead eyebrow="How you apply it" title="The 5 application methods named in the plan." lead="VAN’s crop plans use 5 application methods: broadcasting, placement (drilling at sowing), side dressing, fertigation and spray. They are not interchangeable. Each row of the plan names the method for that product, and some rows give a second choice to use if the first is not possible." tone="navy" id="methods" />}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
         {METHODS.map(([n], i) => {
           const Art = ART[n]
@@ -87,7 +89,7 @@ export function MethodsStrip({ compact = false }: { compact?: boolean }) {
         <div className="display text-[26px]">{name}</div>
         <div>
           <p>{text}</p>
-          <p className="small mt-3 p-3 rounded-lg" style={{ background: 'var(--gold-soft)' }}><b>A separate rule applies to Vital Urea.</b> {VITAL_UREA_RULE}</p>
+          <p className="small mt-3 p-3 rounded-lg" style={{ background: 'var(--gold-soft)' }}><b>Vital Urea has its own rule.</b> {orchard ? VITAL_UREA_RULE_ORCHARD : VITAL_UREA_RULE}</p>
         </div>
       </div>
     </div>

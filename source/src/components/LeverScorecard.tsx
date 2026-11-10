@@ -42,8 +42,10 @@ export function LeverScorecard() {
       <div className="flex flex-wrap items-start justify-between gap-4 mb-2">
         <div>
           <span className="eyebrow">Farm discipline scorecard · beta · wheat only</span>
-          <h3>Score how the season was actually run.</h3>
-          <p className="muted mt-2 small max-w-[140ch]">Nutrition decides about 1/4 of the yield. Sowing, seed, water, weeds and pests decide the rest. Pick Bad / OK / Best for each lever. The weights and bands come from published agronomic research, cited under each lever. VAN has no historical yield-dose data yet, so treat these weights as a starting hypothesis, not a calibrated model.</p>
+          <h3>Score how the season was actually run</h3>
+          {/* Tahir 7 Nov 2026 (CR-1): was "Nutrition decides about 1/4 of the yield. Sowing, seed, water, weeds and pests decide the rest." (component not mounted on any page at present) */}
+          {/* L1 7 Nov 2026 (crops-b M1): "VAN’s farm discipline simulator", was "The VAN simulator" (1 name for the tool). */}
+          <p className="muted mt-2 small max-w-[140ch]">Yield depends on doing every task on time: sowing date, seed and plant population, fertiliser at the right stage, irrigation on schedule, and control of weeds, pests and disease. Crop nutrition is 1 of these tasks. A task missed at its time can cost yield that extra work later may not recover. VAN’s farm discipline simulator shows how each task, and its timing, changes the yield. Pick Bad / OK / Best for each lever. The weights and bands come from published agronomic research, cited under each lever. VAN has no historical yield-dose data yet, so treat these weights as a starting hypothesis, not a calibrated model.</p>
         </div>
         <div className="panel-soft px-5 py-4 text-center shrink-0">
           <div className="cap font-bold uppercase tracking-[.06em]">Overall score</div>

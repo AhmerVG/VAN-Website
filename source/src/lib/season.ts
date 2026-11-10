@@ -21,11 +21,26 @@ export function inWindow(w: Window, m: number) {
   if (w.start <= w.end) return m >= w.start && m <= w.end
   return m >= w.start || m <= w.end
 }
+// L1 editor fix 7 Nov 2026 (company-a m23): house format 'Oct to Nov', not an en dash.
 export function windowLabel(w: Window) {
-  return w.start === w.end ? MONTHS[w.start] : `${MONTHS[w.start]}–${MONTHS[w.end]}`
+  return w.start === w.end ? MONTHS[w.start] : `${MONTHS[w.start]} to ${MONTHS[w.end]}`
 }
 export function sowingLabel(c: Crop) {
   return parseSowing(c.sowing).map(windowLabel).join(' / ')
+}
+
+/** D-151 (QA 19), extended 6 Nov 2026 (orchard pages must not say "sowing"): a first-year banana is planted; an
+ *  orchard's season starts with the new leaf flush, pruning or first irrigation. The words each kind of crop uses for
+ *  its date and window. The windows themselves (crop.sowing) are unchanged. */
+// Tahir 7 Nov 2026 (CR-11): potato and sugarcane are planted, not sown; a ratoon crop regrows from the last crop, so
+// its window is a season start. Was PLANTED_CROPS = ['banana-year1'] and ORCHARD_CROPS without 'sugarcane-ratoon'.
+export const PLANTED_CROPS = ['banana-year1', 'potato', 'sugarcane']
+export const ORCHARD_CROPS = ['citrus', 'mango', 'guava', 'date-palm', 'banana-year2', 'sugarcane-ratoon']
+export type SeasonWords = { kind: 'sow' | 'plant' | 'orchard'; tag: string; windowTitle: string; window: string; date: string; started: string; after: string; before: string; done: string }
+export function seasonWords(slug: string): SeasonWords {
+  if (PLANTED_CROPS.includes(slug)) return { kind: 'plant', tag: 'planting', windowTitle: 'Planting window', window: 'planting window', date: 'planting date', started: 'Planted', after: 'after planting', before: 'Before planting', done: 'once the crop is planted' }
+  if (ORCHARD_CROPS.includes(slug)) return { kind: 'orchard', tag: 'season start', windowTitle: 'Season start', window: 'season window', date: 'season start date', started: 'Season started', after: 'since the season started', before: 'Before the season starts', done: 'once the season has started' }
+  return { kind: 'sow', tag: 'sowing', windowTitle: 'Sowing window', window: 'sowing window', date: 'sowing date', started: 'Sown', after: 'after sowing', before: 'Before sowing', done: 'once the crop is sown' }
 }
 
 export function cropSlug(c: Crop) { return c.page.replace(/\.html$/, '') }
@@ -115,11 +130,37 @@ export function tidyUnits(text: string): string {
   })
 }
 
+// L1 7 Nov 2026 (crops-a 20): a range is printed with "to" ("3 to 5 trolleys", "1 to 2 bags"), was "3-5" and "1–2".
+// Also a space between a figure and its unit ("2 kg per plant", was "2kg", crops-a 25). Display only; the stored rate
+// strings are unchanged.
 export function rateLabel(r: Pick<PlanRow, 'rate' | 'basis'>): string {
-  const rate = tidyUnits(r.rate.replace(/\s*dose\s*$/i, '').trim())
+  const rate = tidyUnits(r.rate.replace(/\s*dose\s*$/i, '').trim().replace(/(\d)\s*[-–]\s*(\d)/g, '$1 to $2').replace(/(\d)(kg|g|ml|L)\b/g, '$1 $2'))
   if (r.basis === 'plant') return `${rate} per plant`
   if (r.basis === 'per200L') return `${rate} per 200 L water`
   return rate
+}
+/** L1 10 Nov 2026 (crops 2): a plan row printed "½ bag · 10 kg", and a reader could take 10 kg as the dose. The rate and
+ *  the pack size now read as 1 phrase: "½ of a 10 kg bag", "1 bag of 10 kg", "2 bags of 50 kg each". A rate that is not a
+ *  plain count of bags or packs (a kg dose, a month, 2 applications, a per-plant dose) keeps its own wording and is
+ *  followed by the pack, named as a pack: "5 kg · 1 kg pack", "1 bag in April · 25 kg bag". Display only: no rate, pack
+ *  or quantity is changed. Revert: print `${rateLabel(r)} · ${r.pack size}` in PlanMatrix, StageWalk and CropNow. */
+export function ratePackLabel(r: Pick<PlanRow, 'rate' | 'basis' | 'pack'>): string {
+  const rate = rateLabel(r)
+  const p = packInfo(r.pack)
+  if (!p.size) return rate
+  const size = `${p.label}`
+  const an = /^(8|11|18)\b/.test(size) ? 'an' : 'a'
+  // The unit word is the rate's own where it names one: 7 plan rows count a bag as "pack" ("2 pack" of V-Transform, a
+  // 3 kg bag), and the phrase must not then call the same item a pack and a bag.
+  const word = rate.match(/\b(bag|pack)s?\b/i)?.[1].toLowerCase() ?? p.unit
+  const m = !r.basis && rate.match(/^(\d+\s*[½¼¾⅓⅔⅕]|[½¼¾⅓⅔⅕]|\d+\/\d+|\d+(?:\.\d+)?)\s+(bag|pack)s?$/)
+  if (m) {
+    const q = rateUnits(`${m[1]} ${m[2]}`)
+    if (q > 0 && q < 1) return `${m[1]} of ${an} ${size} ${word}`
+    if (Math.abs(q - 1) < 1e-9) return `1 ${word} of ${size}`
+    if (q > 1) return `${m[1]} ${word}s of ${size} each`
+  }
+  return `${rate} · ${size} ${word}`
 }
 export function hasSprayBasis(stages: Set<string>, rows: PlanRow[]): boolean {
   return rows.some(r => r.basis === 'per200L' && stages.has(r.stage))

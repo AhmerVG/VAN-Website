@@ -2,19 +2,21 @@ PAGE: /partner/regulatory.html
 ======================================================================
 Products
 Crop Plans
-Soil
-Tools
+Your Brand
+Soil Atlas
+Vitalytics
 VAN Lab
 Knowledge
 About
-For farmers
-Menu ☰
+Talk to us
+Search
+☰
 View
 Simple view
-Make with us · regulatory
+Your Brand · regulatory
 A fertilizer that is not registered
 cannot be sold.
-If the selling season is missed, the product cannot be sold until the next one. VAN runs Pakistani registration for its own catalogue, twenty of twenty-three brands hold a live PSQCA licence, and now runs that work for partners as a service in its own right.
+If the selling season is missed, the product cannot be sold until the next one. VAN runs Pakistani registration for its own catalogue: 20 of 23 brands hold a live PSQCA licence. 12 more products are already licensed and ready for a partner to launch within 60 days. VAN now runs that work for partners as a service in its own right.
 01
 What VAN already holds
 02
@@ -44,7 +46,7 @@ PS 216-2009 (TSP)
 CM/L-2942/2023
 Fusion Potash
 PS 933-2026
-CM/L-2674/2028
+CM/L-2674/2026
 Crop Force
 PS 933-2026
 CM/L-4298/2026
@@ -89,19 +91,19 @@ PS 5469-2020
 CM/L-4300/2026
 V-Mag Essential
 n/a
-Under registration
+Conformance report
 V-Compost
 Soil Fertility Research Institute
 SFRI-2025-07
-From VAN’s trademark and PSQCA master record, July 2026. Product names in this table are the names held on the licences themselves, which is not in every case the name the product is sold under. V-Phosphate is registered as V-Phosphate 10-44-0 and marketed as V. Ammonium Phosphate. Twenty of the twenty-three brands hold a live PSQCA manufacturing licence. The other three each have a reason: V-Mag Essential is under registration, V-Compost is registered with the Soil Fertility Research Institute, and SOP is a traded commodity to which no VAN licence applies.
+From VAN’s trademark and PSQCA master record, July 2026. Product names in this table are the names held on the licences themselves, which is not in every case the name the product is sold under. V-Phosphate is registered as V-Phosphate 10:44:0 and marketed as V. Ammonium Phosphate. 20 of the 23 brands hold a live PSQCA manufacturing licence. The other 3 each have a reason: V-Mag Essential carries a conformance report, V-Compost is registered with the Soil Fertility Research Institute, and SOP is a traded commodity to which no VAN licence applies.
 02
 Backup registrations
-Why VAN holds two sets.
+Why VAN holds 2 sets.
 When the licences for the Vital line were running late, VAN filed a second set under the earlier V- names rather than wait and lose a season. VAN holds both sets. V-Urea carries CM/L-2564/2022 and V-Potash carries CM/L-2565/2022 alongside the 2025 Vital licences the products trade under today.
 VAN files the fallback before it is needed, so that a delay at the authority does not stop the product being sold. Partner registrations are handled the same way.
 03
 How the work runs
-Four steps. VAN controls the first two.
+4 steps. VAN controls the first 2.
 Step
 What happens
 Standard selection
@@ -112,26 +114,17 @@ Dossier and filing
 Preparation and filing with PSQCA, including the manufacturing evidence that an importer or a trader cannot supply.
 Licence
 The certificate lands and the product can legally be sold anywhere in Pakistan.
-VAN controls the first two steps and completes them inside three weeks. The last two sit with the regulator; one to three months is typical, and no manufacturer can promise more precisely than that.
-Every VAN product carries a complete technical file, and a partner product is built to the same standard from the start: a one-page technical data sheet, a sixteen-section GHS safety data sheet with a per-product hazard classification rather than a blanket template, and a certificate of analysis issued per production lot from VAN’s own QC laboratory with specification, result and method for every assay.
+VAN controls the first 2 steps and completes them inside 3 weeks. The last 2 sit with the regulator; 1 to 3 months is typical.
+Every VAN product carries a complete technical file, and a partner product is built to the same standard from the start: a 1-page technical data sheet, a 16-section GHS safety data sheet with a per-product hazard classification rather than a blanket template, and a certificate of analysis issued per production lot from VAN’s own QC laboratory with specification, result and method for every assay.
 From brief to bag. Where registration sits →
-A question this page doesn’t answer?
-The agronomy team answers on the same WhatsApp line as everything else.
-Ask on WhatsApp
 Crop nutrition engineered, manufactured, registered and tested in Pakistan.
-Plant
-·
-49-Km Multan Road, Phool Nagar Bypass, Lahore
-Head office
-·
-605 Al-Hafeez Heights, Gulberg III, Lahore 54660
++92 42 35762215
 WhatsApp
 +92 300 5003041
-Landline
-+92 42 35762215
 info@van.com.pk
 Products
 All 23 brands
+Compare them
 Vital Urea
 Where to buy
 Verify a bag
@@ -139,20 +132,27 @@ Crops
 28 crop plans
 Wheat
 How you apply it
+Soil Atlas
 Knowledge
 Why Pakistan must shift
-The soil, measured
-Product knowledge decks
+Product decks
 Circular economy
+Vitalytics tools
 Company
-Make with us
+Your Brand
 VAN Lab
-Tools
-About & contact
+About
+Company profile
+Head office
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+Plant
+49-Km Multan Road, Phool Nagar Bypass, Lahore
 © 2026
 Vital Agri Nutrients (Pvt) Ltd
-·
-www.van.com.pk
+Full member of CropLife Pakistan since 2024
+How VAN competes
 LinkedIn
 Facebook
 Instagram
+Talk to VAN
+Talk to VAN

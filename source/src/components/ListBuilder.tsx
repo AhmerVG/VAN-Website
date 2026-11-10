@@ -4,13 +4,13 @@ import { useSharedAcres } from '@/lib/sharedAcres'
 import { WHEAT_STAGES, WHEAT_PLAN, type PlanRow } from '@/data/catalogue'
 import { WHEAT, wa } from '@/data/site'
 import { buildList, buildPlantDoses, hasSprayBasis, fmtQty, fmtUnits } from '@/lib/season'
-import { PackShot, DrawnBag, WaButton } from './bits'
+import { PackShot, DrawnBag, WaButton, noStop } from './bits'
 import { FARMER_PRICE_SOURCE, NO_PRICE_REASON, NO_PACK_PRICE_REASON, priceForPack } from '@/data/pricing'
 import { SoilAdjustmentPanel, type BandSource } from './SoilAdjustmentPanel'
 import { computeSoilBumps, computeSoilSwaps, soilAdvisories, type SoilInputs } from '@/lib/soilAdjustment'
 import { costRowsForCrop } from '@/lib/cropSoilMap'
 import { regionalProfile } from '@/data/regionalSoil'
-import { alternativeFor, nutrientPerPack } from '@/data/alternatives'
+import { alternativeFor, offersAlternative } from '@/data/alternatives'   // L1 7 Nov 2026: nutrientPerPack no longer used here (crops-a 14)
 import { Ur, UrduReviewNotice } from './Ur'
 import { useUrduMode } from '@/lib/readingMode'
 import { ur as urStage } from '@/data/urdu'
@@ -88,11 +88,13 @@ export function ListBuilder({ stages = WHEAT_STAGES, plan = WHEAT_PLAN, cropName
   // The swap is applied AFTER the soil layer, on purpose: the soil correction is sized against the
   // line the plan names, and switching which bag you buy it in must not change how much correction
   // the plan asked for.
+  // Tahir 10 Nov 2026 (R3-7): a line with any row applied by fertigation behind it offers no Fusion Phosphate choice.
   const shown = useMemo(() => lines.map(l => {
-    const alt = alternativeFor(l.slug)
+    const fertigated = plan.some(r => ticked.has(r.stage) && `${r.product}|${r.pack}` === l.key && !offersAlternative(r.method))
+    const alt = fertigated ? undefined : alternativeFor(l.slug)
     if (!alt || !swapped[l.key]) return { ...l, alt, isAlt: false }
     return { ...l, alt, isAlt: true, product: alt.altName, slug: alt.altSlug }
-  }), [lines, swapped])
+  }), [lines, swapped, plan, ticked])
 
   const soilAdjusted = soil && (Object.keys(bumps).length > 0 || swaps.length > 0)
   const van = shown.filter(l => !l.commodity)
@@ -172,7 +174,9 @@ export function ListBuilder({ stages = WHEAT_STAGES, plan = WHEAT_PLAN, cropName
       ? `Hello VAN. ${what} ${acres} acre${acres > 1 ? 's' : ''} (orchard age: ${st.join(', ') || 'none'}):`
       : `Hello VAN. ${what} ${acres} acre${acres > 1 ? 's' : ''} (stages: ${st.join(', ') || 'none'}):`
     const ls = van.map(l => `• ${l.product}, ${fmtQty(l.units, l.unit)} of ${l.size} ${l.measure}`)
-    const cs = commodity.map(l => `(plus commodity urea, not a VAN product: ${fmtQty(l.units, l.unit)} of ${l.size} ${l.measure})`)
+    // L1 7 Nov 2026 (crops-a 1): each commodity line is named (it said "commodity urea" for every one, CAN and farmyard
+    // manure included), and a line with no pack size carries its published rate in its own unit.
+    const cs = commodity.map(l => { const u = l.size > 0 ? null : unpackedRate(plan, l.product, acres); return `(plus ${l.product}, not a VAN product: ${u ?? `${fmtQty(l.units, l.unit)} of ${l.size} ${l.measure}`})` })
     const soilNote = soilAdjusted
       ? ['(these quantities are adjusted for my soil reading: ' +
          Object.entries(soilInputs).map(([k, v]) => `${k} ${v}`).join(', ') + ')']
@@ -181,7 +185,7 @@ export function ListBuilder({ stages = WHEAT_STAGES, plan = WHEAT_PLAN, cropName
       ? `Please send price, availability and my nearest dealer. My district: ${districtName}${linkTehsilName(knownDistrict) ? `, tehsil ${linkTehsilName(knownDistrict)}` : ''}.`  // D-316: tehsil when the link carries it
       : 'Please send price, availability and my nearest dealer. My district is:'
     return [l1, ...ls, ...cs, ...soilNote, ask].join('\n')
-  }, [ticked, acres, van, commodity, soilAdjusted, soilInputs, published, districtName])
+  }, [ticked, acres, van, commodity, soilAdjusted, soilInputs, published, districtName, plan])
 
   // D-262: on a crop page with no creator, this list is the farmer's plan, so the bottom bar sends it once he has set
   // anything here (acres, stages, a district or a soil row). Where the page has a creator, the bar reads the creator.
@@ -193,16 +197,18 @@ export function ListBuilder({ stages = WHEAT_STAGES, plan = WHEAT_PLAN, cropName
     <div className="panel p-5 lg:p-8" style={{ borderColor: 'var(--navy)', borderWidth: 2 }}>
       <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-8 items-start">
         <div className="lg:sticky lg:top-24">
-          <span className="eyebrow">Per-acre shopping list</span>
-          <h3>{isAge ? 'How old is the orchard? Set your acres. Send the list.' : 'Tick the stages. Set your acres. Send the list.'}</h3>
-          <p className="muted mt-2 small">{isAge ? 'Pick 1 age band; bands are not added together. Counts are that band’s published per-acre rates multiplied by your acres.' : 'Counts are the published per-acre rates added up across the stages you tick, multiplied by your acres.'} VAN confirms the final price, availability and delivery on WhatsApp.</p>
+          <span className="eyebrow">Shopping list</span>
+          <h3>{isAge ? 'Bags for your orchard’s age band and acres' : 'Bags and packs for the stages and acres you choose'}</h3>
+          <p className="muted mt-2 small">{isAge ? 'For each product, the number of bags shown is that age band’s published rate per acre, multiplied by the number of acres you enter.' : 'For each product, the number of bags or packs shown is VAN’s published rate per acre, added up for the stages you tick and multiplied by the number of acres you enter.'}</p>
           <div className="grid gap-2 mt-5">
             {stages.map((s, k) => (
               <label key={s} className={`flex items-center gap-3 panel px-4 py-3 cursor-pointer st-${k}`} style={{ borderColor: ticked.has(s) ? 'var(--st)' : undefined, background: ticked.has(s) ? 'var(--st-soft)' : '#fff' }}>
                 <input type={isAge ? 'radio' : 'checkbox'} name={isAge ? 'van-age-band' : undefined} checked={ticked.has(s)} onChange={() => toggle(s)} style={{ width: 24, height: 24, accentColor: '#14231A' }} />
                 <span className="font-bold flex-1 min-w-0" style={{ overflowWrap: 'anywhere' }}><Ur kind="stage" en={s} /></span>
                 {/* D-151 (QA 28): a stage with no rows says so instead of "0 rows". */}
-                <span className="cap shrink-0 text-right" style={{ maxWidth: '45%' }}>{plan.filter(r => r.stage === s).length ? `${plan.filter(r => r.stage === s).length} ${plan.filter(r => r.stage === s).length === 1 ? 'row' : 'rows'}` : 'nothing applied at this stage'}</span>
+                {/* L2 fact check 9 Nov 2026 (crops-a W8): counts distinct products, not rows (citrus germination has V-Mag Essential
+                    on 2 rows, by fertigation and as a spray, so it read "8 products" for 7). Was: plan.filter(r => r.stage === s).length. */}
+                <span className="cap shrink-0 text-right" style={{ maxWidth: '45%' }}>{(() => { const n = new Set(plan.filter(r => r.stage === s).map(r => r.product)).size; return n ? `${n} ${n === 1 ? 'product' : 'products'}` : 'nothing applied at this stage' })()}</span>
               </label>
             ))}
           </div>
@@ -230,7 +236,7 @@ export function ListBuilder({ stages = WHEAT_STAGES, plan = WHEAT_PLAN, cropName
         <div>
           <div className="flex items-baseline justify-between">
             <div className="font-bold">Your list · {acres} acre{acres > 1 ? 's' : ''}</div>
-            <div className="cap">{van.length} VAN product{van.length === 1 ? '' : 's'}</div>
+            <div className="cap">{van.length} VAN brand{van.length === 1 ? '' : 's'}</div>
           </div>
           {!lines.length && <p className="muted mt-3 p-4 panel-soft">{isAge ? 'Choose your orchard age to build a list.' : 'Tick at least 1 stage to build a list.'}</p>}
           <ul className="list-none p-0 m-0 mt-2 grid gap-2">
@@ -241,7 +247,8 @@ export function ListBuilder({ stages = WHEAT_STAGES, plan = WHEAT_PLAN, cropName
                 <div style={{ width: 48, height: 60, display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 'none' }}><PackShot slug={l.slug} style={{ maxHeight: 58, width: 'auto' }} /></div>
                 <div className="min-w-0 flex-1">
                   <a href={l.slug ? `#/products/${l.slug}` : undefined} className="display text-[18px] leading-tight no-underline hover:underline">{l.product}</a>
-                  <div className="cap" style={{ overflowWrap: 'anywhere' }}>{l.size} {l.measure} {l.unit} · {l.stages.map(st => st.replace(/\//g, '/\u200B')).join(', ')}</div>
+                  {/* L1 7 Nov 2026 (crops-a 10): stages joined with " · ", was ", " (guava stage names such as "October, flowering starts" have commas inside them). */}
+                  <div className="cap" style={{ overflowWrap: 'anywhere' }}>{l.size} {l.measure} {l.unit} · {l.stages.map(st => st.replace(/\//g, '/\u200B')).join(' · ')}</div>
                   <UrOnlyStages stages={l.stages} />
                 </div>
                 <div className="text-right shrink-0">
@@ -268,13 +275,11 @@ export function ListBuilder({ stages = WHEAT_STAGES, plan = WHEAT_PLAN, cropName
                           onClick={() => setSwapped(sw => ({ ...sw, [l.key]: true }))}
                         >{l.alt.altName}</button>
                       </div>
+                      {/* L1 7 Nov 2026 (crops-a 14): the bold line "Per 50 kg bag, Green Phosphate supplies 16.0 kg of P₂O₅ and 3.0 kg
+                          of nitrogen; Fusion Phosphate supplies 23.0 kg ..." is removed: it repeated the per-bag figures the sentence
+                          before it already gives, and every Green Phosphate row in the plans is a 50 kg bag. Revert from git history. */}
                       <p className="cap mt-1 max-w-[140ch]">
-                        {l.alt.difference}{' '}
-                        <b>
-                          At {l.size} {l.measure} a bag: Green Phosphate {nutrientPerPack('green-phosphate', 'P', l.size).toFixed(1)} kg P₂O₅
-                          {' '}+ {nutrientPerPack('green-phosphate', 'N', l.size).toFixed(1)} kg N,
-                          {' '}{l.alt.altName} {nutrientPerPack(l.alt.altSlug, 'P', l.size).toFixed(1)} kg P₂O₅ and no nitrogen.
-                        </b>
+                        {l.alt.difference}
                       </p>
                     </div>
                   )}
@@ -284,12 +289,20 @@ export function ListBuilder({ stages = WHEAT_STAGES, plan = WHEAT_PLAN, cropName
               <li key={l.key} className="panel flex items-center gap-3 px-3 py-2" style={{ background: '#F1F3EF', borderStyle: 'dashed' }}>
                 <div style={{ width: 48, height: 60, display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 'none' }}><DrawnBag grey label={l.product} width={40} /></div>
                 <div className="min-w-0 flex-1">
-                  <div className="display text-[18px] leading-tight" style={{ color: '#5B6A5E' }}>{l.product} <span className="tag tag-grey ml-1">not a VAN product</span></div>
-                  <div className="cap" style={{ overflowWrap: 'anywhere' }}>commodity input · {l.size > 0 ? `${l.size} ${l.measure} ${l.unit} · ` : ''}{l.stages.map(st => st.replace(/\//g, '/\u200B')).join(', ')}</div>
+                  <div className="display text-[18px] leading-tight" style={{ color: '#5B6A5E' }}>{l.product} <span className="tag tag-grey ml-1">not made by VAN</span></div>
+                  <div className="cap" style={{ overflowWrap: 'anywhere' }}>{l.size > 0 ? `${l.size} ${l.measure} ${l.unit} · ` : ''}{l.stages.map(st => st.replace(/\//g, '/\u200B')).join(' · ')}</div>
                 </div>
                 <div className="text-right shrink-0">
-                  <div className="num text-[26px] leading-none" style={{ color: '#5B6A5E' }}>{fmtUnits(l.units)}</div>
-                  <div className="cap">{l.unit}{l.units >= 1.125 ? 's' : ''}{l.size > 0 ? ` · ${Math.round(l.units * l.size * 100) / 100} ${l.measure || 'kg'}` : ''}</div>
+                  {(() => {
+                    // L1 7 Nov 2026 (crops-a 1): a line with no pack size shows its published rate in its own unit (guava: "3 to 5 trolleys"), not "3 bags".
+                    const u = l.size > 0 ? null : unpackedRate(plan, l.product, acres)
+                    return u
+                      ? <div className="num text-[22px] leading-none" style={{ color: '#5B6A5E' }}>{u}</div>
+                      : <>
+                          <div className="num text-[26px] leading-none" style={{ color: '#5B6A5E' }}>{fmtUnits(l.units)}</div>
+                          <div className="cap">{l.unit}{l.units >= 1.125 ? 's' : ''}{l.size > 0 ? ` · ${Math.round(l.units * l.size * 100) / 100} ${l.measure || 'kg'}` : ''}</div>
+                        </>
+                  })()}
                   {'added' in l && (l as { added: number }).added < -0.01 && (
                     <div className="cap" style={{ color: 'var(--green)' }}>−{fmtUnits(Math.abs((l as { added: number }).added))} moved to Vital Urea</div>
                   )}
@@ -299,16 +312,17 @@ export function ListBuilder({ stages = WHEAT_STAGES, plan = WHEAT_PLAN, cropName
           </ul>
           {soilAdjusted && (
             <div className="panel-soft p-4 mt-3">
-              <div className="cap font-bold uppercase tracking-[.06em] mb-1">What your soil answers changed</div>
+              <div className="cap font-bold uppercase tracking-[.06em] mb-1">What your soil readings changed</div>
               <p className="small max-w-[140ch]">
-                The quantities above now carry your soil reading, not just the crop programme. Where the
-                ground reads short, more of the product that carries that nutrient goes on. Where the
-                reading is healthy, nothing is added.
+                The quantities above now take account of your soil readings as well as the crop
+                plan. Where a reading is below Healthy, more of the product that supplies that
+                nutrient is added. Where a reading is Healthy, nothing is added, and for phosphorus,
+                potash and zinc the rate is cut by 1/4.
               </p>
               {swaps.length > 0 && (
                 <p className="small mt-2 max-w-[140ch]">
-                  <b>Nitrogen has been moved, not increased.</b> {swaps[0].note} The total nitrogen going
-                  on your field is unchanged. It is simply carried by a form that stays where you put it.
+                  <b>Nitrogen has been moved to a different product, not increased.</b> {swaps[0].note} The total
+                  nitrogen applied to your field is unchanged. It is now supplied in a form that stays where it is placed.
                 </p>
               )}
             </div>
@@ -316,33 +330,32 @@ export function ListBuilder({ stages = WHEAT_STAGES, plan = WHEAT_PLAN, cropName
           {advisories.map(a => (
             <div key={a.parameter} className="panel p-4 mt-3" style={{ borderColor: 'var(--rust)', borderWidth: 2 }}>
               <span className="eyebrow rust">Read this before buying anything</span>
-              <h4 className="mt-1">{a.headline}</h4>
+              <h4 className="mt-1">{noStop(a.headline)}</h4>
               <p className="small mt-2 max-w-[140ch]">{a.body}</p>
-              <WaButton href={wa(`Hello VAN. My ${cropName} field reads high on salts (EC). Please advise before I buy fertilizer. My district and soil report:`)} className="btn-wa btn-sm mt-3">Send my soil report</WaButton>
+              <WaButton href={wa(`Hello VAN. My ${cropName} field reads high on salts (EC). Please advise before I buy fertiliser. My district and soil report:`)} className="btn-wa btn-sm mt-3">Send my soil report</WaButton>
             </div>
           ))}
           {sprayBasis && (
             <p className="cap mt-3 p-3 panel-soft max-w-[140ch]">
-              The spray rates in this programme are published <b>per 200 litres of water</b>, and are
-              counted as 1 tank of 200 litres an acre. A larger canopy takes more water to cover,
-              so it takes more product. Tell VAN your tree size and spray volume and the count is
-              adjusted.
+              The spray rates in this plan are published <b>per 200 litres of water</b>, and the
+              list assumes 1 tank of 200 litres per acre. Larger trees need more spray to cover them,
+              and so more product. Tell VAN your tree size and spray volume, and VAN will adjust the
+              quantities.
             </p>
           )}
           {plantDoses.length > 0 && (
             <div className="panel p-4 mt-3" style={{ borderStyle: 'dashed' }}>
               <span className="eyebrow navy">Per-plant doses, not counted above</span>
               <p className="small muted mt-2 max-w-[140ch]">
-                These rates are published <b>per tree</b>, not per acre, so they cannot be turned into
-                bags until the orchard&rsquo;s tree count and spacing are known. <b>Vital Green works that out
-                against your own orchard</b>. Send your tree count and row spacing and you get the
-                quantities back.
+                These doses are published <b>per plant</b>, not per acre, so they cannot be converted into
+                bags until the number of trees per acre is known. Send your tree count and row spacing,
+                and <b>Vital Green will calculate the quantities for your own orchard</b>.
               </p>
               <ul className="list-none p-0 m-0 mt-3 grid gap-2">
                 {plantDoses.map(d => (
                   <li key={d.key} className="flex flex-wrap items-baseline gap-x-3 gap-y-1 small">
                     <span className="font-bold">{d.product}</span>
-                    <span className="num" style={{ color: 'var(--navy)' }}>{d.rate.replace(/dose/i, '').trim()} per plant</span>
+                    <span className="num" style={{ color: 'var(--navy)' }}>{d.rate.replace(/dose/i, '').trim().replace(/(\d)(kg|g|ml|L)\b/g, '$1 $2')} per plant</span>{/* L1 7 Nov 2026 (crops-a 25): "2 kg", was "2kg" */}
                     <span className="cap" style={{ flexBasis: '100%' }}>{d.stage} · {d.method}</span>
                   </li>
                 ))}
@@ -355,8 +368,8 @@ export function ListBuilder({ stages = WHEAT_STAGES, plan = WHEAT_PLAN, cropName
               <div className="flex flex-wrap items-baseline justify-between gap-3">
                 <div>
                   <span className="eyebrow navy">{FARMER_PRICE_SOURCE.label}</span>
-                  <div className="num" style={{ fontSize: 32, color: 'var(--navy)', lineHeight: 1.1 }}>PKR {Math.round(cost.total).toLocaleString()}</div>
-                  <div className="cap">for {acres} acre{acres > 1 ? 's' : ''} · VAN products {isAge ? 'at this orchard age' : 'in the stages you ticked'}</div>
+                  <div className="num" style={{ fontSize: 32, color: 'var(--navy)', lineHeight: 1.1 }}>Rs {Math.round(cost.total).toLocaleString()}</div>
+                  <div className="cap">for {acres} acre{acres > 1 ? 's' : ''} · VAN brands {isAge ? 'at this orchard age' : 'in the stages you ticked'}</div>
                 </div>
                 <button className="btn btn-sm" onClick={() => setShowCost(false)}>Hide</button>
               </div>
@@ -390,12 +403,27 @@ export function ListBuilder({ stages = WHEAT_STAGES, plan = WHEAT_PLAN, cropName
           <UrduReviewNotice />
           {/* D-263: was, on every page, "The message carries the list above. Add your district and VAN replies with price and the nearest dealer." */}
           {published
-            ? <p className="cap mt-3">This sends VAN’s published {cropName} plan for the stages you ticked{districtName ? `, with your district, ${districtName}` : ''}. This list is not adjusted for your soil. For that, use the calculator below.{districtName ? '' : ' Add your district and VAN replies with price and the nearest dealer.'}</p>
-            : <p className="cap mt-3">The message carries the list above. {districtName ? `It names your district, ${districtName}, and VAN replies with price and the nearest dealer.` : 'Add your district and VAN replies with price and the nearest dealer.'}</p>}
+            ? <p className="cap mt-3">The “Send the published plan on WhatsApp” button sends VAN’s published {cropName} plan for the stages you ticked{districtName ? `, with your district, ${districtName}` : ''}. This list is not adjusted to your soil. For a list adjusted to your soil test, use the Nutrition creator further down the page.{districtName ? '' : ' Add your district to the WhatsApp message, and VAN will reply with the price, availability and your nearest dealer.'}</p>
+            : <p className="cap mt-3">The WhatsApp message contains the bags and packs in the list above. {districtName ? `It names your district, ${districtName}, and VAN will reply with the price, availability and your nearest dealer.` : 'Add your district to the WhatsApp message, and VAN will reply with the price, availability and your nearest dealer.'}</p>}
         </div>
       </div>
     </div>
   )
+}
+
+/**
+ * L1 7 Nov 2026 (crops-a 1, Blocking). A plan row whose rate is not in bags or packs and which has no pack size (today
+ * only guava's farmyard manure, "3-5 trolleys") was shown as "3 bags", because the list reads the low end of a range
+ * and counts it in the default unit. Such a line now shows the published rate in its own unit, times the acres:
+ * "3 to 5 trolleys" for 1 acre. The data and rateUnits() are unchanged.
+ */
+export function unpackedRate(plan: PlanRow[], product: string, acres: number): string | null {
+  const r = plan.find(x => x.product === product && !/\d+(?:\.\d+)?\s*(kg|L)\b/i.test(x.pack))
+  if (!r) return null
+  const m = r.rate.match(/^\s*(\d+(?:\.\d+)?)\s*(?:(?:-|–|to)\s*(\d+(?:\.\d+)?)\s*)?([A-Za-z]+)\s*$/)
+  if (!m || /^(bag|pack)s?$/i.test(m[3])) return null
+  const lo = Number(m[1]) * acres, hi = m[2] ? Number(m[2]) * acres : null
+  return hi !== null ? `${lo} to ${hi} ${m[3].toLowerCase()}` : `${lo} ${m[3].toLowerCase()}`
 }
 
 /** The stages a line belongs to, in Urdu, under the English line. Renders nothing when the Urdu

@@ -3,7 +3,7 @@ import { linkTehsilName } from '@/lib/linkPlace'
 import { useSharedAcres } from '@/lib/sharedAcres'
 import { CROP_PLANS, type PlanRow } from '@/data/catalogue'
 import { FARMER_PRICE_SOURCE, NO_PRICE_REASON, NO_PACK_PRICE_REASON, priceForPack } from '@/data/pricing'
-import { COST_PLANS } from '@/data/costPlans'
+import { COST_PLANS, calculatorSource } from '@/data/costPlans'   // Tahir 9 Nov 2026: calculatorSource added
 import { RECOMMENDED_BANDS } from '@/data/recommendedBands'   // D-320
 import { calcPlan, NUTRIENT_LABELS, MACRO_ORDER, nutrientKey } from '@/lib/planCalc'
 import { nutrientDelta, cropHasRange, fmtPair } from '@/lib/planRange'
@@ -14,7 +14,7 @@ import type { BandSource } from './SoilAdjustmentPanel'
 import { parseCardParam, type CardInfo } from '@/lib/gpsCard'
 import { regionalProfile } from '@/data/regionalSoil'
 import { wa } from '@/data/site'
-import { PackShot, DrawnBag, WaButton } from './bits'
+import { PackShot, DrawnBag, WaButton, noStop } from './bits'
 import { usePublishShared } from '@/lib/shareState'
 
 /** D-144: every crop with a calculator, from one registry (src/data/costPlans.ts). Was { wheat, potato }. */
@@ -28,9 +28,22 @@ const PLANS = COST_PLANS
 const LIST_DIFFS: Record<string, string> = {}
 const PLAN_NOTES: Record<string, string> = {}
 
-function fmtQty(n: number) {
+/** L1 7 Nov 2026 (crops-a 28, crops-b m5): the calculator sheet's short names are shown under the names the plans and the
+ *  brand pages use. Display only: the data names (used to match soil swaps and prices) are unchanged. */
+const SHOWN_NAME: Record<string, string> = { 'VL-Potash': 'VL-Potash Liquid', 'VL-NPK (8:8:6)': 'VL-NPK' }
+const shownName = (p: string) => SHOWN_NAME[p] ?? p
+
+// L1 10 Nov 2026 (crops 6): a quantity that is an exact quarter is written as the shopping list above writes it ("1½", "2½",
+// "¾"), so the 2 lists use 1 form; any other quantity keeps its 2 decimals. No quantity is changed or rounded.
+// Was: r % 1 === 0 ? String(r) : r.toFixed(2).replace(/0$/, '')
+const QUARTER: Record<string, string> = { '0.25': '¼', '0.5': '½', '0.75': '¾' }
+function fmtQty(n: number): string {
   const r = Math.round(n * 100) / 100
-  return r % 1 === 0 ? String(r) : r.toFixed(2).replace(/0$/, '')
+  if (r < 0) return `-${fmtQty(-r)}`
+  if (r % 1 === 0) return String(r)
+  const whole = Math.floor(r)
+  const g = QUARTER[String(Math.round((r - whole) * 100) / 100)]
+  return g ? `${whole || ''}${g}` : r.toFixed(2).replace(/0$/, '')
 }
 
 /** D-261: the quantity a row prints on screen (the big figure on each line below), for the WhatsApp message. */
@@ -190,7 +203,7 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
     // row prints: plan + soil change + nitrogen moved, never below 0). It used to leave out the nitrogen move, so with a
     // district picked the screen said Vital Urea 2.22 and the message 0.5. No calculated value changes here.
     // Was: fmtQty(l.qty + l.soilBumpQty), and the same sum in `fractional`.
-    const ls = totals.lines.map(l => `• ${l.product}, ${fmtQty(shownQty(l))} × ${l.packKg} ${packUnit(l.slug)}`)
+    const ls = totals.lines.map(l => `• ${shownName(l.product)}, ${fmtQty(shownQty(l))} × ${l.packKg} ${packUnit(l.slug)}`)
     const fractional = totals.lines.some(l => Math.abs(shownQty(l) - Math.round(shownQty(l))) > 1e-6)
     const profile = regionalProfile(district)
     const usedDistrictAvg = Object.values(bandSource).includes('district')
@@ -232,8 +245,8 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
       <div className="flex flex-wrap items-start justify-between gap-4 mb-2">
         <div>
           <span className="eyebrow">Nutrition creator · beta</span>
-          <h3>Set your acres. Watch the plan scale.</h3>
-          <p className="muted mt-2 small max-w-[140ch]">Every quantity below is VAN’s {cropName} rate, scaled by your acres.{' '}Add your soil test below, or just pick your district, to adjust it further.</p>
+          <h3>The Nutrition creator list for your acres and your soil</h3>
+          <p className="muted mt-2 small max-w-[140ch]">Each quantity below is VAN’s per-acre rate for that product, multiplied by the number of acres you set.{' '}To adjust the quantities to your soil, enter your soil test readings below or choose your district.</p>
         </div>
         <div className="flex items-center gap-3 shrink-0">
           <span className="font-bold">Acres</span>
@@ -252,16 +265,16 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
               </div>
               <div className="min-w-0 flex-1">
                 {l.slug
-                  ? <a href={`#/products/${l.slug}`} className="display text-[16px] leading-tight no-underline hover:underline">{l.product}</a>
-                  : <span className="display text-[16px] leading-tight" style={{ color: '#5B6A5E' }}>{l.product}<span className="tag tag-grey ml-1" style={{ fontSize: 10 }}>not a VAN product</span></span>}
-                <div className="cap">{l.packKg} {packUnit(l.slug)} pack</div>
+                  ? <a href={`#/products/${l.slug}`} className="display text-[16px] leading-tight no-underline hover:underline">{shownName(l.product)}</a>
+                  : <span className="display text-[16px] leading-tight" style={{ color: '#5B6A5E' }}>{l.product}<span className="tag tag-grey ml-1" style={{ fontSize: 10 }}>not made by VAN</span></span>}
+                <div className="cap">{`${l.packKg} ${packUnit(l.slug)} ${packUnit(l.slug) === 'L' ? 'pack' : 'bag'}`}</div>
               </div>
               <div className="text-right shrink-0">
                 <div className="num text-[22px] leading-none" style={{ color: l.slug ? 'var(--navy)' : '#5B6A5E' }}>{fmtQty(Math.max(0, l.qty + l.soilBumpQty + l.swapQty))}</div>
                 <div className="cap">{Math.round(Math.max(0, l.qty + l.soilBumpQty + l.swapQty) * l.packKg * 10) / 10} {packUnit(l.slug)} total</div>
                 {/* G6, Tahir 20 Oct 2026: wording only, and only with soil card rows on screen. Was always "for your soil". */}
                 {l.soilBumpQtyPerAcre > 0 && <div className="cap" style={{ color: 'var(--rust)' }}>+{fmtQty(l.soilBumpQty)} {soilWord}</div>}
-                {l.soilBumpQtyPerAcre < 0 && <div className="cap" style={{ color: 'var(--green-text)' }}>−{fmtQty(-l.soilBumpQty)} {soilWord}, which reads healthy</div>}
+                {l.soilBumpQtyPerAcre < 0 && <div className="cap" style={{ color: 'var(--green-text)' }}>−{fmtQty(-l.soilBumpQty)} {soilWord}, where the reading is healthy</div>}
                 {l.swapQtyPerAcre > 0.001 && <div className="cap" style={{ color: 'var(--green)' }}>+{fmtQty(l.swapQty)}. Nitrogen moved here</div>}
                 {l.swapQtyPerAcre < -0.001 && <div className="cap" style={{ color: 'var(--muted)' }}>{fmtQty(l.swapQty)}. Nitrogen moved out</div>}
               </div>
@@ -271,7 +284,7 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
 
         <div className="grid gap-4">
           <div className="panel-soft p-4">
-            <div className="cap font-bold uppercase tracking-[.06em] mb-3">Nutrient delivered · {acres} acre{acres > 1 ? 's' : ''}</div>
+            <div className="cap font-bold uppercase tracking-[.06em] mb-3">Nutrients applied · {acres} acre{acres > 1 ? 's' : ''}</div>
             <div className="grid gap-2">
               {macros.map(n => (
                 <div key={n} className="flex items-baseline justify-between">
@@ -306,19 +319,28 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
                     ))}
                   </tbody>
                 </table>
-                <p className="cap mt-2">kg in total. The recommended dose is the general figure for this crop. VAN’s plan uses less of most nutrients because VAN’s products lose less of what is applied, so the crop needs less of them for the same result.</p>
+                {/* L2 fact check 9 Nov 2026 (crops-a W6): the "less of most nutrients" sentence, and the reason that goes with it, are
+                    shown only where the plan row is below every dose row on at least 2 of N, P₂O₅ and K₂O, as printed. On canola and
+                    chili only 1 of the 3 is lower, so both sentences are left off there. Was: shown on every crop with this table. */}
+                {/* Tahir 10 Nov 2026 (CR-N14): the source of the dose rows is named. */}{/* L1 10 Nov 2026 (crops 3): written as a sentence that says which figures it describes (the dose rows, not "This plan"). Was "General recommended dose for the crop, as used in VAN’s team calculator, 2026." */}
+                <p className="cap mt-2">Figures are kg in total for the number of acres set above. The general recommended dose figures are the dose for this crop used in VAN’s team calculator, 2026.{RECOMMENDED_BANDS[crop].every(b => (['N', 'P', 'K'] as const).filter(k => Math.round(totals.nutrientKg[k] ?? 0) < Math.round(b[k] * acres)).length >= 2) ? ' VAN’s plan uses less of most nutrients than the general recommended dose for this crop. VAN’s reason is that less of the nutrient in its brands is lost after application, so a smaller dose is needed for the same result.' : ''}</p>{/* L1 7 Nov 2026 (crops-a 17): was "its brands lose less of the nutrient applied" (the field loses the nutrient, not the brand). */}
               </div>
             ) : null}
             <p className="cap mt-3" style={{ color: 'var(--muted)' }}>
               {ranged
                 ? <>{/* D-151 (A11, A27): was "The lower end and the higher end are VAN's calculator sheet and VAN's published plan ... The plans are being brought onto the calculator crop by crop, and each range closes to one number as that is done." */}
-                    A range shows where VAN’s 2 product lists for {cropName} differ.{PLAN_NOTES[crop] ? <> {PLAN_NOTES[crop]}</> : null}</>
-                : <>VAN’s published {cropName} plan gives the same totals.{LIST_DIFFS[crop] ? <> {LIST_DIFFS[crop]}</> : null}{PLAN_NOTES[crop] ? <> {PLAN_NOTES[crop]}</> : null}</>}
+                    {/* Tahir 7 Nov 2026 (CR-20): caption deleted; the range is explained once, in the 2-lists paragraph. Was "Where a total is a range, its 2 ends come from the 2 lists on this page: VAN’s published plan and the Nutrition creator." */}
+                    {PLAN_NOTES[crop] ? <>{PLAN_NOTES[crop]}</> : null}</>
+                : <>{/* Tahir 9 Nov 2026: on the 22 team-calculator crops the 2-lists paragraph above now says the 2 lists are the same, so this
+                        caption is left off there to say it once. Was, on every crop without a range: "VAN’s published {crop} plan and the
+                        Nutrition creator give the same nutrient totals, so no range is shown." */}
+                    {calculatorSource(crop) !== 'team' ? <>VAN’s published {cropName} plan and the Nutrition creator give the same nutrient totals, so no range is shown.</> : null}{LIST_DIFFS[crop] ? <> {LIST_DIFFS[crop]}</> : null}{PLAN_NOTES[crop] ? <> {PLAN_NOTES[crop]}</> : null}</>}
             </p>
             <div className="mt-4 pt-3" style={{ borderTop: '1px dashed var(--line)' }}>
               {/* D-151 (QA 8, A27): was "Coming next" in var(--gold-2) and "Yield-target scaling, telling the plan you are aiming above or below the standard crop, is being calibrated against VAN's own trial data before it goes in." */}
-              <div className="cap" style={{ color: 'var(--gold-text)' }}>Not in this calculator</div>
-              <div className="small muted mt-1">Yield targets. The quantities are for a standard crop.</div>
+              <div className="cap" style={{ color: 'var(--gold-text)' }}>Not in the Nutrition creator</div>
+              {/* L1 7 Nov 2026 (crops-a 3): was "A yield target. The quantities are VAN’s standard per-acre rates, and they do not change for a higher or lower yield." (the soil panel does change them) */}
+              <div className="small muted mt-1">A yield target. The quantities start from VAN’s standard per-acre rates. Your soil readings can change them; the yield you expect does not.</div>
             </div>
           </div>
           <SoilAdjustmentPanel
@@ -336,16 +358,16 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
 
       {totals.swaps.length > 0 && (
         <div className="panel-soft p-4 mt-5" style={{ borderLeft: '4px solid var(--green)' }}>
-          <div className="cap font-bold uppercase tracking-[.06em] mb-1">Same nitrogen, carried differently</div>
-          <p className="small max-w-[140ch]">{totals.swaps[0].note} The swap itself adds no nitrogen: exactly as much leaves the urea line as arrives on the Vital Urea line, which is why one falls as the other rises. If the nitrogen total above moves slightly, that is the phosphate line, which carries a little nitrogen of its own.</p>
-          <p className="cap mt-2 max-w-[140ch]">Sulfur goes up as a result: Vital Urea is 13% sulfur, which on alkaline calcareous ground is a second benefit rather than a side effect.</p>
+          <div className="cap font-bold uppercase tracking-[.06em] mb-1">The same nitrogen in a different product</div>
+          <p className="small max-w-[140ch]">{totals.swaps[0].note} The swap adds no nitrogen: the nitrogen taken off the urea line equals the nitrogen added to the Vital Urea line, which is why one falls as the other rises. If the nitrogen total above changes slightly, the change comes from the phosphate line, which also supplies a little nitrogen.</p>
+          <p className="cap mt-2 max-w-[140ch]">Sulfur also rises, because Vital Urea is 13% sulfur. On alkaline calcareous soil this sulfur is a benefit in its own right.</p>
         </div>
       )}
 
       {totals.advisories.map(a => (
         <div key={a.parameter} className="panel p-5 mt-5" style={{ borderColor: 'var(--rust)', borderWidth: 2 }}>
           <div className="cap font-bold uppercase tracking-[.06em]" style={{ color: 'var(--rust-text)' }}>Read this before you buy anything</div>
-          <h4 className="mt-1">{a.headline}</h4>
+          <h4 className="mt-1">{noStop(a.headline)}</h4>
           <p className="small mt-2 max-w-[140ch]">{a.body}</p>
           {/* G6: when this row came from the soil card, the message and the button say so (wording only). */}
           {bandSource[a.parameter] === 'card' && cardInfo
@@ -362,15 +384,15 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
             <div className="flex flex-wrap items-baseline justify-between gap-3">
               <div>
                 <span className="eyebrow navy">{FARMER_PRICE_SOURCE.label}</span>
-                <div className="num" style={{ fontSize: 34, color: 'var(--navy)', lineHeight: 1.1 }}>PKR {Math.round(cost.total).toLocaleString()}</div>
-                <div className="cap">for {acres} acre{acres > 1 ? 's' : ''} · VAN products in this plan</div>
+                <div className="num" style={{ fontSize: 34, color: 'var(--navy)', lineHeight: 1.1 }}>Rs {Math.round(cost.total).toLocaleString()}</div>
+                <div className="cap">for {acres} acre{acres > 1 ? 's' : ''} · VAN brands in this plan</div>
               </div>
               <button className="btn btn-sm" onClick={() => setShowCost(false)}>Hide</button>
             </div>
             <div className="grid gap-1 mt-4">
               {cost.priced.map(c => (
                 <div key={c.product} className="flex items-baseline justify-between gap-3 small">
-                  <span>{c.product} <span className="cap">× {fmtQty(c.qty)}</span></span>
+                  <span>{shownName(c.product)} <span className="cap">× {fmtQty(c.qty)}</span></span>
                   <span className="num">{Math.round(c.line).toLocaleString()}</span>
                 </div>
               ))}
@@ -381,7 +403,7 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
             {cost.unpriced.length > 0 && (
               <div className="mt-4 pt-3" style={{ borderTop: '1px dashed var(--line)' }}>
                 <div className="cap font-bold uppercase tracking-[.06em] mb-1">Not in that total</div>
-                {cost.unpriced.map(u => <div key={u.product} className="cap">{u.product}. {u.why}</div>)}
+                {cost.unpriced.map(u => <div key={u.product} className="cap">{shownName(u.product)}. {u.why}</div>)}
               </div>
             )}
             <p className="cap mt-4 max-w-[140ch]">Prices as at {FARMER_PRICE_SOURCE.window}. {FARMER_PRICE_SOURCE.note}</p>
@@ -392,11 +414,11 @@ export function NutritionCreator({ crop, cropName = crop, initialDistrict = null
       <div className="flex flex-wrap gap-3 mt-5">
         <WaButton href={wa(text)} lg>Send this list on WhatsApp</WaButton>
       </div>
-      <p className="cap mt-3">VAN confirms the final price, availability and your nearest dealer on WhatsApp.</p>
+      <p className="cap mt-3">{district ? 'The WhatsApp message names your district, and VAN will reply with the price, availability and your nearest dealer.' : 'Add your district to the WhatsApp message, and VAN will reply with the price, availability and your nearest dealer.'}</p>
       {totals.soilAdjusted && (
         <p className="cap mt-1">
-          This is a pilot soil-adjustment model, not yet calibrated against a full season's results. Confirm any soil-driven change with your VAN dealer before applying.
-          {Object.values(bandSource).includes('district') && ' Part of this plan is adjusted from your district\u2019s survey average rather than a test of your own land. A soil test would make it exact.'}
+          This is a pilot soil-adjustment model. It has not yet been calibrated against a full season’s results, so confirm any change made for your soil with your VAN dealer before you apply it.
+          {Object.values(bandSource).includes('district') && ' Part of this plan is adjusted from your district\u2019s survey median rather than a test of your own land. A soil test would make it exact.'}
           {Object.values(bandSource).includes('card') && cardInfo && ` Part of this plan is adjusted from the Soil Atlas card for the area near your land (survey readings within ${cardInfo.r} km, ${cardInfo.n.toLocaleString('en-US')} samples), not a test of your own land. A soil test would make it exact.`}
         </p>
       )}

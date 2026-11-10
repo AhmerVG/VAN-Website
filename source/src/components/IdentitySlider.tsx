@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { CONTACT, COUNTS, PARTNER } from '@/data/site'
 import { CROPS } from '@/data/catalogue'
 import { SOIL_HEADLINE } from '@/data/soilLens'
-import { FieldRows } from './bits'
+import { FieldRows, noStop } from './bits'
 
 /**
  * THE IDENTITY SLIDER — 11 September 2026, Tahir's ruling.
@@ -58,7 +58,7 @@ function useSlides(): Slide[] {
       key: 'identity', tone: 'navy',
       kicker: `${CONTACT.company} · Lahore · since ${COUNTS.incorporated}`,
       title: CONTACT.tagline,
-      body: <>1 plant site. <b>{COUNTS.brands}</b> registered brands, <b>{COUNTS.licences}</b> PSQCA licences, a PNAC-accredited laboratory, about <b>50,000 t</b> made a year.</>,
+      body: <>1 plant site. <b>{COUNTS.brands}</b> registered brands, <b>{COUNTS.licences}</b> PSQCA licences, a PNAC-accredited laboratory, about <b>50,000 t</b> annual capacity.</>,
       cta: [['For farmers', '#/crops'], ['For partners', '#/partner']],
     },
     {
@@ -79,7 +79,7 @@ function useSlides(): Slide[] {
       key: 'partner', tone: 'rust',
       kicker: 'If you want it made under your name',
       title: 'Formulated, made, registered and tested here. Sold under your brand.',
-      body: <>{partners ? <><b>{partners}</b> partners and </> : null}<b>100+</b> brands already made at this plant. You bring the market. VAN does everything from the formulation to the finished bag.</>,
+      body: <>At our plant in Lahore we already make products sold under more than <b>100</b> brands{partners ? <> owned by <b>{partners}</b> partner companies</> : null}. We can make a product for your brand in the same way, from the formulation to the finished bag.</>,
       cta: [['Your Brand', '#/partner'], ['The formulation library', '#/partner#library']],
     },
     {
@@ -134,7 +134,7 @@ export function IdentitySlider() {
       <div className="wrap idn-wrap">
         <div key={s.key} className="idn-slide" aria-live="polite">
           <span className="idn-kicker" style={{ color: tone.accent }}>{s.kicker}</span>
-          <h2 className="idn-title">{s.title}</h2>
+          <h2 className="idn-title">{noStop(s.title)}</h2>
           <p className="idn-body">{s.body}</p>
           <div className="idn-ctas">
             {s.cta.map(([label, href], n) => (

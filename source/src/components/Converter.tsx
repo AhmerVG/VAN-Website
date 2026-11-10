@@ -46,7 +46,7 @@ export function Converter() {
   }, [product, bags])
 
   /* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
-  const TABS: [typeof tab, string][] = [['area', 'Land'], ['weight', 'Weight & yield'], ['bag', "What's in the bag"]]
+  const TABS: [typeof tab, string][] = [['area', 'Land'], ['weight', 'Weight and yield'], ['bag', "What's in the bag"]]
 
   return (
     <div className="panel p-5 lg:p-6" style={{ borderColor: 'var(--navy)', borderWidth: 2 }}>

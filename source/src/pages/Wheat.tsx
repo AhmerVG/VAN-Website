@@ -18,7 +18,7 @@ import { CropNow } from '@/components/CropNow'
 import { Detail } from '@/components/Detail'
 import { VanForm } from '@/components/VanForm'
 import { FARMER_FORM } from '@/data/formSpecs'
-import { SectionHead, WaButton } from '@/components/bits'
+import { SectionHead, WaButton, noStop } from '@/components/bits'
 
 /**
  * THE WHEAT CROP PAGE — reordered 9 Sep 2026 into the eight blocks Tahir reviewed as a wireframe.
@@ -49,12 +49,13 @@ export default function Wheat({ district = null, card = null }: { district?: str
       <section style={{ background: 'linear-gradient(180deg, var(--gold-soft), var(--sand))' }}>
         <div className="wrap py-8 lg:py-12">
           <p className="cap"><a href="#/crops">Crop Plans</a> / Cereals & field crops / Wheat</p>
-          <span className="eyebrow gold mt-2">Crop programme</span>
-          <h1>{WHEAT.h1}</h1>
+          <span className="eyebrow gold mt-2">Crop plan</span>
+          <h1>{noStop(WHEAT.h1)}</h1>
           <p className="lead mt-4">{WHEAT.lead}</p>
           <div className="flex flex-wrap items-center gap-2 mt-5">
             {WHEAT.meta.map(m => <span key={m} className="tag tag-navy">{m}</span>)}
-            <span className="tag tag-sky">Oct–Nov sowing</span><span className="tag tag-green">Zn-K programme</span>
+            {/* Tahir 7 Nov 2026 (CR-21): tag was "Zn-K programme". */}
+            <span className="tag tag-sky">Oct to Nov sowing</span><span className="tag tag-green">Main nutrients: zinc and potassium</span>
             <a className="btn btn-gold ml-auto" href={pdf} target="_blank" rel="noopener">Download the PDF ↓</a>
           </div>
         </div>
@@ -71,12 +72,12 @@ export default function Wheat({ district = null, card = null }: { district?: str
           block points back to. */}
       <section className="wrap sec" id="programme">
         {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */}
-        <SectionHead eyebrow="The whole programme at a glance" title="7 bands, 5 stages." lead="Every band at every stage, per acre. Grey names are not VAN products, and each VAN product is shown in its real pack." />
+        <SectionHead eyebrow="The whole plan at a glance" title="The wheat plan: 7 nutrient groups across 5 stages." lead="Rates are per acre. Ordinary urea is shown in grey because VAN does not make it." />
         {/* O-3: his ruling. Simple view folds the full stage-by-stage table. Full view is unchanged. */}
-        <Detail bare label="The full 5-stage table. 7 bands, every stage">
+        <Detail bare label="The full table: 7 nutrient groups at each of the 5 stages">
           <PlanMatrix stages={WHEAT_STAGES} plan={WHEAT_PLAN} tableNote={WHEAT.tableNote} />
         </Detail>
-        <p className="cap mt-3">The 5 stages, their growing-degree-days and their days after sowing are in <a href="#gdd">the stage table below</a>.</p>
+        <p className="cap mt-3">Growing degree days (a measure of the heat the crop has received) and days after sowing for each stage are in the table <a href="#gdd">“The 5 stages, in 1 table”</a>, further down this page.</p>
       </section>
 
       {/* 04. The action. */}
@@ -92,9 +93,9 @@ export default function Wheat({ district = null, card = null }: { district?: str
         {/* G6, Tahir 20 Oct 2026: arriving from the Soil Atlas card, the head names the card instead of "your soil" and "your
             soil report"; wording only. Without a card it reads as before. */}
         {fromCard
-          ? <SectionHead eyebrow="Adjust it for this soil card" title="The nutrition creator." lead="Set your acres and every quantity scales with it. The soil rows below are filled from the Soil Atlas card for the area near your land, and the quantities move with what that card shows. Type your own soil test numbers over any row if you have them." tone="navy" />
-          : <SectionHead eyebrow="Adjust it for your soil" title="The nutrition creator." lead="Set your acres and every quantity scales with it, then enter your soil report, or pick your district and it fills from the Punjab survey's own median, and the quantities move with what your ground actually shows." tone="navy" />}
-        <p className="small mb-3 max-w-[140ch]"><b>Which list to use:</b> the acres figure is shared with the shopping list above. The shopping list is the published plan; this list is VAN’s calculator, and it is the one to use {fromCard ? 'with this soil card' : 'if you have a soil report'}. Where the 2 differ, the totals below show a range.</p>{/* D-151 (A12): was "This is the same programme from VAN’s calculator; use it if you have a soil report." */}
+          ? <SectionHead eyebrow="Nutrition creator" title="Adjust the plan for this soil card." lead="The soil rows below are filled from the Soil Atlas card for the area near your land, and the quantities change to match that card. If you have your own soil test figures, type them over any row." tone="navy" />
+          : <SectionHead eyebrow="Nutrition creator" title="Adjust the plan for your soil." lead="Enter the readings from your soil report. If you have no report, choose your district, and the soil rows are filled with that district’s median readings from the Punjab soil survey, taken about 2016 to 2018. The quantities then change to match those readings." tone="navy" />}
+        <p className="small mb-3 max-w-[140ch]"><b>This page has 2 lists.</b> The shopping list above follows VAN’s published plan. {fromCard ? 'The list below comes from the Nutrition creator, which adjusts the quantities to this soil card.' : 'The list below comes from the Nutrition creator, which adjusts the quantities to your soil report or, if you have none, to your district’s median readings.'} Both lists use the same number of acres; changing it in either list changes both. The 2 lists differ in 1 product: VAN’s published plan includes V-Phosphate at Early Growth, and the Nutrition creator does not. Where a nitrogen or phosphate total below is a range, the higher figure comes from the published plan and the lower figure from the Nutrition creator. If you have no soil report, follow the published crop plan. The Nutrition creator list is meant for a field with a soil report; {fromCard ? 'without one, it uses this soil card.' : 'without one, it uses your district’s median readings.'}</p>{/* Tahir 10 Nov 2026 (CR-N11): last sentence added. */}{/* L1 10 Nov 2026 (crops 11): 1 name for the soil report. Was "Without a soil test, follow the published crop plan; the creator list is for a field with a soil report." No fact changed. */}{/* Tahir 10 Nov 2026 (FU-1): product name V-Phosphate, was "V. Ammonium Phosphate (V-Phosphate)". */}{/* Tahir 7 Nov 2026 (CR-20): was "VAN’s published plan includes V. Ammonium Phosphate (V-Phosphate) at Early Growth and the Nutrition creator does not, so the nitrogen and phosphate totals below are shown as a range." */}{/* D-151 (A12): was "This is the same programme from VAN’s calculator; use it if you have a soil report." */}
         {/* Teesra Khata, 18 Oct 2026: a link from the Soil Atlas carries the district, and the soil rows open filled from it. */}
         {/* GPS grid card, D-279, 20 Oct 2026: a link from the card carries its readings too (line 13, Tahir's words). */}
         <NutritionCreator crop="wheat" initialDistrict={district} initialCard={card} onCardRows={setFromCard} />
@@ -110,7 +111,7 @@ export default function Wheat({ district = null, card = null }: { district?: str
           assumption that fails most often, so it sits with the plan rather than after it. */}
       <section className="wrap sec-tight">
         {/* O-3: simple view folds the water block. Same rule as every other crop page. */}
-        <Detail bare label="How much water this season needs">
+        <Detail bare label="Water use and irrigation for this crop">
           <WaterRequirement cropKey="wheat" cropName="wheat" />
         </Detail>
       </section>
@@ -123,12 +124,14 @@ export default function Wheat({ district = null, card = null }: { district?: str
       {/* 06. REMOVED by Tahir's ruling, 11 Sep 2026. See the note in CropPage.tsx. */}
 
       {/* 07. Reflective rather than urgent, so it sits below the things a farmer acts on today. */}
+      {/* Tahir 7 Nov 2026 (CR-1): was "In VAN’s model estimate for wheat, nutrition accounts for about 1/4 of the yield." */}
       <section className="wrap sec-tight">
         <div className="panel-navy p-6 lg:p-10 grid lg:grid-cols-[1fr_auto] gap-6 items-center">
           <div>
-            <span className="eyebrow" style={{ color: 'var(--gold)' }}>Nutrition decides about 1/4 of the yield</span>
-            <h2 className="text-[clamp(28px,2.8vw,38px)]">The farm discipline simulator.</h2>
-            <p className="mt-3" style={{ color: 'rgba(255,255,255,.8)' }}>Everything above is the nutrition lever. Set a yield target and score how the season is actually being run (sowing time, irrigation timing, seed quality and more) to see what is really holding yield back.</p>
+            <span className="eyebrow" style={{ color: 'var(--gold)' }}>Farm discipline simulator</span>
+            <h2 className="text-[clamp(28px,2.8vw,38px)]">Check which farm practices are lowering your yield</h2>
+            {/* L1 7 Nov 2026 (crops-b M1): 1 name for the tool. Was "The VAN simulator shows ... In the farm discipline simulator, you set ...". */}
+            <p className="mt-3" style={{ color: 'rgba(255,255,255,.8)' }}>The sections above cover nutrition and water. Yield depends on doing every task on time: sowing date, seed and plant population, fertiliser at the right stage, irrigation on schedule, and control of weeds, pests and disease. Crop nutrition is 1 of these tasks. A task missed at its time can cost yield that extra work later may not recover. VAN’s farm discipline simulator shows how each task, and its timing, changes the yield. In it, you set a yield target and score how the whole season was managed, including sowing time, irrigation timing and seed quality, to see which practices are lowering your yield.</p>
           </div>
           <a className="btn btn-gold btn-lg" href="#/simulator/wheat">Open the simulator →</a>
         </div>
@@ -139,18 +142,18 @@ export default function Wheat({ district = null, card = null }: { district?: str
           needs in order to act safely is inside a <Detail>. The cautions and the source notes stay
           below, outside them. */}
 
-      <Detail label="The 5 stages in detail. Growing-degree-days, days after sowing, and the calendar">
+      <Detail label="The 5 stages in detail: growing degree days, days after sowing and calendar dates">
         <section className="wrap sec" id="walk">
-          <SectionHead eyebrow="The 5 stages" title="Walk the season, 1 stage at a time." lead="Each stage shows its growing-degree-days, days after sowing and calendar dates for 3 sowing dates, and the products the published plan puts on at that stage, per acre." />
+          <SectionHead eyebrow="The 5 stages" title="Timing and products for each stage." lead="For each stage, the panel below shows the growing degree days, the days after sowing, the calendar dates for 3 sowing dates, and the products the published plan applies at that stage, per acre." />
           <StageWalk />
           <p className="cap mt-4">{WHEAT.tableNote}</p>
         </section>
 
         <section className="wrap sec-tight" id="gdd">
-          <SectionHead eyebrow="The 5 stages, in 1 table" title="GDD, days after sowing, and the calendar for 3 sowing dates." lead="The same 5 stages the walk above steps through, so the season reads at a glance." tone="navy" />
+          <SectionHead eyebrow="The 5 stages, in 1 table" title="Growing degree days, days after sowing and calendar dates for 3 sowing dates, for a normal season at Lahore." lead="This table shows the same 5 stages as the stage-by-stage panel above, in a single view." tone="navy" />
           <div className="panel overflow-x-auto">
             <table className="tbl">
-              <thead><tr><th>Stage</th><th className="r">GDD (base 10 °C)</th><th className="r">DAS</th><th>Sown Oct 20 · normal</th><th>Sown Nov 1 · late-normal</th><th>Sown Nov 20 · late</th><th>Key events</th></tr></thead>
+              <thead><tr><th>Stage</th><th className="r">Growing degree days (GDD, base 10 °C)</th><th className="r">Days after sowing (DAS), for a 1 November sowing</th><th>Sown 20 Oct · normal</th><th>Sown 1 Nov · late in the normal window</th><th>Sown 20 Nov · late</th><th>Key events</th></tr></thead>
               <tbody>{WHEAT.gdd.map((g, i) => <tr key={g.stage} className={`st-${i}`}><td className="font-bold whitespace-nowrap" style={{ color: 'var(--st-text, var(--st))' }}>{i + 1} · {g.stage}</td><td className="r num whitespace-nowrap">{g.gdd}</td><td className="r num whitespace-nowrap">{g.das}</td><td className="num whitespace-nowrap">{g.oct20}</td><td className="num whitespace-nowrap">{g.nov1}</td><td className="num whitespace-nowrap">{g.nov20}</td><td className="small" style={{ minWidth: 300 }}>{g.events}</td></tr>)}</tbody>
             </table>
           </div>
@@ -158,23 +161,24 @@ export default function Wheat({ district = null, card = null }: { district?: str
         </section>
       </Detail>
 
-      <Detail label="Nutrient deficiency symptoms. How to read the crop">
+      <Detail label="Nutrient deficiency symptoms and how to recognise them">
         <section className="sec" style={{ background: 'var(--sky)' }}><div className="wrap">
-          <SectionHead eyebrow="Punjab baseline" title="Nutrient deficiency symptoms." lead="These descriptions are based on standard phenotypes observed in Punjab's alkaline soils. Symptoms progress rapidly under stress (drought, high pH, cold). Identification allows corrective foliar or fertigation intervention." tone="navy" />
+          {/* L1 7 Nov 2026 (crops-b m22): "These descriptions give the usual symptoms", was "follow the usual symptoms". */}
+          <SectionHead eyebrow="Deficiency symptoms in Punjab" title="Nutrient deficiency symptoms in wheat." lead="These descriptions give the usual symptoms of nutrient deficiency in wheat on alkaline soils such as Punjab’s. Symptoms get worse quickly when the crop is also under stress from drought, high pH or cold. Once a deficiency is identified, it can be treated with a foliar spray or through fertigation; the earlier it is treated, the more of it can be corrected." tone="navy" />
           <FlipCards />
         </div></section>
       </Detail>
 
-      <Detail label="What each application method actually means">
+      <Detail label="What each application method means">
         <section className="wrap sec"><MethodsStrip /></section>
       </Detail>
 
       <section className="sec" style={{ background: 'var(--sand-2)' }}><div className="wrap">
-        <SectionHead eyebrow="Read this before you buy" title="What this plan does not tell you." tone="soil" />
+        <SectionHead eyebrow="Read this before you buy" title="The limits of this plan." tone="soil" />
         <div className="grid md:grid-cols-2 gap-4">
           {WHEAT.notTell.map(t => <p key={t} className="panel p-5">{t}</p>)}
-          <p className="panel p-5">VAN prepares farm-specific plans against a grower's own soil analysis, yield target and the other variables that decide a rate.</p>
-          <p className="panel p-5">Source: VAN’s published wheat plan (<a href={pdf} target="_blank" rel="noopener">PDF</a>) and VAN’s wheat calculator. Where the 2 differ, the totals show a range.</p>
+          <p className="panel p-5">VAN can prepare a plan for your own farm from your soil analysis, your yield target and the other conditions of your field that affect how much fertiliser to apply.</p>
+          <p className="panel p-5">Sources: VAN’s published wheat plan (<a href={pdf} target="_blank" rel="noopener">PDF</a>) and the Nutrition creator for wheat.</p>
         </div>
       </div></section>
 
@@ -182,8 +186,8 @@ export default function Wheat({ district = null, card = null }: { district?: str
         <div className="panel-navy p-6 lg:p-10 grid lg:grid-cols-[1fr_auto] gap-6 items-center">
           <div>
             <span className="eyebrow" style={{ color: 'var(--gold)' }}>A plan for your own field</span>
-            <h2 className="text-[clamp(28px,2.8vw,38px)]">Ask for one on WhatsApp, or write to {CONTACT.cropEmail}.</h2>
-            <p className="mt-3" style={{ color: 'rgba(255,255,255,.8)' }}>Send your soil analysis, your yield target and your district. VAN’s agronomy team builds the plan against your field, not a typical one.</p>
+            <h2 className="text-[clamp(28px,2.8vw,38px)]">Ask for a plan for your own field on WhatsApp, or write to {CONTACT.cropEmail}</h2>
+            <p className="mt-3" style={{ color: 'rgba(255,255,255,.8)' }}>Send your soil analysis, your yield target and your district. VAN’s agronomy team then builds a plan for your field rather than for a typical one.</p>
           </div>
           <div className="grid gap-3">
             <WaButton href={WA.farmer} lg>Ask on WhatsApp</WaButton>
@@ -198,7 +202,7 @@ export default function Wheat({ district = null, card = null }: { district?: str
             <VanForm form="farmer-plan" fields={FARMER_FORM} initial={{ crop: 'Wheat' }}
               intro="Hello VAN. I would like a nutrition plan for my field."
               submitLabel="Send my details" to={CONTACT.cropEmail} subject="Wheat plan for my field"
-              success="Somebody from the agronomy team calls you back. If you have a soil report, send a photograph of it on the WhatsApp number above and the plan is built against your own soil rather than a district average."
+              success="A member of VAN’s agronomy team will call you back. If you have a soil report, send a photograph of it to the WhatsApp number above, and the plan will be built on your own soil rather than on a district average."
               compact />
           </div>
         )}

@@ -38,42 +38,42 @@ const LENSES: { key: LensKey; label: string; blurb: string; tone: string; beats:
   {
     key: 'condition',
     label: 'How bad is it, really?',
-    blurb: '1 province, 770,160 samples, and a single condition underneath all of it.',
+    blurb: 'How widespread each soil problem is across Punjab’s 770,160 samples.',
     tone: 'rust',
     beats: [
-      { to: '#soil-map', title: 'The whole province, 1 colour at a time', why: 'Switch the analyte and watch the same ground re-colour. On pH almost none of it is green.' },
-      { to: '#soil-districts', title: 'Where it is worst, and where it is not', why: '36 districts, sorted by whatever you care about. The spread is wider than the average suggests.' },
-      { to: '#soil-relations', title: 'What sits underneath it', why: 'Carbonate drives the alkalinity. That relationship holds cleanly. One that everybody assumes does not.' },
-      { to: '#soil-analytes', title: 'What was never measured at all', why: '13 determinations in every district. Sulfur is not one of them.' },
-      { to: '#soil-built', title: 'What this does to a bag of fertilizer', why: 'Above pH 8 surface urea leaves as ammonia. Calcareous ground binds phosphate. The same alkalinity locks zinc.' },
+      { to: '#soil-map', title: 'See the whole province, 1 soil test at a time', why: 'Switch the soil test and the same squares change colour. On pH, almost no square is green.' },
+      { to: '#soil-districts', title: 'See which districts are worst and which are better', why: 'Sort the 36 districts by any soil test. The differences between districts are wider than the provincial median suggests.' },
+      { to: '#soil-relations', title: 'See how the soil test results relate to each other', why: 'In the survey, calcium carbonate rises steadily with pH. One widely assumed relationship, between phosphorus and pH, does not appear in the data.' },
+      { to: '#soil-analytes', title: 'See what was never measured', why: 'The survey ran 13 soil tests in every district, and sulfur was not one of them.' },
+      { to: '#soil-built', title: 'See what this soil does to fertiliser', why: 'Above pH 8, part of the nitrogen from urea on the soil surface is lost to the air as ammonia. Calcareous soil binds phosphate, and the same alkalinity makes zinc unavailable.' },
     ],
-    close: 'This is the ground Pakistan farms on. The country applies more nutrient per acre every year and gets less of it into the crop. The argument, with every source named, is on the national page.',
+    close: 'Punjab has most of Pakistan’s cropped area. Pakistan applies more nutrient per acre every year, and less of it reaches the crop. The national page sets out this argument, with every source named.',
   },
   {
     key: 'ground',
     label: 'Find my own ground',
-    blurb: 'Your district, and then the neighbourhood inside it, because a district average may not describe your field at all.',
+    blurb: 'See your district and the smaller areas inside it, because a district median may not describe your own field.',
     tone: 'soil',
     beats: [
-      { to: '#soil-districts', title: 'Start with your district', why: 'Pick it once and everything below reads for that district instead of the province.' },
-      { to: '#soil-myground', title: 'Then go 1 level down', why: 'Your district is not 1 soil. Its own cells can differ by a full point of pH, and by more than that on zinc.' },
-      { to: '#soil-map', title: 'See it on the ground', why: 'Each square shows the median of the samples taken inside it.' },
-      { to: '#soil-built', title: 'What that soil does to what you buy', why: 'What your ground specifically does to urea, to phosphate and to zinc, before the root gets near them.' },
+      { to: '#soil-districts', title: 'Start with your district', why: 'Pick it once, and every section below shows that district instead of the whole province.' },
+      { to: '#soil-myground', title: 'Then look inside the district', why: 'The soil varies within a district. Its own grid cells can differ by a full point of pH, and by more than that on zinc.' },
+      { to: '#soil-map', title: 'See it on the map', why: 'Find your area on the map and read its colour for each soil test.' },
+      { to: '#soil-built', title: 'What your soil does to the fertiliser you buy', why: 'How your soil affects urea, phosphate and zinc before the roots can take them up.' },
     ],
-    close: 'A district average is a starting point, not your field. If you have a soil report, the crop pages will build your plan from it. If you do not, VAN Lab will test one for you.',
+    close: 'A district median is only a starting point for your field. If you have a soil report, the crop pages will build your plan from it. If you do not, VAN Lab will test your soil.',
   },
   {
     key: 'gap',
     label: 'Where is a product needed?',
-    blurb: 'A region, its condition, what is already made for it, and where nothing is.',
+    blurb: 'For a region, see its soil conditions, the VAN products made for those conditions, and the conditions that no product addresses yet.',
     tone: 'navy',
     beats: [
-      { to: '#soil-districts', title: 'Pick a region and read its condition', why: 'Sort by the analyte you formulate against, and the districts order themselves by need.' },
-      { to: '#soil-relations', title: 'Understand what drives it there', why: 'A shortage caused by carbonate fixation needs a different product from one caused by low organic matter.' },
-      { to: '#soil-analytes', title: 'See what nobody has measured', why: 'Sulfur was never on the schedule, so no soil report shows it as short and it cannot enter a plan.' },
-      { to: '#soil-built', title: 'What VAN already makes against each condition', why: 'Both tiers: the branded range, and the unbranded formulations open for white labelling or joint development.' } /* D-296, Tahir 22 Oct 2026: licensing is not offered (D-185) */,
+      { to: '#soil-districts', title: 'Pick a region and read its condition', why: 'Sort by the soil test you are formulating for, and the districts are ranked by need.' },
+      { to: '#soil-relations', title: 'Understand the cause in that region', why: 'A shortage caused by carbonate fixation needs a different product from one caused by low organic matter.' },
+      { to: '#soil-analytes', title: 'See what was never measured', why: 'Sulfur was never on the testing schedule, so no survey result shows it as short and it cannot enter a plan based on the survey.' },
+      { to: '#soil-built', title: 'What VAN already makes for each condition', why: 'Both tiers: VAN’s branded range, and the unbranded formulations available for white labelling or joint development.' } /* D-296, Tahir 22 Oct 2026: licensing is not offered (D-185) */,
     ],
-    close: 'Where a condition is real and nothing on either tier is shaped for it, that is a gap worth building into.',
+    close: 'Where a soil condition is confirmed and no product on either tier is made for it, there is a case for developing one.',
   },
 ]
 
@@ -98,7 +98,7 @@ export function SoilLenses({ value, onChange }: { value: LensKey | null; onChang
                   adding another class, because the eyebrow rule is used on forty other pages. */}
               <span className="eyebrow navy" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                 <span className="num" style={{ fontSize: 12 }}>{String(i + 1).padStart(2, '0')}</span>
-                {on ? 'Reading this way' : 'Read it this way'}
+                {on ? 'Reading the page this way' : 'Read the page this way'}
               </span>
               <span className="display text-[18px]" style={{ color: 'var(--navy)' }}>{l.label}</span>
               {/* Teesra Khata, 18 Oct 2026: lens 02 keeps its English question exactly (11 Sep ruling) and gains Tahir's Urdu line beside it. */}
@@ -112,8 +112,8 @@ export function SoilLenses({ value, onChange }: { value: LensKey | null; onChang
       {active && (
         <div className="panel p-5 mt-3" style={{ borderColor: 'var(--navy)', borderWidth: 2 }}>
           <div className="flex items-baseline justify-between gap-3 flex-wrap">
-            <span className="eyebrow navy">Your route through the page</span>
-            <button className="btn btn-ghost btn-sm" onClick={() => onChange(null)}>Show me everything instead</button>
+            <span className="eyebrow navy">Suggested order of sections</span>
+            <button className="btn btn-ghost btn-sm" onClick={() => onChange(null)}>Close this guide</button>
           </div>
           <ol className="grid gap-2 mt-3 pl-0 list-none">
             {active.beats.map((b, i) => (
@@ -130,22 +130,21 @@ export function SoilLenses({ value, onChange }: { value: LensKey | null; onChang
           </ol>
           <p className="small mt-3 max-w-[140ch]">{active.close}</p>
           {active.key === 'condition' && (
-            <a className="btn btn-navy mt-3" href="#/knowledge/why-pakistan-must-shift">The nutrition Pakistan pays for →</a>
+            <a className="btn btn-navy mt-3" href="#/knowledge/why-pakistan-must-shift">The national figures and their sources →</a>
           )}
           {active.key === 'ground' && (
             <a className="btn btn-navy mt-3" href="#/lab">Have your own field tested →</a>
           )}
           {active.key === 'gap' && (
-            <a className="btn btn-navy mt-3" href="#/partner">What VAN will build with you →</a>
+            <a className="btn btn-navy mt-3" href="#/partner">Develop a product with VAN →</a>
           )}
         </div>
       )}
 
       <p className="cap mt-3 max-w-[140ch]">
-        <b>Punjab, and only Punjab.</b> All {SOIL_HEADLINE.samples} samples come from the province's own 36 district
-        workbooks. Sindh, Khyber Pakhtunkhwa and Balochistan were never surveyed at this depth, which is itself
-        a finding about how Pakistan knows its own soil. Punjab carries most of the country's cropped area, so
-        Punjab's figures carry the national argument, though they are not national figures.
+        <b>These figures cover Punjab only.</b> All {SOIL_HEADLINE.samples} samples come from the province’s own 36 district
+        workbooks. Sindh, Khyber Pakhtunkhwa and Balochistan have not been surveyed in this detail. Punjab has most of
+        Pakistan’s cropped area, so its figures are relevant to the national picture, but they are not national figures.
       </p>
     </div>
   )

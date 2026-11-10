@@ -2,13 +2,14 @@ PAGE: /crops/index.html
 ======================================================================
 Products
 Crop Plans
-Soil
-Tools
+Your Brand
+Soil Atlas
+Vitalytics
 VAN Lab
 Knowledge
 About
-Make with us
-Menu ☰
+Search
+☰
 View
 Simple view
 Crop plans
@@ -16,11 +17,11 @@ Crop plans
 programmes. Per acre, stage by stage. Free.
 Sowing windows, nutrient needs, and stage-by-stage programmes for
 28
-crops. Every one transcribed from VAN’s published plan, with the PDF a tap away.
+crops. Each one is from VAN’s published plan, with the PDF a tap away.
 Season ring
 Sowing calendar
 The sowing year
-▸ tap an arc
+▸ tap a month or an arc
 Jan
 Feb
 Mar
@@ -33,242 +34,293 @@ Sep
 Oct
 Nov
 Dec
-THIS MONTH
-September
-5
-sown now ·
-4
-next
-▸ tap an arc
-Being sown now ·
-September
-Cotton
-Apr–May / Sep
+THIS MONTH · NOVEMBER
+6 sown now · 1 next · tap a month or an arc
+Being sown now · November
+Wheat
+Oct–Nov
 ›
-Sunflower
-Mar–Apr / Aug–Sep
+Canola
+Oct–Nov
 ›
-Potato
-Sep–Oct
+Chickpea
+Oct–Nov
 ›
-Tomato
-Mar–May / Sep–Oct
+Lentil
+Oct–Nov
+›
+Garlic
+Nov–Dec
 ›
 Strawberry
 Sep–Nov
 ›
 Next ·
-October
-Wheat
-Oct–Nov
-›
-Canola
-Oct–Nov
-›
-Chickpea
-Oct–Nov
-›
-Lentil
-Oct–Nov
+December
+Onion
+Dec–Feb
 ›
 Find your crop
 Search your crop
 Go
-Cereals & field crops
-·
-7
+Live calculator ·
+24
 Wheat
-Maize (Corn)
-Basmati Rice
-Hybrid Rice
-Cotton
-Sugarcane, February planting
-Ratoon Sugarcane
-Oilseeds
-·
-4
-Canola
-Sesame
-Soybean
-Sunflower
-Pulses
-·
-3
-Chickpea
-Lentil
-Mungbean & Mash
-Vegetables & spices
-·
-7
+Live calculator
 Potato
-Tomato
+Live calculator
+Ratoon Sugarcane
+Live calculator
+Cotton
+Live calculator
+Maize (Corn)
+Live calculator
+Basmati Rice
+Live calculator
+Canola
+Live calculator
+Sesame
+Live calculator
+Chickpea
+Live calculator
+Lentil
+Live calculator
 Chili
+Live calculator
 Garlic
+Live calculator
+Citrus, 5 years and over
+Live calculator
+Sugarcane, February planting
+Live calculator
+Hybrid Rice
+Live calculator
+Tomato
+Live calculator
+Strawberry
+Live calculator
+Sunflower
+Live calculator
+Mungbean & Mash
+Live calculator
 Watermelon
-Turmeric
+Live calculator
+Soybean
+Live calculator
 Onion
+Live calculator
+Turmeric
+Live calculator
+Banana, 1st year
+Live calculator
 Orchards & fruit
 ·
-7
-Banana, 1st year
+4
 Banana, 2nd year
-Citrus, 5 years and over
 Date Palm
 Mango
-Strawberry
 Guava
-Cereals & field crops
-7
+With a live calculator
+24
+Set your acres and the plan scales, adjusts to your soil report, and prices itself when you ask. The programme and its PDF are on each page as well.
 Wheat
 Oct–Nov
 sowing
 Zn-K programme
+Cereals & field crops
+Live calculator
 Open the programme →
 PDF ↓
-Maize (Corn)
-Feb / Jun–Jul
+Potato
+Sep–Oct
 sowing
-S-N-K programme
+P-K programme
+Vegetables & spices
+Live calculator
 Open the programme →
 PDF ↓
-Basmati Rice
-May–Jun
+Ratoon Sugarcane
+Feb–Mar
 sowing
-S-K programme
-Open the programme →
-PDF ↓
-Hybrid Rice
-May–Jun
-sowing
-N-K programme
+Multi-nutrient (Zn-P-K-Mg-B)
+Cereals & field crops
+Live calculator
 Open the programme →
 PDF ↓
 Cotton
 Apr–May / Sep
 sowing
 K-B programme
+Cereals & field crops
+Live calculator
 Open the programme →
 PDF ↓
-Sugarcane, February planting
-Feb–Mar
+Maize (Corn)
+Feb / Jun–Jul
 sowing
-Multi-nutrient (Zn-P-K-Mg-B)
+S-N-K programme
+Cereals & field crops
+Live calculator
 Open the programme →
 PDF ↓
-Ratoon Sugarcane
-Feb–Mar
+Basmati Rice
+May–Jun
 sowing
-Multi-nutrient (Zn-P-K-Mg-B)
+S-K programme
+Cereals & field crops
+Live calculator
 Open the programme →
 PDF ↓
-Oilseeds
-4
 Canola
 Oct–Nov
 sowing
 S-Mg-K programme
+Oilseeds
+Live calculator
 Open the programme →
 PDF ↓
 Sesame
 Apr–May
 sowing
 S-Mg-K programme
+Oilseeds
+Live calculator
 Open the programme →
 PDF ↓
-Soybean
-Apr–Jun
-sowing
-S-Mg-K programme
-Open the programme →
-PDF ↓
-Sunflower
-Mar–Apr / Aug–Sep
-sowing
-S-Mg-K programme
-Open the programme →
-PDF ↓
-Pulses
-3
 Chickpea
 Oct–Nov
 sowing
 P-Calcium-K programme
+Pulses
+Live calculator
 Open the programme →
 PDF ↓
 Lentil
 Oct–Nov
 sowing
 P-K-Mg-B programme
-Open the programme →
-PDF ↓
-Mungbean & Mash
-May–Jun
-sowing
-Fe-P-K programme
-Open the programme →
-PDF ↓
-Vegetables & spices
-7
-Potato
-Sep–Oct
-sowing
-P-K programme
-Open the programme →
-PDF ↓
-Tomato
-Mar–May / Sep–Oct
-sowing
-K-Boron-Calcium programme
+Pulses
+Live calculator
 Open the programme →
 PDF ↓
 Chili
 Feb–Apr
 sowing
 P-K per picking
+Vegetables & spices
+Live calculator
 Open the programme →
 PDF ↓
 Garlic
 Nov–Dec
 sowing
 HIGH P-K programme
-Open the programme →
-PDF ↓
-Watermelon
-Apr–May
-sowing
-K-P programme
-Open the programme →
-PDF ↓
-Turmeric
-May–Jun
-sowing
-S-Mg-K programme
-Open the programme →
-PDF ↓
-Onion
-Dec–Feb
-sowing
-P-Fe-K programme
-Open the programme →
-PDF ↓
-Orchards & fruit
-7
-Banana, 1st year
-May–Jul
-sowing
-K-Mg programme
-Open the programme →
-PDF ↓
-Banana, 2nd year
-May–Jul
-sowing
-K-Mg programme
+Vegetables & spices
+Live calculator
 Open the programme →
 PDF ↓
 Citrus, 5 years and over
 Feb–Mar
 sowing
 Multi-nutrient (K-Ca-Mg-B)
+Orchards & fruit
+Live calculator
+Open the programme →
+PDF ↓
+Sugarcane, February planting
+Feb–Mar
+sowing
+Multi-nutrient (Zn-P-K-Mg-B)
+Cereals & field crops
+Live calculator
+Open the programme →
+PDF ↓
+Hybrid Rice
+May–Jun
+sowing
+N-K programme
+Cereals & field crops
+Live calculator
+Open the programme →
+PDF ↓
+Tomato
+Mar–May / Sep–Oct
+sowing
+K-Boron-Calcium programme
+Vegetables & spices
+Live calculator
+Open the programme →
+PDF ↓
+Strawberry
+Sep–Nov
+sowing
+K-B-Zn programme
+Orchards & fruit
+Live calculator
+Open the programme →
+PDF ↓
+Sunflower
+Mar–Apr / Aug–Sep
+sowing
+S-Mg-K programme
+Oilseeds
+Live calculator
+Open the programme →
+PDF ↓
+Mungbean & Mash
+May–Jun
+sowing
+Fe-P-K programme
+Pulses
+Live calculator
+Open the programme →
+PDF ↓
+Watermelon
+Apr–May
+sowing
+K-P programme
+Vegetables & spices
+Live calculator
+Open the programme →
+PDF ↓
+Soybean
+Apr–Jun
+sowing
+S-Mg-K programme
+Oilseeds
+Live calculator
+Open the programme →
+PDF ↓
+Onion
+Dec–Feb
+sowing
+P-Fe-K programme
+Vegetables & spices
+Live calculator
+Open the programme →
+PDF ↓
+Turmeric
+May–Jun
+sowing
+S-Mg-K programme
+Vegetables & spices
+Live calculator
+Open the programme →
+PDF ↓
+Banana, 1st year
+May–Jul
+sowing
+K-Mg programme
+Orchards & fruit
+Live calculator
+Open the programme →
+PDF ↓
+Orchards & fruit
+4
+Banana, 2nd year
+May–Jul
+sowing
+K-Mg programme
 Open the programme →
 PDF ↓
 Date Palm
@@ -283,35 +335,23 @@ sowing
 P-K programme
 Open the programme →
 PDF ↓
-Strawberry
-Sep–Nov
-sowing
-K-B-Zn programme
-Open the programme →
-PDF ↓
 Guava
 Feb–Mar
 sowing
 Multi-nutrient (K-Ca-Mg-B)
 Open the programme →
 PDF ↓
-These programmes are transcribed from VAN’s published crop nutrition plans.
+These programmes are VAN’s published crop nutrition plans.
 They are per-acre guidelines. Adjust to your own soil test and local conditions. A PDF of each plan downloads from its card. For a plan against your own field, ask on WhatsApp.
-Ask for my plan
+Ask on WhatsApp
 Crop nutrition engineered, manufactured, registered and tested in Pakistan.
-Plant
-·
-49-Km Multan Road, Phool Nagar Bypass, Lahore
-Head office
-·
-605 Al-Hafeez Heights, Gulberg III, Lahore 54660
++92 42 35762215
 WhatsApp
 +92 300 5003041
-Landline
-+92 42 35762215
 info@van.com.pk
 Products
 All 23 brands
+Compare them
 Vital Urea
 Where to buy
 Verify a bag
@@ -319,20 +359,25 @@ Crops
 28 crop plans
 Wheat
 How you apply it
+Soil Atlas
 Knowledge
 Why Pakistan must shift
-The soil, measured
-Product knowledge decks
+Product decks
 Circular economy
+Vitalytics tools
 Company
-Make with us
+Your Brand
 VAN Lab
-Tools
-About & contact
+About
+Company profile
+Head office
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+Plant
+49-Km Multan Road, Phool Nagar Bypass, Lahore
 © 2026
 Vital Agri Nutrients (Pvt) Ltd
-·
-www.van.com.pk
+Full member of CropLife Pakistan since 2024
+How VAN competes
 LinkedIn
 Facebook
 Instagram

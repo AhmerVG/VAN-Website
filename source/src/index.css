@@ -1482,7 +1482,7 @@ svg g[role="button"]:focus-visible { outline: 2px solid var(--navy); outline-off
 .lz-tab[aria-selected="true"] .lz-src{color:#fff;opacity:.85}
 .lz button:focus-visible,.lz select:focus-visible,.lz input:focus-visible{outline:2px solid var(--pak);outline-offset:2px}
 .lz-panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius,4px);padding:clamp(16px,3vw,28px);display:grid;gap:16px;min-width:0}
-.lz-topic{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--muted);margin:0;font-weight:600}
+.lz-topic{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--muted);margin:0;font-weight:600;text-transform:uppercase} /* L1 7 Nov 2026 (m3): topics are sentence case in the source */
 .lz-answer{font-size:clamp(17px,2.2vw,20px);font-weight:500;margin:0;max-width:62ch;text-wrap:pretty}
 .lz-answer b{color:var(--ink);font-weight:700}
 .lz-controls{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}

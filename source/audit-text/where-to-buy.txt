@@ -2,28 +2,30 @@ PAGE: /where-to-buy.html
 ======================================================================
 Products
 Crop Plans
-Soil
-Tools
+Your Brand
+Soil Atlas
+Vitalytics
 VAN Lab
 Knowledge
 About
-Make with us
-For farmers
-Menu ☰
+Search
+☰
 View
 Simple view
 Where to buy
-Nine places, and the districts where VAN has nobody yet.
+9 places, and the districts where VAN has nobody yet.
 7
 dealers and
 2
 VAN shops, in
 7
-towns. That is the whole network, listed.
+towns. VAN also sells through distributors and a technical service team.
 If none of them is near you, say where you are and we will deliver
-, that is a real answer, not a holding line.
+, or tell you plainly that we cannot yet.
+See the 9 places ↓
+I want to become a dealer →
 VAN's own shops
-Two Vital Agri Centers, both in Sindh.
+2 Vital Agri Centers, both in Sindh.
 Owned and staffed by VAN. The person named is the one who answers.
 Vital Agri Center, Matiari
 VAN's own shop
@@ -47,7 +49,7 @@ Dealers
 5 in Punjab, 2 in Sindh.
 Independent shops carrying VAN brands. Every number below is published with the dealer's agreement.
 Punjab
-Kissan Zarai Merkaz
+Kissan Zarai Markaz
 Jhang
 ,
 Punjab
@@ -71,14 +73,14 @@ Lahore
 Punjab
 Muhammad Bilal
 0322 4604653
-Afaq Zari Merkaz
+Afaq Zari Markaz
 Kasur
 ,
 Punjab
 Saadat Munir
 0322 4991479
 Sindh
-Ghfar Zari Merkaz
+Ghaffar Zari Markaz
 Tando Allahyar
 ,
 Sindh
@@ -91,7 +93,7 @@ Sindh
 Muhammad Afzal
 No number on record. Reach them through VAN and we will connect you.
 If there is nobody near you
-That is most of the country, and we would rather say so.
+That is most of the country.
 There is no VAN outlet in Faisalabad, Sargodha, Multan, Bahawalpur, Rahim Yar Khan or Dera Ghazi Khan. Tell us your district and what you grow, and we will either deliver to you or tell you plainly that we cannot yet.
 Tell us your district
 kisan@van.com.pk
@@ -106,23 +108,17 @@ He handles dealerships across the province and heads the business there. Talk to
 irfan@van.com.pk
 Punjab and everywhere else
 The trade desk
-Territory, volume and terms are written down on the distributor page before you have to ask for them.
+Territory, volume and terms are written down on the dealership page before you have to ask for them.
 What a dealership involves →
 partner@van.com.pk
 Crop nutrition engineered, manufactured, registered and tested in Pakistan.
-Plant
-·
-49-Km Multan Road, Phool Nagar Bypass, Lahore
-Head office
-·
-605 Al-Hafeez Heights, Gulberg III, Lahore 54660
++92 42 35762215
 WhatsApp
 +92 300 5003041
-Landline
-+92 42 35762215
 info@van.com.pk
 Products
 All 23 brands
+Compare them
 Vital Urea
 Where to buy
 Verify a bag
@@ -130,20 +126,25 @@ Crops
 28 crop plans
 Wheat
 How you apply it
+Soil Atlas
 Knowledge
 Why Pakistan must shift
-The soil, measured
-Product knowledge decks
+Product decks
 Circular economy
+Vitalytics tools
 Company
-Make with us
+Your Brand
 VAN Lab
-Tools
-About & contact
+About
+Company profile
+Head office
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+Plant
+49-Km Multan Road, Phool Nagar Bypass, Lahore
 © 2026
 Vital Agri Nutrients (Pvt) Ltd
-·
-www.van.com.pk
+Full member of CropLife Pakistan since 2024
+How VAN competes
 LinkedIn
 Facebook
 Instagram

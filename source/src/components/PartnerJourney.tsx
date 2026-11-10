@@ -31,8 +31,8 @@ const textShade = (c: string) => c === 'var(--rust)' ? 'var(--rust-text)' : c ==
  */
 
 const OWNER: Record<string, { label: string; bg: string }> = {
-  you: { label: 'Yours', bg: 'var(--gold)' },
-  both: { label: 'Together', bg: 'var(--sky)' },
+  you: { label: 'Your part', bg: 'var(--gold)' },
+  both: { label: 'Shared', bg: 'var(--sky)' },
 }
 
 export function PartnerJourney() {
@@ -95,12 +95,12 @@ export function PartnerJourney() {
           {/* The coloured dots under a node had no key, so a reader saw a mark and learned nothing. */}
           <span className="cap flex items-center gap-3 flex-wrap">
             <span className="inline-flex items-center gap-1.5">
-              <i style={{ width: 8, height: 8, borderRadius: 4, background: 'var(--gold)', display: 'inline-block' }} />yours
+              <i style={{ width: 8, height: 8, borderRadius: 4, background: 'var(--gold)', display: 'inline-block' }} />your part
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <i style={{ width: 8, height: 8, borderRadius: 4, background: 'var(--sky)', display: 'inline-block', border: '1px solid var(--line-2)' }} />together
+              <i style={{ width: 8, height: 8, borderRadius: 4, background: 'var(--sky)', display: 'inline-block', border: '1px solid var(--line-2)' }} />shared
             </span>
-            <span>everything else is ours</span>
+            <span>stages without a dot: our part</span>
             <span className="hidden sm:inline">tap any stage</span>
           </span>
         </div>
@@ -179,7 +179,7 @@ export function PartnerJourney() {
             </div>
           ))}
         </div>
-        <p className="cap mt-2">{isDev ? 'Label review runs alongside every stage above, in your name.' : 'Registration and label review run alongside every stage above, in your name.'}</p>{/* D-318: on the 6-stage card registration is a stage of its own */}
+        <p className="cap mt-2">{isDev ? 'Label review for your brand runs alongside every stage above.' : 'Registration and label review for your brand run alongside every stage above.'}</p>{/* D-318: on the 6-stage card registration is a stage of its own */}
 
         <div className="flex flex-wrap gap-2 mt-4">
           {route.key === 'library'

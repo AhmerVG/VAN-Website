@@ -9,7 +9,7 @@ const srv = http.createServer((q,r)=>{const u=decodeURIComponent(q.url.split('?'
 await new Promise(r=>srv.listen(0,r)); const port=srv.address().port
 const pages=[]; (function walk(d){for(const e of fs.readdirSync(d,{withFileTypes:true})){const p=path.join(d,e.name); if(e.isDirectory())walk(p); else if(e.name.endsWith('.html'))pages.push(path.relative(OUT,p).replace(/\\/g,'/'))}})(OUT)
 pages.sort()
-const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium-1194/chrome-linux/chrome'})
+const b=await chromium.launch({executablePath:process.env.CHROME||'/opt/pw-browsers/chromium-1194/chrome-linux/chrome'})
 const ctx=await b.newContext({viewport:{width:1280,height:900},reducedMotion:'reduce'})
 await ctx.route('**/*', r=> r.request().url().startsWith(`http://localhost:${port}`)||r.request().url().startsWith('data:')?r.continue():r.abort())
 const pg=await ctx.newPage()

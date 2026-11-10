@@ -81,8 +81,10 @@ export function calcPlan(costPlan: CostRow[], acres: number, soilInputs: SoilInp
   return { lines, nutrientKg, soilAdjusted, swaps, advisories, costKnown: false /* price basis (list/dealer/internal) not yet confirmed. See pricing.ts */ }
 }
 
+// Tahir 7 Nov 2026 (CR-16): "Phosphate (P₂O₅)" for fertiliser amounts everywhere (Nutrition creator totals, unit
+// converter), matching the balance table (nutrientBalance.ts). Was P: 'Phosphorus'.
 export const NUTRIENT_LABELS: Record<string, string> = {
-  N: 'Nitrogen', P: 'Phosphorus', K: 'Potash', S: 'Sulfur', Ca: 'Calcium', Mg: 'Magnesium',
+  N: 'Nitrogen', P: 'Phosphate', K: 'Potash', S: 'Sulfur', Ca: 'Calcium', Mg: 'Magnesium',
   Zn: 'Zinc', Fe: 'Iron', Mn: 'Manganese', Cu: 'Copper', B: 'Boron', OM: 'Organic matter',
   HA: 'Humic acid', AA: 'Amino acid',
 }

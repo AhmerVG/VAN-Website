@@ -2,38 +2,400 @@ PAGE: /partner/pipeline.html
 ======================================================================
 Products
 Crop Plans
-Soil
-Tools
+Your Brand
+Soil Atlas
+Vitalytics
 VAN Lab
 Knowledge
 About
-For farmers
-Menu ☰
+Talk to us
+Search
+☰
 View
 Simple view
-Make with us · the library
-25 formulations that work
-and have no brand on them.
-They are carried under neutral codes so that the first thing a client sees is the technology, not a competing name. Where a formulation sits on the five-stage ladder is stated plainly. A code at field-trial stage is not sold as if it were finished.
+Your Brand · the library
+27 unbranded formulations
+each shown at its stage.
+They are carried under neutral codes so that the first thing a client sees is the technology, not a competing name. Each code shows where it sits on the 6-stage path. A code at field-trial stage is not sold as if it were finished.
 01
 The library
 02
-Three codes in detail
+The 3 codes in detail
 03
-The two NP grades
+The 2 NP grades
 04
-Licensing
+Before an agreement
 01
 The library
 Organised by code family.
 The letter gives the nutrient family, the number gives the analysis, and the same colour is carried through to the pack.
-Browse the library by family and stage →
+The path, from an idea to a registered product. Where the
+27
+sit on it today
+1 dot is 1 formulation · colour is its family · a ring means registered and available · tap a stage to filter
+none at this stage
+0
+Idea and hypothesis
+What problem does it address, on which crop, against which product a farmer buys today?
+1
+Feasibility and scoping
+Technically and commercially viable? What does the literature say? Rough cost per bag?
+1
+Concept
+Defined on paper. Ratio, form and target price fixed, not yet at the bench.
+3
+Development
+Bench formulation in the VAN lab. Coating, chelation, solubility, pH, compatibility.
+3
+Trial
+On VAN’s research farms, and on a partner’s own plots where wanted.
+19
+Registration
+Specification and data locked. Registered under your brand by VAN, with VAN named as the manufacturer.
+Nitrogen efficiency
+Phosphorus
+Potash
+P+K synergy
+Micros & secondaries
+Biologicals
+Carries
+N
+13
+P
+12
+K
+10
+S
+2
+Ca
+2
+Zn
+5
+B
+3
+Fe
+2
+Humic
+2
+Form
+Liquid
+4
+Soluble
+2
+Granular
+1
+Biological
+4
+27
+of
+27
+formulations
+N-22S
+Validated
+N
+22
+S
+18
+Nitro Sulfur. N 22 · elemental S 18
+Nitrogen carried with elemental sulfur rather than sulfate, so it releases over weeks instead of all at once.
+Nitrogen efficiency
+·
+Soil applied
+Open N-22S to ask about it ▾
+N-26L
+Available
+N
+26
+Zn
+B
+Liquid nitrogen 26% with zinc and boron · 2 grades
+Liquid nitrogen built for pivot injection and foliar spray, carrying its nitrogen in 3 forms at once.
+Nitrogen efficiency
+·
+Liquid
+·
+Fertigation
+·
+Foliar
+Open N-26L to ask about it ▾
+N-17L
+Available
+N
+17
+Ca
+7.2
+VAN Liquid CAN. N 17 · Ca 7.2
+Liquid calcium ammonium nitrate: nitrogen delivered with calcium rather than beside it, for fertigated horticulture.
+Nitrogen efficiency
+·
+Liquid
+·
+Fertigation
+Open N-17L to ask about it ▾
+N-15C
+Validated
+N
+15.5
+Ca
+18.4
+Calcium nitrate. N 15.5 · Ca 18.4
+Nitrate nitrogen carried with a high calcium load, chloride-free: the class high-value horticulture buys imported.
+Nitrogen efficiency
+Open N-15C to ask about it ▾
+P-44L
+Available
+P
+44
+Liquid foliar phosphorus 44%
+High-analysis foliar phosphorus with a Pakistan micronutrient pack. Bypasses soil fixation entirely by going through the leaf.
+Phosphorus
+·
+Liquid
+·
+Foliar
+Open P-44L to ask about it ▾
+NP-540
+Validated
+N
+5
+P
+40
+NP 5:40. Dual-release phosphate
+A phosphate that releases on 2 timescales from 1 placement.
+Phosphorus
+·
+Soil applied
+Open NP-540 to ask about it ▾
+NP-838S
+Validated
+N
+8
+P
+38
+S
+NP 8:38 + sulfur. Slow-release, fixation-resistant
+Sulfur acidifies the granule’s immediate soil environment; built against calcium phosphate fixation rather than around it.
+Phosphorus
+·
+Granular
+·
+Soil applied
+Open NP-838S to ask about it ▾
+UP-44
+Validated
+N
+17
+P
+44
+Urea phosphate · 17:44:0 and 12:44:0
+Nitrogen and phosphorus in 1 fully soluble salt, acidic in solution.
+Phosphorus
+·
+Soluble
+·
+Fertigation
+Open UP-44 to ask about it ▾
+KN-44
+Validated
+K
+N
+Potassium nitrate · 3 grades
+Chloride-free potassium with nitrate nitrogen, for high-value horticulture and salt-sensitive crops.
+Potash
+Open KN-44 to ask about it ▾
+K-45L
+Validated
+K
+45
+High-purity liquid foliar potash · K₂O 45%
+Chloride-free potassium in a low-salt-index, neutral-pH liquid, built for foliar and drone application.
+Potash
+·
+Liquid
+·
+Foliar
+Open K-45L to ask about it ▾
+PK-82
+Available
+P
+42
+K
+40
+High P+K reproductive complex
+P 42 · K 40, 82 nutrient units, for the window that sets yield and quality.
+P+K synergy
+Open PK-82 to ask about it ▾
+NPK-128M
+Available
+N
+12
+P
+12
+K
+18
+Zn
+B
+NPK 12:12:18 + micronutrients
+Balanced mid-to-late-stage NPK weighted to potash.
+P+K synergy
+Open NPK-128M to ask about it ▾
+NPK-19
+Validated
+N
+19
+P
+19
+K
+19
+NPK 19:19:19 · 3 grades
+The fully soluble balanced grade: foliar, fertigation and drone / ULV specifications.
+P+K synergy
+·
+Soluble
+·
+Foliar
+·
+Fertigation
+Open NPK-19 to ask about it ▾
+NPK-10
+Available
+N
+10
+P
+10
+K
+10
+Fe
+NPK 10:10:10, iron-coated · the corrective grade
+For a programme that has already slipped: a corrective dose without loading the soil.
+P+K synergy
+Open NPK-10 to ask about it ▾
+V-Crop series
+In development
+N
+P
+K
+Zn
+Crop-specific NPK grades · 4 in development
+V-Potato 10:5:35 · V-Citrus 16:6:28 · V-Rice 12:10:25 · V-Wheat 21:7:19 with zinc 1.5%.
+P+K synergy
+Open V-Crop series to ask about it ▾
+V-Stage series
+Field trials
+N
+P
+K
+Stage-specific grades · 3 in trial
+Vegetative 14:21:16 · Flowering Booster 8:34:14 · Fruiting Booster 12:8:32.
+P+K synergy
+Open V-Stage series to ask about it ▾
+MX-Z05
+Available
+Zn
+5
+Chelated zinc 5%
+Chelated zinc that stays available at pH 8, where sulfate zinc largely precipitates.
+Micros & secondaries
+Open MX-Z05 to ask about it ▾
+MX-ZB3
+Available
+Zn
+12
+B
+3
+Zinc 12% + boron 3%
+The 2 deficiencies that most often cap yield where NPK is already adequate, in a single foliar pass.
+Micros & secondaries
+·
+Foliar
+Open MX-ZB3 to ask about it ▾
+MX-F05
+Available
+Fe
+Chelated iron
+For the lime-induced chlorosis that shows up in orchards on calcareous ground.
+Micros & secondaries
+Open MX-F05 to ask about it ▾
+BIO-H50F
+Available
+Humic
+50
+K
+10
+K-humate 50 + fulvic 10 + potash 10
+Concentrated humate for soils under 1% organic matter.
+Biologicals
+Open BIO-H50F to ask about it ▾
+BIO-H40
+Available
+Humic
+40
+K
+10
+K-humate 40 + fulvic 10 + potash 10
+The established humate concentration in the library.
+Biologicals
+Open BIO-H40 to ask about it ▾
+BIO-P01
+Field trials
+P
+PSB bio-fertilizer
+Phosphorus-solubilizing bacteria, strains isolated locally against Pakistani soil pH and climate.
+Biologicals
+·
+Biological
+·
+Soil applied
+Open BIO-P01 to ask about it ▾
+BIO-P01L
+In development
+P
+Liquid PSB inoculant
+The same solubilizer carried in a liquid, for fertigation lines and spray tanks.
+Biologicals
+·
+Biological
+·
+Fertigation
+Open BIO-P01L to ask about it ▾
+BIO-M01
+In development
+Mycorrhizal inoculant
+Extends the root system that has to go and reach the phosphorus the bacteria free up.
+Biologicals
+·
+Biological
+·
+Soil applied
+Open BIO-M01 to ask about it ▾
+BIO-S01
+Field trials
+Bio Dividend. Seed treatment
+The cheapest point in the season at which nutrition can be placed exactly where the root will be.
+Biologicals
+·
+Biological
+·
+Seed treatment
+Open BIO-S01 to ask about it ▾
+K-50DC
+Concept
+Dual coated potash · K₂O 50
+Potash granule carrying 2 coatings, boron and silicon, so the micronutrient and the silicon land where the potash lands.
+Potash
+Open K-50DC to ask about it ▾
+P-DRC
+Feasibility
+Dual release phosphate with a calcium-binding shell
+An outer layer that breaks down first and binds the free calcium around the granule, before that calcium can lock the phosphate. Then a fast-release phosphate fraction for the seedling, then a slow-release fraction for the rest of the season.
+Phosphorus
+Open P-DRC to ask about it ▾
+Composition chart: every code and every brand with its analysis →
 02
-Three codes in detail
+The 3 codes in detail
 What a dossier conversation starts from.
-These three had a page each on the live site. Nobody searches for a code, so all three are on this page instead of on separate pages.
 N-26L · N-24L. Liquid nitrogen, formulated for the pivot and the leaf
-Nitrogen carried in three forms at once, with zinc and boron already in solution, so one injection feeds across a window instead of spiking, and the micronutrient does not need a second pass. A single-form nitrogen delivers everything at once; under a pivot that is the wrong shape. Splitting the nitrogen across nitrate, ammoniacal and urea fractions changes the shape of the supply rather than the amount.
+Nitrogen carried in 3 forms at once, with zinc and boron already in solution, so 1 injection feeds across a window instead of spiking, and the micronutrient does not need a second pass. A single-form nitrogen delivers everything at once; under a pivot that is the wrong shape. Splitting the nitrogen across nitrate, ammoniacal and urea fractions changes the shape of the supply rather than the amount.
 Nitrogen fraction
 N-26L
 N-24L
@@ -41,7 +403,7 @@ What the fraction does
 Total nitrogen
 26.00%
 24.00%
-The declared total. The three rows below sum to it exactly.
+The declared total: the sum of the 3 forms below.
 Nitrate nitrogen
 5.75%
 2.00%
@@ -53,7 +415,7 @@ Held on the soil exchange sites rather than moving straight down with the wettin
 Urea nitrogen
 13.75%
 19.00%
-The reserve fraction. Converts before it becomes available, so it arrives after the first two.
+The reserve fraction. Converts before it becomes available, so it arrives after the first 2.
 Zinc (Zn)
 0.6%
 n/a
@@ -65,7 +427,7 @@ N-24L is the boron-loaded grade; N-26L carries a maintenance level.
 Solution pH
 6.6
 6.6
-Near-neutral. Acidic solution strips zinc from galvanising, alkaline solution attacks aluminium, and 6.6 sits between the two.
+Near-neutral. Acidic solution strips zinc from galvanising, alkaline solution attacks aluminium, and 6.6 sits between them.
 Density
 1.21 kg/L
 1.21 kg/L
@@ -78,9 +440,9 @@ Registration
 PS 5469-2020
 PS 5469-2020
 Application in process, not yet licensed.
-Derived, not measured: at 1.21 kg/L, one litre of N-26L carries 315 g of nitrogen and one litre of N-24L carries 290 g. Arithmetic on the declared analysis and the density, not a separate measurement. Packs: 20 L, 200 L, 1000 L IBC. No dose rate is published. It varies by crop, region and application method, and is set per programme.
+Worked out from the declared analysis and the density: at 1.21 kg/L, 1 litre of N-26L carries 315 g of nitrogen and 1 litre of N-24L carries 290 g. Packs: 20 L, 200 L, 1000 L IBC. The dose rate varies by crop, region and application method, and is set per programme.
 P-44L. Liquid foliar phosphorus, 44% w/v
-The case for a foliar phosphorus in northern Europe is temperature. In Pakistan the problem is alkaline calcareous soil at roughly pH 7.9 to 8.4, where a large majority of applied phosphorus is fixed as calcium phosphates and never reaches the plant at all. A foliar phosphorus applied here bypasses the fixation reaction by never letting it start.
+In Pakistan the problem is alkaline calcareous soil at roughly pH 7.9 to 8.4, where a large majority of applied phosphorus is fixed as calcium phosphates and never reaches the plant at all. A foliar phosphorus applied here bypasses the fixation reaction by never letting it start.
 Nutrient
 Content
 g / L
@@ -105,15 +467,15 @@ n/a
 Plant-derived organic carrier
 proprietary
 n/a
-Zinc and boron are supporting micronutrients, not the headline. VAN does not claim to out-load an imported product on any single element. The argument is formulation built for Pakistani soil, Pakistani water and a Pakistani spray programme, and the ability to change the specification for a client.
-The VAN phosphate system. Four routes past soil fixation
+Zinc and boron are supporting micronutrients, not the headline. The argument is formulation built for Pakistani soil, Pakistani water and a Pakistani spray programme, and the ability to change the specification for a client.
+The VAN phosphate system. 4 routes past soil fixation
 Route
 Product
 Analysis
 Stage of the crop
 Soil · basal
 Green Phosphate
-6-32-0, humic-coated acidic
+6:32:0, humic-coated acidic
 Sowing / land prep
 Soil · basal
 Fusion Phosphate (TSP)
@@ -121,7 +483,7 @@ P₂O₅ 46 total / 43 water-soluble
 Sowing
 Fertigation · solid
 V. Ammonium Phosphate (V-Phosphate)
-10-44-0 + Fe · Mn · Cu
+10:44:0 + Fe
 Mid-life
 Fertigation · liquid
 V-Germinator Pro
@@ -136,56 +498,35 @@ PK-82
 P₂O₅ 42 · K₂O 40
 Flowering to grain fill
 PK-82. High P+K reproductive complex
-Pakistani nutrition programmes are front-loaded. Nitrogen and basal phosphorus get applied, and then the crop reaches the stage where potassium demand peaks. Grain fill in wheat, boll development in cotton, tuber bulking in potato, fruit set in mango and citrus, and the programme has nothing left in it. Potassium is the most heavily mined nutrient in the country’s soils and phosphorus is the most heavily fixed, so the reproductive window is where both shortfalls arrive at once.
-PK-82 is P₂O₅ 42% and K₂O 40%, 82 nutrient units, and the two figures sum to the code. It is deliberately nitrogen-free so that it can be applied at a stage where more nitrogen would push vegetative growth at exactly the wrong moment. Produced in powder, crystalline soluble and liquid concentrate.
-Field data: a headline number will appear against this code once VAN’s own trial data has been signed off. Until then the card carries the stage; the yield figure follows the trial. No dose rate is published for this code. It varies by crop, region and application method, and is set per programme.
+Pakistani nutrition programmes are front-loaded. Nitrogen and basal phosphorus get applied, and then the crop reaches the stage where potassium demand peaks: grain fill in wheat, boll development in cotton, tuber bulking in potato, fruit set in mango and citrus. By then the programme has nothing left in it. Potassium is the most heavily mined nutrient in the country’s soils and phosphorus is the most heavily fixed, so the reproductive window is where both shortfalls arrive at once.
+PK-82 is P₂O₅ 42% and K₂O 40%: 82 nutrient units, which gives the code its number. It carries no nitrogen, so that it can be applied at a stage where more nitrogen would push vegetative growth at exactly the wrong moment. Produced in powder, crystalline soluble and liquid concentrate.
+No trial figure for PK-82 yet. The dose rate for PK-82 varies by crop, region and application method, and is set per programme.
 03
-The two NP grades
+The 2 NP grades
 They attack the same problem from opposite ends.
-Both are aimed at the fact that a large share of the phosphorus applied to Pakistani soil is fixed as calcium phosphate before the crop reaches it. Which is why they are two grades and not one.
+Both are aimed at the fact that a large share of the phosphorus applied to Pakistani soil is fixed as calcium phosphate before the crop reaches it. So VAN makes 2 grades, not 1.
 N 5 · P 40. A timing answer
-The phosphate is carried in two fractions with different release behaviour: one available immediately, for the seedling root that has to find phosphorus in its first weeks; one releasing slowly afterwards, still supplying when demand peaks. A conventional basal phosphate delivers its whole load into the window where fixation is fastest and the crop is smallest. This splits that load across the season from a single placement. Low nitrogen by design: a phosphorus product with enough nitrogen to work with, not an NP blend balanced for both.
+The phosphate is carried in 2 fractions with different release behaviour: the first available immediately, for the seedling root that has to find phosphorus in its first weeks; the second releasing slowly afterwards, still supplying when demand peaks. A conventional basal phosphate delivers its whole load into the window where fixation is fastest and the crop is smallest. This splits that load across the season from a single placement. Low nitrogen by design: a phosphorus product with enough nitrogen to work with, not an NP blend balanced for both.
 N 8 · P 38. A chemistry answer
-Rather than timing the phosphate around fixation, this grade is formulated to resist the reaction itself. Sulfur acidifies the granule’s immediate soil environment, where alkalinity drives the precipitation; alongside it, VAN’s calcium-resistant agents are formulated to hold soil calcium off the phosphate so it stays plant-available for longer. The release is slow throughout rather than split in two. The sulfur is a functioning part of the formulation, not a filler, and it is a nutrient the crop needs in its own right.
-Both descriptions are of mechanism, not measured outcome. No trial figure is published against either grade, because none has been signed off. The same rule that applies to every other code in this library. The analyses shown are recorded on VAN’s own register; the analysis report and specification sheet are available on request. The sulfur loading on the 8-38 grade is deliberately not published. Both grades are made in granular, powder and crystalline form, in 50 kg and 1000 kg packs.
+Rather than timing the phosphate around fixation, this grade is formulated to resist the reaction itself. Sulfur acidifies the granule’s immediate soil environment, where alkalinity drives the precipitation; alongside it, VAN’s calcium-resistant agents are formulated to hold soil calcium off the phosphate so it stays plant-available for longer. The release is slow throughout rather than split in 2. The sulfur is a functioning part of the formulation, not a filler, and it is a nutrient the crop needs in its own right.
+No trial figure for either grade yet. The analyses shown are recorded on VAN’s own register; the analysis report and specification sheet are available on request. Both grades are made in granular, powder and crystalline form, in 50 kg and 1000 kg packs.
 04
-Licensing
-Three models, and what crosses the line.
-Model
-What it means
-Availability
-Non-exclusive licence
-You brand and sell the formulation; so may others, under their own names.
-Default on every code
-Exclusive licence
-The formulation runs under your brand only, for an agreed territory and term.
-Against a committed volume threshold, set per formulation
-Graduation to a VAN brand
-If VAN’s distributor channel takes a code up, VAN registers and brands it.
-Affected partners are told before it becomes public
+Before an agreement
+What crosses the line, and what does not.
 What is published, and what is not
 Public
-Code, family, purpose, available grades and forms, target crops and application methods, pipeline stage, and one headline trial figure once it has been verified.
+Code, family, purpose, available grades and forms, target crops and application methods, pipeline stage, and 1 headline trial figure once it has been verified.
 Behind an NDA
 Full guaranteed analysis, manufacturing specification, trial protocols and raw data, pricing, tank-mix and compatibility charts, and detailed regulatory status.
-Nothing crosses that line without a signed agreement, including for existing clients on other products. Tell us which code you are interested in and what you would do with it. The dossier follows the agreement, usually within the same week.
-A question this page doesn’t answer?
-The agronomy team answers on the same WhatsApp line as everything else.
-Ask on WhatsApp
+Nothing crosses that line without a signed agreement, including for existing clients on other products. Tell us which code you are interested in and what you would do with it. The dossier follows the agreement, usually within 2 weeks.
 Crop nutrition engineered, manufactured, registered and tested in Pakistan.
-Plant
-·
-49-Km Multan Road, Phool Nagar Bypass, Lahore
-Head office
-·
-605 Al-Hafeez Heights, Gulberg III, Lahore 54660
++92 42 35762215
 WhatsApp
 +92 300 5003041
-Landline
-+92 42 35762215
 info@van.com.pk
 Products
 All 23 brands
+Compare them
 Vital Urea
 Where to buy
 Verify a bag
@@ -193,20 +534,27 @@ Crops
 28 crop plans
 Wheat
 How you apply it
+Soil Atlas
 Knowledge
 Why Pakistan must shift
-The soil, measured
-Product knowledge decks
+Product decks
 Circular economy
+Vitalytics tools
 Company
-Make with us
+Your Brand
 VAN Lab
-Tools
-About & contact
+About
+Company profile
+Head office
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+Plant
+49-Km Multan Road, Phool Nagar Bypass, Lahore
 © 2026
 Vital Agri Nutrients (Pvt) Ltd
-·
-www.van.com.pk
+Full member of CropLife Pakistan since 2024
+How VAN competes
 LinkedIn
 Facebook
 Instagram
+Talk to VAN
+Talk to VAN

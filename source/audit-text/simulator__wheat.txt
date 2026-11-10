@@ -2,24 +2,24 @@ PAGE: /simulator/wheat.html
 ======================================================================
 Products
 Crop Plans
-Soil
-Tools
+Your Brand
+Soil Atlas
+Vitalytics
 VAN Lab
 Knowledge
 About
-Make with us
-For farmers
-Menu ☰
+Search
+☰
 View
 Simple view
-Crop plans
+Crop Plans
 /
 Wheat
 / Farm discipline simulator
-Farm discipline simulator · pilot ·
+Farm discipline simulator · beta ·
 Wheat
-Nutrition is one lever of ten.
-Yield isn't only nutrition. It's whether ten things were each done well and on time. Set a target, score your season, see what's holding it back.
+Nutrition decides about 1/4 of the yield.
+Sowing, seed, water, weeds and pests decide the rest. Set a target, score your season across 10 levers, and see what is holding the yield back.
 ←
 Wheat
 crop page
@@ -28,13 +28,13 @@ wheat
 nutrition creator →
 Wheat
 ·
-Pakistan wheat average yield potential
+What a good progressive farmer achieves
 What yield are you aiming for?
-Default is
+Default:
 60.0
-maunds/acre.
-Pakistan wheat average yield potential
-. Know your own variety does better or worse? Type your own number. Then score how the season is actually being run below. The simulator shows what that gets you, and what would close the gap.
+maunds/acre (
+What a good progressive farmer achieves
+). If your variety does better or worse, type your own number. Then score your season below. The simulator shows what that gets you, and what would close the gap.
 mds/acre
 This season, as scored below
 30.0
@@ -48,6 +48,7 @@ OK
 . Getting this to Best could add up to
 4.5
 maunds/acre
+(model estimate, not a trial result)
 .
 Irrigation Management
 . Currently
@@ -55,6 +56,7 @@ OK
 . Getting this to Best could add up to
 4.5
 maunds/acre
+(model estimate, not a trial result)
 .
 Genetics & Seed Quality
 . Currently
@@ -62,14 +64,21 @@ OK
 . Getting this to Best could add up to
 3.9
 maunds/acre
+(model estimate, not a trial result)
 .
+Target
+60.0
+Scored
+30.0
+30.0
+short
 Macronutrient Nutrition (N-P-K)
 Lowest of N%, P%, or K% delivered is 60-90% of recommended dose
 Bad
 OK
 Best
 Irrigation Management
-CRI and post-anthesis both covered, but tillering or jointing irrigation missed/delayed
+CRI and post-anthesis both covered, but tillering or jointing irrigation missed or delayed
 Bad
 OK
 Best
@@ -84,17 +93,17 @@ Bad
 OK
 Best
 Disease Management (rust and other foliar disease)
-Moderately susceptible variety, or fungicide applied late/reactively after visible spread
+Moderately susceptible variety, or fungicide applied late, only after visible spread
 Bad
 OK
 Best
 Genetics & Seed Quality
-Good-quality farmer-saved seed of a recommended variety, cleaned/graded, but not certified or treated
+Good-quality farmer-saved seed of a recommended variety, cleaned or graded, but not certified or treated
 Bad
 OK
 Best
 Sowing Time
-Sown within ~2 weeks before/after the optimal window
+Sown within ~2 weeks before or after the optimal window
 Bad
 OK
 Best
@@ -109,7 +118,7 @@ Bad
 OK
 Best
 Lodging & Harvest Risk
-Minor/partial lodging in small patches, or slight harvest delay, with limited impact
+Minor or partial lodging in small patches, or slight harvest delay, with limited impact
 Bad
 OK
 Best
@@ -120,19 +129,13 @@ Send your soil analysis, your district and what you've done so far this season.
 Ask on WhatsApp
 kisan@van.com.pk
 Crop nutrition engineered, manufactured, registered and tested in Pakistan.
-Plant
-·
-49-Km Multan Road, Phool Nagar Bypass, Lahore
-Head office
-·
-605 Al-Hafeez Heights, Gulberg III, Lahore 54660
++92 42 35762215
 WhatsApp
 +92 300 5003041
-Landline
-+92 42 35762215
 info@van.com.pk
 Products
 All 23 brands
+Compare them
 Vital Urea
 Where to buy
 Verify a bag
@@ -140,20 +143,25 @@ Crops
 28 crop plans
 Wheat
 How you apply it
+Soil Atlas
 Knowledge
 Why Pakistan must shift
-The soil, measured
-Product knowledge decks
+Product decks
 Circular economy
+Vitalytics tools
 Company
-Make with us
+Your Brand
 VAN Lab
-Tools
-About & contact
+About
+Company profile
+Head office
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+Plant
+49-Km Multan Road, Phool Nagar Bypass, Lahore
 © 2026
 Vital Agri Nutrients (Pvt) Ltd
-·
-www.van.com.pk
+Full member of CropLife Pakistan since 2024
+How VAN competes
 LinkedIn
 Facebook
 Instagram

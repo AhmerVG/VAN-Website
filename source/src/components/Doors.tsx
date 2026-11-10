@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { HOME_COPY, WA, CONTACT, wa } from '@/data/site'
-import { WaButton, Plots } from './bits'
+import { WaButton, Plots, noStop } from './bits'
 
 /** Two doors: the dealer near you, or the plant direct. Both end in WhatsApp. */
 export function Doors() {
@@ -11,8 +11,8 @@ export function Doors() {
       <div className="wrap grid lg:grid-cols-2 gap-5">
         <div className="panel-green p-6 lg:p-8 flex flex-col">
           <span className="eyebrow">Find a dealer</span>
-          <h2 className="text-[clamp(30px,3vw,40px)]">The dealer near you.</h2>
-          <p className="mt-3 muted">Type your district. We send back the name and number of the nearest dealer carrying VAN brands.</p>
+          <h2 className="text-[clamp(30px,3vw,40px)]">Find your nearest dealer</h2>
+          <p className="mt-3 muted">Type your district, and we will send you the name and phone number of the nearest dealer who stocks our brands.</p>
           <Plots cols={10} rows={2} seed={11} className="my-5 opacity-80" />
           <label className="font-bold" htmlFor="district">Your district</label>
           <input id="district" className="input mt-2" placeholder="e.g. Sahiwal, Multan, Sukkur…" value={district} onChange={e => setDistrict(e.target.value)} autoComplete="off" />
@@ -20,7 +20,7 @@ export function Doors() {
         </div>
         <div className="panel-navy p-6 lg:p-8 flex flex-col">
           <span className="eyebrow" style={{ color: 'var(--gold)' }}>Direct from the plant</span>
-          <h2 className="text-[clamp(30px,3vw,40px)]">{HOME_COPY.orderH2}</h2>
+          <h2 className="text-[clamp(30px,3vw,40px)]">{noStop(HOME_COPY.orderH2)}</h2>
           <p className="mt-3" style={{ color: 'rgba(255,255,255,.8)' }}>{HOME_COPY.orderLead}</p>
           <ol className="list-none p-0 m-0 mt-5 grid gap-3">
             {HOME_COPY.orderSteps.map((s, i) => (

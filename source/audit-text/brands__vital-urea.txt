@@ -2,65 +2,155 @@ PAGE: /brands/vital-urea.html
 ======================================================================
 Products
 Crop Plans
-Soil
-Tools
+Your Brand
+Soil Atlas
+Vitalytics
 VAN Lab
 Knowledge
 About
-Make with us
-For farmers
-Menu ☰
+Search
+☰
 View
 Simple view
 Our brands
 / Nitrogen / Vital Urea
-Nitrogen · Hero product · VAN exclusive
+Nitrogen · Hero product
 Vital Urea
 Sulfur Coated Urea. N 32% min · S 13% min
-Nitrogen that feeds the crop, not the air. In Pakistan’s alkaline, hot soils a large share of plain urea’s nitrogen is lost before the plant can use it. Vital Urea’s sulfur coating releases N in step with crop demand, and the sulfur itself conditions the root zone, temporarily acidifying it to unlock fixed phosphorus and zinc.
-Broadcast
-Sowing / basal + top-dress
-VAN exclusive
+Vital Urea: nitrogen with a sulfur coating, 32% N and 13% S. In Pakistan’s alkaline, hot soils a large share of plain urea’s nitrogen is lost before the plant can use it. Vital Urea’s sulfur coating releases its nitrogen in steps over the days after the first irrigation, not all at once. As the sulfur oxidises it lowers the pH around the granule, which may help nearby phosphorus and zinc.
+Broadcast, drill or side-dress
+Earliest stage · never fertigate
 Patent No. 144684 · PS 217-2023
 What the soil does to this
 69.1% of Punjab samples above pH 8.0
 See it on the map →
-The pH at which VAN’s own copy says surface urea leaves as ammonia
+Above pH 8, part of the surface urea is lost as ammonia
 .
 Punjab soil testing programme · 36 district workbooks · 770,160 valid samples · c. 2016–2018
-. A condition of the soil, not a claim for the product.
+. The figure describes the soil. It is not a claim for the product.
 Order on WhatsApp
 Verify a bag
 32% N · 13% S
 guaranteed analysis, at least 8.0 kg of nitrogen and 3.25 kg of sulfur in every 25 kg bag
-7–18 days
-release profile, depending on climate and application method
+Over days
+released in steps after the first irrigation, not at once
 No. 144684
 Pakistan Patent on the sulfur-coating technology. Government of Pakistan Patent Office
 PS 217-2023
 PSQCA standard · licence CM/L-4126/2025 · released through VAN’s PNAC-accredited laboratory, LAB 336
+Flagship · a grower’s question
+I put 2 bags of urea on and the field goes yellow again in 3 weeks. Where did it go?
+1
+A bag of urea has 3 claimants
+The crop, the air and the water. Plain urea dissolves in the first irrigation and everything is exposed at once. Above pH 8 a share leaves as ammonia gas; what dissolves moves down with the water past the root. The farmer paid for all of it.
+2
+The coating limits how much is exposed at once
+Plain urea inside, fine elemental sulfur outside, held by a binder. Nothing happens until water reaches the granule. Then the coating breaks down in steps and the nitrogen is released over days, so the crop meets it while it is still there.
+3
+1 bag, once, at the first application
+1 bag of Vital Urea (25 kg) takes the place of 1 bag of urea (50 kg) once in the crop cycle, at the first application; the rest of the nitrogen programme stays as it is. Used in maize trials at Rafhan Maize Products (2023, joint), Descon Research Farm (2024, joint) and an independent partner farm (2025, not named). Do not compare kilograms. Compare what reaches the crop in the weeks it can use it.
+Count from the water
+Bags of Vital Urea on 1 acre (25 kg)
+=
+16
+kg
+nitrogen and
+6.5
+kg
+sulfur, from the declared analysis
+Give the first water
+Nothing happens to a coated granule until water reaches it
+Plain urea
+Vital Urea, sulfur coated
+first water
+days later
+everything is exposed at once: to the crop, the air and the water
+dry granules, nothing exposed yet
+What VAN will not claim for it
+A yield figure.
+A laboratory release curve with days on it.
+That the coating stops volatilisation. It limits what is exposed at once; it does not change the soil.
+A soil pH or soil test change. The acid effect is a zone around each granule for the days it is releasing.
+How it goes on
+Drill it at sowing. Side-dress if you cannot. Broadcast last.
+The same bag gives a different result depending on where it lands. The order below is VAN’s, for every basal granule it makes.
+1 · best
+Drill at sowing
+What it means.
+The seed drill’s fertilizer box places the granule about 5 cm beside and below the seed row, never touching the seed.
+Why.
+The root meets it first. Least contact with air, sun and free calcium at the surface. The whole bag is in the root zone.
+2
+Side-dress
+What it means.
+A band beside the row, by hand or planter, at sowing or the first irrigation, covered with soil.
+Why.
+Still a band near the root, but later and shallower than a drill.
+3 · last
+Broadcast
+What it means.
+Spread on the surface before the last ploughing or before an irrigation, and mixed in.
+Why.
+Most of the bag is away from the root, and most of it is exposed at the surface.
+Drill it beside and below the seed, never in contact with it. At germination and early growth the crop plans side-dress it. Never fertigate it.
 The problem
-Only about a quarter of applied nitrogen ends up in Pakistan’s crops.
-Nitrogen loss in Pakistani soil is chemistry, not carelessness. Volatilisation, nitrification and leaching all act on nitrogen that is dissolved in the soil solution, and a granule of plain urea dissolves all at once, on ground that is hot and alkaline. Everything that follows on this page is one idea: nitrogen still inside a granule is not in the soil solution, and what has not been released yet cannot be lost yet.
+Only about 29 of every 100 kg of nitrogen added to Pakistan’s cropland leave the field in the harvest.
+Nitrogen loss in Pakistani soil is caused by soil chemistry. Volatilisation, nitrification and leaching all act on nitrogen that is dissolved in the soil solution, and a granule of plain urea dissolves all at once, on ground that is hot and alkaline. Nitrogen still inside a granule is not yet in the soil solution, so it cannot yet be lost.
 The full case for moving off plain urea, with its sources, is on
 the national picture page
-. This page is about the coating: what it does, what it cannot do, and why it is made of sulfur.
-Roughly a quarter reaches the crop here. Against about 72% in the United States
-Share of applied nitrogen taken up by the crop, national cropland estimate
+.
+About 29% leaves in the harvest here, against about 71% in the United States
+Nitrogen removed in the harvest as a share of all nitrogen added to cropland, 2023
 Pakistan
 ~
-25
+29
 %
 United States
 ~
-72
+71
 %
-Source: Lassaletta et al. (2014), Environmental Research Letters 9:105011. Vital Urea exists because of the first number.
+Source: FAOSTAT, Cropland Nutrient Balance, December 2025 release (2023, FAO estimates).
+Why Pakistani soil needs it
+Punjab’s soil is alkaline, low in organic matter, and has not been tested for sulfur at scale.
+The Punjab soil testing programme has read 770,160 samples from 36 districts. These 4 facts come from those samples and from the national fertilizer record.
+96.1%
+of samples are above pH 7.5
+All 36 district averages are above pH 7.5, and 69.1% of samples are above pH 8. Above pH 8, part of the urea left on the surface turns to ammonia gas and is lost to the air.
+90.2%
+of samples are below 0.86% organic matter
+The average is 0.61%, and all 36 district averages are below 0.86%.
+0
+of 770,160 samples were tested for sulfur
+Every sample was tested for 13 properties. Sulfur is not one of them. Because it is never measured, a soil report never shows sulfur as short and never recommends it.
+3.68 to 1
+nitrogen to phosphorus, against 2 to 1 recommended
+NFDC Fertilizer Review 2024-25. Pakistan’s fertilizer use leans heavily on nitrogen, and the review does not report sulfur as a nutrient at all.
+What the nearest tests show.
+Across the border, on the same kind of soil, India does test for sulfur. 50.2% of soils in Indian Punjab and 78.2% in Rajasthan were deficient in sulfur, counting latent deficiency as the paper does (Shukla et al., 2021). This is indirect evidence about a neighbouring area and says nothing certain about any field in Pakistan.
+Not every field is short of sulfur.
+A 2003 study of 45 samples from Punjab’s Kallar tract found sulfur adequate in most of them (Ahmad et al., 2003).
+Soil figures: Punjab soil testing programme, 36 district workbooks, 770,160 samples, c. 2016 to 2018. National fertilizer ratio: NFDC Fertilizer Review 2024-25.
 What a bag buys
-One 25 kg bag stood against a 50 kg bag of plain urea, and the growth was comparable.
-Khaliqabad field programme with Rafhan Maize Products, 2023. Five grower sites picked by their agronomy team, application in August through harvest in October, assessments at 12 and 24 days. The comparison was deliberately uneven.
-Two bags, drawn to one scale of nitrogen. What the label says, and when it arrives
-Kilograms of N are registered label contents. Release behaviour is the mechanism each product is built on.
+Khaliqabad, 2023: Vital Urea in the field with Rafhan Maize Products.
+5 grower sites picked by their agronomy team, application in August through harvest in October.
+2 bags on the same nitrogen scale: what the label says, and when it arrives
+Rafhan Maize Products and Descon are the only clients and partners VAN names anywhere on this site, and each is named with their agreement. Every other partner and client, including the 2025 trial partner, is unnamed.
+3 maize trials, 2023 to 2025
+1 bag of Vital Urea, once, at the first application.
+Vital Urea has been used in 3 maize trials. In use, 1 bag of Vital Urea (25 kg) takes the place of 1 bag of urea (50 kg) once in the crop cycle, at the first application, when the crop needs the least nitrogen. The rest of the nitrogen programme stays as it is.
+Trial
+Year
+Run by
+Rafhan Maize Products, contract farms
+2023
+Joint, VAN and Rafhan
+Descon Research Farm
+2024
+Joint, VAN and Descon
+Independent partner farm, not named
+2025
+Independent
+Trial summaries are available on request to partner@van.com.pk.
 Urea
 50 kg
 Plain urea
@@ -77,71 +167,113 @@ on the label
 8 kg N
 + at least 3.25 kg of sulfur in the same granules
 how it arrives
-metered over 7–18 days
-released while there is a root ready to take it. What is still inside the granule cannot be lost yet
-metered over 7–18 days,
+released over days
+after the first irrigation, not all at once. Nitrogen still inside a granule is not yet in the soil solution, so it cannot yet be lost
+released over days,
 depending on climate and application method
-What the five sites recorded: comparable crop growth, shoot length, colour, leaf number, vigour, from the 25 kg bag on roughly a third of the applied nitrogen, with better uniformity of plant height, grain formation and milk-line development also observed. Cob size and length showed no difference. And what this was not: an observational field programme, not a replicated randomised trial, no independent yield measurement was recorded, and VAN reports it as exactly that. If you need replicated trial data for a purchasing decision, ask. Where it exists, you will get it.
+What Khaliqabad was: an observational field programme on 5 grower sites, not a replicated randomised trial, with no independent yield measurement recorded. If you need replicated trial data for a purchasing decision, ask. Where it exists, you will get it.
+The product
+What is in a bag of Vital Urea.
+Urea granules coated with finely ground elemental sulfur, held on by a binder VAN developed and patented.
+Bag
+25 kg
+Declared analysis
+32% nitrogen, 13% sulfur. That is at least 8.0 kg of nitrogen and 3.25 kg of sulfur in every bag
+Sulfur
+Elemental sulfur ground to 350 mesh or finer
+Coating material A
+A carbohydrate (starch-based) binder that holds the sulfur on the granule
+Coating material B
+The release-control component
+On the pack
+Slow Release Fertilizer
+The patent covers the combination of the 2 coating materials. VAN describes the process as low in energy use and safe to handle, and the coating as biodegradable, leaving no residue that reacts badly with the soil, its minerals or the crop.
+How it got here
+2014
+VAN adds a coating line to the plant; its first product is boron-coated nitro potash. VAN has tested many coating combinations since, including biological, nutrition-based and biostimulant coatings, and chose this one from them.
+2019
+Vital Urea launched.
+2026
+Pakistan Patent No. 144684 is granted. VAN holds the patent.
+Now
+Made under PSQCA standard PS 217-2023, licence CM/L-4126/2025, and released batch by batch through VAN’s PNAC-accredited laboratory, LAB 336.
 The coating
-A barrier with a deliberate failure rate.
-Water finds its way into the sulfur shell through pores and micro-cracks, dissolves the urea inside, and the solution diffuses back out through the same paths. Nothing releases until water gets in, that is what produces the 7–18 day profile.
-Three things move it inside that range: soil temperature, because diffusion and the microbes both run faster when it is hot; moisture, because a dry seedbed releases nothing; and handling, because a granule crushed at spreading has no barrier left and behaves like plain urea from the moment it hits the ground.
+How the coating releases nitrogen
+Nothing happens in a dry bag or on dry ground. The clock starts at the first irrigation or rain.
+When water reaches the granule, the carbohydrate binder breaks down. That lets go of the fine elemental sulfur, which spreads into the soil around the granule instead of staying on it, and the urea underneath starts to dissolve. In VAN’s field observation the release starts within the first day or two after water and runs over the following days, faster under good irrigation and slower when the ground is dry or cold.
+3 things move it inside that range: water, because nothing starts until water arrives; soil temperature, because the reactions run faster when it is warm; and handling, because a granule crushed at spreading has lost its coating and behaves like plain urea.
 What it does not do.
 A coating does not stop volatilisation. It reduces how much nitrogen is exposed to it at any one moment. Nitrogen released into hot alkaline soil behaves like any other nitrogen released into hot alkaline soil. Placement and irrigation timing still matter, and no coating substitutes for either.
-The same nitrogen, arriving while there is a root ready to take it. Schematic, not a measurement. The demand curve is drawn for shape, and no axis carries a figure VAN has not published. Both curves carry the same nitrogen. The only difference is when it arrives.
 Why sulfur
-Three ways to slow urea down. Only one of them is also plant food.
+3 ways to slow urea down. Only 1 of them is also plant food.
 accurate, inert
 Polymer coating
 Controls release accurately and delivers nothing else. Adds no nutrient, and the polymer stays in the soil after the nitrogen has gone.
 slow the reactions, not the release
 Chemical inhibitors
 Imported, dose-sensitive, temperature-sensitive, and they add no nutrient of their own.
-the one VAN chose
+VAN’s choice
 Sulfur coating
-Controls release and is the only one of the three that is itself a nutrient and itself chemically active in the soil. The next section is what that buys.
-A sixth of the bag is coating, and the numbers are kept honest: 3.25 kg is the registered sulfur nutrient, 13% of 25 kg under PS 217-2023. The sulfur VAN charges to the coater is 80% pure, so delivering it means about 4.06 kg of sulfur material in the bag. Arithmetic, not a batch assay. What a certificate carries is the measured elemental sulfur, most recently 13.27% on batch VU25186.
+Controls release and is the only 1 of the 3 that is itself a nutrient and itself chemically active in the soil.
+About 16% of the bag is coating. 3.25 kg is the registered sulfur nutrient, 13% of 25 kg under PS 217-2023. The sulfur VAN uses is 80% pure, so the bag carries about 4.06 kg of sulfur material. What a certificate carries is the measured elemental sulfur, most recently 13.27% on batch VU25186.
 The chemistry
-Why the result is not “nitrogen plus sulfur.”
-Two pictures. The shell geometry is what makes the sulfur work, and the sulfur is what lets the nitrogen finish as yield.
-Sulfur only becomes plant food at its surface, and a micronised shell is nearly all surface
-The same mass of elemental sulfur in three geometries; oxidation to sulfate happens where soil touches sulfur
+The plant needs sulfur to turn nitrogen into protein.
+The left panel shows why the sulfur is ground fine. The right panel shows what sulfur does for the nitrogen inside the plant.
+Sulfur only becomes plant food at its surface, and fine sulfur has far more surface
+The same mass of elemental sulfur in 3 geometries; oxidation to sulfate happens where soil touches sulfur
 one lump
 granules
 urea
-micronised shell
-Rapid oxidation calls for particles finer than about 20 µm, well dispersed (Bremer, 2022), which is what a shell micronised onto a granule is. The reaction is biological and roughly triples to quadruples for every 10 °C of soil warming (Janzen & Bettany, 1987): the heat that destroys surface urea is the heat that runs this. 2 S⁰ + 3 O₂ + 2 H₂O → 2 SO₄²⁻ + 4 H⁺. Four protons per two atoms of sulfur.
-Nitrogen that arrives without sulfur does not become yield
+fine, on the granule
+Soil bacteria can only work on the outside of a sulfur particle. For the same kilogram of sulfur, a particle 1/2 the size gives them twice the surface to reach. VAN grinds its sulfur to 350 mesh or finer, and water spreads it off the granule into the soil. Rapid oxidation calls for particles finer than about 20 µm, well dispersed (Bremer, 2022), so the finer the grind, the better. The reaction is biological and runs 3 to 4 times faster for every 10 °C of soil warming (Janzen & Bettany, 1987). Warm soil speeds up this reaction, and it also speeds up ammonia loss from surface urea. 2 S⁰ + 3 O₂ + 2 H₂O → 2 SO₄²⁻ + 4 H⁺. 4 protons per 2 atoms of sulfur.
+Without sulfur, the nitrogen a plant takes up cannot become protein
 Both elements are built into protein together; where sulfur is short, absorbed nitrogen accumulates unfinished
-Wheat builds protein at about fifteen parts nitrogen to one part sulfur, and above seventeen-to-one yield falls away, so each kilogram of sulfur the crop is short of is roughly 10–15 kg of nitrogen that cannot be finished into protein (Grzebisz et al., 2022; Zapałowska et al., 2026; Wan et al., 2012. A cereal ratio; brassicas run lower). The protons from the oxidation land exactly where the nitrogen is. Dissolving calcium-held phosphorus and freeing zinc, iron and manganese (Khoshru et al., 2023).
+2 of the amino acids that make up protein, cysteine and methionine, contain sulfur. When sulfur runs short, protein building slows and the nitrogen the plant has taken up builds up unused, as free amino acids such as asparagine, arginine and glutamine (Yu et al., 2018). On sulfur-deficient soil, adding sulfur raised wheat’s nitrogen use efficiency by more than 20% (Yu et al., 2021). On a poor-fertility site in Argentina, sulfur lifted wheat’s nitrogen recovery from 0.15 to 0.32 (Arata et al., 2017).
+Nitrogen needs sulfur to become protein. The protons from the sulfur’s oxidation lower the pH around the granule, where the nitrogen is, which may help nearby phosphorus and zinc. A microsite effect, a zone around each granule for the days it is releasing.
 Where this stops being certain.
-Alkaline soil is a harder place to oxidise sulfur, not an easier one: in a controlled comparison, elemental sulfur lowered the pH of an alkaline soil only where a sulfur-oxidising inoculant was added with it (Mattiello et al., 2017). Either way it is a microsite effect. A zone around each granule, for the weeks it is releasing. It will not move a soil test, and VAN does not claim it does. Raising that oxidation rate deliberately is a live VAN research track, not a product claim.
-One granule, not a blend
-Coated on every granule. The argument that decides the other three.
+Alkaline soil slows sulfur oxidation. In a laboratory comparison, elemental sulfur oxidised less in a slightly alkaline soil than in an acidic one, 12% against 20.9%, and it lowered the alkaline soil’s pH only where a sulfur-oxidising inoculant was added with it (Mattiello et al., 2017). It will not move a soil test. Raising that oxidation rate is a live VAN research track.
+What a harvest takes away
+Each crop takes sulfur from the soil every season.
+1 bag of Vital Urea an acre puts 3.25 kg of sulfur on the field. A wheat crop of about 46 maunds an acre takes up about 8.9 kg of sulfur an acre, grain and straw together. 1 bag does not replace a season’s removal. It puts sulfur into the root zone beside the nitrogen, at the time the nitrogen goes on.
+Crop
+Sulfur taken up or removed by the crop
+Source (per hectare, as published)
+Wheat
+8.9 kg S per acre
+22 kg/ha taken up, grain and straw, by a 4.6 t/ha crop (about 46 maunds an acre) · FAO Bulletin 16 (2006)
+Maize
+8.5 kg S per acre
+21 kg/ha removed in grain and stover at 9.5 t/ha (about 96 maunds an acre) · FAO Bulletin 16 (2006)
+Sugarcane
+8.1 to 13.0 kg S per acre
+20 to 32 kg/ha · Shukla & Lal (2004)
+Cotton
+4.0 kg S per acre
+10 kg/ha taken up by 2.5 t/ha of seed cotton (about 25 maunds an acre) · FAO Bulletin 16 (2006)
+Rice
+about 2 kg S per tonne of grain
+IRRI fact sheet (2003)
+1 bag of Vital Urea
+3.25 kg S per acre
+13% of 25 kg, the registered analysis
+Per-acre figures are the published per-hectare figures divided by 2.471. Uptake is what the whole crop takes in; removal is what leaves the field in the harvest. Both vary with yield, variety and soil; these are published reference values at the yields stated, not measurements from Pakistani fields.
+1 granule, not a blend
+Every granule is coated.
 Everything above needs the nitrogen and the sulfur in the same place at the same moment. A mixture cannot promise that.
-Two materials in one bag separate; a coated granule cannot separate from itself
+A blend can separate in the bag. A coated granule cannot.
 Blends segregate by size and density, and the wider the size spread, the more severe it gets (Antille et al., 2013)
 a blend, settled by size
 every granule coated
-The shell is also what creates the surface in the first figure. The same sulfur as a lump would still be sitting there next season.
-What is claimed here and what is not.
-Uniformity is recorded batch by batch. What VAN publishes is the declared analysis, 32% N and 13% S, registered against PS 217-2023 and released through VAN’s PNAC-accredited laboratory. Coating weight is measured per batch; VAN does not publish the figure, and will provide it against a batch number on the same terms as the certificate. No granule-to-granule figure is claimed on this page because none is published, not because none is measured.
+The fine sulfur on the granule is what creates the surface in the first figure. The same sulfur as a lump would still be in the soil next season.
+Batch records.
+Uniformity is recorded batch by batch. The declared analysis, 32% N and 13% S, is registered against PS 217-2023 and released through VAN’s PNAC-accredited laboratory. Coating weight is measured per batch and given against a batch number on the same terms as the certificate.
 The evidence
-What has been tested, and how it was tested.
-The field programme above is one of two proofs. The second is a published, replicated trial. Nothing below is an estimate.
-Published trial. Maize, VAN’s trial station, 2024
-A randomised complete block design with three replications on DK-6321 maize compared nitrogen strategies. Two stage-timed applications of sulfur-coated urea, at the 4–6 leaf stage and again twenty days later at the 8–12 leaf stage. Outperformed a five-application programme of conventional urea followed by calcium ammonium nitrate across the growth and yield parameters measured.
-Why we cite it for the finding and not a headline number:
-the paper reports its own yield inconsistently between its results table and its discussion. We would rather tell you that here than have you find it.
-Umair, A., Manzoor, M., Saleem, M. S., et al. (2025). Planta Animalia 4(3), 129–135.
-DOI 10.71454/PA.004.03.0126
-.
-What the published research establishes about coated urea, not measurements of Vital Urea
+What the published research establishes about coated urea, not measurements of Vital Urea.
 Coated urea raises nitrogen recovery against uncoated urea.
-Zhao, Gao & Gao (2025), Agriculture 15(14):1554. A two-year field study reporting higher nitrogen recovery efficiency, agronomic efficiency and grain yield for sulfur-coated urea than for conventional urea in rice.
+Zhao, Gao & Gao (2025), Agriculture 15(14):1554. A 2-year field study reporting higher nitrogen recovery efficiency, agronomic efficiency and grain yield for sulfur-coated urea than for conventional urea in rice.
 The effect holds in Pakistani conditions.
 Ghafoor, Rahman & Ali et al. (2021), Environmental Science and Pollution Research. Coated urea sources improved growth, yield and nitrogen use efficiency and reduced nitrogen losses in wheat under an arid Pakistani environment.
-Elemental sulfur releases phosphorus that alkaline soil has locked away.
+In 1 study, elemental sulfur with an inoculant raised phosphorus availability in calcareous soil.
 Nadeem, Hanif & Khan (2022), Archives of Agronomy and Soil Science 69(9):1494–1502. Elemental sulfur with a sulfur-oxidising inoculant raised phosphorus availability and improved wheat growth and yield in calcareous soil.
 Sources for the chemistry sections
 ＋
@@ -149,32 +281,44 @@ Degryse, F., et al. (2016). Soil Science Society of America Journal 80(2), 294�
 Bremer, E. (2022). Crops & Soils 56(1), 34–37. doi:10.1002/crso.20241.
 Janzen, H. H., & Bettany, J. R. (1987). Canadian Journal of Soil Science 67(3), 609–618. Doi:10.4141/cjss87-057. Temperature response as summarised by Degryse et al. (2016).
 Grzebisz, W., Zielewicz, W., & Przygocka-Cyna, K. (2022). Agronomy 13(1), 66. doi:10.3390/agronomy13010066.
-Elbasyoni, I. S., et al. (2026). Life 16(5), 795. doi:10.3390/life16050795.
 Khoshru, B., et al. (2023). Bacteria 2(2), 98–115. doi:10.3390/bacteria2020008.
 Mattiello, E. M., et al. (2017). Journal of Agricultural and Food Chemistry 65(6), 1108–1115. doi:10.1021/acs.jafc.6b04586.
-Zapałowska, A., et al. (2026). Molecules 31(1), 160. Doi:10.3390/molecules31010160. The N:S optima, summarising Sedlár et al.
-Wan, Y., Shewry, P. R., & Hawkesford, M. J. (2012). Journal of Cereal Science 56(1), 72–80. Doi:10.1016/j.jcs.2011.10.014. Critical grain S 1.2 mg/g and N:S 17:1.
 Antille, D. L., Sakrabani, R., & Tyrrel, S. (2013). Applied and Environmental Soil Science 2013, 694597. Doi:10.1155/2013/694597. Reporting the segregation thresholds of Miserque and Pirard.
-Lassaletta, L., et al. (2014). Environmental Research Letters 9:105011. The national nitrogen uptake shares.
+FAOSTAT (2025). Cropland Nutrient Balance, December 2025 release. The national nitrogen shares, 2023.
+Yu, Z., Juhasz, A., Islam, S., Diepeveen, D., et al. (2018). Scientific Reports 8:2499. doi:10.1038/s41598-018-20935-8. Sulfur in cysteine and methionine; free amino acids such as asparagine, arginine and glutamine build up when sulfur is short; grain protein N:S.
+Yu, Z., She, M., Zheng, T., Diepeveen, D., et al. (2021). Communications Biology 4, 945. doi:10.1038/s42003-021-02458-7. Sulfur added to sulfur-deficient soil raised wheat nitrogen use efficiency by more than 20%.
+Randall, P. J., Spencer, K., & Freney, J. R. (1981). Australian Journal of Agricultural Research 32(2), 203–212. doi:10.1071/AR9810203. Critical wheat grain S 0.12% and N:S 17:1.
+Arata, A. F., Lerner, S. E., Tranquilli, G. E., Arrigoni, A. C., et al. (2017). Crop & Pasture Science 68(3), 202–212. doi:10.1071/CP16330. Nitrogen recovery 0.15 against 0.32 with sulfur, poor-fertility site, Argentina.
+FAO (2006). Plant nutrition for food security. FAO Fertilizer and Plant Nutrition Bulletin 16. Sulfur: wheat 22 kg S/ha taken up by a 4.6 t/ha crop; maize 21 kg S/ha removed in grain and stover at 9.5 t/ha; cotton 10 kg S/ha taken up by 2.5 t/ha of seed cotton.
+IRRI (2003). Rice fact sheet, sulfur. About 2 kg S removed per tonne of rice grain.
+Shukla & Lal (2004). Indian Journal of Agronomy 49(1). Sugarcane sulfur removal 20 to 32 kg S/ha.
+Shukla, A. K., Behera, S. K., Prakash, C., Tripathi, A., et al. (2021). Scientific Reports 11:19760. doi:10.1038/s41598-021-99040-2. Indian Punjab 50.2% and Rajasthan 78.2% of soils sulfur-deficient, counting latent deficiency.
+Ahmad et al. (2003). Asian Journal of Plant Sciences 2(5). Sulfur adequate in most of 45 samples from the Punjab Kallar tract.
+NFDC (2025). Fertilizer Review 2024-25. N:P use 3.68 to 1 against a recommended 2 to 1; sulfur not reported as a nutrient.
 In the field
 Where it goes, and how much.
-From the locked VAN crop nutrition plans, 2025 set. This table is a sample. Vital Urea appears in 27 of the 28 published programmes.
+From VAN’s published crop nutrition plans, 2025 set. This table is a sample. Vital Urea appears in 27 of the 28 published programmes.
 All 28 crop plans →
+Drill it at sowing
+Drill it beside and below the seed, never touching it. Side-dress or band it beside the row if you cannot drill. Broadcast last. The granule needs soil and water around it to release.
+Use it early
+Apply it at the earliest stage the crop plan allows. It can be the first or the second urea application. Earlier is better.
+Count from the water
+Release starts after the first irrigation or rain. Plan the application so that water follows it.
+Never fertigate
+Do not dissolve it and run it through drip or irrigation water. It is made to release slowly in the soil.
 Crop
 Stage
 Dose per acre
 Method
 Wheat
 Land Preparation
-½ bag
-(
-25 kg
-)
-Broadcasting
+½ bag (12.5 kg)
+Drill at sowing; broadcast if no drill
 Garlic
 Land preparation
 1 bag (25 kg)
-Broadcasting
+Drill at sowing; broadcast if no drill
 Garlic
 Germination
 1 bag (25 kg)
@@ -190,27 +334,31 @@ Side dressing / broadcasting
 Soybean
 Land preparation
 ½ bag (12.5 kg)
-Broadcasting
+Drill at sowing; broadcast if no drill
 Lentil
 Land preparation
 ½ bag (12.5 kg)
-Broadcasting
+Drill at sowing; broadcast if no drill
 Mungbean & mash
 Land preparation
 ½ bag (12.5 kg)
-Broadcasting
+Drill at sowing; broadcast if no drill
 Canola
 Land preparation
 1 bag (25 kg)
-Side dressing / broadcasting
-Growing a different crop? The full stage-by-stage programme for 28 crops is in the crop nutrition plans, and how the bag is applied changes the answer, so the application guidance sits beside them.
+Drill at sowing; broadcast if no drill
+Growing a different crop? The full stage-by-stage programme for 28 crops is in the crop nutrition plans, with the application guidance beside them.
 Find your crop’s plan →
 Behind the bag
 What is behind the bag.
 Registration & standard
-PSQCA PS 217-2023 · Licence CM/L-4126/2025 · Pakistan Patent No. 144684
+PSQCA PS 217-2023 · Licence CM/L-4126/2025 · Pakistan Patent No. 144684 · launched in 2019
 Pack size
-25 kg bag
+25 kg bag, marked Slow Release Fertilizer
+Sulfur
+Elemental sulfur ground to 350 mesh or finer, held on by a carbohydrate binder with a release-control component
+Safety
+Not classified as hazardous under GHS. Store bags sealed, off the floor, in a cool, dry place away from moisture and direct sun (VAN SDS, Rev 3, July 2026)
 Quality
 Every batch released through VAN’s own PNAC-accredited laboratory. ISO/IEC 17025:2017, LAB 336
 Certificate on request
@@ -219,28 +367,23 @@ Send the batch number off the bag and VAN sends the certificate of analysis for 
 ⬇ MSDS (PDF)
 ⬇ Product knowledge deck (PDF)
 Verify a bag →
-A VAN flagship. Exclusively ours
-Vital Urea stays a VAN brand.
+A VAN flagship
+Sell Vital Urea, or have it made under your brand.
 The sulfur-coating technology is protected by Pakistan Patent No.
 144684
-. Carry it through the distribution network. Territory and volume terms available.
+. Carry it through the distribution network, with territory and volume terms. All 23 VAN brands are open for own-brand manufacturing, Vital Urea included.
 Become a distributor →
-Sources for this page.
-Analysis, standard, licence and patent. The registered TDS and van.com.pk. Release mechanism and coating chemistry. The peer-reviewed sources listed in the evidence section, cited for the technologies they studied, under the conditions each study describes; none is a measurement of Vital Urea. Field programme, Khaliqabad 2023, with Rafhan Maize Products. Replicated trial, Umair et al. (2025), Planta Animalia 4(3). National nitrogen uptake, Lassaletta et al. (2014). Doses, the locked VAN crop nutrition plans, 2025 set. No performance percentage is claimed for Vital Urea anywhere on this page; the two proofs are reported with their limits stated.
+Own-brand manufacturing →
+Sources.
+Analysis, standard, licence and patent. The registered TDS and van.com.pk. Release mechanism and coating chemistry. The peer-reviewed sources listed in the evidence section, cited for the technologies they studied, under the conditions each study describes; none is a measurement of Vital Urea. Field programme, Khaliqabad 2023, with Rafhan Maize Products. National nitrogen in the harvest, FAOSTAT Cropland Nutrient Balance, December 2025 release (2023). Soil figures, the Punjab soil testing programme, 770,160 samples. Fertilizer ratio, NFDC Fertilizer Review 2024-25. Sulfur and protein, Yu et al. (2018, 2021), Randall et al. (1981), Arata et al. (2017). Crop sulfur removal, FAO Bulletin 16 (2006), IRRI (2003), Shukla & Lal (2004). Release timeline, VAN field observation. Storage and safety, VAN SDS-VAN-001 Rev 3. Doses, VAN’s published crop nutrition plans, 2025 set.
 Crop nutrition engineered, manufactured, registered and tested in Pakistan.
-Plant
-·
-49-Km Multan Road, Phool Nagar Bypass, Lahore
-Head office
-·
-605 Al-Hafeez Heights, Gulberg III, Lahore 54660
++92 42 35762215
 WhatsApp
 +92 300 5003041
-Landline
-+92 42 35762215
 info@van.com.pk
 Products
 All 23 brands
+Compare them
 Vital Urea
 Where to buy
 Verify a bag
@@ -248,20 +391,25 @@ Crops
 28 crop plans
 Wheat
 How you apply it
+Soil Atlas
 Knowledge
 Why Pakistan must shift
-The soil, measured
-Product knowledge decks
+Product decks
 Circular economy
+Vitalytics tools
 Company
-Make with us
+Your Brand
 VAN Lab
-Tools
-About & contact
+About
+Company profile
+Head office
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+Plant
+49-Km Multan Road, Phool Nagar Bypass, Lahore
 © 2026
 Vital Agri Nutrients (Pvt) Ltd
-·
-www.van.com.pk
+Full member of CropLife Pakistan since 2024
+How VAN competes
 LinkedIn
 Facebook
 Instagram

@@ -86,7 +86,7 @@ export function ToolFinder() {
         <div className="tf-switches">
           <label className="tf-switch">
             <input type="checkbox" checked={building} onChange={e => setBuilding(e.target.checked)} />
-            <span>Include the {buildingCount} still coming</span>
+            <span>Include the {buildingCount} still being built</span>
           </label>
           {dirty && <button className="tf-clear" onClick={() => { setQ(''); setTopic(null); setBuilding(false) }}>Clear</button>}
         </div>
@@ -95,7 +95,7 @@ export function ToolFinder() {
       <p className="tf-count" role="status">
         {shown.length === 0
           ? 'Nothing matches that. Clear the filters, or tell us what you were looking for.'
-          : <>Showing <b>{shown.length}</b> of {TOOLS.length} tools{topic ? <> in <b>{topic}</b></> : null}{q ? <> matching “{q}”</> : null}.</>}
+          : <>Showing <b>{shown.length}</b> of {TOOLS.length} tools{topic ? <> in <b>{topic}</b></> : null}{q ? <> matching “{q}”</> : null}. Some tools are listed under more than 1 topic.</>}
       </p>
 
       {order.map(s => byState(s).length > 0 && (

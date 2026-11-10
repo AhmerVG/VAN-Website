@@ -2,20 +2,76 @@ PAGE: /circular-economy/index.html
 ======================================================================
 Products
 Crop Plans
-Soil
-Tools
+Your Brand
+Soil Atlas
+Vitalytics
 VAN Lab
 Knowledge
 About
-Make with us
-For farmers
-Menu ☰
+Search
+☰
 View
 Simple view
+Circular economy · the potash loop
+From the field to the boiler and back to the field.
+Potassium in the soil
+VAN
+10 t ash → 1 t potash
+K
+imported potash
+K
+1
+/
+8
+A crop takes potassium out of the soil
+Every crop draws potassium from the ground it grows in. Pakistani cropping removes 40 to 61 kg of K₂O per acre every year. Farmers apply about 0.6 kg.
+2
+/
+8
+The harvest carries it away
+The grain goes to market. The crop residue leaves the field too, and the potassium in it goes with it.
+3
+/
+8
+The residue fires a boiler
+Crop residue is burned as fuel in bio-power boilers. Burning takes the carbon and the water. The minerals stay behind.
+4
+/
+8
+The potassium ends up in the ash
+The potassium and silicon the crop took from the soil are left concentrated in the crop residue ash.
+5
+/
+8
+VAN brings the ash back and recovers the potash
+VAN assays every batch of ash for potassium and silicon and sends it to PCSIR, a government laboratory, for heavy-metal screening. Then it extracts the potassium: about 1 tonne of potash from every 10 tonnes of ash. 3,000 t of ash has been processed so far.
+6
+/
+8
+It goes into VAN’s fertilizer
+The recovered potassium is a raw material in VAN’s own manufacturing, in place of imported potash, held to the same guaranteed analysis. About 1 in 5 tonnes of the potash VAN uses now comes from ash.
+7
+/
+8
+And back onto the field
+The potassium the crop took out of the soil goes back into it. Burning removed the carbon. VAN recovers the minerals.
+8
+/
+8
+Pakistan imports its potash
+Pakistan has no potash mine in production, so each tonne VAN recovers replaces a tonne of imported potash. Between 2023 and 2026 VAN replaced about 300 t of imported potash. The line being built for 2027 will recover 500 t a year from 5,000 t of ash.
+The field
+Harvest
+Boiler
+Ash
+Recovery
+Fertilizer
+Back to the field
+Pakistan
 Beyond the bag · circular economy
 The residue leaves the field.
 We bring the minerals back.
-Crop residue leaves the field to fuel a bio-power boiler. The potassium and the silicon that the crop pulled out of that soil leave with it, and end up concentrated in the fly ash. We collect that ash, measure what is in it, recover the potassium and the silicon, and formulate them back into fertilizer. That is the loop.
+Crop residue leaves the field to fuel a bio-power boiler. The potassium and the silicon that the crop pulled out of that soil leave with it, and end up concentrated in the crop residue ash. We collect that ash, measure what is in it, recover the potassium and the silicon, and formulate them back into fertilizer. That is the loop.
 01
 Where it stands
 02
@@ -26,47 +82,37 @@ Fly ash to nutrient
 What physically happens to a tonne of ash after it reaches VAN, step by step.
 The soil actions register
 →
-Every intervention VAN makes to soil, the mechanism it works through, and the evidence behind it. The ones we leave off are named too.
+Every intervention VAN makes to soil, the mechanism it works through, and the evidence behind it.
 01
 Where it stands
 Potassium is in production. Silicon is not.
-We do not average the two into one status. A reader deserves to know which is which before reading the process.
 ~20%
 of VAN’s potash intake now comes from recovered material, not import
 3,000 t
-fly ash processed on the pilot line to date
+fly ash processed to date
 500 t
 recovered potash a year, from 5,000 t of ash. The line we are building for 2027
 ~10 : 1
 tonnes of ash in, per tonne of potash out
 We recover potassium today and consume it inside our own manufacturing, in place of imported potash. It is a working raw material, not a trial. About 300 tonnes of imported potash has been replaced between 2023 and 2026, across several forms and grades, which is what 3,000 tonnes of ash yields at the recovery ratio above.
-We have taken the silicon route to the final stage of R&D. It is proven in our laboratory and is being readied to join the production line. The target form is not fixed yet. Soluble silicate and amorphous silica behave differently in an alkaline soil, and we will name the form when the R&D settles it, not before. Scale-up is planned for the end of 2027.
+We have taken the silicon route to the final stage of R&D. It is proven in our laboratory and is being readied to join the production line. The target form is not fixed yet. Soluble silicate and amorphous silica behave differently in an alkaline soil, and the form will be set when the R&D is complete. Scale-up is planned for the end of 2027.
 Potassium: in production · scaling up
 Silicon: R&D. Final stage
-Feedstock: bio-fuel plant fly ash
+Feedstock: crop residue ash
 Heavy metals screened by PCSIR
 02
 What we do not claim
-Recovered potassium goes into every potash grade, so no single bag is marked with it.
-Recovered potassium enters VAN products as a raw material, the same way bought-in potash does. It is not ring-fenced for one grade, so in practice it reaches every potash-containing product we make, which is exactly why no VAN product page carries a “made with recovered potassium” mark. We publish the intake share and stop there.
+Recovered potassium is used across VAN’s potash grades, so no single bag is marked with it.
+Recovered potassium enters VAN products as a raw material, the same way bought-in potash does. It is not kept for 1 grade, so no VAN product carries a “made with recovered potassium” mark.
 Silicon recovery is still finishing R&D and is not in any product. We do not claim to close the carbon loop: combustion takes the carbon, we recover the minerals.
-A question this page doesn’t answer?
-The agronomy team answers on the same WhatsApp line as everything else.
-Ask on WhatsApp
 Crop nutrition engineered, manufactured, registered and tested in Pakistan.
-Plant
-·
-49-Km Multan Road, Phool Nagar Bypass, Lahore
-Head office
-·
-605 Al-Hafeez Heights, Gulberg III, Lahore 54660
++92 42 35762215
 WhatsApp
 +92 300 5003041
-Landline
-+92 42 35762215
 info@van.com.pk
 Products
 All 23 brands
+Compare them
 Vital Urea
 Where to buy
 Verify a bag
@@ -74,20 +120,25 @@ Crops
 28 crop plans
 Wheat
 How you apply it
+Soil Atlas
 Knowledge
 Why Pakistan must shift
-The soil, measured
-Product knowledge decks
+Product decks
 Circular economy
+Vitalytics tools
 Company
-Make with us
+Your Brand
 VAN Lab
-Tools
-About & contact
+About
+Company profile
+Head office
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+Plant
+49-Km Multan Road, Phool Nagar Bypass, Lahore
 © 2026
 Vital Agri Nutrients (Pvt) Ltd
-·
-www.van.com.pk
+Full member of CropLife Pakistan since 2024
+How VAN competes
 LinkedIn
 Facebook
 Instagram

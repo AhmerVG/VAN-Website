@@ -6,7 +6,7 @@ import { useShared } from '@/lib/shareState'
 import { PRODUCTS, CROPS } from '@/data/catalogue'
 import { MenuPanel } from './MenuPanel'
 import type { Route } from '@/lib/router'
-import { WaIcon } from './bits'
+import { WaIcon, noStop } from './bits'
 import { PlainModeToggle } from './Detail'
 import { UrduToggle } from './Ur'
 import { URDU_ON, usePlainMode } from '@/lib/readingMode'
@@ -305,7 +305,7 @@ export function Footer() {
               <div key={h}>
                 {/* D-4, 28 Sep 2026: was <h4>. Nothing on any page between the body's last heading
                     and the footer is an <h3>, so <h4> here skipped a level. */}
-                <h3>{h}</h3>
+                <h3>{noStop(h)}</h3>
                 <ul>{links.map(([l, href]) => <li key={l}><a href={href} className="ft-tap">{l}</a></li>)}</ul>
               </div>
             ))}

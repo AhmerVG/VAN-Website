@@ -9,13 +9,14 @@ import { BASAL_SLUGS, METHOD_ROWS, PRODUCT_NOTE } from '@/data/application'
  */
 export function isBasal(slug: string) { return (BASAL_SLUGS as readonly string[]).includes(slug) }
 
+// Tahir 7 Nov 2026 (PR-30): the lead names the products it covers (granular fertilisers applied at or before sowing) instead of "basal".
 export function ApplicationMethods({ slug, compact }: { slug: string; compact?: boolean }) {
   if (!isBasal(slug)) return null
   const note = PRODUCT_NOTE[slug]
   const tone = (rank: string) => rank.startsWith('1') ? 'var(--green)' : rank.startsWith('3') ? 'var(--rust)' : 'var(--navy)'
   return (
     <section className={compact ? '' : 'mt-10'} id="how-it-goes-on" aria-label="How it goes on">
-      <SectionHead eyebrow="How it goes on" tone="green" title="Drill it at sowing. Side-dress if you cannot. Broadcast last." lead="The same bag gives a different result depending on where it lands. The order below is VAN’s, for every basal granule it makes." />
+      <SectionHead eyebrow="Application" tone="green" title="Methods of soil application, in order of preference: drill at sowing, side-dress, broadcast" lead="The crop’s response to the same amount of fertiliser depends on where the granules are placed. For granular fertilisers applied at or before sowing, VAN recommends these 3 methods in this order." />
       <ol className="grid gap-3" style={{ listStyle: 'none', padding: 0, margin: 0 }}>
         {METHOD_ROWS.map(r => (
           <li key={r.method} className="panel p-4 sm:p-5" style={{ borderLeft: `4px solid ${tone(r.rank)}` }}>
@@ -33,7 +34,9 @@ export function ApplicationMethods({ slug, compact }: { slug: string; compact?: 
       {/* The "7 to 9% better response" OBSERVATION sentence was pulled from the site per Tahir's
           28 Sep 2026 ruling (this page only. It stays in VAN's internal sales decks). The constant
           is left in src/data/application.ts, unrendered, because the LMS deck generator may still
-          read it from that file. */}
+          read it from that file.
+          Tahir 10 Nov 2026 (EN-10): on the Vital Urea page only, the observation is back as part of
+          PRODUCT_NOTE['vital-urea'] ('7 to 9% more yield per acre'); other product pages stay without it. */}
       {note && <p className="cap mt-2" style={{ maxWidth: '78ch' }}>{note}</p>}
     </section>
   )

@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import { NATIONAL } from '@/data/site'
 import { useInView, useReducedMotion, useCountUp, useTip } from '@/hooks/useInView'
 import { useFitWidth } from '@/hooks/useFitWidth'
+import { noStop } from '@/components/bits'   // Tahir 7 Nov 2026 (CR-23): no full stop at the end of a heading
 
 /* Demo A's charts restyled into Demo B's palette: ink navy bars, gold for Pakistan,
    field green for "crop" series, soil brown / rust for "loss" series, hairline rules
@@ -35,7 +36,7 @@ export function UseChart({ autoplay = false }: { autoplay?: boolean }) {
   const barW = W - labelW - valW
   return (
     <div ref={ref} className={`chart panel p-5 ${on ? 'in' : ''}`}>
-      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>{d.title}</h4><span className="cap">{d.unit}</span></div>
+      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>{noStop(d.title)}</h4><span className="cap">{d.unit}</span></div>
       <div ref={fit.ref}><svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ marginTop: 10 }} role="img" aria-label={d.title}>
         {[20, 40, 60, 80].map(g => <line key={g} x1={labelW + (g / max) * barW} x2={labelW + (g / max) * barW} y1={0} y2={H - 8} stroke={RULE} strokeDasharray="2 3" />)}
         {d.rows.map(([name, v], i) => {
@@ -76,7 +77,7 @@ export function BalanceChart() {
   ]
   return (
     <div ref={ref} className={`chart panel p-5 ${on ? 'in' : ''}`}>
-      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>{b.title}</h4><span className="cap">share of total nutrient applied · hover a segment</span></div>
+      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>{noStop(b.title)}</h4><span className="cap">% of total nutrient applied · tap or hover over a segment</span></div>
       <div className="flex gap-5 mt-3 cap flex-wrap">{segs(b.pakistan).map(s => <span key={s.k} className="inline-flex items-center gap-2"><i style={{ width: 12, height: 12, background: s.c, display: 'inline-block', borderRadius: 3 }} />{s.k}</span>)}</div>
       <div ref={fit.ref}><svg viewBox={`0 0 ${W} ${H}`} width="100%" className="mt-2" role="img" aria-label={b.title}>
         {rows.map((r, ri) => {
@@ -113,7 +114,7 @@ export function BalanceChart() {
           </div>
         ))}
       </div>
-      <Source>{b.source} Potash is {b.pakistan.shareK}% of nutrient use in Pakistan and {b.india.shareK}% in India.</Source>
+      <Source>{b.source}</Source>
     </div>
   )
 }
@@ -139,7 +140,7 @@ export function IndexLinesChart() {
   const nV = useCountUp(nIdx, on, 1500), wV = useCountUp(wIdx, on, 1500)
   return (
     <div ref={ref} className={`chart panel p-5 ${on ? 'in' : ''}`}>
-      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>Nutrient applied and wheat yield, 1999-2000 → 2023-24</h4><span className="cap">index, 2000 = 100</span></div>
+      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>Nutrient applied per acre and wheat yield as an index, 1999-2000 to 2023-24</h4><span className="cap">{/* L1 editor 7 Nov 2026 (whyshift m4): base period as elsewhere; was "index, 2000 = 100" */}index, 1999-2000 = 100</span></div>
       <div ref={fit.ref}><svg viewBox={`0 0 ${W} ${H}`} width="100%" className="mt-3" role="img" aria-label="2 index lines, nutrient per acre and wheat yield">
         {[100, 120, 140, 160, 180].map(g => (
           <g key={g}><line x1={x0} x2={x1} y1={y(g)} y2={y(g)} stroke={g === 100 ? INK : RULE} strokeDasharray={g === 100 ? undefined : '2 3'} /><text x={x0 - 8} y={y(g) + 4} textAnchor="end" fontSize={12} fill={MUTED}>{g}</text></g>
@@ -165,7 +166,7 @@ export function IndexLinesChart() {
         <div className="pt-3" style={{ borderTop: `2px solid ${RUST}` }}><div className="pull text-[clamp(28px,2.4vw,36px)]" style={{ color: RUST }}>{nV}</div><div className="cap">{n.label} · {n.from} → {n.to} {n.unit} ({n.pct}) · {n.source}</div></div>
         <div className="pt-3" style={{ borderTop: `2px solid ${GREEN}` }}><div className="pull text-[clamp(28px,2.4vw,36px)]" style={{ color: GREEN }}>{wV}</div><div className="cap">{w.label} · {fmt1(w.from)} → {fmt1(w.to)} {w.unit} ({w.pct}) · {w.source}</div></div>
       </div>
-      <p className="cap mt-3">Index 2000 = 100 (derived), from the 2 published end years only.</p>
+      <p className="cap mt-3">The chart joins the 2 published end years with a straight line. It does not show the years in between.</p>
       <Source>{NATIONAL.productivity.source}</Source>
     </div>
   )
@@ -176,15 +177,15 @@ export function ProductivityTable({ withSource = true }: { withSource?: boolean 
   const rows = NATIONAL.productivity.rows
   return (
     <div className="panel p-5">
-      <h4>Yield per kilogram of nutrient applied. The change since 2000</h4>
-      <p className="cap mb-2">yield in maunds an acre, 1999-2000 against 2023-24 · the last column is derived</p>
+      <h4>Crop yields and the change in yield per kilogram of nutrient applied, 1999-2000 to 2023-24</h4>
+      <p className="cap mb-2">yield in maunds per acre · the last column is VAN’s calculation</p>
       <div className="overflow-x-auto tbl-scroll">
         <table className="tbl">
-          <thead><tr><th>Crop</th><th className="r">1999-2000</th><th className="r">2023-24</th><th className="r">Change</th><th className="r" style={{ color: RUST }}>Per kg nutrient</th></tr></thead>
+          <thead><tr><th>Crop</th><th className="r">1999-2000</th><th className="r">2023-24</th><th className="r">Yield change</th><th className="r" style={{ color: RUST }}>Change in yield per kg of nutrient</th></tr></thead>
           <tbody>{rows.map(r => <tr key={r.crop}><td className="font-semibold">{r.crop}</td><td className="r num">{fmt1(r.y1)}</td><td className="r num">{fmt1(r.y2)}</td><td className="r num font-semibold" style={{ color: GREEN }}>{r.change}</td><td className="r num font-bold" style={{ color: RUST }}>{r.perKg}</td></tr>)}</tbody>
         </table>
       </div>
-      <details className="disc mt-2"><summary>How this is calculated, and its limit</summary><p className="cap pb-2 max-w-[140ch]">{NATIONAL.productivity.method}</p></details>
+      <details className="disc mt-2"><summary>How the last column is calculated, and its limits</summary><p className="cap pb-2 max-w-[140ch]">{NATIONAL.productivity.method}</p></details>
       {withSource && <Source>{NATIONAL.productivity.source}</Source>}
     </div>
   )
@@ -198,7 +199,7 @@ export function ProductivityChart({ wide = false, table = true }: { wide?: boole
   const pairs = [p.nutrientChange, p.wheatChange]
   return (
     <div ref={ref} className="panel p-5">
-      <h4>More went on. Less came back.</h4>
+      <h4>Nutrient applied per acre rose faster than wheat yield, 1999-2000 to 2023-24</h4>
       <p className="cap">1999-2000 → 2023-24</p>
       <div className={wide ? 'grid lg:grid-cols-[1fr_1.1fr] gap-6 mt-4 items-start' : ''}>
         <div className="grid sm:grid-cols-2 gap-4 mt-4">
@@ -336,7 +337,7 @@ export function RiceChart() {
   const max = 60, labelW = 110, valW = 60, rowH = 34, W = fit.W, H = RICE_ROWS.length * rowH + 8, barW = W - labelW - valW
   return (
     <div ref={ref} className={`chart panel p-5 ${on ? 'in' : ''}`}>
-      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>Paddy produced per kilogram of nitrogen applied to rice</h4><span className="cap">kg of paddy per kg N</span></div>
+      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>Paddy produced per kilogram of nitrogen applied to rice, 6 Asian countries (VAN’s calculation: nitrogen rates for 2017-18, paddy yields for 2023)</h4><span className="cap">kg of paddy per kg N</span></div>
       <div ref={fit.ref}><svg viewBox={`0 0 ${W} ${H}`} width="100%" className="mt-3" role="img" aria-label="Paddy per kilogram of nitrogen">
         {RICE_ROWS.map((r, i) => {
           const y = i * rowH + 4, w = (r.per / max) * barW, pk = r.c === 'Pakistan'
@@ -351,7 +352,7 @@ export function RiceChart() {
         })}
       </svg></div>
       <Tip tip={tip} />
-      <Source>N rates: IFA Fertilizer Use by Crop 2017/18, via Ludemann, Gruère, Heffer &amp; Dobermann (2022), Scientific Data 9. Paddy yields: FAOSTAT via Our World in Data (2023). Farm size: PBS 7th Agricultural Census 2024 (Pakistan); BBS Agricultural Census 2019 via FAO WCA-2020 (Bangladesh). Paddy per kg N derived. Published per hectare (N applied, kg/ha: Bangladesh 91.8, Vietnam 127.6, China 177.6, Pakistan 120.6, Thailand 92.5, India 135.4; paddy, t/ha: 5.21, 6.11, 7.14, 4.07, 2.99, 4.31) and converted at 1 hectare = 2.471 acres, 40 kg = 1 maund.</Source>
+      <Source>N rates: IFA Fertilizer Use by Crop 2017/18, via Ludemann, Gruère, Heffer &amp; Dobermann (2022), Scientific Data 9. Paddy yields: FAOSTAT via Our World in Data (2023). Farm size: PBS 7th Agricultural Census 2024 (Pakistan); BBS Agricultural Census 2019 via FAO WCA-2020 (Bangladesh). Paddy per kg N is VAN’s calculation. Published per hectare (N applied, kg/ha: Bangladesh 91.8, Vietnam 127.6, China 177.6, Pakistan 120.6, Thailand 92.5, India 135.4; paddy, t/ha: 5.21, 6.11, 7.14, 4.07, 2.99, 4.31) and converted at 1 hectare = 2.471 acres, 40 kg = 1 maund.</Source>
     </div>
   )
 }

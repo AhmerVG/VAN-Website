@@ -72,7 +72,7 @@ export function regionalProfile(key: string | undefined): RegionalProfile | unde
 /** Survey provenance, in the words the public page is allowed to use. */
 export const REGIONAL_SOURCE = {
   survey: 'Punjab soil testing programme',
-  window: 'sampled c. 2016–2018',
+  window: 'sampled about 2016 to 2018',
   districts: REGIONAL_PROFILES.length,
-  caution: 'This is the middle reading for your district, not a reading from your land. Half the fields around you test worse than it. The survey is also about 8 years old, and phosphorus in particular moves with fertilizer history. Start here, then change any row you know to be different. It does not replace a soil test.',
+  caution: 'This is the median reading for your district, not a reading from your land: half the fields around you test worse than it. The survey is also about 8 years old, and phosphorus in particular changes with a field’s fertiliser history. Start from these readings, then change any row you know to be different. They do not replace a soil test.',
 }

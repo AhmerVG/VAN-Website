@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { planUpdateNote } from '@/data/planNotes'
 import { programmeSupply, allStages, NUTRIENT_LABEL, type Nutrient } from '@/lib/nutrientBalance'
 import { removalFor, removalGapFor, uptakeFor, REMOVAL_SOURCE, KG_PER_MAUND } from '@/data/removal'
-import { nutrientRanges, cropHasRange, fmtRange, fmtPair, RANGE_NOTE } from '@/lib/planRange'
+import { nutrientRanges, fmtRange, fmtPair, fmt } from '@/lib/planRange'
 import { SectionHead } from './bits'
 
 /**
@@ -42,7 +42,6 @@ export function NutrientBalance({ cropKey, cropName, defaultYieldMaunds }: { cro
   // programme and they do not agree, so "what the programme puts on" is printed as a range rather
   // than as whichever of the two this component happens to read. See src/lib/planRange.ts.
   const ranges = useMemo(() => nutrientRanges(cropKey), [cropKey])
-  const ranged = cropHasRange(cropKey)
 
   const [yieldMaunds, setYieldMaunds] = useState<string>(defaultYieldMaunds ? String(defaultYieldMaunds) : '')
   const [residueOff, setResidueOff] = useState(false)
@@ -51,15 +50,22 @@ export function NutrientBalance({ cropKey, cropName, defaultYieldMaunds }: { cro
   if (!removal) {
     return (
       <div className="panel p-5 lg:p-6" id="balance">
-        <span className="eyebrow">Removal and replacement</span>
-        <h3 className="mt-1">What the {cropName} programme puts on your field.</h3>
+        <span className="eyebrow">Nutrients applied</span>
+        {/* Tahir 7 Nov 2026 (CR-12): on a crop whose main doses are per plant (mango and others), the heading says the
+            figures come from the per-acre rows only. Was "Nutrients applied per acre by the {crop} plan." on every crop.
+            CR-23: no full stop at the end of a heading. */}
+        <h3 className="mt-1">{supply.perPlantRows.length > 0
+          ? <>Nutrients from the per-acre rows of the {cropName} plan{supply.ageBand ? `, for the ${supply.ageBand.replace(' · ', ' (')}) age band` : ''} (per-plant doses not included)</>
+          : <>Nutrients applied per acre by the {cropName} plan{supply.ageBand ? `, for the ${supply.ageBand.replace(' · ', ' (')}) age band` : ''}</>}</h3>
         <SupplyTable supply={supply} cropName={cropName} cropKey={cropKey} />
         {/* B5, 24 Sep 2026: crops with no removal coefficient (onion among them) printed the supply
             total without saying which rows it leaves out. The same note now shows here. */}
         <NotCounted supply={supply} where="in the total above" />
         <p className="cap mt-4 max-w-[140ch]">
           {/* D-317: was "What the crop takes out is not shown for {cropName}, and here is why." followed by the removalGapFor note */}
-          Crop removal figures for {cropName} are not available.{gap ? <> {gap}</> : null}
+          {/* L1 7 Nov 2026 (crops-a 22): the ruled term. Was "This page does not compare {cropName} nutrient removal with the plan." */}
+          {/* L2 fact check 9 Nov 2026 (crops-a W7, house rule of 26 Oct: no line that narrates the page): a plain fact. Was "This page does not compare the nutrients taken out in the harvested {cropName} with the nutrients the plan applies." */}
+          No figure for the nutrients taken out in the harvested {cropName} is available that can be compared with this plan.{gap ? <> {gap}</> : null}
         </p>
       </div>
     )
@@ -78,10 +84,10 @@ export function NutrientBalance({ cropKey, cropName, defaultYieldMaunds }: { cro
   return (
     <div id="balance">
       <SectionHead
-        eyebrow="Removal and replacement"
-        title="What goes on, and what comes off."
+        eyebrow="Nutrient balance"
+        title="Nutrients applied and nutrients taken out in the harvested crop."
         tone="soil"
-        lead={`Every season takes nutrients out of the field in the harvest. The programme puts some back. Here are both sides, per acre, for ${cropName}.`}
+        lead={`Each season, nutrients are taken out of the field in the harvested crop, and the plan applies nutrients to the field. The table below compares, per acre, the amount of each nutrient that the plan applies with the estimated amount taken out in the harvested ${cropName}.`}
       />
 
       <div className="panel p-5 lg:p-6">
@@ -102,7 +108,8 @@ export function NutrientBalance({ cropKey, cropName, defaultYieldMaunds }: { cro
                 page. It is named now, and it is still there to be typed over. */}
             {defaultYieldMaunds && String(defaultYieldMaunds) === yieldMaunds && (
               <span className="cap" style={{ color: 'var(--rust)' }}>
-                Prefilled with what a good progressive farmer achieves. Type your own.
+                {/* Tahir 7 Nov 2026 (CR-19): "assumed", not "working figure". Was "The figure already entered is VAN’s working figure for what a good progressive farmer achieves. Type your own expected yield." */}
+                The yield already entered, {defaultYieldMaunds} maunds per acre, is VAN’s assumed yield for a good progressive farmer. Type the yield you expect.
               </span>
             )}
           </label>
@@ -115,7 +122,7 @@ export function NutrientBalance({ cropKey, cropName, defaultYieldMaunds }: { cro
         </div>
 
         {t === 0 ? (
-          <p className="small mt-4 max-w-[140ch]">Put your expected yield in and both sides appear. Until then, here is what the programme itself delivers.</p>
+          <p className="small mt-4 max-w-[140ch]">Enter your expected yield to see the nutrients taken out in the harvested crop beside the nutrients applied. Until you do, the table shows only what the plan applies.</p>
         ) : null}
 
         <div className="mt-5 overflow-x-auto tbl-scroll">
@@ -123,9 +130,9 @@ export function NutrientBalance({ cropKey, cropName, defaultYieldMaunds }: { cro
             <thead>
               <tr>
                 <th>Nutrient</th>
-                <th className="r">The programme puts on</th>
-                <th className="r">{t > 0 ? `A ${yieldMaunds}-maund crop takes off` : 'The harvest takes off'}</th>
-                <th className="r">Balance</th>
+                <th className="r">Applied by the plan</th>
+                <th className="r">{t > 0 ? `Taken out in the harvested crop at ${yieldMaunds} maunds per acre (estimated)` : 'Taken out in the harvested crop (estimated)'}</th>
+                <th className="r">Applied minus taken out (estimated)</th>
               </tr>
             </thead>
             <tbody>
@@ -138,14 +145,22 @@ export function NutrientBalance({ cropKey, cropName, defaultYieldMaunds }: { cro
                 // A range on what goes on is a range on the balance. Both ends are shown signed, so
                 // a balance that is negative at one end and positive at the other cannot be read as
                 // a single verdict it does not support.
-                const balLo = lo - off
-                const balHi = hi - off
-                const sign = (v: number) => `${v > 0 ? '+' : ''}${v.toFixed(1)}`
+                // Tahir 7 Nov 2026 (CR-13, fact check): the difference is now taken from the 2 figures as printed (each
+                // rounded to 0.1 kg), so a reader's own subtraction matches it. Wheat potash showed 12.0 − 11.5 as
+                // "+0.4 kg". Was: balLo = lo - off, balHi = hi - off (unrounded).
+                // L2 fact check 9 Nov 2026 (crops-a W11): fmt from planRange, which now rounds exact halves up, so the difference still
+                // matches the 2 printed figures (potato nitrogen 101.35 now prints 101.4 in both). Was: Number(v.toFixed(1)). The "taken
+                // out" column below prints through fmt too (was off.toFixed(1)).
+                const r1 = (v: number) => Number(fmt(v))   // the same rounding the 2 printed figures use
+                const balLo = r1(lo) - r1(off)
+                const balHi = r1(hi) - r1(off)
+                // L1 7 Nov 2026 (crops-a 20, crops-b m8): a true minus sign, "−3.2", was a hyphen "-3.2". Display only.
+                const sign = (v: number) => `${v > 0 ? '+' : ''}${v.toFixed(1).replace('-', '−')}`
                 return (
                   <tr key={n}>
                     <td className="font-bold">{NUTRIENT_LABEL[n]}</td>
                     <td className="r num">{hi ? fmtPair(lo, hi) : 'n/a'}</td>
-                    <td className="r num">{t > 0 && off ? `${off.toFixed(1)} kg` : 'n/a'}</td>
+                    <td className="r num">{t > 0 && off ? `${fmt(off)} kg` : 'n/a'}</td>
                     <td className="r num" style={{ color: t > 0 && off ? (balHi < 0 ? 'var(--rust)' : balLo > 0 ? 'var(--green)' : undefined) : undefined, fontWeight: 700 }}>
                       {t > 0 && off
                         ? (Math.abs(balHi - balLo) > 0.05 ? `${sign(balLo)} to ${sign(balHi)} kg` : `${sign(balHi)} kg`)
@@ -158,11 +173,8 @@ export function NutrientBalance({ cropKey, cropName, defaultYieldMaunds }: { cro
           </table>
         </div>
 
-        {ranged && (
-          <p className="cap mt-3 max-w-[140ch]" style={{ color: 'var(--rust)' }}>
-            {RANGE_NOTE}
-          </p>
-        )}
+        {/* Tahir 7 Nov 2026 (CR-20): the range is explained once, in the 2-lists paragraph above the Nutrition creator, so
+            RANGE_NOTE is no longer shown here. Was {ranged && <p ...>{RANGE_NOTE}</p>}. */}
 
         {/* D-311 (Tahir, 23 Oct 2026): the notes under the table, short and plain for farmers and dealers (were method
             notes: the range's 2 documents, the minus at length, why a product is left out, and 1 litre counted as 1 kg). */}
@@ -177,23 +189,24 @@ export function NutrientBalance({ cropKey, cropName, defaultYieldMaunds }: { cro
 
       {uptake && t > 0 && (
         <div className="panel-soft p-5 mt-4">
-          <span className="eyebrow">Removed is not the same as taken up</span>
+          <span className="eyebrow">Uptake by the whole crop</span>
           <p className="mt-1 max-w-[140ch]">
-            The table above is what physically <b>leaves the field</b>. The crop takes up more than
-            that and leaves the rest standing in the residue. At {yieldMaunds} maunds, {cropName} takes
-            up about{' '}
-            {(['N', 'P', 'K'] as Nutrient[]).map(n => `${(((uptake as unknown as Record<string, number>)[n] ?? 0) * t).toFixed(0)} kg ${NUTRIENT_LABEL[n].replace(/.*\(|\)/g, '')}`).join(', ')}, 
-            more than the table shows leaving. Whether that difference goes back into your soil or
-            onto a trolley is decided at harvest, not at sowing.
+            The table above shows the nutrients <b>taken out in the harvested crop</b>. The whole crop takes
+            up more of each nutrient than is taken out in the harvested crop, and the difference is held in the
+            crop residue{removal.residue ? `: the ${removal.residue.label.toLowerCase()}` : ''}. At {yieldMaunds} maunds per acre, {cropName} takes up an estimated{' '}
+            {/* L1 7 Nov 2026 (crops-b m19): "maunds per acre", "kg of N", "and" before the last figure, "per acre". Was "maunds an acre ... 77 kg N, 26 kg P₂O₅, 79 kg K₂O in total,". Figures unchanged. */}
+            {(['N', 'P', 'K'] as Nutrient[]).map(n => `${(((uptake as unknown as Record<string, number>)[n] ?? 0) * t).toFixed(0)} kg of ${NUTRIENT_LABEL[n].replace(/.*\(|\)/g, '')}`).join(', ').replace(/, ([^,]*)$/, ' and $1')} per acre,
+            counting both the harvested crop and the residue. If the residue stays in the field, the nutrients in it return to
+            the soil. If the residue is taken off the field, those nutrients go with it.
           </p>
         </div>
       )}
 
       <p className="cap mt-4 max-w-[140ch]">
-        <b>Sources.</b> <b>What goes on:</b> VAN's published {cropName} plan.{planUpdateNote(cropKey) ? <> {planUpdateNote(cropKey)}</> : null} <b>What comes off:</b> no
-        Pakistani nutrient-removal table is published, so these are the{' '}
-        {REMOVAL_SOURCE.name} ({removal.region}), for “{removal.verbatim}”, per {removal.basis}.
-        IPNI's note: “{REMOVAL_SOURCE.footnote}”
+        <b>Sources.</b> <b>Nutrients applied:</b> VAN’s published {cropName} plan.{planUpdateNote(cropKey) ? <> {planUpdateNote(cropKey)}</> : null} <b>Nutrients taken out in the harvested crop:</b> no
+        Pakistani nutrient-removal table has been published, so these figures are estimated from the{' '}
+        {REMOVAL_SOURCE.name} ({removal.region}), for “{removal.verbatim}”, per {removal.basis}. IPNI is the
+        International Plant Nutrition Institute. IPNI’s note: “{REMOVAL_SOURCE.footnote}”
       </p>
     </div>
   )
@@ -202,24 +215,27 @@ export function NutrientBalance({ cropKey, cropName, defaultYieldMaunds }: { cro
 function SupplyTable({ supply, cropName, cropKey }: { supply: ReturnType<typeof programmeSupply>; cropName: string; cropKey: string }) {
   const rows = (['N', 'P', 'K', 'S', 'Zn', 'B', 'Mg'] as Nutrient[]).filter(n => (supply.perAcre[n] ?? 0) > 0)
   const ranges = nutrientRanges(cropKey)
-  if (!rows.length) return <p className="small mt-3">The published {cropName} programme prints no nutrient analysis to total.</p>
+  if (!rows.length) return <p className="small mt-3">The published {cropName} plan gives no nutrient analysis that can be totalled.</p>
+  // Tahir 7 Nov 2026 (CR-12): on a per-plant crop the caption moves above the figures, and a total below 0.05 kg prints
+  // "under 0.1 kg" (fmtPair), not "0.0 kg". Was: caption after the figures for every crop; figures as toFixed(1).
+  const perPlant = supply.perPlantRows.length > 0
   return (
     <>
+      {perPlant && <p className="cap mt-3 max-w-[140ch]">These totals are per acre and include only the rows published per acre. Each figure is the published rate multiplied by the product’s nutrient analysis.</p>}
       <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
         {rows.map(n => (
           <div key={n}>
             {/* D-323, 27 Oct 2026: on a crop with a calculator this prints through fmtRange, as the calculator does, so the 2
                 figures on one page cannot round apart (garlic N is exactly 53.55: 53.5 here and 53.6 in the calculator before). */}
-            <div className="display text-[22px]">{ranges?.[n] ? fmtRange(ranges[n]) : `${supply.perAcre[n]!.toFixed(1)} kg`}</div>
+            <div className="display text-[22px]">{ranges?.[n] ? fmtRange(ranges[n]) : fmtPair(supply.perAcre[n]!, supply.perAcre[n]!)}</div>
             <div className="cap">{NUTRIENT_LABEL[n]}</div>
           </div>
         ))}
       </div>
       {/* B3, 24 Sep 2026: on mango the per-tree rows are left out of this total, and the caption
           said "across the whole programme", so a grower read 0.2 kg N as the orchard's dose. */}
-      {supply.perPlantRows.length > 0
-        ? <p className="cap mt-3 max-w-[140ch]">Per acre, from the rows published per acre only. The per-tree doses ({[...new Set(supply.perPlantRows.map(r => r.product))].join(', ')}) are not included in this total. Published rate × the analysis on each row.</p>
-        : <p className="cap mt-3 max-w-[140ch]">Per acre, across the whole programme. Published rate × the analysis on each row.</p>}
+      {/* L2 fact check 9 Nov 2026 (crops-a W10): on an age-band plan (date palm) the totals are for 1 age band, as the heading says. Was "These totals are per acre, for the whole plan." on every crop. */}
+      {!perPlant && <p className="cap mt-3 max-w-[140ch]">These totals are per acre, {supply.ageBand ? `for the ${supply.ageBand.replace(' · ', ' (')}) age band` : 'for the whole plan'}. Each figure is the published rate multiplied by the product’s nutrient analysis.</p>}
     </>
   )
 }
@@ -239,10 +255,11 @@ function NotCounted({ supply, where }: { supply: ReturnType<typeof programmeSupp
           })()}
         </p>
       )}
+      {/* L1 7 Nov 2026 (crops-a 29): "trees per acre", was "trees on your acre". */}
       {supply.perPlantRows.length > 0 && (
         <p className="cap mt-2 max-w-[140ch]">
-          <b>Not counted {where}:</b> {[...new Set(supply.perPlantRows.map(r => r.product))].join(', ')}. Published
-          per tree, not per acre. For a per-acre figure, multiply by the number of trees on your acre.
+          <b>Not counted {where}:</b> {[...new Set(supply.perPlantRows.map(r => r.product))].join(', ')}. These doses are published
+          per plant, not per acre. To turn a dose into kg of product per acre, multiply it by the number of trees per acre.
         </p>
       )}
     </>

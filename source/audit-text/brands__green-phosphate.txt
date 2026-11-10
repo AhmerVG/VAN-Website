@@ -2,14 +2,14 @@ PAGE: /brands/green-phosphate.html
 ======================================================================
 Products
 Crop Plans
-Soil
-Tools
+Your Brand
+Soil Atlas
+Vitalytics
 VAN Lab
 Knowledge
 About
-Make with us
-For farmers
-Menu ☰
+Search
+☰
 View
 Simple view
 Our brands
@@ -20,7 +20,7 @@ Green Phosphate
 Phosphorus
 Own-brand available
 Green Phosphate
-6-32-0 · humic-coated acidic. The NP Range 6-32 grade
+6:32:0 · humic-coated acidic. The NP Range 6:32 grade
 How it is applied
 Broadcast
 Stage
@@ -29,15 +29,15 @@ Your choice
 Green Phosphate
 and
 Fusion Phosphate
-are both offered against the phosphorus line in every programme that names one of them. The plan's number of bags is the same either way; what goes on the field is not.
-Same bag size, different bag. Fusion Phosphate is TSP at 46% P₂O₅. About 44% more phosphate per bag than Green Phosphate’s 6-32-0, and no nitrogen with it. Green Phosphate is the humic-coated acidic grade, built for alkaline ground. The plan’s number of bags does not change if you switch; what you put on the field does.
+are both offered against the phosphorus line in every programme that names one of them.
+Same bag size, different bag. Fusion Phosphate is TSP at 46% P₂O₅. About 44% more phosphate per bag than Green Phosphate’s 6:32:0, and no nitrogen with it. Green Phosphate is the humic-coated acidic grade, built for alkaline ground. The plan’s number of bags does not change if you switch; what you put on the field does.
 What the soil does to this
 97.9% below adequate available phosphorus · mean CaCO₃ 6.53%
 See it on the map →
 Calcareous soil, carbonate rising with pH. The condition the phosphate range is built against
 .
 Punjab soil testing programme · 36 district workbooks · 770,160 valid samples · c. 2016–2018
-. A condition of the soil, not a claim for the product.
+. The figure describes the soil. It is not a claim for the product.
 Order on WhatsApp
 Verify a bag
 Tell us the quantity and your district. We reply with price, availability and delivery. Every batch is tested in
@@ -49,7 +49,7 @@ Specification
 Product
 Green Phosphate
 Analysis
-6-32-0 · humic-coated acidic. The NP Range 6-32 grade
+6:32:0 · humic-coated acidic. The NP Range 6:32 grade
 Category
 Phosphorus
 Application
@@ -61,11 +61,122 @@ Own-brand available
 Same specification, your brand name. Same line, same QC, your label.
 Registration
 Registered with PSQCA and released through VAN’s own PNAC-accredited laboratory, ISO/IEC 17025:2017, LAB 336.
-Certificate
-Send the batch number off the bag and VAN sends the certificate of analysis for that batch.
+Lab report
+Type the batch number off the bag and open the lab report for that batch.
 Verify a bag →
+Flagship · a grower’s question
+A bag of DAP every year and the soil test still says phosphorus is low. Where does it go?
+1
+Calcareous soil takes the phosphate back
+In soil above pH 8 with free lime, phosphate dissolving out of a granule meets calcium within a few centimetres and drops out of solution. The first calcium phosphates are still fairly available; the loss is their slow ageing into rock-like forms the root cannot use. 35 of 36 Punjab districts read Critical or Weak on phosphorus.
+2
+The granule carries its own acidic zone
+Green Phosphate is granulated in an acidic mix and sealed with humic, with a fraction of fulvic. The zone around each granule starts acidic, the opposite of a DAP granule, which slows the calcium reaction for the weeks a root needs to reach it. A microsite effect, a few centimetres wide. It will not move a soil test.
+3
+Do not compare kilograms; compare what reaches the crop
+A 50 kg bag of DAP carries more phosphate than a 50 kg bag of Green Phosphate. What the crop eats is what stays available, and on calcareous ground that is the smaller number by far. The humic seal, with a fraction of fulvic, feeds the soil and the root: across 81 published studies humic raised shoot and root growth, and Pakistani calcareous-soil trials found the consistent gain came from organic matter applied with the phosphate (Rose et al. 2014, Advances in Agronomy 124; Ahmad et al. 2022; Mussarat et al. 2021; Mehdi et al. 2003). VAN makes phosphate to be available, and that is the comparison that matters.
+A wheat trial
+Sheikhupura, Rabi 2024-25
+Run by an independent partner company (not named) on its own research farm. 2 replications, yields averaged; no significance test was reported. Only the phosphate product changed; urea, potash, seed, sowing date and water were the same on every plot.
+Phosphate, an acre
+P₂O₅ it carried
+Wheat, maunds an acre
+DAP, 50 kg
+23 kg
+54.17
+Green Phosphate, 50 kg
+16 kg
+57.19
+Green Phosphate, 35 kg
+11.2 kg
+56.97
+Why it is plausible.
+The plot’s soil read pH 8.43 and 7 ppm available phosphorus, below the 15 ppm the Punjab soil survey counts as adequate. On such ground the crop is short of phosphorus and calcium works against every granule. Around a DAP granule the soil stays alkaline; around a Green Phosphate granule it starts acidic. So how long the phosphate stays within the root’s reach can count as much as how much the bag carries. That is the soil this granule is made for.
+The DAP plot also got more nitrogen from its own bag (9 kg an acre, against 3 kg and 2.1 kg), so extra nitrogen does not explain the Green Phosphate plots’ yields.
+Your district, and your bag
+Your district, Punjab
+Pick a district
+Attock
+Bahawalnagar
+Bahawalpur
+Bhakkar
+Chakwal
+Chiniot
+Dera Ghazi Khan
+Faisalabad
+Gujranwala
+Gujrat
+Hafizabad
+Jhang
+Jhelum
+Kasur
+Khanewal
+Khushab
+Lahore
+Layyah
+Lodhran
+Mandi Bahauddin
+Mianwali
+Multan
+Muzaffargarh
+Nankana Sahib
+Narowal
+Okara
+Pakpattan
+Rahim Yar Khan
+Rajanpur
+Rawalpindi
+Sahiwal
+Sargodha
+Sheikhupura
+Sialkot
+Toba Tek Singh
+Vehari
+Pick your district to see the Punjab survey median for it. A district median is not your field.
+Bag
+50
+kg
+35
+kg
+1 bag of
+50
+kg carries
+16
+kg P₂O₅
+and
+3.0
+kg N
+, from the declared 6:32:0. The same 50 kg of TSP carries 23 kg P₂O₅ and no nitrogen, and no coating. On the crop page you can switch between them; the plan’s bag count stays the same.
+calcareous soil
+, above pH 8
+acidic zone around the granule, a few centimetres, not the field
+What VAN will not claim for it
+That 70 to 80% of applied phosphate is fixed.
+A yield gain over DAP or TSP. The trial above is 1 season on 1 farm, and TSP was not in it.
+A field-scale pH change, a soil-test change, or a percentage of phosphate saved.
+How it goes on
+Drill it at sowing. Side-dress if you cannot. Broadcast last.
+The same bag gives a different result depending on where it lands. The order below is VAN’s, for every basal granule it makes.
+1 · best
+Drill at sowing
+What it means.
+The seed drill’s fertilizer box places the granule about 5 cm beside and below the seed row, never touching the seed.
+Why.
+The root meets it first. Least contact with air, sun and free calcium at the surface. The whole bag is in the root zone.
+2
+Side-dress
+What it means.
+A band beside the row, by hand or planter, at sowing or the first irrigation, covered with soil.
+Why.
+Still a band near the root, but later and shallower than a drill.
+3 · last
+Broadcast
+What it means.
+Spread on the surface before the last ploughing or before an irrigation, and mixed in.
+Why.
+Most of the bag is away from the root, and most of it is exposed at the surface.
 Programmes that use it
-From the published wheat programme. Per acre. “1 bag” means one bag of the size printed under the rate.
+From the published wheat programme. Per acre. “1 bag” means 1 bag of the size printed under the rate.
 Crop
 Stage
 Band
@@ -76,14 +187,14 @@ Wheat
 Land Preparation
 Phosphorus
 1 bag
-Broadcasting
+Drill at sowing; broadcast if no drill
 Bag · 50 kg
 Open the wheat programme →
-Green Phosphate is the NP Range 6-32 grade. Humic-coated and acidic, engineered against calcium fixation.
+Green Phosphate is the NP Range 6:32 grade. Humic-coated and acidic, engineered against calcium fixation.
 The VAN NP Range →
 Documents
 Deck, datasheet, safety data
-What it is, what it does in the soil, where it fits in the season and what VAN will not claim for it.
+What it is, what it does in the soil, where it fits in the season and its limits.
 ⬇ Deck (PDF)
 Datasheet
 Safety data
@@ -102,19 +213,13 @@ VAN NP Range
 Fusion Phosphate
 V-Germinator Pro
 Crop nutrition engineered, manufactured, registered and tested in Pakistan.
-Plant
-·
-49-Km Multan Road, Phool Nagar Bypass, Lahore
-Head office
-·
-605 Al-Hafeez Heights, Gulberg III, Lahore 54660
++92 42 35762215
 WhatsApp
 +92 300 5003041
-Landline
-+92 42 35762215
 info@van.com.pk
 Products
 All 23 brands
+Compare them
 Vital Urea
 Where to buy
 Verify a bag
@@ -122,20 +227,25 @@ Crops
 28 crop plans
 Wheat
 How you apply it
+Soil Atlas
 Knowledge
 Why Pakistan must shift
-The soil, measured
-Product knowledge decks
+Product decks
 Circular economy
+Vitalytics tools
 Company
-Make with us
+Your Brand
 VAN Lab
-Tools
-About & contact
+About
+Company profile
+Head office
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+Plant
+49-Km Multan Road, Phool Nagar Bypass, Lahore
 © 2026
 Vital Agri Nutrients (Pvt) Ltd
-·
-www.van.com.pk
+Full member of CropLife Pakistan since 2024
+How VAN competes
 LinkedIn
 Facebook
 Instagram

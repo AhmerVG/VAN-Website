@@ -70,7 +70,7 @@ export default function App() {
         <>
           <section className="ce-story"><div className="wrap">
             <span className="eyebrow">Circular economy · the potash loop</span>
-            <p className="ce-story-h">From the field to the boiler and back to the field.</p>
+            <p className="ce-story-h">Crop residue taken from the field to fuel boilers contains potassium. VAN recovers that potassium from the boiler ash and uses it in fertiliser that goes back to farmland.</p>
             <div className="mt-6"><PotashLoop /></div>
           </div></section>
           <Article page={CIRCULAR_HUB} />

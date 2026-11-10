@@ -1,5 +1,5 @@
 import { LAB, WA, CONTACT, VERIFY } from '@/data/site'
-import { SectionHead, WaButton, Stat } from '@/components/bits'
+import { SectionHead, WaButton, Stat, noStop } from '@/components/bits'
 import { VerifyPanel } from '@/components/VerifyPanel'
 import { VanForm } from '@/components/VanForm'
 import { LAB_TEST_FORM } from '@/data/formSpecs'
@@ -21,7 +21,7 @@ export function Verify() {
       <VerifyPanel full />
       <section className="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 mt-8">
         <div className="panel p-6">
-          <span className="eyebrow">What you get, and how</span>
+          <span className="eyebrow">How to get the lab report</span>
           <ol className="list-none p-0 m-0 grid gap-4 mt-3">
             {VERIFY.steps.map((s, i) => <li key={s} className="flex gap-4"><span className="num flex items-center justify-center shrink-0" style={{ width: 44, height: 44, borderRadius: 12, background: 'var(--gold)', color: 'var(--navy)', fontSize: 20 }}>{i + 1}</span><span>{s}</span></li>)}
           </ol>
@@ -67,7 +67,7 @@ function Chain() {
           </div>
           <div className="pb-6">
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 pt-2">
-              <h3 className="m-0" style={{ fontSize: 19 }}>{s.t}</h3>
+              <h3 className="m-0" style={{ fontSize: 19 }}>{noStop(s.t)}</h3>
               <span className="tag" style={{ border: `1.5px solid ${KCOL[s.k]}`, color: KTEXT[s.k], fontSize: 10.5 }}>{s.k === 'code' || s.k === 'split' ? 'a code only' : 'your name'}</span>
             </div>
             <p className="font-semibold mt-1" style={{ color: 'var(--navy)' }}>{s.s}</p>
@@ -84,7 +84,7 @@ function Roles() {
   const cols = ['Knows who you are', 'Handles the sample', 'Sees the result']
   return (
     <div className="panel p-5">
-      <h3 style={{ fontSize: 19 }}>6 roles, and what each one knows and handles.</h3>
+      <h3 style={{ fontSize: 19 }}>What each of the 6 roles knows and handles</h3>
       <p className="cap mt-1">The only people who know your name never touch your sample.</p>
       <table className="tbl mt-3" style={{ fontSize: 14 }}>
         <thead><tr><th style={{ paddingLeft: 0 }}>Role</th>{cols.map(c => <th key={c} className="text-center" style={{ fontSize: 10.5, letterSpacing: '.04em', lineHeight: 1.25, padding: '8px 4px', width: '19%' }}>{c}</th>)}</tr></thead>
@@ -115,7 +115,7 @@ function Prices() {
   return (
     <div className="panel p-4 lg:p-6">
       <table className="tbl">
-        <thead><tr><th style={{ paddingLeft: 0 }}>Test</th><th className="r">Price (PKR)</th><th className="r">Days in the laboratory</th></tr></thead>
+        <thead><tr><th style={{ paddingLeft: 0 }}>Test</th><th className="r">Price (Rs)</th><th className="r">Days in the laboratory</th></tr></thead>
         {PRICE_GROUPS.map(g => (
           <tbody key={g.h}>
             <tr><th colSpan={3} scope="colgroup" style={{ paddingLeft: 0, paddingTop: 18, color: 'var(--navy)' }}>{g.h}</th></tr>
@@ -133,7 +133,8 @@ function Prices() {
           </tbody>
         ))}
       </table>
-      <p className="cap mt-4 max-w-[110ch]">{DAYS_NOTE} {PRICE_NOTE}</p>
+      <p className="cap mt-4 max-w-[110ch]">{DAYS_NOTE}</p>
+      <p className="cap mt-2 max-w-[110ch]">{PRICE_NOTE}</p>
       <p className="small mt-3 panel-gold p-3 max-w-[110ch]"><b style={{ color: 'var(--navy)' }}>Soil.</b> {SOIL_NOTE}</p>
     </div>
   )
@@ -147,21 +148,21 @@ export default function Lab() {
       <section id="start" className="pnav-target" style={{ background: 'linear-gradient(180deg, var(--sky), var(--sand))' }}>
         <div className="wrap py-8 lg:py-12">
           <span className="eyebrow navy">VAN Lab · batch testing and certificates</span>
-          <h1>{LAB.h1}</h1>
+          <h1>{noStop(LAB.h1)}</h1>
           <p className="lead mt-4 max-w-[75ch]">{LAB.lead}</p>
           {/* D-167: the drawn scene (his 11 Sep ruling D-112, built 25 Sep). */}
           <div className="mt-6"><LabScene /></div>
           <div className="grid lg:grid-cols-2 gap-5 mt-6">
             <div className="panel p-6" style={{ borderColor: 'var(--green)', borderWidth: 2 }}>
-              <span className="eyebrow">You bought VAN product</span>
-              <h2 style={{ fontSize: 'clamp(22px, 2.2vw, 28px)' }}>Check the batch number.</h2>
-              <p className="small muted mt-2">The number is printed on the bag. It opens the approved lab report for that batch. There is no charge and nothing to send back.</p>
-              <a className="btn btn-green mt-4" href="#/verify">Verify a batch and take the report →</a>
+              <span className="eyebrow">You bought a VAN product</span>
+              <h2 style={{ fontSize: 'clamp(22px, 2.2vw, 28px)' }}>Check the batch number</h2>
+              <p className="small muted mt-2">The batch number is printed on the bag. Enter it to open the approved lab report for that batch. There is no charge, and you do not need to send anything.</p>
+              <a className="btn btn-green mt-4" href="#/verify">Verify a batch and get the report →</a>
             </div>
             <div className="panel p-6" style={{ borderColor: 'var(--navy)', borderWidth: 2 }}>
-              <span className="eyebrow soil">You bought anything else</span>
-              <h2 style={{ fontSize: 'clamp(22px, 2.2vw, 28px)' }}>Send us 500 g.</h2>
-              <p className="small muted mt-2">Any fertilizer, any brand, any manufacturer. Send us 500 g and we will measure what is in it, at the published price. The result is the same certificate we issue to importers and laboratories, with the 8 accredited tests marked.</p>
+              <span className="eyebrow soil">You bought any other fertiliser</span>
+              <h2 style={{ fontSize: 'clamp(22px, 2.2vw, 28px)' }}>Send us a 500 g sample</h2>
+              <p className="small muted mt-2">We test fertiliser of any brand, from any manufacturer. Send us 500 g and we will run the tests you choose, at the published price for each test. You receive the same certificate that we issue to importers and laboratories. Each test on it that is within our accreditation is marked as accredited.</p>
               <div className="flex flex-wrap gap-3 mt-4">
                 <a className="btn btn-navy" href="#book">Book a test →</a>
                 <WaButton href={WA.lab}>Ask on WhatsApp</WaButton>
@@ -179,18 +180,18 @@ export default function Lab() {
       <section id="blind-chain" className="wrap sec pnav-target">
         <span id="chain-drawn" className="pnav-target" aria-hidden="true" />
         <SectionHead eyebrow="The blind chain" tone="navy"
-          title="Nobody who tested your sample knew it was yours."
+          title="The analysts who test your sample do not know it is yours."
           lead={<>{LAB.why1} {LAB.why2}</>} />
         <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-6 lg:gap-10 items-start">
           <div>
             {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */}<p className="eyebrow mb-1" style={{ color: 'var(--muted)' }}>1 parcel, 7 steps</p>
             {/* D-169: carried back from the v54 lead (the independent review found it had been lost). */}
-            <p className="cap mb-4">The separation is built into the buildings and the coding system.</p>
+            <p className="cap mb-4">Your name is kept apart from your sample in 2 ways: Sample Reception works from a separate building, at its own address, and the laboratory sees only a code.</p>
             <Chain />
           </div>
           <div className="grid gap-4 lg:sticky" style={{ top: 'calc(var(--hdr-h) + 64px)' }}>
             <div className="panel-soft p-5" style={{ borderLeft: '4px solid var(--gold)' }}>
-              <p><b style={{ color: 'var(--navy)' }}>Your name travels as far as step 02 and rejoins at step 07.</b> Everything in between happens to a code.</p>
+              <p><b style={{ color: 'var(--navy)' }}>Your name stays with the sample only up to step 02, and is linked to it again at step 07.</b> In steps 03 to 06 the sample carries only a code.</p>
             </div>
             <Roles />
             <Detail bare label="Why this matters to you"><p className="small muted">{CHAIN_WHY}</p></Detail>
@@ -200,14 +201,14 @@ export default function Lab() {
 
       {/* 3 · Tests and prices */}
       <section id="prices" className="sec pnav-target" style={{ background: 'var(--sand-2)' }}><div className="wrap">
-        <SectionHead eyebrow="Tests and prices" tone="green" title="Every fertilizer test, every price, published." lead={PRICE_LEAD} />
+        <SectionHead eyebrow="Tests and prices" tone="green" title="Published prices for all 21 fertiliser tests." lead={PRICE_LEAD} />
         <Prices />
       </div></section>
 
       {/* 4 · Book a test. Steps on the left, the form on the right. */}
       <section id="book" className="wrap sec pnav-target">
         <span id="booking" className="pnav-target" aria-hidden="true" />
-        <SectionHead eyebrow="Book a test" tone="soil" title="Tell us what to expect, then send the sample." lead={BOOK_INTRO} />
+        <SectionHead eyebrow="Book a test" tone="soil" title="Book the test first, then send the sample." lead={BOOK_INTRO} />
         <div className="grid lg:grid-cols-[1fr_1fr] gap-6 lg:gap-10 items-start">
           <ol className="list-none p-0 m-0 grid gap-3">
             {BOOK_STEPS.map(([h, t], i) => (
@@ -234,7 +235,7 @@ export default function Lab() {
               <p className="small mt-2">
                 Call <a href={`tel:${CONTACT.landlineTel}`}>{CONTACT.landline}</a> · WhatsApp <a href={WA.lab} target="_blank" rel="noopener">{CONTACT.whatsapp}</a> · <a href={`mailto:${CONTACT.cropEmail}`}>{CONTACT.cropEmail}</a>
               </p>
-              <p className="cap mt-2">Every question about a sample goes to Sample Reception, never to the laboratory or an analyst.</p>
+              <p className="cap mt-2">Please send every question about a sample to Sample Reception, not to the laboratory or to an analyst.</p>
               <p className="cap mt-2">{PAYING}</p>
             </div>
           </div>
@@ -243,18 +244,18 @@ export default function Lab() {
 
       {/* 5 · Who sends samples: one card per sender, each with its own case. */}
       <section id="trade" className="sec pnav-target" style={{ background: 'var(--sky)' }}><div className="wrap">
-        <SectionHead eyebrow="Who sends us samples" tone="navy" title="Farmers, distributors, importers, laboratories." />
+        <SectionHead eyebrow="Who sends us samples" tone="navy" title="Farmers, distributors, importers and other laboratories." />
         <div className="grid md:grid-cols-2 gap-4">
           {WHO.map(w => (
             <div key={w.h} className="panel p-5">
-              <h3 style={{ fontSize: 19 }}>{w.h}</h3>
+              <h3 style={{ fontSize: 19 }}>{noStop(w.h)}</h3>
               <p className="font-semibold mt-1" style={{ color: 'var(--navy)' }}>{w.s}</p>
               {w.body && <Detail bare label={`More for ${w.h.toLowerCase()}`}><p className="small muted mt-2">{w.body}</p></Detail>}
               {w.h === 'Farmers' && <span className="flex flex-wrap gap-2 mt-4"><a className="btn btn-green btn-sm" href="#/verify">Verify a VAN bag →</a><a className="btn btn-ghost btn-sm" href="#/lab#book">Test any brand →</a></span>}
             </div>
           ))}
         </div>
-        <p className="small mt-5 max-w-[110ch]">{VOLUME_NOTE}</p>
+        <p className="small mt-5 max-w-[110ch]"><b style={{ color: 'var(--navy)' }}>Plans for regular senders.</b> {VOLUME_NOTE}</p>
         <div className="flex flex-wrap gap-3 mt-4">
           <a className="btn btn-navy" href="#book">Book a test →</a>
           {/* D-192: the 3rd "Ask on WhatsApp" on this page came off; the booking block above carries it. */}

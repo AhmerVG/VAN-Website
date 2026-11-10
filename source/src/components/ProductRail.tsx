@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { PRODUCTS } from '@/data/catalogue'
-import { PackShot, SectionHead, MethodIcon } from './bits'
+import { PackShot, SectionHead, MethodIcon, methodKeys } from './bits'
 
 const METHODS = ['Broadcast', 'Fertigation', 'Foliar'] as const
 
@@ -8,13 +8,15 @@ const METHODS = ['Broadcast', 'Fertigation', 'Foliar'] as const
 export function ProductRail() {
   const [m, setM] = useState<string>('Broadcast')
   const brands = PRODUCTS.filter(p => !p.family)
-  const list = brands.filter(p => p.methods.includes(m))
+  // Tahir 7 Nov 2026 (PR-21): catalogue labels such as "Drill at sowing; broadcast if no drill" are matched through methodKeys().
+  const has = (p: (typeof brands)[number], x: string) => p.methods.some(l => methodKeys(l).includes(x))
+  const list = brands.filter(p => has(p, m))
   return (
     <section className="sec" id="rail">
       <div className="wrap">
-        <SectionHead eyebrow={`The ${brands.length} products`} title="By how you apply them." lead="Pick the way you put fertilizer on. These are the VAN products made for that method." right={<a className="btn btn-ghost" href="#/products">All {brands.length} products →</a>} />
+        <SectionHead eyebrow={`The ${brands.length} brands`} title="Our brands, by application method" lead="Choose how you apply fertiliser to see our brands made for that method." right={<a className="btn btn-ghost" href="#/products">All {brands.length} brands →</a>} />
         <div className="flex flex-wrap gap-2 mb-3" role="tablist" aria-label="Application method">
-          {METHODS.map(x => <button key={x} role="tab" aria-selected={m === x} className={`chip ${m === x ? 'on' : ''}`} onClick={() => setM(x)}><MethodIcon method={x} size={20} />{x} <span className="cap" style={{ color: m === x ? 'rgba(255,255,255,.7)' : undefined }}>{brands.filter(p => p.methods.includes(x)).length}</span></button>)}
+          {METHODS.map(x => <button key={x} role="tab" aria-selected={m === x} className={`chip ${m === x ? 'on' : ''}`} onClick={() => setM(x)}><MethodIcon method={x} size={20} />{x} <span className="cap" style={{ color: m === x ? 'rgba(255,255,255,.7)' : undefined }}>{brands.filter(p => has(p, x)).length}</span></button>)}
         </div>
         <div className="hrail">
           {list.map(p => (
@@ -29,7 +31,7 @@ export function ProductRail() {
             </a>
           ))}
         </div>
-        <p className="cap">▸ Swipe the rail · tap a pack to open it</p>
+        <p className="cap">▸ Swipe to see more · tap a pack to open its page</p>
       </div>
     </section>
   )

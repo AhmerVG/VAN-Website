@@ -9,9 +9,11 @@
 // open question (flagged to Tahir 8 Sep). PKR totals are therefore not shown in the live UI yet.
 export type CostRow = { product: string; slug: string | null; analysisPct: Record<string, number>; packKg: number; qtyPerAcre: number; unitPricePkr: number }
 
+// Tahir 10 Nov 2026 (EN-11b): the wheat calculator follows the published plan: Vital Urea 1 bag (was 0.5),
+// and urea 1 bag (was 2), because the plan's Germination urea bag is removed (plan urea is now ½ + ½ bag).
 export const WHEAT_COST_PLAN: CostRow[] = [
-  { product: "Vital Urea", slug: "vital-urea", analysisPct: {"N": 32, "S": 13}, packKg: 25, qtyPerAcre: 0.5, unitPricePkr: 6500 },
-  { product: "Urea", slug: null, analysisPct: {"N": 46}, packKg: 50, qtyPerAcre: 2, unitPricePkr: 4895 },
+  { product: "Vital Urea", slug: "vital-urea", analysisPct: {"N": 32, "S": 13}, packKg: 25, qtyPerAcre: 1, unitPricePkr: 6500 },
+  { product: "Urea", slug: null, analysisPct: {"N": 46}, packKg: 50, qtyPerAcre: 1, unitPricePkr: 4895 },
   { product: "Green Phosphate", slug: "green-phosphate", analysisPct: {"N": 6, "P": 32}, packKg: 50, qtyPerAcre: 1, unitPricePkr: 16800 },
   { product: "Vital Potash", slug: "vital-potash", analysisPct: {"N": 11, "K": 44}, packKg: 20, qtyPerAcre: 0.5, unitPricePkr: 10500 },
   { product: "Fusion Potash", slug: "fusion-potash", analysisPct: {"N": 2, "K": 50, "S": 1.5, "B": 1, "Mg": 1}, packKg: 25, qtyPerAcre: 0.5, unitPricePkr: 11500 },
@@ -23,13 +25,14 @@ export const WHEAT_COST_PLAN: CostRow[] = [
   { product: "Green Sulfur", slug: "green-sulfur", analysisPct: {"S": 70}, packKg: 1, qtyPerAcre: 2, unitPricePkr: 950 },
   { product: "Humi Grow", slug: "humi-grow", analysisPct: {"K": 7, "HA": 40}, packKg: 8, qtyPerAcre: 1, unitPricePkr: 2750 },
   { product: "Humi Grow Plus", slug: "humi-grow-plus", analysisPct: {"K": 3.5, "HA": 10}, packKg: 4, qtyPerAcre: 1, unitPricePkr: 1240 },
-  { product: "Tornado", slug: "tornado", analysisPct: {"AA": 10}, packKg: 0.5, qtyPerAcre: 1, unitPricePkr: 795 },
+  // L2 fact check 10 Nov 2026 (decks batch D): 2 bottles of 0.5 L, as the wheat plan row (Tahir 10 Sep 2026: "they can buy 2 bottles"). Was qtyPerAcre: 1.
+  { product: "Tornado", slug: "tornado", analysisPct: {"AA": 10}, packKg: 0.5, qtyPerAcre: 2, unitPricePkr: 795 },
 ]
 
 export const POTATO_COST_PLAN: CostRow[] = [
   { product: "Vital Urea", slug: "vital-urea", analysisPct: {"N": 32, "S": 13}, packKg: 25, qtyPerAcre: 2, unitPricePkr: 6500 },
   { product: "Urea", slug: null, analysisPct: {"N": 46}, packKg: 50, qtyPerAcre: 2, unitPricePkr: 4895 },
-  { product: "V. Ammonium Phosphate (V-Phosphate)", slug: "v-phosphate", analysisPct: {"N": 10, "P": 44}, packKg: 10, qtyPerAcre: 1.5, unitPricePkr: 7100 },
+  { product: "V-Phosphate", slug: "v-phosphate", analysisPct: {"N": 11, "P": 44}, packKg: 10, qtyPerAcre: 1.5, unitPricePkr: 7100 }, // Tahir 7 Nov 2026 (PR-7): 11:44:0
   { product: "CAN", slug: null, analysisPct: {"N": 26}, packKg: 50, qtyPerAcre: 2, unitPricePkr: 4395 },
   { product: "Green Phosphate", slug: "green-phosphate", analysisPct: {"N": 6, "P": 32}, packKg: 50, qtyPerAcre: 2, unitPricePkr: 16800 },
   { product: "Vital Potash", slug: "vital-potash", analysisPct: {"N": 11, "K": 44}, packKg: 20, qtyPerAcre: 2, unitPricePkr: 10500 },
@@ -59,7 +62,9 @@ export type MasterProduct = { product: string; slug: string | null; analysisPct:
 
 export const MASTER_PRODUCTS: MasterProduct[] = [
   { product: "Vital Urea", slug: "vital-urea", analysisPct: { N: 32, S: 13 }, packKg: 25 },
-  { product: "V. Ammonium Phosphate (V-Phosphate)", slug: "v-phosphate", analysisPct: { N: 10, P: 44 }, packKg: 10 },
+  // Tahir 7 Nov 2026 (PR-7): the grade is 11:44:0 (was N 10). PR-8: SOP carries S 17.5, as its declared analysis prints.
+  // Tahir 10 Nov 2026 (FU-1): product renamed V-Phosphate here and in POTATO_COST_PLAN (was "V. Ammonium Phosphate (V-Phosphate)").
+  { product: "V-Phosphate", slug: "v-phosphate", analysisPct: { N: 11, P: 44 }, packKg: 10 },
   { product: "Green Phosphate", slug: "green-phosphate", analysisPct: { N: 6, P: 32 }, packKg: 50 },
   { product: "Fusion Phosphate", slug: "fusion-phosphate", analysisPct: { P: 46 }, packKg: 50 },
   { product: "Vital Potash", slug: "vital-potash", analysisPct: { N: 11, K: 44 }, packKg: 20 },
@@ -81,15 +86,18 @@ export const MASTER_PRODUCTS: MasterProduct[] = [
   { product: "V-Compost", slug: "v-compost", analysisPct: { N: 5, OM: 25 }, packKg: 20 },
   { product: "Tornado", slug: "tornado", analysisPct: { AA: 10 }, packKg: 0.5, packUnit: 'L' },
   // D-323, 27 Oct 2026, Tahir: Crop Force 15:15:15 is discontinued ("Discontinued, change all 4"); only 12:12:18 remains.
+  // Tahir 10 Nov 2026 (LM-N1): "15-15-15 is still sold; the website is wrong and is corrected." The 15:15:15 grade is restored
+  // beside 12:12:18 (1 kg and 20 kg packs; the record carries the 20 kg bag, so masterFor() picks it by pack size).
+  { product: "Crop Force (15:15:15)", slug: "crop-force", analysisPct: { N: 15, P: 15, K: 15 }, packKg: 20 },
   { product: "Crop Force (12:12:18)", slug: "crop-force", analysisPct: { N: 12, P: 12, K: 18 }, packKg: 10 },
-  { product: "SOP", slug: "sop", analysisPct: { K: 50 }, packKg: 25 },
+  { product: "SOP", slug: "sop", analysisPct: { K: 50, S: 17.5 }, packKg: 25 },
   // Commodity materials — in the plans, no VAN product page.
   { product: "Urea", slug: null, analysisPct: { N: 46 }, packKg: 50 },
   { product: "DAP", slug: null, analysisPct: { N: 18, P: 46 }, packKg: 50 },
   { product: "MOP", slug: null, analysisPct: { K: 60 }, packKg: 50 },
   { product: "SSP", slug: null, analysisPct: { P: 18 }, packKg: 50 },
   { product: "TSP", slug: null, analysisPct: { P: 46 }, packKg: 50 },
-  { product: "Ammonium Sulphate", slug: null, analysisPct: { N: 21, S: 24 }, packKg: 50 },
+  { product: "Ammonium Sulfate", slug: null, analysisPct: { N: 21, S: 24 }, packKg: 50 },   // L1 editor 7 Nov 2026 (m5): VAN keeps "sulfur/sulfate"; was "Ammonium Sulphate" (the crop plans already say "Ammonium Sulfate"; alias in cropSoilMap.ts flipped)
   { product: "Ammonium Phosphate", slug: null, analysisPct: { N: 12, P: 44 }, packKg: 10 },
   // D-191, Tahir 26 Sep 2026: no competitor brand names anywhere on the site. Generic CAN and NP 22-20,
   // with the generic analysis the team calculators already use for CAN. The branded record’s trace
@@ -239,7 +247,9 @@ export const FARMER_PRICE: Record<string, PackPrice[]> = {
   // D-323, 27 Oct 2026, Tahir: 15:15:15 discontinued; its 1 kg (750) and 20 kg (9,000) packs are gone. The 10 kg
   // 12:12:18 bag is now in the plans (banana year 1 2 bags; garlic, watermelon, citrus 1 bag each, "Round up to 1 bag"),
   // which replaces the 10 Sep "let it stay out of plan" note above.
-  'crop-force': [{ size: 10, unit: 'kg', pricePkr: 4900 }],
+  // Tahir 10 Nov 2026 (LM-N1): 15:15:15 is still sold, so its 1 kg (750) and 20 kg (9,000) packs are back, as the 10 Sep ruling
+  // above priced them. The plan rows stay on the 10 kg 12:12:18 bag (D-323) until Tahir rules otherwise.
+  'crop-force': [{ size: 1, unit: 'kg', pricePkr: 750 }, { size: 10, unit: 'kg', pricePkr: 4900 }, { size: 20, unit: 'kg', pricePkr: 9000 }],
   // Organic and bio
   'humi-grow': [{ size: 8, unit: 'kg', pricePkr: 2750 }],
   // 4 L confirmed by Tahir 8 Sep — the calculator is right here and the sheet's 2,050 is not. The
@@ -262,7 +272,7 @@ export const NO_PRICE_REASON: Record<string, string> = {
 
 /** Shown when the PRODUCT is priced but the PACK in the plan is not one VAN has confirmed. */
 export const NO_PACK_PRICE_REASON =
-  'This pack size is still being confirmed. Ask on WhatsApp and we will quote it.'
+  'This pack size is still being confirmed. Ask on WhatsApp and VAN will quote a price.'
 
 /**
  * TIER 2 GUARD. Every slug allowed to carry a farmer price — VAN farmer brands only, each reachable

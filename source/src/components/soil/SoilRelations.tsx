@@ -3,6 +3,7 @@ import { useFitWidth } from '@/hooks/useFitWidth'
 import { SOIL_RELATIONS, SOIL_SOURCE, SOIL_COPY, type Verdict } from '@/data/soilLens'
 import { X_AXES, Y_AXES, DISTRICTS, bandsFor, districtByKey, thousands } from '@/lib/soil'
 import { useInView } from '@/hooks/useInView'
+import { noStop } from '@/components/bits'   // Tahir 7 Nov 2026 (CR-23): no full stop at the end of a heading
 
 type XKey = (typeof X_AXES)[number]['key']
 type YKey = (typeof Y_AXES)[number]['key']
@@ -43,18 +44,18 @@ export function RelationExplorer({ initialRel }: { initialRel?: string | null })
     <div ref={ref} className={`panel p-5 lg:p-6 ${inView ? 'in' : ''}`}>{/* the svg is keyed on (x, y, district) so the bars grow again on every change */}
       <div className="grid lg:grid-cols-[1fr_1fr] gap-4">
         <div>
-          <div className="cap font-bold uppercase tracking-[.08em] mb-2">X · group the samples by</div>
+          <div className="cap font-bold uppercase tracking-[.08em] mb-2">Group the samples by</div>
           <div className="flex flex-wrap gap-2" role="tablist" aria-label="X axis">{X_AXES.map(a => <button key={a.key} role="tab" aria-selected={x === a.key} className={`chip chip-xs ${x === a.key ? 'on' : ''}`} onClick={() => setX(a.key)}>{a.label}</button>)}</div>
         </div>
         <div>
-          <div className="cap font-bold uppercase tracking-[.08em] mb-2">Y · and read the mean of</div>
+          <div className="cap font-bold uppercase tracking-[.08em] mb-2">and show the mean of</div>
           <div className="flex flex-wrap gap-2" role="tablist" aria-label="Y axis">{Y_AXES.map(a => <button key={a.key} role="tab" aria-selected={y === a.key} className={`chip chip-xs ${y === a.key ? 'soil on' : ''}`} onClick={() => setY(a.key)}>{a.label}</button>)}</div>
         </div>
       </div>
       <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-6 mt-5 items-start">
         <div className="chart" ref={fit.ref}>
           <div className="flex items-baseline justify-between gap-3 flex-wrap">
-            <h4>Mean {Y.label.toLowerCase()} by {X.key === 'phband' ? 'pH band' : X.label.toLowerCase()}{d ? ` · ${d.name}` : ' · Punjab'}</h4>
+            <h4>Mean {Y.label.toLowerCase()} by {X.key === 'phband' ? 'pH group' : X.label.toLowerCase()}{d ? ` · ${d.name}` : ' · Punjab'}</h4>
             <label className="cap flex items-center gap-2">for <select className="input input-sm" style={{ width: 'auto', minHeight: 36, padding: '4px 10px', fontSize: 13.5 }} value={dist} onChange={e => setDist(e.target.value)} aria-label="Province or district"><option value="">Punjab · all 36 districts</option>{DISTRICTS.map(k => <option key={k.key} value={k.key}>{k.name}</option>)}</select></label>
           </div>
           {inView && <svg key={chartKey} viewBox={`0 0 ${W} ${H}`} width="100%" className="mt-2" role="img" aria-label={`${Y.label} by ${X.label}`}>
@@ -84,19 +85,19 @@ export function RelationExplorer({ initialRel }: { initialRel?: string | null })
           <VerdictBadge v={rel?.verdict ?? null} />
           {rel ? (
             <>
-              <h3 className="mt-3">{rel.title}</h3>
-              <p className="cap mt-1 num">Province series · {rel.series}</p>
+              <h3 className="mt-3">{noStop(rel.title)}</h3>
+              <p className="cap mt-1 num">Punjab, mean by group · {rel.series}</p>
               <p className="mt-3 small">{rel.text}</p>
               {d && <p className="cap mt-3 p-3 rounded-lg" style={{ background: 'var(--gold-soft)' }}>The verdict is recorded for the province series. The bars now show <b>{d.name}</b> on its own. Read them as that district’s observed means, not as a test of the verdict.</p>}
             </>
           ) : (
             <p className="mt-3 small muted">The survey records this series; no relationship has been examined for it. The bars are observed band means with their sample counts.</p>
           )}
-          <p className="src"><b>Source ·</b> {SOIL_SOURCE.short}. Observational; establishes conditions, not mechanism.</p>
+          <p className="src"><b>Source ·</b> {SOIL_SOURCE.short}. Observational data: they show conditions, not causes.</p>
         </div>
       </div>
       <div className="flex flex-wrap gap-2 mt-4 pt-4" style={{ borderTop: '1px solid var(--line)' }}>
-        <span className="cap mr-1 self-center">The 6 pairs with a verdict:</span>
+        <span className="cap mr-1 self-center">The 6 relationships tested:</span>
         {SOIL_RELATIONS.map(r => <button key={r.key} className={`chip chip-xs ${rel?.key === r.key ? 'on' : ''}`} onClick={() => { setX(r.x); setY(r.y) }} aria-pressed={rel?.key === r.key}>{r.title}</button>)}
       </div>
       <p className="cap mt-3">{SOIL_COPY.relLead}</p>

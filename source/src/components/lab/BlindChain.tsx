@@ -90,7 +90,7 @@ export function KnowsMatrix() {
   const cols = ['Knows who you are', 'Handles the sample', 'Sees the result']
   return (
     <div className="panel p-5">
-      <h4>6 roles, and what each one knows and handles.</h4>
+      <h4>6 roles, and what each one knows and handles</h4>
       <p className="cap mt-1">The only people who know your name never touch your sample.</p>
       <div className="overflow-x-auto mt-3">
         <table className="tbl" style={{ minWidth: 620 }}>
@@ -134,7 +134,7 @@ export function SampleSteps() {
   return (
     <div className="panel p-5">
       <div className="flex items-baseline justify-between gap-3 flex-wrap">
-        <h4>Sending a sample, in 4 steps.</h4>
+        <h4>Sending a sample, in 4 steps</h4>
         <a className="cap" href="#/lab#booking">What to know before booking ›</a>
       </div>
       <ol className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-3 pl-0 list-none">

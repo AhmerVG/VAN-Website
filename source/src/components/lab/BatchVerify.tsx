@@ -183,7 +183,7 @@ export function BatchVerify() {
     <div>
       <form onSubmit={submit} className="panel p-5 lg:p-6" style={{ borderColor: 'var(--navy)', borderWidth: 2 }}>
         <span className="eyebrow navy">Verify a bag</span>
-        <h3 className="mt-1">Type the batch number, and open its lab report.</h3>
+        <h3 className="mt-1">Type the batch number, and open its lab report</h3>
         <div className="grid sm:grid-cols-[1fr_auto] gap-3 items-end mt-4">
           <div>
             <label className="block font-bold small" htmlFor="bv-batch">Batch number, printed on the bag</label>

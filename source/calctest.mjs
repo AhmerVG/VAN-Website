@@ -263,7 +263,8 @@ for (const crop of ['wheat', 'lentil']) {
   check(`${crop}: the note is in the price panel`, panel.includes('This cost is for the amount used on the field. Where the plan says half a bag, 1 bag covers 2 acres.'), panel)
   check(`${crop}: no em dash in the note`, !/—/.test(await page.$eval('#creator [data-price-note]', el => el.textContent).catch(() => '—')))
   const total = (panel.match(/PKR ([\d,]+)/) || [])[1]
-  const want = { wheat: '46,300', lentil: '38,215' }[crop]
+  // Tahir 10 Nov 2026 (EN-11b): the wheat calculator carries Vital Urea 1 bag (was ½), so the wheat 1 acre total is PKR 49,550 (was 46,300; urea is not priced).
+  const want = { wheat: '49,550', lentil: '38,215' }[crop]
   check(`${crop}: 1 acre total unchanged, PKR ${want} (audit 19 Oct)`, total === want, `got ${total}`)
   await ctx.close()
 }

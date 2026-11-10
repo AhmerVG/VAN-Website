@@ -1,14 +1,17 @@
 import { useEffect, useMemo, useState } from 'react'
 import { PRODUCTS, type Product } from '@/data/catalogue'
 import { COUNTS, WA } from '@/data/site'
-import { PackShot, MethodIcon, WaButton, FamilyShot } from '@/components/bits'
+import { PackShot, MethodIcon, WaButton, FamilyShot, methodKeys } from '@/components/bits'
 import { NP_PACK } from '@/data/npPacks'
 export { FamilyShot }
 
-const CATS: [Product['cat'] | 'ALL', string][] = [['ALL', 'All'], ['N', 'Nitrogen'], ['P', 'Phosphorus'], ['K', 'Potash'], ['NPK', 'NPK'], ['MICRO', 'Micronutrients'], ['SEC', 'Secondary'], ['BIO', 'Biologicals']]
+const CATS: [Product['cat'] | 'ALL', string][] = [['ALL', 'All'], ['N', 'Nitrogen'], ['P', 'Phosphorus'], ['K', 'Potash'], ['NPK', 'NPK'], ['MICRO', 'Micronutrients'], ['SEC', 'Secondary nutrients'], ['BIO', 'Soil health and biologicals']]
 const CAT_ORDER: Product['cat'][] = ['N', 'P', 'K', 'NPK', 'MICRO', 'SEC', 'BIO']
-const METHODS = ['Broadcast', 'Fertigation', 'Foliar', 'Basal']
-const STAGES = ['Soil prep', 'Sowing', 'Germination', 'Early growth', 'Mid-life', 'Maturity']
+// Tahir 7 Nov 2026 (PR-21): the method filter names the application methods; "Basal" (not a method) is removed.
+// A product matches a method through methodKeys(), so "Drill at sowing; broadcast if no drill" is found under Drilling and Broadcast.
+const METHODS = ['Drilling', 'Side-dressing', 'Band placement', 'Broadcast', 'Fertigation', 'Foliar']
+// Tahir 7 Nov 2026 (PR-22): the crop plan stage names, "Land preparation" and "Grand growth", replace "Soil prep" and "Mid-life".
+const STAGES = ['Land preparation', 'Sowing', 'Germination', 'Early growth', 'Grand growth', 'Maturity']
 type SortKey = 'catalogue' | 'name' | 'category' | 'method' | 'stage' | 'availability'
 
 
@@ -34,7 +37,7 @@ export default function Products() {
     // D-287: grades print as 10:44:0 now; a farmer who types 10-44-0 or 10.44.0 must still find them.
     const gradeNorm = (s: string) => s.replace(/(?<=\d)[-.:](?=\d)/g, ':')
     const t = gradeNorm(q.trim().toLowerCase())
-    let r = PRODUCTS.filter(p => (cat === 'ALL' || p.cat === cat) && (!method || p.methods.includes(method)) && (!stage || p.stages.includes(stage)) && (!t || gradeNorm(p.name.toLowerCase()).includes(t) || gradeNorm(p.analysis.toLowerCase()).includes(t) || p.catLabel.toLowerCase().includes(t)))
+    let r = PRODUCTS.filter(p => (cat === 'ALL' || p.cat === cat) && (!method || p.methods.some(m => methodKeys(m).includes(method))) && (!stage || p.stages.includes(stage)) && (!t || gradeNorm(p.name.toLowerCase()).includes(t) || gradeNorm(p.analysis.toLowerCase()).includes(t) || p.catLabel.toLowerCase().includes(t)))
     if (sort !== 'catalogue') {
       r = [...r].sort((a, b) => {
         const k = sort === 'name' ? a.name.localeCompare(b.name) : sort === 'category' ? CAT_ORDER.indexOf(a.cat) - CAT_ORDER.indexOf(b.cat) : sort === 'method' ? a.methods[0].localeCompare(b.methods[0]) : sort === 'stage' ? STAGES.indexOf(a.stages[0]) - STAGES.indexOf(b.stages[0]) : a.badge.localeCompare(b.badge)
@@ -48,18 +51,20 @@ export default function Products() {
   const Th = ({ k, children, className = '' }: { k: SortKey; children: React.ReactNode; className?: string }) => <th className={`sort ${sort === k ? 'on' : ''} ${className}`} onClick={() => toggleSort(k)} aria-sort={sort === k ? (dir === 1 ? 'ascending' : 'descending') : 'none'}>{children}{sort === k ? (dir === 1 ? ' ↑' : ' ↓') : ''}</th>
   return (
     <div className="wrap py-8 lg:py-12">
-      <span className="eyebrow">Our brands</span>
-      <h1>{brands} products. Every analysis published, every batch tested.</h1>
-      <p className="lead mt-4">Sell it as a VAN brand, or make it yours. All {COUNTS.ownBrandOpen} are open for own-brand manufacturing, Vital Urea included.</p>
+      <span className="eyebrow">VAN brands</span>
+      <h1>VAN’s {brands} registered brands and the declared analysis of each</h1>
+      {/* Tahir 7 Nov 2026 (PR-1): SOP is bought in, not made by VAN, so own-brand manufacturing covers the 22 brands made in VAN's plant. */}
+      <p className="lead mt-4">Distributors can sell any of these {brands} brands under the VAN name. A company can also ask VAN to make any of the {COUNTS.ownBrandOpen} brands made in VAN’s plant, including Vital Urea, under the company’s own brand name.</p>
       <div className="flex flex-wrap gap-2 mt-6 cap">
-        <span className="tag tag-navy">{COUNTS.licencesOwn} PSQCA licences on these brands</span><span className="tag tag-navy">{COUNTS.standards} Pakistan Standards</span><span className="tag tag-green">{COUNTS.lab} · every batch tested</span>
+        <span className="tag tag-navy">{COUNTS.licencesOwn} PSQCA licences, held by 20 of the {brands} brands</span><span className="tag tag-navy">Licensed against {COUNTS.standards} Pakistan Standards</span><span className="tag tag-green">Every batch is tested in {COUNTS.lab}</span>
       </div>
 
       <div id="table" className="panel p-4 lg:p-5 mt-8 grid gap-4" style={{ scrollMarginTop: 96 }}>
         <div className="flex flex-wrap gap-2 items-center">
           <input className="input" style={{ maxWidth: 340 }} placeholder="Search a product or analysis…" value={q} onChange={e => setQ(e.target.value)} aria-label="Search products" />
           {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */}
-          <div className="cap ml-auto">{list.length} of {PRODUCTS.length} shown. {brands} brands and the NP Range</div>
+          {/* Tahir 7 Nov 2026 (CO-7): short caption only; the NP Range note moved to its card. */}
+          <div className="cap ml-auto">Showing {list.length} of {PRODUCTS.length} cards</div>
           {(cat !== 'ALL' || method || stage || q) && <button className="btn btn-ghost btn-sm" onClick={clear}>Clear filters ✕</button>}
           <a className="btn btn-ghost btn-sm" href="#/composition" style={{ marginRight: 8 }}>Composition chart →</a><div className="flex gap-1 p-1 rounded" style={{ background: 'var(--sand-2)' }} role="tablist" aria-label="View">
             <button role="tab" aria-selected={view === 'cards'} className={`chip chip-xs ${view === 'cards' ? 'on' : ''}`} style={{ borderColor: 'transparent' }} onClick={() => setView('cards')}>Cards</button>
@@ -79,7 +84,7 @@ export default function Products() {
         </div>
       </div>
 
-      {!list.length && <div className="panel-soft p-8 mt-6 text-center"><p className="lead mx-auto">No products match this combination. Clear a filter.</p><button className="btn btn-gold mt-4" onClick={clear}>Clear filters</button></div>}
+      {!list.length && <div className="panel-soft p-8 mt-6 text-center"><p className="lead mx-auto">No brands match this combination. Clear a filter.</p><button className="btn btn-gold mt-4" onClick={clear}>Clear filters</button></div>}
 
       {view === 'cards' && list.length > 0 && (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6">
@@ -87,8 +92,8 @@ export default function Products() {
             <a key={p.slug} href={`#/products/${p.slug}`} className="panel tile">
               <div className="shot">{p.family ? <FamilyShot /> : <PackShot slug={p.slug} />}</div>
               <div className="p-4 flex flex-col flex-1">
-                <div className="flex flex-wrap items-center justify-between gap-1"><span className="tag tag-navy">{p.catLabel}</span>{p.exclusive ? <span className="tag tag-gold">VAN exclusive</span> : <span className="tag tag-green">Own-brand</span>}</div>
-                <div className="display text-[19px] leading-tight mt-2">{p.name}{p.family && <span className="cap block font-normal">a family of 3 grades</span>}</div>
+                <div className="flex flex-wrap items-center justify-between gap-1"><span className="tag tag-navy">{p.catLabel}</span>{p.exclusive ? <span className="tag tag-gold">VAN exclusive</span> : <span className="tag tag-green">{p.badge}</span>}{/* PR-1: the badge from the catalogue (SOP: open to distributors only) */}</div>
+                <div className="display text-[19px] leading-tight mt-2">{p.name}{p.family && <span className="cap block font-normal">3 grades; the 6:32 grade is sold as Green Phosphate</span>}</div>
                 <div className="small muted mt-1 flex-1">{p.analysis}</div>
                 <div className="flex flex-wrap gap-1 mt-3">{p.methods.map(m => <span key={m} className="tag tag-sky inline-flex items-center gap-1"><MethodIcon method={m} size={14} />{m}</span>)}{p.stages.map(s => <span key={s} className="tag tag-grey">{s}</span>)}</div>
               </div>
@@ -123,15 +128,15 @@ export default function Products() {
       <div className="grid lg:grid-cols-2 gap-5 mt-12">
         <div className="panel-green p-6">
           <span className="eyebrow">Distribution</span>
-          <h3>Carry VAN brands in your territory.</h3>
-          <p className="mt-2 muted">Range, pricing and territory. Ask on WhatsApp.</p>
+          <h3>Sell VAN brands in your territory</h3>
+          <p className="mt-2 muted">Ask on WhatsApp about the range, prices and territories.</p>
           <div className="mt-4"><WaButton href={WA.distributor}>Become a distributor</WaButton></div>
         </div>
         <div className="panel-soil p-6">
           <span className="eyebrow soil">Own-brand manufacturing</span>
-          <h3>Same specification, your brand name.</h3>
-          <p className="mt-2 muted">All 23 are open for own-brand manufacturing, Vital Urea included. Same line, same QC, your label.</p>
-          <a className="btn btn-navy mt-4" href="#/partner">Make it your brand →</a>
+          <h3>Products made under your brand name</h3>
+          <p className="mt-2 muted">VAN makes your product to the same specification as the VAN brand it is based on, on the same production line and with the same quality control. The product carries your label.</p>{/* PR-1 */}
+          <a className="btn btn-navy mt-4" href="#/partner">Ask about own-brand manufacturing →</a>
         </div>
       </div>
     </div>

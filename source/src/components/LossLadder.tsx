@@ -80,57 +80,70 @@ export function LossLadder({ slug, compact = false }: { slug?: string; compact?:
   const field = slug ? isFieldCrop(slug) : true
   return (
     <div className="panel p-5 lg:p-6" id="what-reaches">
-      <span className="eyebrow rust">What actually reaches your crop</span>
-      <h3 className="mt-1 max-w-[30ch]">You pay for the whole bag. About 29 of every 100 kg of nitrogen added leave the field in the harvest.</h3>
+      <span className="eyebrow rust">Nitrogen use efficiency in Pakistan</span>
+      <h3 className="mt-1 max-w-[30ch]">Pakistan’s nitrogen use efficiency was about 29% in 2023 (FAO estimate)</h3>
 
       <p className="lead mt-3 max-w-[140ch]">
         {/* D-325, 4 Nov 2026: FAO 2023. Was "roughly 1 kg of applied nitrogen in 4 is taken up by the crop" (Lassaletta et al. 2014). */}
-        Across Pakistan's cropland, about <b>29 of every 100 kg of nitrogen added</b> leave the field in
-        the harvest (FAO, 2023). In the United States it is about {NATIONAL.nitrogen.us} in 100. FAO estimates that
-        about 26 of our 100 go to the air and 11 to water: the farmer pays for that nitrogen at the depot and the
-        crop never gets it. Some more leaves in straw and stalks, and the rest is not accounted for.
+        {/* L1 editor 7 Nov 2026 (whyshift M2, B3; crops-b M4): the 26 kg and 11 kg are tied to Pakistan's 2023 100 kg (as in
+            NATIONAL.nitrogen.text), the United States sentence moved to the end, and the depot sentence says "part of", as in the
+            work-whyshift draft. Was: "In the United States the efficiency was about 71%. FAO estimates that, of every 100 kg of
+            nitrogen added, about 26 kg ... Farmers pay for this lost nitrogen at the depot, but the crop never receives it. A further part ..." */}
+        Nitrogen use efficiency is the share of the nitrogen added to cropland that is taken out in the
+        harvested crop. The figure covers all crops in Pakistan, not one crop alone. Of every <b>100 kg of nitrogen added to Pakistan’s cropland in 2023, 29 kg were taken out
+        in the harvested crop</b> (FAO). FAO estimates that, of the same 100 kg, about 26 kg were lost to the air and
+        11 kg were lost to water. Part of this lost nitrogen came from fertiliser that farmers had paid for, and the crop
+        never received it. A further part is taken off the field in straw and stalks, and the remainder is not accounted
+        for. In the United States the efficiency was about {NATIONAL.nitrogen.us}%.
       </p>
       <p className="src"><b>Source ·</b> {NATIONAL.nitrogen.source}</p>
 
-      <h4 className="mt-6">Why it goes</h4>
+      <h4 className="mt-6">Why the nitrogen is lost</h4>
       <div className="grid md:grid-cols-2 gap-3 mt-2">
         <div className="panel-soft p-4">
-          <b style={{ color: 'var(--navy)' }}>Some of it is your soil, and that part is not your fault.</b>
+          <b style={{ color: 'var(--navy)' }}>Part of the loss is caused by soil conditions that the farmer cannot change.</b>
           <p className="small mt-1">
-            Above pH 8, and about {SEVENTY} of Punjab's samples are above pH 8, urea left on the surface turns to
-            ammonia and leaves before a root can reach it. Calcareous ground binds phosphate with free calcium
-            and takes most of it back. The same alkalinity locks up zinc.
+            {/* L1 editor 7 Nov 2026 (whyshift B2, m6): "part of" the nitrogen, as the national page and the work-whyshift draft say;
+                calcareous explained. Was: "Above pH 8, urea left on the soil surface turns to ammonia and is lost to the air before a
+                root can reach it. ... in calcareous soil, free calcium ..." */}
+            About {SEVENTY} of the samples in the Punjab soil survey, taken about 2016 to 2018, had a pH above 8.
+            On such soil, part of the nitrogen in urea left on the surface turns to ammonia and is lost to the air
+            before the crop can take it up. The same high pH causes other losses: in calcareous soil (soil rich in
+            calcium carbonate), free calcium binds most of the phosphate applied, and zinc becomes unavailable to the crop.
           </p>
-          <a className="cap" href="#/soil">The soil, measured 770,160 times →</a>
+          <a className="cap" href="#/soil">Punjab soil survey: 770,160 samples →</a>
         </div>
         <div className="panel-soft p-4">
-          <b style={{ color: 'var(--navy)' }}>Some of it is how the bag was used, and that part you can change.</b>
+          <b style={{ color: 'var(--navy)' }}>Part of the loss comes from how the fertiliser is applied, which the farmer can change.</b>
+          {/* Tahir 7 Nov 2026 (RP-WS-1): the unsourced share claim is deleted. Was: 'The loss depends on where the fertiliser was placed, how the doses were split,
+              whether irrigation followed the application, and what the fertiliser was mixed with. None of this is printed on the bag, and a large share of the loss happens through these practices.' */}
           <p className="small mt-1">
-            Where it was placed, when it was split, whether the water followed it, and what it was mixed with.
-            None of that is printed on a bag, and it is where a large share of the loss happens.
+            How much nitrogen is lost also depends on where the fertiliser is placed, how the doses are split, whether
+            irrigation follows the application, and what the fertiliser is mixed with.
           </p>
         </div>
       </div>
       <p className="small muted mt-2 max-w-[140ch]">
-        Nobody has yet measured how this loss splits between soil and practice in Pakistan.
+        No study has yet measured how much of the nitrogen loss in Pakistan is caused by soil conditions and how
+        much by the way fertiliser is applied.
       </p>
 
-      <h4 className="mt-6">What you can do, in the order it costs you</h4>
+      <h4 className="mt-6">Steps a farmer can take to reduce the loss</h4>
       <ol className="grid gap-3 mt-2 pl-0 list-none">
         <li className="flex gap-3">
           <span className="num shrink-0 w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'var(--gold)', color: 'var(--navy)' }}>1</span>
           <span>
-            <b style={{ color: 'var(--navy)' }}>Change the form.</b>
-            <span className="small block">A coated urea releases over days instead of all at once on a hot surface. This step costs money, and it comes first because it does the most.</span>
+            <b style={{ color: 'var(--navy)' }}>Change to a coated urea.</b>
+            <span className="small block">{/* L1 editor 7 Nov 2026 (crops-b m20): subject of "all at once" stated. */}Ordinary urea releases all its nitrogen at once when it lands on hot soil; a coated urea releases its nitrogen over several days. It costs more than ordinary urea. This step is listed first because it has the largest effect.</span>
           </span>
         </li>
         {field && (
           <li className="flex gap-3">
             <span className="num shrink-0 w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'var(--gold)', color: 'var(--navy)' }}>2</span>
             <span>
-              <b style={{ color: 'var(--navy)' }}>If you cannot change the product, change the method.</b>
-              <span className="small block">Placed in the band, drilled at sowing, or side-dressed and watered in, the same bag puts <b>more of its nitrogen into the crop</b> than it does broadcast on a dry alkaline surface. The bag and the price are the same. Only the placement changes.</span>
-              <span className="small block mt-1">The same holds for phosphate, DAP included: <b>the closer it goes to the root, the less of it the soil locks up</b> before the root arrives.</span>
+              <b style={{ color: 'var(--navy)' }}>If you keep the same fertiliser, change how you apply it.</b>
+              <span className="small block">When the same fertiliser is placed in a band beside the seed row, drilled at sowing, or side-dressed and then irrigated, <b>more of its nitrogen reaches the crop</b> than when it is broadcast on dry alkaline soil. The bag and the price stay the same.</span>
+              <span className="small block mt-1">Placement also matters for phosphate fertiliser, including DAP (diammonium phosphate): <b>the closer it is placed to the root, the less of it the soil binds</b> before the root reaches it.</span>
               <a className="cap" href="#/crops/wheat#methods">The 5 methods, and what each one does →</a>
             </span>
           </li>
@@ -138,15 +151,15 @@ export function LossLadder({ slug, compact = false }: { slug?: string; compact?:
         <li className="flex gap-3">
           <span className="num shrink-0 w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'var(--gold)', color: 'var(--navy)' }}>{field ? 3 : 2}</span>
           <span>
-            <b style={{ color: 'var(--navy)' }}>If you irrigate through the line, level the field first.</b>
-            <span className="small block">On unlevelled ground the water, and everything dissolved in it, reaches the low end of the field first and the high end last or not at all. Fertigation spreads the nutrient more evenly once the ground is level, and the levelling is doing part of that work, not the fertigation alone.</span>
+            <b style={{ color: 'var(--navy)' }}>If you apply fertiliser through the irrigation water, level the field first.</b>
+            <span className="small block">On unlevelled ground, the water and everything dissolved in it reach the low end of the field first and the high end late or not at all. {/* L1 editor 7 Nov 2026 (crops-b M5): comparison stated. Was: "Once the ground is level, fertigation spreads the nutrient more evenly, and part of this more even spread comes from the levelling, not from the fertigation alone." */}On a level field, fertigation spreads the nutrient more evenly than on unlevelled ground. Part of that improvement comes from levelling the field, not from fertigation itself.</span>
           </span>
         </li>
         <li className="flex gap-3">
           <span className="num shrink-0 w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'var(--gold)', color: 'var(--navy)' }}>{field ? 4 : 3}</span>
           <span>
-            <b style={{ color: 'var(--navy)' }}>Change the moment. Split it, and follow the water.</b>
-            <span className="small block">Nitrogen given in 1 early dose sits on the field waiting to be lost. Split against the crop's own demand and follow the irrigation with it.</span>
+            <b style={{ color: 'var(--navy)' }}>Change the timing: split the nitrogen into doses.</b>
+            <span className="small block">If all the nitrogen is applied in 1 early dose, much of it sits in the soil before the crop needs it, and it can be lost. Split the nitrogen into doses that follow the crop’s own demand, and time each dose with an irrigation.</span>
           </span>
         </li>
         {/* 10 Sep 2026. This rung read "being written" for two days and was the last placeholder on
@@ -160,30 +173,33 @@ export function LossLadder({ slug, compact = false }: { slug?: string; compact?:
         <li className="flex gap-3">
           <span className="num shrink-0 w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'var(--gold)', color: 'var(--navy)' }}>{field ? 5 : 4}</span>
           <span>
-            <b style={{ color: 'var(--navy)' }}>Build the tank mix properly.</b>
-            <span className="small block">A correct mix for foliar and fertigation drives uptake in its own right. 4 rules carry most of it.</span>
+            <b style={{ color: 'var(--navy)' }}>Prepare the tank mix correctly.</b>
+            <span className="small block">A correctly prepared tank mix helps the crop take up more of what is sprayed on the leaves or applied through the irrigation water. Most of the method is covered by these 4 rules.</span>
             <span className="small block mt-2">
-              <b>Fill the tank half full first, and keep the agitator running.</b> Products go in 1 at a time, each
-              dispersed before the next arrives. Adding to an empty tank, or all at once, is how a mix curdles.
+              <b>Fill the tank half full of water first, and keep the agitator running.</b> Add products 1 at a
+              time, and let each disperse before adding the next. Adding products to an empty tank, or all at once,
+              makes a mix curdle.
             </span>
             <span className="small block mt-1">
-              <b>Add in order of how hard each one is to disperse:</b> wettable powders, then water-dispersible
+              <b>Add products in order of how hard each is to disperse:</b> wettable powders, then water-dispersible
               granules, then suspensions and flowables, then anything already in solution, then emulsifiable
               concentrates, and adjuvants and surfactants last of all.
             </span>
             <span className="small block mt-1">
-              <b>Jar-test anything you have not mixed before.</b> The same products in the same order, at the same
-              ratio, in a clear jar. Leave it 15 minutes. Curdling, flakes, a layer on top or sludge at the
-              bottom means it will do the same in a 200-litre tank, and you will find out with a blocked boom.
+              <b>Jar-test any mix you have not made before.</b> Mix the same products in the same order and at the
+              same ratio in a clear jar, and leave it for 15 minutes. If the mix curdles, or forms flakes, a layer on
+              top or sludge at the bottom, it will do the same in a 200-litre tank and block the boom.
             </span>
             <span className="small block mt-1">
-              <b>Spray it the day you mix it, and not into the middle of the day.</b> A mix left standing separates,
-              and a leaf takes far less in heat with the stomata shut. Early morning or late afternoon.
+              <b>Spray the mix on the day you make it, and not in the middle of the day.</b> A mix left standing
+              separates, and in the heat a leaf takes up far less, because the small pores on its surface (stomata)
+              close. Spray in the early morning or late afternoon.
             </span>
             <span className="cap block mt-2" style={{ color: 'var(--rust)', fontWeight: 700 }}>
-              This is general spray practice, not a VAN compatibility chart. Which VAN products must not share a
-              tank, at what concentration, and what your own water does to them are answered product by product by
-              the agronomy team, and in full for partners.
+              These are general spray rules. They do not show which VAN brands can be mixed together. VAN’s
+              agronomy team answers, brand by brand, which VAN brands must not share a tank, at what
+              concentration, and how your own water affects them. Companies that partner with VAN receive the
+              full answers.
             </span>
           </span>
         </li>
@@ -191,12 +207,12 @@ export function LossLadder({ slug, compact = false }: { slug?: string; compact?:
 
       {!compact && (
         <p className="small mt-5 max-w-[140ch]">
-          <b>3 of these steps cost nothing.</b> A farmer who buys no extra bag and only changes where and
-          when he puts the one he has is already ahead.
+          <b>3 of these steps cost nothing.</b> A farmer who buys no extra bag, and changes only where and when
+          the existing fertiliser is applied, is already better off.
         </p>
       )}
     </div>
   )
 }
 
-const SEVENTY = '69 in every 100'
+const SEVENTY = '69%'

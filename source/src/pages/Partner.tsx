@@ -1,5 +1,5 @@
 import { PARTNER, LIBRARY, WA, CONTACT, HOME_COPY, COUNTS } from '@/data/site'
-import { SectionHead, WaButton } from '@/components/bits'
+import { SectionHead, WaButton, noStop } from '@/components/bits'
 import { PartnerJourney } from '@/components/PartnerJourney'
 import { PartnerNav } from '@/components/PartnerNav'
 import { VanForm } from '@/components/VanForm'
@@ -22,8 +22,9 @@ export default function Partner() {
           <div className="grid lg:grid-cols-[1.35fr_1fr] gap-5 lg:gap-10 items-end">
             <div>
               <span className="eyebrow">Your Brand</span>
-              <h1 className="max-w-[22ch]" style={{ fontSize: 'clamp(30px,4.2vw,52px)', lineHeight: 1.04 }}>{PARTNER.h1}</h1>
+              <h1 className="max-w-[22ch]" style={{ fontSize: 'clamp(30px,4.2vw,52px)', lineHeight: 1.04 }}>{noStop(PARTNER.h1)}</h1>
               <p className="lead mt-3 max-w-[140ch]">{PARTNER.kicker}.</p>
+              <p className="small mt-3 max-w-[140ch]">{PARTNER.lead}</p>
             </div>
             {/* The number sits in the hero as part of the composition rather than alone in a box
                 under it, so the right side of a wide screen carries weight instead of air. */}
@@ -44,12 +45,13 @@ export default function Partner() {
               <a className="btn btn-gold btn-sm" href="#talk">Talk to the commercial team →</a>
               {/* D-147: the company profile, for a partner who wants the whole company first. Revert: delete. */}
               <a className="btn btn-ghost btn-sm" href="#/company-profile">VAN’s company profile, and its PDF →</a>
-              <a className="btn btn-ghost btn-sm" href="#/composition#library">Composition chart, every code with its analysis →</a>
+              <a className="btn btn-ghost btn-sm" href="#/composition#library">Composition chart: every code with its analysis →</a>
             </div>
           </div>
-          {/* D-257, Tahir 18 Oct 2026: the 12 licensed products, said first. They are not library codes. */}
-          <p className="pr-ready mt-4"><b className="num">{COUNTS.licencesPartnerReady}</b> products already hold a PSQCA licence and are ready for a partner launch: your name on the bag, in the market within <b>{COUNTS.partnerReadyDays} days</b>. They are separate from the {LIBRARY.length} library formulations. <a href="#talk">Ask which ones →</a></p>
-          <p className="small mt-4 max-w-[140ch]">{PARTNER.lead}</p>
+          {/* D-257, Tahir 18 Oct 2026: the 12 licensed products, said first. Tahir 9 Nov 2026: the 10 library codes marked Available are among the 12 licensed products. */}
+          <p className="pr-ready mt-4"><b className="num">{COUNTS.licencesPartnerReady}</b> products already hold a PSQCA (Pakistan Standards and Quality Control Authority) licence, including the <b className="num">{READY}</b> library codes marked Available. A partner can launch any of them under its own brand within <b>{COUNTS.partnerReadyDays} days</b>. <a href="#talk">Ask which ones →</a></p>
+          {/* Tahir 10 Nov 2026 (CO-N8, CO-30): the counts dated once on the page. */}
+          <p className="cap mt-2">Figures as of July 2026.</p>
         </div>
       </section>
 
@@ -62,8 +64,9 @@ export default function Partner() {
           first, right under the hero, in full: the ladder, the 2 filters and every formulation with its
           "Ask about" button. The Pipeline page keeps its own copy. Revert: put back the old block below
           "range" with <FormulationLibrary pathOnly />, and the old ITEMS order in PartnerNav. */}
+      {/* Tahir 7 Nov 2026 (CO-2): the names on some cards are working names. CO-27: brief-to-market times. */}
       <section id="library" className="sec pnav-target" style={{ background: 'var(--sand-2)' }}><div className="wrap">
-        <SectionHead eyebrow="The formulation library" title={`${LIBRARY.length} formulations. ${READY} ready to carry your name now.`} lead="None has a brand on it yet. Each card shows how far along it is. Filter by what it carries and the form it comes in, then open a card to ask about it." tone="navy" />
+        <SectionHead eyebrow="The formulation library" title={`${LIBRARY.length} formulations in the library, ${READY} of them ready to carry your name.`} lead="None of them is sold under a brand yet. Some carry a working name, shown after the code. Each card shows the stage the formulation has reached. Filter by the nutrients it carries and the form it comes in, then open a card to ask about it." tone="navy" />
         <FormulationLibrary phoneShort />
       </div></section>
 
@@ -75,7 +78,7 @@ export default function Partner() {
       {/* D-185, 26 Sep 2026: the 3 partnership models, who does what, and the range service.
           Tahir asked for the long term models to be stated plainly; licensing came off by his ruling. */}
       <section id="models" className="sec pnav-target"><div className="wrap">
-        <SectionHead eyebrow="The long term" title={PARTNER.modelsH2} lead={PARTNER.modelsLead} />
+        <SectionHead eyebrow="Long-term models" title={PARTNER.modelsH2} lead={PARTNER.modelsLead} />
         <div className="panel overflow-x-auto tbl-scroll"><table className="tbl" style={{ minWidth: 960 }}>
           <thead><tr>{PARTNER.modelsHead.map(h => <th key={h}>{h}</th>)}</tr></thead>
           <tbody>
@@ -101,7 +104,7 @@ export default function Partner() {
             </li>
           ))}
         </ol>
-        <div className="flex flex-wrap gap-3 mt-5"><a className="btn btn-navy" href="#talk">Send us your crops and regions →</a><a className="btn btn-ghost" href="#/products">The 23 brands</a></div>
+        <div className="flex flex-wrap gap-3 mt-5"><a className="btn btn-navy" href="#talk">Send us your crops and regions →</a><a className="btn btn-ghost" href="#/products">Our 23 registered brands</a></div>
       </div></section>
 
 
@@ -124,26 +127,26 @@ export default function Partner() {
             </div>
           ))}
           {PARTNER.portfolioPending.partners && (
-            <div className="pf-card"><div className="pf-n num">{PARTNER.portfolioPending.partners}</div><div className="pf-l">companies, as against brands</div></div>
+            <div className="pf-card"><div className="pf-n num">{PARTNER.portfolioPending.partners}</div><div className="pf-l">partner companies, as distinct from brands</div></div>
           )}
           {PARTNER.portfolioPending.oldest && (
             <div className="pf-card"><div className="pf-n num">{PARTNER.portfolioPending.oldest}</div><div className="pf-l">the year the longest-running partnership started</div></div>
           )}
           {PARTNER.portfolioPending.launchRange && (
-            <div className="pf-card"><div className="pf-n num">{PARTNER.portfolioPending.launchRange}</div><div className="pf-l">fastest and slowest, brief to market</div></div>
+            <div className="pf-card"><div className="pf-n num">{PARTNER.portfolioPending.launchRange}</div><div className="pf-l">fastest and slowest time from brief to market</div></div>
           )}
         </div>
         {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction. The source line that described where each figure is published came off. */}
       </div></section>
 
       <section id="detail" className="sec pnav-target"><div className="wrap">
-        <div className="mb-7"><span className="eyebrow navy">In more detail</span><h2 className="max-w-[24ch]">5 pages, 1 for each part of the decision.</h2></div>
+        <div className="mb-7"><span className="eyebrow navy">In more detail</span><h2 className="max-w-[24ch]">Detailed pages on development, engineering, manufacturing, the formulation library and registration</h2></div>
         <div className="grid md:grid-cols-2 gap-3">
-          {[['From brief to bag', 'brief-to-bag', '6 stages from an idea to a registered product in a dealer\u2019s shop.'],
-            ['VAN Engineering', 'engineering', 'The dials and their ranges: batch size, coating, chelation, solubility, pack.'],
-            ['Manufacturing & quality', 'manufacturing', 'What is on site, how a lot is released, and the research farms behind it.'],
-            ['Pipeline & formulation library', 'pipeline', `${LIBRARY.length} unbranded codes, the 6-stage path, and what is published before an agreement.`],
-            ['Regulatory & registration', 'regulatory', 'The live PSQCA licences VAN holds, and the same team runs registration for partners.']].map(([t, sl, d]) => (
+          {[['From brief to bag', 'brief-to-bag', 'The 6 development stages of a product developed to your brief, from feasibility to registration.'],
+            ['VAN Engineering', 'engineering', 'What we can vary in a formulation, and the range for each: batch size, coating, chelation, solubility and pack.'],
+            ['Manufacturing & quality', 'manufacturing', 'What is on site, how a lot is released, and the research farms where formulations are tested.'],
+            ['Pipeline & formulation library', 'pipeline', `${LIBRARY.length} unbranded codes, the 6 library stages, and what is published before an agreement.`],
+            ['Regulatory & registration', 'regulatory', 'The live PSQCA licences we hold, and how the team that registered our own products registers products for partners.']].map(([t, sl, d]) => (
             <a key={sl} className="panel p-4 no-underline hover:border-[var(--navy)]" href={`#/partner/${sl}`}>
               <div className="font-bold display text-[17px]">{t}</div>
               <p className="cap mt-1">{d}</p>
@@ -158,11 +161,10 @@ export default function Partner() {
           by volume, and the "No surprises" promise) came off at his instruction. */}
       <section id="limits" className="wrap sec pnav-target">
         <SectionHead eyebrow="Before you ask" title={PARTNER.limitsH2} tone="rust" />
-        <div className="grid md:grid-cols-3 gap-4">{PARTNER.limits.map(([h, t]) => <div key={h} className="panel p-5"><h4>{h}</h4><p className="small muted mt-2">{t}</p></div>)}</div>
-        <p className="small mt-4 max-w-[140ch]"><b>Order size.</b> {PARTNER.minimum}</p>
+        <div className="grid md:grid-cols-3 gap-4">{PARTNER.limits.map(([h, t]) => <div key={h} className="panel p-5"><h4>{noStop(h)}</h4><p className="small muted mt-2">{t}</p></div>)}</div>
         <div className="grid lg:grid-cols-2 gap-4 mt-8">
           <div className="panel-soil p-6"><span className="eyebrow soil">{PARTNER.whoH2}</span><p className="small mt-2">{PARTNER.who}</p><div className="flex flex-wrap gap-2 mt-3">{PARTNER.whoTypes.map(t => <span key={t} className="tag tag-soil">{t}</span>)}</div><p className="cap mt-3">{PARTNER.firewall}</p></div>
-          <div className="panel-sky p-6"><span className="eyebrow navy">What the lines can do</span><div className="grid gap-3 mt-2">{PARTNER.capability.map(([h, t]) => <div key={h}><div className="font-bold">{h}</div><p className="small muted">{t}</p></div>)}</div></div>
+          <div className="panel-sky p-6"><span className="eyebrow navy">Forms, packs, registration and quality control</span><div className="grid gap-3 mt-2">{PARTNER.capability.map(([h, t]) => <div key={h}><div className="font-bold">{h}</div><p className="small muted">{t}</p></div>)}</div></div>
         </div>
       </section>
 
@@ -175,8 +177,8 @@ export default function Partner() {
           <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-6 lg:gap-9 items-start">
             <div>
               <span className="eyebrow" style={{ color: 'var(--gold)' }}>Start a conversation</span>
-              <h2 className="text-[clamp(26px,2.6vw,36px)]">{HOME_COPY.makeH2}</h2>
-              <p className="mt-3" style={{ color: 'rgba(255,255,255,.8)' }}>Tell us the crop, the market and the constraint you are trying to solve. If something in the catalogue or the library already answers it, we will say so rather than start a development project.</p>
+              <h2 className="text-[clamp(26px,2.6vw,36px)]">{noStop(HOME_COPY.makeH2)}</h2>
+              <p className="mt-3" style={{ color: 'rgba(255,255,255,.8)' }}>Tell us the crop, the market and the constraint the product must overcome. If something in our catalogue or the library already meets the need, we will tell you rather than start a development project.</p>
               {/* 11 Sep 2026 · this opened WA.distributor, so a procurement head at a multinational
                   introduced himself as a distributor asking about range and territory. There is now
                   a partner line, and the person who answers is named here rather than three pages
@@ -188,12 +190,12 @@ export default function Partner() {
               </div>
               <div className="mt-5 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,.2)' }}>
                 <div className="font-bold">Muhammad Ali · Chief Commercial Officer</div>
-                <p className="cap mt-1">Supply, pricing, own-brand manufacturing and distribution. He is the person who answers this form.</p>
+                <p className="cap mt-1">He is responsible for supply, pricing, manufacturing under a partner company’s brand, and distribution, and he replies to messages sent through this form.</p>
                 <a className="cap" style={{ color: 'var(--gold)' }} href="mailto:muhammad.ali@van.com.pk">muhammad.ali@van.com.pk</a>
               </div>
               <div className="mt-5 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,.2)' }}>
                 <div className="font-bold">Or come and see the plant</div>
-                <p className="cap mt-1">Plant visits are part of most partner conversations, and for a co-manufacturing decision they are usually the point at which it becomes a real one.</p>
+                <p className="cap mt-1">Most partner discussions include a plant visit. For a company deciding whether to manufacture with us, the visit is usually the point at which the decision becomes a serious one.</p>{/* L2 fix 9 Nov 2026 (company W8): was "the decision is made" */}
                 <WaButton href={WA.plantVisit}>Arrange a plant visit</WaButton>
               </div>
             </div>
@@ -201,7 +203,7 @@ export default function Partner() {
             {/* The one-working-day promise used to live only in the success message, which is a
                 state nobody reaches while the endpoint is off. It belongs above the button, where
                 it is doing work. */}
-            <p className="small mb-3" style={{ color: 'rgba(255,255,255,.85)' }}>The commercial team answers within 1 working day. The first conversation is about whether VAN already has something that answers your problem, because that is a 3-month route rather than a 12-month one.</p>
+            <p className="small mb-3" style={{ color: 'rgba(255,255,255,.85)' }}>Our commercial team replies within 1 working day. The first conversation is about whether we already have something that solves your problem, because a formulation from our library takes about 3 months to its first commercial batch, while a product developed to your brief usually takes 7 to 12 months from brief to market.</p>
             <VanForm
               form="partner"
               fields={PARTNER_FORM}
@@ -209,7 +211,7 @@ export default function Partner() {
               submitLabel="Send it to the commercial team"
               to={CONTACT.partnerEmail}
               subject="Partner enquiry from van.com.pk"
-              success="It goes to the commercial team, who answer within 1 working day. The first conversation is about whether VAN already has something that answers your problem, because that is a 3-month route rather than a 12-month one."
+              success="Your message goes to our commercial team, who reply within 1 working day. The first conversation is about whether we already have something that solves your problem."
             />
             </div>
           </div>

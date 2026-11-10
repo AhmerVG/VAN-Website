@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { useStepper } from './useStepper'
+import { noStop } from '@/components/bits'   // Tahir 7 Nov 2026 (CR-23): no full stop at the end of a heading
 
 /**
  * THE POTASH LOOP — top of the Circular economy page. D-179, 26 Sep 2026.
@@ -18,15 +19,17 @@ import { useStepper } from './useStepper'
 const NAVY = '#14231A', GREEN = '#2F6B3A', GOLD = '#D9A21B', RUST = '#9C4E2A', SAND = '#FBF9F3', SAND2 = '#F0EEE5', SKY = '#E6EEE8', SOIL = '#7A5230', ASH = '#9C9486'
 const FONT = 'Public Sans, system-ui, sans-serif'
 
+// Tahir 7 Nov 2026: step 5 KN-13 (was '3,000 tonnes of ash have been processed to date.'), step 6 KN-12 (was 'About 1 in every 5 tonnes of the potash VAN uses comes from ash.'),
+// step 8 KN-14 (was 'The line being built for 2027 is designed to recover 500 tonnes a year from 5,000 tonnes of ash.').
 const STEPS: { chip: string; h: string; p: string; k: [number, number]; soil: number; x: number }[] = [
-  { chip: 'The field', h: 'A crop takes potassium out of the soil', p: 'Every crop draws potassium from the ground it grows in. Pakistani cropping removes 40 to 61 kg of K₂O per acre every year. Farmers apply about 0.6 kg.', k: [170, 356], soil: 0.85, x: 170 },
-  { chip: 'Harvest', h: 'The harvest carries it away', p: 'The grain goes to market. The crop residue leaves the field too, and the potassium in it goes with it.', k: [382, 286], soil: 0.5, x: 380 },
-  { chip: 'Boiler', h: 'The residue fires a boiler', p: 'Crop residue is burned as fuel in bio-power boilers. Burning takes the carbon and the water. The minerals stay behind.', k: [540, 250], soil: 0.5, x: 540 },
+  { chip: 'The field', h: 'A crop takes potassium out of the soil', p: 'Every crop takes up potassium from the soil it grows in. A 2017 review estimated that cropping in Pakistan removes 40 to 61 kg of potash (as K₂O) per acre each year. In 2023, potash fertiliser supplied on average about 0.6 kg of K₂O per acre of cropland, a small fraction of what crops remove.', k: [170, 356], soil: 0.85, x: 170 },
+  { chip: 'Harvest', h: 'Grain and crop residue are both taken from the field', p: 'The potassium in the grain leaves the farm when the grain is sold. Where crop residue is collected for fuel, the potassium in the residue is also taken from the field.', k: [382, 286], soil: 0.5, x: 380 },
+  { chip: 'Boiler', h: 'The residue is burned in a boiler', p: 'Crop residue is burned as fuel in bio-power boilers. Burning releases the residue’s carbon and water, and its minerals remain in the ash.', k: [540, 250], soil: 0.5, x: 540 },
   { chip: 'Ash', h: 'The potassium ends up in the ash', p: 'The potassium and silicon the crop took from the soil are left concentrated in the crop residue ash.', k: [672, 316], soil: 0.5, x: 670 },
-  { chip: 'Recovery', h: 'VAN brings the ash back and recovers the potash', p: 'VAN assays every batch of ash for potassium and silicon and sends it to PCSIR, a government laboratory, for heavy-metal screening. Then it extracts the potassium: about 1 tonne of potash from every 10 tonnes of ash. 3,000 t of ash has been processed so far.', k: [852, 262], soil: 0.5, x: 850 },
-  { chip: 'Fertilizer', h: 'It goes into VAN’s fertilizer', p: 'The recovered potassium is a raw material in VAN’s own manufacturing, in place of imported potash, held to the same guaranteed analysis. About 1 in 5 tonnes of the potash VAN uses now comes from ash.', k: [535, 98], soil: 0.5, x: 700 },
-  { chip: 'Back to the field', h: 'And back onto the field', p: 'The potassium the crop took out of the soil goes back into it. Burning removed the carbon. VAN recovers the minerals.', k: [170, 352], soil: 0.8, x: 170 },
-  { chip: 'Pakistan', h: 'Pakistan imports its potash', p: 'Pakistan has no potash mine in production, so each tonne VAN recovers replaces a tonne of imported potash. Between 2023 and 2026 VAN replaced about 300 t of imported potash. The line being built for 2027 will recover 500 t a year from 5,000 t of ash.', k: [852, 262], soil: 0.8, x: 1080 },
+  { chip: 'Recovery', h: 'VAN collects the ash and recovers the potash', p: 'VAN tests every batch of ash for potassium and silicon, and PCSIR (Pakistan Council of Scientific and Industrial Research), a government laboratory, screens each batch for heavy metals. VAN then extracts the potassium, recovering about 1 tonne of potash from every 10 tonnes of ash. From 2023 to 2026, VAN processed 3,000 tonnes of ash.', k: [852, 262], soil: 0.5, x: 850 },
+  { chip: 'Fertiliser', h: 'The potassium goes into VAN’s fertiliser', p: 'The recovered potassium is a raw material in VAN’s own manufacturing, in place of imported potash. Like imported potash, it is tested against a guaranteed analysis: the nutrient content declared for the material. In 2026 to date, about 20% of the potash VAN used came from crop residue ash.', k: [535, 98], soil: 0.5, x: 700 },
+  { chip: 'Back to the field', h: 'Recovered potassium returns to farmland', p: 'Potassium recovered from crop residue returns to farmland in VAN’s fertiliser. The carbon in the residue is released by burning and is not recovered.', k: [170, 352], soil: 0.8, x: 170 },
+  { chip: 'Pakistan', h: 'Recovered potash replaces imported potash', p: 'Pakistan has no potash mine in production, so each tonne VAN recovers replaces a tonne of imported potash. Between 2023 and 2026 VAN replaced about 300 tonnes of imported potash. VAN plans a new line for 2027, designed to recover 500 tonnes of potash a year from 5,000 tonnes of ash.', k: [852, 262], soil: 0.8, x: 1080 },
 ]
 
 export function PotashLoop() {
@@ -145,7 +148,7 @@ export function PotashLoop() {
             <div key={s.chip} className={`gs-cell ${k === i ? 'on' : ''}`} aria-hidden={k !== i}>
               <div className="gs-year num">{k + 1}<span className="pl-of">/{STEPS.length}</span></div>
               <div>
-                <h3 className="gs-title">{s.h}</h3>
+                <h3 className="gs-title">{noStop(s.h)}</h3>
                 <p className="gs-text">{s.p}</p>
               </div>
             </div>

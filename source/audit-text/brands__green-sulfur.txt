@@ -2,14 +2,14 @@ PAGE: /brands/green-sulfur.html
 ======================================================================
 Products
 Crop Plans
-Soil
-Tools
+Your Brand
+Soil Atlas
+Vitalytics
 VAN Lab
 Knowledge
 About
-Make with us
-For farmers
-Menu ☰
+Search
+☰
 View
 Simple view
 Our brands
@@ -22,16 +22,17 @@ Own-brand available
 Green Sulfur
 Sulfur 70% WDG
 How it is applied
+Broadcast
 Fertigation
 Stage
 Sowing
 What the soil does to this
 Sulfur: not determined in 770,160 samples
 See it on the map →
-A nutrient that is never measured cannot appear deficient
+Sulfur is not tested, so no soil report shows it as short
 .
 Punjab soil testing programme · 36 district workbooks · 770,160 valid samples · c. 2016–2018
-. A condition of the soil, not a claim for the product.
+. The figure describes the soil. It is not a claim for the product.
 Order on WhatsApp
 Verify a bag
 Tell us the quantity and your district. We reply with price, availability and delivery. Every batch is tested in
@@ -47,7 +48,7 @@ Sulfur 70% WDG
 Category
 Secondary Nutrients
 Application
-Fertigation
+Broadcast · Fertigation
 Stage
 Sowing
 Availability
@@ -55,11 +56,33 @@ Own-brand available
 Same specification, your brand name. Same line, same QC, your label.
 Registration
 Registered with PSQCA and released through VAN’s own PNAC-accredited laboratory, ISO/IEC 17025:2017, LAB 336.
-Certificate
-Send the batch number off the bag and VAN sends the certificate of analysis for that batch.
+Lab report
+Type the batch number off the bag and open the lab report for that batch.
 Verify a bag →
+How it goes on
+Drill it at sowing. Side-dress if you cannot. Broadcast last.
+The same bag gives a different result depending on where it lands. The order below is VAN’s, for every basal granule it makes.
+1 · best
+Drill at sowing
+What it means.
+The seed drill’s fertilizer box places the granule about 5 cm beside and below the seed row, never touching the seed.
+Why.
+The root meets it first. Least contact with air, sun and free calcium at the surface. The whole bag is in the root zone.
+2
+Side-dress
+What it means.
+A band beside the row, by hand or planter, at sowing or the first irrigation, covered with soil.
+Why.
+Still a band near the root, but later and shallower than a drill.
+3 · last
+Broadcast
+What it means.
+Spread on the surface before the last ploughing or before an irrigation, and mixed in.
+Why.
+Most of the bag is away from the root, and most of it is exposed at the surface.
+Green Sulfur comes in 2 grades: a granule for the soil, applied in the order above, and a water-dispersible powder for fertigation. Where the crop plan says fertigation, use the powder and follow the plan.
 Programmes that use it
-From the published wheat programme. Per acre. “1 bag” means one bag of the size printed under the rate.
+From the published wheat programme. Per acre. “1 bag” means 1 bag of the size printed under the rate.
 Crop
 Stage
 Band
@@ -69,19 +92,24 @@ Pack
 Wheat
 Germination
 Secondary Nutrient
-1 bag
+1 kg
 Fertigation
-Bag · 1 kg
+Pack · 1 kg
 Wheat
 Early Growth
 Secondary Nutrient
-1 bag
+1 kg
 Fertigation
-Bag · 1 kg
+Pack · 1 kg
 Open the wheat programme →
+Green Sulfur goes on both ways. It is broadcast at land preparation in some programmes and fertigated in others. Broadcasting gives elemental sulfur soil contact, and weeks for soil microbes to oxidise it into the sulfate a root can take up.
+The rate is crop-driven and ranges from about 2 kg an acre on wheat and the pulses to about 10 kg on cotton, maize, potato and garlic.
+Your crop’s programme shows the method and the rate.
+2 packs: 1 kg and 20 kg.
+A programme whose dose is 5 kg or less at each application lists the 1 kg pack. A programme with a larger dose lists the 20 kg bag. The programme and the shopping list say the dose in kg.
 Documents
 Deck, datasheet, safety data
-What it is, what it does in the soil, where it fits in the season and what VAN will not claim for it.
+What it is, what it does in the soil, where it fits in the season and its limits.
 ⬇ Deck (PDF)
 Datasheet
 Safety data
@@ -98,19 +126,13 @@ Secondary Nutrients
 Cala-Mag V
 V-Mag Essential
 Crop nutrition engineered, manufactured, registered and tested in Pakistan.
-Plant
-·
-49-Km Multan Road, Phool Nagar Bypass, Lahore
-Head office
-·
-605 Al-Hafeez Heights, Gulberg III, Lahore 54660
++92 42 35762215
 WhatsApp
 +92 300 5003041
-Landline
-+92 42 35762215
 info@van.com.pk
 Products
 All 23 brands
+Compare them
 Vital Urea
 Where to buy
 Verify a bag
@@ -118,20 +140,25 @@ Crops
 28 crop plans
 Wheat
 How you apply it
+Soil Atlas
 Knowledge
 Why Pakistan must shift
-The soil, measured
-Product knowledge decks
+Product decks
 Circular economy
+Vitalytics tools
 Company
-Make with us
+Your Brand
 VAN Lab
-Tools
-About & contact
+About
+Company profile
+Head office
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+Plant
+49-Km Multan Road, Phool Nagar Bypass, Lahore
 © 2026
 Vital Agri Nutrients (Pvt) Ltd
-·
-www.van.com.pk
+Full member of CropLife Pakistan since 2024
+How VAN competes
 LinkedIn
 Facebook
 Instagram

@@ -2,92 +2,73 @@ PAGE: /partner/index.html
 ======================================================================
 Products
 Crop Plans
-Soil
-Tools
+Your Brand
+Soil Atlas
+Vitalytics
 VAN Lab
 Knowledge
 About
-For farmers
-Menu ☰
+Talk to us
+Search
+☰
 View
 Simple view
-Make with us
-Launch it under your name. Made in Pakistan.
+Your Brand
+Launch it under your name.
 For companies launching a crop nutrition brand, making an imported product locally, or manufacturing under their own name
 .
 100+
 partner brands registered with VAN named as the manufacturer
 Go straight to the library ·
-25
+27
 formulations,
 11
-ready to license →
+ready to carry your name →
+Talk to the commercial team →
+VAN’s company profile, and its PDF →
+Composition chart, every code with its analysis →
+12
+products already hold a PSQCA licence and are ready for a partner launch: your name on the bag, in the market within
+60
+days
+. They are separate from the
+27
+library formulations.
+Ask which ones →
 VAN formulates, manufactures, registers and tests crop nutrition products that carry somebody else’s brand name. You bring the market and do the selling. VAN does everything from the formulation to the finished bag.
-The two routes
-The library
+The formulations
+The 2 routes
+The 3 models
+The portfolio
 In more detail
 Before you ask
-You bring a problem we have not solved yet
-Developed to your brief
-7 to 12 months
-About one crop cycle. The trial has to run through a season and that is the part nobody can compress.
-You take something we have already developed
-Ready to carry your name
-About 3 months
-To your first commercial batch, registration included. No trial, because the formulation has already been trialled and validated.
-Developed to your brief
-yours
-together
-everything else is ours
-tap any stage
-1
-Your brief
-2
-Feasibility
-3
-Formulation
-4
-Field trial
-5
-Registration
-6
-Test market
-7
-Launch
-1
-of
-7
-Your brief
-Yours
-What the product has to do, for which crop, at what price.
-←
-Next →
-Registration under your brand
-VAN files it rather than handing you a specification and leaving you to it. The licence route is already worked.
-Label and claim review before print
-What the label says has to survive a regulator and a competitor. This is where a partner most often gets caught.
-Why the number is what it is
-Any product sold under a partner’s brand has to be registered with VAN named as the manufacturer. Every partner brand is therefore its own file. VAN’s plant holds more than 100 of them.
-Registration and label review run alongside every stage above, in your name.
-How a brief becomes a bag →
-What the plant can make →
-The regulatory service →
-Ready to carry your name
-The formulation library.
-Formulations that are proven but deliberately have no brand on them. They sit here under neutral codes, waiting for a name. The colour is the family, the chips are what it delivers, and the ladder shows how far along each one is.
-Where the twenty-five sit today
-one dot is one formulation · colour is its family · tap a rung to filter
-none sitting here
+Talk to us
+The formulation library
+27 formulations. 11 ready to carry your name now.
+None has a brand on it yet. Each card shows how far along it is. Filter by what it carries and the form it comes in, then open a card to ask about it.
+The path, from an idea to a registered product. Where the
+27
+sit on it today
+1 dot is 1 formulation · colour is its family · a ring means registered and available · tap a stage to filter
+none at this stage
 0
+Idea and hypothesis
+What problem does it address, on which crop, against which product a farmer buys today?
+1
+Feasibility and scoping
+Technically and commercially viable? What does the literature say? Rough cost per bag?
+1
 Concept
+Defined on paper. Ratio, form and target price fixed, not yet at the bench.
 3
-In development
+Development
+Bench formulation in the VAN lab. Coating, chelation, solubility, pH, compatibility.
 3
-Field trials
-8
-Validated
-11
-Available
+Trial
+On VAN’s research farms, and on a partner’s own plots where wanted.
+19
+Registration
+Specification and data locked. Registered under your brand by VAN, with VAN named as the manufacturer.
 Nitrogen efficiency
 Phosphorus
 Potash
@@ -122,11 +103,11 @@ Granular
 1
 Biological
 4
-The same composition is made in more than one form, so a form chip here means the library has fixed that form for this code.
-25
+27
 of
-25
+27
 formulations
+· the first 6 shown
 N-22S
 Validated
 N
@@ -138,14 +119,15 @@ Nitrogen carried with elemental sulfur rather than sulfate, so it releases over 
 Nitrogen efficiency
 ·
 Soil applied
+Open N-22S to ask about it ▾
 N-26L
 Available
 N
 26
 Zn
 B
-Liquid nitrogen 26% with zinc and boron · two grades
-Liquid nitrogen built for pivot injection and foliar spray, carrying its nitrogen in three forms at once.
+Liquid nitrogen 26% with zinc and boron · 2 grades
+Liquid nitrogen built for pivot injection and foliar spray, carrying its nitrogen in 3 forms at once.
 Nitrogen efficiency
 ·
 Liquid
@@ -153,6 +135,7 @@ Liquid
 Fertigation
 ·
 Foliar
+Open N-26L to ask about it ▾
 N-17L
 Available
 N
@@ -166,6 +149,7 @@ Nitrogen efficiency
 Liquid
 ·
 Fertigation
+Open N-17L to ask about it ▾
 N-15C
 Validated
 N
@@ -175,6 +159,7 @@ Ca
 Calcium nitrate. N 15.5 · Ca 18.4
 Nitrate nitrogen carried with a high calcium load, chloride-free: the class high-value horticulture buys imported.
 Nitrogen efficiency
+Open N-15C to ask about it ▾
 P-44L
 Available
 P
@@ -186,17 +171,19 @@ Phosphorus
 Liquid
 ·
 Foliar
+Open P-44L to ask about it ▾
 NP-540
 Validated
 N
 5
 P
 40
-NP 5-40. Dual-release phosphate
-A phosphate that releases on two timescales from one placement.
+NP 5:40. Dual-release phosphate
+A phosphate that releases on 2 timescales from 1 placement.
 Phosphorus
 ·
 Soil applied
+Open NP-540 to ask about it ▾
 NP-838S
 Validated
 N
@@ -204,33 +191,36 @@ N
 P
 38
 S
-NP 8-38 + sulfur. Slow-release, fixation-resistant
+NP 8:38 + sulfur. Slow-release, fixation-resistant
 Sulfur acidifies the granule’s immediate soil environment; built against calcium phosphate fixation rather than around it.
 Phosphorus
 ·
 Granular
 ·
 Soil applied
+Open NP-838S to ask about it ▾
 UP-44
 Validated
 N
 17
 P
 44
-Urea phosphate · 17-44-0 and 12-44-0
-Nitrogen and phosphorus in one fully soluble salt, acidic in solution.
+Urea phosphate · 17:44:0 and 12:44:0
+Nitrogen and phosphorus in 1 fully soluble salt, acidic in solution.
 Phosphorus
 ·
 Soluble
 ·
 Fertigation
+Open UP-44 to ask about it ▾
 KN-44
 Validated
 K
 N
-Potassium nitrate · three grades
+Potassium nitrate · 3 grades
 Chloride-free potassium with nitrate nitrogen, for high-value horticulture and salt-sensitive crops.
 Potash
+Open KN-44 to ask about it ▾
 K-45L
 Validated
 K
@@ -242,6 +232,7 @@ Potash
 Liquid
 ·
 Foliar
+Open K-45L to ask about it ▾
 PK-82
 Available
 P
@@ -251,6 +242,7 @@ K
 High P+K reproductive complex
 P 42 · K 40, 82 nutrient units, for the window that sets yield and quality.
 P+K synergy
+Open PK-82 to ask about it ▾
 NPK-128M
 Available
 N
@@ -261,9 +253,10 @@ K
 18
 Zn
 B
-NPK 12-12-18 + micronutrients
+NPK 12:12:18 + micronutrients
 Balanced mid-to-late-stage NPK weighted to potash.
 P+K synergy
+Open NPK-128M to ask about it ▾
 NPK-19
 Validated
 N
@@ -272,7 +265,7 @@ P
 19
 K
 19
-NPK 19-19-19 · three grades
+NPK 19:19:19 · 3 grades
 The fully soluble balanced grade: foliar, fertigation and drone / ULV specifications.
 P+K synergy
 ·
@@ -281,6 +274,7 @@ Soluble
 Foliar
 ·
 Fertigation
+Open NPK-19 to ask about it ▾
 NPK-10
 Available
 N
@@ -290,26 +284,29 @@ P
 K
 10
 Fe
-NPK 10-10-10, iron-coated · the corrective grade
+NPK 10:10:10, iron-coated · the corrective grade
 For a programme that has already slipped: a corrective dose without loading the soil.
 P+K synergy
+Open NPK-10 to ask about it ▾
 V-Crop series
 In development
 N
 P
 K
 Zn
-Crop-specific NPK grades · four in development
-V-Potato 10-5-35 · V-Citrus 16-6-28 · V-Rice 12-10-25 · V-Wheat 21-7-19 with zinc 1.5%.
+Crop-specific NPK grades · 4 in development
+V-Potato 10:5:35 · V-Citrus 16:6:28 · V-Rice 12:10:25 · V-Wheat 21:7:19 with zinc 1.5%.
 P+K synergy
+Open V-Crop series to ask about it ▾
 V-Stage series
 Field trials
 N
 P
 K
-Stage-specific grades · three in trial
-Vegetative 14-21-16 · Flowering Booster 8-34-14 · Fruiting Booster 12-8-32.
+Stage-specific grades · 3 in trial
+Vegetative 14:21:16 · Flowering Booster 8:34:14 · Fruiting Booster 12:8:32.
 P+K synergy
+Open V-Stage series to ask about it ▾
 MX-Z05
 Available
 Zn
@@ -317,6 +314,7 @@ Zn
 Chelated zinc 5%
 Chelated zinc that stays available at pH 8, where sulfate zinc largely precipitates.
 Micros & secondaries
+Open MX-Z05 to ask about it ▾
 MX-ZB3
 Available
 Zn
@@ -324,16 +322,18 @@ Zn
 B
 3
 Zinc 12% + boron 3%
-The two deficiencies that most often cap yield where NPK is already adequate, in a single foliar pass.
+The 2 deficiencies that most often cap yield where NPK is already adequate, in a single foliar pass.
 Micros & secondaries
 ·
 Foliar
+Open MX-ZB3 to ask about it ▾
 MX-F05
 Available
 Fe
 Chelated iron
 For the lime-induced chlorosis that shows up in orchards on calcareous ground.
 Micros & secondaries
+Open MX-F05 to ask about it ▾
 BIO-H50F
 Available
 Humic
@@ -341,8 +341,9 @@ Humic
 K
 10
 K-humate 50 + fulvic 10 + potash 10
-Concentrated humate for soils under one percent organic matter.
+Concentrated humate for soils under 1% organic matter.
 Biologicals
+Open BIO-H50F to ask about it ▾
 BIO-H40
 Available
 Humic
@@ -352,6 +353,7 @@ K
 K-humate 40 + fulvic 10 + potash 10
 The established humate concentration in the library.
 Biologicals
+Open BIO-H40 to ask about it ▾
 BIO-P01
 Field trials
 P
@@ -362,6 +364,7 @@ Biologicals
 Biological
 ·
 Soil applied
+Open BIO-P01 to ask about it ▾
 BIO-P01L
 In development
 P
@@ -372,6 +375,7 @@ Biologicals
 Biological
 ·
 Fertigation
+Open BIO-P01L to ask about it ▾
 BIO-M01
 In development
 Mycorrhizal inoculant
@@ -381,6 +385,7 @@ Biologicals
 Biological
 ·
 Soil applied
+Open BIO-M01 to ask about it ▾
 BIO-S01
 Field trials
 Bio Dividend. Seed treatment
@@ -390,38 +395,171 @@ Biologicals
 Biological
 ·
 Seed treatment
+Open BIO-S01 to ask about it ▾
+K-50DC
+Concept
+Dual coated potash · K₂O 50
+Potash granule carrying 2 coatings, boron and silicon, so the micronutrient and the silicon land where the potash lands.
+Potash
+Open K-50DC to ask about it ▾
+P-DRC
+Feasibility
+Dual release phosphate with a calcium-binding shell
+An outer layer that breaks down first and binds the free calcium around the granule, before that calcium can lock the phosphate. Then a fast-release phosphate fraction for the seedling, then a slow-release fraction for the rest of the season.
+Phosphorus
+Open P-DRC to ask about it ▾
+Show all
+27
+formulations ▾
+You bring a problem we have not solved yet
+Developed to your brief
+7 to 12 months
+About 1 crop cycle. The trial has to run through a season and that is the part nobody can compress. Most briefs take 7 to 12 months; across all 14 partners the range has been 2 to 17 months.
+You take something we have already developed
+Ready to carry your name
+About 3 months
+To your first commercial batch, registration included. No trial, because the formulation has already been trialled and validated.
+Developed to your brief
+yours
+together
+everything else is ours
+tap any stage
+1
+Feasibility
+2
+Bench
+3
+Pilot
+4
+Trials
+5
+Dossier
+6
+Registration
+1
+of
+6
+Feasibility
+Whether it can be made here, at that cost, to that specification.
+←
+Next →
+Registration under your brand
+VAN files it rather than handing you a specification and leaving you to it. The licence route is already worked.
+Label and claim review before print
+What the label says has to survive a regulator and a competitor. This is where a partner most often gets caught.
+Why the number is what it is
+Any product sold under a partner’s brand has to be registered with VAN named as the manufacturer. Every partner brand is therefore its own file. VAN’s plant holds more than 100 of them.
+Label review runs alongside every stage above, in your name.
+How a brief becomes a bag →
+What the plant can make →
+The regulatory service →
+The long term
+3 ways to work with VAN for the long term.
+Every partnership runs 1 of these 3 ways, and a partner often runs 2 of them at once. Commercial terms are agreed per project and are not published.
+Model
+What VAN provides
+What you provide
+Who holds the registration
+Time to first bag
+White labelling
+A formulation VAN has already developed, trialled and registered, made, tested and packed under your brand. Label and claim review before print. Repeat lots to a frozen specification.
+Your brand, your artwork, your market and the selling.
+VAN files it under your brand, with VAN named as the manufacturer.
+About 3 months to the first commercial batch, registration included.
+Joint product development
+The 6-stage path from your brief: feasibility, bench formulation in the VAN lab, pilot on the commercial line, trials on VAN’s research farms and on your plots where wanted, the dossier and the registration.
+The brief: market, crop, target price and the constraint you are trying to beat. Your own demonstration plots where you want them.
+VAN files it under your brand, with VAN named as the manufacturer.
+Most briefs take 7 to 12 months. Across all 14 partners the range has been 2 to 17 months.
+Toll manufacturing
+Your own formulation, made on VAN’s 5 lines to your specification, every lot tested in LAB 336 and released against a certificate of analysis.
+The formulation, the specification, the brand and the market.
+Agreed per project. VAN can file it either way.
+Depends on the formulation and its registration. Agreed before the first lot.
+Licensing of a VAN formulation for manufacture at another plant is not offered. The recipe and the process stay with VAN under every model above.
+Building a portfolio
+A range, not a product.
+A brand that comes with no range of its own does not have to pick from a list. VAN designs the range around the crops, the regions and the channel you sell into, from what is already made here, and then keeps adding to it.
+1
+Your crops, regions and channel
+Which crops your customers grow, which districts, and whether you sell through dealers, to estates or to corporate farms. That is the whole brief for a first range.
+You
+2
+A launch range from the 23 brands
+VAN proposes the products a first season needs, each with the stage it goes on at and the pack it comes in, built from VAN’s published crop programmes.
+VAN
+3
+A roadmap from the library
+What to add in the second and third season, from the 27 codes in the formulation library, and which of them would need a trial first.
+VAN
+4
+Each product on its own route
+A library formulation reaches you in about 3 months. A product developed to your brief takes a season. The range grows on that clock, not all at once.
+Together
+Send us your crops and regions →
+The 23 brands
+What is already made here
+The portfolio, without the names.
+VAN keeps its partners’ names private. These numbers show the work without naming anyone.
+100+
+partner brands registered with VAN named as the manufacturer
+14 companies hold these brands. A partner usually runs several brands off the same plant, and the largest holds 8. Every product sold under a partner’s brand carries its own registration file against this plant.
+8
+products held by the largest single partner
+The next largest holds 7. 1 relationship, 8 registration files.
+27
+unbranded formulations in the library, 11 ready to carry your name
+A code you can put your own name on, with the terms written down.
+34
+PSQCA licences
+22 on VAN’s own brands, against 8 Pakistan Standards, each listed with its licence number on the regulatory page; 12 on products ready for partners.
+12
+products already PSQCA licensed, ready for a partner launch
+Your name on the bag, in the market within 60 days. Separate from the 27 library formulations.
+5
+production lines
+Granular, coated, liquid, water-soluble and compounded. The analytical laboratory is on the same site; the biological laboratory opened in 2026.
+About 50,000 t
+made a year
+No minimum order; a production batch is 1 tonne. A single lot goes up to 50 tonnes and the line runs up to 4 lots a week. Ready to dispatch in 3 to 5 days up to 10 t, and 7 to 18 days from 11 to 100 t.
+14
+companies, as against brands
+2011
+the year the longest-running partnership started
+2 to 17 months
+fastest and slowest, brief to market
 In more detail
-Five pages, one for each part of the decision.
+5 pages, 1 for each part of the decision.
 From brief to bag
-Seven steps between an idea and a registered product on a dealer’s shelf.
+6 stages from an idea to a registered product in a dealer’s shop.
 VAN Engineering
 The dials and their ranges: batch size, coating, chelation, solubility, pack.
 Manufacturing & quality
-What is on site, how a lot is released, and the research farm behind it.
+What is on site, how a lot is released, and the research farms behind it.
 Pipeline & formulation library
-25 unbranded codes, the five-stage ladder, and the licensing terms.
+27 unbranded codes, the 6-stage path, and what is published before an agreement.
 Regulatory & registration
-The live PSQCA licences VAN holds, and the same team run for partners.
+The live PSQCA licences VAN holds, and the same team runs registration for partners.
 Before you ask
 What VAN does not do.
 VAN does not sell it for you
 No sales force, no dealers, no farmer demand. You own the market and the selling.
 VAN does not hand over the formulation
-You license the right to sell it under your name. The recipe and the process stay with VAN.
+You sell it under your name. The recipe and the process stay with VAN.
 VAN will not put a claim on your label that a trial does not support
 This holds even when your marketing department wants the claim.
-Minimum order.
-The minimum batch depends on the form and the pack, so it is settled in the first meeting rather than published here.
+Order size.
+No minimum order. A production batch is 1 tonne; smaller orders come from a batch. A single lot goes up to 50 tonnes, and the line runs up to 4 lots a week to the same frozen specification, so 50 tonnes is the size of a lot and not the size of a relationship.
 Who already works this way
-VAN does not publish client names. It already manufactures for more than a dozen national and multinational clients, and a partner under NDA can be given specifics in a meeting.
+VAN does not publish client names, apart from 2 named on the Vital Urea page with their agreement. It already manufactures for 14 national and multinational clients, and a partner under NDA can be given specifics in a meeting.
 Multinational crop-protection companies
 National agri-input companies
 Sugar mills and corporate farms
 Importers replacing a bought-in product
-Client names, formulations built to client briefs, and any data belonging to a client are never shown on this site and never used to sell to anyone else.
+Client names, formulations built to client briefs, and any data belonging to a client are not shown on this site and are never used to sell to anyone else. The named exceptions on the whole site are published because each agreed to it: the Khaliqabad field programme with Rafhan Maize Products on the Vital Urea page and the application systems page, and the 3 maize trials on the Vital Urea page (Rafhan Maize Products 2023, Descon Research Farm 2024; the 2025 trial partner is not named). Nothing else is named, and nothing is named without the client’s word.
 What the lines can do
 Physical forms
-Granular · powder · crystalline soluble · liquid · pellet · water-dispersible granule · coated prill. The same composition is made in more than one form rather than the form dictating the composition.
+Granular · powder · crystalline soluble · liquid · pellet · water-dispersible granule · coated prill. The same composition is made in more than 1 form rather than the form dictating the composition.
 Pack range
 From a 1 L bottle to a 1000 kg bulk bag and a 1000 L IBC. Trade packs, estate packs and contract-farming volumes are packed on the same line as the retail unit.
 Registration, run by us
@@ -431,8 +569,14 @@ A PNAC-accredited laboratory, ISO/IEC 17025:2017, Accreditation No. LAB 336. Eve
 Start a conversation
 Tell us the problem and we will work on it with you.
 Tell us the crop, the market and the constraint you are trying to solve. If something in the catalogue or the library already answers it, we will say so rather than start a development project.
-WhatsApp the commercial team
 partner@van.com.pk
+Muhammad Ali · Chief Commercial Officer
+Supply, pricing, own-brand manufacturing and distribution. He is the person who answers this form.
+muhammad.ali@van.com.pk
+Or come and see the plant
+Plant visits are part of most partner conversations, and for a co-manufacturing decision they are usually the point at which it becomes a real one.
+Arrange a plant visit
+The commercial team answers within 1 working day. The first conversation is about whether VAN already has something that answers your problem, because that is a 3-month route rather than a 12-month one.
 Company
 Your name and role
 · optional
@@ -454,24 +598,20 @@ Indicative first-year volume
 What the product has to do
 Company website
 Send it to the commercial team
-Send on WhatsApp instead
-It goes to
+Send it by email instead
+Pressing it opens WhatsApp with your message already written, addressed to VAN on
++92 300 5003041
+. You see it before it goes. Or send the same message by email to
 partner@van.com.pk
-. VAN's own inbox, not a third party.
+.
 Crop nutrition engineered, manufactured, registered and tested in Pakistan.
-Plant
-·
-49-Km Multan Road, Phool Nagar Bypass, Lahore
-Head office
-·
-605 Al-Hafeez Heights, Gulberg III, Lahore 54660
++92 42 35762215
 WhatsApp
 +92 300 5003041
-Landline
-+92 42 35762215
 info@van.com.pk
 Products
 All 23 brands
+Compare them
 Vital Urea
 Where to buy
 Verify a bag
@@ -479,20 +619,27 @@ Crops
 28 crop plans
 Wheat
 How you apply it
+Soil Atlas
 Knowledge
 Why Pakistan must shift
-The soil, measured
-Product knowledge decks
+Product decks
 Circular economy
+Vitalytics tools
 Company
-Make with us
+Your Brand
 VAN Lab
-Tools
-About & contact
+About
+Company profile
+Head office
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+Plant
+49-Km Multan Road, Phool Nagar Bypass, Lahore
 © 2026
 Vital Agri Nutrients (Pvt) Ltd
-·
-www.van.com.pk
+Full member of CropLife Pakistan since 2024
+How VAN competes
 LinkedIn
 Facebook
 Instagram
+Talk to VAN
+Talk to VAN

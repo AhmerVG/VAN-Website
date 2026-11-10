@@ -2,29 +2,29 @@ PAGE: /tools.html
 ======================================================================
 Products
 Crop Plans
-Soil
-Tools
+Your Brand
+Soil Atlas
+Vitalytics
 VAN Lab
 Knowledge
 About
-Make with us
-For farmers
-Menu ☰
+Search
+☰
 View
 Simple view
-Tools
+Vitalytics · VAN’s tools
 Work out your own numbers.
-13
-calculators you can use right now. No login, no account, nothing to install. Put in your crop, your acres and your soil report if you have one, and you get back what to apply, when to apply it, how much water the season needs, and what the harvest takes out of the field.
-Most of them work without a soil report.
-Where one helps, the tool says so and offers your district's own figures from the Punjab survey instead, so you are never stopped at the door. The
-12
-we have not built yet are on this page too, behind a switch, each one saying what it is waiting on.
+3
+finished tools and
+5
+pilots. No login and nothing to install. Put in your crop, your acres, your sowing date or your soil reading, and each tool gives back an answer for your own field.
+2
+more tools are coming. Turn on the switch in the finder to see them.
 Search the tools
 Everything
-13
+8
 Rates and quantities
-2
+3
 Soil
 2
 Timing
@@ -34,107 +34,73 @@ Water
 What the harvest takes
 1
 Units and packs
-2
-Verify a bag
-2
-For the trade
-2
-Reading this site
 1
+Verify a bag
+0
 Include the
-12
-we have not built yet
+2
+still coming
 Showing
-13
+8
 of
-25
+10
 tools
 .
 Ready now
-Finished, on every crop it claims.
-Crop programme shopping list
+Finished.
+Crop plan calculator
 Ready now
-What to buy for your acres, in bags and packs.
+Pick your crop, tick the stages, set your acres: the bags and packs to buy.
 Open →
 What it does
 +
-Soil-adjusted plan
+The nutrient barrel
 Ready now
-The same plan, moved by what your own soil report says.
+Enter what you put on 1 acre and see which nutrient your season stops at.
 Open →
 What it does
 +
 Unit and bag converter
 Ready now
-Acres to kanal, maunds to kilograms, and what is inside a bag.
-Open →
-What it does
-+
-The Punjab soil lens
-Ready now
-Your district's own soil, from 770,160 samples.
-Open →
-What it does
-+
-Verify a bag
-Ready now
-Send a batch number, get that batch’s certificate of analysis.
-Open →
-What it does
-+
-Lab tests and prices
-Ready now
-All 21 tests, what each costs, how long each takes.
-Open →
-What it does
-+
-Formulation library
-Ready now
-25 unbranded formulations you could put your own name on.
-Open →
-What it does
-+
-Product comparison
-Ready now
-Every analysis, pack and method in one table.
-Open →
-What it does
-+
-Plain mode
-Ready now
-Fold the argument away and leave only what to do.
+Acres to kanal, maunds to kilograms, and the nutrient inside any VAN pack.
 Open →
 What it does
 +
 Pilot
-Works, and is honest about which crops it cannot answer yet.
+Works; not every crop is covered yet.
+Soil adjustment
+Pilot
+Your soil reading or your district moves the plan’s quantities.
+Open →
+What it does
++
+Nutrient balance
+Pilot
+What the plan puts on, against what your harvest takes off.
+Open →
+What it does
++
+Crop water need
+Pilot
+How much water the season needs in your district, and how much rain normally comes.
+Open →
+What it does
++
 Farm discipline simulator
 Pilot
-Score your season across all ten levers, not just nutrition.
+Rate 10 farm practices and see where the yield is going. Wheat and potato.
 Open →
 What it does
 +
 Where your crop is now
 Pilot
-Give it your sowing date; it gives back the rows due this week.
-Open →
-What it does
-+
-Nutrient removal and replacement
-Pilot
-What the plan puts on, against what the harvest carries off.
-Open →
-What it does
-+
-Crop water requirement
-Pilot
-How much water the season needs, and how much rain normally arrives.
+Give your sowing date; see your wheat’s stage and what is due at it.
 Open →
 What it does
 +
 Use it here
 Land, weight, and what is in the bag.
-Three sums a farmer or a dealer does on paper every week. The bag tab reads VAN's own registered analyses, so the kilograms it gives you are the guaranteed figures off the label.
+3 sums a farmer or a dealer does on paper every week. The bag section uses VAN's registered analyses, so the kilograms it gives you are the guaranteed figures off the label.
 Land
 Weight & yield
 What's in the bag
@@ -153,40 +119,46 @@ Hectares
 Kanal
 160
 Marla
-1 acre = 8 kanal = 160 marla = 0.404686 hectare. Exact definitions, not rounded.
-Why these exist
-Every one of these runs on VAN's own measured data:
-770,160
-soil samples
-across
-36
-districts,
+1 acre = 8 kanal = 160 marla = 0.404686 hectare.
+What they run on
+VAN’s
+28
+published crop plans
+and
 23
 registered analyses
-and
-28
-published crop programmes
-. Nothing here is an estimate dressed up as a calculation, and where a figure is not published we say so on the tool rather than filling the gap.
-The same rule governs the
-12
-tools that do not exist yet. Each one names the single thing that is missing, so the list can be read as a plan rather than a promise, and so you can see which ones are close.
+, the Punjab survey of
+770,160
+soil samples
+, and public methods named on each tool: FAO Paper 56 for water, IPNI for what a harvest removes. Estimates are marked as estimates.
+Pages, not tools
+No figures needed from you.
+Soil Atlas
+→
+Punjab’s soil, district by district, from 770,160 samples.
+Compare products
+→
+Every VAN analysis, pack and method in 1 table.
+Lab tests and prices
+→
+All 21 fertilizer tests, what each costs and how long it takes.
+Formulation library
+→
+27 unbranded formulations you could launch under your own name.
+Where to buy
+→
+Every VAN dealer and Vital Agri Center, with the person who answers.
 Want one of these sooner?
 Tell us which, and what you would use it for. That is how the order gets decided.
 Tell us on WhatsApp
 Crop nutrition engineered, manufactured, registered and tested in Pakistan.
-Plant
-·
-49-Km Multan Road, Phool Nagar Bypass, Lahore
-Head office
-·
-605 Al-Hafeez Heights, Gulberg III, Lahore 54660
++92 42 35762215
 WhatsApp
 +92 300 5003041
-Landline
-+92 42 35762215
 info@van.com.pk
 Products
 All 23 brands
+Compare them
 Vital Urea
 Where to buy
 Verify a bag
@@ -194,20 +166,25 @@ Crops
 28 crop plans
 Wheat
 How you apply it
+Soil Atlas
 Knowledge
 Why Pakistan must shift
-The soil, measured
-Product knowledge decks
+Product decks
 Circular economy
+Vitalytics tools
 Company
-Make with us
+Your Brand
 VAN Lab
-Tools
-About & contact
+About
+Company profile
+Head office
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+Plant
+49-Km Multan Road, Phool Nagar Bypass, Lahore
 © 2026
 Vital Agri Nutrients (Pvt) Ltd
-·
-www.van.com.pk
+Full member of CropLife Pakistan since 2024
+How VAN competes
 LinkedIn
 Facebook
 Instagram

@@ -1,4 +1,4 @@
-import { HOME_SLIDES, SIMULATOR, CIRCULAR, COUNTS, WA, ABOUT, PARTNER } from '@/data/site'
+import { HOME_SLIDES, CIRCULAR, COUNTS, WA, ABOUT, PARTNER } from '@/data/site'
 import { FourDoors } from '@/components/FourDoors'
 import { Detail } from '@/components/Detail'
 import { PRODUCTS, CROPS } from '@/data/catalogue'
@@ -9,7 +9,7 @@ import { VerifyPanel } from '@/components/VerifyPanel'
 import { Doors } from '@/components/Doors'
 import { StageWalk } from '@/components/StageWalk'
 import { ProductRail } from '@/components/ProductRail'
-import { SectionHead, FieldRows, Plots, PackShot } from '@/components/bits'
+import { SectionHead, FieldRows, Plots, PackShot, noStop } from '@/components/bits'
 import { NationalStrip, LossStrip, MethodJourney } from '@/components/Argument'
 import { useInView } from '@/hooks/useInView'
 
@@ -21,23 +21,23 @@ function Hero() {
     <section id="grow" className="relative overflow-hidden" style={{ background: 'linear-gradient(180deg, var(--sky) 0%, var(--sand) 62%)' }}>
       <div className="wrap pt-7 pb-8 lg:pt-10 lg:pb-12 grid lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-12 items-start">
         <div ref={ref} className={inView ? 'on' : ''}>
-          <span className="eyebrow">{CROPS.length} programmes · per acre · stage by stage · free</span>
+          <span className="eyebrow">{CROPS.length} crop plans · per acre · stage by stage · free</span>
           {/* D-184: the page's h1 is now the identity line in FourDoors; this keeps its size as an h2. */}
-          <h2 className="text-[clamp(40px,4.9vw,64px)]" style={{ lineHeight: 1.05 }}>What do you grow?</h2>
+          <h2 className="text-[clamp(40px,4.9vw,64px)]" style={{ lineHeight: 1.05 }}>Find the plan for your crop</h2>
           <p className="lead mt-4">{HOME_SLIDES[0].lead}</p>
           <div className="mt-5"><CropPicker /></div>
           <div className="flex flex-wrap gap-3 mt-5 items-center">
             {/* D-192: a quiet link, not a green button; nothing has been made to send yet (D-60). */}
-            <a className="btn btn-ghost" href="#/products">See the {brands} products</a>
+            <a className="btn btn-ghost" href="#/products">See the {brands} brands</a>
             <a className="small" href={WA.farmer} target="_blank" rel="noopener" style={{ color: 'var(--navy-2)' }}>or ask on WhatsApp</a>
           </div>
         </div>
         <div className="order-first lg:order-none lg:sticky lg:top-20">
           <div className="panel p-4 lg:p-5">
             <div className="flex items-baseline justify-between gap-3 mb-2">
-              <div className="display text-[20px]">The sowing year</div>
+              <div className="display text-[20px]">Sowing calendar</div>
               {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */}
-              <div className="cap">every crop's sowing window</div>
+              <div className="cap">the sowing window of each crop</div>
             </div>
             <SeasonRing size={480} className="mx-auto" />
             <div className="mt-3"><SowingNowNext /></div>
@@ -66,7 +66,8 @@ function KnowledgeCards() {
   return (
     <section className="sec" style={{ background: 'var(--sand-2)' }}>
       <div className="wrap">
-        <SectionHead eyebrow="Knowledge" title="Read further." tone="navy" right={<a className="btn btn-ghost" href="#/knowledge">The knowledge hub →</a>} />
+        {/* L1 7 Nov 2026 (crops-a 7, crops-b M1): 1 name for the simulator across the site. Was "The yield simulator, ...". */}
+        <SectionHead eyebrow="Knowledge" title="The farm discipline simulator, the product decks and potassium recovered from ash" tone="navy" right={<a className="btn btn-ghost" href="#/knowledge">The knowledge hub →</a>} />
         <div className="grid lg:grid-cols-3 gap-4">
           <a href="#/simulator" className="panel-navy p-5 lg:p-6 no-underline flex flex-col relative overflow-hidden">
             <Plots cols={12} rows={3} seed={5} className="absolute inset-x-0 bottom-0 opacity-20" />
@@ -76,24 +77,25 @@ function KnowledgeCards() {
                 sent a farmer to WhatsApp for a tool he could have run on the page. */}
             <span className="tag tag-gold self-start">Simulator: wheat and potato</span>
             {/* D-136: was "Nutrition is 1 of 10 things that decide yield." (D-116). Revert: restore it. */}
-            <h3 className="mt-3">Nutrition decides about 1/4 of the yield. Sowing, seed, water, weeds and pests decide the rest.</h3>
+            <h3 className="mt-3">How farm practices affect the yield of wheat and potato</h3>
             <p className="small mt-2 flex-1" style={{ color: 'rgba(255,255,255,.8)' }}>{HOME_SLIDES[2].lead}</p>
-            <p className="cap mt-2">{SIMULATOR.previewNote}</p>
+            {/* Tahir 7 Nov 2026 (CO-11): the caption under the simulator card; was SIMULATOR.previewNote (the preview dial's note on /simulator, left there). */}
+            <p className="cap mt-2">Wheat and potato have working simulators, each with its own 10 practices. Simulators for the other 26 crops are planned.</p>
             <span className="btn btn-gold btn-sm self-start mt-4">Open the simulator →</span>
           </a>
           <a href="#/knowledge#decks" className="panel p-5 lg:p-6 no-underline flex flex-col">
             <span className="eyebrow">Product knowledge</span>
-            <h3>{decks.length} decks, 1 per product.</h3>
-            <p className="small muted mt-2 flex-1">1 deck per registered brand, written for a dealer who has to explain the bag to a grower standing in front of him. Composition, where it goes in the season, and the limits of what it will do.</p>
+            <h3>A dealer deck for each of our {decks.length} brands</h3>
+            <p className="small muted mt-2 flex-1">Each deck is written for a dealer who has to explain the product to a grower. It covers the composition, where the product fits in the season and what the product will not do.</p>
             <div className="flex items-end gap-2 mt-4 overflow-hidden" style={{ height: 70 }}>{decks.slice(0, 5).map(p => <PackShot key={p.slug} slug={p.slug} style={{ maxHeight: 66, width: 'auto' }} />)}<span className="cap self-center ml-1 nowrap">+{decks.length - 5} more</span></div>
             <span className="font-bold mt-3" style={{ color: 'var(--navy)' }}>The deck list →</span>
           </a>
           <a href="#/circular-economy" className="panel-green p-5 lg:p-6 no-underline flex flex-col">
-            <span className="eyebrow">Beyond the bag</span>
-            <h3>{CIRCULAR.h2}</h3>
-            <p className="small muted mt-2">Crop residue ash carries the potassium the crop took from the soil.</p>
+            <span className="eyebrow">Circular economy</span>
+            <h3>{noStop(CIRCULAR.h2)}</h3>
+            <p className="small muted mt-2">The ash of burnt crop residue contains potassium that the crop took up from the soil.</p>
             <p className="small mt-2 flex-1">{CIRCULAR.ash}</p>
-            <span className="font-bold mt-3" style={{ color: 'var(--navy)' }}>The circular loop →</span>
+            <span className="font-bold mt-3" style={{ color: 'var(--navy)' }}>The circular economy page →</span>
           </a>
         </div>
       </div>
@@ -141,8 +143,8 @@ function MakeBand() {
       <div className="wrap">
         <div className="mk-band">
           <div className="mk-say">
-            <span className="eyebrow">For companies, not for fields</span>
-            <h2 className="max-w-[24ch]" style={{ textWrap: 'balance' }}>{PARTNER.h1}</h2>
+            <span className="eyebrow">For companies</span>
+            <h2 className="max-w-[24ch]" style={{ textWrap: 'balance' }}>{noStop(PARTNER.h1)}</h2>
             <p className="lead mt-3">{PARTNER.lead}</p>
             <div className="flex flex-wrap gap-3 mt-5">
               <a className="btn btn-navy" href="#/partner#models">White label, joint development, toll manufacturing →</a>

@@ -3,6 +3,20 @@ import { PACK_WEBP, PACK_PNG } from '@/data/assets'
 import { NP_PACK } from '@/data/npPacks'
 import { PRODUCTS, type Product } from '@/data/catalogue'
 
+/** Tahir 7 Nov 2026 (CR-23): headings do not end with a full stop, on every page. A heading given as text loses a
+ *  single final full stop here, so every section heading on the site follows the rule from 1 place (an ellipsis,
+ *  "?" and "!" are kept). Revert: render {title} directly in SectionHead. */
+export function noStop(title: ReactNode): ReactNode {
+  return typeof title === 'string' && /[^.]\.$/.test(title) ? title.slice(0, -1) : title
+}
+
+/** L1 editor round, 7 Nov 2026 (m10): crop plan stage and method names shown in 1 form on product pages
+ *  ("Grand Growth" reads "Grand growth", "Side dressing" reads "Side-dressing"). Display only: the
+ *  CROP_PLANS rows are not changed. All-capital words such as "DAT" are kept. */
+export function planLabel(s: string): string {
+  return s.replace(/(?<=[\s/])([A-Z])([a-z]+)/g, (_, a: string, b: string) => a.toLowerCase() + b).replace(/\bSide dressing\b/g, 'Side-dressing')
+}
+
 export function SectionHead({ eyebrow, title, lead, tone, right, id }: { eyebrow?: string; title: ReactNode; lead?: ReactNode; tone?: 'green' | 'soil' | 'gold' | 'navy' | 'rust'; right?: ReactNode; id?: string }) {
   return (
     // O-14: 40px between a heading and its own content, on top of the 128px band above it. 24px.
@@ -14,7 +28,7 @@ export function SectionHead({ eyebrow, title, lead, tone, right, id }: { eyebrow
             type had the widest, which is backwards, and it orphaned the last word of most headings
             ("...reaches the / crop."). 30ch with text-balance puts the heading above its own lead
             and lets the balancer choose where to break. */}
-        <h2 className="max-w-[30ch]" style={{ textWrap: 'balance' }}>{title}</h2>
+        <h2 className="max-w-[30ch]" style={{ textWrap: 'balance' }}>{noStop(title)}</h2>
         {lead && <p className="lead mt-4">{lead}</p>}
       </div>
       {right && <div className="shrink-0">{right}</div>}
@@ -107,6 +121,20 @@ export function DrawnBag({ grey, label = '', sub, className = '', width = 70, de
 /** The analysis to print on a drawn bag: only a real analysis (it carries a figure), never a name. */
 export const bagSub = (analysis?: string) => (analysis && /\d/.test(analysis) ? analysis.trim() : undefined)
 
+/** Tahir 7 Nov 2026 (PR-21): the filter methods a catalogue method label belongs to. A label such as
+ *  "Drill at sowing; broadcast if no drill" names 2 methods, so it is found under Drilling and Broadcast. */
+export function methodKeys(label: string): string[] {
+  const m = label.toLowerCase()
+  const keys: string[] = []
+  if (m.includes('drill')) keys.push('Drilling')
+  if (m.includes('side')) keys.push('Side-dressing')
+  if (m.includes('band') || m.includes('placement')) keys.push('Band placement')
+  if (m.includes('broadcast')) keys.push('Broadcast')
+  if (m.includes('fertigation')) keys.push('Fertigation')
+  if (m.includes('foliar') || m.includes('spray')) keys.push('Foliar')
+  return keys
+}
+
 /** Small method icon by name — the five methods are distinct and never synonyms. */
 export function MethodIcon({ method, size = 22 }: { method: string; size?: number }) {
   const m = method.toLowerCase()
@@ -185,5 +213,5 @@ export const ArrowR = () => <span aria-hidden="true">→</span>
  * green-soft, no icon beyond a dot. `compact` drops the padding for tight rows.
  */
 export function LiveCalcTag({ compact = false }: { compact?: boolean }) {
-  return <span className={`live-calc${compact ? ' live-calc-sm' : ''}`}>Live calculator</span>
+  return <span className={`live-calc${compact ? ' live-calc-sm' : ''}`}>Nutrition creator</span>
 }

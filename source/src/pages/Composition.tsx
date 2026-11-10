@@ -23,11 +23,17 @@ const COLS: [string, string][] = [['N', 'N'], ['P', 'P₂O₅'], ['K', 'K₂O'],
 const DOC_STEM_BY_SLUG: Record<string, string> = { 'v-phosphate': 'V-Phosphate' }
 const docStem = (p: Product) => DOC_STEM_BY_SLUG[p.slug] ?? p.name.replace(/%/g, '').replace(/\s+/g, '-')
 const tds = (p: Product): [string, string][] => p.slug === 'crop-force'
-  ? [['TDS 12:12:18', 'https://www.van.com.pk/spec-sheets/VAN-TDS-Crop-Force-12-12-18.pdf']]
+  ? [['TDS 15:15:15', 'https://www.van.com.pk/spec-sheets/VAN-TDS-Crop-Force-15-15-15.pdf'], ['TDS 12:12:18', 'https://www.van.com.pk/spec-sheets/VAN-TDS-Crop-Force-12-12-18.pdf']]   // Tahir 10 Nov 2026 (LM-N1): 15:15:15 restored
   : [['TDS', `https://www.van.com.pk/spec-sheets/VAN-TDS-${docStem(p)}.pdf`]]
 const sds = (p: Product) => `https://www.van.com.pk/sds/VAN-SDS-${docStem(p)}.pdf`
 
 const fmtPct = (v: number | undefined) => v === undefined ? '' : v >= 10 ? String(Math.round(v * 10) / 10) : String(v)
+
+// Tahir 21 Oct 2026, settled PR-9 (L2 fact check 9 Nov 2026, W5): Green Sulfur has both packs, 1 kg and 20 kg.
+// Display only: the record's packKg (20) still feeds the calculators and is not changed here.
+const PACKS_SHOWN: Record<string, string> = { 'green-sulfur': '1 kg · 20 kg' }
+// Tahir 10 Nov 2026 (LM-N1): a grade sold in more than 1 pack, keyed by its product record.
+const PACKS_SHOWN_BY_RECORD: Record<string, string> = { 'Crop Force (15:15:15)': '1 kg · 20 kg' }
 
 function BrandsTable() {
   const brands = PRODUCTS.filter(p => !p.family)
@@ -42,7 +48,7 @@ function BrandsTable() {
               {i === 0 && <td rowSpan={rows.length} style={{ verticalAlign: 'top' }}><a href={`#/products/${p.slug}`} className="flex items-center gap-2 no-underline" style={{ color: 'var(--navy)', fontWeight: 700, whiteSpace: 'nowrap' }}><PackShot slug={p.slug} style={{ height: 34, width: 'auto' }} />{p.name}</a></td>}
               <td className="cap">{rows.length > 1 ? m.product.replace(p.name, '').replace(/^[\s(·]+|[)\s]+$/g, '') || m.product : p.analysis.split(/\.(?:\s|$)/)[0]}</td>
               {COLS.map(([k]) => <td key={k} className="r num" style={{ fontWeight: 400 }}>{fmtPct(m.analysisPct[k])}</td>)}
-              <td className="num" style={{ fontWeight: 400, whiteSpace: 'nowrap' }}>{m.packKg} {m.packUnit ?? 'kg'}</td>
+              <td className="num" style={{ fontWeight: 400, whiteSpace: 'nowrap' }}>{rows.length === 1 && PACKS_SHOWN[p.slug] ? PACKS_SHOWN[p.slug] : PACKS_SHOWN_BY_RECORD[m.product] ?? `${m.packKg} ${m.packUnit ?? 'kg'}`}</td>
               {i === 0 && <td rowSpan={rows.length} style={{ verticalAlign: 'top', whiteSpace: 'nowrap' }}>
                 <a href={lmsUrl(p)} target="_blank" rel="noopener">Deck</a>{' · '}
                 {tds(p).map(([l, h]) => <span key={h}><a href={h} target="_blank" rel="noopener">{l}</a>{' · '}</span>)}
@@ -88,23 +94,23 @@ export default function Composition() {
   const brands = PRODUCTS.filter(p => !p.family).length
   return (
     <div className="wrap py-8 lg:py-10">
-      <p className="cap"><a href="#/products">Our brands</a> / Composition chart</p>
+      <p className="cap"><a href="#/products">VAN brands</a> / Composition chart</p>
       <span className="eyebrow mt-3">Composition chart</span>
-      <h1 className="max-w-[24ch]">Every brand and every code, with what is in it.</h1>
-      <p className="lead mt-3">{brands} registered brands and {LIBRARY.length} unbranded formulations, each with its declared analysis by nutrient, its packs and its documents. A blank cell means the record carries no figure for that nutrient. Percentages are as declared on the bag or in the library; P and K are the oxides, as the bags print them.</p>
+      <h1 className="max-w-[24ch]">Composition of VAN’s {brands} registered brands and {LIBRARY.length} library formulations</h1>
+      <p className="lead mt-3">VAN’s {brands} registered brands and the {LIBRARY.length} formulations in VAN’s formulation library are listed below, each with its declared analysis by nutrient, its pack sizes and its documents. The library formulations are not sold under a brand name. A blank cell means that VAN’s product record gives no figure for that nutrient. Percentages are as declared on the bag or in the library. In the table, phosphorus and potassium are given as oxides, P₂O₅ and K₂O, as the bags print them.</p>
       <div className="flex gap-1 p-1 rounded mt-5 self-start" style={{ background: 'var(--sand-2)', display: 'inline-flex' }} role="tablist" aria-label="View">
         <button role="tab" aria-selected={view === 'brands'} className={`btn btn-sm ${view === 'brands' ? 'btn-navy' : 'btn-ghost'}`} onClick={() => setView('brands')}>The {brands} brands</button>
-        <button role="tab" aria-selected={view === 'library'} className={`btn btn-sm ${view === 'library' ? 'btn-navy' : 'btn-ghost'}`} onClick={() => setView('library')}>The {LIBRARY.length} library codes</button>
+        <button role="tab" aria-selected={view === 'library'} className={`btn btn-sm ${view === 'library' ? 'btn-navy' : 'btn-ghost'}`} onClick={() => setView('library')}>The {LIBRARY.length} library formulations</button>
       </div>
       <div className="mt-4" id={view}>
         {view === 'brands' ? <BrandsTable /> : <LibraryTable />}
       </div>
       {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction. The analysis cell now splits on a full stop followed by a space, so "Potash 3.5%" is no longer cut to "Potash 3". */}
       <p className="cap mt-3 max-w-[120ch]">{view === 'brands'
-        ? 'Source: VAN’s product record. Documents open on van.com.pk: the product deck, the technical datasheet (TDS) and the safety data sheet (SDS).'
-        : 'Source: the formulation library and its published meta. A dot means the nutrient is carried and the figure is not published; the dossier carries the number, after an agreement. Stage names are the 6-stage path on the Pipeline page.'}</p>
+        ? 'Source: VAN’s product record. The Documents column links to 3 documents on van.com.pk: the product deck, the technical data sheet (TDS) and the safety data sheet (SDS).'
+        : 'Source: the formulation library and its published summary data. A dot means the formulation contains the nutrient but the figure is not published; the figure is in the dossier, which is shared after an agreement. Stage names follow the 6-stage path on the Pipeline page.'}</p>
       <div className="flex flex-wrap gap-3 mt-5">
-        <a className="btn btn-ghost" href="#/products">The products page</a>
+        <a className="btn btn-ghost" href="#/products">All brands</a>
         <a className="btn btn-ghost" href="#/partner/pipeline#library">The formulation library</a>
       </div>
     </div>

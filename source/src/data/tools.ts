@@ -42,7 +42,7 @@ const LIVE_CALC_NAMES = LIVE_CALC_CROPS.map(sl => shortCropName(CROPS.find(c => 
 export type ToolState = 'live' | 'pilot' | 'building'
 
 export type Topic =
-  | 'Rates and quantities' | 'Soil' | 'Water' | 'Timing' | 'What the harvest takes'
+  | 'Rates and quantities' | 'Soil' | 'Water' | 'Timing' | 'Nutrients taken out in the harvested crop'
   | 'Verify a bag' | 'For the trade' | 'Units and packs' | 'Reading this site'
 
 export type Tool = {
@@ -60,17 +60,17 @@ export type Tool = {
   keywords?: string
 }
 
-export const TOOL_STATE_LABEL: Record<ToolState, string> = { live: 'Ready now', pilot: 'Pilot', building: 'Not built yet' }
+export const TOOL_STATE_LABEL: Record<ToolState, string> = { live: 'Finished', pilot: 'Pilot', building: 'Being built' }
 export const TOOL_STATE_COLOUR: Record<ToolState, string> = { live: 'var(--green)', pilot: 'var(--gold-text)', building: 'var(--muted)' }
 export const TOOL_STATE_NOTE: Record<ToolState, string> = {
-  live: 'Finished.',
-  pilot: 'Works; not every crop is covered yet.',
+  live: '',
+  pilot: 'Works, but does not yet cover every crop.',
   building: 'Not built yet.',
 }
 
 // D-177: 'For the trade' and 'Reading this site' had no tools left after the honest list, so their chips are gone.
 export const TOPICS: Topic[] = [
-  'Rates and quantities', 'Soil', 'Timing', 'Water', 'What the harvest takes',
+  'Rates and quantities', 'Soil', 'Timing', 'Water', 'Nutrients taken out in the harvested crop',
   'Units and packs', 'Verify a bag',
 ]
 
@@ -87,57 +87,58 @@ export const TOPICS: Topic[] = [
 export const TOOLS: Tool[] = [
   {
     name: 'Crop plan calculator',
-    one: 'Pick your crop, tick the stages, set your acres: the bags and packs to buy.',
+    one: 'Choose your crop, tick the stages and enter your acres to see the bags and packs to buy.',
     state: 'live', href: '#/crops', topics: ['Rates and quantities'],
     keywords: `${NUTRIENT_WORDS} ${PRODUCT_WORDS} buy quantity calculator cost price acres shopping list ${LIVE_CALC_NAMES.join(' ')}`,
-    what: `Any of the ${CROPS.length} published crop plans turns into bags and packs for your acres: the published rate multiplied by your acres. On ${LIVE_CALC_CROPS.length} crops (${LIVE_CALC_NAMES.slice(0, -1).join(', ')} and ${LIVE_CALC_NAMES[LIVE_CALC_NAMES.length - 1]}) it uses VAN's own calculator for that crop and can price the VAN products in it. Acres are whole numbers from 1 to 50.`,
+    what: `The calculator turns any of the ${CROPS.length} published crop plans into bags and packs for your acres, by multiplying the published quantity per acre by your acres. On ${LIVE_CALC_CROPS.length} crops (${LIVE_CALC_NAMES.slice(0, -1).join(', ')} and ${LIVE_CALC_NAMES[LIVE_CALC_NAMES.length - 1]}) it uses the Nutrition creator for that crop and can price the VAN products in it. Acres are whole numbers from 1 to 50.`,
   },
   {
     // D-186, 26 Sep 2026: the Liebig barrel on the nutrients page.
+    // Tahir 7 Nov 2026 (CR-1): last sentence deleted with the barrel's maunds estimate. Was "For wheat and potato, the tool also gives a model estimate of how much of the yield share that nutrition decides (about 1/4) your mix achieves."
     name: 'The nutrient barrel',
-    one: 'Enter what you put on 1 acre and see which nutrient your season stops at.',
+    one: 'Enter what you applied to 1 acre and see which nutrient limits your crop.',
     state: 'live', href: '#/knowledge/nutrients#barrel', topics: ['Rates and quantities', 'Soil'],
     keywords: `${NUTRIENT_WORDS} ${PRODUCT_WORDS} liebig law of the minimum barrel drum shortest stave balance urea dap`,
-    what: `Liebig’s Law of the Minimum as a tool. Pick your crop, type the bags and packs you applied per acre, and each nutrient is drawn as a stave against what VAN’s published programme delivers. The shortest stave is where the season leaks. For wheat and potato it also says how much of the 1/4 of yield that nutrition decides your mix reaches, as a model estimate.`,
+    what: `This tool applies Liebig’s Law of the Minimum. Choose your crop and type the bags and packs you applied per acre. Each nutrient is drawn as a stave, measured against what VAN’s published programme supplies. The shortest stave shows the nutrient that limits the crop.`,
   },
   {
     name: 'Unit and bag converter',
-    one: 'Acres to kanal, maunds to kilograms, and the nutrient inside any VAN pack.',
+    one: 'Converts acres to kanal and maunds to kilograms, and shows the kilograms of each nutrient in any VAN pack.',
     state: 'live', href: '#tools-converter', topics: ['Units and packs'],
     keywords: `${NUTRIENT_WORDS} ${PRODUCT_WORDS} kg litre hectare kanal marla maund bag`,
-    what: `Acres, kanal, marla and hectares; maunds, kilograms and tonnes; and the kilograms of each nutrient inside a pack of any VAN product, read from its registered analysis.`,
+    what: `The converter handles acres, kanal, marla and hectares; maunds, kilograms and tonnes; and the kilograms of each nutrient in a pack of any VAN product, read from its declared analysis.`,
   },
   {
     name: 'Soil adjustment',
-    one: 'Your soil reading or your district moves the plan’s quantities.',
+    one: 'Enter your soil test reading, or choose your district if you have no test, and the tool adjusts the quantities in your crop plan.',
     state: 'pilot', href: '#/crops/wheat#creator', topics: ['Soil', 'Rates and quantities'],
     keywords: `${NUTRIENT_WORDS} soil test report district`,
-    what: `Inside the crop plan calculator. Choose the band your soil report shows for each reading, or pick your Punjab district to use the survey median across ${SOIL_HEADLINE.samples} samples. Where the soil reads short, the plan adds product; where phosphorus, potash or zinc reads Healthy, it takes 1/4 off, and nitrogen is never cut. This is VAN’s starting model and has not yet been checked against field results.`,
+    what: `This works inside the Nutrition creator. Choose the band that your soil report shows for each reading, or choose your Punjab district to use the survey median of its share of the ${SOIL_HEADLINE.samples} samples. Where the soil reading is low, the plan adds product; where phosphorus, potash or zinc reads Healthy, the plan reduces that product by 1/4. Nitrogen is never reduced. This is VAN’s starting model and has not yet been checked against field results.`,
     // D-317: was "...field results; it adds and never subtracts." The calculator also takes 1/4 off on a Healthy P, K or Zn reading (lib/soilAdjustment.ts, D-181).
   },
   {
     name: 'Nutrient balance',
-    one: 'What the plan puts on, against what your harvest takes off.',
-    state: 'pilot', href: '#/crops/wheat#balance', topics: ['What the harvest takes'],
-    what: 'Enter the yield you expect. You see the kilograms of N, P₂O₅ and K₂O per acre the plan puts on, against what that harvest takes off. The removal side uses IPNI’s North American table, because no Pakistani removal table is published. 10 crops have a removal figure.',
+    one: 'Compares the nutrients applied under your crop plan with the nutrients taken out in the harvested crop.',
+    state: 'pilot', href: '#/crops/wheat#balance', topics: ['Nutrients taken out in the harvested crop'],
+    what: 'Enter the yield you expect. The tool shows the kilograms of N, P₂O₅ and K₂O per acre applied under the plan, against the amount taken out in the harvested crop. The removal figures come from IPNI’s North American table, because no Pakistani removal table is published. 10 crops have removal figures.',
   },
   {
-    name: 'Crop water need',
-    one: 'How much water the season needs in your district, and how much rain normally comes.',
+    name: 'Crop water needs',
+    one: 'Shows how much water your crop needs over the season in your district, and how much rain normally falls there.',
     state: 'pilot', href: '#/crops/cotton#water', topics: ['Water'],
-    what: 'Choose your Punjab district. You see the season’s crop water need, normal rainfall and the gap in acre-inches and waterings, by FAO Paper 56 on Pakistan Meteorological Department normals. It uses the temperature-only method and assumes all normal rain stays in the field, so the answer is probably low. The rice figure leaves out puddling and percolation losses. Punjab districts only.',
+    what: 'Choose your Punjab district. The tool shows the crop’s water need for the season, the normal rainfall, and the water still needed from irrigation, in acre-inches and in waterings. It follows FAO Paper 56, using Pakistan Meteorological Department climate normals. It uses the temperature-only method and assumes that all normal rain stays in the field, so the irrigation figure is probably too low. The rice figure leaves out losses from puddling and percolation. It covers Punjab districts only.',
   },
   {
     name: 'Farm discipline simulator',
-    one: 'Rate 10 farm practices and see where the yield is going. Wheat and potato.',
+    one: 'Score how well you follow 10 farm practices for wheat or potato, and see which gaps in your practice lower your yield.',
     state: 'pilot', href: '#/simulator/wheat', topics: ['Timing'],
-    what: 'Rate how your season was farmed on 10 practices, from sowing and seed to water, weeds and pests, as Bad, OK or Best. You see an estimated yield and the practices costing you most. The weights are VAN’s starting model, not trial results. Wheat and potato each have their own 10 practices.',
+    what: 'Score 10 practices from your season, from sowing and seed to water, weeds and pests, as Bad, OK or Best. The simulator gives an estimated yield and shows the practices that cost you most. The weights are VAN’s starting model, not trial results. Wheat and potato have working simulators, each with its own 10 practices. Simulators for the other 26 crops are planned.',   // Tahir 7 Nov 2026 (CO-11)
   },
   {
     name: 'Where your crop is now',
-    one: 'Give your sowing date; see your wheat’s stage and what is due at it.',
+    one: 'For wheat: enter your sowing date to see the crop’s growth stage and the applications in your crop plan that are due at that stage.',
     state: 'pilot', href: '#/crops/wheat#sown', topics: ['Timing'],
-    what: 'Enter the date you sowed. For wheat, the stage is worked out in degree days from your own sowing date, on Lahore’s normal temperatures, and the rows of the published plan due at that stage are listed. A normal season, not this year’s weather. On the other crops it gives the day count only.',
+    what: 'Enter the date you sowed. For wheat, the growth stage is calculated in degree days from your sowing date, using Lahore’s normal temperatures, and the applications in the crop plan that are due at that stage are listed. The calculation assumes a normal season, not this year’s weather. For the other crops it gives the number of days since sowing only.',
   },
 
   // ── Coming. Each says what it is waiting on. ──
@@ -145,23 +146,23 @@ export const TOOLS: Tool[] = [
     name: 'Batch check',
     one: 'Type the batch number on a VAN bag and open that batch’s lab report.',
     state: 'building', href: '#/verify', topics: ['Verify a bag'],
-    what: 'Type the batch number printed on a VAN bag and open the approved lab report for that batch. If the live check does not answer, send the number on WhatsApp and the report comes back the same day. For any other brand, book a test through Sample Reception.',
+    what: 'Type the batch number printed on a VAN bag to open the approved lab report for that batch. If the online check does not respond, send the number on WhatsApp and the report is sent back the same day. For any other brand, book a test through Sample Reception.',
     needs: 'The connection to the plant’s released-batch records (O2S).',
   },
   {
     name: 'Cane yield assessment',
     one: 'Count the canes in a measured area and get an estimated yield per acre.',
-    state: 'building', topics: ['What the harvest takes'],
-    what: 'Count what is standing in a measured area and read the yield off the count: a measurement of the crop that exists, against the simulator’s estimate of how the season was farmed.',
+    state: 'building', topics: ['Nutrients taken out in the harvested crop'],
+    what: 'Count the canes standing in a measured area and read an estimated yield from the count. This measures the crop in the field, whereas the simulator estimates yield from how the season was farmed.',
     needs: 'A cane weight model from girth and length.',
   },
 ]
 
 /** Pages that answer a question but are not tools: the reader does not put in a figure of his own. */
 export const TOOL_PAGES: [string, string, string][] = [
-  ['Soil Atlas', `Punjab’s soil, district by district, from ${SOIL_HEADLINE.samples} samples.`, '#/soil'],
-  ['Compare products', 'Every VAN analysis, pack and method in 1 table.', '#/products#table'],
-  ['Lab tests and prices', 'All 21 fertilizer tests, what each costs and how long it takes.', '#/lab#prices'],
+  ['Soil Atlas', `Punjab’s soil, district by district, from ${SOIL_HEADLINE.samples} samples tested in about 2016 to 2018.`, '#/soil'],
+  ['Compare products', 'Every VAN analysis, pack size and application method in 1 table.', '#/products#table'],
+  ['Lab tests and prices', 'All 21 fertiliser tests, with the price and turnaround time of each.', '#/lab#prices'],
   ['Formulation library', '27 unbranded formulations you could launch under your own name.', '#/partner#library'],
-  ['Where to buy', 'Every VAN dealer and Vital Agri Center, with the person who answers.', '#/where-to-buy'],
+  ['Where to buy', 'Every VAN dealer and Vital Agri Center, with the name of the person to contact.', '#/where-to-buy'],
 ]

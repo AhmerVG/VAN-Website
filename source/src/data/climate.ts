@@ -160,7 +160,7 @@ export const CLIMATE_SOURCE = {
   period: '1991–2020',
   stations: Object.keys(STATIONS).length,
   districts: DISTRICT_CLIMATE.length,
-  note: 'Normals, not this season. What a month is usually like, averaged over 30 years.',
+  note: 'Normals are the average conditions for each month over the 30 years from 1991 to 2020; they are not this season’s weather.',
 } as const
 
 const DAYS_IN_MONTH = [31, 28, 31, 30, 31, 31 - 1, 31, 31, 30, 31, 30, 31]

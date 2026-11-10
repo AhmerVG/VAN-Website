@@ -45,6 +45,7 @@ export type Outlet = {
   note?: string
 }
 
+// L1 editor fix 7 Nov 2026 (company-b m21): every phone shown in 1 format, +92 3xx xxxxxxx (same numbers; was 03xx for the 6 dealers).
 export const OUTLETS: Outlet[] = [
   // ── VAN's own shops. Tahir: "Vital Agri Centers, YES" — that is the trading name, and it goes on
   //    the site. NOT to be confused with VGreen's four hubs, which carry no brand name.
@@ -53,15 +54,15 @@ export const OUTLETS: Outlet[] = [
   { code: 'VAC-SN-TAY', name: 'Vital Agri Center, Tando Allahyar', kind: 'centre', city: 'Tando Allahyar', province: 'Sindh', contact: 'Muhammad Irfan', role: 'Regional Business Head, Sindh', phone: '+92 300 8299001' },
 
   // ── The seven dealers, read from the O2S Customer Master.
-  { code: 'DLR-PB-JHN-001', name: 'Kissan Zarai Markaz', kind: 'dealer', city: 'Jhang', province: 'Punjab', contact: 'Rana Shahab', phone: '0300 3503000' },
-  { code: 'DLR-PB-KTA-002', name: 'Ubaid Agro Traders', kind: 'dealer', city: 'Kot Addu', province: 'Punjab', contact: 'Ch Abdul Zahoor', phone: '0300 7486986' },
-  { code: 'DLR-PB-CNT-004', name: 'Chiniot Agri Center', kind: 'dealer', city: 'Chiniot', province: 'Punjab', contact: 'Nafay Arabi', phone: '0307 6666513' },
-  { code: 'DLR-PB-LHR-005', name: 'Bilal & Co', kind: 'dealer', city: 'Lahore', province: 'Punjab', contact: 'Muhammad Bilal', phone: '0322 4604653' },
-  { code: 'DLR-PB-KSR-006', name: 'Afaq Zari Markaz', kind: 'dealer', city: 'Kasur', province: 'Punjab', contact: 'Saadat Munir', phone: '0322 4991479' },
-  { code: 'DLR-SN-TAY-003', name: 'Ghaffar Zari Markaz', kind: 'dealer', city: 'Tando Allahyar', province: 'Sindh', contact: 'Saim Sagheer', phone: '0300 3241663' },
+  { code: 'DLR-PB-JHN-001', name: 'Kissan Zarai Markaz', kind: 'dealer', city: 'Jhang', province: 'Punjab', contact: 'Rana Shahab', phone: '+92 300 3503000' },
+  { code: 'DLR-PB-KTA-002', name: 'Ubaid Agro Traders', kind: 'dealer', city: 'Kot Addu', province: 'Punjab', contact: 'Ch Abdul Zahoor', phone: '+92 300 7486986' },
+  { code: 'DLR-PB-CNT-004', name: 'Chiniot Agri Center', kind: 'dealer', city: 'Chiniot', province: 'Punjab', contact: 'Nafay Arabi', phone: '+92 307 6666513' },
+  { code: 'DLR-PB-LHR-005', name: 'Bilal & Co', kind: 'dealer', city: 'Lahore', province: 'Punjab', contact: 'Muhammad Bilal', phone: '+92 322 4604653' },
+  { code: 'DLR-PB-KSR-006', name: 'Afaq Zari Markaz', kind: 'dealer', city: 'Kasur', province: 'Punjab', contact: 'Saadat Munir', phone: '+92 322 4991479' },
+  { code: 'DLR-SN-TAY-003', name: 'Ghaffar Zari Markaz', kind: 'dealer', city: 'Tando Allahyar', province: 'Sindh', contact: 'Saim Sagheer', phone: '+92 300 3241663' },
   // Arain Traders has no number in O2S. Rather than print a blank or invent one, the row says so and
   // routes through VAN's own line — which is the honest version and still reaches the shop.
-  { code: 'DLR-SN-TAN-008', name: 'Arain Traders', kind: 'dealer', city: 'Tando Allahyar', province: 'Sindh', contact: 'Muhammad Afzal', phone: null, note: 'No number on record. Reach them through VAN and we will connect you.' },
+  { code: 'DLR-SN-TAN-008', name: 'Arain Traders', kind: 'dealer', city: 'Tando Allahyar', province: 'Sindh', contact: 'Muhammad Afzal', phone: null, note: 'We do not have a phone number for this dealer. Message us on WhatsApp, +92 300 5003041, and we will put you in touch.' },   // L2 fix 9 Nov 2026 (settled CO-55)
 ]
 
 /**

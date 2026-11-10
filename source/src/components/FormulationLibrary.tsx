@@ -49,13 +49,13 @@ import { LIB_META, NUTRIENT_COL, NUTRIENT_LABEL, FAMILY_COL, FORM_LABEL, APPLY_L
  */
 type PathKey = 'idea' | 'feasibility' | 'concept' | 'development' | 'trial' | 'registration'
 const PATH: { key: PathKey; label: string; ask: string; statuses: FormulationStatus[]; col: string }[] = [
-  { key: 'idea', label: 'Idea and hypothesis', ask: 'What problem does it address, on which crop, against which product a farmer buys today?', statuses: [], col: '#8A968C' },
-  { key: 'feasibility', label: 'Feasibility and scoping', ask: 'Technically and commercially viable? What does the literature say? Rough cost per bag?', statuses: ['Feasibility'], col: '#8A968C' },
-  { key: 'concept', label: 'Concept', ask: 'Defined on paper. Ratio, form and target price fixed, not yet at the bench.', statuses: ['Concept'], col: '#8A968C' },
-  { key: 'development', label: 'Development', ask: 'Bench formulation in the VAN lab. Coating, chelation, solubility, pH, compatibility.', statuses: ['In development'], col: '#7A5230' },
-  { key: 'trial', label: 'Trial', ask: 'On VAN’s research farms, and on a partner\u2019s own plots where wanted.', statuses: ['Field trials'], col: '#B0841A' },
+  { key: 'idea', label: 'Idea and hypothesis', ask: 'The problem it addresses, the crop, and the product a farmer buys now that it would replace.', statuses: [], col: '#8A968C' },
+  { key: 'feasibility', label: 'Feasibility and scoping', ask: 'Whether it is technically and commercially viable, what the literature says, and a rough cost per bag.', statuses: ['Feasibility'], col: '#8A968C' },
+  { key: 'concept', label: 'Concept', ask: 'Defined on paper: ratio, form and target price fixed, but not yet at the bench.', statuses: ['Concept'], col: '#8A968C' },
+  { key: 'development', label: 'Development', ask: 'Bench formulation in our laboratory: coating, chelation, solubility, pH and compatibility.', statuses: ['In development'], col: '#7A5230' },
+  { key: 'trial', label: 'Trial', ask: 'Trials on our research farms, and on a partner’s own plots if the partner wants them.', statuses: ['Field trials'], col: '#B0841A' },
   // D-185: licensing is not a model VAN offers (Tahir, 26 Sep 2026), so the stage is Registration and the wording is "carry your name".
-  { key: 'registration', label: 'Registration', ask: 'Specification and data locked. Registered under your brand by VAN, with VAN named as the manufacturer.', statuses: ['Validated', 'Available'], col: '#2F6B3A' },
+  { key: 'registration', label: 'Registration', ask: 'Validated: the specification and data are locked. Available: ready to carry your name. We register the product under your brand, with VAN named as the manufacturer.', statuses: ['Validated', 'Available'], col: '#2F6B3A' },
 ]
 
 const STATUS_COL: Record<FormulationStatus, string> = {
@@ -108,8 +108,8 @@ export function FormulationLibrary({ pathOnly = false, phoneShort = false }: { p
       {/* ── the ladder, drawn ─────────────────────────────────────────────────────────────────── */}
       <div className="panel p-4 lg:p-5 fl-ladder">
         <div className="flex items-baseline justify-between gap-3 flex-wrap mb-3">
-          <span className="eyebrow navy">The path, from an idea to a registered product. Where the {LIBRARY.length} sit on it today</span>
-          <span className="cap">1 dot is 1 formulation · colour is its family · a ring means registered and available · tap a stage to filter</span>
+          <span className="eyebrow navy">The 6 library stages, from an idea to a registered product, and where the {LIBRARY.length} formulations sit on them</span>
+          <span className="cap">1 dot is 1 formulation · colour is its family · a ring means it holds a PSQCA licence and is available · tap a stage to filter</span>{/* Tahir 9 Nov 2026: Available codes are among the 12 licensed products; was 'a ring means registered and available' */}
         </div>
         {/* On a phone the five rungs side by side put the two that matter, eight validated and
             eleven available, off the right-hand edge, so a reader on a phone met a library that
@@ -254,8 +254,8 @@ export function FormulationLibrary({ pathOnly = false, phoneShort = false }: { p
                       {l.status === 'Available'
                         ? 'Ready to carry your name. Registration under your brand, with VAN named as the manufacturer, is the first step.'
                         : l.status === 'Validated'
-                          ? 'Specification and data are locked. Nobody carries it under their name yet.'
-                          : 'Still moving. Ask where it is before you plan a launch around it.'}
+                          ? 'Specification and data are locked. No company sells it under its own name yet.'
+                          : 'Still in development. Ask which stage it has reached before you plan a launch around it.'}
                     </p>
                     <a className="btn btn-navy btn-sm mt-3"
                       href={`mailto:${CONTACT.partnerEmail}?subject=${encodeURIComponent(`Formulation ${l.code}`)}&body=${encodeURIComponent(`We are interested in ${l.code} (${l.title}). Our market is:`)}`}>

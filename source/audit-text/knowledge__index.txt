@@ -2,37 +2,54 @@ PAGE: /knowledge/index.html
 ======================================================================
 Products
 Crop Plans
-Soil
-Tools
+Your Brand
+Soil Atlas
+Vitalytics
 VAN Lab
 Knowledge
 About
-Make with us
-For farmers
-Menu ☰
+Search
+☰
 View
 Simple view
 Knowledge
 The evidence, and where it runs out.
-Three pieces of writing, every figure sourced and dated. Where a number is our own arithmetic on published inputs we say so, and where the data does not exist we say that too.
+6
+pieces of writing, every figure sourced and dated.
+Soil Poverty Series · No. 1
+Soil Poverty: Punjab’s Potash. As potash runs short, urea and DAP buy less yield.
+Punjab’s crops take about 940,000 tonnes of potash out of the soil a year; fertilizer puts back 36,000. Most of 20,000 model runs put the Punjab average below 100 ppm between 2027 and 2044. A report by Tahir Abbas, with the full PDF.
+Read →
+A Vital Agri Nutrients report
+The real price of nitrogen. 29 of every 100 kg of nitrogen added to Pakistan’s cropland leave the field in the harvest.
+Rs 193 a kg on the bag; an illustrative urea-price equivalent of about Rs 660 for each kg in the harvest. Where the 5.7 million tonnes went, what China, the EU and India did, and where the gain can come from: technology, timing, placement and balance. With the full PDF.
+Read →
+The 17 nutrients
+Every nutrient a crop eats, and why the shortest one decides the harvest.
+What each of the 17 does, what a crop looks like without it, which ones work as pairs, and a barrel you can put your own bags into. Liebig’s Law of the Minimum, for a Pakistani field.
+Read →
 The national picture
 Pakistan is not short of fertilizer. It is short of nutrition that reaches the crop.
 Usage, balance, productivity, and where the nitrogen actually goes. Measured against India, Bangladesh, China and the United States, with every source named.
 Read →
 The state of the soil
 We have been spending the soil’s capital, not its income.
-A harvest is an export. Six published surveys on where the soil has ended up, and an honest account of the national dataset that does not exist.
+A harvest is an export. 6 published surveys on where the soil has ended up, and the national dataset Pakistan does not have.
 Read →
 Application systems
 A bag is not a dose. How nutrient is delivered is part of the product.
-Pivot, drip, drone, broadcast, fertigation and foliar. What each one demands of the product, the two field programmes VAN has run of its own, and One Tank, the family built around the twenty litres a drone can carry.
+Pivot, drip, drone, broadcast, fertigation and foliar. What each one demands of the product, the 2 field programmes VAN has run of its own, and One Tank, the family built around the 20 litres a drone can carry.
 Read →
+Data
+Pakistan’s nutrient data, to explore yourself.
+Interactive charts: fertilizer per acre against any country, the balance between nutrients, what comes back in the harvest, and where Punjab’s soil potash is heading.
+Open the data →
 Measured, not assumed
-The Punjab soil lens.
+Soil Atlas. 770,160 samples, 1 province.
 770,160
 samples across
 36
-districts, read district by district. Conditions, not mechanism.
+districts, read district by district.
 Source ·
 Punjab soil testing programme · 36 district workbooks · 770,160 valid samples · c. 2016–2018
 .
@@ -45,8 +62,8 @@ The loop that brings nutrients back instead of importing them again.
 The circular economy →
 Product knowledge
 23
-decks, one per product.
-A full deck per product. What it is, what it does in the soil, where it fits in the season and what VAN will not claim for it.
+decks, 1 per product.
+A full deck per product. What it is, what it does in the soil, where it fits in the season and its limits.
 Vital Urea
 PDF deck ↓
 V. Ammonium Phosphate
@@ -93,7 +110,7 @@ Humi Grow Plus
 PDF deck ↓
 Tornado
 PDF deck ↓
-The hub indexes what VAN has already published:
+This section lists what VAN has already published:
 28
 crop programmes,
 23
@@ -109,19 +126,13 @@ Have a question the charts don’t answer?
 The agronomy team answers on the same WhatsApp line as everything else.
 Ask on WhatsApp
 Crop nutrition engineered, manufactured, registered and tested in Pakistan.
-Plant
-·
-49-Km Multan Road, Phool Nagar Bypass, Lahore
-Head office
-·
-605 Al-Hafeez Heights, Gulberg III, Lahore 54660
++92 42 35762215
 WhatsApp
 +92 300 5003041
-Landline
-+92 42 35762215
 info@van.com.pk
 Products
 All 23 brands
+Compare them
 Vital Urea
 Where to buy
 Verify a bag
@@ -129,20 +140,25 @@ Crops
 28 crop plans
 Wheat
 How you apply it
+Soil Atlas
 Knowledge
 Why Pakistan must shift
-The soil, measured
-Product knowledge decks
+Product decks
 Circular economy
+Vitalytics tools
 Company
-Make with us
+Your Brand
 VAN Lab
-Tools
-About & contact
+About
+Company profile
+Head office
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+Plant
+49-Km Multan Road, Phool Nagar Bypass, Lahore
 © 2026
 Vital Agri Nutrients (Pvt) Ltd
-·
-www.van.com.pk
+Full member of CropLife Pakistan since 2024
+How VAN competes
 LinkedIn
 Facebook
 Instagram

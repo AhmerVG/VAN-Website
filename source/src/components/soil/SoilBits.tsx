@@ -49,10 +49,10 @@ export function HeadlineTiles({ compact = false }: { compact?: boolean }) {
   const om = useCountUp(P.om ?? 0, inView, 1400, 2)
   const p15 = useCountUp(P.p_lt15 ?? 0, inView, 1400, 1)
   const tiles: [string, string, string, string][] = [
-    [ph.toFixed(2), 'mean pH', 'province-weighted, all 770,160 samples', 'rust'],
+    [ph.toFixed(2), 'mean pH', 'all 770,160 samples, weighted by the number of samples in each district', 'rust'],
     [`${gt75.toFixed(1)}%`, 'above pH 7.5', `${SOIL_HEADLINE.aboveEight} above 8.0 · ${SOIL_HEADLINE.aboveEightFive} above 8.5`, 'rust'],
-    [`${om.toFixed(2)}%`, 'mean organic matter', `${SOIL_HEADLINE.omLow} below the 0.86% threshold`, 'soil'],
-    [`${p15.toFixed(1)}%`, 'below adequate phosphorus', `below 15 ppm · ${SOIL_HEADLINE.pLow} below 7 ppm`, 'navy'],
+    [`${om.toFixed(2)}%`, 'mean organic matter', `${SOIL_HEADLINE.omLow} of samples below 0.86%, Punjab’s threshold for low organic matter` /* Tahir 7 Nov 2026 (KN-9): was '..., Punjab’s working threshold' */, 'soil'],
+    [`${p15.toFixed(1)}%`, 'below adequate available phosphorus', `of samples below 15 parts per million (ppm), the adequate level · ${SOIL_HEADLINE.pLow} below 7 ppm, the deficiency threshold` /* L1 editor 7 Nov 2026 (whyshift m6): ppm written out at first use; tile used only on the national page */, 'navy'],
     [SOIL_HEADLINE.sulfurTested, 'samples tested for sulfur', 'not tested in the Punjab survey', 'rust'],
   ]
   const col = (t: string) => (t === 'rust' ? 'var(--rust)' : t === 'soil' ? 'var(--soil)' : 'var(--navy)')
@@ -81,12 +81,12 @@ export function AnalyteList() {
   // Values for the rows whose lens string carries only a unit come from SOIL.province (the same module).
   const fill: Record<string, string> = {
     'Saturation percentage': `${(P.sat ?? 0).toFixed(1)}%`,
-    'Texture class': loam ? `loam · ${((loam.n / texN) * 100).toFixed(1)}% of texture-tested samples` : 'class',
+    'Texture class': loam ? `loam · ${((loam.n / texN) * 100).toFixed(1)}% of the samples that have a recorded texture class` : 'class',
     Copper: `${(P.cu ?? 0).toFixed(2)} ppm`, Iron: `${(P.fe ?? 0).toFixed(2)} ppm`, Manganese: `${(P.mn ?? 0).toFixed(2)} ppm`,
   }
   return (
     <div ref={ref} className={`panel p-5 ${inView ? 'on' : ''}`}>
-      <div className="flex items-baseline justify-between gap-3"><h4>The 13 determinations, and 1 that is missing.</h4><span className="cap">province means</span></div>
+      <div className="flex items-baseline justify-between gap-3"><h4>The 13 soil tests in the survey, and sulfur, which was not tested</h4><span className="cap">province means</span></div>
       <div className="mt-2">
         {SOIL_ANALYTES.map(([name, v], i) => (
           <div key={name} className="an-row" style={{ transitionDelay: `${i * 110}ms` }}>
@@ -98,7 +98,7 @@ export function AnalyteList() {
         <div className="an-row missing" style={{ transitionDelay: `${SOIL_ANALYTES.length * 110 + 900}ms` }}>
           <span className="box" aria-hidden="true">·</span>
           <span className="name font-bold">Sulfur</span>
-          <span className="val" style={{ color: 'var(--rust)' }}>not determined</span>
+          <span className="val" style={{ color: 'var(--rust)' }}>not tested</span>
         </div>
       </div>
       <div className="panel-rust p-4 mt-4">
@@ -106,7 +106,7 @@ export function AnalyteList() {
         <p className="small mt-1">{SOIL_MISSING.text}</p>
         <p className="small mt-2 font-semibold">{SOIL_MISSING.vanLine}</p>
       </div>
-      <SoilSource extra={`Copper, iron, manganese and saturation percentage are province means from the same survey. Texture is the share of the commonest recorded class, out of the ${thousands(texN)} samples that carry a texture class at all; ${thousands(P.n - texN)} of the ${thousands(P.n)} do not, and are not counted either way.`} />
+      <SoilSource extra={`Copper, iron, manganese and saturation percentage are province means from the same survey. Texture is the share of the most common recorded class among the ${thousands(texN)} samples that have a texture class; the other ${thousands(P.n - texN)} of the ${thousands(P.n)} samples have none and are not counted.`} />
     </div>
   )
 }
@@ -131,12 +131,12 @@ export function BuiltAgainst() {
           <div>
             <span className="eyebrow soil" style={{ marginBottom: 4 }}>{String(i + 1).padStart(2, '0')} · {m.nutrient}</span>
             <div className="font-bold leading-snug" style={{ fontSize: 15 }}>{m.condition}</div>
-            <div className="cap mt-1">the condition · from the survey</div>
+            <div className="cap mt-1">condition, from the survey</div>
           </div>
           <div>
             <blockquote className="m-0 pl-4" style={{ borderLeft: '3px solid var(--gold)' }}>
-              <p className="small" style={{ fontStyle: 'italic' }}>“{m.copy}”</p>
-              <p className="cap mt-1">From {m.from}</p>
+              <p className="small" style={{ fontStyle: 'italic' }}>{m.copy}</p>
+              <p className="cap mt-1">{m.from}</p>
             </blockquote>
           </div>
           <div className="flex flex-wrap gap-2 lg:justify-end">{m.products.map(s => <Shot key={s} slug={s} />)}</div>
@@ -152,32 +152,72 @@ export function SoilCaveats() {
   return (
     <div id="caveats" className="panel p-5 lg:p-7" style={{ borderColor: 'var(--navy)', borderWidth: 2 }}>
       <span className="eyebrow navy">Read this before quoting</span>
-      <h3>Method &amp; caveats</h3>
+      <h3>Method and limitations</h3>
       <p className="small mt-3">{SOIL_SOURCE.long}</p>
       <div className="grid md:grid-cols-2 gap-3 mt-4">
         {SOIL_SOURCE.caveats.map(([h, t]) => <div key={h} className="panel-soft p-4"><div className="font-bold">{h}</div><p className="small muted mt-1">{t}</p></div>)}
       </div>
-      <p className="cap mt-4"><b>Bounds.</b> Physically impossible values were bounded before averaging: {(SOIL.meta.source.match(/bounded before averaging \(([^)]*)\)/) ?? [])[1] ?? 'see the source line'}.</p>
-      <p className="cap mt-2">{thousands(SOIL.province.n)} valid samples across {SOIL.districts.length} districts. Analytes determined: {SOIL.analytes.join(' · ')}. Not determined: {SOIL.not_determined.join(', ')}.</p>
+      <p className="cap mt-4"><b>Limits applied before medians and means were worked out:</b> {((SOIL.meta.source.match(/bounded before averaging \(([^)]*)\)/) ?? [])[1] ?? 'see the source line').replace('CaCO3', 'CaCO₃')}.</p>{/* L1 editor 7 Nov 2026 (m15): subscript 3 */}
+      <p className="cap mt-2">{thousands(SOIL.province.n)} valid samples across {SOIL.districts.length} districts. Soil tests: {SOIL.analytes.join(' · ')}. Not tested: {SOIL.not_determined.join(', ')}.</p>
     </div>
   )
+}
+
+/**
+ * Tahir 7 Nov 2026 (PR-25): a bridge per category, from what the product supplies to the soil figure,
+ * with the "not results of this product" limit in the same paragraph. The figures are the same ones
+ * PRODUCT_SOIL prints (soilLens.ts). The date wording stays "about 2016 to 2018" (CO-24); PR-25 asked
+ * for "2016 to 2018 (approximate dates)", which is open with Tahir.
+ */
+const SOIL_BRIDGE: Record<string, { supplies: string; finding: string }> = {
+  N: { supplies: 'supplies nitrogen', finding: '69.1% of samples were above pH 8' },
+  P: { supplies: 'supplies phosphorus', finding: '97.9% of samples had less than 15 ppm of available phosphorus. A soil needs at least 15 ppm to be counted as adequate in phosphorus. The mean calcium carbonate (lime) content of the samples was 6.53%' },   // L1 editor 10 Nov 2026 (M4): 1 finding per sentence, 15 ppm stated as the adequate level. Was '... less than 15 ppm of available phosphorus, the level counted as adequate, and the mean calcium carbonate (lime) content was 6.53%'
+  K: { supplies: 'supplies potassium', finding: '87.8% of samples had less than 180 ppm of available potassium, the level that Punjab soil laboratories treat as adequate' },
+  // L1 7 Nov 2026 (m5): the 2 adequate levels named, as on the P and K pages.
+  NPK: { supplies: 'supplies nitrogen, phosphorus and potassium', finding: '87.8% of samples had less than 180 ppm of available potassium, and 97.9% had less than 15 ppm of available phosphorus, the levels that Punjab soil laboratories treat as adequate' },
+  MICRO: { supplies: 'supplies micronutrients', finding: '59.0% of samples had less than 1.0 ppm of available zinc, and 51.7% had less than 0.5 ppm of available boron' },
+  SEC: { supplies: 'supplies secondary nutrients', finding: 'none of the 770,160 samples was tested for sulfur' },
+  BIO: { supplies: 'is 1 of VAN’s soil health and biological products', finding: '90.2% of samples had less than 0.86% organic matter, and the mean of all samples was 0.61%' },
+}
+
+/**
+ * L1 editor round, 7 Nov 2026 (M1, m3, m4, m5): where a product does not supply the nutrient its category
+ * figure is about, the strip names what the product supplies (from its declared analysis) and gives only
+ * the figure for that nutrient. Figures are the same survey figures as SOIL_BRIDGE (boron 51.7% below
+ * 0.5 ppm, zinc 59.0% below 1.0 ppm). `noLine` drops the category line under the bridge where it is about
+ * another nutrient (sulfur on Cala-Mag V and V-Mag Essential, zinc on VL-Boron) or repeats the bridge
+ * (sulfur on Green Sulfur). `noLimit` drops "These are historical measurements ..." where nothing was measured.
+ * Was: Cala-Mag V and V-Mag Essential 'supplies secondary nutrients ... none of the 770,160 samples was
+ * tested for sulfur'; the 4 micronutrient pages gave both the zinc and the boron figure.
+ */
+const SOIL_BRIDGE_BY_SLUG: Record<string, { supplies: string; finding: string; noLine?: boolean; noLimit?: boolean; plainLink?: boolean }> = {
+  'cala-mag-v': { supplies: 'supplies calcium, magnesium, nitrogen and boron', finding: '51.7% of samples had less than 0.5 ppm of available boron', noLine: true },
+  'v-mag-essential': { supplies: 'supplies magnesium and boron', finding: '51.7% of samples had less than 0.5 ppm of available boron', noLine: true },
+  'green-sulfur': { supplies: 'supplies sulfur', finding: 'none of the 770,160 samples was tested for sulfur, so these tests cannot show whether the soil needs it', noLine: true, noLimit: true },
+  'v-boron': { supplies: 'supplies boron', finding: '51.7% of samples had less than 0.5 ppm of available boron', noLine: true, plainLink: true },
+  'v-zinc': { supplies: 'supplies zinc', finding: '59.0% of samples had less than 1.0 ppm of available zinc' },
+  'v-transform': { supplies: 'supplies zinc', finding: '59.0% of samples had less than 1.0 ppm of available zinc' },
+  'vl-micro-mix': { supplies: 'supplies zinc, iron, manganese and copper', finding: '59.0% of samples had less than 1.0 ppm of available zinc' },
 }
 
 /** "What the soil does to this" — the strip on every product page. */
 export function ProductSoilStrip({ product }: { product: Product }) {
   const s = PRODUCT_SOIL[product.cat]
-  if (!s) return null
-  const href = s.relation ? `#/soil?rel=${s.relation}` : '#/soil'
+  const b = SOIL_BRIDGE_BY_SLUG[product.slug] ?? SOIL_BRIDGE[product.cat]
+  if (!s || !b) return null
+  const o = SOIL_BRIDGE_BY_SLUG[product.slug]
+  const href = s.relation && !o?.plainLink ? `#/soil?rel=${s.relation}` : '#/soil'
+  const name = `${product.family ? 'The ' : ''}${product.name}`
   return (
     <div className="soil-strip">
       <div className="min-w-0">
-        <div className="cap uppercase tracking-[.1em] font-bold" style={{ color: 'var(--soil)' }}>What the soil does to this</div>
-        <div className="num mt-1" style={{ fontSize: 'clamp(17px, 1.6vw, 21px)', color: 'var(--navy)', lineHeight: 1.2 }}>{s.figure}</div>
+        <div className="cap uppercase tracking-[.1em] font-bold" style={{ color: 'var(--soil)' }}>Punjab soil tests, about 2016 to 2018</div>
+        <p className="small mt-1">{name} {b.supplies}. In Punjab soil tests from about 2016 to 2018, {b.finding}.{o?.noLimit ? null : <> These are historical measurements of Punjab’s soil, not results of {product.family ? 'the ' : ''}{product.name}.</>}</p>
       </div>
-      <a className="btn btn-sm btn-navy" href={href}>See it on the map →</a>
+      <a className="btn btn-sm btn-navy" href={href}>See the Punjab soil data in the Soil Atlas →</a>
       <div className="min-w-0" style={{ gridColumn: '1 / -1' }}>
-        <p className="small">{s.line.charAt(0).toUpperCase() + s.line.slice(1)}.</p>
-        <p className="cap mt-1">{SOIL_SOURCE.short}. The figure describes the soil. It is not a claim for the product.</p>
+        {!o?.noLine && <p className="small">{s.line.charAt(0).toUpperCase() + s.line.slice(1)}.</p>}
+        <p className={o?.noLine ? 'cap' : 'cap mt-1'}>Source: Punjab soil testing programme, 770,160 valid samples from 36 districts.</p>
       </div>
     </div>
   )

@@ -18,7 +18,7 @@ function Row({ o }: { o: Outlet }) {
     <div className="panel p-5 grid gap-2" style={centre ? { borderColor: 'var(--gold)', borderWidth: 2 } : undefined}>
       <div className="flex items-center gap-2 flex-wrap">
         <span className="display text-[18px]" style={{ color: 'var(--navy)' }}>{o.name}</span>
-        {centre && <span className="tag tag-gold">VAN's own shop</span>}
+        {centre && <span className="tag tag-gold">Our own shop</span>}
       </div>
       <p className="small muted">{o.city}, {o.province}</p>
       <p className="small"><b>{o.contact}</b>{o.role && <span className="muted"> · {o.role}</span>}</p>
@@ -39,11 +39,12 @@ export default function Dealers() {
       <section style={{ background: 'linear-gradient(180deg, var(--gold-soft), var(--sand))' }}>
         <div className="wrap py-8 lg:py-12">
           <span className="eyebrow navy">Where to buy</span>
-          <h1 className="max-w-[24ch]">9 places, and the districts where VAN has nobody yet.</h1>
+          <h1 className="max-w-[24ch]">9 places to buy VAN products, and what to do if none is near you</h1>
           <p className="lead mt-4 max-w-[140ch]">
-            {dealers.length} dealers and {centres.length} VAN shops, in {new Set(OUTLETS.map(o => o.city)).size} towns.
-            VAN also sells through distributors and a technical service team. <b>If none of them is near you, say where you are and we will deliver</b>,
-            or tell you plainly that we cannot yet.
+            You can buy our products at {dealers.length + centres.length} places: {dealers.length} independent dealers and {centres.length} shops that we own, the Vital Agri Centers. Together they are in {new Set(OUTLETS.map(o => o.city)).size} towns.{' '}
+            {/* Tahir 7 Nov 2026 (CO-29): 1 name for the team, "agronomy team". */}
+            We also sell through distributors and through our agronomy team, which works with farmers directly. <b>If none of these places is near you, tell us where you are.</b>{' '}{/* L1 editor fix 7 Nov 2026 (company-b m20): the 2 spaces JSX dropped at the line breaks. */}
+            We will either deliver to you or tell you that we cannot yet deliver to your area.
           </p>
           {/* 11 Sep 2026 · the buying page had no way to act above the fold. In this trade the
               enquiry happens on the phone, so the phone is the button. */}
@@ -57,12 +58,12 @@ export default function Dealers() {
       </section>
 
       <section className="wrap sec" id="outlets">
-        <SectionHead eyebrow="VAN's own shops" title="2 Vital Agri Centers, both in Sindh." tone="gold" lead="Owned and staffed by VAN. The person named is the one who answers." />
+        <SectionHead eyebrow="Our own shops" title="2 Vital Agri Centers, both in Sindh" tone="gold" lead="We own and staff these shops. The person named under each shop answers its phone." />
         <div className="grid sm:grid-cols-2 gap-3">{centres.map(o => <Row key={o.code} o={o} />)}</div>
       </section>
 
       <section className="sec" style={{ background: 'var(--sand-2)' }}><div className="wrap">
-        <SectionHead eyebrow="Dealers" title={`${punjab.length} in Punjab, ${sindh.length} in Sindh.`} tone="navy" lead="Independent shops carrying VAN brands. Every number below is published with the dealer's agreement." />
+        <SectionHead eyebrow="Dealers" title={`${dealers.length} dealers: ${punjab.length} in Punjab and ${sindh.length} in Sindh`} tone="navy" lead="These independent shops sell our brands. Each phone number is published with the dealer's agreement." />
         <h3 className="mt-2 mb-3">Punjab</h3>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">{punjab.map(o => <Row key={o.code} o={o} />)}</div>
         <h3 className="mt-7 mb-3">Sindh</h3>
@@ -73,10 +74,10 @@ export default function Dealers() {
           himself after a search returns nothing. */}
       <section className="wrap sec">
         <div className="panel p-5 lg:p-6 max-w-[140ch]">
-          <span className="eyebrow rust">If there is nobody near you</span>
+          <span className="eyebrow rust">If there is no VAN outlet near you</span>
           {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */}
-          <h2 className="max-w-[26ch] mt-1">That is most of the country.</h2>
-          <p className="mt-3">There is no VAN outlet in Faisalabad, Sargodha, Multan, Bahawalpur, Rahim Yar Khan or Dera Ghazi Khan. Tell us your district and what you grow, and we will either deliver to you or tell you plainly that we cannot yet.</p>
+          <h2 className="max-w-[26ch] mt-1">Most districts of Pakistan do not yet have a VAN outlet</h2>
+          <p className="mt-3">For example, there is no VAN outlet in Faisalabad, Sargodha, Multan, Bahawalpur, Rahim Yar Khan or Dera Ghazi Khan. Tell us your district and what you grow, and we will tell you whether we can deliver to you.</p>
           <div className="flex flex-wrap gap-3 mt-4">
             <WaButton href={WA.dealer}>Tell us your district</WaButton>
             <a className="btn btn-ghost" href={`mailto:${CONTACT.cropEmail}?subject=${encodeURIComponent('Where can I buy VAN products')}`}>{CONTACT.cropEmail}</a>
@@ -85,12 +86,12 @@ export default function Dealers() {
       </section>
 
       <section className="sec" style={{ background: 'var(--sky)' }}><div className="wrap">
-        <SectionHead eyebrow="Becoming a dealer" title="Sindh: talk to Muhammad Irfan. Punjab and elsewhere: the trade desk." tone="navy" />
+        <SectionHead eyebrow="Becoming a dealer" title="In Sindh, contact Muhammad Irfan; in Punjab and elsewhere, contact the trade desk" tone="navy" />
         <div className="grid lg:grid-cols-2 gap-4">
           <div className="panel p-5 grid gap-2">
             <span className="eyebrow">Sindh</span>
             <p><b>{SINDH_FOCAL.name}</b> <span className="muted">· {SINDH_FOCAL.role}</span></p>
-            <p className="small muted">He handles dealerships across the province and heads the business there. Talk to him rather than a general inbox.</p>
+            <p className="small muted">He heads our business in Sindh and deals with dealership enquiries across the province. In Sindh, contact him directly rather than writing to our general inbox.</p>
             <div className="flex flex-wrap gap-2 mt-1">
               <a className="btn btn-ghost btn-sm" href={tel(SINDH_FOCAL.phone)}>{SINDH_FOCAL.phone}</a>
               <a className="btn btn-ghost btn-sm" href={`mailto:${SINDH_FOCAL.email}`}>{SINDH_FOCAL.email}</a>
@@ -99,7 +100,7 @@ export default function Dealers() {
           <div className="panel p-5 grid gap-2">
             <span className="eyebrow">Punjab and everywhere else</span>
             <p><b>The trade desk</b></p>
-            <p className="small muted">Territory, volume and terms are written down on the dealership page before you have to ask for them.</p>
+            <p className="small muted">The trade desk handles dealer enquiries from Punjab and the rest of Pakistan. Write to {CONTACT.partnerEmail}. Our dealer page explains what we offer a dealer, how ordering works and how to start.</p>
             <div className="flex flex-wrap gap-2 mt-1">
               <a className="btn btn-navy btn-sm" href="#/become-a-dealer">What a dealership involves →</a>
               <a className="btn btn-ghost btn-sm" href={`mailto:${CONTACT.partnerEmail}`}>{CONTACT.partnerEmail}</a>

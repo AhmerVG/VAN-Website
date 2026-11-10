@@ -5,7 +5,7 @@ import type { AnalyteKey } from '@/lib/soil'
 import { SoilVitals } from '@/components/soil/SoilVitals'
 import { SoilMatrix } from '@/components/soil/SoilMatrix'
 import { WA } from '@/data/site'
-import { SectionHead, WaButton } from '@/components/bits'
+import { SectionHead, WaButton, noStop } from '@/components/bits'
 import { SoilMap } from '@/components/soil/SoilMap'
 import { Distribution } from '@/components/soil/SoilDistricts'
 import { RelationExplorer } from '@/components/soil/SoilRelations'
@@ -48,13 +48,13 @@ export default function Soil({ rel, district, from = null, tehsil = null }: { re
       <section style={{ background: 'linear-gradient(180deg, var(--soil-soft) 0%, var(--sand) 70%)' }}>
         <div className="wrap pt-8 pb-4 lg:pt-10" id="soil-map">
           <span className="eyebrow soil">{SOIL_COPY.kicker} · Punjab</span>
-          <h1 className="max-w-[18ch]">{SOIL_COPY.h1}</h1>
+          <h1 className="max-w-[18ch]">{noStop(SOIL_COPY.h1)}</h1>
           <p className="ab-hero-h2 mt-3" style={{ fontSize: 20, maxWidth: "60ch" }}>{SOIL_COPY.mapH2}</p>
-          <p className="cap mt-1">▸ The map plays through 8 readings, then rests on phosphorus. Pick a reading, hover a square for its district and value, tap one to hold that district.</p>
+          <p className="cap mt-1">▸ The map shows each of the 8 soil tests in turn, then stops on phosphorus. Choose a soil test, hover over a square to see its district and value, or tap a square to select that district.</p>
           <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-6 items-start">
           <div className="panel p-4 lg:p-5">
             <SoilMap initial="p" analyte={mapAnalyte} onAnalyte={k => setParam(k as SoilColKey)} focus={sel} onPick={k => setSel(k)} maxHeight={640} urduLabels={!!from && from.startsWith('mitti') && from !== 'mitti-en'} />
-            {!mapAnalyte && <p className="cap mt-2" style={{ color: 'var(--rust)' }}>Iron, copper and manganese are tested in every district but have no map layer. Their readings are in the matrix below.</p>}
+            {!mapAnalyte && <p className="cap mt-2" style={{ color: 'var(--rust)' }}>Iron, copper and manganese were tested in every district but have no map layer. Their results are in the district table below.</p>}
           </div>
           <div className="grid gap-4 lg:sticky lg:top-24">
             {/* 10 Sep 2026: the heading here was "Alkalinity is the baseline. Carbon is the absence."
@@ -75,16 +75,16 @@ export default function Soil({ rel, district, from = null, tehsil = null }: { re
         <p className="lead max-w-[140ch]">{SOIL_COPY.lead}</p>
         {/* D-304, Tahir 22 Oct 2026: the 8 cards ("VAN feeds the soil as well as the crop") said what the 7 rows of "What VAN builds against it" say; the rows stay. */}
         <div className="mt-7"><SoilVitals district={sel} param={param} onParam={setParam} /></div>
-        <p className="src"><b>Source ·</b> {SOIL_SOURCE.short}. Deficiency shares are of samples below Punjab’s working thresholds, not a diagnosis of any field.</p>
+        <p className="src"><b>Source ·</b> {SOIL_SOURCE.short}. The percentages are shares of samples below Punjab’s working thresholds (above them, for pH and salinity); they are not a diagnosis of any field.</p>
         {/* O-20: the lenses. Named by what the reader wants to see, never by who he is. */}
         <div className="mt-8"><SoilLenses value={lens} onChange={setLens} /></div>
         {/* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */}
-        <p className="small muted mt-6">The map shows 8 readings in 2 groups: 4 nutrients a partner formulates against, and 4 that describe the soil they land in. Pick a reading above or in the matrix below to change the map.</p>
+        <p className="small muted mt-6">The map shows 8 soil tests in 2 groups: 4 nutrients that a fertiliser can supply (phosphorus, potassium, zinc and boron) and 4 properties of the soil itself (pH, organic matter, calcium carbonate and salinity, measured as electrical conductivity or EC). Choose a soil test above, or in the district table below, to change the map.</p>
       </section>
 
       <section className="sec" style={{ background: 'var(--sand-2)' }}><div className="wrap" id="soil-districts">
         <div id="soil-matrix" />
-        <SectionHead eyebrow="36 districts" title={SOIL_COPY.distH2} lead="Every district a row, every parameter a column, every cell on VAN's own 5-band scale. Sort by a column to see who is worst on it, search for your own, and tap a cell to take that district and that parameter to the map above." tone="navy" />
+        <SectionHead eyebrow="36 districts" title={SOIL_COPY.distH2} lead="Each row is a district and each column a soil test, and every cell is coloured on VAN’s own 5-band soil-test scale. Sort by a column to see which districts are worst on that soil test, search for your own district, or tap a cell to show that district and soil test on the map above." tone="navy" />
         <SoilMatrix selected={sel} onSelect={setSel} param={param} onParam={setParam} />
         <div className="mt-5"><Distribution key={sel ?? 'PROVINCE'} selected={sel} /></div>
         {/* O-20: the drill-down below district. The data was already loaded and unreachable. */}
@@ -92,55 +92,60 @@ export default function Soil({ rel, district, from = null, tehsil = null }: { re
       </div></section>
 
       <section className="wrap sec" id="soil-relations">
-        <SectionHead eyebrow="Relations" title={SOIL_COPY.relH2} lead="Pick what to group the samples by and what to read across the groups." tone="rust" right={<span className="cap">▸ change X and Y</span>} />
+        <SectionHead eyebrow="Relations" title={SOIL_COPY.relH2} lead="In the survey, 3 relationships appear clearly: calcium carbonate rises with pH, zinc falls as pH rises, and sandy soil holds less potassium. Phosphorus, which is widely assumed to fall as pH rises, does not fall. Choose how to group the samples and which soil test to compare." tone="rust" right={<span className="cap">▸ change the grouping and the soil test</span>} />
         <RelationExplorer initialRel={rel} />
       </section>
 
       {/* D-246: where the 2016-18 soil is heading. From Soil Poverty Series No. 1; model projections, not measurements. */}
       <section className="wrap sec" id="soil-outlook">
-        <SectionHead eyebrow="Outlook" title="Where Punjab’s soil potash is heading." lead="A projection from the 2016–2018 soil tests, on VAN’s own soil scale. Move the year to see the best, average and worst case." tone="rust" right={<a className="cap" href="#/knowledge/soil-poverty-punjab-potash">Read the report ▸</a>} />
-        <Lens label="Punjab soil potash outlook" specs={[{ id: 'outlook' }]} />
+        <SectionHead eyebrow="Outlook" title="Projected soil potassium in Punjab to 2050" lead="This chart shows the model projection of Punjab’s average available soil potassium from the Soil Poverty report, starting from the soil tests of about 2016 to 2018 and coloured by VAN’s soil-test bands. These are projections, not measurements. The average case is the median of the model results. There is a 1 in 10 chance that the real value will be better than the best case, and a 1 in 10 chance that it will be worse than the worst case. Move the year to see the 3 cases." tone="rust" right={<a className="cap" href="#/knowledge/soil-poverty-punjab-potash">Read the report ▸</a>} />
+        <Lens label="Punjab soil potassium outlook" specs={[{ id: 'outlook' }]} />
       </section>
 
       <section className="sec" style={{ background: 'var(--sky)' }}><div className="wrap" id="soil-analytes">
         <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-6 items-start">
           <div>
-            <span className="eyebrow navy">The analyte list</span>
-            <h2>13 determinations, and no test for sulfur.</h2>
-            <p className="lead mt-4">The Punjab survey records the same 13 readings in every district, and sulfur is not one of them. The nutrient VAN’s programmes place twice in wheat alone was never on the testing schedule.</p>
-            <div className="flex flex-wrap gap-2 mt-5"><a className="btn btn-navy btn-sm" href="#/products/green-sulfur">Green Sulfur →</a><a className="btn btn-ghost btn-sm" href="#/products/vital-urea">Vital Urea · S 13% →</a><a className="btn btn-ghost btn-sm" href="#/crops/wheat">The wheat programme →</a></div>
+            <span className="eyebrow navy">Soil tests in the survey</span>
+            <h2>The survey ran the same 13 soil tests in every district and did not test for sulfur</h2>
+            <p className="lead mt-4">Crops need sulfur to turn applied nitrogen into grain protein. Because the survey did not test for sulfur, it cannot show whether sulfur is deficient in Punjab’s soils.</p>
+            <div className="flex flex-wrap gap-2 mt-5"><a className="btn btn-navy btn-sm" href="#/products/green-sulfur">Green Sulfur →</a><a className="btn btn-ghost btn-sm" href="#/products/vital-urea">Vital Urea · S 13% →</a><a className="btn btn-ghost btn-sm" href="#/crops/wheat">The wheat crop plan →</a></div>
           </div>
           <AnalyteList />
         </div>
       </div></section>
 
       <section className="wrap sec" id="soil-built">
-        <SectionHead eyebrow="VAN and the condition" title={SOIL_COPY.builtH2} lead={SOIL_COPY.builtLead} tone="soil" />
+        <SectionHead eyebrow="VAN products for these conditions" title={SOIL_COPY.builtH2} lead={SOIL_COPY.builtLead} tone="soil" />
         <BuiltAgainst />
         {/* O-18 / O-22: the soil page used to end here, on a product list. 770,160 samples were spent
             establishing a national condition and then cashed as a catalogue, so a reader from the
             Ministry, from PCPA or from a bank finished the page with nothing to carry away.
             This is soil → national, and it says why it is there rather than "learn more". */}
         <div className="panel p-5 lg:p-6 mt-6 max-w-[140ch]" style={{ borderColor: 'var(--rust)', borderWidth: 2 }}>
-          <span className="eyebrow rust">What this ground costs the country</span>
-          <h3 className="mt-1 max-w-[30ch]">On this soil, adding more product does not solve the problem.</h3>
+          <span className="eyebrow rust">What these soil conditions mean for Pakistan</span>
+          {/* Tahir 7 Nov 2026 (CO-23): fiscal years (July to June) for 1999-2000 to 2023-24; calendar year for FAO 2023. CO-24: survey dates "about 2016 to 2018". */}
+          <h3 className="mt-1 max-w-[30ch]">Nutrient applied per acre of arable land in Pakistan rose by 68% from fiscal year 1999-2000 to 2023-24, while wheat yield rose by 31%</h3>
           <p className="mt-3">
-            Punjab's ground is alkaline and calcareous. <b>96.1% of samples above pH 7.5</b>, mean carbonate 6.53%.
-            Across Pakistan, nutrient applied per acre has risen by 68% since 2000 while wheat yield
-            rose by 31%. <b>About 29 of every 100 kg of nitrogen added leave the field in the harvest.</b>
+            Across Pakistan, nutrient applied per acre of arable land rose by 68% from 1999-2000 to 2023-24, while wheat
+            yield rose by 31% over the same period. <b>Pakistan’s nitrogen use efficiency was 29% in calendar year 2023: of every
+            100 kg of nitrogen added to cropland, about 29 kg were taken out in the harvested crop.</b> In VAN’s view, Punjab’s
+            alkaline, calcareous soil is 1 of the reasons why more fertiliser has not brought a matching rise in yield. In the
+            survey of about 2016 to 2018, <b>96.1% of samples were above pH 7.5</b>, and the mean calcium carbonate content was 6.53%.
           </p>
           {/* D-297, 22 Oct 2026: the 3 national figures carry their sources here too, as on the national page. */}
-          <p className="src mt-2"><b>Sources ·</b> nutrient per acre of arable land 1999-2000 to 2023-24: World Bank; wheat yield: Pakistan Economic Survey; nitrogen in the harvest: FAOSTAT, Cropland Nutrient Balance, December 2025 release (2023).</p>
+          <p className="src mt-2"><b>Sources ·</b> nutrient per acre of arable land 1999-2000 to 2023-24: World Bank; wheat yield: Pakistan Economic Survey; nitrogen use efficiency: FAOSTAT, Cropland Nutrient Balance, December 2025 release (2023).</p>
           <p className="mt-2">
-            What changes the outcome is <b>the form the nutrient arrives in and where it is put</b>, not the tonnage.
+            On Punjab’s alkaline, calcareous soil, VAN considers that <b>the form of the fertiliser and where it is placed</b> have more effect on how much nutrient reaches the crop than the quantity applied.
           </p>
-          <a className="btn btn-navy mt-4" href="#/knowledge/why-pakistan-must-shift">The nutrition Pakistan pays for →</a>
+          <a className="btn btn-navy mt-4" href="#/knowledge/why-pakistan-must-shift">The national figures and their sources →</a>
         </div>
         {/* D-245, 1 Oct 2026: Tahir's Soil Poverty report reads this Atlas; his ruling links it from here and from Knowledge. */}
         <div className="panel p-5 lg:p-6 mt-4 max-w-[140ch]">
           <span className="eyebrow soil">Soil Poverty Series · No. 1</span>
-          <h3 className="mt-1 max-w-[34ch]">Punjab’s soil potash: most model runs cross 100 ppm between 2027 and 2044.</h3>
-          <p className="mt-3">A report by Tahir Abbas built on this Atlas: what 5 crops take out of Punjab’s soil each year, what fertilizer, manure and water put back, and when the Punjab average falls below 100 ppm if nothing changes.</p>
+          {/* Tahir 7 Nov 2026 (KN-7 with RP-PO-12, RP-PO-11): the condition is named and the average is area-weighted. Was: '... Punjab’s average available soil potassium ...' and '... if present trends continue.' */}
+          {/* L1 editor 7 Nov 2026 (B3): the 3 cases named, so 2027 and 2044 do not read as the full range. Was '... will fall below 100 ppm between 2027 and 2044, around 2036 in the average case' */}
+          <h3 className="mt-1 max-w-[34ch]">The model projects that Punjab’s area-weighted average available soil potassium will fall below 100 ppm around 2036 in the average case, 2027 in the worst case and 2044 in the best case</h3>
+          <p className="mt-3">This report by Tahir Abbas uses the Atlas data to estimate how much potash (as K₂O) 5 crops remove from Punjab’s soil each year, how much fertiliser, manure and irrigation water return to the soil, and when Punjab’s area-weighted average available soil potassium is projected to fall below 100 ppm if potash fertiliser use in Punjab does not rise.</p>
           <a className="btn btn-navy mt-4" href="#/knowledge/soil-poverty-punjab-potash">Read the report →</a>
         </div>
       </section>
@@ -148,8 +153,8 @@ export default function Soil({ rel, district, from = null, tehsil = null }: { re
       <section className="sec" style={{ background: 'var(--sand-2)' }}><div className="wrap">
         <SoilCaveats />
         <div className="panel-navy p-6 lg:p-8 mt-6 grid lg:grid-cols-[1fr_auto] gap-5 items-center">
-          <div><span className="eyebrow" style={{ color: 'var(--gold)' }}>Your own field</span><h3>A survey median is not your soil test.</h3><p className="mt-2" style={{ color: 'rgba(255,255,255,.8)' }}>These are district medians of samples taken c. 2016–2018. For a plan against your own field, VAN works from your soil analysis. Ask on WhatsApp, or send 500 g of soil to Sample Reception.</p></div>
-          <div className="grid gap-3"><WaButton href={WA.farmer} lg>Ask for my plan</WaButton><a className="btn btn-lg" style={{ background: 'rgba(255,255,255,.14)', color: '#fff' }} href="#/lab">VAN Lab. Send a sample</a></div>
+          <div><span className="eyebrow" style={{ color: 'var(--gold)' }}>Your own field</span><h3>Why your own field needs its own soil test</h3><p className="mt-2" style={{ color: 'rgba(255,255,255,.8)' }}>The Atlas shows district medians of samples tested in about 2016 to 2018. VAN bases a plan for your own field on an analysis of your soil. Ask for a plan on WhatsApp, or send 500 g of soil to Sample Reception.</p></div>
+          <div className="grid gap-3"><WaButton href={WA.farmer} lg>Ask for my plan</WaButton><a className="btn btn-lg" style={{ background: 'rgba(255,255,255,.14)', color: '#fff' }} href="#/lab">VAN Lab: send a sample</a></div>
         </div>
       </div></section>
     </div>

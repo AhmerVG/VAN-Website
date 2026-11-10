@@ -19,5 +19,5 @@ await pg.evaluate(() => { document.querySelectorAll('*').forEach(e => { const s 
 await pg.waitForTimeout(500)
 await pg.pdf({ path: 'site-root/downloads/The-Real-Price-of-Nitrogen-VAN.pdf', format: 'A4', printBackground: true, margin: { top: '14mm', bottom: '16mm', left: '12mm', right: '12mm' },
   displayHeaderFooter: true, headerTemplate: '<div></div>',
-  footerTemplate: '<div style="font-size:8px;width:100%;padding:0 12mm;color:#5B6A5E;display:flex;justify-content:space-between"><span>Vital Agri Nutrients · The real price of nitrogen · November 2026 · van.com.pk</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>' })
+  footerTemplate: '<div style="font-size:8px;width:100%;padding:0 12mm;color:#5B6A5E;display:flex;justify-content:space-between"><span>Vital Agri Nutrients · The cost of low nitrogen use efficiency in Pakistan · November 2026 · van.com.pk</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>' })
 await b.close(); srv.close(); console.log('pdf ok')

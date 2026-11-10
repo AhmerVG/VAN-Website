@@ -32,17 +32,25 @@ export type Alternative = {
   difference: string
 }
 
+// L1 7 Nov 2026 (m15): "the humic-coated, acidic grade" now says which range it is a grade of.
 export const ALTERNATIVES: Alternative[] = [
   {
     slug: 'green-phosphate',
     altSlug: 'fusion-phosphate',
     altName: 'Fusion Phosphate',
-    difference: 'Same bag size, different bag. Fusion Phosphate is TSP at 46% P₂O₅. About 44% more phosphate per bag than Green Phosphate’s 6:32:0, and no nitrogen with it. Green Phosphate is the humic-coated acidic grade, built for alkaline ground. The plan’s number of bags does not change if you switch; what you put on the field does.',
+    // Settled PR-10 (L2 fact check 9 Nov 2026, W4): Green Phosphate has a 35 kg and a 50 kg bag. Was 'Both products come in the same bag size, but they contain ...'.
+    difference: 'Both products come in a 50 kg bag, and Green Phosphate also comes in 35 kg. They contain different amounts of phosphate and nitrogen. Fusion Phosphate is TSP (triple superphosphate) at 46% P₂O₅: a 50 kg bag carries 23 kg of P₂O₅ and no nitrogen. A 50 kg bag of Green Phosphate (6:32:0) carries 16 kg of P₂O₅ and 3.0 kg of nitrogen. Green Phosphate is the humic-coated, acidic 6:32 grade of the VAN NP Range, made for alkaline soil. If you switch, the plan’s number of bags stays the same, but the amount of phosphate and nitrogen you apply changes.',
   },
 ]
 
 export function alternativeFor(slug: string | null): Alternative | undefined {
   return slug ? ALTERNATIVES.find(a => a.slug === slug) : undefined
+}
+
+// Tahir 10 Nov 2026 (R3-7): no Fusion Phosphate choice on a Green Phosphate row applied by fertigation
+// (banana, tomato and any other row whose method names fertigation). Other rows keep the choice.
+export function offersAlternative(method: string): boolean {
+  return !/fertigation/i.test(method)
 }
 
 /** kg of a nutrient in one pack of a product, read off its registered analysis. Nothing inferred. */

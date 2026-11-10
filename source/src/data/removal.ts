@@ -80,7 +80,7 @@ export const REMOVAL: RemovalRow[] = [
   {
     crop: 'maize', label: 'Maize', basis: 'tonne of grain',
     N: 12, P: 6.3, K: 4.5, S: 1.4, kind: 'removal',
-    residue: { label: 'Maize stover', basis: 'tonne of grain', N: 8.0, P: 2.9, K: 20, S: 1.3 },
+    residue: { label: 'Maize stalks (stover)', basis: 'tonne of grain', N: 8.0, P: 2.9, K: 20, S: 1.3 },
     source: IPNI, region: 'North America', verbatim: 'Corn grain / Corn stover per t of grain',
   },
   {
@@ -116,7 +116,7 @@ export const REMOVAL: RemovalRow[] = [
   {
     crop: 'sunflower', label: 'Sunflower', basis: 'tonne of seed',
     N: 27, P: 9.7, K: 9.0, S: 2.5, kind: 'removal',
-    residue: { label: 'Sunflower stover', basis: 'tonne of grain', N: 28, P: 2.4, K: 41, S: 6.0 },
+    residue: { label: 'Sunflower stalks (stover)', basis: 'tonne of grain', N: 28, P: 2.4, K: 41, S: 6.0 },
     source: IPNI, region: 'North America', verbatim: 'Sunflower grain / Sunflower stover per t of grain',
   },
   {
@@ -126,7 +126,9 @@ export const REMOVAL: RemovalRow[] = [
   },
 ]
 
-const BANANA_GAP = 'Removal figures for banana exist only on a whole-bunch basis, from intensive culture in (A Territory Excluded per Passport Directive), or per hectare at stated yields (India). Neither is a per-tonne figure this programme can be compared with.'
+// L1 7 Nov 2026 (crops-a 21, 22): the ruled term "taken out in the harvested crop" replaces "removal" in these notes, IPNI is
+// written out at first use, and "maunds per acre" replaces "maunds an acre". No figure or source is changed.
+const BANANA_GAP = 'The figures found for the nutrients taken out in harvested banana are either per whole bunch, from intensive cultivation in (A Territory Excluded per Passport Directive), or per hectare at stated yields, from India. Neither gives a figure per tonne of fruit that can be compared with this plan.'
 
 /**
  * Crops deliberately left without a removal figure, and why. This list is published, because on a
@@ -135,25 +137,26 @@ const BANANA_GAP = 'Removal figures for banana exist only on a whole-bunch basis
 export const REMOVAL_GAPS: { crop: string; why: string }[] = [
   {
     crop: 'cotton',
-    why: 'IPNI gives cotton removal per tonne of lint: 64 kg N, 28 kg P₂O₅, 38 kg K₂O. A Pakistani grower weighs phutti (seed cotton), and lint is about 1/3 of it, so that figure would overstate what the crop removes about 3 times. No removal figure per tonne of seed cotton was found in any source.',
+    why: 'IPNI (the International Plant Nutrition Institute) gives the nutrients taken out in cotton per tonne of lint: 64 kg N, 28 kg P₂O₅, 38 kg K₂O. Pakistani growers measure their yield as phutti (seed cotton), and lint is about 1/3 of the weight of phutti. Applying the per-tonne-of-lint figures to a phutti yield would therefore give a figure about 3 times too high. No such figure per tonne of seed cotton was found in any source.',
   },
-  { crop: 'chickpea', why: 'IPNI gives only the total uptake of chickpea, from India (46 N, 8.4 P₂O₅, 50 K₂O per tonne), not what leaves the field at harvest. Uptake and removal are different measures.' },
-  { crop: 'onion', why: 'No reliable removal figure was found. The 1 source that gave onion gave the same figures for tomato, chili and potato.' },
-  { crop: 'garlic', why: 'No reliable removal figure was found in any source.' },
-  { crop: 'chili', why: 'The only per-tonne figures found are for greenhouse sweet pepper at about 600 to 760 maunds an acre, a different crop at a different yield.' },
-  { crop: 'turmeric', why: 'No published removal figure was found.' },
-  { crop: 'watermelon', why: 'No published removal figure was found.' },
-  { crop: 'sesame', why: 'No published removal figure was found.' },
-  { crop: 'soybean', why: 'No published removal figure was found that matches this programme.' },
-  { crop: 'lentil', why: 'No published removal figure was found.' },
-  { crop: 'mungbean-mash', why: 'No published removal figure was found.' },
+  // Tahir 10 Nov 2026 (CR-N16): the chickpea uptake figures are per tonne of grain.
+  { crop: 'chickpea', why: 'IPNI (the International Plant Nutrition Institute) gives only the total uptake of chickpea, from India: 46 kg of nitrogen (N), 8.4 kg of P₂O₅ and 50 kg of K₂O per tonne of grain. It does not give the amount taken out in the harvested crop, which is a different measure.' },
+  { crop: 'onion', why: 'No reliable figure for the nutrients taken out in the harvested crop was found. The only source with figures for onion gave identical figures for tomato, chili and potato, so they were not treated as reliable.' },
+  { crop: 'garlic', why: 'No reliable figure for the nutrients taken out in the harvested crop was found in any source.' },
+  { crop: 'chili', why: 'The only per-tonne figures found are for greenhouse sweet pepper yielding about 600 to 760 maunds per acre. That is a different crop at a different yield, so the figures are not used here.' },
+  { crop: 'turmeric', why: 'No published figure was found for the nutrients taken out in the harvested crop.' },
+  { crop: 'watermelon', why: 'No published figure was found for the nutrients taken out in the harvested crop.' },
+  { crop: 'sesame', why: 'No published figure was found for the nutrients taken out in the harvested crop.' },
+  { crop: 'soybean', why: 'No published figure for the nutrients taken out in the harvested crop was found that matches this plan.' },
+  { crop: 'lentil', why: 'No published figure was found for the nutrients taken out in the harvested crop.' },
+  { crop: 'mungbean-mash', why: 'No published figure was found for the nutrients taken out in the harvested crop.' },
   { crop: 'banana-year1', why: BANANA_GAP },
   { crop: 'banana-year2', why: BANANA_GAP },
-  { crop: 'citrus', why: 'Per-tonne removal figures for orange, tangerine, lemon and grapefruit come from 1 commercial source in (A Territory Excluded per Passport Directive), not from an independent compilation.' },
-  { crop: 'mango', why: 'A peer-reviewed Mexican study gives per-tonne removal for 3 cultivars, but the mango programme is per tree, not per acre, so the 2 cannot be set against each other.' },
-  { crop: 'date-palm', why: 'No published removal figure was found. The programme is also set by orchard age, so a season balance would need the orchard’s age and tree count.' },
-  { crop: 'guava', why: 'No published removal figure was found.' },
-  { crop: 'strawberry', why: 'No published removal figure was found.' },
+  { crop: 'citrus', why: 'Per-tonne figures for the nutrients taken out in harvested orange, tangerine, lemon and grapefruit come from 1 commercial source in (A Territory Excluded per Passport Directive), not from an independent compilation, so they are not used here.' },
+  { crop: 'mango', why: 'A peer-reviewed Mexican study gives per-tonne figures for the nutrients taken out in the harvested fruit of 3 cultivars, but the main doses of the mango plan are set per plant, not per acre, so the 2 cannot be compared without the number of trees and the yield per acre.' },
+  { crop: 'date-palm', why: 'No published figure was found for the nutrients taken out in the harvested crop. The plan is also set by orchard age, so comparing the nutrients applied with the nutrients taken out would need the orchard’s age and tree count.' },
+  { crop: 'guava', why: 'No published figure was found for the nutrients taken out in the harvested crop.' },
+  { crop: 'strawberry', why: 'No published figure was found for the nutrients taken out in the harvested crop.' },
 ]
 
 export function removalFor(crop: string): RemovalRow | undefined {

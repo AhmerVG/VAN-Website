@@ -1,0 +1,868 @@
+PAGE: /knowledge/real-price-of-nitrogen.html
+======================================================================
+Products
+Crop Plans
+Your Brand
+Soil Atlas
+Vitalytics
+VAN Lab
+Knowledge
+About
+Search
+☰
+View
+Simple view
+A Vital Agri Nutrients report
+The real price of nitrogen
+29 of every 100 kg of nitrogen added to Pakistan’s cropland leave the field in the harvest. The next gain is in what each kg contributes, not in its price.
+Urea’s nitrogen costs Rs 193 a kg on the bag. What a farmer wants is nitrogen in his crop.
+In 2023, FAO estimates, 29% of all the nitrogen added to Pakistan’s cropland left the field in harvested crops. The world as a whole was at 55%. Valued at that price, each kg of nitrogen that leaves in the harvest stands for about Rs 660 of nitrogen added from all sources: an illustrative equivalent, not a price anyone pays. This report sets out the evidence, what other countries did, where the gain can come from, and where the evidence runs out.
+Vital Agri Nutrients
+· November 2026. Every figure is sourced and dated.
+Download the full report (PDF)
+Make with us →
+1 What reaches the harvest
+2 Among the big users
+3 Where it went
+4 More in, less back
+5 The real price
+6 The national value
+7 Nitrogen and balance
+8 What other countries did
+9 Where the gain can come from
+10 What it means
+11 Where the evidence runs out
+Sources
+← All knowledge
+·
+The national picture
+·
+Soil Poverty: Punjab’s potash
+Key findings
+In 2023, 29 of every 100 kg of nitrogen added to Pakistan’s cropland left the field in the harvest. In 1961 it was 54. Bangladesh was at 40%, Egypt at 45%, mainland China at 47% and the world at 55%.
+Pakistan adds more nitrogen to its cropland than any country except China, India, Brazil and the United States. Of the 29 countries that add 1 million tonnes or more, only Spain had a lower rate. Per acre, Pakistan adds less than Bangladesh, Egypt or China, but takes far less off in the harvest: the gap is in what comes back.
+Of the 5.7 million tonnes added in 2023, FAO estimates 1.7 left in the harvest, 1.5 went to the air and 0.6 to water.
+At the Rabi 2024-25 price of Rs 193 a kg of nitrogen from urea, each kg that leaves in the harvest stands for about Rs 660 of nitrogen added (an illustrative urea-price equivalent). In wheat at the market price, that was about 7.6 kg in 2023-24 and 12 kg in 2024-25, after the wheat price fell.
+As an illustrative nitrogen-equivalent value, not projected farmer savings: at Bangladesh’s rate, the same harvest would need about 28% less nitrogen, about Rs 181 billion a year at 2024-25 sales and the Rabi urea price. Each 1% is worth about Rs 6.5 billion.
+For every 100 kg of nitrogen, Pakistan used 1.2 kg of potash in 2023; the world used 34. Long-term experiments across the Indo-Gangetic Plains and China name potash depletion as a general cause of stalled yields.
+Between 2014-16 and 2021-23 (3-year averages), mainland China used 20% less fertilizer nitrogen and harvested 10% more nitrogen in its crops. Pakistan used 16% more and harvested 9% more.
+The national figures are FAO estimates for 2023, the latest year published. The rupee values are urea-price equivalents: our arithmetic on NFDC prices and sales, a measure of size, not a price anyone pays or a saving anyone is promised. Section 11 sets out what the evidence cannot tell.
+1
+What reaches the harvest
+29 of every 100 kg leave the field in the harvest; for the world it is 55
+Nitrogen reaches a field from 5 places: fertilizer, manure, rain and dust, legumes that fix it from the air, and the seed itself. Some of it leaves in the grain, lint, cane and other crops that are harvested. The rest stays in the soil for a while, leaves in straw and stalks, goes to the air or washes out with water.
+FAO’s Cropland Nutrient Balance counts both sides for every country, every year since 1961 where it has data. Its nitrogen use efficiency is the simplest measure there is: nitrogen in the harvest divided by nitrogen added. It does not say what is best for any single field. It says how much of what a country puts into its cropland comes back out as crop.
+Pakistan’s nitrogen use efficiency fell from 54% in 1961 to 29% in 2023; the world’s was 55% at both ends
+% of nitrogen added that leaves the field in the harvest
+Bangladesh
+Egypt
+China (mainland)
+European Union
+United States
+World
+0
+20
+40
+60
+80
+1961
+1970
+1980
+1990
+2000
+2010
+2023
+World 55%
+China (mainland) 47%
+Egypt 45%
+Bangladesh 40%
+Pakistan 29%
+Each line is the nitrogen removed in harvested crops as a share of all nitrogen added to cropland that year: fertilizer, manure, rain and dust, fixation by legumes, and seed. Tap a name to add or remove it. Pakistan is always shown.
+Source
+·
+FAOSTAT, Cropland Nutrient Balance, December 2025 release, nitrogen, 1961 to 2023. FAO marks these values as estimates. China is mainland China. A share, so it is the same per acre or per hectare.
+In 1961, when Pakistan used about 52,000 tonnes of fertilizer nitrogen a year, 54% of all the nitrogen added came back in the harvest. It peaked at 61% in 1970. By 2000 it was 34%; it averaged about 28% over 2021-23 and stood at 29% in 2023. The world started at about the same level as Pakistan (55% in 1961), fell to 39% in 1988, and was back at 55% in 2023.
+The comparisons nearest to Pakistan are all higher. Bangladesh was at 40% in 2023 and Egypt at 45%. Mainland China was at 34% in 2010, about where Pakistan was in 2000, and at 47% in 2023.
+A low rate is not a farmer failing.
+Part of the loss is chemistry. About 69 in every 100 of Punjab’s 770,160 soil samples read above pH 8. On hot, alkaline, calcareous ground, urea left on the surface turns to ammonia gas quickly. Low organic matter means the soil holds little nitrogen in reserve. Flood irrigation can carry nitrate below the roots. Part of the loss is practice: when, where and in what form nitrogen goes on. Section 9 sets out what the published trials show for each.
+2
+Among the big users
+Of 29 countries that add 1 million tonnes or more, only Spain is lower
+Rates matter most where tonnes are large. In 2023, 29 countries added 1 million tonnes or more of nitrogen to their cropland. Pakistan, at 5.7 million tonnes, was the 5th largest, after China, India, Brazil and the United States.
+Large tonnes do not mean heavy use per acre. In 2023 every acre of Pakistan’s cropland received, on average, about 74 kg of nitrogen from all sources, against about 114 kg in Bangladesh, 117 kg in mainland China and 137 kg in Egypt. What differs most is what comes back: about 22 kg an acre left Pakistan’s fields in the harvest, against 46 kg in Bangladesh, 55 kg in China and 62 kg in Egypt. Pakistan’s gap is in what each kg returns.
+Of the 29 countries that add 1 million tonnes of nitrogen or more to their cropland, only Spain is lower than Pakistan
+nitrogen use efficiency, 2023, %
+EU Nitrogen Expert Panel range, 50 to 90%
+0
+25
+50
+75
+100
+Spain
+27
+Pakistan
+29
+Uzbekistan
+35
+Iran
+38
+Viet Nam
+39
+Thailand
+39
+Bangladesh
+40
+Italy
+42
+India (warning)
+43
+Egypt
+45
+United Kingdom
+45
+China (mainland)
+47
+Mexico
+49
+Myanmar
+51
+Indonesia
+54
+Türkiye
+55
+Canada
+57
+Ethiopia
+59
+France
+60
+Poland
+61
+Argentina
+68
+Germany
+68
+United States
+71
+Brazil
+73
+Philippines
+75
+Russia
+76
+Australia
+80
+Nigeria
+93
+Ukraine
+103
+Lowest first. Hover a bar to see how much nitrogen each country adds. Above 90% (brown) there is a risk the soil is being drawn down; above 100% crops take out more nitrogen than goes in. That is not the goal either.
+Source
+·
+FAOSTAT, Cropland Nutrient Balance, December 2025 release (2023). Countries listed by FAO name; China is mainland China. Range: EU Nitrogen Expert Panel 2015.
+Higher is not always better. The EU Nitrogen Expert Panel, which set out the indicator, set the desirable range at 50% to 90%. Below 50%, too much nitrogen is lost. Above 90%, there is a risk that the soil is being drawn down; above 100%, as in Ukraine (103%) in 2023, crops take out more nitrogen than goes in. The same panel put the desirable surplus below 80 kg a hectare, about 32 kg an acre. The panel counts everything taken off the field; counting straw and stalks too, Pakistan’s rate is about 42%, still below 50.
+Pakistan is 21 points below the bottom of that range. Of the 29 big users, 14 are inside it, from Myanmar at 51% to Australia at 80%; 13 are below it and 2 above.
+What 29% means in plain terms.
+Of every 100 kg of nitrogen the country’s fields receive, from fertilizer, manure and every other source, 29 kg leave in the crop. For the world as a whole it is 55 kg, an average that includes countries drawing down their soil.
+3
+Where it went
+Of 5.7 million tonnes added in 2023, 1.7 left in the harvest
+Of 5.7 million tonnes of nitrogen added in 2023, 1.7 left in the harvest and an estimated 2.1 went to the air and water
+million tonnes of N, Pakistan, 2023
+Where it came from
+3.8
+1.2
+0.5
+Fertilizer
+3.79
+(
+67
+%)
+Manure
+1.16
+(
+20
+%)
+Rain and dust
+0.49
+(
+9
+%)
+Legumes
+0.18
+(
+3
+%)
+Seed
+0.07
+(
+1
+%)
+Where it went
+1.7
+0.7
+1.5
+0.6
+1.2
+Harvest
+1.66
+(
+29
+%)
+Straw and stalks taken off
+0.72
+(
+13
+%)
+Air
+1.49
+(
+26
+%)
+Water
+0.61
+(
+11
+%)
+Not accounted for
+1.20
+(
+21
+%)
+Harvest, air, water, and straw and stalks taken off are FAO estimates. FAO counts only the harvest in its efficiency figure; straw and stalks taken off the field (for fodder or fuel) are a separate FAO estimate. “Not accounted for” is what is left after the other 4: it is calculated, not measured, and holds whatever stays in the soil and whatever is lost by routes FAO does not list.
+Source
+·
+FAOSTAT, Cropland Nutrient Balance, December 2025 release (2023): inputs, crop harvest removal, crop residue removal, volatilisation and leaching. “Not accounted for”: VAN calculation.
+67% of the nitrogen added to Pakistan’s cropland in 2023 came from fertilizer: 3.79 million tonnes. Manure added 1.16 million tonnes, 20%. Rain and dust, legumes and seed added the rest.
+Of the 5.68 million tonnes, 1.66 million left in the harvest. FAO estimates that 1.49 million tonnes went to the air and 0.61 million tonnes to water. It estimates separately that 0.72 million tonnes left the field in straw and stalks, as fodder, fuel or bedding; FAO does not count these in its efficiency figure. That leaves 1.20 million tonnes not accounted for by any of FAO’s items. It is calculated, not measured: some of it stays in the soil, some is lost by routes FAO does not list, such as conversion back to nitrogen gas in wet ground.
+Where the nitrogen went, 2023
+Million tonnes
+Share of nitrogen added
+Left in the harvest
+1.66
+29%
+To the air (FAO estimate)
+1.49
+26%
+To water (FAO estimate)
+0.61
+11%
+Straw and stalks taken off the field (FAO estimate)
+0.72
+13%
+Not accounted for (calculated)
+1.20
+21%
+Total added
+5.68
+100%
+Air is the largest single loss in FAO’s estimate. It covers ammonia from manure as well as from fertilizer, and for fertilizer it depends heavily on how and when urea is applied. FAO’s air and water figures are modelled, not measured; Section 9 sets out the field trials on ammonia loss separately.
+What this does not show.
+FAO does not split the loss by crop, by province or by product, and it does not say how much of the loss is the soil’s doing and how much is practice. Nobody has measured that split for Pakistan, VAN included.
+4
+More in, less back
+Since 2000, nitrogen added rose 72% and nitrogen in the harvest rose 45%
+Since 2000, nitrogen added rose 72%; nitrogen in the harvest rose 45%
+thousand tonnes of N a year, Pakistan
+0
+k
+2
+k
+4
+k
+6
+k
+1961
+1970
+1980
+1990
+2000
+2010
+2023
+Fertilizer
+Manure
+Other
+In the harvest
+Coloured layers: nitrogen added each year, by source. Navy line: nitrogen removed in harvested crops. The gap between the top of the layers and the line is the nitrogen balance, which FAO counts as surplus.
+Source
+·
+FAOSTAT, Cropland Nutrient Balance, December 2025 release, Pakistan, 1961 to 2023 (estimates).
+From 1961 to 2023, fertilizer nitrogen applied to Pakistan’s cropland rose 73 times, from about 52,000 to 3.79 million tonnes. Nitrogen in the harvest rose about 6 times, from 266,000 to 1.66 million tonnes.
+The last 23 years tell the same story at a slower pace. From 2000 to 2023:
+Pakistan, thousand tonnes of nitrogen
+2000
+2023
+Change
+Fertilizer
+2,265
+3,792
++67%
+Manure
+449
+1,157
++158%
+All sources added
+3,310
+5,685
++72%
+In the harvest
+1,140
+1,656
++45%
+Balance (added minus harvest)
+2,170
+4,028
++86%
+Per acre of cropland, the balance rose from about 28 kg of nitrogen in 2000 to about 53 kg in 2023. On average, every acre of Pakistan’s cropland received about 74 kg of nitrogen in 2023 from all sources, and about 22 kg left in the harvest.
+This does not mean the extra nitrogen did nothing. Harvests grew, and seed, water, varieties and weather changed over the same years. It means each extra kg returned less than the one before it, and the gap between what goes on and what comes off has widened.
+5
+The real price
+Rs 193 a kg on the bag; about Rs 660 of nitrogen added for each kg in the harvest
+The price a buyer sees is the price of nitrogen in the bag. In Rabi 2024-25 a 50 kg bag of urea averaged Rs 4,435 (NFDC). Urea is 46% nitrogen, so the bag holds 23 kg of nitrogen: Rs 193 a kg. In Kharif 2024-25 it was Rs 204 a kg.
+The crop does not see the bag. It sees the nitrogen that reaches it, and the harvest carries out only part of what was added. At a national rate of 29.1%, each kg of nitrogen that leaves in the harvest stands for about 3.4 kg added. Valued at Rs 193, that is a urea-price equivalent of about Rs 660 per kg of nitrogen in the harvest. It is an illustration: it values nitrogen from manure, rain and legumes at the urea price too. Counting the straw and stalks taken off the field for fodder, the rate is about 42% and the equivalent about Rs 460.
+At Rs 193 a kg on the bag, each kg of nitrogen in Pakistan’s harvest carries a urea-price equivalent of about Rs 660
+Rs per kg of N in the harvest, at the Rabi 2024-25 urea price
+Pakistan, 29%
+Rs
+660
+Bangladesh, 40%
+Rs
+480
+Egypt, 45%
+Rs
+430
+China (mainland), 47%
+Rs
+410
+World, 55%
+Rs
+350
+United States, 71%
+Rs
+270
+Each bar is the same Rs 193 bag price divided by that country’s 2023 efficiency: what a kg of nitrogen in the harvest would carry at Pakistan’s urea price if Pakistan’s fields worked at that rate. Dashed line: Rs 193, the price on the bag. Rounded to the nearest Rs 10.
+Source
+·
+NFDC Annual Fertilizer Review 2024-25, Table 38 (nitrogen from urea, Rabi 2024-25, Rs 193 a kg); FAOSTAT, Cropland Nutrient Balance, December 2025 release (2023). VAN calculation; an equivalent, not a price anyone pays.
+At Bangladesh’s rate the same arithmetic gives about Rs 480; at the world’s, about Rs 350. The bag price is the same in every bar. Only the share that comes back changes.
+In 2024-25, 3.5 kg of wheat bought 1 kg of nitrogen on the bag, and about 12 kg of wheat for each kg in the harvest
+kg of wheat at the market price
+2023-24
+2.22
+on the bag
+7.6
+in the harvest
+2024-25
+3.48
+on the bag
+11.9
+in the harvest
+Grey: kg of wheat, at the market price after harvest, needed to buy 1 kg of nitrogen from urea (NFDC). Red: the same divided by 29.1%, Pakistan’s 2023 efficiency across all crops, an illustration of what each kg of nitrogen that leaves in the harvest carries. Wheat’s own efficiency is not published by FAO.
+Source
+·
+NFDC Annual Fertilizer Review 2024-25, Tables 38 and 39 (market prices; wheat Rs 84.2 a kg in 2023-24 and Rs 55.4 in 2024-25); FAOSTAT, Cropland Nutrient Balance, December 2025 release (2023). VAN calculation.
+NFDC also measures the price of nitrogen in wheat. In 2024-25, at the market price after harvest, it took 3.48 kg of wheat to buy 1 kg of nitrogen from urea, up from 2.22 kg in 2023-24, because the urea price rose and the wheat price fell. Divided by the national rate, that is about 12 kg of wheat for every kg of nitrogen that leaves in the harvest. This is an illustration: FAO does not publish an efficiency for wheat alone.
+Price of nitrogen from urea, NFDC
+Kharif
+Rabi
+2023-24
+Rs 142 a kg
+Rs 187 a kg
+2024-25
+Rs 204 a kg
+Rs 193 a kg
+Why this is the number to watch.
+A lower bag price changes what a kg costs. A higher rate changes how many kg a harvest needs. Over the last 4 seasons the price of a kg of nitrogen moved between Rs 142 and Rs 204. If Pakistan’s fields reached Bangladesh’s rate, the equivalent per kg in the harvest would fall by about 28% at any bag price.
+6
+The national value
+Each 1% less nitrogen for the same harvest is worth about Rs 6.5 billion a year
+The same arithmetic can be put in national terms. Pakistan sold 3,387 thousand tonnes of nitrogen in 2024-25 (NFDC), down from 3,775 thousand in 2023-24. If its fields reached another country’s rate, the same harvest would need less of it, or the same nitrogen would grow a larger harvest. The figures below use the first reading.
+Illustrative N-equivalent value, not projected farmer savings: each 1% less nitrogen for the same harvest is worth about Rs 6.5 billion a year
+If Pakistan’s fields reached an efficiency of
+40.3
+%
+(today
+29.1
+%)
+Bangladesh
+40.3
+%
+Egypt
+45.1
+%
+China
+47.3
+%
+World
+55.3
+%
+Less nitrogen for the same harvest
+28
+%
+Nitrogen not needed, at 2024-25 sales
+936
+thousand t
+Urea-price equivalent a year
+Rs
+181
+billion
+Move the slider or tap a country. The same harvest needs less nitrogen in proportion: at
+40.3
+%, it needs
+29.1
+÷
+40.3
+of today’s nitrogen. The saving is applied to the nitrogen sold in 2024-25 (
+3,387
+thousand tonnes) and valued at Rs
+193
+a kg, the Rabi 2024-25 price of nitrogen from urea. It assumes every source of nitrogen falls in the same proportion and the harvest stays the same. It is a size, not a forecast and not a saving any farmer is promised.
+Source
+·
+NFDC Annual Fertilizer Review 2024-25, Tables 3 and 38; FAOSTAT, Cropland Nutrient Balance, December 2025 release (2023). VAN calculation.
+Illustrative N-equivalent value, not projected farmer savings
+Less nitrogen for the same harvest
+Thousand tonnes, at 2024-25 sales
+Urea-price equivalent a year
+At Uzbekistan’s 35%
+17%
+591
+Rs 114 billion
+At Iran’s 38%
+23%
+769
+Rs 149 billion
+At Bangladesh’s 40%
+28%
+936
+Rs 181 billion
+At Egypt’s 45%
+35%
+1,199
+Rs 231 billion
+At mainland China’s 47%
+38%
+1,301
+Rs 251 billion
+At the world’s 55% (an average that includes countries drawing down their soil)
+47%
+1,603
+Rs 309 billion
+Each 1% less nitrogen
+1%
+34
+Rs 6.5 billion
+How it is worked: at Bangladesh’s rate of 40.27% the same harvest needs 29.14 ÷ 40.27 of today’s nitrogen, about 72.4%, so about 27.6% less. 27.6% of 3,387 thousand tonnes is about 936 thousand tonnes. At Rs 193 a kg that is about Rs 181 billion.
+What these figures are not.
+They are not savings anyone is promised. They value all nitrogen at the Rabi urea price, although some nitrogen comes in DAP and other products at other prices. They assume every source of nitrogen falls in the same proportion and the harvest stays exactly the same; if fertilizer fell and manure did not, fertilizer would have to fall further. They use 2024-25 sales against a 2023 rate. The 2 published series disagree on Bangladesh (Section 11), which is why the drier irrigated countries of Uzbekistan and Iran are shown too. They do not count what it would cost to reach a higher rate: better products, equipment, advice and time. They are a measure of the size of the gap, nothing more.
+7
+Nitrogen and balance
+For every 100 kg of nitrogen, Pakistan used 1.2 kg of potash; the world used 34
+A crop takes nitrogen up with the other nutrients, not instead of them. A wheat plant short of potash, phosphate, sulfur or zinc cannot turn the nitrogen it is given into grain, and the nitrogen it does not use is open to loss. This is Liebig’s Law of the Minimum: the shortest nutrient sets the harvest.
+For every 100 kg of nitrogen, Pakistan used 1.2 kg of potash in 2023; the world used 34
+kg of P₂O₅ and K₂O per 100 kg of N, 2023
+0
+25
+50
+75
+Pakistan
+26.1
+1.2
+Egypt
+18.8
+10.7
+Bangladesh
+69.1
+37.0
+China
+38.2
+35.9
+United States
+40.2
+42.0
+World
+37.8
+34.1
+Upper bar
+: phosphate (P₂O₅) per 100 kg of nitrogen.
+Lower bar
+: potash (K₂O) per 100 kg of nitrogen. Pakistan’s potash bar is red.
+Source
+·
+FAOSTAT, Fertilizers by Nutrient, agricultural use per hectare of cropland, via Our World in Data (2023); China as Our World in Data reports it. Ratios: VAN calculation. NFDC’s 2024-25 sales give the same picture: 3,387 thousand tonnes of N, 919 of P₂O₅ and 44.5 of K₂O.
+Pakistan’s fertilizer is nearly all nitrogen. In 2024-25 nutrients sold were 78% nitrogen, 21% phosphate and 1% potash (NFDC): 3,387, 919 and 44.5 thousand tonnes. Bangladesh used 37 kg of potash and 69 kg of phosphate for every 100 kg of nitrogen in 2023; China 36 and 38; the world 34 and 38.
+What the long-term experiments show.
+Across 33 long-term rice-wheat experiments in the Indo-Gangetic Plains and China, yields stagnated in 72% (rice) and 85% (wheat) of them even at the recommended NPK, and “depletion of soil K seems to be a general cause”; in over 90% the potash given was not enough to keep the potash balance level (Ladha et al. 2003). Zinc and phosphorus were named too.
+On farms in the same region.
+On 56 wheat farms in Punjab, India, setting nitrogen, phosphate and potash to each field’s need, with better timing, raised yield from 4.2 to 4.8 tonnes a hectare and the share of fertilizer nitrogen recovered by the crop from 17% to 27% (Khurana et al. 2008). Rate, balance and timing were changed together, so the share due to balance alone cannot be separated.
+In Pakistan.
+A wheat field study in Multan found that adding potash and zinc to nitrogen and phosphate raised nitrogen recovery 230% over nitrogen and phosphate alone (Nawaz et al. 2024). It is 1 site, run with a fertilizer company, and a relative change on a small base. We found no multi-site Pakistani trial that measures how much potash raises nitrogen use efficiency.
+The Soil Poverty report on this site (Tahir Abbas, 2026), a model estimate that has not been peer reviewed, puts it this way: Punjab’s crops take about 940,000 tonnes of potash out of the soil a year while fertilizer puts back about 36,000. A field short of potash wastes part of its nitrogen.
+Read Soil Poverty: Punjab’s potash →
+8
+What other countries did
+China and the European Union cut their surplus; India’s rose under a large subsidy
+Other countries have faced the same gap. What they did, and what happened, is on the record. FAO’s figures and the OECD’s are built in different ways (the OECD counts all agricultural land, FAO only cropland), so they are given separately here and should not be mixed.
+Between 2014-16 and 2021-23, mainland China used 20% less fertilizer nitrogen and harvested 10% more nitrogen in its crops
+index, average of 2014-16 = 100
+Mainland China
+60
+80
+100
+120
+140
+2010
+2015
+2023
+80
+110
+Pakistan
+60
+80
+100
+120
+140
+2010
+2015
+2023
+116
+109
+Red
+: nitrogen from fertilizer applied to cropland.
+Navy
+: nitrogen removed in the harvest. Both are indexed to their 2014-16 average; the end label is the 2021-23 average. China set its target of zero growth in fertilizer use by 2020 in 2015.
+Source
+·
+FAOSTAT, Cropland Nutrient Balance, December 2025 release (mineral fertilizers and crop harvest removal, nitrogen). The 2015 target: Yu, Li and Doluschitz 2020, Sustainability 12(17):7028. VAN calculation of the index.
+China: a national target, and a field programme.
+In 2015 China’s Ministry of Agriculture issued an action plan for zero growth in chemical fertilizer use by 2020, with annual growth caps falling from 1% to 0.4%. National fertilizer use per hectare peaked in 2014 and has fallen since; growth went from +1.1% a year in 2013-15 to −2.3% a year in 2016-18 (Yu, Li and Doluschitz 2020). On FAO’s figures, comparing the 3-year averages of 2014-16 and 2021-23, mainland China’s fertilizer nitrogen fell 20% while nitrogen in its harvest rose 10%, and its rate rose from 37% to 47%. Pakistan, over the same years, used 16% more fertilizer nitrogen and harvested 9% more; its rate went from 30% to 28%.
+Before the target, from 2005 to 2015, a national campaign worked with about 20.9 million farmers in 452 counties on 37.7 million hectares of maize, rice and wheat. Average yields rose 10.8% to 11.5% while nitrogen fertilizer use fell 14.7% to 18.1% (Cui et al. 2018). Price and market policies also changed over these years; the record shows these moving together, not which one moved the rate. What it does show is advice reaching millions of small farms, field by field.
+Pakistan’s nitrogen surplus nearly doubled from 2000 to 2023, from 28 to 53 kg an acre
+kg of N an acre of cropland not removed in the harvest
+EU panel ceiling, 32
+0
+30
+60
+90
+Egypt
+75
+Bangladesh
+68
+China (mainland)
+62
+Pakistan
+53
+India (warning)
+41
+World
+22
+European Union
+22
+United States
+14
+Open dot: 2000. Filled dot: 2023, with its value. Green dashed line: the EU Nitrogen Expert Panel’s upper limit for a desirable surplus, 80 kg a hectare (32 kg an acre). India is shown as a warning, not a model: its surplus rose with a national fertilizer subsidy.
+Source
+·
+FAOSTAT, Cropland Nutrient Balance, December 2025 release, nitrogen balance per hectare of cropland, 2000 and 2023, converted to per acre (1 acre = 0.4047 hectare). EU Nitrogen Expert Panel 2015.
+The European Union: less surplus, more output per input.
+From 2000 to 2024 the EU’s nitrogen balance fell 43.5%, from 71.1 to 40.2 kg a hectare of agricultural land, while total factor productivity grew about 1% a year over 2014-23 (OECD 2026, Table 12.32). On FAO’s cropland measure the EU’s rate rose from 43% in 2000 to 54% in 2023.
+The United States.
+Its nitrogen balance fell from 34.4 kg a hectare in 2000 to 29.0 in 2024, which the OECD reads as “better input management and reduced nutrient surpluses” (OECD 2026, Table 30.3). On FAO’s measure its rate was 71% in 2023.
+India, the warning.
+India keeps fertilizer cheap with a large subsidy: INR 1.9 trillion (USD 23 billion) in 2023/24, after INR 2.55 trillion the year before. It made neem coating of urea mandatory and gives Soil Health Card-based advice. On the OECD’s measure its nitrogen balance rose 47% from 2000 to 2024, from 90.7 to 133.4 kg a hectare (OECD 2026, Table 14.3, our arithmetic on the change); mandatory coating and soil cards, alongside a subsidy that keeps the price low, have not reversed that rise.
+Pakistan’s surplus per acre nearly doubled from 2000 to 2023. The countries whose rate improved measured the balance, set a direction, and took advice and better practice to the field.
+9
+Where the gain can come from
+Technology, timing, placement and balance: what the published trials show
+There is no single cause, so there is no single fix. The published work points to 4 places where the same nitrogen can do more. They are set out below in no order of size. Most of the work was done outside Pakistan, and gains from different levers cannot simply be added.
+How much is lost in Pakistani fields.
+Pakistani measurements vary with site and method. On irrigated land at Faisalabad, a nitrogen-15 balance found 39 kg of 100 kg applied to maize lost in 60 days, and 33 kg of 100 applied to wheat over the season; the authors put most of it down to ammonia (Mahmood et al. 1998). At Peshawar, on alkaline soil with urea worked in and watered, 12.7% of applied nitrogen was measured lost as ammonia (Dawar et al. 2021). In a 2-season Pakistani wheat study on alkaline, calcareous soil, about 4% of the basal nitrogen was measured lost as ammonia (Farooq et al. 2024). Ammonia lost to the air and total nitrogen lost are different measures and should not be swapped.
+Across 824 measurements worldwide, deep placement and urease inhibitors cut ammonia loss from nitrogen fertilizer by 54% to 55%
+% change in ammonia lost, against the usual practice
+-75
+-50
+-25
+0
+25
+Controlled-release urea
+(technology)
+-68
+Urease inhibitor
+(technology)
+-54
+Deep placement
+(placement)
+-55
+Irrigation after application
+(placement)
+-35
+Split application
+(timing)
+no effect
+Nitrification inhibitor
+(technology)
++38
+Green: less ammonia lost. Red: more. Split application did not change ammonia loss; its gain, where there is one, comes from the crop taking up more, not from less going to the air. These are averages from many countries, mostly outside Pakistan, and they cannot be added together.
+Source
+·
+Pan, Lam, Mosier, Luo and Chen 2016, Agriculture, Ecosystems and Environment 232:283-289 (global synthesis of 824 observations).
+1. Technology: the form nitrogen comes in
+Urea left on the surface of hot, alkaline soil is open to ammonia loss; Pakistani field measurements range from about 4% to 13% of applied nitrogen, depending on how and when it is applied. Products that slow the conversion to ammonia, or slow the release, keep more nitrogen in the soil until the root can take it.
+Source
+Where
+What was measured
+Silva et al. 2017, meta-analysis
+Global
+Urease inhibitor (NBPT): ammonia loss 31.0% of applied nitrogen with urea, 14.8% with treated urea, 52% less; average yield +5.3%
+Abalos et al. 2014, meta-analysis
+Global
+Inhibitors: yield +7.5%, nitrogen use efficiency +12.9%; in alkaline soils (pH 8 or more) the urease inhibitor had the largest effect
+Zhang et al. 2019, meta-analysis of 120 studies
+Global, maize
+Controlled-release urea at the same rate: yield +5.3%, nitrogen use efficiency +24.1%, ammonia loss 39.4% less
+Zhu et al. 2020, meta-analysis
+China, wheat, maize, rice
+Controlled-release urea: yield +7.2%, nitrogen use efficiency +23.4%; largest on soils low in organic carbon
+Dawar et al. 2021, field
+Peshawar, wheat, alkaline soil
+Urease inhibitor with biochar cut ammonia loss from 12.7% to 3.7% of applied nitrogen; the urease inhibitor raised grain yield 22% over urea alone
+Mahmood et al. 2011, nitrogen-15, pot study
+NIAB, alkaline calcareous soil
+A nitrification inhibitor (DCD) increased nitrogen loss: cotton 44% to 54%, maize 51% to 66%. Not every technology suits these soils
+2. Timing: when the crop takes it up
+A crop does not take up its nitrogen evenly: wheat needs little in its first weeks and most of it as it tillers and grows. Nitrogen applied all at once at sowing waits in the soil, open to loss, until the crop needs it. Splitting the dose did not change ammonia loss in the global synthesis; where timing helps, it is by matching supply to uptake. The trials below are research results from India’s Punjab; India’s national balance still rose, which is the warning.
+Source
+Where
+What was measured
+Singh et al. 2002
+Punjab, India, rice and wheat
+Need-based nitrogen guided by a leaf colour chart or chlorophyll meter cut the nitrogen rice needed by 12.5% to 25% with no loss of yield
+Varinderpal-Singh et al. 2012, 6 field experiments
+Punjab, India, irrigated wheat
+A schedule tied to irrigation: 25 kg N a hectare at planting, 45 at the 1st irrigation, 30 or 45 at the 2nd by leaf colour, with high yields and better recovery
+Bijay-Singh et al. 2017, 7 field experiments
+Northwest India, irrigated wheat
+Sensor-guided nitrogen gave the same yield as a blanket 120 kg a hectare, with recovery 6.7% to 16.2% higher
+Khurana et al. 2007, 56 farms
+Punjab, India, transplanted rice
+Better timing and splitting raised nitrogen recovery from 20% to 30%; yield from 5.1 to 6.0 tonnes a hectare
+3. Placement: where the root is
+Urea broadcast on the surface is in the place where ammonia escapes most easily. Placed below the surface, drilled, or watered in soon after, it is held by the soil.
+Source
+Where
+What was measured
+Pan et al. 2016, 824 observations
+Global
+Deep placement cut ammonia loss 55%; irrigation after application 35%
+Miah et al. 2016, 115 farmers’ fields, 9 seasons
+Southern Bangladesh, rice
+Urea placed deep as briquettes against broadcast urea: yield +11% to +31% with 28% to 44% less urea
+Mahmood et al. 2011, nitrogen-15, pot study
+NIAB, alkaline calcareous soil, wheat
+Urea solution injected at points lost 16% of applied nitrogen against 34% to 37% with the usual method
+We found no peer-reviewed Pakistani field trial on deep placement of urea, or on urea applied before against after a flood irrigation. The Bangladesh result is on flooded rice and does not transfer directly to wheat or cotton.
+4. Balanced nutrition: phosphate, potash and the rest beside it
+Section 7 sets out the evidence. Nitrogen given to a crop short of potash, phosphate, sulfur or zinc is nitrogen the crop cannot fully use. Of the 4 levers it is the one where Pakistan’s own numbers are furthest from its neighbours’: 1.2 kg of potash per 100 kg of nitrogen against 37 in Bangladesh.
+Which comes first.
+The published work does not rank the 4 levers for Pakistan, and they work together. A Pakistani review of the country’s nitrogen record names balanced crop nutrition, irrigation management, legumes in rotation, precise in-season nitrogen management and enhanced efficiency fertilizers as the routes to higher efficiency (Shahzad et al. 2019).
+10
+What it means
+The next market is in what each kg contributes
+For companies that make, sell or brand nutrition.
+The bag price is one part of the cost. The share that reaches the crop is the other, and it is where product development, advice and balanced nutrition can add value: nitrogen in a form, at a time and in a place that suits Pakistan’s hot, alkaline fields, sold with the potash, phosphate and micronutrients beside it.
+For those who set policy.
+The countries whose rate improved measured it first. We found no official Pakistani series of nitrogen use efficiency, by crop or by province. A yearly figure, published, with soil tests on fixed sites, would let every later policy be judged by whether the rate moves.
+For agronomists and researchers.
+The largest gaps in the evidence are Pakistani: multi-site field trials of placement, timing against irrigation, and balance on nitrogen recovery, on farmers’ fields, with nitrogen-15 or full balances, and results published openly.
+At VAN, we believe fertilizer development should begin with the soil, the crop and the conditions in which nutrients must perform. The formulation should follow the agronomy.
+Is Pakistan’s next breakthrough in crop nutrition about applying more fertilizer, or getting more from what we already apply? Where is the greatest opportunity: technology, timing, placement or balanced nutrition?
+Make every kilogram of nitrogen count.
+Make with us →
+The national picture →
+11
+Where the evidence runs out
+What these numbers cannot tell
+They are estimates, not measurements.
+FAO marks every Pakistani nitrogen value in this release as an estimate, apart from the fertilizer figure for 2 years (1974 and 2000), which it marks official. We found no Pakistani agency that publishes its own national nitrogen balance.
+Air and water are modelled.
+FAO’s metadata for this release does not describe how the 2 losses are estimated. They should be read as FAO’s estimates, not field measurements.
+21% is not accounted for.
+1.20 million tonnes is a remainder. Some of it may build up in the soil; some is lost by routes FAO does not list. We cannot say how it splits.
+Straw and stalks are left out of the rate.
+FAO counts only the harvest in its efficiency figure and keeps straw and stalks taken off the field (0.72 million tonnes in 2023) as a separate item, for consistency with earlier releases. Counting them would raise Pakistan’s rate to about 42%. The same rule applies to every country; countries that take more straw off for fodder, as Pakistan does, score lower under it.
+Different series give different answers.
+An older series (Lassaletta et al. 2014) puts Pakistan at 27% and Bangladesh at 28% in 2014; FAO puts them at 31% and 39% for the same year. Both say Pakistan is low. They disagree on Bangladesh.
+Fodder may be missing.
+FAO builds its harvest figure from its crop production statistics; we could not confirm whether fodder crops such as berseem are counted. If they are not, Pakistan’s rate is understated.
+No efficiency by crop.
+FAO gives 1 figure for all cropland. Wheat, rice, cotton, sugarcane and fodder will differ. The wheat figure in Section 5 is an illustration, not a wheat measurement.
+Association, not cause.
+The charts show nitrogen, harvests and policies moving together. They do not prove that a particular cause moved the rate. Seed, water, varieties, weather, farm size and prices changed over the same years. Only field trials measure the effect of a practice.
+Not all the loss can be won back.
+Above 90% there is a risk the soil is being drawn down, and above 100% it is. Part of Pakistan’s loss is the soil and the climate, and will remain.
+The rupee figures are equivalents.
+They value all nitrogen at the Rabi 2024-25 urea price. They are not savings, not forecasts, and they do not count the cost of reaching a higher rate.
+Most trial evidence is from elsewhere.
+The 4 levers rest mainly on work in India, Bangladesh, China and global syntheses. Pakistani field evidence exists for losses and for a few products, but not at the scale needed to say how much each lever would move the national rate.
+2 published series, 2 answers: in 2014 FAO puts Pakistan at 31% and Bangladesh at 39%; the older series put them at 27% and 28%
+% of nitrogen added that leaves in the harvest
+0
+20
+40
+60
+1961
+1990
+2014
+2023
+Pakistan, FAO 2025
+:
+31.3
+% (2014)
+Pakistan, Lassaletta 2014
+:
+26.7
+% (2014)
+Bangladesh, FAO 2025
+:
+38.8
+% (2014)
+Bangladesh, Lassaletta 2014
+:
+28.0
+% (2014)
+Solid: FAOSTAT Cropland Nutrient Balance, December 2025 release, 1961 to 2023. Dashed: Lassaletta, Billen, Grizzetti, Anglade and Garnier 2014, an older series that ends in 2014. Both divide nitrogen in the harvest by nitrogen added; they differ in how they estimate manure, fixation and the harvest.
+Source
+·
+FAOSTAT, Cropland Nutrient Balance, December 2025 release; Lassaletta et al. 2014, Environmental Research Letters 9:105011, via Our World in Data (CC BY 4.0).
+How the numbers were worked.
+All FAO figures come from the bulk download of the Cropland Nutrient Balance, December 2025 release, nitrogen, read row by row. The rate is FAO’s own. “Not accounted for” is FAO’s nitrogen balance minus its air and water estimates and its straw and stalk estimate. The 29 big users are every country (not region) with 1 million tonnes or more of nitrogen added in 2023; China is mainland China. FAO publishes per hectare of cropland; we converted to per acre at 1 acre = 0.4047 hectare. The urea-price equivalent is Rs 193 divided by 29.14%. The national value is 2024-25 nitrogen sales (3,387 thousand tonnes) times (1 minus Pakistan’s rate divided by the other rate) times Rs 193 a kg. Ratios of potash and phosphate to nitrogen are from FAO’s fertilizer use per hectare of cropland, via Our World in Data.
+Sources
+Every figure, where it came from
+FAOSTAT, Cropland Nutrient Balance, December 2025 release, nitrogen, 1961 to 2023 (bulk download and metadata)
+.
+www.fao.org
+FAOSTAT, Fertilizers by Nutrient, via Our World in Data, nitrogen, phosphate and potash use per hectare of cropland, 2023
+.
+ourworldindata.org
+NFDC, Annual Fertilizer Review 2024-25, Ministry of National Food Security and Research, Tables 3, 38 and 39
+.
+mnfsr.gov.pk
+OECD 2026, Agricultural Policy Monitoring and Evaluation 2026: chapter 12 European Union (Table 12.32, page 312), chapter 14 India (Table 14.3, page 355; subsidy, page 357; neem coating and Soil Health Cards, page 346), chapter 30 United States (Table 30.3, page 669)
+.
+www.oecd.org
+Lassaletta, Billen, Grizzetti, Anglade and Garnier 2014, Environmental Research Letters 9:105011, via Our World in Data
+.
+doi.org
+Shahzad, Qureshi, Wakeel and Misselbrook 2019, Crop production in Pakistan and low nitrogen use efficiencies, Nature Sustainability 2:1106-1114
+.
+doi.org
+EU Nitrogen Expert Panel 2015, Nitrogen Use Efficiency (NUE): an indicator for the utilization of nitrogen in agriculture and food systems (range read via Pecio 2017, Studia i Raporty IUNG-PIB 53(7):39-53)
+.
+www.fertilizerseurope.com
+Cui, Zhang, Chen et al. 2018, Pursuing sustainable productivity with millions of smallholder farmers, Nature 555:363-366
+.
+doi.org
+Yu, Li and Doluschitz 2020, Towards sustainable management of mineral fertilizers in China, Sustainability 12(17):7028
+.
+doi.org
+Pan, Lam, Mosier, Luo and Chen 2016, Ammonia volatilization from synthetic fertilizers and its mitigation strategies: a global synthesis, Agriculture, Ecosystems and Environment 232:283-289
+.
+doi.org
+Mahmood, Malik, Shamsi and Sajjad 1998, Denitrification and total N losses from an irrigated sandy-clay loam under maize-wheat cropping system, Plant and Soil 199:239-250
+.
+doi.org
+Dawar, Fahad, Jahangir et al. 2021, Biochar and urease inhibitor mitigate NH3 and N2O emissions and improve wheat yield in a urea fertilized alkaline soil, Scientific Reports 11:17413
+.
+doi.org
+Farooq, Mahmood, Hameed et al. 2024, Optimizing nitrogen sources in top dressing for wheat, Scientifica 2024:8882675
+.
+doi.org
+Silva, Sequeira, Sermarini and Otto 2017, Urease inhibitor NBPT on ammonia volatilization and crop productivity: a meta-analysis, Agronomy Journal 109(1):1-13
+.
+doi.org
+Abalos, Jeffery, Sanz-Cobena, Guardia and Vallejo 2014, Meta-analysis of the effect of urease and nitrification inhibitors on crop productivity and nitrogen use efficiency, Agriculture, Ecosystems and Environment 189:136-144
+.
+doi.org
+Zhang, Liang, He et al. 2019, The effects of controlled release urea on maize productivity and reactive nitrogen losses: a meta-analysis, Environmental Pollution 246:559-565
+.
+doi.org
+Zhu, Liu, Xu, Yang and Shi 2020, Application of controlled release urea improved grain yield and nitrogen use efficiency: a meta-analysis, PLoS ONE 15:e0241481
+.
+doi.org
+Mahmood, Ali, Latif and Ishaque 2011, Dicyandiamide increases the fertilizer N loss from an alkaline calcareous soil treated with 15N-labelled urea, Biology and Fertility of Soils 47:619-631
+.
+doi.org
+Singh, Singh, Ladha et al. 2002, Chlorophyll meter and leaf color chart based nitrogen management for rice and wheat in northwestern India, Agronomy Journal 94:821-829
+.
+doi.org
+Varinderpal-Singh, Bijay-Singh, Yadvinder-Singh et al. 2012, Threshold leaf colour greenness for need-based fertilizer nitrogen management in irrigated wheat, Field Crops Research 130:109-119
+.
+doi.org
+Bijay-Singh, Varinderpal-Singh, Yadvinder-Singh et al. 2017, Site-specific fertilizer nitrogen management using optical sensor in irrigated wheat, Agricultural Research 6:159-168
+.
+doi.org
+Khurana, Phillips, Bijay-Singh et al. 2007, Performance of site-specific nutrient management for irrigated, transplanted rice in Northwest India, Agronomy Journal 99:1436-1447
+.
+doi.org
+Khurana, Phillips, Bijay-Singh et al. 2008, Agronomic and economic evaluation of site-specific nutrient management for irrigated wheat in northwest India, Nutrient Cycling in Agroecosystems 82:15-31
+.
+doi.org
+Miah, Gaihre, Hunter, Singh and Hossain 2016, Fertilizer deep placement increases rice production: evidence from farmers’ fields in southern Bangladesh, Agronomy Journal 108:805-812
+.
+doi.org
+Ladha, Dawe, Pathak et al. 2003, How extensive are yield declines in long-term rice-wheat experiments in Asia?, Field Crops Research 81:159-180
+.
+doi.org
+Ladha, Pathak, Krupnik, Six and van Kessel 2005, Efficiency of fertilizer nitrogen in cereal production: retrospects and prospects, Advances in Agronomy 87:85-156
+.
+doi.org
+Nawaz, Bashir, Ahmed et al. 2024, Potassium and zinc improves physiological performance, nutrient use efficiency, and productivity of wheat, Frontiers in Plant Science 15:1363248
+.
+doi.org
+Punjab soil testing record, 770,160 samples, 2016-18, validated and mapped by VAN: Soil Atlas
+.
+van.com.pk/soil.html
+Soil Poverty Series No. 1, Punjab’s potash, on this site
+.
+van.com.pk/knowledge/soil-poverty-punjab-potash.html
+Download the full report (PDF)
+Make with us →
+Vital Agri Nutrients · The real price of nitrogen · November 2026 ·
+partner@van.com.pk
+Crop nutrition engineered, manufactured, registered and tested in Pakistan.
++92 42 35762215
+WhatsApp
++92 300 5003041
+info@van.com.pk
+Products
+All 23 brands
+Compare them
+Vital Urea
+Where to buy
+Verify a bag
+Crops
+28 crop plans
+Wheat
+How you apply it
+Soil Atlas
+Knowledge
+Why Pakistan must shift
+Product decks
+Circular economy
+Vitalytics tools
+Company
+Your Brand
+VAN Lab
+About
+Company profile
+Head office
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+Plant
+49-Km Multan Road, Phool Nagar Bypass, Lahore
+© 2026
+Vital Agri Nutrients (Pvt) Ltd
+Full member of CropLife Pakistan since 2024
+How VAN competes
+LinkedIn
+Facebook
+Instagram

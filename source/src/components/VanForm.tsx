@@ -227,7 +227,7 @@ export function VanForm({ form, fields, intro, submitLabel, to, subject, success
       </div>
       {FORMS.enabled
         ? <p className="cap mt-2">It goes to {to}. VAN's own inbox, not a third party.</p>
-        : <p className="cap mt-2">Pressing it opens WhatsApp with your message already written, addressed to VAN on {CONTACT.whatsapp}. You see it before it goes. Or send the same message by email to {to}.</p>}
+        : <p className="cap mt-2">The “{submitLabel}” button opens WhatsApp with your message already written, addressed to VAN on {CONTACT.whatsapp}, so you can check it before you send it. You can also send the same message by email to {to}.</p>}
 
       {failed && res.reason === 'invalid' && (
         <p className="small mt-3" style={{ color: 'var(--rust)', fontWeight: 700 }} role="alert">{res.message}</p>

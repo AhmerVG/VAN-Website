@@ -26,7 +26,7 @@ export function StandingCrop({ cropKey, cropName }: { cropKey: string; cropName:
       <div className="grid md:grid-cols-[1fr_auto] gap-4 items-center">
         <div>
           <span className="eyebrow">Coming later</span>
-          <h3 className="mt-1">What is actually standing in your field.</h3>
+          <h3 className="mt-1">What is actually standing in your field</h3>
           <p className="muted mt-2 max-w-[140ch]">
             The programme above is what the crop should get. The simulator below is what your season
             should give. Neither is a measurement of the {cropName} that is actually there. The yield

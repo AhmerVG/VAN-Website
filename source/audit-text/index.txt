@@ -2,71 +2,164 @@ PAGE: /index.html
 ======================================================================
 Products
 Crop Plans
-Soil
-Tools
+Your Brand
+Soil Atlas
+Vitalytics
 VAN Lab
 Knowledge
 About
-Make with us
-For farmers
-Menu ☰
+Search
+☰
 View
 Simple view
+Vital Agri Nutrients (Pvt) Ltd
+· Lahore · since
+2010
+Soil first.
+Then the crop.
+Then the bag.
+I grow
+Crop plans
+→
+I sell
+Become a dealer
+→
+Made under my name
+Your Brand
+→
+I want to do it differently
+Vitalytics, the tools
+→
+Soil
+·
+what it holds
+Its pH, its organic matter, and the nutrients already gone.
+Crop
+·
+what it takes
+Every nutrient it carries out of the field at harvest.
+Product
+·
+what we put back
+Made for that crop, on that soil.
+1 plant site.
+23
+registered brands,
+34
+PSQCA licences, a PNAC-accredited laboratory, about
+50,000 t
+made a year.
+I grow
+28
+crop programmes, per acre, stage by stage. Your soil, your sowing date, your plan.
+Crop plans
+→
+Soil Atlas
+→
+I sell
+A dealership with the plant behind it.
+23
+brands, every batch tested before it ships, a bag a farmer can verify by its number.
+Become a dealer
+→
+Where to buy
+→
+Made under my name
+14
+partners and
+100+
+brands already made at this plant. You bring the market. VAN does everything from the formulation to the finished bag.
+Your Brand
+→
+How we build a range
+→
+I want to do it differently
+For the grower who wants to test the practice against the numbers, and for the company that wants a product nobody sells yet.
+Vitalytics, the tools
+→
+The formulation path
+→
+Why does a field full of urea still stop growing?
+Because the crop grows to its shortest nutrient, not its tallest. Fill the barrel.
+Read the answer →
+Why does the phosphate I apply never reach the root?
+Because calcareous soil above pH 8 locks it first. 69.1% of Punjab samples read above pH 8.
+Read the answer →
+Why is a bag not a dose?
+Because how a nutrient is delivered decides how much of it the crop gets.
+Read the answer →
+Why does the plan change with my sowing date?
+Because the timing of every stage moves with it. The rates stay the same.
+Read the answer →
 28
 programmes · per acre · stage by stage · free
 What do you grow?
-Most of Pakistan’s cropland is alkaline and calcareous, above pH 8. VAN builds a product against each loss.
+Most of Punjab’s farmland is alkaline and calcareous: 69.1% of 770,160 samples are above pH 8. VAN builds a product against each of the 3 losses.
 Search your crop
 Go
-Cereals & field crops
-·
-7
+Live calculator ·
+24
 Wheat
-Maize (Corn)
-Basmati Rice
-Hybrid Rice
-Cotton
-Sugarcane, February planting
-Ratoon Sugarcane
-Oilseeds
-·
-4
-Canola
-Sesame
-Soybean
-Sunflower
-Pulses
-·
-3
-Chickpea
-Lentil
-Mungbean & Mash
-Vegetables & spices
-·
-7
+Live calculator
 Potato
-Tomato
+Live calculator
+Ratoon Sugarcane
+Live calculator
+Cotton
+Live calculator
+Maize (Corn)
+Live calculator
+Basmati Rice
+Live calculator
+Canola
+Live calculator
+Sesame
+Live calculator
+Chickpea
+Live calculator
+Lentil
+Live calculator
 Chili
+Live calculator
 Garlic
+Live calculator
+Citrus, 5 years and over
+Live calculator
+Sugarcane, February planting
+Live calculator
+Hybrid Rice
+Live calculator
+Tomato
+Live calculator
+Strawberry
+Live calculator
+Sunflower
+Live calculator
+Mungbean & Mash
+Live calculator
 Watermelon
-Turmeric
+Live calculator
+Soybean
+Live calculator
 Onion
+Live calculator
+Turmeric
+Live calculator
+Banana, 1st year
+Live calculator
 Orchards & fruit
 ·
-7
-Banana, 1st year
+4
 Banana, 2nd year
-Citrus, 5 years and over
 Date Palm
 Mango
-Strawberry
 Guava
-Ask for my plan on WhatsApp
 See the
 23
 products
+or ask on WhatsApp
 The sowing year
-every crop's window, drawn
+every crop's sowing window
 Jan
 Feb
 Mar
@@ -79,32 +172,9 @@ Sep
 Oct
 Nov
 Dec
-THIS MONTH
-September
-5
-sown now ·
-4
-next
-▸ tap an arc
-Being sown now ·
-September
-Cotton
-Apr–May / Sep
-›
-Sunflower
-Mar–Apr / Aug–Sep
-›
-Potato
-Sep–Oct
-›
-Tomato
-Mar–May / Sep–Oct
-›
-Strawberry
-Sep–Nov
-›
-Next ·
-October
+THIS MONTH · NOVEMBER
+6 sown now · 1 next · tap a month or an arc
+Being sown now · November
 Wheat
 Oct–Nov
 ›
@@ -117,58 +187,57 @@ Oct–Nov
 Lentil
 Oct–Nov
 ›
-On this page
-00
-Grow
-01
-The picture
-02
-Built against it
-03
-Method
-04
-Verify
-05
-Your crop
+Garlic
+Nov–Dec
+›
+Strawberry
+Sep–Nov
+›
+Next ·
+December
+Onion
+Dec–Feb
+›
+For companies, not for fields
+Launch it under your name.
+VAN formulates, manufactures, registers and tests crop nutrition products that carry somebody else’s brand name. You bring the market and do the selling. VAN does everything from the formulation to the finished bag.
+White label, joint development, toll manufacturing →
+The formulation library
+100+
+partner brands registered with VAN named as the manufacturer
+7 to 12 months
+Developed to your brief
+About 3 months
+Ready to carry your name
 01
 The national picture
 Pakistan is not short of fertilizer.
 It is short of nutrition that reaches the crop.
 The whole case, with every chart and source →
-156
-kg/ha
-Nutrient Pakistan puts on a hectare of cropland in a year. The world average is 117.
+63
+kg/acre
+Nutrient Pakistan puts on an acre of cropland in a year. The world average is 47. FAO publishes these as 156 and 117 kg a hectare.
 83
-: 1
-Nitrogen against potash, by tonne. Crops are not fed on one nutrient.
+:1
+Nitrogen against potash, by tonne. Crops are not fed on 1 nutrient.
 −22%
 What a kilogram of nutrient returns in wheat now, against the year 2000. Derived.
-≈25%
-The share of that nitrogen a crop actually takes up. In the United States it is about 72%.
-8.22
-mean pH
-96.1%
-of samples above pH 7.5
-90.2%
-low in organic matter
-0
-samples tested for sulfur
-Under all four of those figures sits the ground itself, and Punjab has measured it
+≈29%
+The share of the nitrogen added to cropland that leaves the field in the harvest (FAO, 2023). In the United States it is about 71%.
+Sources: Our World in Data / FAO, FAOSTAT (including the Cropland Nutrient Balance, December 2025 release), the Pakistan Economic Survey. The soil data,
 770,160
-times across
+Punjab samples across
 36
-districts. That survey is on this site in full, district by district and parameter by parameter, with what it does not measure marked as plainly as what it does.
-The whole soil lens →
-Four figures, four sources, all published: Our World in Data / FAO, FAOSTAT, the Pakistan Economic Survey and Lassaletta et al. (2014). Each one is charted and cited in full on the knowledge page. Where a figure is VAN's own arithmetic on published inputs it is marked derived, and no performance figure is claimed for any product.
+districts, is on
+the soil page
+.
 02
 What VAN builds against it
-Three ways the ground takes your fertilizer back.
-Nitrogen leaves as ammonia, phosphate is bound by calcium, and too little potash goes on. VAN builds a product against each of the three.
-All seven, against the soil data →
+3 ways the ground takes your fertilizer back.
+Nitrogen leaves as ammonia, phosphate is bound by calcium, and too little potash goes on. VAN builds a product against each of the 3.
+All 7 conditions, against the soil data →
 ❚❚ Pause
-▸ Tap a loss to hold it · one cross-section, three losses, left to right
-line drawing ·
-paused
+▸ Tap a loss to hold it · 1 cross-section, 3 losses, left to right
 NH₃
 NH₃
 NH₃
@@ -192,7 +261,7 @@ before the root arrives
 3 · Potash
 1 kg K for every 83 kg N
 K
-the crop fills from potash
+the crop draws on the soil’s potash
 Nitrogen · loss 1 of 3
 Up as ammonia, down as nitrate.
 Above pH 8, surface urea leaves as ammonia before the crop can use it. What dissolves moves down with the irrigation water.
@@ -211,16 +280,16 @@ P₂O₅ 32% · N 6%
 Read the evidence →
 Potash · loss 3 of 3
 The root goes looking.
-One kilogram of potash goes on for every eighty-three of nitrogen, and the crop fills from potash.
+Pakistan applies 83 kg of nitrogen for every 1 kg of potash, so the crop draws potash from the soil’s own reserve.
 Built against it
 Vital Potash
 ·
-N 11 · K₂O 44 · boron coated
+N 11% · K₂O 44% · boron coated
 Read the evidence →
 03
 The method
 VAN started with a research farm in 2009, a year before the company.
-Six stations, one site. A bag of VAN product passes every one of them before it reaches a dealer, and the batch number printed on it is what ties the bag in your hand back to the day it was made and the analysis that released it. Tap a station to see what happens there.
+6 stations. A bag of VAN product passes every one of them before it reaches a dealer, and the batch number printed on it is what ties the bag in your hand back to the day it was made and the analysis that released it. Tap a station to see what happens there.
 How VAN is built →
 ❚❚ Pause
 ▸ Tap a station · the batch travels the line
@@ -236,16 +305,16 @@ Formulation
 17 years of trial data
 3
 Plant
-~50,000 t
+about 50,000 t made a year
 4
 Laboratory
 LAB 336 · ISO/IEC 17025
 5
 PSQCA registration
-22 licences · 8 standards
+34 licences
 6
-Certificate with the bag
-on request, no charge
+Lab report with the bag
+by batch number, no charge
 VAN
 batch
 Station
@@ -254,20 +323,19 @@ of
 6
 Research farm
 since 2009
-Founded a year before the company. Trials have run on that ground every season since. The seventeen years of data every formulation is weighed against.
-17 years of trial data behind every formulation. Read against Punjab’s own 770,000-sample soil survey.
+VAN’s first research farm, a year before the company. Trials have run on VAN’s research farms every season since, and every formulation is checked against those 17 years of data.
+17 years of trial data behind every formulation. Read against Punjab’s own 770,160-sample soil survey.
 Verify a bag
-Send the batch number. Get the certificate for that batch.
-Every VAN batch is tested before it leaves the plant. Send the number printed on the bag and we send back the measured values from the tests our laboratory ran on it. No charge, no sample to post, no form.
+Type the batch number. Get the lab report for that batch.
+Every VAN batch is tested before it leaves the plant. Type the number printed on the bag and open the approved laboratory report for that batch, with the measured values from the tests our laboratory ran on it. No charge, no sample to post, no sign-in.
 PNAC accredited
 LAB 336
 ISO/IEC 17025:2017
 Batch number, printed on the bag
-Send it on WhatsApp
-or email
-The number opens a WhatsApp message to VAN with the batch already in it.
+Check it
+No sign-in and no phone number. The batch number is printed on the bag, so only somebody holding the bag can enter it.
 How verification works ›
-Would rather not take our word for it? The laboratory will run your bag blind, as an ordinary priced test.
+Want an independent check? Send 500 g to Sample Reception and it is tested blind, as an ordinary priced test.
 How that works ›
 VAN
 TESTED BEFORE IT SHIPS
@@ -294,65 +362,6 @@ Call
 +92 42 35762215
 Or write to
 info@van.com.pk
-Your crop, stage by stage
-Wheat, walked one stage at a time.
-Every programme is written the way the season runs: what to put on, at which stage, by which method, and the pack it comes in. Here are the first two stages of wheat.
-The whole wheat programme →
-▶ Play the walk
-▸ Tap a stage
-‹
-›
-Stage
-1
-Land prep
-Stage
-2
-Germination
-Stage
-1
-of
-5
-Land Preparation
-GDD
-n/a
-DAS
-Before sowing
-Sown Oct 20
-Sown Nov 1
-Sown Nov 20
-Before Oct 20
-Before Nov 1
-Before Nov 20
-Soil preparation, incorporation of P, K, organic matter, basal N (Vital Urea). This is not a crop growth stage but a management stage.
-What goes on at this stage · per acre
-4
-row
-s
-Phosphorus
-Green Phosphate
-P₂O₅ 32% · N 6%
-1 bag
-Bag · 50 kg
-Broadcasting
-Nitrogen
-Vital Urea
-N 32% · S 13%
-½ bag
-Bag · 25 kg
-Broadcasting
-Potash
-Fusion Potash
-K₂O 50% · N 2% · S 1.5% · B 1% · Mg 1%
-½ bag
-Bag · 25 kg
-Broadcasting
-Soil Amendment
-Humi Grow
-Soil Conditioner
-1 bag
-Bag · 8 kg
-Broadcasting
-Walk all five stages of wheat →
 The 23 products
 By how you apply them.
 Pick the way you put fertilizer on. These are the VAN products made for that method.
@@ -360,9 +369,9 @@ All
 23
 products →
 Broadcast
-6
+8
 Fertigation
-12
+13
 Foliar
 7
 Nitrogen
@@ -372,87 +381,74 @@ Sowing
 Early growth
 Phosphorus
 Green Phosphate
-6-32-0 · humic-coated acidic. The NP Range 6-32 grade
+6:32:0 · humic-coated acidic. The NP Range 6:32 grade
 Sowing
 Phosphorus
 Fusion Phosphate
 TSP. P₂O₅ 46%
+Sowing
+Potash
+Fusion Potash
+2:0:50 + S 1.5% · B 1% · Mg 1% · 2 forms
 Sowing
 Micronutrients
 V-Transform
 Zinc 21% granular
 Germination
 Early growth
+Secondary Nutrients
+Green Sulfur
+Sulfur 70% WDG
+Sowing
 Soil Health & Biologicals
 V-Compost
 Organic matter 25% + N 5%
 Soil prep
 Soil Health & Biologicals
 Humi Grow
-Potassium humate pellets
+Potassium humate pellets · Humic Acid 40% · K₂O 7%
 Sowing
 ▸ Swipe the rail · tap a pack to open it
 Knowledge
-Read further. Every figure here has its source under it.
+Read further.
 The knowledge hub →
-Coming soon · illustrative
-Nutrition is half the yield. Discipline is the other half.
-Discipline is the other half. The VAN Yield & Discipline Simulator will show what sowing date, irrigation and plant stand actually cost the crop.
-Directions only, and deliberately so. No figure is printed here. Wheat and potato have working simulators with their own ten levers; the rest of the 26 follow as each crop’s lever set is built.
-See how it will work →
+Simulator: wheat and potato
+Nutrition decides about 1/4 of the yield. Sowing, seed, water, weeds and pests decide the rest.
+The simulator scores sowing date, irrigation and plant stand, and shows what each one costs the crop.
+Direction only, not a yield figure. Wheat and potato have working simulators, each with its own 10 practices; the other 26 crops follow.
+Open the simulator →
 Product knowledge
 23
-decks, one per product.
-One deck per registered brand, written for a dealer who has to explain the bag to a grower standing in front of him. Composition, where it goes in the season, and the limits of what it will do.
+decks, 1 per product.
+1 deck per registered brand, written for a dealer who has to explain the bag to a grower standing in front of him. Composition, where it goes in the season, and the limits of what it will do.
 +
 18
 more
 The deck list →
 Beyond the bag
 Where the nutrients go after harvest.
-Rice husk, press mud and boiler ash are already on the farm. What it takes to turn them back into a nutrient a crop can use is set out in full.
-VAN recovers potassium and silicon from the ash left over after crop residue is burned, instead of importing it again.
+Crop residue ash carries the potassium the crop took from the soil.
+VAN recovers potassium from crop residue ash, instead of importing it. Silicon from the same ash is still in development.
 The circular loop →
-The board
-The people who answer for VAN.
-Read the briefs →
-Imtiaz Anjum Chaudhary
-Chairman
-Ahmed Umair
-Founder & Chief Executive Officer
-Faisal Dawood
-Director
-Dr Ahmed Shoaib
-Director
-Barrister Ahmed Uzair
-Director
 23
 registered brands
 28
 crop plans, per acre
-22
-PSQCA licences ·
-8
-standards
+34
+PSQCA licences
 LAB 336
 ·
 PNAC · ISO/IEC 17025:2017
 Pakistan Patent
 144684
 Crop nutrition engineered, manufactured, registered and tested in Pakistan.
-Plant
-·
-49-Km Multan Road, Phool Nagar Bypass, Lahore
-Head office
-·
-605 Al-Hafeez Heights, Gulberg III, Lahore 54660
++92 42 35762215
 WhatsApp
 +92 300 5003041
-Landline
-+92 42 35762215
 info@van.com.pk
 Products
 All 23 brands
+Compare them
 Vital Urea
 Where to buy
 Verify a bag
@@ -460,20 +456,25 @@ Crops
 28 crop plans
 Wheat
 How you apply it
+Soil Atlas
 Knowledge
 Why Pakistan must shift
-The soil, measured
-Product knowledge decks
+Product decks
 Circular economy
+Vitalytics tools
 Company
-Make with us
+Your Brand
 VAN Lab
-Tools
-About & contact
+About
+Company profile
+Head office
+605 Al-Hafeez Heights, Gulberg III, Lahore 54660
+Plant
+49-Km Multan Road, Phool Nagar Bypass, Lahore
 © 2026
 Vital Agri Nutrients (Pvt) Ltd
-·
-www.van.com.pk
+Full member of CropLife Pakistan since 2024
+How VAN competes
 LinkedIn
 Facebook
 Instagram

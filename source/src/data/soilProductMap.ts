@@ -61,7 +61,8 @@ export type SoilSubstitution = { parameter: SoilParameter; fromProduct: string; 
 export const SOIL_SUBSTITUTIONS: SoilSubstitution[] = [
   {
     parameter: 'pH', fromProduct: 'Urea', toSlug: 'vital-urea', nutrient: 'N',
-    note: 'On ground above pH 8 surface-applied uncoated urea hydrolyses and escapes as ammonia before the crop takes it up. The answer is not more urea. It is the same nitrogen behind a coating that releases across the crop\'s demand curve.',
+    // L2 fact check 9 Nov 2026 (fix report N2): "part of its nitrogen", as the nitrogen panel says. Was '... hydrolyses and is lost to the air as ammonia ...'.
+    note: 'On soil above pH 8, uncoated urea applied to the surface hydrolyses, and part of its nitrogen is lost to the air as ammonia before the crop takes it up. Adding more urea does not solve this. The same nitrogen in a coated form is released in step with the crop\'s demand.',
   },
 ]
 
@@ -76,9 +77,9 @@ export type SoilAdvisory = { parameter: SoilParameter; bands: string[]; headline
 export const SOIL_ADVISORIES: SoilAdvisory[] = [
   {
     parameter: 'EC', bands: ['critical', 'weak', 'average'],   // D-177: the site calls ground saline above 4 dS/m (Soil page); the warning started at 8
-    headline: 'This is a salinity problem before it is a nutrition problem.',
+    headline: 'This reading shows a salinity problem, which must be dealt with before nutrition.',
     // D-313 (Tahir, 24 to 25 Oct 2026: "Don't talk about gypsum etc"): the gypsum, leaching and drainage sentence is out of the body.
-    body: 'At this reading, adding fertilizer adds salt to ground that already has too much of it. VAN will not sell you a bag as the answer to this. Send the soil report and the agronomy team will tell you what the field actually needs.',
+    body: 'At this reading, adding fertiliser adds more salt to soil that already has too much. VAN will not sell a bag of fertiliser as the answer to this problem. Send the soil report, and VAN’s agronomy team will tell you what the field needs.',
   },
   {
     // 11 Sep 2026, Tahir's ruling. Mango's real potash lines are published PER TREE and are correctly
@@ -88,7 +89,7 @@ export const SOIL_ADVISORIES: SoilAdvisory[] = [
     // exclusion in cropSoilMap.ts, which is what stops the 0.3 kg being offered.
     parameter: 'K2O', bands: ['critical', 'weak', 'moderate'], crops: ['mango'],
     headline: 'Mango potash is worked out per tree, not per acre.',
-    body: 'A low potash reading on a mango orchard is answered with Vital Potash, which VAN publishes per tree rather than per acre. Turning that into a quantity needs your own tree count and spacing. Vital Green works the dose out against your orchard. The foliar potash in the programme is a top-up and is not the answer to a soil deficiency.',
+    body: 'A low potash reading on a mango orchard is answered with Vital Potash, which VAN publishes per tree rather than per acre. Turning that into a quantity needs your own tree count and spacing. Vital Green calculates the dose for your orchard. The foliar potash in the plan is a top-up and does not correct a soil deficiency.',
   },
 ]
 
@@ -144,7 +145,7 @@ export const WHEAT_SOIL_PRODUCT_MAP: SoilProductMapEntry[] = [
  */
 export const POTATO_SOIL_PRODUCT_MAP: SoilProductMapEntry[] = [
   // O21 (24 Sep 2026): internal note moved out of the shipped bundle. Original: 'Basal, broadcast, bulk phosphorus line in the Potato plan (P 32%); V. Ammonium Phosphate (P 44%) is the fertigated alternative. See file note 2.'
-  { parameter: 'P2O', slug: 'green-phosphate', product: 'Green Phosphate', confidence: 'inferred', note: 'Basal, broadcast, bulk phosphorus line in the Potato plan (P 32%); V. Ammonium Phosphate (P 44%) is the fertigated alternative.' },
+  { parameter: 'P2O', slug: 'green-phosphate', product: 'Green Phosphate', confidence: 'inferred', note: 'Basal, broadcast, bulk phosphorus line in the Potato plan (P 32%); V-Phosphate (P 44%) is the fertigated alternative.' },   // Tahir 10 Nov 2026 (FU-1): was 'V. Ammonium Phosphate (P 44%)'
   // O21 (24 Sep 2026): internal note moved out of the shipped bundle. Original: 'Potato is a high-potash crop and Vital Potash is Tahir\'s "more potash" product (N 11 · K 44), and the larger line in the Potato plan. See file note 3.'
   { parameter: 'K2O', slug: 'vital-potash', product: 'Vital Potash', confidence: 'inferred', note: 'Potato is a high-potash crop, and Vital Potash (N 11 · K 44) is the larger potash line in the Potato plan.' },
   { parameter: 'Zn', slug: 'v-zinc', product: 'V-Zinc 10%', confidence: 'direct', note: 'Only zinc-bearing product in the Potato plan (Zn 10%). V-Transform, Wheat\'s zinc responder, is not in this plan.' },

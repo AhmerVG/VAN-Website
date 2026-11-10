@@ -26,12 +26,12 @@ const DISTRICT: Field = { name: 'district', label: 'District', half: true, place
 export const DEALER_FORM: Field[] = [
   { name: 'company', label: 'Company or shop name', required: true, half: true, autoComplete: 'organization' },
   { name: 'name', label: 'Your name', half: true, autoComplete: 'name' },
-  { name: 'email', label: 'Email', type: 'email', half: true, help: 'Optional. Give an email and we reply by email. Leave it blank and we reply on WhatsApp.', autoComplete: 'email' },
+  { name: 'email', label: 'Email', type: 'email', half: true, help: 'If you give an email address, we reply by email. If you leave it blank, we reply on WhatsApp.', autoComplete: 'email' },
   PHONE,
   { name: 'territory', label: 'District or territory you cover', half: true, autoComplete: 'address-level2' },
   {
-    name: 'volume', label: 'Volume you would expect to move', type: 'select', half: true,
-    options: ['Under 10 tonnes a season', '10–50 tonnes a season', '50–200 tonnes a season', 'Over 200 tonnes a season', 'Not sure yet'],
+    name: 'volume', label: 'Quantity you expect to sell', type: 'select', half: true,
+    options: ['Under 10 tonnes a season', '10 to 50 tonnes a season', '50 to 200 tonnes a season', 'Over 200 tonnes a season', 'Not sure yet'],
   },
   { name: 'note', label: 'Anything else', type: 'textarea', placeholder: 'Which crops your customers grow, what you carry today, anything you want to ask' },
 ]
@@ -47,10 +47,10 @@ export const PARTNER_FORM: Field[] = [
     options: ['Developed to our brief', 'Something already in your library', 'Not sure yet. We want to talk it through'],
   },
   { name: 'crop', label: 'Crop or crops', half: true },
-  { name: 'volume', label: 'Indicative first-year volume', half: true, placeholder: 'Tonnes or litres, however rough' },
+  { name: 'volume', label: 'Indicative first-year volume', half: true, placeholder: 'Tonnes or litres; a rough figure is fine' },
   {
     name: 'constraint', label: 'What the product has to do', type: 'textarea', required: true,
-    placeholder: 'The problem, not the specification. What is going wrong in the field, or what the market is asking for and nobody is selling.',
+    placeholder: 'Describe the problem rather than the specification: what is going wrong in the field, or what the market is asking for that nobody sells.',
   },
 ]
 
@@ -59,7 +59,7 @@ export const LAB_TEST_FORM: Field[] = [
   PHONE,
   { name: 'email', label: 'Email', type: 'email', half: true },
   { name: 'company', label: 'Company', half: true },
-  { name: 'product', label: 'What you want tested', required: true, half: true, placeholder: 'Any fertilizer, any brand, or soil' },
+  { name: 'product', label: 'What you want tested', required: true, half: true, placeholder: 'Any fertiliser of any brand, or soil' },
   { name: 'samples', label: 'How many samples', half: true, placeholder: 'e.g. 3' },
   { name: 'tests', label: 'Which tests, if you know', type: 'textarea', placeholder: 'Leave it blank and Sample Reception will tell you what applies.' },
 ]

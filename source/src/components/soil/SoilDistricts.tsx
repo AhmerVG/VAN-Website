@@ -15,7 +15,7 @@ function Hist({ title, bins, counts, marks, unit, colour, id }: { title: string;
   const x = (v: number) => ((v - bins[0]) / (bins[bins.length - 1] - bins[0])) * W
   return (
     <div ref={fit.ref}>
-      <div className="flex items-baseline justify-between gap-2"><span className="font-bold" style={{ fontSize: 14 }}>{title}</span><span className="cap">{thousands(total)} in range · count per bin</span></div>
+      <div className="flex items-baseline justify-between gap-2"><span className="font-bold" style={{ fontSize: 14 }}>{title}</span><span className="cap">{thousands(total)} samples within the chart range · number of samples in each step</span></div>
       <svg viewBox={`0 0 ${W} ${H}`} width="100%" className="mt-1" role="img" aria-label={`${title} distribution`}>
         <g key={id}>
           {counts.map((c, i) => {
@@ -55,7 +55,7 @@ export function Distribution({ selected }: { selected: string | null }) {
       </div>
       <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-6 mt-5">
         <div>
-          <div className="font-bold" style={{ fontSize: 14 }}>Share below Punjab’s working threshold</div>
+          <div className="font-bold" style={{ fontSize: 14 }}>Share of samples below Punjab’s working thresholds (above them, for salinity)</div>
           <p className="cap mb-2">shares of samples, not a diagnosis of any field</p>
           <div className="grid gap-2">
             {shareRows(s).map(r => (
@@ -70,7 +70,7 @@ export function Distribution({ selected }: { selected: string | null }) {
         </div>
         <div>
           <div className="font-bold" style={{ fontSize: 14 }}>Texture, as recorded</div>
-          <p className="cap mb-2">share of samples by class</p>
+          <p className="cap mb-2">share of the samples that have a recorded texture class</p>
           <div className="flex h-5 rounded-md overflow-hidden" style={{ background: 'var(--sand-2)' }}>
             {tex.map((t, i) => <div key={t.label} title={`${t.label}: ${thousands(t.n)} (${t.share.toFixed(1)}%)`} style={{ width: `${t.share}%`, background: ['#7A5230', '#C9A86A', '#5A3A20', '#A9C7A0', '#4F8A3E', '#E6EEE8', '#8A968C'][i % 7], transition: 'width .8s' }} />)}
           </div>

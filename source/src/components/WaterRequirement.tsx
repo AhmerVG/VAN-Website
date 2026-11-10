@@ -4,7 +4,7 @@ import { climateForDistrict, CLIMATE_SOURCE, STATIONS, dayOfYear } from '@/data/
 import { seasonWater, eto, normalRainfall, mmToAcreInches, mmToIrrigations, LITRES_PER_MM_PER_ACRE } from '@/lib/water'
 import { waterModelFor, WATER_GAPS, KC_MID_ONLY, WATER_SOURCE } from '@/data/waterCrops'
 import { useSowing, parseIso, prettyDate, wheatStageDays } from '@/lib/sowing'
-import { cropBySlug, parseSowing, MONTHS_LONG } from '@/lib/season'
+import { cropBySlug, parseSowing, MONTHS_LONG, seasonWords } from '@/lib/season'
 import { SectionHead } from './bits'
 
 /**
@@ -24,6 +24,12 @@ import { SectionHead } from './bits'
  */
 /* D-317 (26 Oct 2026): visible text cleaned of build notes and page narration, Tahir's instruction */
 const SEASON_DAYS: Record<string, number> = { maize: 125, onion: 210, lentil: 170 }
+// Tahir 10 Nov 2026 (CR-N15): guava's water figures use the window of the guava crop plan, September to
+// February: from 1 September (month index 8) for 181 days, to 28 February. Was the generic fallback, mid-February
+// (the start of "Feb–Mar sowing") for 120 days. The crop's own season window (crop.sowing) is unchanged elsewhere.
+// A season start date the farmer enters still replaces the start day; the length stays 181 days.
+// Tahir 10 Nov 2026 (R3-5): crop.sowing for guava is now "Sep sowing" too, so the season tag, box and date check agree.
+const WATER_WINDOW: Record<string, { month: number; day: number; days: number }> = { guava: { month: 8, day: 1, days: 181 } }
 
 export function WaterRequirement({ cropKey, cropName }: { cropKey: string; cropName: string }) {
   const [district, setDistrict] = useState('')
@@ -39,7 +45,8 @@ export function WaterRequirement({ cropKey, cropName }: { cropKey: string; cropN
   // sowing window for this crop. Which of the two is in use is stated, never assumed silently.
   const crop = cropBySlug(cropKey)
   const windows = crop ? parseSowing(crop.sowing) : []
-  const fallbackDoy = windows.length ? dayOfYear(new Date(2025, windows[0].start, 15)) : null
+  const ww = WATER_WINDOW[cropKey]
+  const fallbackDoy = ww ? dayOfYear(new Date(2025, ww.month, ww.day)) : windows.length ? dayOfYear(new Date(2025, windows[0].start, 15)) : null
   const sownIso = sown?.kind === 'date' ? sown.iso : null
   const sownDoy = sownIso ? dayOfYear(parseIso(sownIso)!) : fallbackDoy
 
@@ -58,7 +65,7 @@ export function WaterRequirement({ cropKey, cropName }: { cropKey: string; cropN
     // tabulated season (125, 210 and 170 days, the figures printed in WATER_GAPS); the rest keep 120.
     const sowIso = sownIso ?? (fallbackDoy !== null ? new Date(Date.UTC(2025, 0, fallbackDoy, 12)).toISOString().slice(0, 10) : null)
     const wheatDays = cropKey === 'wheat' && sowIso ? wheatStageDays(sowIso)?.[4] : undefined
-    const days = wheatDays ?? SEASON_DAYS[cropKey] ?? 120
+    const days = wheatDays ?? ww?.days ?? SEASON_DAYS[cropKey] ?? 120
     let e = 0, r = 0
     for (let d = 0; d < days; d++) { e += eto(climate.station, sownDoy + d); r += normalRainfall(climate.station, sownDoy + d) }
     return { days, eto: e, rain: r }
@@ -78,9 +85,9 @@ export function WaterRequirement({ cropKey, cropName }: { cropKey: string; cropN
     <div id="water">
       <SectionHead
         eyebrow="Water"
-        title={`How much water the ${cropName} season needs.`}
+        title={`Water use of the ${cropName} crop in a normal season, and the part irrigation must supply.`}
         tone="navy"
-        lead="A nutrition plan only works if the crop gets its water. Here is what the season needs, what rain normally gives, and what must come from irrigation."
+        lead="A nutrition plan gives its full result only if the crop gets the water it needs. For your district, the figures below estimate the crop’s water use over the season, the normal rainfall over the same period, and the part of the crop’s water use that normal rainfall does not cover, which must come from irrigation. The water you pump will be more than the irrigation figure, because some water is lost from the watercourse and some drains below the roots; see the limits below."
       />
 
       <div className="panel p-5 lg:p-6">
@@ -88,17 +95,20 @@ export function WaterRequirement({ cropKey, cropName }: { cropKey: string; cropN
           {picker}
           <p className="cap pb-2 max-w-[40ch]">
             {sownIso
-              ? <>Counting from your own sowing date, <b>{prettyDate(sownIso)}</b>.</>
+              ? <>Counting from your own date, <b>{prettyDate(sownIso)}</b>.</>
+              : ww
+                ? <>{/* Tahir 10 Nov 2026 (CR-N15) */}You have not entered a {seasonWords(cropKey).date} at the top of the page, so the water figures are calculated from 1 September to the end of February, the months of VAN’s {cropName} crop plan. To calculate them from your own {seasonWords(cropKey).date}, enter it at the top of the page.</>
               : windows.length
-                ? <>{/* D-317: was "counts from the middle of VAN’s published window (May)"; the count starts on the 15th of the window’s first month */}No sowing date given, so this counts from mid-{MONTHS_LONG[windows[0].start]}, the start of VAN’s published window. Give your sowing date at the top and it uses your date instead.</>
+                ? <>{/* D-317: was "counts from the middle of VAN’s published window (May)"; the count starts on the 15th of the window’s first month */}You have not entered a {seasonWords(cropKey).date} at the top of the page, so the water figures are calculated from mid-{MONTHS_LONG[windows[0].start]}, the start of VAN’s published {seasonWords(cropKey).window} for {cropName}. To calculate them from your own {seasonWords(cropKey).date}, enter it at the top of the page.</>
                 : null}
           </p>
         </div>
 
         {!district && (
           <p className="small mt-4 max-w-[140ch]">
-            Pick your district and the figures appear. They come from the nearest weather station with
-            published normals; the station and its distance are shown.
+            Choose your district to see the figures. They are calculated from the normals (the average
+            weather for each month over 30 years) of the nearest weather station that publishes them. The
+            page names the station and its distance from your district.
           </p>
         )}
 
@@ -118,11 +128,11 @@ export function WaterRequirement({ cropKey, cropName }: { cropKey: string; cropN
               <Fig v={`${result.irrigationMm.toFixed(0)} mm`} l="has to be irrigated" tone="rust" />
             </div>
             <p className="small mt-4 max-w-[140ch]">
-              That is <b>{mmToAcreInches(result.irrigationMm).toFixed(1)} acre-inches</b>. About{' '}
-              <b>{mmToIrrigations(result.irrigationMm, 3).toFixed(1)} waterings</b> if a watering puts on
-              3 inches, and <b>{(result.irrigationMm * LITRES_PER_MM_PER_ACRE / 1000).toFixed(0)} thousand
-              litres</b> an acre. The 3 inches is a common reckoning for a flood irrigation, not a
-              measurement of yours. Count your own and the number of waterings moves with it.
+              The irrigation need is <b>{mmToAcreInches(result.irrigationMm).toFixed(1)} acre-inches</b>, or{' '}
+              <b>{(result.irrigationMm * LITRES_PER_MM_PER_ACRE / 1000).toFixed(0)} thousand litres</b> per acre. This
+              equals about <b>{mmToIrrigations(result.irrigationMm, 3).toFixed(1)} waterings</b> if each watering
+              applies 3 inches. The 3 inches is a common estimate for a flood irrigation, not a measurement of
+              your own. If your waterings are larger or smaller, the number of waterings changes with them.
             </p>
 
             <div className="mt-5 overflow-x-auto tbl-scroll">
@@ -156,9 +166,9 @@ export function WaterRequirement({ cropKey, cropName }: { cropKey: string; cropN
             </div>
             {kcMid && (
               <p className="small mt-4 max-w-[140ch]">
-                At its peak, FAO puts {cropName}’s water use at <b>{kcMid.toFixed(2)} times</b> that
-                reference, so around <b>{(eto(climate!.station, sownDoy! + 60) * kcMid).toFixed(1)} mm a
-                day</b> in mid-season here.
+                At its peak, FAO puts {cropName}’s water use at <b>{kcMid.toFixed(2)} times</b> the reference
+                evapotranspiration, which is about <b>{(eto(climate!.station, sownDoy! + 60) * kcMid).toFixed(1)} mm a
+                day</b> in mid-season in your district.
               </p>
             )}
             <p className="cap mt-3 max-w-[140ch]">
@@ -181,19 +191,23 @@ export function WaterRequirement({ cropKey, cropName }: { cropKey: string; cropN
       <div className="panel-soft p-5 mt-4">
         <span className="eyebrow">Limits of this estimate</span>
         <ol className="grid gap-2 mt-2 max-w-[140ch]">
-          <li><b>It is not measured with the full equation.</b> FAO’s standard method needs humidity,
-            wind and solar radiation. The Pakistan Meteorological Department normals this tool uses give only temperature
-            and rain, so the reference figure uses <b>Hargreaves</b>, the method FAO gives for this
-            case. It is an estimate.</li>
-          <li><b>It is probably on the low side for Punjab.</b> FAO’s crop coefficients are published
-            for a sub-humid climate. Its own caption says relative humidity around 45% and light wind.
-            Punjab in the dry season is drier and windier than that, and FAO’s own correction for arid
-            climates <i>raises</i> the coefficient. Without humidity and wind data that correction
-            cannot be applied, so the real need is likely higher than the figure above.</li>
-          <li><b>It is what the crop uses, not what you have to pump.</b> Nothing here allows for what
-            a watercourse loses on the way, for water running past the roots, or for the extra needed
-            to leach a salty soil. And the rain shown is <i>all</i> the rain. How much of a July
-            downpour a field actually keeps depends on your soil and your slope.</li>
+          <li><b>The estimate does not use the standard equation of the Food and Agriculture Organization
+            (FAO).</b> That equation needs humidity, wind and solar radiation, but the Pakistan
+            Meteorological Department normals used here give only temperature and rainfall. The water use of a
+            reference crop is therefore calculated with the <b>Hargreaves</b> method, which FAO gives for use
+            when only temperature data are available.</li>
+          <li><b>The estimate is probably low for Punjab.</b> FAO’s crop coefficients, the factors that turn
+            the reference water use into a crop’s water use, are published for a sub-humid climate, which FAO
+            describes as relative humidity of about 45% and light wind. Punjab in the dry season is drier and
+            windier than that, and FAO’s own correction for arid climates would <i>raise</i> the coefficients.
+            That correction cannot be applied without humidity and wind data, so the crop’s actual water use
+            is probably higher than the estimate shown.</li>
+          <li><b>The crop water use figure is the water the crop itself uses.</b> The water you have to pump
+            will be more, because the figure makes no allowance for water lost from the watercourse on the way,
+            for water that drains below the roots, or for the extra water needed to leach a salty soil.</li>
+          <li><b>The rainfall figure counts <i>all</i> the rain that falls in a normal season, not only the part
+            the crop can use.</b> Part of a heavy shower runs off or drains away, depending on the soil and slope,
+            so the irrigation needed may be more than the irrigation figure shown.</li>
         </ol>
         <p className="cap mt-3">
           Method: {WATER_SOURCE.paper}, {WATER_SOURCE.tables}. Temperature and rainfall:{' '}
