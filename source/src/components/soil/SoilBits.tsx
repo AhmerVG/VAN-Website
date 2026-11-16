@@ -52,12 +52,11 @@ export function HeadlineTiles({ compact = false }: { compact?: boolean }) {
     [ph.toFixed(2), 'mean pH', 'all 770,160 samples, weighted by the number of samples in each district', 'rust'],
     [`${gt75.toFixed(1)}%`, 'above pH 7.5', `${SOIL_HEADLINE.aboveEight} above 8.0 · ${SOIL_HEADLINE.aboveEightFive} above 8.5`, 'rust'],
     [`${om.toFixed(2)}%`, 'mean organic matter', `${SOIL_HEADLINE.omLow} of samples below 0.86%, Punjab’s threshold for low organic matter` /* Tahir 7 Nov 2026 (KN-9): was '..., Punjab’s working threshold' */, 'soil'],
-    [`${p15.toFixed(1)}%`, 'below adequate available phosphorus', `of samples below 15 parts per million (ppm), the adequate level · ${SOIL_HEADLINE.pLow} below 7 ppm, the deficiency threshold` /* L1 editor 7 Nov 2026 (whyshift m6): ppm written out at first use; tile used only on the national page */, 'navy'],
-    [SOIL_HEADLINE.sulfurTested, 'samples tested for sulfur', 'not tested in the Punjab survey', 'rust'],
+    [`${p15.toFixed(1)}%`, 'of samples below 15 parts per million (ppm) of available phosphorus, the adequate level', `${SOIL_HEADLINE.pLow} below 7 ppm, the deficiency threshold` /* L1 editor 7 Nov 2026 (whyshift m6): ppm written out at first use; tile used only on the national page */, 'navy'],
   ]
   const col = (t: string) => (t === 'rust' ? 'var(--rust)' : t === 'soil' ? 'var(--soil)' : 'var(--navy)')
   return (
-    <div ref={ref} className={`grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 ${compact ? '' : ''}`}>
+    <div ref={ref} className={`grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 ${compact ? '' : ''}`}>
       {tiles.map(([v, l, s, t], i) => (
         <div key={l} className="panel p-4" style={i === 4 ? { borderColor: 'var(--rust)', borderWidth: 2, borderStyle: 'dashed' } : undefined}>
           <div className="num nowrap" style={{ fontSize: compact ? 'clamp(26px, 2.4vw, 34px)' : 'clamp(28px, 2.8vw, 40px)', color: col(t), lineHeight: 1 }}>{v}</div>

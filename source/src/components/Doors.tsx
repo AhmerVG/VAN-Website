@@ -12,7 +12,7 @@ export function Doors() {
         <div className="panel-green p-6 lg:p-8 flex flex-col">
           <span className="eyebrow">Find a dealer</span>
           <h2 className="text-[clamp(30px,3vw,40px)]">Find your nearest dealer</h2>
-          <p className="mt-3 muted">Type your district, and we will send you the name and phone number of the nearest dealer who stocks our brands.</p>
+          <p className="mt-3 muted">Type your district. We will then send you the name and phone number of the nearest dealer who stocks our brands.</p>
           <Plots cols={10} rows={2} seed={11} className="my-5 opacity-80" />
           <label className="font-bold" htmlFor="district">Your district</label>
           <input id="district" className="input mt-2" placeholder="e.g. Sahiwal, Multan, Sukkur…" value={district} onChange={e => setDistrict(e.target.value)} autoComplete="off" />

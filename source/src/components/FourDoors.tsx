@@ -50,9 +50,9 @@ const HERO_TIERS = [
   // building with a layer, and a farmer reads "layer" physically (the product goes into the soil, not
   // on top of the crop). He chose the cycle the lines already described, and lines that add to the
   // label instead of repeating it.
-  { k: 'Soil', role: 'what it holds', a: 'Its pH, its organic matter and the nutrients it still holds.' },
-  { k: 'Crop', role: 'what it takes', a: 'The nutrients taken out in the harvested crop.' },
-  { k: 'Product', role: 'what we put back', a: 'A product made for that crop, on that soil.' },
+  { k: 'Soil', role: 'what it holds', a: 'Every soil has a pH, a level of organic matter and a supply of nutrients that it still holds.' },
+  { k: 'Crop', role: 'what it takes', a: 'Every harvested crop takes nutrients out of the soil.' },
+  { k: 'Product', role: 'what we put back', a: 'We put nutrients back with a product made for the crop and the soil it grows in.' },
 ]
 
 type Door = { key: string; title: string; body: React.ReactNode; go: [string, string][] }
@@ -63,23 +63,23 @@ export function FourDoors() {
   const doors: Door[] = [
     {
       key: 'grow', title: 'I grow',
-      body: <>We publish <b>{CROPS.length}</b> crop plans, each giving the amount to apply per acre at every crop stage. The dates of the stages are set from your sowing date. 24 of the plans also have the Nutrition creator, which adjusts the amounts to your soil.</>,
+      body: <>We publish <b>{CROPS.length}</b> crop plans. Each plan gives the amount to apply per acre at every crop stage. The dates of the stages are set from your sowing date. 24 of the plans also have the Nutrition creator. The Nutrition creator adjusts the amounts to your soil.</>,
       go: [['Crop plans', '#/crops'], ['Soil Atlas', '#/soil']],
     },
     {
       key: 'sell', title: 'I sell',
       // L1 editor fix 7 Nov 2026 (company-a B1, m11): SOP is bought in (PR-1), so not 'direct from our plant'; 'On our website' moved to the front.
-      body: <>As a dealer, you can stock all <b>{COUNTS.brands}</b> of our brands, and we supply them to you directly. We test every batch before it ships. On our website, a farmer can type the batch number printed on any bag and open the lab report for that batch.</>,
+      body: <>As a dealer, you can stock all <b>{COUNTS.brands}</b> of our brands. We supply the brands to you directly. We test every batch before it ships. On our website, a farmer can open the lab report for any bag by typing the batch number printed on it.</>,
       go: [['Become a dealer', '#/become-a-dealer'], ['Where to buy', '#/where-to-buy']],
     },
     {
       key: 'brand', title: 'Made under my name',
-      body: <>At our plant in Lahore we already make products sold under more than <b>100</b> brands{partners ? <> owned by <b>{partners}</b> partner companies</> : null}. We can make a product for your brand in the same way, from the formulation to the finished bag; under toll manufacturing, you supply the formulation.</>,   // L2 fix 9 Nov 2026 (company W10, CO-4)
+      body: <>At our plant in Lahore we already make products sold under more than <b>100</b> brands{partners ? <> owned by <b>{partners}</b> partner companies</> : null}. We can make a product for your brand in the same way, from the formulation to the finished bag. Under toll manufacturing, you supply the formulation.</>,   // L2 fix 9 Nov 2026 (company W10, CO-4)
       go: [['Your Brand', '#/partner'], ['How we build a range', '#/partner#range']],
     },
     {
-      key: 'differently', title: 'I want to do it differently',
-      body: <>Our free tools, called Vitalytics, are for growers: enter your crop, acreage, sowing date or soil test reading, and the tools work out fertiliser quantities, water needs and other figures for your own field. A company that wants a product that is not yet on the market can develop it with us.</>,
+      key: 'differently', title: 'I want figures for my field, or a new product',
+      body: <>Our free tools for growers are called Vitalytics. In Vitalytics, you enter your crop, acreage, sowing date or soil test reading. The tools then work out fertiliser quantities, water needs and other figures for your own field. We also develop new products with companies that want a product that is not yet on the market.</>,
       go: [['Vitalytics, the tools', '#/tools'], ['The formulation path', '#/partner#library']],
     },
   ]
@@ -115,7 +115,7 @@ export function FourDoors() {
         </ol>
         {/* Tahir 7 Nov 2026 (CO-19): plant capacity; was "We make about 50,000 tonnes of product a year at 1 plant site in Lahore." */}
         {/* L1 editor fix 7 Nov 2026 (company-a m22): the 34 licences split into 22 and 12, as on the profile. */}
-        <p className="fd-body">Our plant site in Lahore can make about <b>50,000 tonnes</b> of product a year. We have <b>{COUNTS.brands}</b> registered brands of our own and hold <b>{COUNTS.licences}</b> licences from the Pakistan Standards and Quality Control Authority (PSQCA): <b>{COUNTS.licencesOwn}</b> on our own brands and <b>{COUNTS.licencesPartnerReady}</b> on products ready for partner companies. Our laboratory is accredited by the Pakistan National Accreditation Council (PNAC). Figures as of July 2026.</p>{/* Tahir 10 Nov 2026 (CO-N8, CO-30): the counts dated once on the Home page. */}
+        <p className="fd-body">Our plant site in Lahore can make about <b>50,000 tonnes</b> of product a year. We have <b>{COUNTS.brands}</b> registered brands of our own. We hold <b>{COUNTS.licences}</b> licences from the Pakistan Standards and Quality Control Authority (PSQCA). Of these licences, <b>{COUNTS.licencesOwn}</b> are on our own brands and <b>{COUNTS.licencesPartnerReady}</b> are on registered formulations that any partner company can take and sell under its own brand. Our laboratory is accredited by the Pakistan National Accreditation Council (PNAC). The capacity, brand and licence figures are as of July 2026.</p>{/* Tahir 10 Nov 2026 (CO-N8, CO-30): the counts dated once on the Home page. */}
         {/* D-192: no button pair here. The header pill (D-181) and the 4 doors below carry it. */}
       </div>
       <LandScene />

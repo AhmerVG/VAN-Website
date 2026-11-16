@@ -43,26 +43,26 @@ function pscatR(y){ const pts=D.big.map(c=>[get('P',c,y),get('cereal',c,y)]).fil
 const strength = r => { const a=Math.abs(+r.toFixed(2)); return a<0.3?'weakly':a<0.6?'moderately':'clearly'; };
 
 let LENSES = [
- { id:'perha', tab:'Fertiliser per acre', src:'FAO', topic:'Fertiliser per acre of cropland', kind:'country',
+ { id:'perha', tab:'Fertiliser nutrient per acre of cropland', src:'FAO', topic:'Fertiliser nutrient per acre of cropland', kind:'country',
    opts:[['K','Potash'],['N','Nitrogen'],['P','Phosphate'],['NPK','All 3 together']], opt:'K',
    val(o){ return (c,y)=>get(o,c,y); }, unit:'kg per acre of cropland', years:[1961,2023], dec:1,
-   name(o){ return {K:'potash (K₂O)',N:'nitrogen (N)',P:'phosphate (P₂O₅)',NPK:'fertiliser nutrient (nitrogen, phosphate and potash together, counted as N, P₂O₅ and K₂O)'}[o]; },
-   answer(o,y,v){ const p=v(PAK,y), w=v('World',y); if(p==null) return `No Pakistan data for ${this.name(o)} in ${y}.`; let s=`In ${y}, Pakistan applied <b>${fmt(p)} kg</b> of ${this.name(o)} per acre of cropland. The world average was ${fmt(w)} kg.`;
+   name(o){ return {K:'potash (K₂O)',N:'nitrogen (N)',P:'phosphate (P₂O₅)',NPK:'fertiliser nutrient'}[o]; },
+   answer(o,y,v){ const p=v(PAK,y), w=v('World',y); if(p==null) return `No Pakistan data for ${this.name(o)} in ${y}.`; let s=`In ${y}, Pakistan applied <b>${fmt(p)} kg</b> of ${this.name(o)} per acre of cropland.${o==='NPK'?' Fertiliser nutrient means nitrogen, phosphate and potash together, counted as N, P₂O₅ and K₂O.':''} The world average was ${fmt(w)} kg.`;
      if(p&&w){ const rr=p<w?w/p:p/w; s += rr<1.05 ? ` That is about the same as the world average.` : p<w ? ` The world average was ${rr>=10?Math.round(rr).toLocaleString('en-US'):rr.toFixed(1)} times Pakistan’s figure.` : ` Pakistan’s figure was ${rr>=10?Math.round(rr).toLocaleString('en-US'):rr.toFixed(1)} times the world average.`; } return s; },
    read:'Each line shows a country or the world average. Tap or hover over the chart to see every country in that year. Switch to "In 1 year" to see where Pakistan ranks among all countries and territories with data.',
-   source:'FAO, Land, Inputs and Sustainability: Fertilizers by Nutrient, via Our World in Data (CC BY 4.0). Cropland is arable land plus land under permanent crops. Converted from per hectare to per acre (1 acre = 0.4047 hectare).'},
- { id:'balance', tab:'Potash against nitrogen', src:'FAO', topic:'Potash or phosphate applied per 100 kg of nitrogen', kind:'country',
-   opts:[['KN','Potash per 100 kg nitrogen'],['PN','Phosphate per 100 kg nitrogen']], opt:'KN',
+   source:'FAO, Land, Inputs and Sustainability: Fertilizers by Nutrient, via Our World in Data (CC BY 4.0). Cropland is arable land plus land under permanent crops. The figures were converted from per hectare to per acre (1 acre = 0.4047 hectare).'},
+ { id:'balance', tab:'Potash or phosphate per 100 kg of nitrogen', src:'FAO', topic:'Potash or phosphate applied per 100 kg of nitrogen', kind:'country',
+   opts:[['KN','Potash per 100 kg of nitrogen'],['PN','Phosphate per 100 kg of nitrogen']], opt:'KN',
    val(o){ return o==='KN' ? ratio('K','N',100) : ratio('P','N',100); }, unit:'kg per 100 kg of nitrogen', years:[1961,2023], dec:1,
    answer(o,y,v){ const p=v(PAK,y), w=v('World',y), n=o==='KN'?'potash':'phosphate'; if(p==null) return `No Pakistan ${n} data for ${y}.`;
      return `In ${y}, Pakistan applied <b>${fmt(p,1)} kg of ${n}</b> for every 100 kg of nitrogen. The world figure was ${fmt(w,1)} kg.`; },
-   read:'Each line shows how many kg of potash (or phosphate) a country applies for every 100 kg of nitrogen. A line near zero means that almost no potash (or phosphate) is applied with the nitrogen.',
-   source:'Calculated from FAO nutrient use per area of cropland (potash or phosphate divided by nitrogen, times 100; the result is the same per acre or per hectare), via Our World in Data (CC BY 4.0).'},
- { id:'return', tab:'Grain per kg of fertiliser', src:'FAO', topic:'Cereal grain per kg of fertiliser nutrient', kind:'country',
+   read:'Each line shows how many kg of potash or phosphate a country applies for every 100 kg of nitrogen. A line near zero means that the country applies almost no potash or phosphate with its nitrogen.',
+   source:'Calculated from FAO nutrient use per area of cropland, via Our World in Data (CC BY 4.0). The ratio is potash or phosphate divided by nitrogen, times 100. The ratio is the same per acre or per hectare.'},
+ { id:'return', tab:'Cereal grain per kg of fertiliser nutrient', src:'FAO', topic:'Cereal grain per kg of fertiliser nutrient', kind:'country',
    opts:null, val(){ return (c,y)=>{ const g=get('cereal',c,y), f=get('NPK',c,y); return (g==null||!f)?null:g*KG_PER_MAUND/f; }; },
    unit:'kg of cereal grain per kg of fertiliser nutrient', years:[1961,2023], dec:0, log:true,
-   answer(o,y,v){ const p=v(PAK,y), w=v('World',y); return `In ${y}, by a rough indicator (cereal yield per acre divided by fertiliser nutrient applied per acre of all cropland), Pakistan produced about <b>${fmt(p,0)} kg of cereal grain</b> for each kg of fertiliser nutrient. The world figure was ${fmt(w,0)} kg.`; },
-   read:'This indicator divides cereal yield per acre (in kg) by the fertiliser nutrient applied per acre of all cropland. The result is the same whether it is worked out per acre or per hectare. It is an indicator; it does not come from crop trials. A change in it over time does not measure the effect of fertiliser, because seed, irrigation, varieties and weather also changed over the same years. The yield response to nitrogen or phosphate can be measured only in field trials. Countries that apply very little fertiliser have very high values, so the vertical scale is logarithmic: 10 to 100 takes the same space as 100 to 1,000.',
+   answer(o,y,v){ const p=v(PAK,y), w=v('World',y); return `By a rough indicator, Pakistan produced about <b>${fmt(p,0)} kg of cereal grain</b> for each kg of fertiliser nutrient in ${y}. The world figure was ${fmt(w,0)} kg.`; },
+   read:'This indicator divides cereal yield per acre (in kg) by the fertiliser nutrient applied per acre of all cropland. The result is the same whether it is worked out per acre or per hectare. The indicator does not come from crop trials. A change in the indicator over time does not measure the effect of fertiliser, because seed, irrigation, varieties and weather also changed over the same years. The yield response to nitrogen or phosphate can be measured only in field trials. Countries that apply very little fertiliser have very high values on this indicator. The vertical scale is therefore logarithmic. On this scale, 10 to 100 takes the same space as 100 to 1,000.',
    source:'Calculated from FAO cereal yield and FAO fertiliser nutrient use per area of cropland, via Our World in Data (CC BY 4.0).'},
  { id:'yields', tab:'Crop yields', src:'FAO', topic:'Crop yields', kind:'country',
    opts:[['wheat','Wheat'],['rice','Rice'],['maize','Maize'],['cane','Sugarcane']], opt:'wheat',
@@ -83,10 +83,10 @@ let LENSES = [
  { id:'nitrogen', tab:'Nitrogen and yield', src:'FAO', topic:'Nitrogen and yield', kind:'country',
    opts:[['nue','Nitrogen in the harvest'],['pfp','Grain per kg of nitrogen'],['yoy','Year to year, Pakistan']], opt:'nue',
    // D-325, 4 Nov 2026: nue moved from Lassaletta et al. 2014 (1961-2014, no world figure) to FAOSTAT Cropland Nutrient Balance, December 2025 release (1961-2023), Tahir's ruling; independently audited. Revert: lenses.json nue and these 3 strings from the D-324 commit (84a19fe).
-   sub:{ nue:{kind:'country', years:[1961,2023], unit:'nitrogen use efficiency, %', dec:1,
-              read:'Nitrogen added includes nitrogen from all sources: fertiliser, manure, fixation by legumes, rain and dust, and seed. The nitrogen not taken out in the harvested crop stays in the soil, is removed in straw and stalks, or is lost to the air or lost to water. The figures are FAO estimates. China means mainland China. Nitrogen “taken up” by the crop means nitrogen absorbed by the plant; that is a different measure from nitrogen use efficiency, which counts only the nitrogen taken out in the harvested crop.',
+   sub:{ nue:{kind:'country', years:[1961,2023], unit:'NUE, %', dec:1,
+              read:'The figures in this chart are FAO estimates. The figure for China covers mainland China only. In these estimates, the nitrogen added to cropland includes nitrogen from all sources: fertiliser, manure, fixation by legumes, rain and dust, and seed. NUE counts only the part of this nitrogen that is taken out in the harvested crop. The nitrogen not taken out in the harvested crop is removed in straw and stalks, is lost to the air or lost to water, or is not accounted for in FAO’s estimate. Because NUE counts only the nitrogen in the harvested crop, NUE is a different measure from the nitrogen “taken up” by the crop. Nitrogen taken up by the crop means nitrogen absorbed by the plant.',
               // L1 editor 7 Nov 2026 (whyshift m7): 'it' given its noun. Was 'Because it is a percentage, it is the same ...'
-              source:'FAOSTAT, Cropland Nutrient Balance, December 2025 release (FAO estimates). Because nitrogen use efficiency is a percentage, it is the same whether worked out per acre or per hectare.'},
+              source:'FAOSTAT, Cropland Nutrient Balance, December 2025 release (FAO estimates). Because NUE is a percentage, NUE is the same whether it is worked out per acre or per hectare.'},
          pfp:{kind:'country', years:[1961,2023], unit:'kg of cereal grain per kg of nitrogen', dec:0, log:true,
               read:'This is cereal yield per acre (in kg) divided by nitrogen applied per acre of all cropland. It is an index and does not come from crop trials: the nitrogen figure is spread over all cropland (including cotton, sugarcane, fodder and fallow), while the yield is per acre of cereal harvested. The chart shows an association only; it does not measure the effect of fertiliser.',
               source:'Calculated from FAO cereal yield and FAO nitrogen use per area of cropland, via Our World in Data (CC BY 4.0). The ratio is the same per acre or per hectare.'},
@@ -99,7 +99,7 @@ let LENSES = [
        return `From 1962 to 1990, in years when nitrogen use rose more, cereal yield also tended to rise more (<b>r = ${fmt(a.r,2)}</b>, p = ${fmtP(a.p)}). From 1991 to 2023 the link was weak (<b>r = ${fmt(b.r,2)}</b>, p = ${fmtP(b.p)})${b.p>=0.05?' and not statistically clear':''}.`; }
      // Tahir 7 Nov 2026 (RP-PO-7): India is a warning, not a benchmark; the answers compare with the world. Was: i=v('India',y), "India's figure was ...%" and "The figure for India was ... times."
      const p=v(PAK,y), w=v('World',y);
-     if(o==='nue'){ if(p==null) return `No Pakistan data for ${y}.`; return `In ${y}, Pakistan's efficiency was <b>${fmt(p,1)}%</b>. The world figure was ${fmt(w,1)}%. In Pakistan, about ${fmt(100-p,0)} of every 100 kg of nitrogen added were not taken out in the harvested crop.`; }
+     if(o==='nue'){ if(p==null) return `No Pakistan data for ${y}.`; return `In ${y}, Pakistan's NUE was <b>${fmt(p,1)}%</b>. World NUE was ${fmt(w,1)}%. In Pakistan, about ${fmt(100-p,0)} of every 100 kg of nitrogen added were not taken out in the harvested crop.`; }
      return `In ${y}, Pakistan's cereal yield per acre, in kg, was about <b>${fmt(p,0)} times</b> the nitrogen applied per acre of cropland. The world figure was ${fmt(w,0)} times.`; } },
  { id:'phosphate', tab:'Phosphate and yield', src:'FAO', topic:'Phosphate use and cereal yield', kind:'country',
    opts:[['np','Nitrogen per 1 kg phosphate'],['stand','Where Pakistan stands'],['pscat','Phosphate and cereal yield']], opt:'np',
@@ -128,12 +128,12 @@ let LENSES = [
      // L1 editor 7 Nov 2026 (m15, m16): curly apostrophe; tonnes written in full, as on the other pages (940,000 tonnes, not 940 thousand).
      // Same rounding as before: whole thousands for removal, manure and water and the shortfall; 1 decimal of a thousand (nearest 100 t) for fertiliser.
      const kt0=v=>fmt(Math.round(v)*1000,0), kt1=v=>fmt(Math.round(v*10)*100,0);
-     let s=`In ${y-1}-${String(y).slice(2)}, Punjab’s 5 main crops removed an estimated <b>${kt0(rem)} tonnes of potash (as K₂O)</b> from the soil, and fertiliser put back about ${kt1(fert)} tonnes${y>=2017?' (NFDC offtake records)':''}.`;
-     s+= def>0 ? ` Manure and irrigation water put back an estimated ${kt0(man+wat)} tonnes. In total, crops removed an estimated <b>${kt0(def)} tonnes</b> more potash than was put back from all sources.` : ` Manure and irrigation water put back an estimated ${kt0(man+wat)} tonnes, which made up the rest of what the crops removed.`;
+     let s=`In ${y-1}-${String(y).slice(2)}, Punjab’s 5 main crops removed an estimated <b>${kt0(rem)} tonnes of potash (as K₂O)</b> from the soil. Fertiliser put back about ${kt1(fert)} tonnes in the same year${y>=2017?' (offtake records of the National Fertilizer Development Centre)':''}.`;
+     s+= def>0 ? ` Manure and irrigation water put back an estimated ${kt0(man+wat)} tonnes. In total, crops removed an estimated <b>${kt0(def)} tonnes</b> more potash than was put back from all sources.` : ` Manure and irrigation water put back an estimated ${kt0(man+wat)} tonnes. Together, fertiliser, manure and irrigation water put back at least as much potash as the crops removed.`;
      return s; },
-   read:'Red line: potash removed from the field in the harvest of wheat, rice, sugarcane, maize and cotton, including the straw and stalks taken off the field. Green line: potash put back as fertiliser. Grey line: all potash put back, from fertiliser, manure and irrigation water (the estimate for manure and irrigation water is the same in every year). The shaded area between the red and grey lines is the yearly shortfall.',
+   read:'The red line shows the potash removed from the field in the harvest of wheat, rice, sugarcane, maize and cotton, including the straw and stalks taken off the field. The green line shows the potash put back as fertiliser. The grey line shows all the potash put back from fertiliser, manure and irrigation water. The model uses the same estimate for manure and irrigation water in every year. The shaded area between the red line and the grey line shows how much more potash was removed than was put back each year.',
    // L1 editor 7 Nov 2026 (m19): the model is named with the report it belongs to, as on the data page. Was 'Tahir Abbas, Punjab potash balance model (2026), from ...'
-   source:'Tahir Abbas, Punjab potash balance model, Soil Poverty Series No. 1 (2026), from Punjab Development Statistics, Punjab Agriculture Statistics and NFDC fertiliser offtake. Model estimates, in thousand tonnes of K₂O.'},
+   source:'Tahir Abbas, Punjab potash balance model, Soil Poverty Series No. 1 (2026), from Punjab Development Statistics, Punjab Agriculture Statistics and the fertiliser offtake records of the National Fertilizer Development Centre. The values are model estimates, in thousand tonnes of potash (as K₂O).'},
  { id:'outlook', tab:'Punjab soil potassium outlook', src:'Model', topic:'Punjab soil potassium outlook', kind:'outlook', years:[2018,2050],
    answer(o,y){ const r=D.fan.find(d=>d[0]===y); if(!r) return ''; const [,w,,a,,b]=r;
      // Tahir 7 Nov 2026 (CR-18): "VAN band 3 of 5: Average" pattern. Was bn returning the name alone and "(VAN band: Average)".
@@ -405,7 +405,7 @@ function buildTable(L){
   } else if(L.kind==='stand'){ const yr=state.year[L.id];
     html=`<table><thead><tr><th>${yr}</th><th>Pakistan</th><th>Median farming country</th><th>Share of farming countries below Pakistan</th></tr></thead><tbody>`+[['P','Phosphate, kg/acre'],['N','Nitrogen, kg/acre'],['K','Potash, kg/acre'],['cereal','Cereal yield, maunds/acre']].map(([k,t])=>{ const vals=D.big.map(c=>get(k,c,yr)).filter(v=>v!=null); return `<tr><td>${t}</td><td>${fmt(get(k,PAK,yr),1)}</td><td>${fmt(d3.median(vals),1)}</td><td>${pctBelow(k,yr)??'-'}%</td></tr>`; }).join('')+'</tbody></table>';
   } else if(L.kind==='punjab'){
-    html='<table><thead><tr><th>Year</th><th>Taken out by crops</th><th>Fertiliser</th><th>Manure + water</th><th>Shortfall</th></tr></thead><tbody>'+D.punjab.filter(d=>d[0]%5===0||d[0]===2024).map(d=>`<tr><td>${d[0]-1}-${String(d[0]).slice(2)}</td><td>${fmt(d[1],0)}</td><td>${fmt(d[2],1)}</td><td>${fmt(d[3]+d[4],0)}</td><td>${fmt(d[5],0)}</td></tr>`).join('')+'</tbody></table>';
+    html='<table><thead><tr><th>Year</th><th>Removed by crops</th><th>Fertiliser</th><th>Manure and irrigation water</th><th>Shortfall</th></tr></thead><tbody>'+D.punjab.filter(d=>d[0]%5===0||d[0]===2024).map(d=>`<tr><td>${d[0]-1}-${String(d[0]).slice(2)}</td><td>${fmt(d[1],0)}</td><td>${fmt(d[2],1)}</td><td>${fmt(d[3]+d[4],0)}</td><td>${fmt(d[5],0)}</td></tr>`).join('')+'</tbody></table>';
   } else {
     html='<table><thead><tr><th>Year</th><th>Worst case</th><th>Average case</th><th>Best case</th></tr></thead><tbody>'+D.fan.filter(d=>d[0]%2===0||d[0]===2027||d[0]===2036||d[0]===2044).map(d=>`<tr><td>${d[0]}</td><td>${fmt(d[1],0)}</td><td>${fmt(d[3],0)}</td><td>${fmt(d[5],0)}</td></tr>`).join('')+'</tbody></table>';
   }

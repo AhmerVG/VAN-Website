@@ -132,7 +132,7 @@ export const TOOLS: Tool[] = [
     name: 'Farm discipline simulator',
     one: 'Score how well you follow 10 farm practices for wheat or potato, and see which gaps in your practice lower your yield.',
     state: 'pilot', href: '#/simulator/wheat', topics: ['Timing'],
-    what: 'Score 10 practices from your season, from sowing and seed to water, weeds and pests, as Bad, OK or Best. The simulator gives an estimated yield and shows the practices that cost you most. The weights are VAN’s starting model, not trial results. Wheat and potato have working simulators, each with its own 10 practices. Simulators for the other 26 crops are planned.',   // Tahir 7 Nov 2026 (CO-11)
+    what: 'Score 10 practices from your season, from sowing and seed to water, weeds and pests, as Bad, OK or Best. The simulator gives an estimated yield and shows the practices that cost you most. The weights are VAN’s starting model, not trial results. Wheat and potato have working simulators, each with its own 10 practices. Simulators for the other 26 crop plans are planned.',   // Tahir 7 Nov 2026 (CO-11)
   },
   {
     name: 'Where your crop is now',

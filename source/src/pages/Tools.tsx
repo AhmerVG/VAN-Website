@@ -84,7 +84,7 @@ export default function Tools() {
       <section className="sec"><div className="wrap">
         <div className="panel p-5 lg:p-6">
           <span className="eyebrow navy">What the tools are based on</span>
-          <p className="mt-2">The tools are based on 5 sources: VAN’s <b>{CROPS.length} published crop plans</b>; the declared analyses of VAN’s <b>{PRODUCTS.filter(p => !p.family).length} brands</b>; the Punjab soil survey of <b>{SOIL_HEADLINE.samples} samples</b>, tested in about 2016 to 2018; FAO Irrigation and Drainage Paper 56, for crop water needs; and figures from the International Plant Nutrition Institute (IPNI), for the nutrients taken out in the harvested crop. Wherever a tool shows an estimate, the figure is labelled as an estimate.</p>
+          <p className="mt-2">The tools are based on 5 sources: VAN’s <b>{CROPS.length} published crop plans</b>; the declared analyses of VAN’s <b>{PRODUCTS.filter(p => !p.family).length} brands</b>; the <b>{SOIL_HEADLINE.samples} samples</b> of the Punjab soil testing programme, tested in about 2016 to 2018; FAO Irrigation and Drainage Paper 56, for crop water needs; and figures from the International Plant Nutrition Institute (IPNI), for the nutrients taken out in the harvested crop. Wherever a tool shows an estimate, the figure is labelled as an estimate.</p>
           <div className="mt-5">
             <span className="eyebrow navy">Pages, not tools</span>
             <p className="small muted mt-1">These pages do not need any figures from you.</p>

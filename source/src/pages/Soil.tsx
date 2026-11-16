@@ -127,8 +127,8 @@ export default function Soil({ rel, district, from = null, tehsil = null }: { re
           <h3 className="mt-1 max-w-[30ch]">Nutrient applied per acre of arable land in Pakistan rose by 68% from fiscal year 1999-2000 to 2023-24, while wheat yield rose by 31%</h3>
           <p className="mt-3">
             Across Pakistan, nutrient applied per acre of arable land rose by 68% from 1999-2000 to 2023-24, while wheat
-            yield rose by 31% over the same period. <b>Pakistan’s nitrogen use efficiency was 29% in calendar year 2023: of every
-            100 kg of nitrogen added to cropland, about 29 kg were taken out in the harvested crop.</b> In VAN’s view, Punjab’s
+            yield rose by 31% over the same period. <b>Pakistan’s nitrogen use efficiency was 29.1% in calendar year 2023.
+            Pakistan’s harvested crops contained about 29 kg of nitrogen for every 100 kg of nitrogen added to cropland in 2023.</b> In VAN’s view, Punjab’s
             alkaline, calcareous soil is 1 of the reasons why more fertiliser has not brought a matching rise in yield. In the
             survey of about 2016 to 2018, <b>96.1% of samples were above pH 7.5</b>, and the mean calcium carbonate content was 6.53%.
           </p>

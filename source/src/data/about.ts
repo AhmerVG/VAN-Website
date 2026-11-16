@@ -46,7 +46,7 @@ export const MADE_STEPS: { n: string; t: string; d: string; href: string; link: 
 
 /** Licences, accreditation and patent: the 3 things a buying company checks. */
 export const HOLDS: { v: string; t: string; d: string }[] = [
-  { v: '34', t: 'PSQCA licences', d: 'Of our 34 licences, 22 cover 20 of our 23 brands. These 22 licences are issued against 8 different Pakistan Standards. Our other 3 brands either need no licence or have a conformance report instead. The remaining 12 licences cover products that are ready for partner companies to launch.' },   // D-257
+  { v: '34', t: 'PSQCA licences', d: 'Of our 34 licences, 22 cover 20 of our 23 brands. These 22 licences are issued against 8 different Pakistan Standards. Our other 3 brands either need no licence or have a conformance report instead. The other 12 licences cover registered formulations in our formulation library. Any partner company can take 1 of these formulations and sell it under its own brand.' },   // D-257
   { v: 'LAB 336', t: 'PNAC accreditation', d: 'Our quality control laboratory has been accredited to ISO/IEC 17025:2017 since 2024. Anyone can open the lab report for a batch on our website by typing its batch number, or ask us for a copy.' },
   { v: '144684', t: 'Pakistan Patent', d: 'Granted in 2026 for Vital Urea, our sulfur coated urea.' },   // D-175: "granted" (Tahir 26 Sep)
 ]

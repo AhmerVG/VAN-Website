@@ -160,7 +160,7 @@ function VitalPotashTool() {
         ) : (
           <p className="cap mt-2">There is no published removal figure for {name.toLowerCase()}, so only the potash in your bags is shown. Your bags also carry {fmt(n)} kg of nitrogen.</p>
         )}
-        <p className="cap mt-2">In 2023, Pakistan applied 83 kg of nitrogen for every 1 kg of potash (K₂O) (FAOSTAT). In 2024-25, potash was 1% of the fertiliser nutrients applied (NFDC Fertilizer Review 2024-25). Both figures are printed on VAN’s Crop Force bag.</p>{/* Tahir 10 Nov 2026 (PR-N10): both figures are on the bag; was "The 1% share is printed on VAN’s Crop Force bag." */}{/* L1 editor 10 Nov 2026 (m4): denominator named as on the 17 nutrients page; was 'about 1% of all nutrients applied'. '1%' against 'about 1%' is left for Tahir. */}{/* Lead 10 Nov 2026 (L3-5), from NFDC 2024-25 (44.5 of 4,350.5 thousand tonnes = 1.02%) and the site ruling of 7 Nov: '1%' on every page; was 'about 1%'. */}
+        <p className="cap mt-2">In 2023, Pakistan applied 83 kg of nitrogen for every 1 kg of potash (K₂O) (FAOSTAT). In the fiscal year 2024-25, potash (K₂O) was 1% of the fertiliser nutrients applied in Pakistan (NFDC Fertilizer Review 2024-25). Both figures are printed on VAN’s Crop Force bag.</p>{/* Tahir 10 Nov 2026 (PR-N10): both figures are on the bag; was "The 1% share is printed on VAN’s Crop Force bag." */}{/* L1 editor 10 Nov 2026 (m4): denominator named as on the 17 nutrients page; was 'about 1% of all nutrients applied'. '1%' against 'about 1%' is left for Tahir. */}{/* Lead 10 Nov 2026 (L3-5), from NFDC 2024-25 (44.5 of 4,350.5 thousand tonnes = 1.02%) and the site ruling of 7 Nov: '1%' on every page; was 'about 1%'. */}
       </div>
     </div>
   )

@@ -35,8 +35,8 @@ export function CropPicker({ big = true, showSowing = false }: { big?: boolean; 
         <input id="crop-q" className={`input ${big ? 'input-lg' : ''}`} placeholder="Type your crop. Wheat, cotton, mango…" value={q} onChange={e => setQ(e.target.value)} autoComplete="off" />
         <button type="submit" className="btn btn-gold shrink-0" disabled={!first} aria-label="Open the first matching crop">Go</button>
       </form>
-      {guessed && <p className="mt-4 muted">No crop by exactly that name. Did you mean {list.length > 1 ? 'one of these' : 'this one'}? Tap it to open its plan.</p>}
-      {q && !list.length && <p className="mt-4 muted">No crop by that name among the {CROPS.length} crop plans. Try the group names below, or ask on WhatsApp.</p>}
+      {guessed && <p className="mt-4 muted">No crop has exactly that name. Did you mean {list.length > 1 ? 'one of these' : 'this one'}? Tap it to open its plan.</p>}
+      {q && !list.length && <p className="mt-4 muted">None of the {CROPS.length} crop plans is for a crop with that name. Try the group names below, or ask on WhatsApp.</p>}
       <div className="mt-5 grid gap-5">
         {live.length > 0 && (
           <div>

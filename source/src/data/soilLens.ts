@@ -122,7 +122,7 @@ export const SOIL_BELIEF = {
     ['Humic', 'Potassium humate, for ground under 1% organic matter', '#/products/humi-grow'],
     ['Zinc', 'Zinc 21%, granular, for soil that locks it up', '#/products/v-transform'],
     ['Micronutrients', 'Zn 5 · Fe 2 · Mn 2 · Cu 1, in 1 foliar pass', '#/products/vl-micro-mix'],
-    ['Iron', '11:44:0 carrying iron', '#/products/v-phosphate'],
+    ['Iron', 'N 11% · P₂O₅ 44% · K₂O 0% (11:44:0), carrying iron', '#/products/v-phosphate'],
     ['Right rate, time, place', 'How it is delivered is part of the product', '#/knowledge/application-systems'],
     ['Crop-specific', 'A plan per crop, stage by stage, per acre', '#/crops'],
     ['Soil-specific', 'Your district, and the ground inside it', '#soil-matrix'],
@@ -147,9 +147,9 @@ export const SOIL_COPY = {
   // L2 fact check 9 Nov 2026 (W5): VAN does not manufacture SOP (PR-1). Was 'What VAN makes for each soil condition'.
   builtH2: 'What VAN supplies for each soil condition',
   builtLead: 'Each soil condition below is a survey finding. What the condition does to the nutrient is VAN’s explanation from soil science, not a finding of the survey.',
-  homeActKicker: 'The soil underneath the argument',
+  homeActKicker: 'Punjab soil',
   homeActH2: 'Alkalinity is not a regional problem. It is the baseline.',
   // L1 editor 7 Nov 2026 (whyshift m8, m9, m6): weighting named as the tile caption names it, past tense for the survey, "below neutral" explained.
   // Was: 'Across 770,160 samples the province-weighted mean is pH 8.22. 7 samples in 10 sit above pH 8.0; the share below neutral is 979 samples out of 770,160.'
-  homeActLead: 'Across 770,160 samples, the mean pH, weighted by the number of samples in each district, was 8.22. 7 samples in 10 were above pH 8.0, and only 979 samples were below neutral (pH 7).',
+  homeActLead: 'A soil with a pH above 7 is alkaline. The mean pH of the samples, weighted by the number of samples in each district, was 8.22. 7 samples in 10 were above pH 8.0. Only 979 samples were below pH 7. A pH of 7 is the neutral point.',
 }

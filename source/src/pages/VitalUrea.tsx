@@ -209,7 +209,7 @@ export default function VitalUrea() {
 
       <section className="wrap sec">
         {/* D-325, 4 Nov 2026: FAO 2023. Was "Only about 25% of applied nitrogen ends up in Pakistan’s crops." and bars 25/72 (Lassaletta et al. 2014). */}
-        <SectionHead eyebrow="The problem" title="Pakistan’s nitrogen use efficiency was about 29% in 2023" tone="soil" />
+        <SectionHead eyebrow="The problem" title="Pakistan’s nitrogen use efficiency was 29.1% in 2023" tone="soil" />
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 items-start">
           <div className="grid gap-4">
             <p>Nitrogen use efficiency is the share of all nitrogen added to cropland that is taken out in the harvested crop. In 2023, about 29 kg of every 100 kg of nitrogen added to Pakistan’s cropland was taken out in the harvested crop, according to FAO estimates.</p>
@@ -218,11 +218,11 @@ export default function VitalUrea() {
             <p className="muted">The national case for moving away from plain urea, with its sources, is in <a href="#/knowledge">the national picture section of VAN’s Knowledge pages</a>.</p>
           </div>
           <div ref={ref} className="panel p-5">
-            <div className="font-bold">Efficiency in 2023: about 29% in Pakistan, against about 71% in the United States</div>
+            <div className="font-bold">Efficiency in 2023: 29.1% in Pakistan, against about 71% in the United States</div>
             <p className="cap">Nitrogen taken out in the harvested crop as a share of all nitrogen added to cropland, 2023</p>
-            {[['Pakistan', 29, 'var(--gold)'], ['United States', 71, 'var(--green)']].map(([n, v, c]) => (
+            {[['Pakistan', 29.1, 'var(--gold)'], ['United States', 71, 'var(--green)']].map(([n, v, c]) => (
               <div key={n as string} className="mt-4">
-                <div className="flex justify-between small"><span className="font-semibold">{n}</span><span className="num">about {v}%</span></div>
+                <div className="flex justify-between small"><span className="font-semibold">{n}</span><span className="num">{n === 'Pakistan' ? '' : 'about '}{v}%</span></div>
                 <div className="h-6 rounded-md mt-1" style={{ background: 'var(--sand-2)' }}><div className="h-6 rounded-md" style={{ width: on ? `${v}%` : 0, background: c as string, transition: rm ? 'none' : 'width 1.1s cubic-bezier(.2,.8,.2,1)' }} /></div>
               </div>
             ))}
@@ -406,7 +406,7 @@ export default function VitalUrea() {
           <div className="panel p-5">
             <h4>When sulfur is short, the plant turns less of the nitrogen it takes up into protein</h4>
             <p className="cap mt-1">Nitrogen and sulfur are built into protein together. When the plant cannot take up enough sulfur, the nitrogen it has absorbed builds up without becoming protein.</p>
-            <p className="small mt-3">Cysteine and methionine, 2 of the amino acids that make up protein, contain sulfur. When sulfur runs short, protein formation slows and the nitrogen the plant has taken up accumulates unused, as free amino acids such as asparagine, arginine and glutamine (Yu et al., 2018). On sulfur-deficient soil, 1 study found that adding sulfur raised wheat’s nitrogen use efficiency, as defined in that study, by more than 20% (Yu et al., 2021). This is a different measure from the national efficiency figure of 29%. On a poor-fertility site in Argentina, wheat’s nitrogen recovery (the share of applied nitrogen taken up by the crop) was 0.15 without sulfur and 0.32 with sulfur (Arata et al., 2017).</p>
+            <p className="small mt-3">Cysteine and methionine, 2 of the amino acids that make up protein, contain sulfur. When sulfur runs short, protein formation slows and the nitrogen the plant has taken up accumulates unused, as free amino acids such as asparagine, arginine and glutamine (Yu et al., 2018). On sulfur-deficient soil, 1 study found that adding sulfur raised wheat’s nitrogen use efficiency, as defined in that study, by more than 20% (Yu et al., 2021). This is a different measure from the national efficiency figure of 29.1%. On a poor-fertility site in Argentina, wheat’s nitrogen recovery (the share of applied nitrogen taken up by the crop) was 0.15 without sulfur and 0.32 with sulfur (Arata et al., 2017).</p>
             {/* D-195, Tahir 27 Sep 2026: the "12 to 15 kg N per kg S" ratio came off the page (INTERNAL in the
                 brand master, a derivation). Revert: the v60 zip. */}
             {/* Tahir 7 Nov 2026 (PR-18): stated as the expected effect, with a bridge to the 1 laboratory study; the limit sentence below is deleted. */}

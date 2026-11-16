@@ -87,7 +87,7 @@ function useSlides(): Slide[] {
       kicker: 'If you want the evidence',
       title: `${SOIL_HEADLINE.samples} soil samples. 17 years of trials on VAN’s research farms.`,
       body: <>Every figure carries its source.</>,
-      cta: [['Soil Atlas', '#/soil'], ['Why Pakistan must shift', '#/knowledge/why-pakistan-must-shift']],
+      cta: [['Soil Atlas', '#/soil'], ['Why Pakistan must shift from more nitrogen to balanced nutrition', '#/knowledge/why-pakistan-must-shift']],
     },
   ]
 }

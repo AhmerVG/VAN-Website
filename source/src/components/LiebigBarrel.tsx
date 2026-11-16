@@ -144,16 +144,16 @@ export function LiebigBarrel() {
               const i = staves.findIndex(s => s.n === weakest.n); const x = left + i * sw + sw / 2
               return <g fill="#9CC4D8"><circle cx={x} cy={waterY + 14} r="3.5" /><circle cx={x + 8} cy={waterY + 30} r="2.5" /><circle cx={x - 6} cy={waterY + 44} r="2" /></g>
             })()}
-            <text x={W / 2} y="18" textAnchor="middle" fontSize="12" fill="var(--muted)" fontFamily="Public Sans, sans-serif">{anyInput ? `Water level at the shortest stave: ${Math.round(level * 100)}% of the crop plan` : `Each stave is 1 nutrient. Full height is the amount in VAN’s ${cropName.toLowerCase()} crop plan per acre`}</text>
+            <text x={W / 2} y="18" textAnchor="middle" fontSize="12" fill="var(--muted)" fontFamily="Public Sans, sans-serif">{anyInput ? `The water reaches the top of the shortest stave, at ${Math.round(level * 100)}% of the crop plan.` : `Each stave is 1 nutrient. A full stave shows the amount in VAN’s ${cropName.toLowerCase()} crop plan per acre.`}</text>
           </svg>
 
           <div className="lb-read">
-            {!anyInput && <p className="small muted">Enter what you applied and the staves fill. The dotted outline of each stave shows the crop plan’s amount, and the label under it gives that amount in kilograms an acre.</p>}
+            {!anyInput && <p className="small muted">Enter what you applied. Each stave then fills to show the amount you applied. The dotted outline of each stave shows the amount of that nutrient in the crop plan. The label under each stave gives that amount in kilograms per acre.</p>}
             {anyInput && weakest && (
               <>
                 <p className="lb-verdict">
-                  Your shortest stave is <b>{NUTRIENT_LABEL[weakest.n]}</b>: {fmt(weakest.given)} of {fmt(weakest.need)} kg an acre, {Math.round(weakest.ratio * 100)}% of the crop plan.
-                  {level < 1 ? ' Everything else you applied is held back by it.' : ' Every stave is full. The crop plan is met.'}
+                  Your shortest stave is <b>{NUTRIENT_LABEL[weakest.n]}</b>. You applied {fmt(weakest.given)} kg of this nutrient per acre against {fmt(weakest.need)} kg per acre in the crop plan. That amount is {Math.round(weakest.ratio * 100)}% of the crop plan.
+                  {level < 1 ? ' The other nutrients you applied cannot raise the water level above this stave.' : ' Every stave is full. The crop plan is met.'}
                 </p>
                 {/* Tahir 7 Nov 2026 (CR-1): "1/4 is an incorrect assertion". The barrel no longer turns the
                     stave level into maunds (it took 1/4 of the 60 or 300 maund yield as "nutrition's share"
@@ -167,10 +167,10 @@ export function LiebigBarrel() {
                     leverScorecard and the 2 branches from git history. */}
                 {/* L1 7 Nov 2026 (crops-a 7, crops-b M1, shared CR-1 line): link text "VAN’s farm discipline simulator", was "VAN simulator". */}
                 <p className="small mt-2">
-                  Yield depends on doing every task on time: sowing date, seed and plant population, fertiliser at the right stage, irrigation on schedule, and control of weeds, pests and disease. Crop nutrition is 1 of these tasks. A task missed at its time can cost yield that extra work later may not recover. VAN’s <a href="#/simulator">farm discipline simulator</a> shows how each task, and its timing, changes the yield.{level < 0.15 ? ' A stave at 0 brings the whole barrel to 0. A real field never falls that low, because the soil itself supplies some of every nutrient and this barrel does not count the soil. Treat the result as a direction, and use the crop page to adjust for your district.' : ''}
+                  Yield depends on doing every task on time: sowing date, seed and plant population, fertiliser at the right stage, irrigation on schedule, and control of weeds, pests and disease. Crop nutrition is 1 of these tasks. A task missed at its time can cost yield that extra work later may not recover. VAN’s <a href="#/simulator">farm discipline simulator</a> shows how each task, and its timing, changes the yield.{level < 0.15 ? ' When 1 stave is at 0, the water level of the whole barrel is 0. In a real field, the level never falls to 0, because the soil itself supplies some of every nutrient. This barrel does not count the nutrients that the soil supplies. Treat the result as a guide to which nutrient is shortest. Use the crop page to adjust for your district.' : ''}
                 </p>
-                {surplus.length > 0 && <p className="cap mt-2">Above the crop plan: {surplus.map(s => `${NUTRIENT_LABEL[s.n]} ${fmt(s.given)} of ${fmt(s.need)} kg`).join(', ')}. The amount above the crop plan is not counted, because a taller stave does not raise the water level.</p>}
-                <p className="cap mt-2">Figures are kilograms of nutrient per acre, worked out from the declared analysis of each bag. Litres are counted as kilograms. The need is VAN’s published {cropName.toLowerCase()} crop plan for the whole season. The barrel does not count the nutrients your own soil supplies; the <a href={`#/crops/${crop}`}>crop page</a> adjusts for your district.</p>
+                {surplus.length > 0 && <p className="cap mt-2">These nutrients are above the crop plan: {surplus.map(s => `${NUTRIENT_LABEL[s.n]} ${fmt(s.given)} kg against ${fmt(s.need)} kg`).join(', ')}. The barrel does not count the amount above the crop plan, because a taller stave does not raise the water level.</p>}
+                <p className="cap mt-2">All figures are kilograms of nutrient per acre. They are worked out from the declared analysis of each bag. Litres are counted as kilograms. The amount needed for each nutrient is the amount in VAN’s published {cropName.toLowerCase()} crop plan for the whole season. The barrel does not count the nutrients that your own soil supplies. The <a href={`#/crops/${crop}`}>crop page</a> adjusts for your district.</p>
               </>
             )}
           </div>

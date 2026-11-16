@@ -265,9 +265,9 @@ export function Footer() {
   const brands = PRODUCTS.filter(p => !p.family).length
   const crops = CROPS.length
   const cols: [string, [string, string][]][] = [
-    ['Products', [[`All ${brands} brands`, '#/products'], ['Compare them', '#/products#table'], ['Vital Urea', '#/products/vital-urea'], ['Where to buy', '#/where-to-buy'], ['Verify a bag', '#/verify']]],
+    ['Products', [[`All ${brands} registered brands`, '#/products'], ['Compare them', '#/products#table'], ['Vital Urea', '#/products/vital-urea'], ['Where to buy', '#/where-to-buy'], ['Verify a bag', '#/verify']]],
     ['Crops', [[`${crops} crop plans`, '#/crops'], ['Wheat', '#/crops/wheat'], ['How you apply it', '#/crops/wheat#methods'], ['Soil Atlas', '#/soil']]],
-    ['Knowledge', [['Why Pakistan must shift', '#/knowledge/why-pakistan-must-shift'], ['Product decks', '#/knowledge#decks'], ['Circular economy', '#/circular-economy'], ['Vitalytics tools', '#/tools']]],
+    ['Knowledge', [['Why Pakistan must shift from more nitrogen to balanced nutrition', '#/knowledge/why-pakistan-must-shift'], ['Product decks', '#/knowledge#decks'], ['Circular economy', '#/circular-economy'], ['Vitalytics tools', '#/tools']]],
     ['Company', [[PARTNER_NAV, '#/partner'], ['VAN Lab', '#/lab'], ['About', '#/about'], ['Company profile', '#/company-profile']]],   // D-147
   ]
   return (

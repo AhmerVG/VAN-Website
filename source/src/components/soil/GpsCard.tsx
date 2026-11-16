@@ -49,7 +49,7 @@ import {
 type Screen = 'ask' | 'locating' | 'confirm' | 'map' | 'mapfine' | 'search' | 'paste' | 'card' | 'thin'
 /** Said when a data file could not be downloaded; the button beside it tries the same step again (finding 2). */
 const NET_MSG = 'The soil card could not be downloaded. Check your internet connection and try again.'
-const OUTSIDE_MSG = 'Your location is outside Punjab, so the Punjab survey has no card for it. If your land is in Punjab, find it another way above.'
+const OUTSIDE_MSG = 'Your location is outside Punjab, so the Punjab soil testing programme has no card for it. If your land is in Punjab, find it another way above.'
 type Pt = { lat: number; lon: number }
 const SAVE_KEY = 'vanGpsCard'
 // Review (20 Oct 2026): the card saved in the page's history entry is brought back once, when the page itself is reached by Back.
@@ -531,14 +531,14 @@ export function GpsCard({ onActive, onDistrictTehsil, scope, autoLocate = false,
       // G11: the distance is to Punjab's line, so it is said of Punjab (was "The nearest Punjab survey area is N km away: ...").
       // G13 (Tahir's own words, 20 Oct 2026): was "My land is outside Punjab."
       outside
-        ? `My land is near the border or outside Punjab. Punjab is ${outsideKm} km away. The nearest Punjab survey area is Union Council ${ucName.label}, tehsil ${ucName.tehsil ?? 'not known'}, district ${districtName(ucName.district)}`
+        ? `My land is near the border or outside Punjab. Punjab is ${outsideKm} km away. The nearest area in the Punjab soil testing programme is Union Council ${ucName.label}, tehsil ${ucName.tehsil ?? 'not known'}, district ${districtName(ucName.district)}`
         : `Union Council: ${ucName.label}, tehsil ${ucName.tehsil ?? 'not known'}, district ${districtName(ucName.district)}`,
       // G1 (Tahir, 20 Oct 2026): the card point, about 1 km from his land, never his exact location.
       `Card point: ${card.lat.toFixed(3)} N, ${card.lon.toFixed(3)} E (the card point nearest my land, about 1 km)`,
       `Survey readings within ${fmtKm(radius.r)} km: ${thousands(radius.n)} samples`,
       ...VAL_KEYS.map(row),
       `${READING_UR.s.en}: not tested in this survey`,
-      'These are area readings of the Punjab government soil survey, about 2016 to 2018, not a test of my field. Please advise.',
+      'These are area readings of the Punjab government soil testing programme, about 2016 to 2018, not a test of my field. Please advise.',
     ].join('\n')
   })()
   const friendText = `${GPS_UR.heading}: https://www.van.com.pk/soil.html?from=gps-wa`
@@ -670,8 +670,8 @@ export function GpsCard({ onActive, onDistrictTehsil, scope, autoLocate = false,
                   away.", which would put the survey area itself at N km: not true where its sample lies outside the line
                   (1,408 card points) and not known anywhere (a survey area is known only by its samples). */}
               {/* G13 (Tahir's own words, 20 Oct 2026): was "Your land is outside Punjab." */}
-              <p className="tk-en gps-outside" data-gps="outside">Your land is near the border or outside Punjab. Punjab is {outsideKm} km away. This is the nearest Punjab survey area.</p>
-              <p className="tk-en">Nearest Punjab survey area: Union Council {ucName.label}, tehsil {ucName.tehsil}, district {districtName(ucName.district)}.</p>
+              <p className="tk-en gps-outside" data-gps="outside">Your land is near the border or outside Punjab. Punjab is {outsideKm} km away. This is the nearest area in the Punjab soil testing programme.</p>
+              <p className="tk-en">Nearest area in the Punjab soil testing programme: Union Council {ucName.label}, tehsil {ucName.tehsil}, district {districtName(ucName.district)}.</p>
             </>
           ) : (
             <>
@@ -734,7 +734,7 @@ export function GpsCard({ onActive, onDistrictTehsil, scope, autoLocate = false,
           )}
           {/* D-302, 22 Oct 2026: "VAN Lab" kept on one line (it broke as "VAN" / "Lab" on a phone); the words are unchanged. */}
           <p className="urdu tk-survey">{(() => { const t = GPS_UR.areaNotField; const i = t.indexOf('VAN Lab'); return i < 0 ? t : <>{t.slice(0, i)}<span style={{ whiteSpace: 'nowrap' }}>VAN Lab</span>{t.slice(i + 7)}</> })()}</p>
-          <p className="tk-en">An area reading from the Punjab government survey, about 2016 to 2018, mapped by VAN. Not a test of your field.</p>
+          <p className="tk-en">An area reading from the Punjab government soil testing programme, about 2016 to 2018, mapped by VAN. Not a test of your field.</p>
           <a className="btn tk-btn tk-wa tk-wa-van" href={wa(vanText)} target="_blank" rel="noopener" data-gps="van"><span className="urdu" dir="rtl">{GPS_UR.sendToVan}</span><span className="tk-btn-en">Send this card to VAN to discuss your soil</span></a>
           {/* D-295, Tahir 22 Oct 2026: the English says what his Urdu says; the privacy line moves under the button. */}
           <p className="tk-en">Your card leaves your device only when you send it.</p>

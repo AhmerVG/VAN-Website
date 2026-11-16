@@ -475,7 +475,7 @@ export function TeesraKhata({ district, tehsil = null, englishFirst, campaign = 
       `Area: a square of about 6,500 acres around ${lat} N, ${lon} E, ${thousands(cell.n)} samples`,
       ...[...ROWS, 'ph', 'ec'].map(k => row(k as KhataKey)),
       `${READING_UR.s.en}: not tested in this survey`,
-      'These are the area readings of the Punjab government soil survey, about 2016 to 2018, not a test of my field. Please advise.',
+      'These are the area readings of the Punjab government soil testing programme, about 2016 to 2018, not a test of my field. Please advise.',
     ].join('\n')
   })()
 
@@ -548,7 +548,7 @@ export function TeesraKhata({ district, tehsil = null, englishFirst, campaign = 
             <p className="tk-en">{dist.name} · {thousands(dist.summary.n)} samples · the district median</p>
             <Khata vals={dVals} />
             <p className="urdu tk-survey">{KHATA_UR.survey}</p>
-            <p className="tk-en">This is the Punjab government’s survey, about 2016 to 2018. It is your area’s account, not your field’s.</p>
+            <p className="tk-en">This is the Punjab government’s soil testing programme, about 2016 to 2018. It is your area’s account, not your field’s.</p>
           </div>
         )}
 

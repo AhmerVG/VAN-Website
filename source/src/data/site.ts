@@ -6,9 +6,9 @@
 export const CONTACT = {
   company: 'Vital Agri Nutrients (Pvt) Ltd',
   short: 'VAN',
-  tagline: 'Crop nutrition engineered, manufactured, registered and tested in Pakistan.',
+  tagline: 'VAN engineers, manufactures, registers and tests its crop nutrition in Pakistan.',
   // D-316, 26 Oct 2026. Tahir: CropLife Pakistan, "full members, 2024"; shown on About, the company profile and the footer.
-  membership: 'Full member of CropLife Pakistan since 2024',
+  membership: 'VAN has been a full member of CropLife Pakistan since 2024.',
   whatsapp: '+92 300 5003041',
   whatsappDigits: '923005003041',
   landline: '+92 42 35762215',
@@ -82,7 +82,7 @@ export const COUNTS = {
   // D-177: farmersDirect ('10,000+') deleted. Farmer numbers are not quoted on VAN pages (D-173) and nothing reads it now.
   // D-141 (owner, 24 Sep night): about 50,000 t is actual output, not capacity. Was '~50,000 t'. Revert: restore it.
   // Tahir 7 Nov 2026 (CO-19): "Plant capacity" chosen; replaces the D-141 "actual output" wording above.
-  capacity: 'about 50,000 t annual capacity',
+  capacity: 'about 50,000 tonnes a year',
   since: 2009,
   // D-142 (owner, 24 Sep night): the company dates from 2010, its incorporation. The research farm (2009) keeps
   // `since` on the timeline and the farm node. Revert: delete this line and use `since` in the 2 kickers.
@@ -103,18 +103,18 @@ export const COUNTS = {
 
 // Live home — hero slides (verbatim)
 export const HOME_SLIDES = [
-  { kicker: 'What this soil does', title: 'Made for Pakistani soil.', lead: 'Most samples in the Punjab soil survey were alkaline: of the 770,160 samples, tested in about 2016 to 2018, 69.1% had a pH above 8. Each crop plan is written for alkaline, calcareous soil.', cta: [['Find your crop’s plan', '#/crops'], ['See the 23 products', '#/products']] },
+  { kicker: 'What this soil does', title: 'Made for Pakistani soil.', lead: 'Most samples in the Punjab soil testing programme were alkaline. Of the 770,160 samples tested in about 2016 to 2018, 69.1% had a pH above 8. Each of our crop plans is written for alkaline, calcareous soil.', cta: [['Find your crop’s plan', '#/crops'], ['See the 23 products', '#/products']] },
   // Tahir 10 Nov 2026 (CR-N9): trial records start in 2009, on the research farms VAN now runs; was 'Since 2010'.
   { kicker: 'Since 2009', title: 'Tested on our own ground.', lead: 'The farm came first; the company was built around it. Every season since, VAN’s products have been tested on that ground before they are sold for yours.', cta: [['About VAN', '#/about'], ['All 28 crop plans', '#/crops']] },
   // Tahir 7 Nov 2026 (CR-1): the '1/4 of the yield' line is withdrawn everywhere. title is a short card on the company profile, so it takes the first 2 sentences; lead (Home card) takes all 4. Was 'In our model estimate for wheat, nutrition accounts for about 1/4 of the yield. ...'
-  { kicker: 'Beta testing · wheat and potato live now', title: 'Yield depends on doing every task on time: sowing date, seed and plant population, fertiliser at the right stage, irrigation on schedule, and control of weeds, pests and disease. Crop nutrition is 1 of these tasks.', lead: 'Yield depends on doing every task on time: sowing date, seed and plant population, fertiliser at the right stage, irrigation on schedule, and control of weeds, pests and disease. Crop nutrition is 1 of these tasks. A task missed at its time can cost yield that extra work later may not recover. VAN’s farm discipline simulator shows how each task, and its timing, changes the yield. The simulator scores practices such as sowing date, irrigation and plant stand, gives an estimated yield and shows which practices cost the most yield.', cta: [['Open the simulator', '#/simulator']] },
+  { kicker: 'Beta testing · wheat and potato live now', title: 'Yield depends on doing every task on time: sowing date, seed and plant population, fertiliser at the right stage, irrigation on schedule, and control of weeds, pests and disease. Crop nutrition is 1 of these tasks.', lead: 'Yield depends on doing every farm practice on time: sowing date, seed and plant population, fertiliser at the right stage, irrigation on schedule, and control of weeds, pests and disease. Crop nutrition is 1 of these practices. A practice missed at its time can cost yield that extra work later may not recover. Our farm discipline simulator shows how each practice, and its timing, changes the yield. The simulator scores practices such as sowing date, irrigation and plant population. It then gives an estimated yield. It also shows which practices cost the most yield.', cta: [['Open the simulator', '#/simulator']] },
   { kicker: 'PNAC · ISO/IEC 17025:2017', title: 'Know what’s in the bag.', lead: 'Every batch VAN makes is tested before it ships, and the lab report for the batch you bought is yours for the asking.', cta: [['Verify a bag', '#/verify'], ['VAN Lab', '#/lab']] },
 ]
 
 // The three losses — live home (verbatim)
 export const LOSSES = [
   // L2 fact check 9 Nov 2026 (fix report N2): "part of the nitrogen", as the nitrogen panel says. Was 'nitrogen from urea left on the soil surface is lost to the air ...'.
-  { n: 1, nutrient: 'Nitrogen', kicker: 'Nitrogen · problem 1 of 3', title: 'Nitrogen lost to the air and to water', text: 'In soil with a pH above 8, part of the nitrogen from urea left on the soil surface is lost to the air as ammonia before the crop can use it. Irrigation water carries nitrate down below the roots, and that nitrogen is lost to water.', product: 'Vital Urea', slug: 'vital-urea', analysis: 'Sulfur coated urea · N 32% min · S 13% min', colour: '#2E7D4F' },
+  { n: 1, nutrient: 'Nitrogen', kicker: 'Nitrogen · problem 1 of 3', title: 'Nitrogen lost to the air and to water', text: 'In soil with a pH above 8, part of the nitrogen from urea left on the soil surface is lost to the air as ammonia before the crop can use it. Irrigation water also carries nitrate down below the roots. The nitrogen in that nitrate is lost to water.', product: 'Vital Urea', slug: 'vital-urea', analysis: 'Sulfur coated urea · N 32% min · S 13% min', colour: '#2E7D4F' },
   { n: 2, nutrient: 'Phosphate', kicker: 'Phosphate · problem 2 of 3', title: 'Phosphate bound by calcium', text: 'In calcareous soil, free calcium binds most of the applied phosphate before the root reaches it.', product: 'Green Phosphate', slug: 'green-phosphate', analysis: 'P₂O₅ 32% · N 6%', colour: '#1B4A6B' },
   // Tahir 7 Nov 2026 (CO-20): potash as K₂O, nitrogen as N.
   { n: 3, nutrient: 'Potash', kicker: 'Potash · problem 3 of 3', title: 'Too little potash applied', text: 'In 2023, Pakistan applied 83 kg of nitrogen (N) for every 1 kg of potash (K₂O). With so little potash applied, crops take most of their potassium from what the soil already holds.', product: 'Vital Potash', slug: 'vital-potash', analysis: 'N 11% · K₂O 44% · boron-coated', colour: '#B97F1C' },
@@ -122,7 +122,7 @@ export const LOSSES = [
 
 export const HOME_COPY = {
   lossesH2: '3 nutrient problems in Pakistan’s fields',
-  lossesLead: 'Nitrogen is lost to the air as ammonia and lost to water as nitrate. Phosphate is bound by calcium in the soil. Too little potash is applied, so crops take potassium from what the soil already holds. We make a product for each of these 3 problems.',
+  lossesLead: 'Nitrogen is lost to the air as ammonia and lost to water as nitrate. Phosphate is bound by calcium in the soil. Too little potash is applied. Crops therefore take potassium from what the soil already holds. We make a product for each of these 3 problems.',
   verifyH2: 'Check the lab report for your bag by its batch number',
   verifyLead: 'We test every batch before it leaves the plant. Type the batch number printed on the bag to open the approved lab report for that batch, with the values our laboratory measured. There is no charge and no sample to post.',
   beyondH2: 'Where the nutrients go after harvest.',
@@ -158,10 +158,10 @@ export const ABOUT = {
   lead: 'Trials have run on that ground every season since. VAN formulates, manufactures, registers and tests what it sells on 1 plant site in Lahore.',
   stats: [
     ['2009', 'Research farm founded, a year before the company. Trials have run on that ground every season since.'],
-    ['17 years', 'Of trial results and the Punjab soil survey of 770,160 samples, tested in about 2016 to 2018, are the data we base every formulation on.'],
+    ['17 years', 'Of trial results and the 770,160 samples of the Punjab soil testing programme, tested in about 2016 to 2018, are the data we base every formulation on.'],
     // D-175: "drop biological" (Tahir 26 Sep); the plant runs granular, coated, liquid, water-soluble and compounded lines.
     // Tahir 7 Nov 2026 (CO-19): plant capacity wording; was "We make about 50,000 tonnes of product a year".
-    ['About 50,000\u00A0t', 'Our annual capacity is about 50,000 tonnes of product, made at 1 plant site on granular, coated, liquid, water-soluble and compounded lines, working in shifts.'],
+    ['About 50,000\u00A0t', 'Our annual capacity is about 50,000 tonnes of product. The product is made at 1 plant site, on granular, coated, liquid, water-soluble and compounded lines. The lines work in shifts.'],
     // Audit, 9 Sep 2026: 22 licences are held across 20 brands, because a brand can hold more than
     // one. D-257, 18 Oct 2026: 34 in all, the 22 plus 12 on products ready for partners.
     // L2 fix 9 Nov 2026 (company W2 / profile W3, CO-8): the regulatory page lists 20 licensed brands; was "The 22 are published product by product."
@@ -183,7 +183,7 @@ export const ABOUT = {
   // Revert: the v58 source zip.
   timeline: [
     { year: '2007', title: 'Humic acid made in Pakistan', text: 'Our founder made humic acid from Pakistani leonardite, a form of oxidised lignite from which humic substances are extracted. As far as we know, no one had made humic acid in Pakistan before. Until then, humic acid was imported.' },
-    { year: '2009', title: 'The first research farm', text: 'We opened our first research farm in 2009, 1 year before the company was incorporated. Trials have run on our research farms every season since then, so by 2026 they cover 17 years.' },
+    { year: '2009', title: 'The first research farm', text: 'We opened our first research farm in 2009, 1 year before the company was incorporated. Trials have run on our research farms every season since then. In 2026, the trials cover 17 years.' },
     { year: '2010', title: 'The company and the land', text: 'Vital Agri Nutrients (Pvt) Ltd was incorporated, and we bought the land for the plant.' },
     { year: '2011', title: 'Building the plant', text: 'Building work on the plant started, and we made our first blended fertiliser.' },
     { year: '2012', title: 'Largest humic acid producer', text: 'By 2012, within 2 years of incorporation, we had become the largest producer of humic acid in Pakistan.' },
@@ -196,7 +196,7 @@ export const ABOUT = {
     { year: '2024', title: 'Laboratory accreditation', text: 'Our laboratory was accredited by the Pakistan National Accreditation Council (PNAC) to ISO/IEC 17025:2017, under accreditation number LAB 336.' },
     { year: '2026', title: 'Patent, biological laboratory and a planned NP line', text: 'Pakistan Patent 144684 was granted for Vital Urea, our sulfur coated urea. We set up our first biological laboratory. A new granulation line for NP (nitrogen and phosphorus) fertilisers is planned for the plant site. Work on it has not started.' },
     // Tahir 7 Nov 2026 (CO-19): "make" changed to capacity wording.
-    { year: 'Today', title: 'Where we are in 2026', text: 'More than 150 people work at VAN. Our plant can make about 50,000 tonnes of product a year. We make products under 23 registered brands of our own and for 14 other companies. We hold 34 licences from the Pakistan Standards and Quality Control Authority (PSQCA): 22 on our own brands and 12 on products ready for partner companies to launch. We have been a full member of CropLife Pakistan since 2024.' },  // D-316: CropLife membership added
+    { year: 'Today', title: 'Where we are in 2026', text: 'More than 150 people work at VAN. Our plant can make about 50,000 tonnes of product a year. We make products under 23 registered brands of our own and for 14 other companies. We hold 34 licences from the Pakistan Standards and Quality Control Authority (PSQCA). Of these licences, 22 are on our own brands and 12 are on registered formulations that any partner company can take and sell under its own brand. We have been a full member of CropLife Pakistan since 2024.' },  // D-316: CropLife membership added
   ],
   evidenceH2: 'More nutrient went on, and less crop came back for each kilogram.',   // Tahir 9 Nov 2026: same heading as the national picture section 3; was 'More went on. Less came back.'
   evidenceLead: 'Between 1999-2000 and 2023-24 Pakistan raised the nutrient it applies per acre by 68%. Wheat yield rose by 31%. Every kilogram now returns less than it did at the turn of the century, which is an argument about balance and timing, not about applying more.',
@@ -231,21 +231,21 @@ export const ABOUT = {
 
 // Knowledge › Why Pakistan must shift (verbatim figures + sources)
 export const NATIONAL = {
-  h1a: 'Pakistan is not short of fertilizer.',
-  h1b: 'It is short of nutrition that reaches the crop.',
-  lead: 'VAN’s view is that Pakistan needs to shift from applying more nitrogen to balancing the nutrients it applies and improving the form, timing and placement of fertiliser, so that more crop is produced from each kilogram of nutrient applied. In 2023, Pakistan applied more fertiliser nutrient per acre of cropland than the world average and more than the United States (FAO). VAN’s calculation from national figures shows that, between 1999-2000 and 2023-24, nutrient applied per acre of arable land rose faster than the yields of wheat, rice and cotton and the average yield of all cereals. The yield for each kilogram of nutrient applied therefore fell for each of them. VAN’s reading is that these figures do not support the view that farmers need to apply more fertiliser to raise yields. The figures cannot show the effect of fertiliser on its own, because seed, irrigation, varieties and weather also changed over these years.',
+  h1a: 'Pakistan applies more fertiliser per acre of cropland than the world average.',
+  h1b: 'Only part of the nutrient applied reaches the crop.',
+  lead: 'VAN’s view is that Pakistan needs to shift from applying more nitrogen to balancing the nutrients it applies and improving the form, timing and placement of fertiliser. The aim of this shift is to raise the yield per kg of nutrient applied. VAN bases this view on 2 sets of figures. First, in 2023, Pakistan applied more fertiliser nutrient per acre of cropland than the world average and more than the United States (FAO). Second, VAN’s calculation from national figures shows that, between 1999-2000 and 2023-24, nutrient applied per acre of arable land rose faster than the yields of wheat, rice and cotton and the average yield of all cereals. The yield per kg of nutrient applied therefore fell for wheat, rice, cotton and all cereals. VAN’s reading is that these figures do not support the view that farmers need to apply more fertiliser to raise yields. However, the figures cannot show the effect of fertiliser on its own, because seed, irrigation, varieties and weather also changed over these years.',
   // D-143 (ruling 12): converted to per acre, kg/ha ÷ 2.471. Was title 'Fertilizer use per hectare of cropland, 2023',
   // unit 'kg of nutrient per hectare of cropland', rows 182 / 156 / 149 / 117 / 108 and the source without the
   // second sentence. Revert: restore those.
   // Tahir 7 Nov 2026 (CO-33): the unit gives the same definition as Home and the profile (N, P₂O₅ and K₂O added together).
-  usePerHa: { title: 'Fertiliser use per acre of cropland, 2023', unit: 'kg of fertiliser nutrients (N, P₂O₅ and K₂O added together) per acre of cropland', rows: [['India', 73.7], ['Pakistan', 63.1], ['United Kingdom', 60.3], ['World average', 47.3], ['United States', 43.7]] as [string, number][], source: 'Our World in Data / FAO (2025), fertilizer use per hectare of cropland. Published in kg per hectare: India 182, Pakistan 156, United Kingdom 149, world average 117, United States 108. Divided by 2.471 for kg per acre.', note: 'In 2023, the United Kingdom applied 60.3 kg of fertiliser nutrient per acre of cropland and the United States 43.6 kg, both less than Pakistan’s 63.3 kg.' },
+  usePerHa: { title: 'Fertiliser use per acre of cropland, 2023', unit: 'kg of fertiliser nutrients (N, P₂O₅ and K₂O added together) per acre of cropland', rows: [['India', 73.7], ['Pakistan', 63.3], ['United Kingdom', 60.3], ['World average', 47.3], ['United States', 43.6]] as [string, number][], source: 'Our World in Data / FAO (2025), fertilizer use per hectare of cropland. Published in kg per hectare: India 182, Pakistan 156, United Kingdom 149, world average 117, United States 108. Divided by 2.471 for kg per acre.', note: 'In 2023, the United Kingdom applied 60.3 kg of fertiliser nutrient per acre of cropland and the United States 43.6 kg, both less than Pakistan’s 63.3 kg.' },
   // L1 editor 7 Nov 2026 (whyshift m15, m6): source names which ratios are VAN's ('The ratios to 1 tonne of potash'); 'lodging' explained.
   balance: {
-    title: 'Nitrogen, phosphate and potash as shares of all fertiliser nutrient applied, 2023',
+    title: 'In 2023, potash was 0.94% of the fertiliser nutrient applied in Pakistan, against 6.13% in India',
     pakistan: { N: 3808775, P: 994885, K: 45735, shareN: 78.5, shareP: 20.5, shareK: 0.94, perTonneK: '83 t N · 22 t P₂O₅' },
     india: { N: 20456400, P: 8306600, K: 1878600, shareN: 66.8, shareP: 27.1, shareK: 6.13, perTonneK: '11 t N · 4 t P₂O₅' },
     source: 'FAOSTAT, Fertilizers by Nutrient, via Our World in Data (2023). The ratios to 1 tonne of potash are VAN’s calculations. Sulfur, magnesium, zinc and boron are not shown, because the national figures record very little of them being applied.',
-    text: 'VAN’s calculation from FAOSTAT shows that, in 2023, Pakistan applied 83 tonnes of nitrogen for every 1 tonne of potash, which is the same as 1.2 kg of potash for every 100 kg of nitrogen. Potash supplies potassium, which in the plant helps build cell walls, move sugars and regulate water use. Of all the nutrients, potassium does the most to protect a crop against lodging (the crop falling over), heat and drought.',
+    text: 'VAN’s calculation from FAOSTAT shows that, in 2023, Pakistan applied 83 tonnes of nitrogen for every 1 tonne of potash. This ratio is the same as 1.2 kg of potash for every 100 kg of nitrogen. Potash fertiliser supplies the nutrient potassium. In the plant, potassium helps build cell walls, move sugars and regulate water use. Of all the nutrients, potassium does the most to protect a crop against lodging, heat and drought. Lodging means that the crop falls over.',
   },
   productivity: {
     // D-143: per acre and maunds an acre (kg/ha ÷ 2.471; kg/ha ÷ 40 ÷ 2.471). Was from 95.4 to 160.3 'kg/ha',
@@ -260,12 +260,12 @@ export const NATIONAL = {
       { crop: 'All cereals', y1: 24.3, y2: 36.8, change: '+51%', perKg: '−10%' },
     ],
     // L1 editor 7 Nov 2026 (whyshift m4, m5): base period '1999-2000 = 100' (was '2000 = 100'); source names the calculated column (was 'The ratio is VAN’s calculation.').
-    method: 'The last column is VAN’s calculation: the yield index divided by the index of nutrient applied per acre, with 1999-2000 = 100. This measure is known as partial factor productivity: crop yield for each kilogram of nutrient applied. It uses the national figure for nutrient applied to all crops, so the same nutrient index is used in every row. It does not compare the nutrient applied with the nutrient taken out in the harvested crop. It shows the direction of the change; the exact percentages should not be relied on.',
-    source: 'Nutrient per hectare of arable land: World Bank AG.CON.FERT.ZS (FAO), 95.4 and 160.3 kg/ha. Yields: Pakistan Economic Survey Table 2.5 (2009-10 and 2024-25 editions); all-cereal yield World Bank AG.YLD.CREL.KG. Yields as published in kg/ha: wheat 2,491 and 3,264, rice 2,050 and 2,714, cotton lint 641 and 717, all cereals 2,404 and 3,634. Converted at 1 hectare = 2.471 acres and 40 kg = 1 maund. The change in yield per kg of nutrient (last column of the table) is VAN’s calculation.',
+    method: 'The last column shows the change in yield per kg of nutrient applied. Specialists call the yield per kg of nutrient applied partial factor productivity. VAN calculated the column by dividing the yield index by the index of nutrient applied per acre, with 1999-2000 = 100. The nutrient index uses the national figure for nutrient applied to all crops. Every row therefore uses the same nutrient index. The column does not compare the nutrient applied with the nutrient taken out in the harvested crop. The column shows the direction of the change. The column’s exact percentages should not be relied on.',
+    source: 'The figures for nutrient applied per hectare of arable land come from World Bank series AG.CON.FERT.ZS (FAO). They were 95.4 kg/ha in the calendar year 2000 and 160.3 kg/ha in the calendar year 2023. VAN uses these figures for 1999-2000 and 2023-24. The crop yields come from Pakistan Economic Survey Table 2.5 (2009-10 and 2024-25 editions). The all-cereal yield comes from World Bank series AG.YLD.CREL.KG. The yields as published, in kg/ha for 1999-2000 and 2023-24, were 2,491 and 3,264 for wheat, 2,050 and 2,714 for rice, 641 and 717 for cotton lint, and 2,404 and 3,634 for all cereals. VAN converted the figures at 1 hectare = 2.471 acres and 40 kg = 1 maund. The change in yield per kg of nutrient applied, in the last column of the table, is VAN’s calculation.',
   },
   // D-325, 4 Nov 2026: moved from Lassaletta et al. 2014 (pk 25, us 72, taken up by the crop) to FAO's Cropland Nutrient Balance, 2023, Tahir's ruling. Revert: the line above in the D-324 commit (84a19fe).
-  nitrogen: { pk: 29, us: 71, world: 55, text: 'of the nitrogen added to Pakistan’s cropland is taken out in the harvested crop. FAO estimates that, of every 100 kg of nitrogen added to Pakistan’s cropland in 2023, about 26 kg were lost to the air and about 11 kg were lost to water.', source: 'FAOSTAT, Cropland Nutrient Balance, December 2025 release (2023, FAO estimates). Shahzad et al. (2019), Nature Sustainability, ranks Pakistan lowest for nitrogen use efficiency in its comparison set.' },
-  bangladesh: 'On VAN’s calculation, Bangladesh produced 68% more paddy per kilogram of nitrogen applied to rice than Pakistan.',
+  nitrogen: { pk: 29, pkPct: 29.1, us: 71, world: 55, text: 'of the nitrogen added to Pakistan’s cropland is taken out in the harvested crop. FAO estimates that, of every 100 kg of nitrogen added to Pakistan’s cropland in 2023, about 26 kg were lost to the air and about 11 kg were lost to water.', source: 'FAOSTAT, Cropland Nutrient Balance, December 2025 release (2023, FAO estimates). Shahzad et al. (2019), Nature Sustainability, ranks Pakistan lowest in its comparison set for nitrogen use efficiency as the study measures it.' },
+  bangladesh: 'On VAN’s calculation, Bangladesh produced 68% more paddy per kg of nitrogen applied to rice than Pakistan.',
 }
 
 // Lab (verbatim)
@@ -273,7 +273,7 @@ export const LAB = {
   h1: 'Lab reports for every VAN batch, and tests for any fertiliser.',
   lead: 'Every batch VAN makes is tested in this laboratory before it leaves the plant, and you can see the lab report for the batch you bought. To open it, enter the batch number printed on the bag. If you have fertiliser from any other manufacturer, send us a 500 g sample and we will run the tests you choose from our published price list.',
   whyH2: 'Why VAN built a laboratory',
-  why1: 'VAN Lab is set up to give the same result when the same sample is tested twice. It uses written methods and calibrated instruments, runs reference standards alongside every set of analyses, puts 2 analysts on every sample, and has the Assistant Quality Control (QC) Manager review the work and the QC Manager sign the report.',
+  why1: 'VAN Lab is set up to give the same result when the same sample is tested twice. The laboratory uses written methods and calibrated instruments. Reference standards are run alongside every set of analyses. 2 analysts work on every sample. The Assistant Quality Control (QC) Manager reviews the work. The QC Manager then signs the report.',
   why2: 'We work this way so that a result does not depend on who ran the test, on which day it was run, or on what anybody hoped it would show.',
   stats: [['21', 'fertiliser tests, each with a published price'], ['3 to 5', 'working days from confirmed booking to your report'], ['2', 'independent analysts on every sample'], ['Accredited', 'by PNAC to ISO/IEC 17025:2017 (LAB 336) for 8 of our 21 fertiliser tests']],
   scopeNote: '8 of the 21 tests VAN Lab performs are covered by PNAC ISO/IEC 17025:2017 accreditation, LAB 336. The other 13 are tests the laboratory runs outside that scope.',
@@ -300,7 +300,7 @@ export const VERIFY = {
   ],
   // L1 editor fix 7 Nov 2026 (company-a B3): Sample Reception is in a separate building, not 'at our laboratory'. company-b m15: 1 term, 'the blind chain', as on the Lab page.
   blind: 'You can also have our product tested through the blind chain, in which the analysts do not know whose product they are testing. Send 500 g of the product to Sample Reception, which works from a separate building from our laboratory, as a normal paid test, at the published price. Sample Reception receives it like every other customer’s sample and gives it a code in place of the product name. Every sample is tested by 2 analysts, and neither of them knows that it is our product.',
-  note: 'Our quality control laboratory is accredited by the Pakistan National Accreditation Council (PNAC) to ISO/IEC 17025:2017, the international standard for testing laboratories, under accreditation number LAB 336, for 8 of its 21 fertiliser tests. The laboratory rejects any batch that does not meet the product’s specification.',
+  note: 'Our quality control laboratory is accredited by the Pakistan National Accreditation Council (PNAC) to ISO/IEC 17025:2017, under accreditation number LAB 336, for 8 of its 21 fertiliser tests. ISO/IEC 17025:2017 is the international standard for testing laboratories. The laboratory rejects any batch that does not meet the product’s specification.',
 }
 
 // Make With Us (partner) — verbatim
@@ -331,7 +331,7 @@ export const VERIFY = {
 export const PARTNER = {
   kicker: 'VAN works with companies that are launching a crop nutrition brand, making locally a product they now import, or manufacturing under their own name',
   h1: 'Launch it under your name.',   // D-181, Tahir 26 Sep: "Launch it under your name. only"
-  lead: 'We formulate, manufacture, register and test crop nutrition products that are sold under other companies’ brand names. You market and sell the product. We take it from formulation to the finished bag; under toll manufacturing, you supply the formulation.',   // Tahir 7 Nov 2026 (CO-4, also_changes): toll formulation is the client's
+  lead: 'We formulate, manufacture, register and test crop nutrition products that are sold under other companies’ brand names. You market and sell the product. We take the product from formulation to the finished bag. Under toll manufacturing, you supply the formulation.',   // Tahir 7 Nov 2026 (CO-4, also_changes): toll formulation is the client's
 
   /**
    * THE PROOF LINE, and it is the strongest thing VAN can say to this reader.
@@ -481,10 +481,10 @@ export const PARTNER = {
   // Tahir 7 Nov 2026 (CO-12): "client names are not shown" and "the partner ... is not named" removed; Rafhan and Descon named as research partners.
   firewall: 'Formulations built to client briefs and any data belonging to a client are never used to sell to anyone else. Our research partners Rafhan Maize Products and Descon Research Farm are named, with their agreement. Rafhan Maize Products is named for the Khaliqabad field programme, on the Vital Urea page and the application systems page, and for the 2023 maize trial on the Vital Urea page. Descon Research Farm is named for the 2024 maize trial on the Vital Urea page.',
   capability: [
-    ['Physical forms', 'Granular \u00b7 powder \u00b7 crystalline soluble \u00b7 liquid \u00b7 pellet \u00b7 water-dispersible granule \u00b7 coated prill. We can make the same composition in more than 1 form, so the form does not dictate the composition.'],
-    ['Pack range', 'Packs range from a 1 L bottle to a 1,000 kg bulk bag and a 1,000 L IBC (intermediate bulk container). Trade packs, estate packs and contract-farming volumes are filled on the same line as retail packs.'],
+    ['Physical forms', 'We can make products in 7 physical forms: granular, powder, crystalline soluble, liquid, pellet, water-dispersible granule and coated prill. We can make the same composition in more than 1 form. The form therefore does not dictate the composition.'],
+    ['Pack range', 'Packs range from a 1 L bottle to a 1,000 kg bulk bag and a 1,000 L intermediate bulk container (IBC). Trade packs, estate packs and contract-farming volumes are filled on the same line as retail packs.'],
     ['Registration, run by us', 'We prepare the dossier and file the PSQCA registration under your brand, with VAN named as the manufacturer.'],
-    ['Quality control', 'Our laboratory is accredited by PNAC to ISO/IEC 17025:2017 (Accreditation No. LAB 336) for 8 of its 21 fertiliser tests. Every batch is tested. A batch whose results fall outside our internal limits, which are tighter than the product specification, is rejected, and its result is not averaged with the results of batches that pass.'],   // Tahir 10 Nov 2026 (CO-N20): was 'outside the working window'
+    ['Quality control', 'Our laboratory is accredited by PNAC to ISO/IEC 17025:2017, under accreditation number LAB 336, for 8 of its 21 fertiliser tests. Every batch is tested. Our internal limits are tighter than the product specification. A batch whose results fall outside our internal limits is rejected. The result of a rejected batch is not averaged with the results of batches that pass.'],   // Tahir 10 Nov 2026 (CO-N20): was 'outside the working window'
   ],
 }
 
@@ -570,12 +570,12 @@ export const SIMULATOR = {
   onCourse: 'No practice is set to an option that lowers the yield.',
   previewNote: 'The preview dial shows only whether a practice is lowering the yield; it gives no yield figure. It uses a shorter list of practices than the wheat and potato simulators, which score 10 practices each.',   // L1 7 Nov 2026 (crops-b M1): was "the working simulators for wheat and potato"
   // L2 fact check 9 Nov 2026 (crops-b W4, Tahir's CO-11 of 7 Nov: "the other 26 are planned, no date"). Was 'Simulators for 26 more crops are being built.'
-  betaNote: 'Simulators for the other 26 crops are planned. If the simulator leaves out a practice that lowers the yield on your own field, tell VAN before the next upgrade, and it will be added.',
-  inputs: ['Crop and variety, from Pakistan’s own list of varieties rather than a generic list.', 'District and soil, from the 770,160 samples of the Punjab soil survey, taken about 2016 to 2018, and VAN’s own samples. If you have a laboratory soil report, its readings will be used instead of the district figures.','Target yield, in maunds per acre, compared with what the district can produce.', 'Sowing date, as an exact date rather than a month.', 'Irrigation: canal, tube well or both, and the schedule you can keep.', 'Seed rate and plant population (the number of plants that come up).', 'Cropping pattern: what the field grew before (rice–wheat, cotton–wheat, cane and ratoon).', 'Practices: the weed control window, nitrogen after sowing and the harvest window.'],   // L1 7 Nov 2026 (crops-b m17, m18): "will be used"; "nitrogen after sowing" was "top-dressing"
+  betaNote: 'Simulators for the other 26 crop plans are planned. If the simulator leaves out a practice that lowers the yield on your own field, tell VAN before the next upgrade, and it will be added.',
+  inputs: ['Crop and variety, from Pakistan’s own list of varieties rather than a generic list.', 'District and soil, from the 770,160 samples of the Punjab soil testing programme, taken about 2016 to 2018, and VAN’s own samples. If you have a laboratory soil report, its readings will be used instead of the district figures.','Target yield, in maunds per acre, compared with what the district can produce.', 'Sowing date, as an exact date rather than a month.', 'Irrigation: canal, tube well or both, and the schedule you can keep.', 'Seed rate and plant population (the number of plants that come up).', 'Cropping pattern: what the field grew before (rice–wheat, cotton–wheat, cane and ratoon).', 'Practices: the weed control window, nitrogen after sowing and the harvest window.'],   // L1 7 Nov 2026 (crops-b m17, m18): "will be used"; "nitrogen after sowing" was "top-dressing"
   // Tahir 9 Nov 2026 (T2): the list under "What the next version will show you" is in the future tense. Was: 'Your attainable yield on your field, with the practices you described.', 'Your discipline score, which shows ...', 'The nutrients needed, in kilograms: ...', 'The VAN brands that supply these nutrients, ...', 'How much yield each missed or late practice loses, and how to correct it.'
   outputs: ['Your attainable yield on your field, with the practices you will enter.', 'Your discipline score, which will show how well the season was managed, the practices that support your target, and the practice that loses you the most yield.', 'The nutrients the crop will need, in kilograms: N, P₂O₅, K₂O, the secondary nutrients and the micronutrients, stage by stage, after allowing for what the soil supplies.', 'The VAN brands that will supply these nutrients, with the stage, method and pack for each, from VAN’s published crop plans.', 'How much yield each missed or late practice will lose, and how to correct it.'],
   // Tahir 10 Nov 2026 (CR-N9): was 'of trial records from VAN’s research farms, starting in 2009'.
-  builtOn: [['17 years', 'of trial records since 2009 from the research farms VAN now runs'], ['770,160', 'soil samples from the Punjab soil survey, taken about 2016 to 2018, combined with VAN’s own samples']],   // L1 fix 10 Nov 2026 (m8): 'starting in 2009' moved next to 'records'; 'now runs' kept (CR-N9).
+  builtOn: [['17 years', 'of trial records since 2009 from the research farms VAN now runs'], ['770,160', 'soil samples from the Punjab soil testing programme, taken about 2016 to 2018, combined with VAN’s own samples']],   // L1 fix 10 Nov 2026 (m8): 'starting in 2009' moved next to 'records'; 'now runs' kept (CR-N9).
 }
 
 // Application methods (crop pages, verbatim)
@@ -639,9 +639,9 @@ export const WHEAT = {
 // Circular economy (live home + circular page)
 export const CIRCULAR = {
   h2: 'Recovering potassium from crop residue ash',
-  lead: 'VAN recovers potassium from the ash of crop residue burned in boilers, and uses it in its own fertiliser in place of imported potash. Recovery of silicon from the same ash is still in research and development.',
+  lead: 'VAN recovers potassium from the ash of crop residue burned in boilers. VAN uses this potassium in its own fertiliser in place of imported potash. Recovery of silicon from the same ash is still in research and development.',
   // L1 editor fix 7 Nov 2026 (company-a m8): Home speaks as 'we'.
-  ash: 'We recover potassium from crop residue ash and use it in place of imported potash. Recovery of silicon from the same ash is still in research and development.',
+  ash: 'We recover potassium from crop residue ash. We use the recovered potassium in place of imported potash. Recovery of silicon from the same ash is still in research and development.',
 }
 
 // Standing rules that the demos must respect (from Start Here.md) — for reference in code comments

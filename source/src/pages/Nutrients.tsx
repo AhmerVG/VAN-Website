@@ -32,8 +32,8 @@ export default function Nutrients() {
       <section style={{ background: 'linear-gradient(180deg, #EDF2E7 0%, var(--sand) 100%)' }}>
         <div className="wrap py-8 lg:py-10">
           <span className="eyebrow">Knowledge · the 17 nutrients</span>
-          <h1 className="max-w-[20ch]">The 17 nutrients a crop needs, and why the one in shortest supply limits the harvest</h1>
-          <p className="lead mt-4">A crop needs 17 nutrients. It takes 3 of them from air and water and the other 14 from the soil, in amounts that range from tens of kilograms an acre down to grams an acre. Crops use these nutrients in the same way on every farm. A grower who understands how they work can make better fertiliser choices. Each nutrient has its own job in the plant, its own signs of shortage, and other nutrients it works with or against. Liebig’s Law of the Minimum explains why a crop given plenty of urea can still grow poorly: growth is limited by the nutrient in shortest supply.</p>
+          <h1 className="max-w-[20ch]">The 17 nutrients a crop needs, and why the nutrient in shortest supply limits the harvest</h1>
+          <p className="lead mt-4">A crop needs 17 nutrients. It takes 3 of them from air and water and the other 14 from the soil. The crop takes the 14 soil nutrients in amounts that range from tens of kilograms per acre down to grams per acre. Each nutrient has its own job in the plant, its own signs of shortage and other nutrients that it works with or against. Crops use these nutrients in the same way on every farm. A grower who understands how the nutrients work can make better fertiliser choices. This understanding matters because a crop given plenty of urea can still grow poorly. Liebig’s Law of the Minimum explains the reason. Under this law, crop growth is limited by the nutrient in shortest supply.</p>
           <div className="flex flex-wrap gap-3 mt-5">
             <a className="btn btn-gold" href="#barrel" onClick={e => { e.preventDefault(); document.getElementById('barrel')?.scrollIntoView({ behavior: 'smooth' }) }}>Try the nutrient barrel with your own bags</a>
             <a className="btn btn-ghost" href="#/crops">The 28 crop plans</a>
@@ -69,7 +69,7 @@ export default function Nutrients() {
       {/* The 11 in full */}
       <section className="sec"><div className="wrap">
         <span className="eyebrow">The 11 nutrients a grower manages</span>
-        <h2>What each nutrient does, what a shortage looks like, and which nutrients it works with</h2>
+        <h2>What each nutrient does, what a shortage looks like, and which nutrients it works with or against</h2>
         <div className="nt-list">
           {NUTRIENTS_FULL.map(n => (
             <article key={n.key} id={n.key} className="nt-entry">
@@ -84,7 +84,7 @@ export default function Nutrients() {
                 <p className="nt-job">{n.job}</p>
                 <dl className="nt-dl">
                   {n.short && <><dt>When it is short</dt><dd>{n.short}</dd></>}
-                  {n.partners && <><dt>Works with, and against</dt><dd>{n.partners}</dd></>}
+                  {n.partners && <><dt>Works with and against</dt><dd>{n.partners}</dd></>}
                   {n.pakistan && <><dt>In Pakistan’s soils</dt><dd>{n.pakistan}</dd></>}
                 </dl>
                 <div className="nt-van">
@@ -106,7 +106,7 @@ export default function Nutrients() {
 
       {/* The 6 in a line each */}
       <section className="sec" id="trace" style={{ background: 'var(--sand-2)' }}><div className="wrap">
-        <span className="eyebrow soil">The other 6</span>
+        <span className="eyebrow soil">The other 6 nutrients</span>
         <h2>The other 6 nutrients: carbon, hydrogen, oxygen, chlorine, molybdenum and nickel</h2>
         <div className="nt-brief-grid">
           {NUTRIENTS_17.filter(n => n.brief).map(n => (
@@ -120,7 +120,7 @@ export default function Nutrients() {
         <div className="flex flex-wrap gap-3 mt-5">
           <a className="btn btn-navy" href="#/soil">Read your district in the Soil Atlas</a>
           <a className="btn btn-ghost" href="#/crops">Pick your crop plan</a>
-          <a className="btn btn-ghost" href="#/products">The 23 brands</a>
+          <a className="btn btn-ghost" href="#/products">The 23 registered brands</a>
         </div>
       </div></section>
     </div>

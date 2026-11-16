@@ -143,21 +143,21 @@ export default function CompanyProfile() {
         <SectionHead eyebrow="National figures" tone="rust"
           title="In 2023, Pakistan applied more fertiliser nutrient per acre than the world average, and its nitrogen use efficiency was lower than the world’s"
           /* L2 fix 9 Nov 2026 (company W4): the phosphorus and organic matter figures are from the Punjab soil survey. */
-          lead="These figures show the problems our products and crop plans are designed to address: more fertiliser nutrient applied per acre than the world average, low nitrogen use efficiency, very little potash applied in Pakistan, and, in the Punjab soil survey, soils low in phosphorus and organic matter. The full analysis, with every chart and source, is on the knowledge page." />
+          lead="These figures show the problems our products and crop plans are designed to address: more fertiliser nutrient applied per acre than the world average, low nitrogen use efficiency, very little potash applied in Pakistan, and, in the Punjab soil testing programme, soils low in phosphorus and organic matter. The full analysis, with every chart and source, is on the knowledge page." />
         <div className="ns-row on">
           <div className="ns-fig"><div className="ns-n num" style={{ color: 'var(--navy)' }}>{PK_ACRE}<span className="ns-u">kg per acre</span></div><p className="ns-c">of fertiliser nutrients (nitrogen, phosphate as P₂O₅ and potash as K₂O, added together) applied to each acre of Pakistan’s cropland in 2023 (calendar year), against a world average of {WORLD_ACRE} kg per acre. We converted FAO’s figures from per hectare to per acre.</p></div>
           <div className="ns-fig"><div className="ns-n num" style={{ color: 'var(--rust)' }}>{NATIONAL.productivity.nutrientChange.pct}</div><p className="ns-c">rise in the fertiliser nutrient applied per acre of arable land in Pakistan between fiscal years 1999-2000 and 2023-24 (July to June). Over the same years, wheat yield per acre rose by {String(NATIONAL.productivity.wheatChange.pct).replace(/^\+/, '')}, less than half as much. We calculated both changes from published figures.</p></div>
           <div className="ns-fig"><div className="ns-n num" style={{ color: 'var(--rust)' }}>{N_PER_K}<span className="ns-u">:1</span></div><p className="ns-c">tonnes of nitrogen (N) applied in Pakistan in 2023 for every tonne of potash (K₂O).</p></div>
-          <div className="ns-fig"><div className="ns-n num" style={{ color: 'var(--soil)' }}>{NATIONAL.nitrogen.pk}%</div><p className="ns-c">nitrogen use efficiency in 2023: the share of the nitrogen added to Pakistan&rsquo;s cropland that was taken out in the harvested crop (FAO estimate). The world figure was 55%, and the United States figure about {NATIONAL.nitrogen.us}%.</p></div>
+          <div className="ns-fig"><div className="ns-n num" style={{ color: 'var(--soil)' }}>{NATIONAL.nitrogen.pkPct}%</div><p className="ns-c">nitrogen use efficiency in 2023: the share of the nitrogen added to Pakistan&rsquo;s cropland that was taken out in the harvested crop (FAO estimate). The world figure was 55%, and the United States figure about {NATIONAL.nitrogen.us}%.</p></div>
         </div>
         <div className="ns-soil">
           <div className="ns-soil-figs">
-            {[[SOIL_HEADLINE.meanPh, 'mean pH of the Punjab soil survey samples'], [SOIL_HEADLINE.pBelowAdequate, 'of samples had less than 15 ppm of available phosphorus, the level Punjab soil laboratories treat as adequate' /* Tahir 10 Nov 2026 (CO-N21): was 'of samples had less phosphorus than the adequate level' */], [SOIL_HEADLINE.omUnderOne, 'of samples had under 1% organic matter'], [SOIL_HEADLINE.sulfurTested, 'samples in the survey were tested for sulfur, so the survey has no sulfur results']].map(([n, l]) => (
+            {[[SOIL_HEADLINE.meanPh, 'mean pH of the samples in the Punjab soil testing programme'], [SOIL_HEADLINE.pBelowAdequate, 'of samples had less than 15 ppm of available phosphorus, the level Punjab soil laboratories treat as adequate' /* Tahir 10 Nov 2026 (CO-N21): was 'of samples had less phosphorus than the adequate level' */], [SOIL_HEADLINE.omUnderOne, 'of samples had under 1% organic matter'], [SOIL_HEADLINE.sulfurTested, 'samples in the survey were tested for sulfur, so the survey has no sulfur results']].map(([n, l]) => (
               <div key={l}><span className="ns-sn num">{n}</span><span className="ns-sl">{l}</span></div>
             ))}
           </div>
           <div className="ns-soil-say">
-            <p>The Punjab soil survey holds {SOIL_HEADLINE.samples} samples from {SOIL_HEADLINE.districts} districts, tested in about 2016 to 2018. We use its results when we design the nutrient content of our products.</p>
+            <p>The Punjab soil testing programme has {SOIL_HEADLINE.samples} samples from {SOIL_HEADLINE.districts} districts, tested in about 2016 to 2018. We use its results when we design the nutrient content of our products.</p>
             <div className="flex flex-wrap gap-2 mt-3">
               <a className="btn btn-navy btn-sm" href="#/knowledge/why-pakistan-must-shift">The national case →</a>
               <a className="btn btn-ghost btn-sm" href="#/soil">Soil Atlas →</a>
@@ -268,14 +268,14 @@ export default function CompanyProfile() {
       <section id="evidence" className="sec pnav-target" style={{ background: 'var(--sky)' }}><div className="wrap">
         <SectionHead eyebrow="The evidence approach" tone="navy"
           title="How we support the figures we publish"
-          lead={`Our published figures come from ${COUNTS.yearsData} of trials on our research farms, the Punjab soil survey of ${SOIL_HEADLINE.samples} samples (tested in about 2016 to 2018), our accredited laboratory, and the national and international statistics we cite.`} />
+          lead={`Our published figures come from ${COUNTS.yearsData} of trials on our research farms, the ${SOIL_HEADLINE.samples} samples of the Punjab soil testing programme, tested in about 2016 to 2018, our accredited laboratory, and the national and international statistics we cite.`} />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {[
             ['Sources and our own calculations', 'Every figure we publish names its source. Where we have calculated a figure ourselves from published data, we say so.'],
             ['A yield figure needs a named trial', 'We publish no performance figure for a product unless a named trial supports it.'],
             // Tahir 7 Nov 2026 (CO-12): Rafhan Maize Products and Descon Research Farm are research partners, not clients; no line about withheld names.
             ['Our research partners', 'Rafhan Maize Products and Descon Research Farm are our research partners in the Vital Urea trials. They are named, with their agreement, on the pages that describe those trials.'],  // D-316: was "VAN names 1 client on this website ... with that client’s agreement." 
-            ['The soil survey data come from the Punjab programme', 'The soil data come from the Punjab soil testing programme. We use them together with the results of our own soil sampling, and we credit them to the programme.'],
+            ['The soil testing data come from the Punjab programme', 'The soil data come from the Punjab soil testing programme. We use them together with the results of our own soil sampling, and we credit them to the programme.'],
           ].map(([h, t]) => <div key={h} className="panel p-5"><h4>{noStop(h)}</h4><p className="small muted mt-2">{t}</p></div>)}
         </div>
         <a className="btn btn-navy btn-sm mt-4" href="#/knowledge">The knowledge hub →</a>
@@ -289,7 +289,7 @@ export default function CompanyProfile() {
           {[
             [`${CROPS.length} crop plans`, 'Each crop plan tells you what to apply per acre, at which crop stage, by which method, and in which pack.', '#/crops', 'panel-green'],
             // L1 editor fix 7 Nov 2026 (company-a M5): the fallback names the Punjab soil survey and what the median is of (the district list is Punjab only).
-            ['Nutrition creator', `The Nutrition creator is on ${LIVE_CALC_CROPS.length} crop pages. Enter your area in acres and it scales the plan to that area. Add a soil report, and it adjusts the amounts to your soil. If you have no report, choose your Punjab district, and it uses the median soil test values for that district from the Punjab soil survey.`, '#/crops#live', 'panel-green'],
+            ['Nutrition creator', `The Nutrition creator is on ${LIVE_CALC_CROPS.length} crop pages. Enter your area in acres and it scales the plan to that area. Add a soil report, and it adjusts the amounts to your soil. If you have no report, choose your Punjab district. The Nutrition creator then uses the median soil test values for that district from the Punjab soil testing programme.`, '#/crops#live', 'panel-green'],
             // L1 7 Nov 2026 (crops-a 7, crops-b M1): 1 name for the simulator across the site. Was 'Yield and Discipline Simulator · beta'.
             ['Farm discipline simulator · beta', `${HOME_SLIDES[2].title} The simulator scores farm practices for wheat and potato.`, '#/simulator', 'panel-soil'],
             ['Soil Atlas', `The Soil Atlas shows the results of ${SOIL_HEADLINE.samples} Punjab soil samples from ${SOIL_HEADLINE.districts} districts, tested in about 2016 to 2018, and compares them with the nutrients taken out in the harvested crop, crop by crop.`, '#/soil', 'panel-gold'],

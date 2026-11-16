@@ -31,7 +31,7 @@ export function ProductRail() {
             </a>
           ))}
         </div>
-        <p className="cap">▸ Swipe to see more · tap a pack to open its page</p>
+        <p className="cap">▸ Swipe to see more brands. Tap a pack to open its page.</p>
       </div>
     </section>
   )

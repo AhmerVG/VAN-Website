@@ -167,7 +167,7 @@ export default function CropPage({ slug, district = null, card = null }: { slug:
 
       {calc && (
         <section className="wrap sec-tight" id="creator">
-          <SectionHead eyebrow="Nutrition creator" title="Adjust the plan to your acres and your soil test." lead="The Nutrition creator scales the plan to the number of acres you set and adjusts it to your soil test readings. If you have no soil test, choose your district: the readings are then filled in with that district’s median values from the Punjab soil survey, taken about 2016 to 2018. These are typical values for the district, not readings from your own field." tone="navy" />
+          <SectionHead eyebrow="Nutrition creator" title="Adjust the plan to your acres and your soil test." lead="The Nutrition creator scales the plan to the number of acres you set and adjusts it to your soil test readings. If you have no soil test, choose your district. The readings are then filled in with that district’s median values from the Punjab soil testing programme, taken about 2016 to 2018. These are typical values for the district, not readings from your own field." tone="navy" />
           <p className="small mb-3 max-w-[140ch]"><b>This page has 2 lists.</b> The shopping list above follows VAN’s published plan. The list below comes from the Nutrition creator, which adjusts the quantities to your soil report or, if you have none, to your district’s median readings. Both lists use the same number of acres; changing it in either list changes both. {calculatorSource(slug) === 'team' ? 'Before you enter soil readings, the 2 lists are the same. The Nutrition creator list changes when you enter your soil readings or choose your district.' : `The 2 lists do not contain exactly the same products. ${rangeEndsSentence(slug) || 'Where a total below is a range, the 2 figures are the totals of the 2 lists.'} If you have no soil report, follow the published crop plan. The Nutrition creator list is meant for a field with a soil report; without one, it uses your district’s median readings.`}</p>{/* L1 10 Nov 2026 (crops 4): each end of a range is named, from the same figures the ranges are printed from (planRange.ts); was "Where a total below is a range, the 2 figures are the totals of the 2 lists." (crops 11): 1 name for the soil report; was "Without a soil test, follow the published crop plan; the creator list is for a field with a soil report." No fact changed. */}{/* Tahir 10 Nov 2026 (CR-N11): last sentence added (potato; the only crop on this branch). */}{/* Tahir 9 Nov 2026 (L2 crops-a W2, his answer (b) to Q1): on the 22 team-calculator crops the 2 lists carry the same products, packs and rates (__teamcalccheck), so the CR-20 sentences are replaced there; wheat and potato, where the lists differ, keep them. */}{/* Tahir 7 Nov 2026 (CR-20): was "The 2 lists do not contain exactly the same products, so where their nutrient totals differ, the totals below are shown as a range." The reason the lists differ is still to come from Tahir. */}{/* D-151 (A12): was "This is the same programme from VAN’s calculator; use it if you have a soil report." */}
           <NutritionCreator crop={slug} cropName={cropLower} initialDistrict={district} />
         </section>
@@ -185,8 +185,8 @@ export default function CropPage({ slug, district = null, card = null }: { slug:
             {/* L1 7 Nov 2026 (crops-a 30): "filled in with that district’s median values", as in the shared lead. Was "filled with that district’s median". */}
             <p className="muted mt-2 max-w-[140ch]">
               Enter your soil test readings in the soil panel of the list above. If you have no soil
-              test, choose your district: the readings are then filled in with that district’s median values from
-              the Punjab soil survey of 770,160 samples, taken about 2016 to 2018. The quantities then
+              test, choose your district. The readings are then filled in with that district’s median values from
+              the 770,160 samples of the Punjab soil testing programme, taken about 2016 to 2018. The quantities then
               change to match those readings. On {cropLower}, the list uses{' '}
               <b>{soilParams.length} readings</b>: {soilParams.map(p => SOIL_PARAMETER_LABEL[p]).join(', ')}.
             </p>
@@ -267,7 +267,7 @@ export default function CropPage({ slug, district = null, card = null }: { slug:
           <div>
             <span className="eyebrow rust">Nitrogen use efficiency in Pakistan</span>
             {/* D-325, 4 Nov 2026: FAO 2023. Was "About 1/4 of the nitrogen in the bag feeds the crop. The rest leaves as gas or drains past the root." */}
-            <h3 className="mt-1 max-w-[34ch]">Pakistan&rsquo;s nitrogen use efficiency was about 29% in 2023 (FAO estimate): of every 100 kg of nitrogen added to its cropland, 29 kg were taken out in the harvested crop. Much of the rest was lost to the air or lost to water</h3>
+            <h3 className="mt-1 max-w-[34ch]">Pakistan&rsquo;s nitrogen use efficiency was 29.1% in 2023 (an FAO estimate). Pakistan&rsquo;s harvested crops contained about 29 kg of nitrogen for every 100 kg of nitrogen added to cropland in 2023. Much of the rest was lost to the air or lost to water.</h3>
             <p className="small muted mt-2 max-w-[90ch]">This figure is for all of Pakistan’s cropland, not for {cropLower} alone. The linked pages explain why nitrogen is lost and what VAN makes to reduce each loss. They also list the 17 nutrients a crop needs, with a barrel tool: you enter the fertiliser bags you use, and it shows which nutrient your crop is getting too little of.</p>
           </div>
           <div className="grid gap-2">

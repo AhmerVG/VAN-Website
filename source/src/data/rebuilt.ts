@@ -58,80 +58,80 @@ export type RebuiltPage = { slug: string; livePath: string; eyebrow: string; h1:
  */
 export const SOIL_GAP_TABLE: TableSpec = {
   // L2 fact check 9 Nov 2026 (W5): VAN does not manufacture SOP (PR-1). Was 'What VAN makes'.
-  head: ['What the soil is short of', 'What that requires', 'What VAN supplies'],
+  head: ['What the soil is short of', 'What the shortage requires', 'What VAN supplies'],
   minWidth: 720,
   rows: [
     // L1 editor 7 Nov 2026 (B2, m15): recovered potassium moved here from the organic matter row; curly apostrophe.
-    ['Potassium', 'Potash applied in the crop’s uptake window, in a form that can be delivered through fertigation rather than only at land preparation', 'Vital Potash · SOP · V-Potash Plus · potassium recovered from crop residue ash (Circular economy)'],
-    ['Available phosphorus', 'Phosphate formulated to resist binding by calcium, rather than simply applied at a higher rate', 'VAN NP Range · Green Phosphate'],
-    ['Zinc and boron', 'Micronutrients applied at the growth stage that needs them, through the irrigation water or on the leaf, because the soil would bind them if they were applied to it', 'V-Zinc · VL-Boron · VL-Micromix'],
+    ['Potassium', 'Potash needs to be applied in the crop’s uptake window as well as at land preparation. The uptake window is the period of growth when the crop takes up most of its potassium. Potash applied in the uptake window needs a form that can be delivered through the irrigation water.', 'Vital Potash · sulfate of potash (SOP) · V-Potash Plus · potassium recovered from crop residue ash'],
+    ['Available phosphorus', 'Phosphate needs a formulation that resists binding by calcium. Simply applying more phosphate does not meet this need.', 'VAN NP Range · Green Phosphate'],
+    ['Zinc and boron', 'These micronutrients need to be applied at the growth stage when the crop needs them, through the irrigation water or on the leaf. The soil would bind them if they were applied to it.', 'V-Zinc · VL-Boron · VL-Micromix'],
     // L1 editor 7 Nov 2026 (B2): was 'Carbon returned to the soil, and potassium recovered from the ash of crop residue burned in boilers' /
     // 'V-Compost · Humi Grow · V-Transform · Circular Economy'. The circular pages say VAN does not return the residue's carbon to the soil;
     // V-Transform is Zinc 21% granular in the catalogue (a micronutrient, not an organic matter product).
-    ['Organic matter', 'Carbon returned to the soil as compost and humate', 'V-Compost · Humi Grow'],
-    ['Nitrogen', 'Coated, controlled-release nitrogen for soils where part of the nitrogen from uncoated urea is lost to the air as ammonia', 'Vital Urea'],
+    ['Organic matter', 'Organic matter needs to be returned to the soil as compost and humate. Humate is a salt of humic acid. Humic acid is one of the substances that make up soil organic matter.', 'V-Compost · Humi Grow'],
+    ['Nitrogen', 'Soils where part of the nitrogen from uncoated urea is lost to the air as ammonia need coated, controlled-release nitrogen.', 'Vital Urea'],
   ],
 }
 
 export const SOIL_SUSTAINABILITY: RebuiltPage = {
   slug: 'soil-and-sustainability',
   livePath: '/knowledge/soil-and-sustainability.html',
-  eyebrow: 'Knowledge · the state of Pakistani soil',
-  h1: 'We have been spending the soil’s',
-  h1accent: 'capital, not its income.',
-  lead: 'Published figures, and calculations based on them, show that for decades crops in Pakistan have removed more nutrient from the soil than has been put back. Every tonne of cane, wheat or cotton taken from a field removes nutrients with it. When less nutrient is put back than the harvest removes, the difference comes from the soil’s own reserves, and those reserves are finite even in soil that was once rich.',
+  eyebrow: 'Knowledge · the state of Pakistan’s soil',
+  h1: 'The state of Pakistan’s soil',
+  h1accent: 'and the nutrients that crops remove from it.',
+  lead: 'Published figures and calculations based on them show that, for decades, crops in Pakistan have removed more nutrients from the soil than have been put back. Every tonne of cane, wheat or cotton taken from a field carries nutrients away with it. When less is put back than the harvest removes, the difference comes from the soil’s own reserves. Those reserves are finite, even in soil that was once rich.',
   tone: 'soil',
   sections: [
     {
-      id: 'overdraft', n: '01', kicker: 'Potassium removed and applied', title: 'Crops in Pakistan remove far more potassium than is applied.', tone: 'rust',
+      id: 'overdraft', n: '01', kicker: 'Potash removed and applied', title: 'How much potash crops remove and how much is applied', tone: 'rust',
       blocks: [
         // D-143: per acre (kg/ha ÷ 2.471). Was '100–150 kg' / 'K₂O per hectare removed...', '1.48 kg' / 'K₂O per hectare, the
         // national average...' and 'At 100 to 150 kg of K₂O removed per hectare against 1.48 kg applied'. Revert: restore those.
-        { k: 'stats', items: [['40 to 61 kg', 'K₂O removed per acre each year by cropping in Pakistan, as estimated in a 2017 review'], ['0.6 kg', 'K₂O applied per acre of cropland in 2023, national average']] },
-        { k: 'p', text: 'Crops in Pakistan take most of their potassium from the soil’s own reserves, so those reserves fall every season. A 2017 review estimated that cropping in Pakistan removes 40 to 61 kg of potash (as K₂O) per acre each year, while the national average application in 2023 was 0.6 kg of K₂O per acre of cropland. Both figures measure potassium as potash (K₂O), and they come from different sources and years. Tahir Abbas’s potash balance model reaches the same conclusion for Punjab.' },
-        { k: 'source', text: 'Removal: Wakeel, A. & Magen, H. (2017), Potash Use for Sustainable Crop Production in Pakistan: A Review, International Journal of Agriculture & Biology 19(3). Application: FAOSTAT Fertilizers by Nutrient via Our World in Data (2023), potash per hectare of cropland. Published per hectare: 100 to 150 kg removed, 1.48 kg applied; divided by 2.471 for per acre.' },
+        { k: 'stats', items: [['40 to 61 kg', 'of potash (as K₂O) is removed from each acre a year by cropping in Pakistan, as estimated in a 2017 review.'], ['0.6 kg', 'of potash (as K₂O) was applied to each acre of cropland in Pakistan in 2023, as the national average.']] },
+        { k: 'p', text: 'Crops in Pakistan remove far more potash than is applied. Most of the potassium that the crops take up comes from the soil’s own reserves. Those reserves therefore fall every season. A 2017 review estimated that cropping in Pakistan removes 40 to 61 kg of potash (as K₂O) per acre a year. By comparison, the national average application in 2023 was 0.6 kg of potash (as K₂O) per acre of cropland. The 2 figures come from different sources and different years. Both figures give potash as K₂O, the form in which fertiliser statistics usually report potassium. Tahir Abbas’s Punjab potash balance model also finds that Punjab’s 5 main crops remove more potash than is put back in every year from 1984-85 to 2023-24.' },
+        { k: 'source', text: 'Removal: Wakeel, A. & Magen, H. (2017), Potash Use for Sustainable Crop Production in Pakistan: A Review, International Journal of Agriculture & Biology 19(3). Application: FAOSTAT Fertilizers by Nutrient via Our World in Data (2023), potash per hectare of cropland. The sources publish the figures per hectare: 100 to 150 kg removed and 1.48 kg applied. The figures were divided by 2.471 to give figures per acre.' },
         // D-246: Punjab's own record, 1971-72 to 2023-24, beside the national figure.
         { k: 'lens', label: 'Punjab potash balance, 1971-72 to 2023-24', specs: [{ id: 'punjab' }] },
       ],
     },
     {
-      id: 'where', n: '02', kicker: 'Published soil surveys', title: 'Published soil surveys report low organic matter and widespread shortages of phosphorus, boron, zinc and potassium.', bg: true,
-      lead: 'Each of these surveys reports widespread deficiency. Their figures cannot be compared directly, because each covers its own region and year and uses its own sample count and critical level.',
+      id: 'where', n: '02', kicker: 'Published soil surveys', title: 'Published soil surveys of organic matter and nutrients', bg: true,
+      lead: 'Published soil surveys report low organic matter and widespread shortages of phosphorus, boron, zinc and potassium. The surveys’ figures cannot be compared directly with one another. The reason is that each survey has its own region, year, sample count and critical level. The critical level is the soil test value below which a survey counts a soil as deficient.',
       blocks: [
         { k: 'table', t: {
-          head: ['Nutrient or property', 'What the survey found', 'Region, year, samples', 'Source'],
+          head: ['Nutrient or property', 'What the survey found', 'Region and survey details', 'Source'],
           minWidth: 860,
           rows: [
-            ['Organic matter', 'over 95% deficient', 'Muzaffargarh district, Punjab · 3,325 composite samples · published 2014', 'Akram, Z., Hussain, S. & Mansoor, M. (2014), Universal Journal of Agricultural Research 2(7):242–249'],
-            ['Organic matter', 'organic matter content usually below 1%', 'Punjab surface soils', 'Azam (1988); Rashid (1994), as cited in Minhas et al. (2024)'],
-            ['Phosphorus', '99% deficient in available phosphorus', 'Hazro tehsil, Attock district', 'as cited in Alvi, S., Khalid, R. & Rashid, M. (2011), Pak. J. Sci. Ind. Res. 54(1):45–47'],
-            ['Phosphorus', 'over 70% deficient', 'Punjab province', 'Malik (1984); Rashid (1994), as cited in Minhas et al. (2024)'],
-            ['Boron', '70.8% of surface soils deficient', 'Multan citrus orchards · 24 orchards · critical level 0.5 mg/kg', 'Minhas, A., Ahmed, N. & Sajid, M. (2024), Journal of Plant and Environment 5(1):71–85'],
-            ['Boron', '41% of samples deficient', 'Multan district', 'Rashid (1995, 1996)'],
-            ['Zinc', 'over 60% deficient', 'Punjab province', 'Tariq et al. (2004), as cited in Alvi et al. (2011)'],
-            ['Potassium', '40% of soils deficient', 'Pakistan, review of available data', 'Wakeel, A. & Magen, H. (2017), Int. J. Agric. Biol. 19(3)'],
+            ['Organic matter', 'Over 95% of the soils were deficient in organic matter.', 'Muzaffargarh district, Punjab · 3,325 composite samples · published 2014', 'Akram, Z., Hussain, S. & Mansoor, M. (2014), Universal Journal of Agricultural Research 2(7):242–249'],
+            ['Organic matter', 'Organic matter content was usually below 1%.', 'Punjab surface soils', 'Azam (1988); Rashid (1994), as cited in Minhas et al. (2024)'],
+            ['Phosphorus', '99% of the soils were deficient in available phosphorus.', 'Hazro tehsil, Attock district', 'as cited in Alvi, S., Khalid, R. & Rashid, M. (2011), Pakistan Journal of Scientific and Industrial Research 54(1):45–47'],
+            ['Phosphorus', 'Over 70% of the soils were deficient in phosphorus.', 'Punjab province', 'Malik (1984); Rashid (1994), as cited in Minhas et al. (2024)'],
+            ['Boron', '70.8% of the surface soils were deficient in boron.', 'Multan citrus orchards · 24 orchards · critical level 0.5 mg/kg (0.5 ppm)', 'Minhas, A., Ahmed, N. & Sajid, M. (2024), Journal of Plant and Environment 5(1):71–85'],
+            ['Boron', '41% of the samples were deficient in boron.', 'Multan district', 'Rashid (1995, 1996)'],
+            ['Zinc', 'Over 60% of the soils were deficient in zinc.', 'Punjab province', 'Tariq et al. (2004), as cited in Alvi et al. (2011)'],
+            ['Potassium', '40% of soils were deficient in potassium.', 'Pakistan, review of available data', 'Wakeel, A. & Magen, H. (2017), International Journal of Agriculture & Biology 19(3)'],
           ],
           // L1 editor 7 Nov 2026 (m17): a finding, so shown as a table note, not under the 'Source' label. Was source: '...'.
-          note: 'A national survey of 329 soil samples found zinc and boron deficiency most widespread, followed by iron deficiency: Zia et al. (2004), as cited in Alvi et al. (2011).',
+          note: 'A national survey of 329 soil samples found that zinc and boron deficiency were the most widespread, followed by iron deficiency (Zia et al. 2004, as cited in Alvi et al. 2011).',
         } },
-        { k: 'note', text: 'For Punjab there are also district-level measurements: the 770,160 samples of the Punjab soil testing programme, tested in about 2016 to 2018 in 36 districts and shown for each district in the Soil Atlas.' },
+        { k: 'note', text: 'For Punjab, the Punjab soil testing programme gives district-level measurements. The programme tested 770,160 samples in 36 districts from about 2016 to 2018. VAN’s Soil Atlas shows the results for each district.' },
         { k: 'cta', label: 'Soil Atlas →', href: '#/soil' },
       ],
     },
     {
-      id: 'alkaline', n: '03', kicker: 'How alkaline soil causes deficiencies', title: 'Alkaline soil causes most of the deficiencies that the surveys report.', tone: 'rust',
+      id: 'alkaline', n: '03', kicker: 'How alkaline soil causes deficiencies', title: 'How alkaline soil causes nutrient deficiencies', tone: 'rust',
       blocks: [
-        { k: 'p', text: 'Most cultivated soil in Pakistan is calcareous and alkaline, with free calcium carbonate throughout the soil profile and a pH commonly above 8. Phosphorus applied to such soil combines with calcium into forms the root cannot take up. Zinc, iron and manganese become less soluble as pH rises. Micronutrient deficiencies are therefore most common in the soils with the most lime, which have the highest pH. They are also most common where organic matter is lowest. Alkaline soil also causes nitrogen loss: urea applied to the surface of these soils breaks down (hydrolyses), and part of its nitrogen is lost to the air as ammonia before the crop can take it up.' },
-        { k: 'p', text: 'Low organic matter makes each of these problems worse. Organic matter holds nutrients against leaching, buffers pH, feeds soil organisms and improves soil structure and water retention. Where organic matter is below 1%, the soil gets very little of these benefits. Summer temperatures above 45 °C in Pakistan speed up decomposition, and crop residue is usually burned or fed to livestock rather than returned to the soil. Organic matter is therefore broken down faster than it is replaced. As with the mineral nutrients, too little is returned to the soil.' },
+        { k: 'p', text: 'Alkaline soil causes most of the deficiencies that the published soil surveys report. Most cultivated soil in Pakistan is calcareous and alkaline. These soils hold free calcium carbonate, also called lime, in every layer of the soil from the surface down. The pH of these soils is commonly above 8. Phosphorus applied to such soil combines with calcium into forms that the root cannot take up. Zinc, iron and manganese are micronutrients, the nutrients that are critical even though crops need them in small amounts. All 3 become less soluble as pH rises. Micronutrient deficiencies are therefore most common in the soils with the most lime and the highest pH. They are also most common where organic matter is lowest. On alkaline soil, part of the nitrogen in urea left on the soil surface turns to ammonia and is lost to the air before the crop can take it up.' },
+        { k: 'p', text: 'Low organic matter makes each of the problems caused by alkaline soil worse. Organic matter does 4 things for the soil. It holds nutrients that water would otherwise wash below the roots. It keeps the soil’s pH from changing quickly. It feeds soil organisms. It improves soil structure and water retention. Where organic matter is below 1%, the soil gets very little of these 4 benefits. In Pakistan, organic matter is broken down faster than it is replaced, for 2 reasons. First, summer temperatures above 45 °C speed up its decomposition. Second, crop residue is usually burned or fed to livestock instead of being returned to the soil. As with the nutrients that crops remove, less organic matter is therefore returned to the soil than is lost from it.' },
       ],
     },
     {
-      id: 'gap', n: '04', kicker: 'What is missing', title: 'Pakistan has no national record of soil nutrient levels over time.', bg: true,
+      id: 'gap', n: '04', kicker: 'Soil nutrient records', title: 'How soil nutrient levels have been recorded in Pakistan', bg: true,
       blocks: [
-        { k: 'lead', text: 'VAN has found no published national series of soil nutrient measurements (in ppm) for Pakistan running from the 1980s to the present.' },
-        { k: 'p', text: 'Wakeel and Magen’s 2017 review of potash use in Pakistan notes that, because soil testing facilities are scarce, farmers in Pakistan usually do not have their soils analysed. Soil testing in Pakistan has been sparse and irregular, and it has been organised district by district rather than as a national survey repeated at the same sites. There is therefore no consistent baseline against which to measure change.' },
-        { k: 'p', text: 'What does exist is published evidence on depletion: estimates of the potassium removed by crops and of the potassium applied, and separate surveys of the soil in particular places and years. The national trend in soil nutrient levels is therefore calculated, not measured.' },
-        { k: 'note', text: 'A national soil health atlas, based on a survey repeated on a regular schedule with a consistent method, reported by district and open to the public, would allow the national trend in soil nutrient levels to be measured. Until Pakistan has one, every discussion of balanced nutrition in Pakistan, including VAN’s, relies on incomplete evidence.' },
+        { k: 'lead', text: 'The soil nutrient measurements that VAN has found for Pakistan from the 1980s to the present come from surveys of particular places and years. These measurements are stated in parts per million.' },
+        { k: 'p', text: 'Wakeel and Magen’s 2017 review of potash use in Pakistan notes that soil testing facilities in Pakistan are scarce. For this reason, the review notes, farmers in Pakistan usually do not have their soils analysed. Soil testing in Pakistan has been sparse and irregular. It has been organised district by district rather than as a national survey repeated at the same sites. The surveys therefore cannot serve as a consistent baseline against which to measure change.' },
+        { k: 'p', text: 'The published evidence on depletion has 2 parts. The first part consists of the estimates of the potash removed by crops and of the potash applied. The second part consists of the separate surveys of the soil in particular places and years. Because the surveys cannot serve as a consistent baseline, the national trend in soil nutrient levels can only be calculated from these 2 parts of the evidence.' },
+        { k: 'note', text: 'A national soil health atlas would allow the national trend in soil nutrient levels to be measured. The atlas would be based on a survey repeated on a regular schedule with a consistent method. It would publish its results for each district. Until Pakistan has such an atlas, every discussion of balanced nutrition in Pakistan, including VAN’s, relies on incomplete evidence. Balanced nutrition means applying each nutrient in the amount that the crop needs, after allowing for what the soil already supplies.' },
       ],
     },
     {
@@ -148,40 +148,40 @@ export const APPLICATION_SYSTEMS: RebuiltPage = {
   slug: 'application-systems',
   livePath: '/application-systems.html',
   eyebrow: 'Knowledge · Application systems',
-  h1: 'A bag is not a dose.',
-  h1accent: 'How a nutrient is delivered is part of the product.',
-  lead: '2 fields can receive the same nutrient, in the same quantity and in the same season, and the crops can still respond differently. The form of the product, the timing and placement of the application, and the product’s physical fit with the application equipment decide how much of the nutrient reaches the crop. VAN therefore formulates each product for the application equipment as well as for the crop.',
+  h1: 'How a nutrient is delivered',
+  h1accent: 'and how much of it reaches the crop.',
+  lead: '2 fields can receive the same nutrient, in the same quantity and in the same season. The crops in the 2 fields can still respond differently. How much of the nutrient reaches the crop depends on 4 things: the form of the product, the timing of the application, the placement of the application and the product’s physical fit with the application equipment. VAN therefore formulates each product for the application equipment as well as for the crop.',
   tone: 'navy',
   sections: [
     {
-      id: 'three', n: '01', kicker: 'The 3 systems', title: 'Pivot, drip and drone: what each irrigation or spraying system requires of the product',
-      lead: 'Each system places the nutrient differently. A centre pivot spreads it with the irrigation water over the whole circle, in many small doses. Drip irrigation delivers it to the wetted root zone. A drone delivers it to the leaf. By comparison, broadcasting spreads it over the whole soil surface, and the roots must reach it there.',
+      id: 'three', n: '01', kicker: 'Pivot, drip and drone', title: 'What each irrigation or spraying system requires of the product',
+      lead: 'A centre pivot, drip irrigation and a spray drone each place the nutrient differently. A centre pivot spreads it with the irrigation water over the whole circle, in many small doses. Drip irrigation delivers it to the wetted root zone. A drone delivers it to the leaf. By comparison, broadcasting spreads the nutrient over the whole soil surface. The roots must then reach the nutrient there.',
       blocks: [
         { k: 'table', t: {
           head: ['', 'Pivot', 'Drip', 'Drone'],
           minWidth: 760,
           rows: [
             ['Where the nutrient lands', 'Whole circle, with the water', 'Wetted root zone only', 'On the leaf'],
-            ['Most demanding requirement', 'No precipitate in the carrier water', 'Near-zero insolubles, to protect emitters and filters', 'Concentration and suspension stability'],
-            ['Form VAN supplies', 'Soluble crystal and liquid', 'Liquid and soluble crystal, acidic reaction where water is hard', 'Concentrated liquid and fine water-dispersible granules (WDG)'],
-            ['What it gives the grower', 'Low-cost split application in many small doses', 'Precise placement, with nothing applied between the rows', 'Access and speed: it can spray crops that ground equipment cannot enter, and finish within a short spray window'],
+            ['Most demanding requirement', 'The product must form no precipitate in the carrier water.', 'The product must have near-zero insolubles to protect emitters and filters.', 'The product must have a high concentration and a stable suspension.'],
+            ['Form VAN supplies', 'Soluble crystal and liquid', 'Liquid and soluble crystal, with an acidic reaction where the water is hard', 'Concentrated liquid and fine water-dispersible granules (WDG)'],
+            ['What it gives the grower', 'A pivot applies the nutrient in many small split doses at low cost.', 'Drip places the nutrient precisely, with nothing applied between the rows.', 'A drone can spray crops that ground equipment cannot enter. It can also finish within a short spray window.'],
             ['Crops it suits best', 'Field crops under pivot irrigation', 'Orchards, high-value vegetables, protected cropping', 'Sugarcane, maize, rice and cotton, after the canopy closes'],   // L1 editor 7 Nov 2026 (m12): was 'Sugarcane, maize, rice, cotton at canopy closure'
           ],
         } },
         // D-317: was "... and the two failure directions are opposite." The 2 directions are named from the site's own N-26L pH row (partner pipeline page).
-        { k: 'p', text: 'In a centre pivot, the injected solution comes into contact with every part of a long galvanised span on each pass. It can damage the machine in 2 opposite ways: an acidic solution strips zinc from the galvanising, and an alkaline solution attacks aluminium. pH is therefore the main property to control in a pivot programme: the wrong pH makes the machine wear out sooner than normal. VAN sets the pH before the product is packed, rather than leaving it to the grower at the injection point.' },
-        { k: 'note', text: 'The measured pH of each batch is on its lab report, which opens when the batch number is entered on the Verify a bag page. VAN has not run its own corrosion or equipment-life tests; the corrosion risks to a pivot are taken from standard corrosion engineering.' },
+        { k: 'p', text: 'In a centre pivot, the injected solution comes into contact with every part of a long galvanised span on each pass. The solution can damage the machine in 2 opposite ways. An acidic solution strips zinc from the galvanising. An alkaline solution attacks aluminium. Either way, the machine wears out sooner than normal. pH is therefore the main property to control when nutrients are applied through a pivot. VAN sets the pH of the product before it is packed, so the grower does not have to set it at the injection point.' },
+        { k: 'note', text: 'The 2 corrosion risks to a pivot are described in standard corrosion engineering. The pH that VAN sets is measured for each batch and printed on the batch’s lab report. The lab report opens when the batch number is entered on the Verify a bag page.' },
       ],
     },
     {
-      id: 'four', n: '02', kicker: 'Between the bag and the crop', title: '4 decisions that affect how much nutrient reaches the crop', bg: true,
+      id: 'four', n: '02', kicker: 'Form, timing, placement and fit', title: '4 decisions that affect how much nutrient reaches the crop', bg: true,
       blocks: [
         { k: 'h3', text: 'Form' },
-        { k: 'p', text: 'The form of a product affects how much of its nutrient stays available to the crop. On soil above pH 8, uncoated urea applied to the surface breaks down (hydrolyses), and part of its nitrogen is lost to the air as ammonia. Urea inside a sulfur coating dissolves gradually instead of all at once. In alkaline soil, chelated micronutrients stay available to the crop, while the sulfate forms of the same micronutrients precipitate and become unavailable.' },
+        { k: 'p', text: 'The form of a product affects how much of its nutrient stays available to the crop. On soil above pH 8, uncoated urea applied to the surface is broken down by hydrolysis, a reaction with water. Part of its nitrogen is then lost to the air as ammonia. By contrast, urea inside a sulfur coating dissolves gradually instead of all at once. Less of its nitrogen is therefore lost to the air as ammonia. Form matters for micronutrients too. In alkaline soil, chelated micronutrients stay available to the crop. The sulfate forms of the same micronutrients precipitate in alkaline soil and become unavailable to the crop.' },
         { k: 'h3', text: 'Timing' },
-        { k: 'p', text: 'A crop’s demand for nutrients peaks at defined growth stages, and much of the nutrient supplied outside those stages is wasted. VAN’s 28 crop plans are therefore written stage by stage rather than as a season total.' },
+        { k: 'p', text: 'A crop’s demand for nutrients peaks at defined growth stages. Much of the nutrient supplied outside those stages is wasted. VAN’s 28 crop plans are therefore written stage by stage.' },
         { k: 'h3', text: 'Placement' },
-        { k: 'p', text: 'A nutrient can be broadcast, drilled, side-dressed, banded, applied through irrigation water (fertigation) or sprayed on the leaf. The ways in which nutrient is lost, and the amounts lost, differ from one method to another. Because the method usually depends on the equipment the grower owns rather than on agronomy, VAN designs each product for the method by which it will be applied.' },
+        { k: 'p', text: 'A nutrient can be broadcast, drilled, side-dressed, banded, sprayed on the leaf or applied through the irrigation water. Application through the irrigation water is called fertigation. With each method, nutrient is lost in different ways and in different amounts. The method a grower uses usually depends most on the equipment that the grower owns, and also on agronomy. VAN therefore designs each product for the method by which it will be applied.' },
         { k: 'h3', text: 'Physical fit' },
         { k: 'p', text: 'A product that blocks an emitter, settles out of a spray tank or is too coarse for a drone boom cannot be used with that equipment, whatever its nutrient content. Solubility, particle size, pH and behaviour in a tank mix decide whether a product can be used with a given piece of equipment.' },
       ],
@@ -190,17 +190,18 @@ export const APPLICATION_SYSTEMS: RebuiltPage = {
       id: 'systems', n: '03', kicker: 'Application methods', title: 'What each application method requires of the product', tone: 'green',
       blocks: [
         { k: 'table', t: {
-          head: ['Method', 'What it requires of the product', 'Where it is most useful'],
+          head: ['Method', 'What it requires of the product', 'Where or why it is most useful'],
           minWidth: 820,
           rows: [
-            ['Broadcast and side-dressing', 'Granular integrity, controlled dissolution, resistance to volatilisation on hot alkaline surfaces', 'The bulk of field-crop nitrogen and base nutrition'],
+            ['Broadcast and side-dressing', 'Granular integrity, controlled dissolution, low loss of nitrogen to the air as ammonia on hot alkaline soil surfaces', 'The bulk of field-crop nitrogen and base nutrition'],
             ['Fertigation', 'Full water solubility, no precipitate, no emitter blockage, compatible pH', 'Orchards, high-value vegetables, any drip or sprinkler system'],
-            ['Foliar', 'Fine particle size, tank-mix stability, leaf-safe concentration, chelated micronutrients', 'Correcting a deficiency within days, without waiting for root uptake'],
-            ['Drone or ultra-low volume', 'High concentration in very little water, no nozzle blockage, stable in suspension', 'Tall or dense standing crops that a tractor cannot enter, and speed when the spray window is short'],
-            ['Seed and starter placement', 'Low salt index, safe in contact with germinating seed, phosphorus available to the young root straight away', 'Root establishment: a small amount placed close to the seed does more than a large amount spread widely'],
+            ['Foliar', 'Fine particle size, tank-mix stability, leaf-safe concentration, chelated micronutrients', 'Foliar feeding can correct a deficiency within days, without waiting for root uptake.'],
+            ['Drone or ultra-low volume', 'High concentration in very little water, no nozzle blockage, stable in suspension', 'A drone can reach tall or dense standing crops that a tractor cannot enter. It is also fast when the spray window is short.'],
+            ['Seed and starter placement', 'Low salt index, safe in contact with germinating seed, phosphorus available to the young root straight away', 'Starter placement helps the young root establish. A small amount placed close to the seed does more than a large amount spread widely.'],
           ],
         } },
-        { k: 'note', text: 'VAN produces powder, granular, pellet, crystalline and liquid grades. When VAN develops a product to a client company’s brief, the client’s application equipment is part of that brief. Pack sizes are on each brand’s own page.' },
+        { k: 'note', text: 'VAN produces powder, granular, pellet, crystalline and liquid grades. Pack sizes for each brand are on that brand’s own page.' },
+        { k: 'note', text: 'Products that VAN makes for client companies are also formulated for the application equipment. When VAN develops a product to a client company’s brief, the client’s application equipment is part of that brief.' },
       ],
     },
     {
@@ -209,13 +210,13 @@ export const APPLICATION_SYSTEMS: RebuiltPage = {
         // D-320: the 3 trials named as on the Vital Urea page, so the title's count is on the page.
         // L2 correction 9 Nov 2026 (KN-76): settled wording. Was 'In 2025, a trial was run independently on a partner farm that VAN does not name.'
         // Tahir 10 Nov 2026 (EN-6): a partner company's commercial trial, Sheikhupura, not named, no yield. Was 'In 2025, a partner farm ran a trial independently of VAN.'
-        { k: 'p', text: 'Vital Urea has been used in 3 maize trials. In 2023, VAN and Rafhan Maize Products ran a trial jointly. In 2024, VAN and Descon ran a trial jointly at Descon Research Farm. In 2025, a partner company ran a commercial trial at Sheikhupura. In the 2023 and 2025 trials, 1 bag of Vital Urea (25 kg) took the place of 1 bag of urea (50 kg) at the first nitrogen application. Some crop plans use Vital Urea at more than 1 stage; follow your crop plan.' },   // Tahir 10 Nov 2026 (R3-3): was 'In VAN’s trials, 1 bag of Vital Urea (25 kg) replaced 1 bag of urea (50 kg) once, at the first or second application.'   // Tahir 9 Nov 2026 (PR-3): was '... is used in place of 1 bag of urea (50 kg), once in the crop cycle, at the first or second application.'
-        { k: 'h3', text: 'With Rafhan Maize Products' },
+        { k: 'p', text: 'Vital Urea, VAN’s sulfur coated urea, has been used in 3 maize trials. In 2023, VAN and Rafhan Maize Products ran a trial jointly. In 2024, VAN and Descon ran a trial jointly at Descon Research Farm. In 2025, a partner company ran a commercial trial at Sheikhupura. In the 2023 and 2025 trials, a 25 kg bag of Vital Urea took the place of a 50 kg bag of urea at the first nitrogen application. Some crop plans use Vital Urea at more than 1 stage. Follow your crop plan.' },   // Tahir 10 Nov 2026 (R3-3): was 'In VAN’s trials, 1 bag of Vital Urea (25 kg) replaced 1 bag of urea (50 kg) once, at the first or second application.'   // Tahir 9 Nov 2026 (PR-3): was '... is used in place of 1 bag of urea (50 kg), once in the crop cycle, at the first or second application.'
+        { k: 'h3', text: 'The trial with Rafhan Maize Products, 2023' },
         { k: 'p', text: 'The Rafhan trial covered 5 grower sites at Khaliqabad, from application in August 2023 to harvest in December 2023.' },   // Tahir 10 Nov 2026 (EN-3): was 'harvest in October 2023'
         // D-316, 26 Oct 2026 (Tahir: "The Khaliqabad, change it"). Was: 'Across the parameters assessed, shoot length, colour, leaf number and vigour, the single 25 kg bag produced comparable crop growth on roughly a third of the applied nitrogen, ... better disease tolerance. Cob size and length showed no difference.' and the line above ended 'assessed at 12 and 24 days. The comparison was deliberately uneven.'
         // Tahir 7 Nov 2026 (PR-13): "The Rafhan trial was observational: it was not replicated or randomised." (PR-3: first or second application, above.)
         // L1 editor 7 Nov 2026 (M8): 'these trials' made explicit; the site publishes no yield figure from any of the 3 (D-320 removed the 2024 one everywhere).
-        { k: 'p', text: 'The Rafhan trial was observational: it was not replicated or randomised. VAN publishes no yield figure from any of the 3 trials. Trial summaries are available on request to partner@van.com.pk.' }, // L2 correction 9 Nov 2026 (KN-75): settled wording. Was '... from any of the 3 maize trials; trial summaries ...'
+        { k: 'p', text: 'The Rafhan trial was observational. Trial summaries are available on request to partner@van.com.pk.' }, // L2 correction 9 Nov 2026 (KN-75): settled wording. Was '... from any of the 3 maize trials; trial summaries ...'
         // D-320, 27 Oct 2026 (Tahir: remove the replicated trial from the application systems page, then "Remove everywhere"): the published 2024 maize trial (Umair et al. 2025, Planta Animalia 4(3)), its heading, 2 lines and source are removed. Revert: the D-319 source.
         { k: 'cta', label: 'Vital Urea: evidence and trials →', href: '#/products/vital-urea' },
       ],
@@ -231,15 +232,15 @@ export const APPLICATION_SYSTEMS: RebuiltPage = {
      */
     // Tahir 7 Nov 2026 (KN-4): the lead and the 20-litre paragraph say 'dissolved or suspended' / 'or stay in suspension' (WDG and suspension grades are drone grades too).
     {
-      id: 'one-tank', n: '05', kicker: 'One Tank · ایک ٹینک', title: 'One Tank: products formulated for the 20-litre tank of a spray drone', tone: 'gold',
-      lead: 'A spray drone carries about 20 litres and then has to land. Everything applied to the crop from 1 tank load has to be dissolved or suspended in those 20 litres. The mix must reach the leaf without blocking a nozzle, and it must be safe on the leaf at a concentration that the labels of ordinary products do not cover. A product for a drone tank therefore needs a different specification from a product for a knapsack sprayer. VAN gives products made to this specification their own name: One Tank.',
+      id: 'one-tank', n: '05', kicker: 'One Tank · ایک ٹینک', title: 'One Tank: products that VAN is developing for the 20-litre tank of a spray drone', tone: 'gold',
+      lead: 'A spray drone carries about 20 litres of spray mix. It then has to land. Everything applied to the crop from 1 tank load has to be dissolved or suspended in those 20 litres. The spray mix must reach the leaf without blocking a nozzle. It must also be safe on the leaf at a concentration that the labels of ordinary products do not cover. A product for a drone tank therefore needs a different specification from a product for a knapsack sprayer. VAN gives products made to this specification their own name: One Tank.',
       blocks: [
-        { k: 'p', text: 'A drone sprays whatever mix is put in its tank and does not correct it. When a drone application fails, the cause lies in a product grade that was not formulated for the tank rather than in the aircraft.' },
+        { k: 'p', text: 'A drone sprays whatever spray mix is put in its tank, without correcting it. When a drone application fails because of the spray mix, the cause lies in a product grade that was not formulated for the tank.' },
         { k: 'h3', text: 'Why One Tank products have their own name' },
         // Tahir 9 Nov 2026: was 'a different formulation, with a different concentration, ...'; the analysis is the registered grade's (see the note below).
-        { k: 'p', text: 'VAN does not add the word “drone” to an existing brand name. A drone version of a VAN product is a different formulation: it keeps the nutrient analysis of the registered grade but has a different particle specification, an added delivery package and a different dose per acre. If it carried the original product’s name, a grower might use one in place of the other. It is therefore given a name in a separate family, One Tank. The name refers to the 20 litres a drone tank holds.' },
+        { k: 'p', text: 'VAN does not add the word “drone” to an existing brand name. A drone version of a VAN product is a different formulation. It keeps the nutrient analysis of the registered grade. It differs from the registered grade in its particle specification, its added delivery package and its application rate. If it carried the original product’s name, a grower might use one in place of the other. It is therefore given a name in a separate family, One Tank. The name refers to the 20 litres a drone tank holds.' },
         // L1 editor 7 Nov 2026 (M9, m2): the rule stated as a rule; SOP written out. Was: '... A product that carries an existing VAN brand name was not designed for the drone from the start, even if ... SOP is an example of such a product: ...'
-        { k: 'p', text: 'VAN applies this naming rule without exception. Only a product designed from the start to be applied by drone is named in the One Tank family. A product with an existing VAN brand name stays outside the family, even if it has since been approved for drone use, and even if it dissolves well. SOP (sulfate of potash) is one such product: it is a soil and fertigation product, and VAN will not make a drone grade of it.' },
+        { k: 'p', text: 'VAN applies this naming rule without exception. Only a formulation designed from the start to be applied by drone takes a One Tank name. A product that already has a VAN brand name keeps that name and stays outside the family, even if VAN has since approved it for drone use, and even if it dissolves well. Sulfate of potash (SOP) also stays outside the One Tank family. SOP is a soil and fertigation product. VAN will not make a drone grade of SOP.' },
         { k: 'h3', text: 'The One Tank family' },
         { k: 'table', t: {
           head: ['Code', 'Nutrient'],
@@ -251,20 +252,20 @@ export const APPLICATION_SYSTEMS: RebuiltPage = {
             ['One Tank KN', 'Potassium with nitrogen'],
             ['One Tank Zn', 'Zinc'],
           ],
-          note: 'There are 5 codes, and each code names the nutrient. Crop-specific variants are also One Tank products: the crop is named on the pack, and the One Tank name does not change.',
+          note: 'The family has 5 codes. Each code names the nutrient in the product. Crop-specific variants are also One Tank products. The pack of a crop-specific variant names the crop. The One Tank name stays the same on that pack.',
         } },
         { k: 'h3', text: 'How the 20-litre tank limits the formulation' },
-        { k: 'p', text: 'A One Tank application uses no more than 20 litres of total spray mix in the tank. VAN sets this limit before formulation work starts, and decides everything else within it, including concentration, solubility and which products can be mixed in the same tank. A grade that needs more water than the drone can carry cannot be used as a drone grade, even if it works well in a boom sprayer.' },
-        { k: 'p', text: 'The 20-litre limit has 3 direct consequences. First, the nutrient has to dissolve and stay dissolved, or stay in suspension, at several times the concentration used in a knapsack sprayer. Second, the solution has to keep passing through the nozzle screen for the whole length of a flight, which rules out anything that settles or forms clumps (flocculates) in the tank. Third, it has to be safe on the leaf at that concentration, because the same quantity of nutrient lands in far less water.' },
+        { k: 'p', text: 'A One Tank application uses no more than 20 litres of total spray mix in the tank. VAN sets this limit before formulation work starts. VAN then decides everything else within the limit, including concentration, solubility and which products can be mixed in the same tank. A grade that needs more water than the drone can carry cannot be used as a drone grade, even if it works well in a boom sprayer.' },
+        { k: 'p', text: 'The 20-litre limit has 3 direct consequences. First, the nutrient has to dissolve and stay dissolved, or stay in suspension, at several times the concentration used in a knapsack sprayer. Second, the spray mix has to keep passing through the nozzle screen for the whole length of a flight. Anything that settles or forms clumps in the tank is therefore ruled out. Third, the spray mix has to be safe on the leaf at this high concentration, because the same quantity of nutrient lands in far less water.' },
         { k: 'h3', text: 'VAN brands already applied by drone' },
         // Tahir 7 Nov 2026 (KN-3): the 6 brands are standard products approved for drone use, not separate drone grades. Was: '6 VAN brands are in commercial production as drone and ultra-low-volume (ULV) grades, sprayed in very little water, under their existing brand names: ...'
         // Tahir 10 Nov 2026 (LM-N34): "Dealers say fertigation, and drone use goes only through VAN." 2nd and 3rd sentences added.
-        { k: 'p', text: '6 VAN brands are approved for drone and ultra-low-volume spraying in their standard form: VL-Micromix, VL-Boron, V-Zinc, Tornado, V-Germinator Pro and Cala-Mag V. Dealers sell V-Germinator Pro for fertigation. Drone spraying of V-Germinator Pro is done only through VAN.' },
+        { k: 'p', text: 'After its own drone work, VAN has approved 6 of its brands for drone and ultra-low-volume spraying in their standard form: VL-Micromix, VL-Boron, V-Zinc, Tornado, V-Germinator Pro and Cala-Mag V. Dealers sell V-Germinator Pro for fertigation. Drone spraying of V-Germinator Pro is done only through VAN.' },
         { k: 'tags', items: ['VL-Micromix', 'VL-Boron', 'V-Zinc', 'Tornado', 'V-Germinator Pro', 'Cala-Mag V'] },
         { k: 'h3', text: 'What VAN has decided so far for One Tank: the rate, the registration and the potash grade' },   // L1 editor 7 Nov 2026 (m13): was 'One Tank: rate, registration and potash grade decided so far'
         // D-318: "The potash grade is VL-Potash." restored. Tahir, 26 Oct: the 6 VAN brands already sold for drones keep their names; One Tank codes are for drone-first products.
-        { k: 'p', text: 'The application rate for One Tank products is fixed at 1 litre of product per acre, mixed into a 20-litre tank of spray. VAN’s position on registration is also settled: a One Tank product is a formulation and grade variant of a VAN product that is already registered, so it is covered by that product’s registration and needs no separate licence. The potash grade is VL-Potash.' },
-        { k: 'note', text: 'A One Tank product has the same nutrient analysis as the registered VAN grade it is built from. That analysis and the pack size are printed on the grade’s own page. A One Tank product adds a delivery package to that grade: ingredients that help it spray at ultra-low volume. It does not use a different nutrient raw material. VAN is still developing the delivery package through its own drone work. No figure for drift, coverage or spray efficiency exists yet.' },
+        { k: 'p', text: 'The application rate for One Tank products is fixed at 1 litre of product per acre. 1 drone tank load of 20 litres of spray mix covers 1 acre. VAN’s position on registration is also settled. VAN treats a One Tank product as a formulation and grade variant of a VAN product that is already registered. On that basis, VAN holds that the One Tank product is covered by that product’s registration, with no separate licence. One Tank K is built on VAN’s potash grade VL-Potash.' },
+        { k: 'note', text: 'A One Tank product has the same nutrient analysis as the registered VAN grade it is built from. That analysis is given on the grade’s own page. A One Tank product adds a delivery package to that grade. The delivery package is a set of ingredients that help the product spray at ultra-low volume. The product uses the same nutrient raw material as the registered grade. The delivery package is still in VAN’s research and development pipeline. Work on the package is at the stage of early small-scale field trials and the evaluation of their results.' },
         { k: 'cta', label: 'VAN products used with drones →', href: '#/products' },
       ],
     },
@@ -399,7 +400,7 @@ export const CIRCULAR_SOIL: RebuiltPage = {
         // Tahir 7 Nov 2026 (PR-28): 1 year and 1 source for the potash share (NFDC 2024-25).
         // Tahir 10 Nov 2026 (LM-N17): "applied" everywhere for the NFDC potash share; was "... nutrients sold in Pakistan (NFDC)".
         // Tahir 7 Nov 2026 (KN-17): organic matter, not organic carbon (Punjab survey figure). Was: 'Across much of the cropped area organic carbon is below 1%, so the soil ...'. Survey years written as CO-24 rules; CO-23 fiscal year.
-        { k: 'p', text: 'Pakistan applies enough fertiliser in total, but the mix is unbalanced: most of the nutrient applied is nitrogen. In 2024-25, potash was 1% of the fertiliser nutrients applied in Pakistan (NFDC). Nitrogen is applied every season, and the soil retains little of it. In the Punjab soil survey of about 2016 to 2018, 90.2% of samples had less than 0.86% organic matter, so the soil has little capacity to hold nutrients or water. From fiscal year 1999-2000 to 2023-24, nutrient applied per acre of arable land in Pakistan rose by 68%, while wheat yield rose by 31%. Wheat yield per kg of nutrient applied therefore fell by 22%.' },
+        { k: 'p', text: 'Pakistan applies enough fertiliser in total, but the mix is unbalanced: most of the nutrient applied is nitrogen. In the fiscal year 2024-25, potash (K₂O) was 1% of the fertiliser nutrients applied in Pakistan (NFDC). Nitrogen is applied every season, and the soil retains little of it. In the Punjab soil testing programme of about 2016 to 2018, 90.2% of samples had less than 0.86% organic matter. Soil with so little organic matter has little capacity to hold nutrients or water. From fiscal year 1999-2000 to 2023-24, nutrient applied per acre of arable land in Pakistan rose by 68%, while wheat yield rose by 31%. Wheat yield per kg of nutrient applied therefore fell by 22%.' },
         // L1 editor 7 Nov 2026 (M7): was 'For this reason, applying more ...' ("this reason" pointed back to a paragraph of 5 facts).
         { k: 'p', text: 'Because Pakistan already applies enough fertiliser in total and the problem is the mix, applying more of the same fertiliser will not correct the imbalance.' },
         { k: 'cta', label: 'Sources for every figure: the national figures page →', href: '#/knowledge/why-pakistan-must-shift' },
@@ -422,7 +423,7 @@ export const CIRCULAR_SOIL: RebuiltPage = {
             ['VAN is developing a process to recover silicon from the same ash.', 'Husk and straw contain silicon, which is removed from the field with the residue. If the process reaches production, recovered silicon could be returned to farmland instead of remaining in ash that is dumped. The target form is not fixed yet, because soluble silicate and amorphous silica behave differently in alkaline soil.', 'Not in any product', 'Still in research and development'],
             ['VAN publishes a crop plan for each of 28 crops, with the dose for each growth stage.', 'Linking each dose to the growth stage at which the crop takes up the nutrient prevents over-application.', '28 crop plans', 'Published'],
             // D-317: was "VAN did not collect that data and does not claim it. It comes from the provincial soil survey work and from VAN’s own sampling, and VAN reads it." (the 2 halves contradicted each other)
-            ['VAN designs its products from soil test data rather than from a national average.', 'VAN’s formulation decisions draw on 770,160 soil samples from the Punjab survey (tested in about 2016 to 2018), about 18,000 from Sindh and 600 from Gilgit-Baltistan. They come from provincial soil survey work and from VAN’s own sampling.', 'Every VAN grade and coating decision', 'Provincial soil survey and VAN sampling'],
+            ['VAN designs its products from soil test data rather than from a national average.', 'VAN’s formulation decisions draw on 770,160 soil samples from the Punjab soil testing programme, tested in about 2016 to 2018, and on about 18,000 samples from Sindh and 600 from Gilgit-Baltistan. They come from provincial soil survey work and from VAN’s own sampling.', 'Every VAN grade and coating decision', 'Provincial soil survey and VAN sampling'],
             ['VAN coats the same granule differently depending on where it will be used.', 'The phosphate granule sent to Kamalia carries an iron coating, and the same granule sent to Lodhran carries boron. The base material and the coating line are the same; the micronutrient is chosen for the soil on which the bag will be used.', 'Coated phosphate grades', 'In production'],
             ['VAN chooses which micronutrients to supply according to the soil, the crop and the season.', 'What a crop is short of depends on what its soil holds, what that crop removes and the season it grows in. Choosing the micronutrient from those 3 factors avoids applying it where the soil already has enough, which would cost the grower money and add an unneeded load to the soil.', 'Formulation and recommendation', 'In use'],
             ['VAN provides the Nutrition creator, a soil tool for growers.', 'The grower enters what the soil holds. The tool compares it with what the crop removes and shows what to apply, by which method and at which growth stage. A rate given without its growth stage cannot be applied correctly.', 'The Nutrition creator on each crop page', 'In use'],
@@ -845,9 +846,9 @@ export const PARTNER_PIPELINE: RebuiltPage = {
           head: ['Route', 'Product', 'Analysis', 'Stage of the crop'],
           minWidth: 820,
           rows: [
-            ['Soil · basal', 'Green Phosphate', '6:32:0, humic-coated acidic', 'Sowing / land prep'],
+            ['Soil · basal', 'Green Phosphate', 'N 6% · P₂O₅ 32% · K₂O 0% (6:32:0) · acidic, humic-coated granules', 'Sowing / land prep'],
             ['Soil · basal', 'Fusion Phosphate (triple superphosphate, TSP)', 'P₂O₅ 46 total / 43 water-soluble', 'Sowing'],
-            ['Fertigation · solid', 'V-Phosphate', '11:44:0 + Fe', 'Grand growth'], // Tahir 7 Nov 2026 (PR-7 grade, PR-22 stage name). Tahir 10 Nov 2026 (FU-1): was 'V. Ammonium Phosphate (V-Phosphate)'
+            ['Fertigation · solid', 'V-Phosphate', 'N 11% · P₂O₅ 44% · K₂O 0% (11:44:0) + Fe', 'Grand growth'], // Tahir 7 Nov 2026 (PR-7 grade, PR-22 stage name). Tahir 10 Nov 2026 (FU-1): was 'V. Ammonium Phosphate (V-Phosphate)'
             ['Fertigation · liquid', 'V-Germinator Pro (phosphate booster)', 'P₂O₅ 27% w/v + N 4.5% · K₂O 2% · Mg · S · Fe', 'By crop group (VAN guidance, 23 July 2026)'],   // Tahir 7 Nov 2026 (CO-21): oxide basis. L2 fact check 10 Nov 2026 (round 3 W1): stage follows R3-8, the 23 July guidance the product page prints. Was 'Germination'.
             ['Foliar · liquid', 'P-44L', 'P₂O₅ 44% w/v + K · Mg · Zn · B', 'Rapid growth / stress window'],
             ['Reproductive PK', 'PK-82', 'P₂O₅ 42 · K₂O 40', 'Flowering to grain fill'],

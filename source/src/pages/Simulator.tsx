@@ -199,7 +199,7 @@ export default function Simulator({ slug }: { slug?: string | null } = {}) {
         {/* Tahir 7 Nov 2026 (CR-3): lead deleted. Was "Every figure in the simulator states its source. VAN’s own trials are used first, and published Pakistani research, with its citation, second." */}
         {/* L1 7 Nov 2026 (crops-b M7): lab tile was "..., which tests the batches the plans name". */}
         {/* Tahir 9 Nov 2026 (L2 crops-b W5): was "The simulator draws on VAN’s research farms and the Punjab soil survey." The live wheat and potato simulators read no soil or trial data, so the heading names what the next version will draw on. The tiles are kept. */}
-        <SectionHead eyebrow="What it is built on" title={`What the next version will draw on: VAN’s research farms, the Punjab soil survey, VAN’s ${CROPS.length} crop plans and VAN’s laboratory`} />
+        <SectionHead eyebrow="What it is built on" title={`The next version will draw on VAN’s research farms, the Punjab soil testing programme, VAN’s ${CROPS.length} crop plans and VAN’s laboratory.`} />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {[...SIMULATOR.builtOn, [`${CROPS.length} crop plans`, 'each listing VAN’s brands for every stage, each with a PDF'], [COUNTS.lab, 'VAN’s laboratory, accredited by the Pakistan National Accreditation Council (PNAC). It tests batches of the products named in the crop plans.']].map(([v, l]) => <div key={v} className="panel p-5"><div className="num text-[30px]" style={{ color: 'var(--navy)' }}>{v}</div><p className="small muted mt-2">{l}</p></div>)}
         </div>

@@ -110,7 +110,7 @@ export function BalanceChart() {
           <div key={r.name} className="panel-soft p-4">
             <div className="cap uppercase tracking-[.08em] font-bold">For every 1 tonne of potash · {r.name}</div>
             <div className="pull text-[clamp(20px,1.8vw,26px)] mt-1">{r.d.perTonneK}</div>
-            <div className="cap mt-1">N {fmt(r.d.N)} t · P₂O₅ {fmt(r.d.P)} t · K₂O {fmt(r.d.K)} t</div>
+            <div className="cap mt-1">Tonnes applied in 2023: N {fmt(r.d.N)} t · P₂O₅ {fmt(r.d.P)} t · K₂O {fmt(r.d.K)} t</div>
           </div>
         ))}
       </div>
@@ -140,7 +140,7 @@ export function IndexLinesChart() {
   const nV = useCountUp(nIdx, on, 1500), wV = useCountUp(wIdx, on, 1500)
   return (
     <div ref={ref} className={`chart panel p-5 ${on ? 'in' : ''}`}>
-      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>Nutrient applied per acre and wheat yield as an index, 1999-2000 to 2023-24</h4><span className="cap">{/* L1 editor 7 Nov 2026 (whyshift m4): base period as elsewhere; was "index, 2000 = 100" */}index, 1999-2000 = 100</span></div>
+      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>On an index with 1999-2000 = 100, nutrient applied per acre reached 168 and wheat yield 131 in 2023-24</h4><span className="cap">{/* L1 editor 7 Nov 2026 (whyshift m4): base period as elsewhere; was "index, 2000 = 100" */}index, 1999-2000 = 100</span></div>
       <div ref={fit.ref}><svg viewBox={`0 0 ${W} ${H}`} width="100%" className="mt-3" role="img" aria-label="2 index lines, nutrient per acre and wheat yield">
         {[100, 120, 140, 160, 180].map(g => (
           <g key={g}><line x1={x0} x2={x1} y1={y(g)} y2={y(g)} stroke={g === 100 ? INK : RULE} strokeDasharray={g === 100 ? undefined : '2 3'} /><text x={x0 - 8} y={y(g) + 4} textAnchor="end" fontSize={12} fill={MUTED}>{g}</text></g>
@@ -177,11 +177,11 @@ export function ProductivityTable({ withSource = true }: { withSource?: boolean 
   const rows = NATIONAL.productivity.rows
   return (
     <div className="panel p-5">
-      <h4>Crop yields and the change in yield per kilogram of nutrient applied, 1999-2000 to 2023-24</h4>
+      <h4>Yield per kg of nutrient applied fell for wheat, rice, cotton and all cereals between 1999-2000 and 2023-24 (VAN’s calculation: 10% to 33%)</h4>
       <p className="cap mb-2">yield in maunds per acre · the last column is VAN’s calculation</p>
       <div className="overflow-x-auto tbl-scroll">
         <table className="tbl">
-          <thead><tr><th>Crop</th><th className="r">1999-2000</th><th className="r">2023-24</th><th className="r">Yield change</th><th className="r" style={{ color: RUST }}>Change in yield per kg of nutrient</th></tr></thead>
+          <thead><tr><th>Crop</th><th className="r">1999-2000</th><th className="r">2023-24</th><th className="r">Yield change</th><th className="r" style={{ color: RUST }}>Change in yield per kg of nutrient applied</th></tr></thead>
           <tbody>{rows.map(r => <tr key={r.crop}><td className="font-semibold">{r.crop}</td><td className="r num">{fmt1(r.y1)}</td><td className="r num">{fmt1(r.y2)}</td><td className="r num font-semibold" style={{ color: GREEN }}>{r.change}</td><td className="r num font-bold" style={{ color: RUST }}>{r.perKg}</td></tr>)}</tbody>
         </table>
       </div>
@@ -199,7 +199,7 @@ export function ProductivityChart({ wide = false, table = true }: { wide?: boole
   const pairs = [p.nutrientChange, p.wheatChange]
   return (
     <div ref={ref} className="panel p-5">
-      <h4>Nutrient applied per acre rose faster than wheat yield, 1999-2000 to 2023-24</h4>
+      <h4>Nutrient applied per acre rose by 68% and wheat yield by 31% between 1999-2000 and 2023-24</h4>
       <p className="cap">1999-2000 → 2023-24</p>
       <div className={wide ? 'grid lg:grid-cols-[1fr_1.1fr] gap-6 mt-4 items-start' : ''}>
         <div className="grid sm:grid-cols-2 gap-4 mt-4">
@@ -321,11 +321,11 @@ export const RICE_ROWS: { c: string; n: string; y: string; per: number; farm: st
   // 91.8 / 127.6 / 177.6 / 120.6 / 92.5 / 135.4 kg/ha and 5.21 / 6.11 / 7.14 / 4.07 / 2.99 / 4.31 t/ha (kept on the
   // source line). The paddy-per-kg-N column is a ratio and does not change. Revert: restore those strings.
   { c: 'Bangladesh', n: '37.2 kg/acre', y: '52.7 maunds/acre', per: 56.8, farm: '1.29 acres' },
-  { c: 'Vietnam', n: '51.6 kg/acre', y: '61.8 maunds/acre', per: 47.9, farm: 'n/a' },
-  { c: 'China', n: '71.9 kg/acre', y: '72.2 maunds/acre', per: 40.2, farm: 'n/a' },
+  { c: 'Vietnam', n: '51.6 kg/acre', y: '61.8 maunds/acre', per: 47.9, farm: '' },
+  { c: 'China', n: '71.9 kg/acre', y: '72.2 maunds/acre', per: 40.2, farm: '' },
   { c: 'Pakistan', n: '48.8 kg/acre', y: '41.2 maunds/acre', per: 33.7, farm: '5.3 acres' },
-  { c: 'Thailand', n: '37.4 kg/acre', y: '30.3 maunds/acre', per: 32.3, farm: 'n/a' },
-  { c: 'India', n: '54.8 kg/acre', y: '43.6 maunds/acre', per: 31.8, farm: 'n/a' },
+  { c: 'Thailand', n: '37.4 kg/acre', y: '30.3 maunds/acre', per: 32.3, farm: '' },
+  { c: 'India', n: '54.8 kg/acre', y: '43.6 maunds/acre', per: 31.8, farm: '' },
 ]
 export function RiceChart() {
   const { ref, inView } = useInView({ threshold: 0.15 })
@@ -337,7 +337,7 @@ export function RiceChart() {
   const max = 60, labelW = 110, valW = 60, rowH = 34, W = fit.W, H = RICE_ROWS.length * rowH + 8, barW = W - labelW - valW
   return (
     <div ref={ref} className={`chart panel p-5 ${on ? 'in' : ''}`}>
-      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>Paddy produced per kilogram of nitrogen applied to rice, 6 Asian countries (VAN’s calculation: nitrogen rates for 2017-18, paddy yields for 2023)</h4><span className="cap">kg of paddy per kg N</span></div>
+      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>Bangladesh produced 56.8 kg of paddy per kg of nitrogen applied to rice and Pakistan 33.7 kg, on nitrogen rates for 2017-18 and paddy yields for 2023 (VAN’s calculation)</h4><span className="cap">kg of paddy per kg N</span></div>
       <div ref={fit.ref}><svg viewBox={`0 0 ${W} ${H}`} width="100%" className="mt-3" role="img" aria-label="Paddy per kilogram of nitrogen">
         {RICE_ROWS.map((r, i) => {
           const y = i * rowH + 4, w = (r.per / max) * barW, pk = r.c === 'Pakistan'
@@ -352,7 +352,7 @@ export function RiceChart() {
         })}
       </svg></div>
       <Tip tip={tip} />
-      <Source>N rates: IFA Fertilizer Use by Crop 2017/18, via Ludemann, Gruère, Heffer &amp; Dobermann (2022), Scientific Data 9. Paddy yields: FAOSTAT via Our World in Data (2023). Farm size: PBS 7th Agricultural Census 2024 (Pakistan); BBS Agricultural Census 2019 via FAO WCA-2020 (Bangladesh). Paddy per kg N is VAN’s calculation. Published per hectare (N applied, kg/ha: Bangladesh 91.8, Vietnam 127.6, China 177.6, Pakistan 120.6, Thailand 92.5, India 135.4; paddy, t/ha: 5.21, 6.11, 7.14, 4.07, 2.99, 4.31) and converted at 1 hectare = 2.471 acres, 40 kg = 1 maund.</Source>
+      <Source>N rates: International Fertilizer Association (IFA) Fertilizer Use by Crop 2017/18, via Ludemann, Gruère, Heffer &amp; Dobermann (2022), Scientific Data 9. Paddy yields: FAOSTAT via Our World in Data (2023). Farm size: Pakistan Bureau of Statistics (PBS) 7th Agricultural Census 2024 (Pakistan); Bangladesh Bureau of Statistics (BBS) Agricultural Census 2019 (Bangladesh), via FAO World Programme for the Census of Agriculture 2020 (WCA-2020). Paddy per kg N is VAN’s calculation. The source figures were published per hectare. Nitrogen applied, in kg/ha, was: Bangladesh 91.8, Vietnam 127.6, China 177.6, Pakistan 120.6, Thailand 92.5, India 135.4. Paddy yields, in t/ha, were 5.21, 6.11, 7.14, 4.07, 2.99 and 4.31, in the same order. VAN converted them at 1 hectare = 2.471 acres and 40 kg = 1 maund.</Source>
     </div>
   )
 }

@@ -18,7 +18,7 @@ export const PRODUCTS: Product[] = [
   "name": "Vital Urea",
   "cat": "N",
   "catLabel": "Nitrogen",
-  "analysis": "Sulfur coated urea. N 32% · S 13%",
+  "analysis": "Sulfur coated urea. N 32% min · S 13% min",
   "methods": [
    "Drill at sowing; broadcast if no drill"
   ],
@@ -36,7 +36,7 @@ export const PRODUCTS: Product[] = [
   "name": "V-Phosphate",   // Tahir 10 Nov 2026 (FU-1): renamed from "V. Ammonium Phosphate"; slug and URL unchanged
   "cat": "P",
   "catLabel": "Phosphorus",
-  "analysis": "11:44:0 + Fe",
+  "analysis": "N 11% · P₂O₅ 44% · K₂O 0% (11:44:0) + Fe",
   "methods": [
    "Fertigation"
   ],
@@ -53,7 +53,7 @@ export const PRODUCTS: Product[] = [
   "name": "VAN NP Range",
   "cat": "P",
   "catLabel": "Phosphorus",
-  "analysis": "6:32 (Green Phosphate) · 5:40 · 8:38. Designed to reduce the fixation of phosphate by calcium",
+  "analysis": "3 grades: Green Phosphate, N 6% · P₂O₅ 32% (6:32); N 5% · P₂O₅ 40% (5:40); and N 8% · P₂O₅ 38% (8:38). Designed to reduce the fixation of phosphate by calcium",
   "methods": [
    "Drill at sowing; broadcast if no drill"
   ],
@@ -70,7 +70,7 @@ export const PRODUCTS: Product[] = [
   "name": "Green Phosphate",
   "cat": "P",
   "catLabel": "Phosphorus",
-  "analysis": "6:32:0 · humic-coated acidic. The 6:32 grade of the VAN NP Range, which has 3 grades",
+  "analysis": "N 6% · P₂O₅ 32% · K₂O 0% (6:32:0) · acidic, humic-coated granules. Green Phosphate is 1 of the 3 grades of the VAN NP Range.",
   "methods": [
    "Drill at sowing; broadcast if no drill"
   ],
@@ -144,7 +144,7 @@ export const PRODUCTS: Product[] = [
   "name": "Fusion Potash",
   "cat": "K",
   "catLabel": "Potash",
-  "analysis": "2:0:50 + S 1.5% · B 1% · Mg 1%. Made in 2 forms: granules for broadcasting and soluble powder for fertigation.",   // Tahir 10 Nov 2026 (PR-N9): forms named; was "1 for broadcasting and 1 for fertigation". L1 10 Nov 2026 (crops 8): full stop added.
+  "analysis": "N 2% · P₂O₅ 0% · K₂O 50% (2:0:50) + S 1.5% · B 1% · Mg 1%. Made in 2 forms: granules for broadcasting and soluble powder for fertigation.",   // Tahir 10 Nov 2026 (PR-N9): forms named; was "1 for broadcasting and 1 for fertigation". L1 10 Nov 2026 (crops 8): full stop added.
   "methods": [
     "Broadcast",
     "Fertigation"
@@ -198,7 +198,7 @@ export const PRODUCTS: Product[] = [
   "name": "V-Potash Plus",
   "cat": "K",
   "catLabel": "Potash",
-  "analysis": "10:0:40 + Mg · B · chelated Fe",
+  "analysis": "N 10% · P₂O₅ 0% · K₂O 40% (10:0:40) + Mg · B · chelated Fe",
   "methods": [
    "Fertigation"
   ],
@@ -215,7 +215,7 @@ export const PRODUCTS: Product[] = [
   "name": "Crop Force",
   "cat": "NPK",
   "catLabel": "NPK",
-  "analysis": "NPK 15:15:15 · NPK 12:12:18",   // Tahir 10 Nov 2026 (LM-N1): 15:15:15 is still sold; was "NPK 12:12:18"
+  "analysis": "2 grades: N 15% · P₂O₅ 15% · K₂O 15% (NPK 15:15:15), and N 12% · P₂O₅ 12% · K₂O 18% (NPK 12:12:18)",   // Tahir 10 Nov 2026 (LM-N1): 15:15:15 is still sold; was "NPK 12:12:18"
   // Lead 10 Nov 2026 (L3-9), from the crop plans (all 4 Crop Force rows are "Side dressing/Placement" at grand growth or maturity; none drills it): "Drilling" dropped.
   "methods": [
     "Side-dressing",

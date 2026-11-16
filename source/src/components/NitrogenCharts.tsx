@@ -30,18 +30,18 @@ export function NueLines() {
   for (let i = 1; i < ends.length; i++) if (ends[i].ly - ends[i - 1].ly < 15) ends[i].ly = ends[i - 1].ly + 15
   return (
     <div className="chart panel p-5">
-      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>Pakistan’s efficiency fell from 54% in 1961 to 29% in 2023; the world figure was 55% in both years, after a fall in between</h4><span className="cap">% of nitrogen added that is taken out in the harvested crop</span></div>
+      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>Pakistan’s NUE fell from 54% in 1961 to 29.1% in 2023</h4><span className="cap">NUE, %</span></div>
       <div className="flex flex-wrap gap-2 mt-3">{PEERS.map(([n, c]) => <button key={n} type="button" className="chip chip-xs" aria-pressed={on.includes(n)} onClick={() => setOn(o => o.includes(n) ? o.filter(z => z !== n) : [...o, n])} style={{ borderColor: c, background: on.includes(n) ? c : 'transparent', color: on.includes(n) ? '#fff' : 'var(--ink)' }}>{n}</button>)}</div>
-      <div ref={fit.ref}><svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ marginTop: 10 }} role="img" aria-label="Nitrogen use efficiency, Pakistan and other countries, 1961 to 2023">
+      <div ref={fit.ref}><svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ marginTop: 10 }} role="img" aria-label="NUE, Pakistan and other countries, 1961 to 2023">
         {[0, 20, 40, 60, 80].map(g => <g key={g}><line x1={L} x2={W - R} y1={y(g)} y2={y(g)} stroke={RULE} strokeDasharray="2 3" /><text x={L - 6} y={y(g) + 4} textAnchor="end" fontSize={12} fill={MUTED}>{g}</text></g>)}
         {(fit.narrow ? [1961, 1990, 2023] : [1961, 1970, 1980, 1990, 2000, 2010, 2023]).map(t => <text key={t} x={x(t)} y={H - 8} textAnchor="middle" fontSize={12} fill={MUTED}>{t}</text>)}
         {series.map(([n, c]) => <path key={n} d={path(NR_NUE[n])} fill="none" stroke={c} strokeWidth={n === 'Pakistan' ? 3.5 : 2} strokeLinejoin="round" />)}
-        {ends.map(e => <g key={e.n}><circle cx={x(2023)} cy={y(e.v)} r={e.n === 'Pakistan' ? 5 : 3.5} fill={e.c} /><text x={x(2023) + 8} y={e.ly + 4} fontSize={12.5} fontWeight={e.n === 'Pakistan' ? 700 : 400} fill={e.c}>{fit.narrow ? Math.round(e.v) : `${e.n} ${Math.round(e.v)}%`}</text></g>)}
+        {ends.map(e => <g key={e.n}><circle cx={x(2023)} cy={y(e.v)} r={e.n === 'Pakistan' ? 5 : 3.5} fill={e.c} /><text x={x(2023) + 8} y={e.ly + 4} fontSize={12.5} fontWeight={e.n === 'Pakistan' ? 700 : 400} fill={e.c}>{fit.narrow ? (e.n === 'Pakistan' ? e.v.toFixed(1) : Math.round(e.v)) : `${e.n} ${e.n === 'Pakistan' ? e.v.toFixed(1) : Math.round(e.v)}%`}</text></g>)}
         {Array.from({ length: 63 }, (_, i) => 1961 + i).map(yr => <rect key={yr} x={x(yr) - (W - L - R) / 124} y={T} width={(W - L - R) / 62} height={H - T - B} fill="transparent" onMouseMove={e => show(e, `<b>${yr}</b><br/>` + series.map(([n]) => `${n}: ${f1(at(NR_NUE[n], yr))}%`).reverse().join('<br/>'))} onMouseLeave={hide} />)}
       </svg></div>
       <Tip tip={tip} />
-      <p className="small mt-2">Each line shows the nitrogen taken out in harvested crops as a share of all the nitrogen added to cropland that year: fertiliser, manure, rain and dust, fixation by legumes, and seed. Select a name to show or hide that country. Pakistan is always shown.</p>
-      <Source>FAOSTAT, Cropland Nutrient Balance, December 2025 release, nitrogen, 1961 to 2023. FAO marks these values as estimates. China is mainland China. Because efficiency is a share, its value is the same whether nitrogen is measured per acre or per hectare.</Source>
+      <p className="small mt-2">Each line shows a country’s NUE in each year from 1961 to 2023. NUE counts the nitrogen added from all 5 sources: fertiliser, manure, rain and dust, legumes and seed. Select a name to show or hide that country. Pakistan is always shown.</p>
+      <Source>FAOSTAT, Cropland Nutrient Balance, December 2025 release, nitrogen, 1961 to 2023. FAO marks these values as estimates. China is mainland China. Because NUE is a share, its value is the same per acre and per hectare.</Source>
     </div>
   )
 }
@@ -56,8 +56,8 @@ export function RankBars() {
   const x = (v: number) => L + Math.min(v, 105) / 105 * (W - L - R)
   return (
     <div className="chart panel p-5">
-      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>Efficiency of the 29 countries that add 1 million tonnes of nitrogen or more to their cropland, 2023: only Spain is lower than Pakistan</h4><span className="cap">efficiency, 2023, %</span></div>
-      <div ref={fit.ref}><svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ marginTop: 10 }} role="img" aria-label="Nitrogen use efficiency in 2023 for 29 countries adding 1 million tonnes of nitrogen or more">
+      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>Pakistan’s NUE of 29.1% was the 2nd lowest of the 29 countries that added 1 million tonnes of nitrogen or more to their cropland in 2023</h4><span className="cap">NUE, 2023, %</span></div>
+      <div ref={fit.ref}><svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ marginTop: 10 }} role="img" aria-label="NUE in 2023 for the 29 countries that added 1 million tonnes of nitrogen or more">
         <rect x={x(50)} y={T - 4} width={x(90) - x(50)} height={rows.length * rowH + 4} fill={GREEN} opacity={0.08} />
         <text x={(x(50) + x(90)) / 2} y={T - 9} textAnchor="middle" fontSize={11.5} fill={GREEN}>{fit.narrow ? '50 to 90%' : 'EU Nitrogen Expert Panel range, 50 to 90%'}</text>
         {[0, 25, 50, 75, 100].map(g => <g key={g}><line x1={x(g)} x2={x(g)} y1={T - 4} y2={T + rows.length * rowH} stroke={RULE} strokeDasharray="2 3" /><text x={x(g)} y={H - 8} textAnchor="middle" fontSize={12} fill={MUTED}>{g}</text></g>)}
@@ -65,16 +65,16 @@ export function RankBars() {
           const pk = n === 'Pakistan', yy = T + i * rowH
           const nm0 = n === 'India' ? 'India (warning)' : n
           const nm = fit.narrow ? nm0.replace('China (mainland)', 'China').replace('United Kingdom', 'UK').replace('United States', 'USA').replace('Russian Federation', 'Russia') : nm0.replace('Russian Federation', 'Russia')
-          return <g key={n} onMouseMove={e => show(e, `<b>${n}</b><br/>${f1(v)}% in the harvest<br/>${f1(mt, 2)} million tonnes of nitrogen added`)} onMouseLeave={hide}>
+          return <g key={n} onMouseMove={e => show(e, `<b>${n}</b><br/>NUE ${f1(v)}%<br/>${f1(mt, 2)} million tonnes of nitrogen added`)} onMouseLeave={hide}>
             <rect x={0} y={yy} width={W} height={rowH} fill="transparent" />
             <text x={L - 8} y={yy + 14.5} textAnchor="end" fontSize={12.5} fontWeight={pk ? 700 : 400} fill={pk ? RED : 'var(--ink)'}>{nm}</text>
             <rect x={L} y={yy + 4} width={x(v) - L} height={rowH - 8} fill={pk ? RED : v > 90 ? '#C9A27A' : GREY} />
-            <text x={x(v) + 5} y={yy + 14.5} fontSize={12} fontWeight={pk ? 700 : 400} fill={pk ? RED : MUTED}>{Math.round(v)}</text>
+            <text x={x(v) + 5} y={yy + 14.5} fontSize={12} fontWeight={pk ? 700 : 400} fill={pk ? RED : MUTED}>{pk ? v.toFixed(1) : Math.round(v)}</text>
           </g>
         })}
       </svg></div>
       <Tip tip={tip} />
-      <p className="small mt-2">Lowest first. Hover a bar to see how much nitrogen each country adds. Above 90% (brown) the soil may be depleted; above 100%, crops take out more nitrogen than is added.</p>
+      <p className="small mt-2">The countries are listed with the lowest NUE first. Hover over a bar to see how much nitrogen each country added in 2023. Brown bars mark an NUE above 90%, where the soil may be depleted. Above 100%, crops take out more nitrogen than is added.</p>
       <Source>FAOSTAT, Cropland Nutrient Balance, December 2025 release (2023). Countries listed by FAO name; China is mainland China. Range: EU Nitrogen Expert Panel 2015.</Source>
     </div>
   )
@@ -88,22 +88,22 @@ export function WhereItWent() {
   const added: [string, number, string][] = [['Fertiliser', v('Mineral fertilizers'), RED], ['Manure', v('Manure applied'), '#C9731F'], ['Rain and dust', v('Atmospheric deposition'), '#A89F8C'], ['Legumes', v('Biological fixation'), GREEN], ['Seed', v('Seed'), '#5B6670']]
   const tot = v('Input')
   const harvest = v('Crop harvest removal'), resid = v('Crop residue removal'), air = v('Volatilisation'), water = v('Leaching')
-  const went: [string, number, string][] = [['Harvest', harvest, NAVY], ['Straw and stalks taken off', resid, '#6E86A6'], ['Air', air, '#C9845F'], ['Water', water, '#2F6DB5'], ['Not accounted for', tot - harvest - resid - air - water, '#D9D6CC']]
+  const went: [string, number, string][] = [['Taken out in the harvested crop', harvest, NAVY], ['Straw and stalks taken off', resid, '#6E86A6'], ['Lost to the air', air, '#C9845F'], ['Lost to water', water, '#2F6DB5'], ['Not accounted for', tot - harvest - resid - air - water, '#D9D6CC']]
   const W = fit.W, L = 0, R = 0
   const bar = (parts: [string, number, string][], yy: number) => { let xx = L; return parts.map(([n, val, c]) => { const w = val / tot * (W - L - R); const g = <g key={n}><rect x={xx} y={yy} width={w} height={44} fill={c} stroke="#fff" strokeWidth={1} />{w > 44 && <text x={xx + 6} y={yy + 28} fontSize={13} fontWeight={700} fill={n === 'Not accounted for' ? 'var(--ink)' : '#fff'}>{f1(val)}</text>}</g>; xx += w; return g }) }
-  const legend = (parts: [string, number, string][]) => <div className="flex flex-wrap gap-x-4 gap-y-1 small mt-2">{parts.map(([n, val, c]) => <span key={n} className="inline-flex items-center gap-1"><span style={{ width: 10, height: 10, background: c, display: 'inline-block', border: '1px solid rgba(0,0,0,.1)' }} />{n} {f1(val, 2)} ({Math.round(val / tot * 100)}%)</span>)}</div>
+  const legend = (parts: [string, number, string][], dp = 0) => <div className="flex flex-wrap gap-x-4 gap-y-1 small mt-2">{parts.map(([n, val, c]) => <span key={n} className="inline-flex items-center gap-1"><span style={{ width: 10, height: 10, background: c, display: 'inline-block', border: '1px solid rgba(0,0,0,.1)' }} />{n} {f1(val, 2)} ({(val / tot * 100).toFixed(dp)}%)</span>)}</div>
   return (
     <div className="chart panel p-5">
-      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>Of 5.7 million tonnes of nitrogen added in 2023, 1.7 million were taken out in the harvested crop and an estimated 2.1 million were lost to the air and water</h4><span className="cap">million tonnes of N, Pakistan, 2023</span></div>
+      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>An estimated 2.1 million tonnes of the nitrogen added to Pakistan’s cropland in 2023 were lost to the air and to water</h4><span className="cap">million tonnes of nitrogen, Pakistan, 2023</span></div>
       <div ref={fit.ref}>
-        <p className="small mt-4"><b>Where it came from</b></p>
+        <p className="small mt-4"><b>Where the nitrogen came from</b></p>
         <svg viewBox={`0 0 ${W} 44`} width="100%" role="img" aria-label="Nitrogen added to Pakistan's cropland in 2023, by source">{bar(added, 0)}</svg>
         {legend(added)}
-        <p className="small mt-5"><b>Where it went</b></p>
+        <p className="small mt-5"><b>Where the nitrogen went</b></p>
         <svg viewBox={`0 0 ${W} 44`} width="100%" role="img" aria-label="Where the nitrogen added in 2023 went">{bar(went, 0)}</svg>
-        {legend(went)}
+        {legend(went, 1)}
       </div>
-      <p className="small mt-3">The figures for the harvested crop, air, water, and straw and stalks taken off are FAO estimates. FAO counts only the harvested crop in its efficiency figure; straw and stalks taken off the field (as fodder, fuel or bedding) are a separate FAO estimate. “Not accounted for” is what remains after the 4 other items (the harvested crop, air, water, and straw and stalks taken off) are subtracted from the nitrogen added. VAN calculated it; it was not measured. It includes whatever stays in the soil and whatever is lost by routes FAO does not list.</p>
+      <p className="small mt-3">The upper bar shows the sources of the nitrogen added in 2023. The lower bar shows where that nitrogen went. FAO estimates 4 of the items in the lower bar: the harvested crop, the air, water, and straw and stalks taken off the field. FAO’s NUE counts only the nitrogen taken out in the harvested crop. Straw and stalks taken off the field as fodder, fuel or bedding are a separate FAO estimate. “Not accounted for” is the nitrogen added minus the 4 other items. VAN calculated it by subtraction. The nitrogen not accounted for includes whatever stays in the soil and whatever is lost by routes that FAO does not list.</p>
       <Source>FAOSTAT, Cropland Nutrient Balance, December 2025 release (2023): inputs, crop harvest removal, crop residue removal, volatilisation and leaching. &ldquo;Not accounted for&rdquo;: VAN calculation.</Source>
     </div>
   )
@@ -124,17 +124,17 @@ export function InputsArea() {
   const last = cum[cum.length - 1]
   return (
     <div className="chart panel p-5">
-      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>Since 2000, nitrogen added rose 72% and nitrogen taken out in the harvested crop rose 45%</h4><span className="cap">thousand tonnes of N a year, Pakistan</span></div>
-      <div ref={fit.ref}><svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ marginTop: 10 }} role="img" aria-label="Nitrogen added to Pakistan's cropland by source and nitrogen in the harvest, 1961 to 2023">
-        {[0, 2000, 4000, 6000].map(g => <g key={g}><line x1={L} x2={W - R} y1={y(g)} y2={y(g)} stroke={RULE} strokeDasharray="2 3" /><text x={L - 6} y={y(g) + 4} textAnchor="end" fontSize={12} fill={MUTED}>{g / 1000}k</text></g>)}
+      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>From 1961 to 2023, fertiliser nitrogen rose to 73 times its 1961 level, against about 6 times for nitrogen taken out in the harvested crop</h4><span className="cap">million tonnes of nitrogen a year, Pakistan</span></div>
+      <div ref={fit.ref}><svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ marginTop: 10 }} role="img" aria-label="Nitrogen added to Pakistan's cropland by source and nitrogen taken out in the harvested crop, 1961 to 2023">
+        {[0, 2000, 4000, 6000].map(g => <g key={g}><line x1={L} x2={W - R} y1={y(g)} y2={y(g)} stroke={RULE} strokeDasharray="2 3" /><text x={L - 6} y={y(g) + 4} textAnchor="end" fontSize={12} fill={MUTED}>{g / 1000}</text></g>)}
         {(fit.narrow ? [1961, 1990, 2023] : [1961, 1970, 1980, 1990, 2000, 2010, 2023]).map(t => <text key={t} x={x(t)} y={H - 8} textAnchor="middle" fontSize={12} fill={MUTED}>{t}</text>)}
         {layers.map(([k, , c], j) => <path key={k} d={area(j)} fill={c} opacity={0.78} />)}
         <path d={harv} fill="none" stroke={NAVY} strokeWidth={3.2} />
-        {!fit.narrow && <><text x={W - R + 6} y={y(last[0] / 2) + 4} fontSize={12} fill={RED} fontWeight={700}>Fertiliser</text><text x={W - R + 6} y={y((last[0] + last[1]) / 2) + 4} fontSize={12} fill="#C9731F">Manure</text><text x={W - R + 6} y={y((last[1] + last[4]) / 2) + 4} fontSize={12} fill={MUTED}>Other</text><text x={W - R + 6} y={y(at(NR_PK['Crop harvest removal'], 2023) as number) + 16} fontSize={12.5} fontWeight={700} fill={NAVY}>In the harvest</text></>}
-        {yrs.map((yr, i) => <rect key={yr} x={x(yr) - (W - L - R) / 124} y={T} width={(W - L - R) / 62} height={H - T - B} fill="transparent" onMouseMove={e => show(e, `<b>${yr}</b><br/>Added: ${Math.round(cum[i][4]).toLocaleString('en-US')}<br/>of which fertiliser ${Math.round(at(NR_PK['Mineral fertilizers'], yr) as number).toLocaleString('en-US')}<br/>In the harvest: ${Math.round(at(NR_PK['Crop harvest removal'], yr) as number).toLocaleString('en-US')}`)} onMouseLeave={hide} />)}
+        {!fit.narrow && <><text x={W - R + 6} y={y(last[0] / 2) + 4} fontSize={12} fill={RED} fontWeight={700}>Fertiliser</text><text x={W - R + 6} y={y((last[0] + last[1]) / 2) + 4} fontSize={12} fill="#C9731F">Manure</text><text x={W - R + 6} y={y((last[1] + last[4]) / 2) + 4} fontSize={12} fill={MUTED}>Other</text><text x={W - R + 6} y={y(at(NR_PK['Crop harvest removal'], 2023) as number) + 16} fontSize={12.5} fontWeight={700} fill={NAVY}>Harvested crop</text></>}
+        {yrs.map((yr, i) => <rect key={yr} x={x(yr) - (W - L - R) / 124} y={T} width={(W - L - R) / 62} height={H - T - B} fill="transparent" onMouseMove={e => show(e, `<b>${yr}</b><br/>Nitrogen added: ${Math.round(cum[i][4]).toLocaleString('en-US')} thousand tonnes<br/>of which fertiliser ${Math.round(at(NR_PK['Mineral fertilizers'], yr) as number).toLocaleString('en-US')} thousand tonnes<br/>Taken out in the harvested crop: ${Math.round(at(NR_PK['Crop harvest removal'], yr) as number).toLocaleString('en-US')} thousand tonnes`)} onMouseLeave={hide} />)}
       </svg></div>
       <Tip tip={tip} />
-      <p className="small mt-2">Coloured layers: nitrogen added each year, by source. Navy line: nitrogen taken out in harvested crops. The vertical distance between the top of the layers and the line is the nitrogen surplus (nitrogen added minus nitrogen taken out), as FAO counts it.</p>
+      <p className="small mt-2">The coloured layers show the nitrogen added each year, by source. The navy line shows the nitrogen taken out in the harvested crop. The vertical distance between the top of the layers and the navy line is the nitrogen surplus as FAO counts it. FAO’s nitrogen surplus is the nitrogen added minus the nitrogen taken out in the harvested crop.</p>
       <Source>FAOSTAT, Cropland Nutrient Balance, December 2025 release, Pakistan, 1961 to 2023 (estimates).</Source>
     </div>
   )
@@ -149,17 +149,17 @@ export function RealPrice() {
   const x = (v: number) => L + v / 700 * (W - L - R)
   return (
     <div className="chart panel p-5">
-      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>At the urea price of Rs 193 a kg, the nitrogen added for each kg taken out in Pakistan’s harvested crop is worth about Rs 660</h4><span className="cap">Rs per kg of N taken out in the harvested crop, at the Rabi 2024-25 urea price</span></div>
-      <div ref={fit.ref}><svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ marginTop: 10 }} role="img" aria-label="Urea-price equivalent per kg of nitrogen in the harvest at different efficiency rates">
+      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>At the Rabi 2024-25 urea price, the urea-price equivalent would fall from about Rs 660 at Pakistan’s NUE to about Rs 350 at world NUE</h4><span className="cap">Rs per kg of nitrogen taken out in the harvested crop, at the Rabi 2024-25 urea price</span></div>
+      <div ref={fit.ref}><svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ marginTop: 10 }} role="img" aria-label="Urea-price equivalent for each kg of nitrogen taken out in the harvested crop, at the 2023 NUE of each country">
         <line x1={x(193)} x2={x(193)} y1={T - 4} y2={H} stroke={MUTED} strokeDasharray="4 3" />
         {rows.map(([n, r], i) => { const v = 193 / (r / 100), yy = T + i * rowH, pk = n === 'Pakistan'; return <g key={n}>
-          <text x={L - 8} y={yy + 20} textAnchor="end" fontSize={12.5} fontWeight={pk ? 700 : 400} fill={pk ? RED : 'var(--ink)'}>{fit.narrow ? n.replace('China (mainland)', 'China').replace('United States', 'USA') : `${n}, ${Math.round(r)}%`}</text>
+          <text x={L - 8} y={yy + 20} textAnchor="end" fontSize={12.5} fontWeight={pk ? 700 : 400} fill={pk ? RED : 'var(--ink)'}>{fit.narrow ? n.replace('China (mainland)', 'China').replace('United States', 'USA') : `${n}, ${pk ? r.toFixed(1) : Math.round(r)}%`}</text>
           <rect x={L} y={yy + 6} width={x(v) - L} height={rowH - 12} fill={pk ? RED : GREY} />
           <text x={x(v) + 6} y={yy + 21} fontSize={13} fontWeight={700} fill={pk ? RED : 'var(--ink)'}>Rs {Math.round(v / 10) * 10}</text>
         </g> })}
       </svg></div>
-      <p className="small mt-2">Each bar shows the urea-price equivalent for each kg of nitrogen taken out in the harvested crop if Pakistan’s efficiency matched that country’s: the Rs 193 urea price divided by that country’s 2023 efficiency. The dashed line is the Rs 193 urea price. Values are rounded to the nearest Rs 10.</p>
-      <Source>NFDC Annual Fertilizer Review 2024-25, Table 38 (nitrogen from urea, Rabi 2024-25, Rs 193 a kg); FAOSTAT, Cropland Nutrient Balance, December 2025 release (2023). VAN calculation; an equivalent, not a price anyone pays.</Source>
+      <p className="small mt-2">Each bar shows the urea-price equivalent for each kg of nitrogen taken out in the harvested crop, if Pakistan’s NUE matched that country’s NUE in 2023. Each value is the Rs 193 urea price divided by that country’s 2023 NUE. The dashed line marks the urea price of Rs 193 a kg of nitrogen. Values are rounded to the nearest Rs 10.</p>
+      <Source>NFDC Annual Fertilizer Review 2024-25, Table 38 (nitrogen from urea, Rabi 2024-25, Rs 193 a kg); FAOSTAT, Cropland Nutrient Balance, December 2025 release (2023). VAN calculation. These equivalents are not prices that anyone pays.</Source>
     </div>
   )
 }
@@ -172,8 +172,8 @@ export function ValueSlider() {
   const marks: [string, number][] = [['Bangladesh', at(NR_NUE.Bangladesh, 2023) as number], ['Egypt', at(NR_NUE.Egypt, 2023) as number], ['China', at(NR_NUE['China (mainland)'], 2023) as number], ['World', at(NR_NUE.World, 2023) as number]]
   return (
     <div className="chart panel p-5">
-      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>Urea-price equivalent, not projected farmer savings: each 1% less nitrogen for the same harvest is worth about Rs 6.5 billion a year</h4></div>
-      <label className="block mt-4 small" htmlFor="nr-slider"><b>If Pakistan&rsquo;s efficiency reached {t.toFixed(1)}%</b> ({RATE.pk.toFixed(1)}% in 2023)</label>
+      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>At Bangladesh’s NUE, Pakistan would need about 936 thousand tonnes less nitrogen for the same harvest, at 2024-25 sales</h4></div>
+      <label className="block mt-4 small" htmlFor="nr-slider"><b>If Pakistan&rsquo;s NUE rose from {RATE.pk.toFixed(1)}% in 2023 to {t.toFixed(1)}%</b></label>
       <input id="nr-slider" type="range" min={29.5} max={60} step={0.1} value={t} onChange={e => setT(+e.target.value)} style={{ width: '100%', accentColor: GREEN }} />
       <div className="flex flex-wrap gap-2 mt-2">{marks.map(([n, r]) => <button key={n} type="button" className="chip chip-xs" aria-pressed={Math.abs(t - r) < 0.05} onClick={() => setT(r)}>{n} {r.toFixed(1)}%</button>)}</div>
       <div className="grid sm:grid-cols-3 gap-3 mt-4">
@@ -181,7 +181,7 @@ export function ValueSlider() {
         <div className="panel-soft p-4"><div className="cap">Nitrogen not needed, at 2024-25 sales</div><div className="num" style={{ fontSize: 26, fontWeight: 700, color: GREEN }}>{Math.round(saved).toLocaleString('en-US')} thousand tonnes</div></div>
         <div className="panel-soft p-4"><div className="cap">Urea-price equivalent a year</div><div className="num" style={{ fontSize: 26, fontWeight: 700, color: GREEN }}>Rs {Math.round(saved * PRICE / 1000)} billion</div></div>
       </div>
-      <p className="small mt-3">Move the slider or tap a country. The nitrogen needed for the same harvest falls in inverse proportion to efficiency. At an efficiency of {t.toFixed(1)}%, the harvest needs about {Math.round(RATE.pk / t * 100)}% of the nitrogen it needs at Pakistan&rsquo;s efficiency of {RATE.pk.toFixed(1)}% ({RATE.pk.toFixed(1)} divided by {t.toFixed(1)}). The reduction is applied to the nitrogen sold in 2024-25 ({SALES.toLocaleString('en-US')} thousand tonnes) and valued at Rs {PRICE} a kg, the Rabi 2024-25 urea price of nitrogen. The calculation assumes that every source of nitrogen falls in the same proportion and that the harvest stays the same. The result is a measure of size, not a forecast and not a saving any farmer is promised.</p>
+      <p className="small mt-3">Move the slider or tap a country to choose an NUE. The nitrogen needed for the same harvest falls in inverse proportion to NUE. At an NUE of {t.toFixed(1)}%, the same harvest needs about {Math.round(RATE.pk / t * 100)}% of the nitrogen it needs at Pakistan&rsquo;s NUE of {RATE.pk.toFixed(1)}%. That share is {RATE.pk.toFixed(1)} divided by {t.toFixed(1)}. The calculation applies the reduction to the {SALES.toLocaleString('en-US')} thousand tonnes of nitrogen sold in 2024-25. It values the nitrogen not needed at Rs {PRICE} a kg, the Rabi 2024-25 urea price. The calculation assumes that every source of nitrogen falls in the same proportion. It also assumes that the harvest stays the same. The result is a measure of scale. It is not a forecast or a saving that any farmer is promised.</p>
       <Source>NFDC Annual Fertilizer Review 2024-25, Tables 3 and 38; FAOSTAT, Cropland Nutrient Balance, December 2025 release (2023). VAN calculation.</Source>
     </div>
   )
@@ -196,7 +196,7 @@ export function RatioBars() {
   const x = (v: number) => L + v / 75 * (W - L - R)
   return (
     <div className="chart panel p-5">
-      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>For every 100 kg of nitrogen, Pakistan used 1.2 kg of potash in 2023; the world used 34 kg</h4><span className="cap">kg of P₂O₅ and K₂O per 100 kg of N, 2023</span></div>
+      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>For every 100 kg of nitrogen in 2023, Bangladesh used 37 kg of potash and Pakistan used 1.2 kg</h4><span className="cap">kg of phosphate (P₂O₅) and potash (K₂O) per 100 kg of nitrogen, 2023</span></div>
       <div ref={fit.ref}><svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ marginTop: 10 }} role="img" aria-label="Phosphate and potash used per 100 kg of nitrogen in 2023">
         {[0, 25, 50, 75].map(g => <g key={g}><line x1={x(g)} x2={x(g)} y1={T} y2={T + order.length * rowH} stroke={RULE} strokeDasharray="2 3" /><text x={x(g)} y={H - 6} textAnchor="middle" fontSize={12} fill={MUTED}>{g}</text></g>)}
         {order.map((n, i) => { const [p, k] = NR_RATIO[n], yy = T + i * rowH, pk = n === 'Pakistan'; return <g key={n}>
@@ -205,8 +205,8 @@ export function RatioBars() {
           <rect x={L} y={yy + 21} width={Math.max(1.5, x(k) - L)} height={13} fill={pk ? RED : '#7A5AC8'} /><text x={Math.max(x(k), L + 2) + 5} y={yy + 32} fontSize={11.5} fontWeight={pk ? 700 : 400} fill={pk ? RED : MUTED}>{f1(k)}</text>
         </g> })}
       </svg></div>
-      <p className="small mt-2"><span style={{ color: '#C9731F', fontWeight: 700 }}>Upper bar</span>: phosphate (P₂O₅) per 100 kg of nitrogen. <span style={{ color: '#7A5AC8', fontWeight: 700 }}>Lower bar</span>: potash (K₂O) per 100 kg of nitrogen. Pakistan&rsquo;s potash bar is red.</p>
-      <Source>FAOSTAT, Fertilizers by Nutrient, agricultural use per hectare of cropland, via Our World in Data (2023); China as Our World in Data reports it. Ratios: VAN calculation. NFDC’s 2024-25 sales show the same pattern: 3,387 thousand tonnes of N, 919 of P₂O₅ and 44.5 of K₂O.</Source>
+      <p className="small mt-2">The <span style={{ color: '#C9731F', fontWeight: 700 }}>upper bar</span> for each country shows the phosphate (P₂O₅) used for every 100 kg of nitrogen. The <span style={{ color: '#7A5AC8', fontWeight: 700 }}>lower bar</span> shows the potash (K₂O) used for every 100 kg of nitrogen. Pakistan&rsquo;s potash bar is red.</p>
+      <Source>FAOSTAT, Fertilizers by Nutrient, agricultural use per hectare of cropland, via Our World in Data (2023); China as Our World in Data reports it. Ratios: VAN calculation. NFDC’s 2024-25 sales show the same pattern: 3,387 thousand tonnes of nitrogen, 919 of P₂O₅ and 44.5 of K₂O.</Source>
     </div>
   )
 }
@@ -222,7 +222,7 @@ export function ChinaTurn() {
     const base = (k: 'fert' | 'harvest') => ((at(s[k], 2014) as number) + (at(s[k], 2015) as number) + (at(s[k], 2016) as number)) / 3
     const line = (k: 'fert' | 'harvest') => Array.from({ length: 14 }, (_, i) => 2010 + i).map((yr, i) => `${i ? 'L' : 'M'}${x(yr)} ${y((at(s[k], yr) as number) / base(k) * 100)}`).join(' ')
     const end = (k: 'fert' | 'harvest') => Math.round(((at(s[k], 2021) as number) + (at(s[k], 2022) as number) + (at(s[k], 2023) as number)) / 3 / base(k) * 100)
-    return <svg key={name} viewBox={`0 0 ${panelW} ${H}`} width="100%" role="img" aria-label={`${label}: fertiliser nitrogen and harvest nitrogen, 2015 = 100`}>
+    return <svg key={name} viewBox={`0 0 ${panelW} ${H}`} width="100%" role="img" aria-label={`${label}: fertiliser nitrogen and nitrogen taken out in the harvested crop, average of 2014-16 = 100`}>
       <text x={L} y={11} fontSize={13} fontWeight={700} fill={name === 'Pakistan' ? RED : 'var(--ink)'}>{label}</text>
       {[60, 80, 100, 120, 140].map(g => <g key={g}><line x1={L} x2={panelW - R} y1={y(g)} y2={y(g)} stroke={RULE} strokeDasharray={g === 100 ? '0' : '2 3'} /><text x={L - 5} y={y(g) + 4} textAnchor="end" fontSize={11} fill={MUTED}>{g}</text></g>)}
       {[2010, 2015, 2023].map(t => <text key={t} x={x(t)} y={H - 6} textAnchor="middle" fontSize={11} fill={MUTED}>{t}</text>)}
@@ -233,9 +233,9 @@ export function ChinaTurn() {
   }
   return (
     <div className="chart panel p-5">
-      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>Between 2014-16 and 2021-23, mainland China used 20% less fertiliser nitrogen, while the nitrogen taken out in its harvested crops rose 10%</h4><span className="cap">index, average of 2014-16 = 100</span></div>
+      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>In 2021-23, mainland China took out 10% more nitrogen in its harvested crops than in 2014-16 with 20% less fertiliser nitrogen</h4><span className="cap">index, average of 2014-16 = 100</span></div>
       <div ref={fit.ref} className="mt-3" style={{ display: 'grid', gridTemplateColumns: fit.narrow ? '1fr' : '1fr 1fr', gap: 24 }}>{one('China (mainland)', 'Mainland China')}{one('Pakistan', 'Pakistan')}</div>
-      <p className="small mt-2"><span style={{ color: RED, fontWeight: 700 }}>Red</span>: nitrogen from fertiliser applied to cropland. <span style={{ color: NAVY, fontWeight: 700 }}>Navy</span>: nitrogen taken out in the harvested crop. Both are indexed to their 2014-16 average; the end label is the 2021-23 average. In 2015, China set a target of zero growth in fertiliser use by 2020.</p>
+      <p className="small mt-2">The <span style={{ color: RED, fontWeight: 700 }}>red</span> line shows the fertiliser nitrogen applied to cropland. The <span style={{ color: NAVY, fontWeight: 700 }}>navy</span> line shows the nitrogen taken out in the harvested crop. Each line is set to 100 at its 2014-16 average. The label at the end of each line is its 2021-23 average. In 2015, China set a target of zero growth in fertiliser use by 2020.</p>
       <Source>FAOSTAT, Cropland Nutrient Balance, December 2025 release (mineral fertilisers and crop harvest removal, nitrogen). The 2015 target: Yu, Li and Doluschitz 2020, Sustainability 12(17):7028. VAN calculation of the index.</Source>
     </div>
   )
@@ -253,12 +253,12 @@ export function SurplusAcre() {
   const nep = ac(80)
   return (
     <div className="chart panel p-5">
-      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>Pakistan’s nitrogen surplus nearly doubled from 2000 to 2023, from 28 to 53 kg an acre</h4><span className="cap">kg of N an acre of cropland not taken out in the harvested crop</span></div>
+      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>Pakistan’s nitrogen surplus nearly doubled from 2000 to 2023, from 28 to 53 kg per acre (68.5 to 130.0 kg per hectare)</h4><span className="cap">nitrogen surplus, kg of nitrogen per acre of cropland</span></div>
       <div ref={fit.ref}><svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ marginTop: 10 }} role="img" aria-label="Nitrogen surplus per acre of cropland, 2000 and 2023">
         <line x1={x(nep)} x2={x(nep)} y1={T - 6} y2={T + order.length * rowH} stroke={GREEN} strokeDasharray="5 4" />
-        <text x={x(nep) + 4} y={T - 8} fontSize={11.5} fill={GREEN}>{fit.narrow ? '32' : 'EU panel ceiling, 32'}</text>
+        <text x={x(nep) + 4} y={T - 8} fontSize={11.5} fill={GREEN}>{fit.narrow ? '32' : 'EU panel upper limit, 32'}</text>
         {[0, 30, 60, 90].map(g => <g key={g}><line x1={x(g)} x2={x(g)} y1={T} y2={T + order.length * rowH} stroke={RULE} strokeDasharray="2 3" /><text x={x(g)} y={H - 6} textAnchor="middle" fontSize={12} fill={MUTED}>{g}</text></g>)}
-        {order.map((n, i) => { const [a, b] = NR_SURPLUS_HA[n].map(ac), yy = T + i * rowH + rowH / 2, pk = n === 'Pakistan', ind = n === 'India'; return <g key={n} onMouseMove={e => show(e, `<b>${n}</b><br/>2000: ${f1(a)} kg an acre<br/>2023: ${f1(b)} kg an acre`)} onMouseLeave={hide}>
+        {order.map((n, i) => { const [a, b] = NR_SURPLUS_HA[n].map(ac), yy = T + i * rowH + rowH / 2, pk = n === 'Pakistan', ind = n === 'India'; return <g key={n} onMouseMove={e => show(e, `<b>${n}</b><br/>2000: ${f1(a)} kg per acre (${f1(NR_SURPLUS_HA[n][0])} kg per hectare)<br/>2023: ${f1(b)} kg per acre (${f1(NR_SURPLUS_HA[n][1])} kg per hectare)`)} onMouseLeave={hide}>
           <rect x={0} y={yy - rowH / 2} width={W} height={rowH} fill="transparent" />
           <text x={L - 8} y={yy + 4} textAnchor="end" fontSize={12.5} fontWeight={pk ? 700 : 400} fill={pk ? RED : 'var(--ink)'}>{(fit.narrow ? n.replace('China (mainland)', 'China').replace('European Union', 'EU').replace('United States', 'USA') : n) + (ind ? ' (warning)' : '')}</text>
           <line x1={x(a)} x2={x(b)} y1={yy} y2={yy} stroke={pk ? RED : GREY} strokeWidth={3} />
@@ -268,7 +268,7 @@ export function SurplusAcre() {
         </g> })}
       </svg></div>
       <Tip tip={tip} />
-      <p className="small mt-2">Open dot: 2000. Filled dot: 2023, with its value. Green dashed line: the EU Nitrogen Expert Panel’s upper limit for a desirable surplus, 80 kg a hectare (32 kg an acre). India is shown as a warning, not a model: its surplus rose with a national fertiliser subsidy.</p>
+      <p className="small mt-2">The open dot marks 2000. The filled dot marks 2023 and carries the 2023 value. The green dashed line marks the EU Nitrogen Expert Panel’s upper limit for a desirable surplus, 32 kg per acre (80 kg per hectare). India is shown as a warning. Its surplus rose while a national fertiliser subsidy continued.</p>
       <Source>FAOSTAT, Cropland Nutrient Balance, December 2025 release, nitrogen balance per hectare of cropland, 2000 and 2023, converted to per acre (1 acre = 0.4047 hectare). EU Nitrogen Expert Panel 2015.</Source>
     </div>
   )
@@ -283,15 +283,16 @@ export function WheatPerKg() {
   const x = (v: number) => L + v / 13 * (W - L - R)
   return (
     <div className="chart panel p-5">
-      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>In 2024-25, 3.5 kg of wheat bought 1 kg of nitrogen in urea; at that price, the nitrogen added for each kg taken out in the harvested crop was worth about 12 kg of wheat</h4><span className="cap">kg of wheat at the market price</span></div>
-      <div ref={fit.ref}><svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ marginTop: 10 }} role="img" aria-label="Kg of wheat needed to buy 1 kg of nitrogen">
+      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>In 2024-25, the wheat equivalent of the nitrogen added for each kg taken out in the harvested crop was about 12 kg at market prices</h4><span className="cap">kg of wheat at the market price</span></div>
+      <div className="flex flex-wrap gap-x-4 gap-y-1 small mt-3"><span className="inline-flex items-center gap-1"><span style={{ width: 10, height: 10, background: GREY, display: 'inline-block' }} />Grey bar: wheat needed to buy 1 kg of nitrogen in urea</span><span className="inline-flex items-center gap-1"><span style={{ width: 10, height: 10, background: RED, display: 'inline-block' }} />Red bar: wheat equivalent for each kg of nitrogen taken out in the harvested crop</span></div>
+      <div ref={fit.ref}><svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ marginTop: 10 }} role="img" aria-label="Kg of wheat needed to buy 1 kg of nitrogen in urea, and the wheat equivalent for each kg of nitrogen taken out in the harvested crop">
         {rows.map(([n, bag, r], i) => { const yy = T + i * rowH, h = bag / (r / 100); return <g key={n}>
           <text x={L - 8} y={yy + 30} textAnchor="end" fontSize={13} fontWeight={700} fill="var(--ink)">{n}</text>
-          <rect x={L} y={yy + 4} width={x(bag) - L} height={20} fill={GREY} /><text x={x(bag) + 6} y={yy + 19} fontSize={12} fill={MUTED}>{f1(bag, 2)} on the bag</text>
-          <rect x={L} y={yy + 28} width={x(h) - L} height={20} fill={RED} /><text x={x(h) + 6} y={yy + 43} fontSize={12} fontWeight={700} fill={RED}>{f1(h)} in the harvest</text>
+          <rect x={L} y={yy + 4} width={x(bag) - L} height={20} fill={GREY} /><text x={x(bag) + 6} y={yy + 19} fontSize={12} fill={MUTED}>{f1(bag, 2)} kg</text>
+          <rect x={L} y={yy + 28} width={x(h) - L} height={20} fill={RED} /><text x={x(h) + 6} y={yy + 43} fontSize={12} fontWeight={700} fill={RED}>{f1(h)} kg</text>
         </g> })}
       </svg></div>
-      <p className="small mt-2">Grey: kg of wheat, at the market price after harvest, needed to buy 1 kg of nitrogen from urea (NFDC). Red: the grey figure divided by 29.1%, Pakistan’s 2023 efficiency across all crops. It illustrates the wheat equivalent of the nitrogen added for each kg taken out in the harvested crop. FAO does not publish an efficiency for wheat alone.</p>
+      <p className="small mt-2">The grey bar shows the kg of wheat, at the market price after harvest, needed to buy 1 kg of nitrogen in urea (NFDC). The red bar divides the grey figure by 29.1%, Pakistan’s NUE across all crops in 2023. The red bar therefore shows the wheat equivalent of the nitrogen added for each kg taken out in the harvested crop. The wheat equivalent is an illustration, because FAO publishes 1 NUE for all crops together.</p>
       <Source>NFDC Annual Fertilizer Review 2024-25, Tables 38 and 39 (market prices; wheat Rs 84.2 a kg in 2023-24 and Rs 55.4 in 2024-25); FAOSTAT, Cropland Nutrient Balance, December 2025 release (2023). VAN calculation.</Source>
     </div>
   )
@@ -309,14 +310,14 @@ export function Revision() {
     ['Bangladesh, FAO 2025', NR_NUE.Bangladesh, 2023, '#C9731F', undefined], ['Bangladesh, Lassaletta 2014', NR_LASSALETTA.Bangladesh, 2014, '#C9731F', '5 4']]
   return (
     <div className="chart panel p-5">
-      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>In 2014, FAO’s series gives Pakistan 31% and Bangladesh 39%; the older series gives 27% and 28%</h4><span className="cap">% of nitrogen added that is taken out in the harvested crop</span></div>
-      <div ref={fit.ref}><svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ marginTop: 10 }} role="img" aria-label="Two published nitrogen use efficiency series for Pakistan and Bangladesh">
+      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>For 2014, FAO’s series gives Pakistan an NUE of 31% and Bangladesh 39%, against 27% and 28% in the older series</h4><span className="cap">NUE, %</span></div>
+      <div ref={fit.ref}><svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ marginTop: 10 }} role="img" aria-label="FAO’s NUE series and an older published NUE series for Pakistan and Bangladesh">
         {[0, 20, 40, 60].map(g => <g key={g}><line x1={L} x2={W - R} y1={y(g)} y2={y(g)} stroke={RULE} strokeDasharray="2 3" /><text x={L - 6} y={y(g) + 4} textAnchor="end" fontSize={12} fill={MUTED}>{g}</text></g>)}
         {[1961, 1990, 2014, 2023].map(t => <text key={t} x={x(t)} y={H - 8} textAnchor="middle" fontSize={12} fill={MUTED}>{t}</text>)}
         {lines.map(([n, s, y1, c, dash]) => <path key={n} d={p(s, y1)} fill="none" stroke={c} strokeWidth={2.4} strokeDasharray={dash} />)}
         {!fit.narrow && lines.map(([n, s, , c], i) => <text key={n} x={W - R + 8} y={T + 16 + i * 18} fontSize={12} fill={c}>{n}: {f1(at(s, 2014))}% (2014)</text>)}
       </svg></div>
-      <p className="small mt-2">Solid: FAOSTAT Cropland Nutrient Balance, December 2025 release, 1961 to 2023. Dashed: Lassaletta, Billen, Grizzetti, Anglade and Garnier 2014, an older series that ends in 2014. Both divide nitrogen in the harvest by nitrogen added; they differ in how they estimate manure, fixation and the harvest.</p>
+      <p className="small mt-2">The solid lines show FAOSTAT’s Cropland Nutrient Balance, December 2025 release, for 1961 to 2023. The dashed lines show an older series that ends in 2014 (Lassaletta, Billen, Grizzetti, Anglade and Garnier 2014). Both series divide the nitrogen taken out in the harvested crop by the nitrogen added. They differ in how they estimate manure, fixation by legumes and the harvest.</p>
       <Source>FAOSTAT, Cropland Nutrient Balance, December 2025 release; Lassaletta et al. 2014, Environmental Research Letters 9:105011, via Our World in Data (CC BY 4.0).</Source>
     </div>
   )
@@ -332,7 +333,7 @@ export function LossByPractice() {
   const by = (yy: number) => fit.narrow ? yy + 8 : yy
   return (
     <div className="chart panel p-5">
-      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>Across 824 measurements worldwide, deep placement cut ammonia loss from nitrogen fertiliser by 55% and urease inhibitors by 54%</h4><span className="cap">% change in ammonia lost, against the usual practice</span></div>
+      <div className="flex items-baseline justify-between gap-4 flex-wrap"><h4>Across 824 observations worldwide, deep placement cut ammonia loss from nitrogen fertiliser by 55% and urease inhibitors by 54%</h4><span className="cap">% change in ammonia lost, against the usual practice</span></div>
       <div ref={fit.ref}><svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ marginTop: 10 }} role="img" aria-label="Change in ammonia loss by practice, global synthesis">
         {[-75, -50, -25, 0, 25].map(g => <g key={g}><line x1={x(g)} x2={x(g)} y1={T} y2={T + rows.length * rowH} stroke={g === 0 ? MUTED : RULE} strokeDasharray={g === 0 ? '0' : '2 3'} /><text x={x(g)} y={H - 6} textAnchor="middle" fontSize={12} fill={MUTED}>{g}</text></g>)}
         {rows.map(([n, v, lever], i) => { const yy = T + i * rowH; return <g key={n}>
@@ -341,7 +342,7 @@ export function LossByPractice() {
           <text x={v < 0 ? x(v) - 6 : x(v) + 6} y={by(yy) + 21} textAnchor={v < 0 ? 'end' : 'start'} fontSize={12} fontWeight={700} fill={v < 0 ? GREEN : v > 0 ? RED : MUTED}>{v > 0 ? `+${v}` : v === 0 ? 'no effect' : v}</text>
         </g> })}
       </svg></div>
-      <p className="small mt-2">Green bars show less ammonia lost; red bars show more. Split application did not change ammonia loss. Any benefit of split application comes from the crop taking up more of the nitrogen. These are averages from many countries, mostly outside Pakistan, and they cannot be added together.</p>
+      <p className="small mt-2">Green bars show less ammonia lost than with the usual practice. Red bars show more ammonia lost. Split application did not change ammonia loss. Any benefit of split application comes from the crop taking up more of the nitrogen. The values are averages from many countries, mostly outside Pakistan. They cannot be added together.</p>
       <Source>Pan, Lam, Mosier, Luo and Chen 2016, Agriculture, Ecosystems and Environment 232:283-289 (global synthesis of 824 observations).</Source>
     </div>
   )

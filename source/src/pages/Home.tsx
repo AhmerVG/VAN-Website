@@ -80,7 +80,7 @@ function KnowledgeCards() {
             <h3 className="mt-3">How farm practices affect the yield of wheat and potato</h3>
             <p className="small mt-2 flex-1" style={{ color: 'rgba(255,255,255,.8)' }}>{HOME_SLIDES[2].lead}</p>
             {/* Tahir 7 Nov 2026 (CO-11): the caption under the simulator card; was SIMULATOR.previewNote (the preview dial's note on /simulator, left there). */}
-            <p className="cap mt-2">Wheat and potato have working simulators, each with its own 10 practices. Simulators for the other 26 crops are planned.</p>
+            <p className="cap mt-2">Wheat and potato have working simulators. Each of the 2 simulators scores its own 10 practices. Simulators for the other 26 crop plans are planned.</p>
             <span className="btn btn-gold btn-sm self-start mt-4">Open the simulator →</span>
           </a>
           <a href="#/knowledge#decks" className="panel p-5 lg:p-6 no-underline flex flex-col">
@@ -186,7 +186,7 @@ export default function Home() {
           against those figures, which is a claim about VAN and belongs on VAN's front page. */}
       <MakeBand />
       {/* D-198: in Simple view the argument folds; the doors, the crop picker and the make band stay. */}
-      <Detail label="The national picture, the 3 losses and the method"><NationalStrip /><LossStrip /><MethodJourney /></Detail>
+      <Detail label="The national picture, the 3 nutrient problems and the method"><NationalStrip /><LossStrip /><MethodJourney /></Detail>
       <section className="sec" id="verify" style={{ background: 'var(--sand-2)' }}><div className="wrap"><VerifyPanel /></div></section>
       <Doors />
       <ProductRail />

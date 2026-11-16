@@ -61,7 +61,7 @@ function index(): Hit[] {
 
 /** The pages that are not a crop, a product or a tool. Kept here so the index is complete. */
 const PAGES: [string, string, string][] = [
-  ['Soil Atlas', 'The Punjab survey, 770,160 samples, district by district', '#/soil'],
+  ['Soil Atlas', 'The Punjab soil testing programme, 770,160 samples, district by district', '#/soil'],
   ['Where to buy', 'Dealers, and how to become one', '#/where-to-buy'],
   ['Become a dealer', 'Territory, terms and the enquiry form', '#/become-a-dealer'],
   ['Your Brand', 'Contract manufacturing and private label', '#/partner'],
@@ -71,7 +71,7 @@ const PAGES: [string, string, string][] = [
   ['Verify a bag', 'Batch number to lab report', '#/verify'],
   ['Knowledge', 'Decks, evidence and the sources under them', '#/knowledge'],
   ['The 17 nutrients', 'What each does, and the barrel you fill with your own bags', '#/knowledge/nutrients'],
-  ['Why Pakistan must shift', 'The national case, with every chart', '#/knowledge/why-pakistan-must-shift'],
+  ['Why Pakistan must shift from more nitrogen to balanced nutrition', 'The national case, with every chart', '#/knowledge/why-pakistan-must-shift'],
   ['Circular economy', 'Potassium recovered from crop residue ash', '#/circular-economy'],   // Tahir 7 Nov 2026 (KN-11): was 'Potash recovered ...'
   ['Farm discipline simulator', '10 levers, wheat and potato', '#/simulator'],
   // Tahir 9 Nov 2026: "farm discipline simulator" everywhere, as the page titles. Was 'Wheat discipline simulator' and 'Potato discipline simulator'.
@@ -110,7 +110,7 @@ const JOBS: { job: string; note: string; links: [string, string][] }[] = [
   {
     job: 'Read the evidence',
     note: 'Every figure with its source.',
-    links: [['Knowledge hub', '#/knowledge'], ['The 17 nutrients', '#/knowledge/nutrients'], ['Why Pakistan must shift', '#/knowledge/why-pakistan-must-shift'], ['Soil Atlas', '#/soil'], ['Circular economy', '#/circular-economy'], ['Product knowledge decks', '#/knowledge#decks']],
+    links: [['Knowledge hub', '#/knowledge'], ['The 17 nutrients', '#/knowledge/nutrients'], ['Why Pakistan must shift from more nitrogen to balanced nutrition', '#/knowledge/why-pakistan-must-shift'], ['Soil Atlas', '#/soil'], ['Circular economy', '#/circular-economy'], ['Product knowledge decks', '#/knowledge#decks']],
   },
   {
     job: 'Work the numbers yourself',

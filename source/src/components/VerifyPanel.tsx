@@ -52,7 +52,7 @@ export function VerifyPanel({ full = false }: { full?: boolean }) {
             On the home page it is a line and a link, not the same paragraph a second time. */}
         {/* L1 editor fix 7 Nov 2026 (company-a B3): Sample Reception is in a separate building (as on the Lab page); "independently" dropped. */}
         {full ? null : (
-          <p className="small muted mt-5">To have one of our products tested blind, send 500 g of it to Sample Reception, which works from a separate building from our laboratory, and book a normal paid test. The sample is given a code in place of the product name, so the analysts do not know that it is our product. <a href="#/verify">How that works ›</a></p>
+          <p className="small muted mt-5">To have one of our products tested blind, send 500 g of it to Sample Reception and book a normal paid test. Sample Reception works from a building separate from our laboratory. The sample is given a code in place of the product name. The analysts therefore do not know that the sample is our product. <a href="#/verify">How blind testing works ›</a></p>
         )}
       </form>
       <div className="order-first lg:order-none"><BagCheck batch={batch} /></div>

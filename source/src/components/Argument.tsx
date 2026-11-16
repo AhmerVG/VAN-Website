@@ -80,10 +80,10 @@ export function NationalStrip() {
   const figures: { n: string; unit?: string; cap: string; tone: string }[] = [
     // D-143: was n String(kgha) with unit 'kg/ha' (156) and 'a hectare'. usePerHa now holds kg per acre. Revert: with usePerHa.
     // Tahir 7 Nov 2026 (CO-23): FAO 2023 is a calendar year and 1999-2000 to 2023-24 are fiscal years (July to June), named once. CO-20: potash as K₂O.
-    { n: String(Math.round(kgha)), unit: 'kg per acre', tone: 'var(--navy)', cap: `of fertiliser nutrients (nitrogen, phosphate as P₂O₅ and potash as K₂O, added together) applied to each acre of Pakistan’s cropland in 2023 (calendar year), against a world average of ${Math.round(world)} kg per acre. We converted FAO’s figures from per hectare to per acre.` },
-    { n: '83', unit: ':1', tone: 'var(--rust)', cap: 'tonnes of nitrogen (N) applied in Pakistan in 2023 for every tonne of potash (K₂O).' },
-    { n: wheat?.perKg ?? '', tone: 'var(--rust)', cap: 'change between fiscal years 1999-2000 and 2023-24 (July to June) in the wheat yield obtained for each kg of fertiliser nutrient: wheat yield per acre divided by the fertiliser nutrient applied per acre of arable land, which covers all crops, not only wheat. We calculated it from published figures.' },   // L1 editor fix 7 Nov 2026 (company-a M1): the measure spelled out (method as in NATIONAL.productivity).
-    { n: `${NATIONAL.nitrogen.pk}%`, tone: 'var(--soil)', cap: `Pakistan’s nitrogen use efficiency in 2023: the share of the nitrogen added to cropland that was taken out in the harvested crop (FAO estimate). In the United States it was about ${NATIONAL.nitrogen.us}%.` },
+    { n: String(Math.round(kgha)), unit: 'kg per acre', tone: 'var(--navy)', cap: `Pakistan applied ${Math.round(kgha)} kg of fertiliser nutrients to each acre of its cropland in the calendar year 2023, against a world average of ${Math.round(world)} kg per acre. The fertiliser nutrients counted are nitrogen, phosphate as P₂O₅ and potash as K₂O, added together. We converted FAO’s figures from per hectare to per acre.` },
+    { n: '83', unit: ':1', tone: 'var(--rust)', cap: 'Pakistan applied 83 tonnes of nitrogen (N) in 2023 for every tonne of potash (K₂O).' },
+    { n: wheat?.perKg ?? '', tone: 'var(--rust)', cap: `Between the fiscal years 1999-2000 and 2023-24, the change in the wheat yield for each kg of fertiliser nutrient was ${wheat?.perKg ?? ''}. Each fiscal year runs from July to June. The wheat yield for each kg of fertiliser nutrient is the wheat yield per acre divided by the fertiliser nutrient applied per acre of arable land. The fertiliser nutrient applied per acre of arable land covers all crops, not only wheat. We calculated the measure from published figures.` },   // L1 editor fix 7 Nov 2026 (company-a M1): the measure spelled out (method as in NATIONAL.productivity).
+    { n: `${NATIONAL.nitrogen.pkPct}%`, tone: 'var(--soil)', cap: `Pakistan’s nitrogen use efficiency (NUE) was ${NATIONAL.nitrogen.pkPct}% in 2023 (an FAO estimate). The ${NATIONAL.nitrogen.pkPct}% means that Pakistan’s harvested crops contained about ${NATIONAL.nitrogen.pk} kg of nitrogen for every 100 kg of nitrogen added to cropland in 2023. The 100 kg counts nitrogen from all sources, including fertiliser and manure. In 2023, NUE in the United States was about ${NATIONAL.nitrogen.us}% (an FAO estimate).` },
   ]
   return (
     <section className="sec" id="picture" style={{ background: 'var(--sand-2)' }}>
@@ -105,7 +105,7 @@ export function NationalStrip() {
             page and /soil carry them); the sources paragraph went with the charts it belongs to.
             The block is the 4 figures, the knowledge link and 1 line of sources. Revert: the v61 zip. */}
         <p className="src ns-src">
-          Sources: Our World in Data / FAO, which publishes fertiliser use per hectare (Pakistan 156 kg, world 117 kg); we divided these figures by 2.471 to give kg per acre; FAOSTAT (including the Cropland Nutrient Balance, December 2025 release); World Bank indicator AG.CON.FERT.ZS; the Pakistan Economic Survey.{/* L2 fix 9 Nov 2026 (company W11): World Bank source added */} The soil data, {SOIL_HEADLINE.samples} Punjab samples from {SOIL_HEADLINE.districts} districts, tested in about 2016 to 2018, are on <a href="#/soil">the soil page</a>.
+          Sources: Our World in Data / FAO; FAOSTAT, including the Cropland Nutrient Balance (December 2025 release); World Bank indicator AG.CON.FERT.ZS; the Pakistan Economic Survey. FAO’s figures for fertiliser use in 2023 are 156 kg per hectare for Pakistan and 117 kg per hectare for the world. We divided these figures by 2.471 to give kg per acre.{/* L2 fix 9 Nov 2026 (company W11): World Bank source added */} The soil data cover {SOIL_HEADLINE.samples} samples from {SOIL_HEADLINE.districts} districts of Punjab, tested in about 2016 to 2018. The soil data are on <a href="#/soil">the soil page</a>.
         </p>
       </div>
     </section>
@@ -149,7 +149,7 @@ function StripArt({ active }: { active: number }) {
         {[90, 160, 230].map((x, i) => <g key={x} className="a-drip" style={{ animationDelay: `${i * 0.5 + 0.3}s` }}><text x={x} y="104" textAnchor="middle" fontSize="12" fontWeight="700" fill="#E6EEE8" fontFamily="Public Sans, sans-serif">NO₃⁻</text></g>)}
         <text x="12" y="20" fontSize="12" fontWeight="700" fill="#14231A">1 · Nitrogen</text>
         <text x="12" y="36" fontSize="11" fill="#5B6A5E">surface urea · pH 8+ · hot</text>
-        <text x="12" y="198" fontSize="11" fill="#fff">down with the irrigation water</text>
+        <text x="12" y="198" fontSize="11" fill="#fff">Nitrate moves down with the irrigation water.</text>
       </g>
       {/* zone 2. Phosphate: calcium closes in and locks it */}
       <g className={zone(1)}>
@@ -169,7 +169,7 @@ function StripArt({ active }: { active: number }) {
         </g>
         <path d="M350 82 c0 24 -10 34 -6 60 M350 82 c0 -22 -6 -34 -14 -48 M350 82 c0 -26 8 -36 16 -44" stroke="#2F6B3A" strokeWidth="3" fill="none" strokeLinecap="round" />
         <path d="M350 100 c20 10 40 18 62 34" className="a-draw-loop" stroke="#F0EEE5" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeDasharray="120" strokeDashoffset="120" />
-        <text x="312" y="198" fontSize="11" fill="#fff">before the root reaches it</text>
+        <text x="312" y="198" fontSize="11" fill="#fff">Calcium binds phosphate before the root reaches it.</text>
       </g>
       {/* zone 3. Potash: the root goes looking */}
       <g className={zone(2)}>
@@ -180,7 +180,7 @@ function StripArt({ active }: { active: number }) {
           <path key={i} d={d} className="a-draw-loop" stroke="#F0EEE5" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeDasharray="220" strokeDashoffset="220" style={{ animationDelay: `${i * 0.3}s` }} />
         ))}
         <g className="a-pulse"><circle cx="866" cy="176" r="11" fill="#B0841A" /><text x="866" y="180" textAnchor="middle" fontSize="12" fontWeight="700" fill="#fff" fontFamily="Public Sans, sans-serif">K</text></g>
-        <text x="612" y="198" fontSize="11" fill="#fff">the crop takes potassium the soil already holds</text>
+        <text x="612" y="198" fontSize="11" fill="#fff">The crop takes potassium the soil already holds.</text>
       </g>
     </svg>
   )
@@ -204,7 +204,7 @@ export function LossStrip() {
         <div ref={ref} className={`panel overflow-hidden ${inView ? 'on' : ''} ${run ? '' : 'paused'}`}>
           <div className="flex flex-wrap items-center gap-3 px-4 pt-3 pb-2">
             <button className={`btn btn-sm ${run ? 'btn-navy' : 'btn-gold'}`} onClick={() => setPlaying(p => !p)} aria-pressed={playing}>{playing ? '❚❚ Pause' : '▶ Play'}</button>
-            <span className="cap" style={{ color: 'var(--gold-text)' }}>▸ Tap a problem to keep it open · 1 soil cross-section, 3 problems, left to right</span>
+            <span className="cap" style={{ color: 'var(--gold-text)' }}>▸ Tap a problem to keep it open. The drawing shows 1 soil cross-section, with the 3 problems from left to right.</span>
           </div>
           <div className="strip-scroll"><StripArt active={active} /></div>
           <div className="grid md:grid-cols-3 gap-3 p-4">
@@ -238,11 +238,11 @@ export function LossStrip() {
 
 /* ————— 07 · The method — six stations, a travelling batch token ————— */
 const NODES: { t: string; s: string; body: string[] }[] = [
-  { t: 'Research farm', s: `since ${COUNTS.since}`, body: [ABOUT.timeline[1].text, 'We base every formulation on 17 years of trial results and on the Punjab soil survey of 770,160 samples, tested in about 2016 to 2018.'] },
-  { t: 'Formulation', s: '17 years of trial data', body: ['We set each formulation from the trial results and then make it at our own plant.', PARTNER.capability[0][1]] },
+  { t: 'Research farm', s: `since ${COUNTS.since}`, body: [ABOUT.timeline[1].text, 'We base every formulation on 17 years of trial results and on the 770,160 samples of the Punjab soil testing programme, tested in about 2016 to 2018.'] },
+  { t: 'Formulation', s: '17 years of trial data', body: ['We set each formulation from the trial results. We then make the product at our own plant.', PARTNER.capability[0][1]] },
   { t: 'Plant', s: COUNTS.capacity, body: [ABOUT.stats[2][1], PARTNER.capability[1][1]] },
-  { t: 'Laboratory', s: `${COUNTS.lab} · ISO/IEC 17025`, body: [LAB.why1, PARTNER.capability[3][1]] },
-  { t: 'PSQCA registration', s: `${COUNTS.licences} licences`, body: ['We hold 34 PSQCA licences. 22 of them cover 20 of our 23 brands, under 8 Pakistan Standards, and 12 cover products that are ready for partner companies to launch under their own names. The regulatory page lists the licence number of each of our 20 licensed brands.', PARTNER.capability[2][1]] },   // L2 fix 9 Nov 2026 (profile W3, CO-8): was "The 22 licences on our brands are published product by product."
+  { t: 'Laboratory', s: `${COUNTS.lab} · ISO/IEC 17025:2017`, body: [LAB.why1, PARTNER.capability[3][1]] },
+  { t: 'PSQCA registration', s: `${COUNTS.licences} licences`, body: ['We hold 34 PSQCA licences. Of these licences, 22 cover 20 of our 23 brands, under 8 Pakistan Standards. The other 12 licences cover registered formulations in our formulation library. Any partner company can take 1 of these formulations and sell it under its own brand. The regulatory page lists the licence number of each of our 20 licensed brands.', PARTNER.capability[2][1]] },   // L2 fix 9 Nov 2026 (profile W3, CO-8): was "The 22 licences on our brands are published product by product."
   { t: 'Lab report online', s: 'by batch number, free', body: [VERIFY.lead, VERIFY.note] },
 ]
 const STEP_MS = 5000
@@ -273,12 +273,12 @@ export function MethodJourney() {
             L2 fix 9 Nov 2026 (company W9): the bag prints the month only; the batch number "links it to
             the record of the day the batch was made" (was "gives the day the batch was made"). */}
         <ActHead n="03" kicker="The method" title={ABOUT.h1} tone="green"
-          lead={<>Each product goes through 6 steps before it reaches a dealer, from trials on our research farms to the lab report for each batch. The batch number printed on each bag links it to the record of the day the batch was made, and typing it on our website opens the lab report on which the batch was approved for dispatch. Tap a step to see what happens there.</>}
+          lead={<>Each product goes through 6 steps before it reaches a dealer, from trials on our research farms to the lab report for each batch. The batch number printed on each bag links the bag to the record of the day the batch was made. Typing the batch number on our website opens the lab report on which the batch was approved for dispatch. Tap a step to see what happens at that step.</>}
           right={<a className="btn btn-ghost" href="#/about">About VAN →</a>} />
         <div ref={ref} className={`panel p-4 lg:p-6 ${inView ? 'on' : ''} ${run ? '' : 'paused'}`}>
           <div className="flex flex-wrap items-center gap-3 mb-2">
             <button className={`btn btn-sm ${run ? 'btn-navy' : 'btn-gold'}`} onClick={() => setPlaying(p => !p)} aria-pressed={playing}>{playing ? '❚❚ Pause' : '▶ Play'}</button>
-            <span className="cap" style={{ color: 'var(--gold-text)' }}>▸ Tap a step · the batch moves along the line</span>
+            <span className="cap" style={{ color: 'var(--gold-text)' }}>▸ Tap a step. The drawn bag moves along the line from step to step.</span>
             <span className="cap ml-auto">Step {active + 1} of {NODES.length}</span>
           </div>
           <div className="journey" ref={fit.ref}>
