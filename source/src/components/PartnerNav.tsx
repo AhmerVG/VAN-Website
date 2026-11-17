@@ -20,7 +20,7 @@ const ITEMS: [string, string][] = [
   ['models', 'The 3 models'],   // D-185
   ['portfolio', 'The portfolio'],
   ['detail', 'In more detail'],
-  ['limits', 'Before you ask'],
+  ['limits', 'Partnership rules'],
   // 11 Sep 2026 · this bar followed the reader down 13,606px of the page on a phone and never once
   // pointed at the way to make an enquiry. The enquiry section is #talk; it is a tab now.
   ['talk', 'Talk to us'],

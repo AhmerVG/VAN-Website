@@ -49,9 +49,9 @@ export default function Partner() {
             </div>
           </div>
           {/* D-257, Tahir 18 Oct 2026: the 12 licensed products, said first. Tahir 9 Nov 2026: the 10 library codes marked Available are among the 12 licensed products. */}
-          <p className="pr-ready mt-4"><b className="num">{COUNTS.licencesPartnerReady}</b> products already hold a PSQCA (Pakistan Standards and Quality Control Authority) licence, including the <b className="num">{READY}</b> library codes marked Available. A partner can launch any of them under its own brand within <b>{COUNTS.partnerReadyDays} days</b>. <a href="#talk">Ask which ones →</a></p>
+          <p className="pr-ready mt-4"><b className="num">{COUNTS.licencesPartnerReady}</b> products already hold a PSQCA (Pakistan Standards and Quality Control Authority) licence, including the <b className="num">{READY}</b> library codes marked Available. Any of them can reach its first commercial batch under a partner’s brand within <b>{COUNTS.partnerReadyDays} days</b>. <a href="#talk">Ask which ones →</a></p>
           {/* Tahir 10 Nov 2026 (CO-N8, CO-30): the counts dated once on the page. */}
-          <p className="cap mt-2">Figures as of July 2026.</p>
+          <p className="cap mt-2">Figures as of November 2026.</p>
         </div>
       </section>
 
@@ -66,7 +66,7 @@ export default function Partner() {
           "range" with <FormulationLibrary pathOnly />, and the old ITEMS order in PartnerNav. */}
       {/* Tahir 7 Nov 2026 (CO-2): the names on some cards are working names. CO-27: brief-to-market times. */}
       <section id="library" className="sec pnav-target" style={{ background: 'var(--sand-2)' }}><div className="wrap">
-        <SectionHead eyebrow="The formulation library" title={`${LIBRARY.length} formulations in the library, ${READY} of them ready to carry your name.`} lead="None of them is sold under a brand yet. Some carry a working name, shown after the code. Each card shows the stage the formulation has reached. Filter by the nutrients it carries and the form it comes in, then open a card to ask about it." tone="navy" />
+        <SectionHead eyebrow="The formulation library" title={`${LIBRARY.length} formulations in the library, ${READY} of them ready to carry your name.`} lead="Each formulation in the library is held under a neutral code until a partner gives it a brand name. Some carry a working name, shown after the code. Each card shows the stage the formulation has reached. Filter by the nutrients it carries and the form it comes in, then open a card to ask about it." tone="navy" />
         <FormulationLibrary phoneShort />
       </div></section>
 
@@ -160,7 +160,7 @@ export default function Partner() {
           three himself. The old commercial-terms block (non-exclusive by default, exclusivity earned
           by volume, and the "No surprises" promise) came off at his instruction. */}
       <section id="limits" className="wrap sec pnav-target">
-        <SectionHead eyebrow="Before you ask" title={PARTNER.limitsH2} tone="rust" />
+        <SectionHead eyebrow="Partnership rules" title={PARTNER.limitsH2} tone="rust" />
         <div className="grid md:grid-cols-3 gap-4">{PARTNER.limits.map(([h, t]) => <div key={h} className="panel p-5"><h4>{noStop(h)}</h4><p className="small muted mt-2">{t}</p></div>)}</div>
         <div className="grid lg:grid-cols-2 gap-4 mt-8">
           <div className="panel-soil p-6"><span className="eyebrow soil">{PARTNER.whoH2}</span><p className="small mt-2">{PARTNER.who}</p><div className="flex flex-wrap gap-2 mt-3">{PARTNER.whoTypes.map(t => <span key={t} className="tag tag-soil">{t}</span>)}</div><p className="cap mt-3">{PARTNER.firewall}</p></div>
@@ -178,7 +178,7 @@ export default function Partner() {
             <div>
               <span className="eyebrow" style={{ color: 'var(--gold)' }}>Start a conversation</span>
               <h2 className="text-[clamp(26px,2.6vw,36px)]">{noStop(HOME_COPY.makeH2)}</h2>
-              <p className="mt-3" style={{ color: 'rgba(255,255,255,.8)' }}>Tell us the crop, the market and the constraint the product must overcome. If something in our catalogue or the library already meets the need, we will tell you rather than start a development project.</p>
+              <p className="mt-3" style={{ color: 'rgba(255,255,255,.8)' }}>Tell us the crop, the market and the constraint the product must overcome. If a product in our catalogue or our formulation library already solves your problem, we will offer it to you first.</p>
               {/* 11 Sep 2026 · this opened WA.distributor, so a procurement head at a multinational
                   introduced himself as a distributor asking about range and territory. There is now
                   a partner line, and the person who answers is named here rather than three pages
@@ -203,7 +203,7 @@ export default function Partner() {
             {/* The one-working-day promise used to live only in the success message, which is a
                 state nobody reaches while the endpoint is off. It belongs above the button, where
                 it is doing work. */}
-            <p className="small mb-3" style={{ color: 'rgba(255,255,255,.85)' }}>Our commercial team replies within 1 working day. The first conversation is about whether we already have something that solves your problem, because a formulation from our library takes about 3 months to its first commercial batch, while a product developed to your brief usually takes 7 to 12 months from brief to market.</p>
+            <p className="small mb-3" style={{ color: 'rgba(255,255,255,.85)' }}>Our commercial team replies within 1 working day. The first conversation is about whether we already have a product that solves your problem. A library formulation that already holds a PSQCA licence reaches its first commercial batch within {COUNTS.partnerReadyDays} days. A product developed to your brief usually takes 7 to 12 months from brief to market.</p>
             <VanForm
               form="partner"
               fields={PARTNER_FORM}

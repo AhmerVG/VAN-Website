@@ -228,7 +228,7 @@ export default function CompanyProfile() {
             {/* Tahir 7 Nov 2026 (CO-16): a 1 tonne batch is made and the small order packed from it. */}
             {/* Tahir 10 Nov 2026 (CO-N12): the full minimum-order wording, reordered, per line. */}
             {/* L1 fix 10 Nov 2026 (m1): the long sentence split; "the line for that product" -> "The line for each product". */}
-            <p className="small mt-3">There is <b>no minimum order</b>. We produce in batches of 1 tonne. For an order smaller than 1 tonne, we make a 1 tonne batch and pack your order from it. A larger order is made in lots of up to 50 tonnes, each made of 1 tonne batches. The line for each product can make up to 4 lots a week, so an order is not limited to 50 tonnes.</p>
+            <p className="small mt-3">We accept <b>orders of any size</b>. We produce in batches of 1 tonne. For an order smaller than 1 tonne, we make a 1 tonne batch and pack your order from it. A larger order is made in lots of up to 50 tonnes, each made of 1 tonne batches. An order larger than 50 tonnes is made in several lots. The line for each product can make up to 4 lots a week.</p>
           </div>
         </div>
         <div className="flex flex-wrap gap-2 mt-4">
@@ -248,11 +248,11 @@ export default function CompanyProfile() {
           <Stat v={COUNTS.patent} l="Pakistan Patent, for our sulfur coated urea" tone="soil" />
         </div>
         <div className="grid lg:grid-cols-3 gap-3 mt-4">
-          <div className="panel p-5"><h4>How samples are tested</h4><p className="small muted mt-1">Every sample is tested by 2 analysts. We use written methods, calibrated instruments and reference standards, so a result does not depend on who ran the test. Results of a test booked through Sample Reception are ready {LAB.stats[1][0]} working days after Sample Reception confirms your booking.</p></div>
+          <div className="panel p-5"><h4>How samples are tested</h4><p className="small muted mt-1">Every sample is tested by 2 analysts. We use written methods, calibrated instruments and reference standards. With these, the result is the same whoever runs the test. Results of a test booked through Sample Reception are ready {LAB.stats[1][0]} working days after Sample Reception confirms your booking.</p></div>
           {/* L1 editor fix 7 Nov 2026 (company-a m16, m11): 'after your booking is confirmed' (as on the Lab page); 'On our website' moved to the front. */}
           {/* L2 fix 9 Nov 2026 (settled CO-85): now 'after Sample Reception confirms your booking'. */}
           <div className="panel p-5"><h4>The lab report for your bag</h4><p className="small muted mt-1">On our website, type the batch number printed on a VAN bag to open the lab report for that batch, free of charge.</p></div>
-          <div className="panel p-5"><h4>ISO 9001 in progress</h4><p className="small muted mt-1">We expect System Certification Centre (SCC) to certify us to ISO 9001 during 2027. We will not claim ISO 9001 until the certificate is issued.</p></div>
+          <div className="panel p-5"><h4>ISO 9001 in progress</h4><p className="small muted mt-1">We expect System Certification Centre (SCC) to certify us to ISO 9001 during 2027.</p></div>
         </div>
         {/* D-316: CropLife Pakistan membership (Tahir, 26 Oct 2026). */}
         <p className="small muted mt-4">Industry membership: we have been a full member of CropLife Pakistan, an industry association, since 2024.</p>
@@ -272,7 +272,7 @@ export default function CompanyProfile() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {[
             ['Sources and our own calculations', 'Every figure we publish names its source. Where we have calculated a figure ourselves from published data, we say so.'],
-            ['A yield figure needs a named trial', 'We publish no performance figure for a product unless a named trial supports it.'],
+            ['A performance figure needs a named trial', 'We publish a performance figure for a product only when a named trial supports it.'],
             // Tahir 7 Nov 2026 (CO-12): Rafhan Maize Products and Descon Research Farm are research partners, not clients; no line about withheld names.
             ['Our research partners', 'Rafhan Maize Products and Descon Research Farm are our research partners in the Vital Urea trials. They are named, with their agreement, on the pages that describe those trials.'],  // D-316: was "VAN names 1 client on this website ... with that client’s agreement." 
             ['The soil testing data come from the Punjab programme', 'The soil data come from the Punjab soil testing programme. We use them together with the results of our own soil sampling, and we credit them to the programme.'],
@@ -284,7 +284,7 @@ export default function CompanyProfile() {
       {/* 06 · Vitalytics and the Soil Atlas */}
       <section id="tools" className="sec pnav-target"><div className="wrap">
         <SectionHead eyebrow="Vitalytics and the Soil Atlas" tone="green"
-          title="Our tools are free, and you do not need to sign in" />
+          title="Our tools are free and open to everyone" />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {[
             [`${CROPS.length} crop plans`, 'Each crop plan tells you what to apply per acre, at which crop stage, by which method, and in which pack.', '#/crops', 'panel-green'],
@@ -314,7 +314,7 @@ export default function CompanyProfile() {
               ['If you grow', `Our ${CROPS.length} crop plans are free. Choose your crop, then enter your district and sowing date.`, 'Find your crop', '#/crops', <FieldRows key="g" n={7} height={70} />],
               // L1 editor fix 7 Nov 2026 (company-a m11): 'On our website' no longer attaches to the bag.
               ['If you sell', `As a dealer, you can sell all ${COUNTS.brands} of our brands. We test every batch before it ships. On our website, a farmer can type the batch number printed on any bag and open the lab report for that batch.`, 'Become a dealer', '#/become-a-dealer', <div key="s" className="flex gap-2 items-end" style={{ height: 76 }}><DrawnBag label="VAN" width={46} /><DrawnBag label="VAN" width={54} /><DrawnBag label="VAN" width={46} /></div>],
-              ['If you want it made under your name', 'We formulate, make, register and test the product, and you sell it under your brand; under toll manufacturing, you supply the formulation.', 'Your Brand', '#/partner', <div key="m" style={{ height: 76 }}><DrawnBag label="Your brand" width={54} /></div>],
+              ['If you want it made under your name', 'We formulate, manufacture, register and test crop nutrition products that partner companies sell. Most of these products carry the partner company’s own brand name. Under toll manufacturing, we make the product to a formulation that you supply.', 'Your Brand', '#/partner', <div key="m" style={{ height: 76 }}><DrawnBag label="Your brand" width={54} /></div>],
               ['If you want the evidence', `Our evidence comes from ${SOIL_HEADLINE.samples} Punjab soil samples and ${COUNTS.yearsData.replace(' years', '')} years of trials on our research farms, and every figure we publish names its source.`, 'The national figures and sources', '#/knowledge/why-pakistan-must-shift', <div key="e" style={{ height: 70 }}><SoilCore /></div>],
             ].map(([k, t, cta, href, art]) => (
               <div key={String(k)} className="p-5 flex flex-col" style={{ background: 'var(--sand)', color: 'var(--ink)', borderRadius: 'var(--radius)' }}>
@@ -332,12 +332,13 @@ export default function CompanyProfile() {
       {/* 08 · Ways to work with VAN. The general line is the owner's (ruling 13); the rest is PARTNER. */}
       <section id="work" className="sec pnav-target"><div className="wrap">
         <SectionHead eyebrow="Work with VAN" tone="rust" title="We offer white labelling, joint product development and toll manufacturing"
-          lead="White labelling means we make a formulation we have already developed, and you sell it under your brand. Joint product development means we develop a new product with you, starting from your brief. Toll manufacturing means we make your own formulation to your specification. If you want a product under your own brand, there are 2 routes: a new product developed to your brief (joint development) or a finished formulation from our library (white labelling)." />
+          lead="White labelling means we make a formulation we have already developed, and you sell it under your brand. Joint product development means we develop a new product with you, starting from your brief. Toll manufacturing means we make your own formulation to your specification. If you want a product under your own brand, there are 2 routes: a new product developed to your brief (joint development) or a library formulation that already holds a PSQCA licence (white labelling)." />
         <div className="grid lg:grid-cols-2 gap-3">
           {PARTNER.routes.map((r, i) => (
             <div key={r.key} className="panel p-5" style={{ borderTop: `4px solid ${i ? 'var(--green)' : 'var(--navy)'}` }}>
               <span className="eyebrow" style={{ color: i ? 'var(--green)' : 'var(--navy)' }}>Route {i + 1} · {r.title}</span>
               <div className="num text-[28px]" style={{ color: 'var(--navy)' }}>{r.time}</div>
+              {'timeSub' in r && r.timeSub && <p className="cap mt-1">{r.timeSub}</p>}
               <p className="small mt-2">{r.text}</p>
               <p className="cap mt-2">{r.stages.map(s => s.s).join(' · ')}</p>
             </div>
@@ -346,10 +347,10 @@ export default function CompanyProfile() {
         <div className="pf-grid mt-4">
           <div className="pf-card"><div className="pf-n num">{PARTNER.proof.v}</div><div className="pf-l">partner brands registered with VAN as the manufacturer</div></div>
           <div className="pf-card"><div className="pf-n num">{partners}</div><div className="pf-l">companies hold these brands; our oldest partnership began in {PARTNER.portfolioPending.oldest}</div></div>
-          <div className="pf-card"><div className="pf-n num">{COUNTS.formulations}</div><div className="pf-l">unbranded formulations in our library. {READY} of them are finished and can be made under your brand. {COUNTS.licencesPartnerReady} products already hold a PSQCA licence, including the {READY} library codes marked Available, and are ready for a partner company to launch.</div></div>{/* Tahir 9 Nov 2026: the {READY} Available codes are among the 12 licensed products; was 'Separately, 12 products ...' */}
+          <div className="pf-card"><div className="pf-n num">{COUNTS.formulations}</div><div className="pf-l">unbranded formulations in our library. {READY} of them already hold a PSQCA licence and can be made under your brand. {COUNTS.licencesPartnerReady} products already hold a PSQCA licence, including the {READY} library codes marked Available, and are ready for a partner company to launch.</div></div>{/* Tahir 9 Nov 2026: the {READY} Available codes are among the 12 licensed products; was 'Separately, 12 products ...' */}
         </div>
         {/* Tahir 7 Nov 2026 (CO-4): a toll client's formulation is his own, so "the formulation" became "our own formulations". */}
-        <p className="small mt-4 max-w-[140ch]">There are 3 things we do not do. We do not sell the product for you, we do not hand over our own formulations, and we will not put a claim on your label that a trial does not support.</p>
+        <p className="small mt-4 max-w-[140ch]">Every partnership with us follows 3 rules. We make the product for you to sell. We keep our own formulations. Every performance claim on your label is backed by a trial.</p>
         <div className="flex flex-wrap gap-2 mt-4">
           <a className="btn btn-navy btn-sm" href="#/partner">Your Brand →</a>
           <a className="btn btn-ghost btn-sm" href="#/partner#library">The formulation library →</a>
@@ -373,7 +374,7 @@ export default function CompanyProfile() {
             </li>
             {/* Tahir 7 Nov 2026 (KN-11): was 'Potash from crop residue ash, and research on silicon' */}
             <li className="panel p-4"><h4>Potassium from crop residue ash, and research on silicon</h4><p className="small muted mt-1">We already use potassium recovered from crop residue ash in our own manufacturing, in place of imported potash. Silicon recovery from the same ash is still in research and development.</p><a className="cap" href="#/circular-economy" style={{ fontWeight: 700 }}>The circular economy →</a></li>
-            {NP_PLANNED && <li className="panel p-4"><h4>New NP granulation line</h4><p className="small muted mt-1">A new granulation line for NP (nitrogen and phosphorus) fertilisers is planned for the plant site. Work has not started, and no date has been set.</p></li>}
+            {NP_PLANNED && <li className="panel p-4"><h4>New NP granulation line</h4><p className="small muted mt-1">A new granulation line for nitrogen and phosphorus (NP) fertilisers is planned for the plant site.</p></li>}
           </ul>
           <div>
             <Bench />

@@ -158,6 +158,7 @@ function MakeBand() {
               {PARTNER.routes.map(r => (
                 <div key={r.key} className="mk-route">
                   <div className="mk-t num">{r.time}</div>
+                  {'timeSub' in r && r.timeSub && <p className="cap">{r.timeSub}</p>}
                   <div className="cap">{r.title}</div>
                 </div>
               ))}

@@ -68,7 +68,7 @@ export const COUNTS = {
   brands: 23,
   cropPlans: 28,
   // D-257, Tahir 18 Oct 2026: 34 PSQCA licences = 22 on VAN's own brands + 12 on products licensed
-  // and ready for a partner launch (in the market within 60 days). The single source for every count.
+  // and ready for a partner launch (first commercial batch within 60 days, Tahir 17 Nov 2026). The single source for every count.
   licences: 34,
   licencesOwn: 22,
   licencesPartnerReady: 12,
@@ -194,7 +194,7 @@ export const ABOUT = {
     // Tahir 7 Nov 2026 (KN-11): the recovered material is called potassium. Was: title 'Potash recovered from crop residue ash', text '... first commercial batch of potash recovered ...'.
     { year: '2023', title: 'Potassium recovered from crop residue ash', text: 'We made our first commercial batch of potassium recovered from crop residue ash.' },
     { year: '2024', title: 'Laboratory accreditation', text: 'Our laboratory was accredited by the Pakistan National Accreditation Council (PNAC) to ISO/IEC 17025:2017, under accreditation number LAB 336.' },
-    { year: '2026', title: 'Patent, biological laboratory and a planned NP line', text: 'Pakistan Patent 144684 was granted for Vital Urea, our sulfur coated urea. We set up our first biological laboratory. A new granulation line for NP (nitrogen and phosphorus) fertilisers is planned for the plant site. Work on it has not started.' },
+    { year: '2026', title: 'Patent, biological laboratory and a planned NP line', text: 'Pakistan Patent 144684 was granted for Vital Urea, our sulfur coated urea. We set up our first biological laboratory. A new granulation line for nitrogen and phosphorus (NP) fertilisers is planned for the plant site.' },
     // Tahir 7 Nov 2026 (CO-19): "make" changed to capacity wording.
     { year: 'Today', title: 'Where we are in 2026', text: 'More than 150 people work at VAN. Our plant can make about 50,000 tonnes of product a year. We make products under 23 registered brands of our own and for 14 other companies. We hold 34 licences from the Pakistan Standards and Quality Control Authority (PSQCA). Of these licences, 22 are on our own brands and 12 are on registered formulations that any partner company can take and sell under its own brand. We have been a full member of CropLife Pakistan since 2024.' },  // D-316: CropLife membership added
   ],
@@ -331,7 +331,7 @@ export const VERIFY = {
 export const PARTNER = {
   kicker: 'VAN works with companies that are launching a crop nutrition brand, making locally a product they now import, or manufacturing under their own name',
   h1: 'Launch it under your name.',   // D-181, Tahir 26 Sep: "Launch it under your name. only"
-  lead: 'We formulate, manufacture, register and test crop nutrition products that are sold under other companies’ brand names. You market and sell the product. We take the product from formulation to the finished bag. Under toll manufacturing, you supply the formulation.',   // Tahir 7 Nov 2026 (CO-4, also_changes): toll formulation is the client's
+  lead: 'We formulate, manufacture, register and test crop nutrition products that partner companies sell. Most of these products carry the partner company’s own brand name. You market and sell the product. We take the product from formulation to the finished bag. Under toll manufacturing, we make the product to a formulation that you supply.',   // Tahir 7 Nov 2026 (CO-4, also_changes): toll formulation is the client's
 
   /**
    * THE PROOF LINE, and it is the strongest thing VAN can say to this reader.
@@ -353,11 +353,11 @@ export const PARTNER = {
   routes: [
     {
       key: 'develop',
-      tag: 'You bring a problem we have not solved yet',
+      tag: 'You bring a new problem for us to solve',
       title: 'Developed to your brief',
       // Tahir 7 Nov 2026 (CO-27): measured to the market. CO-3: the 2-month product needed no new field trial.
       time: '7 to 12 months to market',
-      timeNote: 'Most products developed to a brief take 7 to 12 months from brief to market, because the field trial must run through a full crop season and that time cannot be shortened. Across our 14 partners, the fastest product went from brief to market in 2 months and the slowest in 17 months. The fastest, at 2 months, was a product that needed no new field trial.',
+      timeNote: 'Most products developed to a brief take 7 to 12 months from brief to market, because the field trial runs through a full crop season. Across our 14 partners, the fastest product went from brief to market in 2 months and the slowest in 17 months. The fastest product took 2 months because the results of an earlier field trial were used for its Trials stage.',
       text: 'You tell us the market, the crop, the target price and the constraint the product must overcome. We develop the formulation, make it at our plant, run the trials and register the product.',
       stages: [
         // D-318, Tahir 26 Oct: "Change it to the 6 stages" (was 7: Your brief, Feasibility, Formulation, Field trial,
@@ -365,7 +365,7 @@ export const PARTNER = {
         { s: 'Feasibility', t: 'Feasibility', d: 'We check whether the product can be made at our plant, at the target cost and to the required specification.' },
         { s: 'Bench', t: 'Bench', d: 'Bench work in our laboratory on ratio, form, coating, chelation, solubility, pH and compatibility.' },
         { s: 'Pilot', t: 'Pilot', d: 'Produced on the same equipment that will run the commercial lot, so what works in the pilot still works at scale.' },
-        { s: 'Trials', t: 'Trials', d: 'Trials on your crop, in the districts you sell into. This stage takes a full season and cannot be shortened.' },
+        { s: 'Trials', t: 'Trials', d: 'Field trials are run on our research farms, and on your plots if you want them. This stage takes a full crop season.' },
         { s: 'Dossier', t: 'Dossier', d: 'We select the PSQCA standard and prepare the dossier.' },
         { s: 'Registration', t: 'Registration', d: 'We file the registration under your brand, with VAN named as the manufacturer.' },
       ],
@@ -374,14 +374,15 @@ export const PARTNER = {
       key: 'library',
       tag: 'You take something we have already developed',
       title: 'From our library to your first batch',
-      time: 'About 3 months',
-      timeNote: 'A library formulation reaches its first commercial batch in about 3 months, registration included. No trial is needed, because the formulation has already been trialled and validated.',
-      text: 'We have finished formulations that do not yet carry a brand. They are listed in our formulation library under neutral codes until a partner company chooses one and gives it a brand name.',
+      time: 'Within 60 days, or about 3 months for Validated',
+      timeNote: `A library formulation that already holds a PSQCA licence reaches its first commercial batch under your brand within ${COUNTS.partnerReadyDays} days. Library formulations marked Validated reach their first commercial batch in about 3 months, registration included. Every library formulation marked Validated or Available has already been trialled and validated. A formulation marked Validated is licensed first and is then made under white labelling.`,   // Tahir 17 Nov 2026: 60 days (licensed) and about 3 months (Validated), both to the first commercial batch
+      timeSub: `We make the first commercial batch within ${COUNTS.partnerReadyDays} days for a library formulation that already holds a PSQCA licence, and in about 3 months for one marked Validated.`,
+      text: 'Our formulation library holds 27 formulations under neutral codes. A formulation keeps its code until a partner company chooses it and gives it a brand name. 19 of the 27 have been trialled and validated: 10 marked Available and 9 marked Validated.',   // Tahir 17 Nov 2026: counted (was 'finished formulations')
       stages: [
         { s: 'Pick a code', t: 'Pick a formulation', d: 'You choose a formulation from the library.', own: 'you' },   // L2 fix 9 Nov 2026 (company W6, settled CO-9): exclusivity terms stay off this page
         { s: 'Deck and data', t: 'Product deck and technical data', d: 'After an NDA is signed, we provide the full analysis, specification, method, crop fit, shelf life and compatibility data.' },   // Tahir 7 Nov 2026 (CO-5)
         { s: 'Terms', t: 'Terms agreed', d: 'The code, volume, price and lead time are agreed before anything is filed.', own: 'both' },   // L2 fix 9 Nov 2026 (company W6, settled CO-9)
-        { s: 'Your brand', t: 'Your brand and your label', d: 'You supply your name, your artwork and your pack design. At this stage the formulation becomes your product.', own: 'you' },
+        { s: 'Your brand', t: 'Your brand and your label', d: 'You supply your name, your artwork and your pack design. At this stage the product takes your brand name.', own: 'you' },
         { s: 'Registration', t: 'Registration', d: 'We file the registration under your brand, with VAN named as the manufacturer.' },
         { s: 'Team trained', t: 'Your team trained', d: 'Our agronomists brief your sales and field staff before the first bags are sold.' },
         { s: 'Launch', t: 'Test launch, then full commercial', d: 'A limited test launch, followed by full commercial volumes.', own: 'you' },
@@ -399,28 +400,28 @@ export const PARTNER = {
    * level, his choice: "Name, definition and who does what", commercial terms off. Registration
    * under toll: "depends, say so". Time to first bag under toll: not stated.
    *
-   * Every figure in the table is already on this page: about 3 months for a library formulation,
+   * Every figure in the table is already on this page (17 Nov 2026: 60 days for a licensed library formulation, about 3 months for one marked Validated),
    * 7 to 12 months for a brief, 2 to 17 months across 14 partners. Nothing new is claimed.
    */
   modelsH2: '3 long-term models for working with us.',
-  modelsLead: 'Each product is made under 1 of these 3 models, and a partner often uses 2 of the models at the same time, for different products. Commercial terms are agreed for each project and are not published.',
-  modelsHead: ['Model', 'What we provide', 'What you provide', 'Registered under', 'Time to market'],   // L1 fix 10 Nov 2026 (m5): header now matches the cells (under whose brand or name); was 'How it is registered'. Who holds the registration is still not stated (CO-N13).   // Tahir 7 Nov 2026 (CO-27): was 'Time to first bag'. Tahir 10 Nov 2026 (CO-N13): was 'Who holds the registration'.
+  modelsLead: 'Each product is made under 1 of these 3 models. A partner often uses 2 of the models at the same time, for different products. Under each model, the commercial terms are agreed privately for each project.',
+  modelsHead: ['Model', 'What we provide', 'What you provide', 'Registered under', 'Time to first commercial batch or to market'],   // L1 fix 10 Nov 2026 (m5): header now matches the cells (under whose brand or name); was 'How it is registered'. Who holds the registration is still not stated (CO-N13).   // Tahir 7 Nov 2026 (CO-27): was 'Time to first bag'. Tahir 10 Nov 2026 (CO-N13): was 'Who holds the registration'.
   models: [
-    ['White labelling', 'A formulation we have already developed, trialled and registered. We make, test and pack it under your brand, review the label and its claims before print, and make repeat lots to a frozen specification.', 'Your brand, your artwork, your market and the selling.', 'We file it under your brand, with VAN named as the manufacturer.', 'About 3 months to the first commercial batch, registration included.'],
-    ['Joint product development', 'The 6 development stages from your brief: feasibility, bench formulation in our laboratory, a pilot on the commercial line, trials on our research farms and on your plots if you want them, the dossier and the registration.', 'The brief: the market, the crop, the target price and the constraint the product must overcome. Your own demonstration plots, if you want trials there.', 'We file it under your brand, with VAN named as the manufacturer.', 'Most briefs take 7 to 12 months from brief to market. Across our 14 partners, the fastest product went from brief to market in 2 months and the slowest in 17 months. The fastest, at 2 months, was a product that needed no new field trial.'],   // Tahir 7 Nov 2026 (CO-27, CO-3)
-    ['Toll manufacturing', 'Your own formulation, made on our 5 production lines to your specification. Every batch is tested in our laboratory (LAB 336, accredited by PNAC, the Pakistan National Accreditation Council, for 8 of its 21 fertiliser tests) and released against a certificate of analysis.', 'The formulation, the specification, the brand and the market.', 'Agreed for each project: under your brand or under VAN’s name.', /* Tahir 10 Nov 2026 (CO-N13): was 'Agreed for each project. We can file it either way.' */'Depends on the formulation and its registration. Agreed before the first lot.'],
+    ['White labelling', 'A formulation we have already developed, trialled and registered. We make, test and pack it under your brand, review the label and its claims before print, and make repeat lots to a frozen specification.', 'Your brand, your artwork, your market and the selling.', 'We file it under your brand, with VAN named as the manufacturer.', `A white-label product reaches its first commercial batch under your brand within ${COUNTS.partnerReadyDays} days.`],   // Tahir 17 Nov 2026: white labelling time is 60 days only
+    ['Joint product development', 'The 6 development stages from your brief: feasibility, bench formulation in our laboratory, a pilot on the commercial line, trials on our research farms and on your plots if you want them, the dossier and the registration.', 'The brief: the market, the crop, the target price and the constraint the product must overcome. Your own demonstration plots, if you want trials there.', 'We file it under your brand, with VAN named as the manufacturer.', 'Most briefs take 7 to 12 months from brief to market. Across our 14 partners, the fastest product went from brief to market in 2 months and the slowest in 17 months. The fastest product took 2 months because the results of an earlier field trial were used for its Trials stage.'],   // Tahir 7 Nov 2026 (CO-27, CO-3)
+    ['Toll manufacturing', 'Your own formulation, made on our 5 production lines to your specification. Every batch is tested in our laboratory (LAB 336, accredited by PNAC, the Pakistan National Accreditation Council, for 8 of its 21 fertiliser tests) and released against a certificate of analysis.', 'The formulation, the specification and the market, and the brand when the product is sold under your brand.', 'Agreed for each project: under your brand or under VAN’s name.', /* Tahir 10 Nov 2026 (CO-N13): was 'Agreed for each project. We can file it either way.' */'The time to the first commercial batch depends on the formulation and its registration. It is agreed before the first lot.'],
   ] as string[][],
   // Tahir 7 Nov 2026 (CO-4): toll formulation is the client's; VAN's own stay VAN's. The "We do not license..." sentence is dropped (no negative line).
   modelsNote: 'Under white labelling and joint product development, the recipe and the process stay with VAN. Under toll manufacturing, the formulation is yours, and the manufacturing process stays with VAN.',
 
   /** "Building portfolios": his ruling of 26 Sep was that VAN designs the range, stated as a service. */
   rangeH2: 'We design a product range for your brand.',
-  rangeLead: 'If your brand has no range of its own, you do not have to choose products from a list. We design the range around the crops, the regions and the sales channel you serve, starting from products we already make, and we keep adding to it.',
+  rangeLead: 'If your brand needs a product range, we design it around your crops, your regions and your sales channel. We start from products we already make. We keep adding to the range over time.',
   rangeSteps: [
     ['Your crops, regions and channel', 'You tell us which crops your customers grow, in which districts, and whether you sell through dealers, to estates or to corporate farms. That is all we need to design a first range.', 'you'],
     ['A launch range from products we already make', 'We propose the products needed for the first season, each with the crop stage at which it is applied and the pack it comes in, based on our published crop plans.', 'VAN'],
     ['Additions from the library', 'We propose what to add in the second and third seasons from the 27 codes in the formulation library, and say which of them would need a trial first.', 'VAN'],
-    ['Each product on its own route', 'A library formulation reaches its first commercial batch in about 3 months, and a product developed to your brief usually takes 7 to 12 months from brief to market. A range is therefore built up 1 product at a time.', 'both'],
+    ['Each product on its own route', `A library formulation that already holds a PSQCA licence reaches its first commercial batch within ${COUNTS.partnerReadyDays} days. A product developed to your brief usually takes 7 to 12 months from brief to market. A range therefore grows 1 product at a time, as each product completes its own route.`, 'both'],
   ] as [string, string, string][],
 
   /** Runs alongside both routes rather than sitting as one box near the end. */
@@ -432,15 +433,15 @@ export const PARTNER = {
   ],
 
   /** Naming the limits is how every other page on this site earns its reader. This one too. */
-  limitsH2: 'What we do not do.',
+  limitsH2: '3 rules for every partnership.',   // Tahir 17 Nov 2026: only say what we do (was 'What we do not do.')
   limits: [
-    ['We do not sell the product for you', 'We do not provide a sales force or dealers, and we do not create farmer demand. You own the market and do the selling.'],
+    ['We make the product for you to sell', 'We manufacture the product. You own the market and do the selling.'],
     // Tahir 7 Nov 2026 (CO-4): toll formulation is the client's, so the card names the 2 models where VAN keeps the recipe.
-    ['We do not hand over our own formulations', 'Under white labelling and joint product development, you sell the product under your name, but the recipe and the process stay with VAN.'],
-    ['We will not put a claim on your label that a trial does not support', 'This applies even when your marketing department wants the claim.'],
+    ['We keep our own formulations', 'Under white labelling and joint product development, you sell the product under your name. We keep ownership of our formulations and processes. We keep them confidential. Under toll manufacturing, you keep ownership of the formulation you supply.'],
+    ['Every performance claim on your label is backed by a trial', 'Before your label is printed, we check each performance claim against trial results. We check each claim about nutrient content against laboratory test results. These checks apply to every claim that your marketing team proposes.'],
   ],
   // Tahir 10 Nov 2026 (CO-N12): reordered, per line. Was '... A single lot is up to 50 tonnes, and the line runs up to 4 lots a week to the same frozen specification, so 50 tonnes is the limit for 1 lot, not for the volume you can order.'
-  minimum: 'There is no minimum order. We produce in batches of 1 tonne. For an order smaller than 1 tonne, we make a 1 tonne batch and pack your order from it. A larger order is made in lots of up to 50 tonnes, each made of 1 tonne batches. The line for each product can make up to 4 lots a week, so an order is not limited to 50 tonnes.',   // D-317, Tahir's ruling 26 Oct 2026: was "A batch runs from 1 tonne. ... There is no minimum on the order itself."   // L1 fix 10 Nov 2026 (m1): the long sentence split; 'the line for that product' -> 'The line for each product'.
+  minimum: 'We accept orders of any size. We produce in batches of 1 tonne. For an order smaller than 1 tonne, we make a 1 tonne batch and pack your order from it. A larger order is made in lots of up to 50 tonnes, each made of 1 tonne batches. An order larger than 50 tonnes is made in several lots. The line for each product can make up to 4 lots a week.',   // D-317, Tahir's ruling 26 Oct 2026: was "A batch runs from 1 tonne. ... There is no minimum on the order itself."   // L1 fix 10 Nov 2026 (m1): the long sentence split; 'the line for that product' -> 'The line for each product'.
 
   /**
    * THE PORTFOLIO, AS NUMBERS — 11 September 2026.
@@ -469,7 +470,7 @@ export const PARTNER = {
     { v: '34', l: 'PSQCA licences', note: '22 are on our own brands, under 8 Pakistan Standards. The regulatory page lists the licence number of each of our 20 licensed brands. 12 are on products ready for partners.' },   // L2 fix 9 Nov 2026 (company W2, CO-8): was "and each is listed with its licence number on the regulatory page"
     { v: '5', l: 'production lines', note: 'The 5 lines are granular, coated, liquid, water-soluble and compounded. The analytical laboratory is on the same site, and the biological laboratory opened in 2026.' },   // D-177, Tahir 26 Sep: 5 lines, lab and farm separate. Was 8 lines under one roof.
     // Tahir 7 Nov 2026: CO-19 annual capacity; CO-16 1 tonne batch made for a small order; CO-51 working days.
-    { v: 'About 50,000\u00A0t', l: 'annual capacity', note: /* Tahir 10 Nov 2026 (CO-N12): minimum order reordered, per line; was 'A single lot is up to 50 tonnes, and the line can make up to 4 lots a week to the same frozen specification, so a larger order is made as several lots.' */ 'There is no minimum order. We produce in batches of 1 tonne. For an order smaller than 1 tonne, we make a 1 tonne batch and pack your order from it. A larger order is made in lots of up to 50 tonnes, each made of 1 tonne batches. The line for each product can make up to 4 lots a week, so an order is not limited to 50 tonnes. An order of up to 10 tonnes is ready to dispatch in 3 to 5 working days, counted from the day the order is confirmed. An order of 11 to 100 tonnes takes 7 to 18 working days. An order above 100 tonnes needs a production plan, and we agree its schedule with you.' },  // Lead 10 Nov 2026 (L3-8), from the Your Brand FAQ: the above-100-tonnes sentence added; bands unchanged.   // D-318: was "3 to 5 days under 10 t, 7 to 18 days from 11 to 100 t." (Tahir, 26 Oct)   // L1 fix 10 Nov 2026 (m1): the long sentence split; 'the line for that product' -> 'The line for each product'.
+    { v: 'About 50,000\u00A0t', l: 'annual capacity', note: /* Tahir 10 Nov 2026 (CO-N12): minimum order reordered, per line; was 'A single lot is up to 50 tonnes, and the line can make up to 4 lots a week to the same frozen specification, so a larger order is made as several lots.' */ 'We accept orders of any size. We produce in batches of 1 tonne. For an order smaller than 1 tonne, we make a 1 tonne batch and pack your order from it. A larger order is made in lots of up to 50 tonnes, each made of 1 tonne batches. An order larger than 50 tonnes is made in several lots. The line for each product can make up to 4 lots a week. An order of up to 10 tonnes is ready to dispatch in 3 to 5 working days, counted from the day the order is confirmed. An order of 11 to 100 tonnes takes 7 to 18 working days. An order above 100 tonnes needs a production plan, and we agree its schedule with you.' },  // Lead 10 Nov 2026 (L3-8), from the Your Brand FAQ: the above-100-tonnes sentence added; bands unchanged.   // D-318: was "3 to 5 days under 10 t, 7 to 18 days from 11 to 100 t." (Tahir, 26 Oct)   // L1 fix 10 Nov 2026 (m1): the long sentence split; 'the line for that product' -> 'The line for each product'.
   ] as { v: string; l: string; note: string }[],
   /** Filled by Tahir. Each renders only when it carries a value. */
   portfolioPending: { partners: '14', oldest: '2010', /* PF-2 (profile group, 7 Nov 2026): back to 2010. D-177 had made it 2011. */ launchRange: '2 to 17 months' },
@@ -479,12 +480,12 @@ export const PARTNER = {
   who: 'We manufacture for 14 national and multinational companies. In a meeting under a non-disclosure agreement (NDA), we can give a prospective partner specific details.',
   whoTypes: ['Multinational crop-protection companies', 'National agri-input companies', 'Sugar mills and corporate farms', 'Importers replacing a bought-in product'],
   // Tahir 7 Nov 2026 (CO-12): "client names are not shown" and "the partner ... is not named" removed; Rafhan and Descon named as research partners.
-  firewall: 'Formulations built to client briefs and any data belonging to a client are never used to sell to anyone else. Our research partners Rafhan Maize Products and Descon Research Farm are named, with their agreement. Rafhan Maize Products is named for the Khaliqabad field programme, on the Vital Urea page and the application systems page, and for the 2023 maize trial on the Vital Urea page. Descon Research Farm is named for the 2024 maize trial on the Vital Urea page.',
+  firewall: 'Formulations developed to a partner’s brief, and any data belonging to a partner, are used only for that partner. Our research partners Rafhan Maize Products and Descon Research Farm are named, with their agreement. Rafhan Maize Products is named for the Khaliqabad field programme, on the Vital Urea page and the application systems page, and for the 2023 maize trial on the Vital Urea page. Descon Research Farm is named for the 2024 maize trial on the Vital Urea page.',
   capability: [
-    ['Physical forms', 'We can make products in 7 physical forms: granular, powder, crystalline soluble, liquid, pellet, water-dispersible granule and coated prill. We can make the same composition in more than 1 form. The form therefore does not dictate the composition.'],
+    ['Physical forms', 'We can make products in 7 physical forms: granular, powder, crystalline soluble, liquid, pellet, water-dispersible granule and coated prill. We can make the same composition in more than 1 form. For many compositions, you can therefore choose the form that suits your channel.'],
     ['Pack range', 'Packs range from a 1 L bottle to a 1,000 kg bulk bag and a 1,000 L intermediate bulk container (IBC). Trade packs, estate packs and contract-farming volumes are filled on the same line as retail packs.'],
     ['Registration, run by us', 'We prepare the dossier and file the PSQCA registration under your brand, with VAN named as the manufacturer.'],
-    ['Quality control', 'Our laboratory is accredited by PNAC to ISO/IEC 17025:2017, under accreditation number LAB 336, for 8 of its 21 fertiliser tests. Every batch is tested. Our internal limits are tighter than the product specification. A batch whose results fall outside our internal limits is rejected. The result of a rejected batch is not averaged with the results of batches that pass.'],   // Tahir 10 Nov 2026 (CO-N20): was 'outside the working window'
+    ['Quality control', 'Our laboratory is accredited by PNAC to ISO/IEC 17025:2017, under accreditation number LAB 336, for 8 of its 21 fertiliser tests. Every batch is tested. Our internal limits are tighter than the product specification. A batch whose results fall outside our internal limits is rejected. Each batch is released or rejected on the results of its own tests.'],   // Tahir 10 Nov 2026 (CO-N20): was 'outside the working window'
   ],
 }
 
@@ -492,7 +493,7 @@ export const PARTNER = {
 // D-183, 26 Sep 2026: 'Feasibility' added for the dual release phosphate; every other status unchanged.
 export type FormulationStatus = 'Feasibility' | 'Concept' | 'In development' | 'Field trials' | 'Validated' | 'Available'
 // Tahir 7 Nov 2026 (CO-1): Available means already licensed; N-26L moved to Validated, so 8 -> 9 and 11 -> 10.
-export const PIPELINE_STAGES: [FormulationStatus, string, number][] = [['Feasibility', 'technical and cost check', 1], ['Concept', 'defined, not yet at the bench', 1], ['In development', 'bench formulation work', 3], ['Field trials', 'research farm and partner plots', 3], ['Validated', 'specification and data locked', 9], ['Available', 'ready to carry your name', 10]]
+export const PIPELINE_STAGES: [FormulationStatus, string, number][] = [['Feasibility', 'technical and cost check', 1], ['Concept', 'defined on paper', 1], ['In development', 'bench formulation work', 3], ['Field trials', 'research farm and partner plots', 3], ['Validated', 'specification and data locked', 9], ['Available', 'ready to carry your name', 10]]
 export const FAMILIES: Record<string, string> = { N: 'Nitrogen efficiency', P: 'Phosphorus', K: 'Potash', PK: 'P+K synergy', MX: 'Micros & secondaries', BIO: 'Biologicals' }
 export const LIBRARY: { code: string; family: keyof typeof FAMILIES; title: string; text: string; status: FormulationStatus }[] = [
   { code: 'N-22S', family: 'N', title: 'Nitro Sulfur. N 22 · elemental S 18', text: 'Nitrogen carried with elemental sulfur rather than sulfate, so the product releases over weeks instead of all at once.', status: 'Validated' },

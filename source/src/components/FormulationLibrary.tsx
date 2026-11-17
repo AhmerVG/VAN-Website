@@ -51,8 +51,8 @@ type PathKey = 'idea' | 'feasibility' | 'concept' | 'development' | 'trial' | 'r
 const PATH: { key: PathKey; label: string; ask: string; statuses: FormulationStatus[]; col: string }[] = [
   { key: 'idea', label: 'Idea and hypothesis', ask: 'The problem it addresses, the crop, and the product a farmer buys now that it would replace.', statuses: [], col: '#8A968C' },
   { key: 'feasibility', label: 'Feasibility and scoping', ask: 'Whether it is technically and commercially viable, what the literature says, and a rough cost per bag.', statuses: ['Feasibility'], col: '#8A968C' },
-  { key: 'concept', label: 'Concept', ask: 'Defined on paper: ratio, form and target price fixed, but not yet at the bench.', statuses: ['Concept'], col: '#8A968C' },
-  { key: 'development', label: 'Development', ask: 'Bench formulation in our laboratory: coating, chelation, solubility, pH and compatibility.', statuses: ['In development'], col: '#7A5230' },
+  { key: 'concept', label: 'Concept', ask: 'A formulation at Concept stage has its ratio, form and target price fixed on paper. Bench work starts at the next stage, In development.', statuses: ['Concept'], col: '#8A968C' },
+  { key: 'development', label: 'In development', ask: 'Bench formulation in our laboratory: coating, chelation, solubility, pH and compatibility.', statuses: ['In development'], col: '#7A5230' },
   { key: 'trial', label: 'Trial', ask: 'Trials on our research farms, and on a partner’s own plots if the partner wants them.', statuses: ['Field trials'], col: '#B0841A' },
   // D-185: licensing is not a model VAN offers (Tahir, 26 Sep 2026), so the stage is Registration and the wording is "carry your name".
   { key: 'registration', label: 'Registration', ask: 'Validated: the specification and data are locked. Available: ready to carry your name. We register the product under your brand, with VAN named as the manufacturer.', statuses: ['Validated', 'Available'], col: '#2F6B3A' },
@@ -129,9 +129,7 @@ export function FormulationLibrary({ pathOnly = false, phoneShort = false }: { p
                     borderBottom: `3px solid ${p.col}`,
                   }}>
                   <span className="lib-dots flex flex-wrap gap-1 items-end">
-                    {codes.length === 0
-                      ? <span className="cap" style={{ color: 'var(--muted)' }}>none at this stage</span>
-                      : codes.map(c => (
+                    {codes.map(c => (
                         <i key={c.code} title={`${c.code}, ${FAMILIES[c.family]} · ${c.status}`}
                           style={{ width: 11, height: 11, borderRadius: 6, background: FAMILY_COL[c.family], display: 'inline-block', outline: c.status === 'Available' ? `2px solid ${STATUS_COL.Available}` : 'none', outlineOffset: 1 }} />
                       ))}
@@ -254,8 +252,8 @@ export function FormulationLibrary({ pathOnly = false, phoneShort = false }: { p
                       {l.status === 'Available'
                         ? 'Ready to carry your name. Registration under your brand, with VAN named as the manufacturer, is the first step.'
                         : l.status === 'Validated'
-                          ? 'Specification and data are locked. No company sells it under its own name yet.'
-                          : 'Still in development. Ask which stage it has reached before you plan a launch around it.'}
+                          ? 'Specification and data are locked. It is licensed first, and is then made under your brand.'
+                          : `This formulation is at the ${l.status} stage. Ask about its progress before you plan a launch around it.`}
                     </p>
                     <a className="btn btn-navy btn-sm mt-3"
                       href={`mailto:${CONTACT.partnerEmail}?subject=${encodeURIComponent(`Formulation ${l.code}`)}&body=${encodeURIComponent(`We are interested in ${l.code} (${l.title}). Our market is:`)}`}>
