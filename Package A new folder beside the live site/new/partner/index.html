@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vital Agri Nutrients: crop nutrition products made for partner brands</title>
+<meta name="description" content="Vital Agri Nutrients (VAN) formulates, manufactures and tests crop nutrition products in Pakistan for partner companies to sell under their own brands.">
+<meta property="og:title" content="Vital Agri Nutrients: crop nutrition products made for partner brands">
+<meta property="og:description" content="Vital Agri Nutrients (VAN) formulates, manufactures and tests crop nutrition products in Pakistan for partner companies to sell under their own brands.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F6F3EE">
+<link rel="icon" href="img/favicon-32x32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<script>
+/* Motion mode. "calm" is used when the device asks for reduced motion, unless the visitor chose full motion. */
+(function () {
+  var q = window.location.search, choice = null;
+  try { choice = window.localStorage.getItem('van-motion'); } catch (e) {}
+  if (/[?&]motion=1/.test(q)) choice = 'full';
+  if (/[?&]motion=0/.test(q)) choice = 'calm';
+  var os = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var calm = choice ? choice === 'calm' : os;
+  document.documentElement.className = calm ? 'calm' : 'full';
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css?v=22">
+<noscript><style>.preloader{display:none!important}</style></noscript>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to the main content</a>
+
+<!-- 1. Preloader -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader__inner">
+    <span class="preloader__name">Vital Agri Nutrients</span>
+    <span class="preloader__count"><span id="preloaderCount">0</span>%</span>
+  </div>
+</div>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true">
+  <div class="cursor__ring"><span class="cursor__label" id="cursorLabel"></span></div>
+  <div class="cursor__dot"></div>
+</div>
+
+<!-- Sunlit backdrop of the hero -->
+<div class="hero__light" aria-hidden="true"></div>
+
+<!-- The 3D granule scene. It sits behind the hero and the story. -->
+<div class="stage" id="stage" aria-hidden="true">
+  <canvas id="sculpture"></canvas>
+  <div class="stage__fallback"></div>
+</div>
+
+<header class="nav" id="nav">
+  <div class="nav__pill">
+    <a class="nav__brand" href="../index.html" aria-label="Vital Agri Nutrients, home">
+      <span class="nav__mark">VAN</span>
+      <span class="nav__name">Vital Agri Nutrients</span>
+    </a>
+    <nav class="nav__links" aria-label="Sections of this page">
+      <a href="#story">How it works</a>
+      <a href="#coatings">Coatings</a>
+      <a href="#library">Library</a>
+      <a href="#proof">Plant and laboratory</a>
+      <a href="#models">3 models</a>
+      <a href="#tools">Agronomy tools</a>
+    </nav>
+    <a class="btn btn--small magnetic" href="mailto:partner@van.com.pk?subject=Partnership%20enquiry" data-cursor="Write">
+      <span>Email the commercial team</span>
+    </a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- 2. Hero -->
+  <section class="hero" id="top">
+    <div class="hero__content">
+      <p class="eyebrow">Vital Agri Nutrients (Pvt) Ltd · Lahore, Pakistan</p>
+      <h1 class="hero__title" id="heroTitle">We make the crop nutrition products that partner companies sell under their own brands.</h1>
+      <div class="hero__lead">
+        <p>We are Vital Agri Nutrients (VAN). We formulate, manufacture and test crop nutrition products at our plant in Lahore. We also register products with the Pakistan Standards and Quality Control Authority (PSQCA). Each product sold under a partner's brand needs its own registration, with VAN named as the manufacturer.</p>
+        <p>You can use us as your manufacturer in Pakistan, whether your company is based in Pakistan or abroad.</p>
+      </div>
+      <div class="hero__actions">
+        <a class="btn magnetic" href="mailto:partner@van.com.pk?subject=Partnership%20enquiry" data-cursor="Write"><span>Email the commercial team</span></a>
+        <a class="link-arrow" href="#story" data-cursor="Explore">See how the partnership works</a>
+      </div>
+    </div>
+
+    <div class="facts-wrap">
+      <span class="rule" data-reveal></span>
+      <ul class="facts" aria-label="VAN in figures, published on van.com.pk in November 2026">
+        <li class="fact" data-reveal>
+          <span class="fact__num">14</span>
+          <span class="fact__text">We make products for 14 national and multinational companies.</span>
+        </li>
+        <li class="fact" data-reveal>
+          <span class="fact__num">100+</span>
+          <span class="fact__text">More than 100 partner brands are registered with PSQCA, with VAN named as the manufacturer.</span>
+        </li>
+        <li class="fact" data-reveal>
+          <span class="fact__num">About 50,000 t a year</span>
+          <span class="fact__text">Our plant has an installed capacity of about 50,000 tonnes of product a year.</span>
+        </li>
+        <li class="fact" data-reveal>
+          <span class="fact__num">ISO/IEC 17025</span>
+          <span class="fact__text">The Pakistan National Accreditation Council (PNAC) accredited our laboratory to ISO/IEC 17025:2017 in 2024. The accreditation covers 8 of the 21 fertiliser tests that the laboratory runs.</span>
+        </li>
+      </ul>
+      <p class="facts__note">We published these figures on van.com.pk in November 2026.</p>
+    </div>
+  </section>
+
+  <!-- 3. Story: pinned split screen. The granules on the left take a new shape for each statement. -->
+  <section class="story" id="story">
+    <div class="story__pin" id="storyPin">
+      <div class="story__visual" aria-hidden="true">
+        <span class="story__caption"><i></i><span id="storyCaption">Partner brand</span></span>
+      </div>
+      <div class="story__text">
+        <h2 class="section-label">How the partnership works</h2>
+        <ol class="story__lines" id="storyLines">
+          <li class="story__line" data-caption="Partner brand">Most of the products we make are sold under partner companies' brands.</li>
+          <li class="story__line" data-caption="Plant and laboratory">We manufacture every product at our plant and test every batch.</li>
+          <li class="story__line" data-caption="Your market">You market and sell the product.</li>
+          <li class="story__line" data-caption="White labelling">When 1 of our existing formulations already meets your brief, we offer you that formulation first.</li>
+          <li class="story__line" data-caption="Joint product development">We develop a new product to your brief when no existing formulation fits.</li>
+          <li class="story__line" data-caption="Toll manufacturing">You can also bring your own formulation for us to manufacture.</li>
+        </ol>
+        <div class="story__rail" aria-hidden="true">
+          <span class="story__count"><b id="storyCount">1</b> / 6</span>
+          <span class="story__bar"><i id="storyBar"></i></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coatings: pinned split screen. The large granule on the right is cut open and shows 4 coatings in turn. -->
+  <section class="story story--flip" id="coatings">
+    <div class="story__pin" id="coatPin">
+      <div class="story__text">
+        <h2 class="section-label">Coatings we apply to the granule</h2>
+        <ol class="coat__steps" id="coatSteps">
+          <li class="coat__step">
+            <h3 class="coat__title">Sulfur-coated urea</h3>
+            <p>We coat each urea granule with elemental sulfur. A starch-based binder holds the sulfur on the granule.</p>
+            <p>The granule starts to release nitrogen at the first irrigation or rain. In our field observations, the granule released its nitrogen over several days. Release is faster in warm, well-irrigated soil and slower in dry or cold soil.</p>
+            <p>The sulfur is also a nutrient for the crop.</p>
+            <ul class="legend">
+              <li><i style="--sw:#F7F5EE"></i>Urea core</li>
+              <li><i style="--sw:#E6BE3C"></i>Elemental sulfur coating</li>
+              <li><i style="--sw:#2F7D3F"></i>Nitrogen leaving the granule</li>
+            </ul>
+          </li>
+          <li class="coat__step">
+            <h3 class="coat__title">Boron-coated potash</h3>
+            <p>We coat each potash granule with boron in 2 forms, sodium borate and calcium borate.</p>
+            <p>The inner coating is calcium borate. The outer coating is sodium borate.</p>
+            <p>Sodium borate releases boron quickly. Calcium borate releases boron slowly.</p>
+            <p>Because the boron is coated onto the granule, the boron and the potash do not separate in the bag.</p>
+            <ul class="legend">
+              <li><i style="--sw:#EFE6D2"></i>Potash granule</li>
+              <li><i style="--sw:#2E8C86"></i>Calcium borate coating</li>
+              <li><i style="--sw:#8CCFC6"></i>Sodium borate coating</li>
+              <li><i style="--sw:#F2B866"></i>Boron released quickly</li>
+              <li><i style="--sw:#0F7A72"></i>Boron released slowly</li>
+            </ul>
+          </li>
+          <li class="coat__step">
+            <h3 class="coat__title">Humic-coated phosphate</h3>
+            <p>We granulate the phosphate in an acidic mix. We coat each granule with humic material.</p>
+            <p>The acidic mix makes the soil around each granule acidic at first. This acidic zone is a few centimetres wide.</p>
+            <p>A root needs some weeks to reach the granule. We formulate the granule so that the acidic zone slows the reaction of phosphate with the calcium in the soil during those weeks.</p>
+            <ul class="legend">
+              <li><i style="--sw:#B08A63"></i>Phosphate granule</li>
+              <li><i style="--sw:#2B2A2C"></i>Humic coating</li>
+              <li><i style="--sw:#D8D2C6"></i>Acidic zone</li>
+            </ul>
+          </li>
+          <li class="coat__step">
+            <h3 class="coat__title">Dual-coated potash</h3>
+            <p>Each potash granule carries 2 boron coatings.</p>
+            <p>The inner coating is boric acid. The outer coating is sodium borate.</p>
+            <p>Boron-coated potash is a different product. Its inner coating is calcium borate.</p>
+            <p>Formulation K-50DC in our library is also a different product. It carries a boron coating and a silicon coating.</p>
+            <ul class="legend">
+              <li><i style="--sw:#EFE6D2"></i>Potash granule</li>
+              <li><i style="--sw:#1F6F6A"></i>Boric acid coating</li>
+              <li><i style="--sw:#8CCFC6"></i>Sodium borate coating</li>
+            </ul>
+          </li>
+        </ol>
+        <div class="story__rail" aria-hidden="true">
+          <span class="story__count"><b id="coatCount">1</b> / 4</span>
+          <span class="story__bar"><i id="coatBar"></i></span>
+        </div>
+      </div>
+      <div class="story__visual">
+        <p class="coat__note">This drawing is not to scale. The boron coatings are shown in teal to make them visible. The other colours follow the natural colours of the materials.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulation library: 26 cards. A card opens a drawer with the detail of that formulation. -->
+  <section class="library" id="library">
+    <div class="library__head">
+      <div>
+        <p class="section-label">Formulations for your brand</p>
+        <h2 class="section-title" data-reveal>Choose a formulation for your brand</h2>
+      </div>
+      <div class="section-lead" data-reveal>
+        <p>You can choose a formulation in 3 ways.</p>
+        <ol class="lib-routes">
+          <li>Take 1 of the 26 formulations in our library. We hold each library formulation under a neutral code until a partner gives it a brand name.</li>
+          <li>Take 1 of the 24 formulations that we already sell. We make 23 of them in our plant. We can supply each of the 24 formulations under your brand.</li>
+          <li>Ask for a new formulation. We develop it with you as a <a href="#models">joint product development</a> project.</li>
+        </ol>
+        <p>25 of the 26 library formulations are available now. The other 1 has a final specification and is not yet available. Its card carries the tag Validated.</p>
+        <p>We register each product that we make under your brand, with VAN named as the manufacturer.</p>
+      </div>
+    </div>
+    <span class="rule" data-reveal></span>
+    <div class="lib-shelves" id="libShelves" role="group" aria-label="Choose a list of formulations">
+      <button type="button" class="lib-shelf is-on" data-shelf="lib" aria-pressed="true" data-cursor="Show"><span>Library formulations</span><b>26</b></button>
+      <button type="button" class="lib-shelf" data-shelf="own" aria-pressed="false" data-cursor="Show"><span>Formulations we already sell</span><b>24</b></button>
+    </div>
+    <div class="library__bar">
+      <div class="lib-filters" id="libFilters" role="group" aria-label="Show formulations by nutrient family"></div>
+      <p class="lib-count" id="libCount" aria-live="polite"></p>
+    </div>
+    <div class="lib-grid" id="libGrid"></div>
+  </section>
+
+  <!-- 4. Showcase, horizontal scroll -->
+  <section class="showcase" id="proof">
+    <div class="showcase__pin" id="showcasePin">
+      <div class="showcase__head">
+        <h2 class="section-title">Our laboratory, plant, pack sizes and membership</h2>
+      </div>
+      <div class="showcase__track" id="showcaseTrack">
+
+        <a class="card card--b tilt" href="https://www.van.com.pk/lab/index.html" data-cursor="Inspect →" data-reveal>
+          <div class="card__media">
+            <canvas class="art" data-art="teal" data-seed="11"></canvas>
+            <!-- Laboratory: a flask, a rack of 3 test tubes and an accreditation tick -->
+            <svg class="illus illus--lab" viewBox="0 0 400 260" aria-hidden="true">
+              <path class="l" d="M36 208h328"/>
+              <path class="amberfill" d="M96 168h68l10 21a9 9 0 0 1-8 13H94a9 9 0 0 1-8-13z"/>
+              <path class="l glass" d="M112 66h36M118 66v50L84 190a10 10 0 0 0 9 15h74a10 10 0 0 0 9-15l-34-74V66"/>
+              <circle class="bub b1" cx="118" cy="186" r="4"/><circle class="bub b2" cx="134" cy="190" r="3"/><circle class="bub b3" cx="146" cy="184" r="3.5"/>
+              <path class="l" d="M214 128h128M214 196h128"/>
+              <g class="tube"><rect class="lv lv1" x="232" y="150" width="18" height="50" rx="9"/><rect class="l glass" x="232" y="92" width="18" height="110" rx="9"/></g>
+              <g class="tube"><rect class="lv lv2" x="268" y="132" width="18" height="68" rx="9"/><rect class="l glass" x="268" y="92" width="18" height="110" rx="9"/></g>
+              <g class="tube"><rect class="lv lv3" x="304" y="162" width="18" height="38" rx="9"/><rect class="l glass" x="304" y="92" width="18" height="110" rx="9"/></g>
+              <circle class="l seal" cx="332" cy="52" r="22"/>
+              <path class="l tick" pathLength="1" d="M321 52l8 8 14-16"/>
+            </svg>
+            <span class="card__figure">ISO/IEC 17025</span>
+          </div>
+          <div class="card__body">
+            <span class="tag tag--teal">Laboratory</span>
+            <h3 class="card__title">The VAN laboratory</h3>
+            <p>PNAC accredited our laboratory to ISO/IEC 17025:2017 in 2024. The accreditation number is LAB 336.</p>
+            <p>The laboratory runs 21 fertiliser tests. The accreditation covers 8 of them.</p>
+          </div>
+        </a>
+
+        <a class="card card--c tilt" href="https://www.van.com.pk/partner/manufacturing.html" data-cursor="Inspect →" data-reveal>
+          <div class="card__media">
+            <canvas class="art" data-art="green" data-seed="7"></canvas>
+            <!-- Plant: 5 production lines seen from above at an angle, with granules moving along each -->
+            <svg class="illus illus--plant" viewBox="0 0 400 260" aria-hidden="true">
+              <g transform="matrix(0.866 0.5 -0.866 0.5 196 26)">
+                <g class="lane"><rect class="belt" x="22" y="6" width="178" height="20" rx="3"/><rect class="mach" x="-8" y="2" width="30" height="28" rx="3"/><circle class="gr g1" cx="26" cy="16" r="5"/><circle class="gr g2" cx="26" cy="16" r="5"/><circle class="gr g3" cx="26" cy="16" r="5"/></g>
+                <g class="lane"><rect class="belt" x="22" y="44" width="178" height="20" rx="3"/><rect class="mach" x="-8" y="40" width="30" height="28" rx="3"/><circle class="gr g2" cx="26" cy="54" r="5"/><circle class="gr g3" cx="26" cy="54" r="5"/><circle class="gr g4" cx="26" cy="54" r="5"/></g>
+                <g class="lane"><rect class="belt" x="22" y="82" width="178" height="20" rx="3"/><rect class="mach" x="-8" y="78" width="30" height="28" rx="3"/><circle class="gr g1" cx="26" cy="92" r="5"/><circle class="gr g3" cx="26" cy="92" r="5"/><circle class="gr g4" cx="26" cy="92" r="5"/></g>
+                <g class="lane"><rect class="belt" x="22" y="120" width="178" height="20" rx="3"/><rect class="mach" x="-8" y="116" width="30" height="28" rx="3"/><circle class="gr g2" cx="26" cy="130" r="5"/><circle class="gr g4" cx="26" cy="130" r="5"/><circle class="gr g1" cx="26" cy="130" r="5"/></g>
+                <g class="lane"><rect class="belt" x="22" y="158" width="178" height="20" rx="3"/><rect class="mach" x="-8" y="154" width="30" height="28" rx="3"/><circle class="gr g3" cx="26" cy="168" r="5"/><circle class="gr g1" cx="26" cy="168" r="5"/><circle class="gr g2" cx="26" cy="168" r="5"/></g>
+                <rect class="dock" x="200" y="0" width="24" height="184" rx="3"/>
+              </g>
+            </svg>
+            <span class="card__figure">5 lines</span>
+          </div>
+          <div class="card__body">
+            <span class="tag tag--amber">Manufacturing</span>
+            <h3 class="card__title">The plant</h3>
+            <p>Our plant has 5 production lines: granular, coated, liquid, water-soluble and compound NPK.</p>
+            <p>Our smallest production batch is 1 tonne.</p>
+          </div>
+        </a>
+
+        <a class="card card--d tilt" href="https://www.van.com.pk/partner/index.html" data-cursor="Inspect →" data-reveal>
+          <div class="card__media">
+            <canvas class="art" data-art="blue" data-seed="19"></canvas>
+            <!-- Packs: a bottle, a bag, a bulk bag and an intermediate bulk container, smallest to largest -->
+            <svg class="illus illus--packs" viewBox="0 0 400 260" aria-hidden="true">
+              <path class="l" d="M24 214h352"/>
+              <g class="pk p1"><rect class="l glass" x="40" y="160" width="30" height="54" rx="6"/><rect class="l glass" x="49" y="146" width="12" height="14"/><rect class="amberfill" x="47" y="139" width="16" height="8" rx="2"/><rect class="amberfill" x="45" y="176" width="20" height="20" rx="2"/></g>
+              <g class="pk p2"><rect class="l glass" x="96" y="130" width="56" height="84" rx="9"/><path class="l" d="M100 142h48"/><rect class="amberfill" x="108" y="158" width="32" height="30" rx="3"/></g>
+              <g class="pk p3"><path class="l" d="M186 124c0-18 16-18 16 0M246 124c0-18 16-18 16 0"/><rect class="l glass" x="178" y="122" width="92" height="92" rx="6"/><path class="l thin" d="M178 152h92M224 122v92"/><rect class="amberfill" x="200" y="164" width="48" height="30" rx="3"/></g>
+              <g class="pk p4"><rect class="amberfill" x="322" y="118" width="24" height="9" rx="2"/><rect class="l glass" x="292" y="126" width="84" height="76" rx="8"/><path class="l thin" d="M313 126v76M334 126v76M355 126v76M292 151h84M292 177h84"/><path class="l" d="M290 202h88v12h-88z"/></g>
+            </svg>
+            <span class="card__figure">From 1 litre</span>
+          </div>
+          <div class="card__body">
+            <span class="tag tag--blue">Packing</span>
+            <h3 class="card__title">Pack sizes</h3>
+            <p>Our smallest pack is a 1 litre bottle.</p>
+            <p>Our largest packs are a 1,000 kg bulk bag and a 1,000 litre intermediate bulk container.</p>
+          </div>
+        </a>
+
+        <a class="card card--e tilt" href="https://www.van.com.pk/about.html" data-cursor="Inspect →" data-reveal>
+          <div class="card__media">
+            <canvas class="art" data-art="plum" data-seed="23"></canvas>
+            <!-- Membership: a seal with a seedling -->
+            <svg class="illus illus--seal" viewBox="0 0 400 260" aria-hidden="true">
+              <circle class="l dash" cx="200" cy="112" r="84"/>
+              <circle class="l glass" cx="200" cy="112" r="66"/>
+              <path class="l" d="M200 156v-52"/>
+              <path class="amberfill leaf lf1" d="M200 122c-30 2-40-16-40-30 22-2 40 8 40 30z"/>
+              <path class="amberfill leaf lf2" d="M200 106c26 0 38-14 40-30-22-2-40 8-40 30z"/>
+              <path class="l" d="M176 160h48"/>
+            </svg>
+            <span class="card__figure">Since 2024</span>
+          </div>
+          <div class="card__body">
+            <span class="tag tag--plum">Membership</span>
+            <h3 class="card__title">CropLife Pakistan</h3>
+            <p>We have been a full member of CropLife Pakistan since 2024.</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. The 3 models -->
+  <section class="models" id="models">
+    <div class="models__head">
+      <h2 class="section-title" data-reveal>3 models for working with us</h2>
+      <div class="section-lead" data-reveal>
+        <p>In all 3 models, we manufacture the product at our plant and test every batch.</p>
+        <p>We agree the commercial terms with each partner separately for each project.</p>
+      </div>
+    </div>
+    <span class="rule" data-reveal></span>
+    <div class="models__grid">
+
+      <article class="model" data-reveal>
+        <svg class="icon" viewBox="0 0 64 64" aria-hidden="true">
+          <path class="draw" pathLength="1" d="M10 30 30 10h22v22L32 52z"/>
+          <circle class="draw pulse" pathLength="1" cx="42" cy="20" r="4"/>
+        </svg>
+        <span class="model__num">1</span>
+        <h3 class="model__title">White labelling</h3>
+        <p>You choose a library formulation that is marked Available, or 1 of the formulations that we already sell.</p>
+        <p>We manufacture it. For sulfate of potash, we supply the product. We file a new registration with PSQCA under your brand.</p>
+        <p>We keep ownership of the formulation and the manufacturing process.</p>
+      </article>
+
+      <article class="model" data-reveal>
+        <svg class="icon" viewBox="0 0 64 64" aria-hidden="true">
+          <path class="draw" pathLength="1" d="M26 8v18L12 50a4 4 0 0 0 4 6h32a4 4 0 0 0 4-6L38 26V8"/>
+          <path class="draw" pathLength="1" d="M22 8h20"/>
+          <path class="draw rise" pathLength="1" d="M20 42h24"/>
+        </svg>
+        <span class="model__num">2</span>
+        <h3 class="model__title">Joint product development</h3>
+        <p>You bring a brief, or a crop problem that needs a product.</p>
+        <p>We develop the product to your brief. We then manufacture it and file its registration with PSQCA under your brand.</p>
+        <p>For each project, our agreement with you sets out who owns the formulation.</p>
+      </article>
+
+      <article class="model" data-reveal>
+        <svg class="icon" viewBox="0 0 64 64" aria-hidden="true">
+          <path class="draw" pathLength="1" d="M8 54V30l14 8v-8l14 8V14h10l4 40z"/>
+          <path class="draw" pathLength="1" d="M4 54h56"/>
+          <path class="draw drift" pathLength="1" d="M41 8c2-3 6-3 8 0"/>
+        </svg>
+        <span class="model__num">3</span>
+        <h3 class="model__title">Toll manufacturing</h3>
+        <p>You bring your own formulation.</p>
+        <p>You keep ownership of the formulation.</p>
+        <p>For each project, we agree with you who supplies the raw materials.</p>
+        <p>For each project, we agree with you whose name the product is registered under.</p>
+      </article>
+
+    </div>
+    <span class="rule" data-reveal></span>
+  </section>
+
+  <!-- Tools -->
+  <section class="tools" id="tools">
+    <div class="tools__head">
+      <h2 class="section-title" data-reveal>Agronomy tools on van.com.pk</h2>
+      <p class="section-lead" data-reveal>We publish soil data, calculators and crop plans on van.com.pk for farmers. When we design a product range for a partner, we base it on these crop plans.</p>
+    </div>
+    <ul class="tools__list">
+      <li data-reveal>
+        <span class="rule" data-reveal></span>
+        <a class="tool" href="https://www.van.com.pk/soil.html" data-cursor="Explore">
+          <span class="tool__name">Soil Atlas</span>
+          <span class="tool__text">The Soil Atlas shows soil test results for Punjab, district by district.</span>
+          <span class="tool__arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li data-reveal>
+        <span class="rule" data-reveal></span>
+        <a class="tool" href="https://www.van.com.pk/tools.html" data-cursor="Explore">
+          <span class="tool__name">Vitalytics</span>
+          <span class="tool__text">The Vitalytics tools work out fertiliser quantities and crop water needs for a farmer's own field.</span>
+          <span class="tool__arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li data-reveal>
+        <span class="rule" data-reveal></span>
+        <a class="tool" href="https://www.van.com.pk/crops/index.html" data-cursor="Explore">
+          <span class="tool__name">Crop plans</span>
+          <span class="tool__text">Each crop plan gives the amount of fertiliser to apply per acre at each crop stage. Every crop plan is written for alkaline, calcareous soil. Calcareous soil contains free calcium carbonate.</span>
+          <span class="tool__arrow" aria-hidden="true">→</span>
+        </a>
+        <span class="rule" data-reveal></span>
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<!-- 6. Deep contrast footer. It rises over the page with a curved edge. -->
+<footer class="footer" id="contact">
+  <div class="footer__curve" aria-hidden="true"></div>
+  <div class="footer__cta">
+    <p class="eyebrow eyebrow--light">For partner companies</p>
+    <h2 class="footer__title" id="footerTitle">Tell us what you want us to make.</h2>
+    <p class="footer__lead" data-reveal>Email our commercial team at partner@van.com.pk. Tell us the product you want made, the crop it is for, or the crop problem it must solve. If you already have your own formulation, tell us that. You can also arrange a visit to the plant.</p>
+    <a class="btn btn--light magnetic" href="mailto:partner@van.com.pk?subject=Partnership%20enquiry" data-cursor="Write"><span>Email the commercial team</span></a>
+  </div>
+
+  <span class="rule rule--light" data-reveal></span>
+  <div class="footer__grid">
+    <div>
+      <h3 class="footer__h">Head office</h3>
+      <p>605 Al-Hafeez Heights, Gulberg III, Lahore 54660</p>
+      <p><a href="tel:+924235762215">+92 42 35762215</a></p>
+    </div>
+    <div>
+      <h3 class="footer__h">Plant</h3>
+      <p>49-Km Multan Road, Phool Nagar Bypass, Lahore</p>
+    </div>
+    <div>
+      <h3 class="footer__h">Write to us</h3>
+      <p><a href="mailto:partner@van.com.pk">partner@van.com.pk</a></p>
+      <p><a href="mailto:info@van.com.pk">info@van.com.pk</a></p>
+    </div>
+    <nav aria-label="Pages on van.com.pk">
+      <h3 class="footer__h">On van.com.pk</h3>
+      <p><a href="https://www.van.com.pk/brands/index.html">Products</a></p>
+      <p><a href="https://www.van.com.pk/partner/index.html">Your Brand</a></p>
+      <p><a href="https://www.van.com.pk/knowledge/index.html">Knowledge</a></p>
+      <p><a href="https://www.van.com.pk/about.html">About</a></p>
+    </nav>
+  </div>
+  <p class="footer__legal">© 2026 Vital Agri Nutrients (Pvt) Ltd</p>
+</footer>
+
+<!-- Detail drawer of the formulation library -->
+<div class="lib-scrim" id="libScrim" hidden></div>
+<aside class="lib-drawer" id="libDrawer" role="dialog" aria-modal="true" aria-labelledby="libDName" hidden>
+  <button type="button" class="lib-drawer__close" id="libDClose" aria-label="Close the formulation detail">Close</button>
+  <p class="lib-drawer__code"><span id="libDCode"></span><span class="lib-card__stage" id="libDStage"></span></p>
+  <h2 class="lib-drawer__name" id="libDName"></h2>
+  <p class="lib-drawer__fam"><i class="lib-card__dot"></i><span id="libDFam"></span></p>
+  <dl class="lib-drawer__rows">
+    <div id="libDAnalysis"><dt>Analysis</dt><dd data-value></dd></div>
+    <div id="libDForm"><dt>Form and application</dt><dd data-value></dd></div>
+    <div id="libDUse"><dt>What it is for</dt><dd data-value></dd></div>
+    <div id="libDTech"><dt>Coating or technology</dt><dd data-value></dd></div>
+    <div id="libDStageNote"><dt>Stage</dt><dd data-value></dd></div>
+  </dl>
+  <a class="btn magnetic" id="libDAsk" href="mailto:partner@van.com.pk"><span>Email us about this formulation</span></a>
+  <p class="lib-drawer__note">We send the full specification after a non-disclosure agreement is signed.</p>
+</aside>
+
+<!-- Shown only on a device that asks for reduced motion -->
+<div class="calm-note" id="calmNote" hidden>
+  <span>Motion is reduced on this device.</span>
+  <button type="button" id="calmBtn">Play full motion</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/art.js?v=22"></script>
+<script src="js/scene.js?v=22"></script>
+<script src="js/library.js?v=22"></script>
+<script src="js/main.js?v=22"></script>
+</body>
+</html>

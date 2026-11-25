@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vitalytics: soil and crop tools · Vital Agri Nutrients</title>
+<meta name="description" content="Vitalytics is the set of free grower tools of Vital Agri Nutrients. It has 4 tools: a map of the Punjab soil testing programme’s results in 36 districts, a crop nutrition creator for 8 crops, a sowing calendar for 28 crop plans and a farm discipline simulator.">
+<script>(function(){var q=location.search,c=null;try{c=localStorage.getItem('van-motion')}catch(e){}
+if(/[?&]motion=1/.test(q))c='full';if(/[?&]motion=0/.test(q))c='calm';
+var os=matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.documentElement.className=(c?c==='calm':os)?'calm':'full';})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css?v=11">
+<link rel="stylesheet" href="css/tools.css?v=3">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the main content</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"><div class="cursor__ring"><span class="cursor__label" id="cursorLabel"></span></div><div class="cursor__dot"></div></div>
+
+<header class="nav" id="nav"><div class="nav__pill">
+  <a class="nav__brand" href="index.html" aria-label="Vital Agri Nutrients, home"><span class="nav__mark">VAN</span><span class="nav__name">Vital Agri Nutrients</span></a>
+  <nav class="nav__links" aria-label="Main menu">
+    <a href="products.html">Products</a><a href="tools.html" aria-current="page">Vitalytics</a><a href="research.html">Research</a><a href="partner/index.html">Your brand</a><a href="about.html">About</a>
+  </nav>
+  <a class="btn btn--small magnetic" href="https://www.van.com.pk/crops/index.html" data-cursor="Open"><span>Find my crop plan</span></a>
+</div></header>
+
+<main id="main">
+
+  <!-- Opening -->
+  <section class="band t-hero" aria-labelledby="heroTitle">
+    <div class="t-wrap">
+      <p class="eyebrow t-hero__eyebrow" data-reveal>Vitalytics · Soil data from the Punjab soil testing programme, from the province’s own 36 district workbooks · <span class="fig">770,160</span> samples · <span class="fig">36</span> districts · tested in about 2016 to 2018</p>
+      <h1 class="h-xl t-hero__title" id="heroTitle">Soil figures for your district and a crop plan for your acres</h1>
+      <div class="t-hero__row">
+        <p class="lead" data-reveal>Most samples in the Punjab soil testing programme were alkaline. Of the 770,160 samples tested in about 2016 to 2018, 69.1% had a pH above 8. Each of our crop plans is written for alkaline, calcareous soil.</p>
+        <nav class="t-tabs" aria-label="Tools on this page" data-reveal>
+          <a href="#atlas" data-cursor="Go"><span class="fig">01</span><span>Soil Atlas</span></a>
+          <a href="#creator" data-cursor="Go"><span class="fig">02</span><span>Crop nutrition creator</span></a>
+          <a href="#calendar" data-cursor="Go"><span class="fig">03</span><span>Sowing calendar</span></a>
+          <a href="#simulator" data-cursor="Go"><span class="fig">04</span><span>Farm discipline simulator</span></a>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tool 1: Soil Atlas -->
+  <section class="band band--clay t-atlas" id="atlas" aria-labelledby="atlasTitle">
+    <div class="t-wrap">
+      <div class="band__head">
+        <div>
+          <span class="eyebrow" data-reveal>Tool 1 · Soil Atlas</span>
+          <h2 class="h-lg" id="atlasTitle" data-reveal>Punjab Soil Atlas</h2>
+        </div>
+        <p class="lead" data-reveal>The map shows soil test results for the 36 districts of Punjab. The results come from 770,160 soil samples tested in about 2016 to 2018 by the Punjab soil testing programme. The samples come from the province’s own 36 district workbooks. We drew the map from these results.</p>
+      </div>
+      <span class="rule" data-reveal></span>
+
+      <div class="atlas" id="atlasApp">
+        <div class="atlas__ask">
+          <p class="t-step"><span class="fig">1</span> Pick a question.</p>
+          <div class="atlas__questions" id="atlasQuestions" role="radiogroup" aria-label="Soil question"></div>
+        </div>
+
+        <div class="atlas__view" id="atlasView">
+          <h3 class="h-md atlas__question" id="atlasQuestion" aria-live="polite">How many soil samples in my district had a pH above 8?</h3>
+          <p class="t-step atlas__tap"><span class="fig">2</span> Tap your district on the map, or choose it from the list.</p>
+          <div class="atlas__mapbox">
+            <svg class="atlas__map" id="atlasMap" role="img" aria-labelledby="atlasMapTitle atlasMapDesc" preserveAspectRatio="xMidYMid meet">
+              <title id="atlasMapTitle">Map of the 36 districts of Punjab</title>
+              <desc id="atlasMapDesc">The fill of each district shows the share of its soil samples that met the test in the question. The table below the map gives the same figures.</desc>
+            </svg>
+          </div>
+          <div class="atlas__legend" id="atlasLegend" aria-live="polite"></div>
+          <p class="note atlas__source">Source: Punjab soil testing programme, 770,160 samples, tested in about 2016 to 2018.</p>
+        </div>
+
+        <aside class="atlas__side" aria-label="District results">
+          <div class="field">
+            <label for="atlasDistrict">Your district</label>
+            <select id="atlasDistrict"><option value="">Choose your district</option></select>
+          </div>
+          <div class="dcard" id="atlasCard" aria-live="polite">
+            <p class="dcard__empty">Choose a district to see its results.</p>
+          </div>
+        </aside>
+      </div>
+
+      <div class="own" id="ownMap">
+        <div class="own__head">
+          <h3 class="h-md">Make my own map</h3>
+          <p>Move the slider to set a number of samples in 100. The map then marks every district at or above that number.</p>
+        </div>
+        <div class="own__control">
+          <label for="ownLevel" id="ownLabel">Number of samples in 100</label>
+          <div class="own__slider">
+            <input type="range" id="ownLevel" min="0" max="100" step="5" value="50" aria-describedby="ownOut">
+            <output class="fig own__out" id="ownOut" for="ownLevel">50 in 100</output>
+          </div>
+          <p class="own__result" id="ownResult" aria-live="polite"></p>
+          <div class="own__matches" id="ownMatches"></div>
+          <button type="button" class="btn btn--ghost btn--tool" id="ownReset" hidden><span>Back to the map of Few, About half and Most</span></button>
+        </div>
+      </div>
+
+      <div class="atable">
+        <h3 class="h-md" id="atableTitle">The map as a table</h3>
+        <p class="note" id="atableNote">Tap a column heading to sort the table. Tap a district name to select it.</p>
+        <div class="atable__scroll" tabindex="0" role="region" aria-labelledby="atableTitle">
+          <table id="atlasTable">
+            <thead>
+              <tr>
+                <th scope="col" data-sort="name"><button type="button">District</button></th>
+                <th scope="col" data-sort="share" class="num"><button type="button">Samples in 100</button></th>
+                <th scope="col" data-sort="step"><button type="button">Few, About half or Most</button></th>
+                <th scope="col" data-sort="median" class="num"><button type="button">Median</button></th>
+                <th scope="col" data-sort="n" class="num"><button type="button">Samples tested</button></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tool 2: Crop nutrition creator -->
+  <section class="band t-creator" id="creator" aria-labelledby="creatorTitle">
+    <div class="t-wrap">
+      <div class="band__head">
+        <div>
+          <span class="eyebrow" data-reveal>Tool 2 · Crop nutrition creator</span>
+          <h2 class="h-lg" id="creatorTitle" data-reveal>Crop nutrition creator</h2>
+        </div>
+        <p class="lead" data-reveal>The creator works out the bags, the nutrients and the stage-by-stage timeline for 8 crops. It uses our published crop plan and the rules of the Nutrition creator on van.com.pk. It multiplies each amount by your acres. If you enter a soil reading, it also adjusts the amounts to your soil.</p>
+      </div>
+      <span class="rule" data-reveal></span>
+
+      <div class="creator" id="creatorApp">
+        <form class="console" id="creatorForm" novalidate aria-label="Your crop and your field">
+          <p class="console__title">Your field</p>
+
+          <div class="cstep">
+            <p class="cstep__label" id="cropLabel"><span class="fig">1</span> Crop</p>
+            <p class="cstep__hint">Pick your crop.</p>
+            <div class="crops" id="creatorCrops" role="radiogroup" aria-labelledby="cropLabel"></div>
+          </div>
+
+          <div class="cstep">
+            <label class="cstep__label" for="creatorAcres"><span class="fig">2</span> Acres</label>
+            <p class="cstep__hint" id="acresHint">Set your acres, from 1 to 500.</p>
+            <div class="dual">
+              <input type="range" id="acresRange" min="1" max="500" step="1" value="1" aria-label="Acres, slider">
+              <input type="number" id="creatorAcres" class="tinput fig" inputmode="numeric" min="1" max="500" step="1" value="1" aria-describedby="acresHint">
+            </div>
+          </div>
+
+          <div class="cstep">
+            <label class="cstep__label" for="creatorDate"><span class="fig">3</span> <span id="dateLabel">Sowing date</span></label>
+            <p class="cstep__hint" id="dateHint">Enter your sowing date.</p>
+            <input type="date" id="creatorDate" class="tinput fig" aria-describedby="dateHint">
+          </div>
+
+          <fieldset class="cstep">
+            <legend class="cstep__label"><span class="fig">4</span> Soil readings</legend>
+            <p class="cstep__hint">Enter the figures from your soil report. Leave a reading empty if your report does not give it.</p>
+            <div class="soilgrid">
+              <div class="field">
+                <label for="soil_pH">Soil pH</label>
+                <input type="number" id="soil_pH" class="tinput fig" inputmode="decimal" min="0" max="14" step="0.1" data-param="pH">
+              </div>
+              <div class="field">
+                <label for="soil_OM">Organic matter, %</label>
+                <input type="number" id="soil_OM" class="tinput fig" inputmode="decimal" min="0" max="10" step="0.01" data-param="OM">
+              </div>
+              <div class="field">
+                <label for="soil_P2O">Available phosphorus (P), ppm</label>
+                <input type="number" id="soil_P2O" class="tinput fig" inputmode="decimal" min="0" max="200" step="0.1" data-param="P2O" aria-describedby="pHint">
+              </div>
+            </div>
+            <p class="note" id="pHint">Enter phosphorus as phosphorus (P) in ppm. Do not enter a P₂O₅ figure.</p>
+            <p class="note" id="soilRule"></p>
+            <div class="field field--inset">
+              <label for="creatorDistrict">No soil report? Choose your district.</label>
+              <select id="creatorDistrict"><option value="">Choose your district</option></select>
+              <p class="note">The creator then fills the 3 readings with that district’s median readings from the samples that the Punjab soil testing programme tested in about 2016 to 2018.</p>
+            </div>
+            <button type="button" class="link-btn" id="soilClear">Clear the soil readings</button>
+          </fieldset>
+        </form>
+
+        <div class="ledger" id="planResult" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tool 3: Sowing calendar -->
+  <section class="band band--clay t-calendar" id="calendar" aria-labelledby="calendarTitle">
+    <div class="t-wrap">
+      <div class="band__head">
+        <div>
+          <span class="eyebrow" data-reveal>Tool 3 · Sowing calendar</span>
+          <h2 class="h-lg" id="calendarTitle" data-reveal>Sowing calendar and the 28 crop plans</h2>
+        </div>
+        <p class="lead" data-reveal>The calendar shows the sowing window of each of our 28 crop plans. Tap a month to see the crops sown in that month. For a crop marked season start, the sowing window is the start of the season.</p>
+      </div>
+      <span class="rule" data-reveal></span>
+
+      <div class="cal" id="calendarApp">
+        <div class="cal__bar">
+          <p class="t-step"><span class="fig">1</span> Pick a month.</p>
+          <div class="cal__strip" id="calStrip" role="group" aria-label="Months of the year"></div>
+          <p class="cal__status" id="calStatus" aria-live="polite"></p>
+        </div>
+        <div class="cal__scroll" tabindex="0" role="region" aria-labelledby="calendarTitle">
+          <table class="cal__matrix" id="calMatrix">
+            <caption class="sr-only">Sowing window of each crop plan, by month</caption>
+            <thead></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <p class="note" id="calKey">A filled square marks a month inside the crop’s sowing window. Each crop name opens that crop’s plan on van.com.pk.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tool 4: Farm discipline simulator -->
+  <section class="band band--deep t-sim" id="simulator" aria-labelledby="simTitle">
+    <div class="t-wrap">
+      <div class="band__head">
+        <div>
+          <span class="eyebrow eyebrow--light" data-reveal>Tool 4 · Pilot · Wheat and potato</span>
+          <h2 class="h-lg" id="simTitle" data-reveal>Farm discipline simulator</h2>
+        </div>
+        <p class="lead" data-reveal>You score 10 practices of your season as Bad, OK or Best. The simulator then estimates the yield that your scores would give. It also shows which practices could add the most yield.</p>
+      </div>
+      <span class="rule rule--light" data-reveal></span>
+
+      <div class="sim" id="simApp">
+        <div class="sim__board">
+          <div class="sim__crop" role="radiogroup" aria-label="Crop" id="simCrops"></div>
+          <div class="sim__gauge">
+            <svg id="simGauge" viewBox="0 0 320 180" role="img" aria-labelledby="simGaugeTitle"><title id="simGaugeTitle">Estimated yield gauge</title></svg>
+            <p class="sim__label">Estimated yield from your scores (model estimate)</p>
+            <p class="sim__value"><span class="fig" id="simYield">0</span> <span class="sim__unit">maunds per acre</span></p>
+            <p class="sim__gap" id="simGap" aria-live="polite"></p>
+          </div>
+          <div class="sim__target">
+            <label for="simTarget">Your yield target, maunds per acre</label>
+            <div class="dual dual--dark">
+              <input type="range" id="simTargetRange" min="0" max="78" step="1" value="60" aria-label="Yield target, slider">
+              <input type="number" id="simTarget" class="tinput fig" inputmode="numeric" min="0" max="78" step="1" value="60" aria-describedby="simTargetNote">
+            </div>
+            <p class="note" id="simTargetNote"></p>
+          </div>
+          <div class="sim__loss">
+            <h3 class="sim__h">Where the most yield could be gained (model estimates, not trial results)</h3>
+            <ol class="sim__bars" id="simBars" aria-live="polite"></ol>
+          </div>
+        </div>
+        <div class="sim__practices">
+          <p class="t-step t-step--light">Score each practice of your season. Every practice starts at OK.</p>
+          <div id="simLevers"></div>
+        </div>
+      </div>
+      <p class="note sim__pilot">This is a pilot model built from our own agronomy work. It has not yet been checked against a full season’s field results. Use the estimated yield as a rough guide to which practices matter most. It is not a forecast for your field.</p>
+      <p class="sim__more"><a class="link-arrow" href="https://www.van.com.pk/simulator.html" data-cursor="Open">Open the farm discipline simulator on van.com.pk</a></p>
+    </div>
+  </section>
+
+  <!-- About the figures -->
+  <section class="band t-method" aria-labelledby="methodTitle">
+    <div class="t-wrap">
+      <div class="band__head">
+        <div>
+          <span class="eyebrow" data-reveal>Read this before you act</span>
+          <h2 class="h-lg" id="methodTitle" data-reveal>About the figures on this page</h2>
+        </div>
+        <div class="lead" data-reveal><p>The tools on this page use the data and rules of the tools on van.com.pk, with 3 differences.</p><ol class="diffs"><li>This page takes 1 to 500 acres. The <a href="https://www.van.com.pk/crops/index.html">Nutrition creator on van.com.pk</a> takes 1 to 50 acres.</li><li>This page takes 3 soil readings. The Nutrition creator on van.com.pk takes up to 10 readings. For a field with a full soil report, use the Nutrition creator on van.com.pk.</li><li>The simulator on this page lists every estimated yield gain above 0.2 maunds per acre. The simulator on van.com.pk lists the 3 largest estimated yield gains.</li></ol></div>
+      </div>
+      <span class="rule" data-reveal></span>
+      <dl class="method">
+        <div data-reveal><dt>Soil figures</dt><dd>The soil figures come from 770,160 samples of the Punjab soil testing programme. The samples were tested in about 2016 to 2018. The figures describe the soil as it was then.</dd></div>
+        <div data-reveal><dt>District figures</dt><dd>A district figure describes the samples of the whole district. Your own field needs its own soil test.</dd></div>
+        <div data-reveal><dt>Map shapes</dt><dd>Each district is drawn from the squares of the Soil Atlas grid that hold samples. Each square is about 5.5 km by 4.8 km. A gap in the map is ground with no sample.</dd></div>
+        <div data-reveal><dt>Crop plans</dt><dd>Each timeline follows our published crop plan. A crop plan is a general plan, set per acre for a typical crop on a typical soil. It does not replace a soil test.</dd></div>
+        <div data-reveal><dt>Soil adjustment</dt><dd>The soil adjustment is a pilot. It uses the rules of the Nutrition creator on van.com.pk.</dd></div>
+        <div data-reveal><dt>Wheat stage dates</dt><dd>The wheat stage dates are calculated from growing degree days. Growing degree days measure the heat a crop receives. The calculation uses Lahore’s temperature normals for 1991 to 2020. The dates therefore describe a normal season at Lahore.</dd></div>
+        <div data-reveal><dt>Estimated yield</dt><dd>The estimated yield in the simulator is a model estimate. The model is a pilot.</dd></div>
+      </dl>
+      <p class="method__link" data-reveal><a class="link-arrow" href="https://www.van.com.pk/soil.html" data-cursor="Open">Read the method and limitations of the soil data on van.com.pk</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__curve" aria-hidden="true"></div>
+  <span class="eyebrow eyebrow--light">Your own field</span>
+  <h2 class="footer__title">Ask for a plan for your own field</h2>
+  <p class="footer__lead">Send us your soil report, your yield target and your district. Our agronomy team then builds a plan for your own field.</p>
+  <a class="btn btn--amber magnetic" href="https://wa.me/923005003041" data-cursor="Open"><span>Ask on WhatsApp</span></a>
+  <span class="rule rule--light" data-reveal></span>
+  <div class="footer__grid">
+    <div><h3 class="footer__h">Head office</h3><p>605 Al-Hafeez Heights, Gulberg III, Lahore 54660</p><p><a href="tel:+924235762215">+92 42 35762215</a></p></div>
+    <div><h3 class="footer__h">Plant</h3><p>49-Km Multan Road, Phool Nagar Bypass, Lahore</p></div>
+    <div><h3 class="footer__h">Write to us</h3><p><a href="mailto:info@van.com.pk">info@van.com.pk</a></p><p><a href="mailto:partner@van.com.pk">partner@van.com.pk</a></p></div>
+    <div><h3 class="footer__h">Pages</h3><p><a href="products.html">Products</a></p><p><a href="tools.html">Vitalytics</a></p><p><a href="research.html">Research</a></p><p><a href="partner/index.html">Your brand</a></p><p><a href="about.html">About</a></p></div>
+  </div>
+  <p class="footer__legal">© 2026 Vital Agri Nutrients (Pvt) Ltd</p>
+</footer>
+
+<div class="calm-note" id="calmNote" hidden><span>Motion is reduced on this device.</span><button type="button">Play full motion</button></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/site.js?v=10"></script>
+<script src="data/soil-districts.js?v=2"></script>
+<script src="data/punjab-map.js?v=1"></script>
+<script src="data/crop-plans.js?v=2"></script>
+<script src="js/tools.js?v=2"></script>
+</body>
+</html>

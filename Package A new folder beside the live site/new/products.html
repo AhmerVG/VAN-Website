@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Products and soil chemistry · Vital Agri Nutrients</title>
+<meta name="description" content="Vital Agri Nutrients has 24 brands of crop nutrition products. This page shows the nutrient percentages declared on the bag of each brand. It also shows how nitrogen, phosphate and potash behave in the soil.">
+<script>(function(){var q=location.search,c=null;try{c=localStorage.getItem('van-motion')}catch(e){}
+if(/[?&]motion=1/.test(q))c='full';if(/[?&]motion=0/.test(q))c='calm';
+var os=matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.documentElement.className=(c?c==='calm':os)?'calm':'full';})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css?v=11">
+<link rel="stylesheet" href="css/products.css?v=4">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the main content</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"><div class="cursor__ring"><span class="cursor__label" id="cursorLabel"></span></div><div class="cursor__dot"></div></div>
+
+<header class="nav" id="nav"><div class="nav__pill">
+  <a class="nav__brand" href="index.html" aria-label="Vital Agri Nutrients, home"><span class="nav__mark">VAN</span><span class="nav__name">Vital Agri Nutrients</span></a>
+  <nav class="nav__links" aria-label="Main menu">
+    <a href="products.html" aria-current="page">Products</a><a href="tools.html">Vitalytics</a><a href="research.html">Research</a><a href="partner/index.html">Your brand</a><a href="about.html">About</a>
+  </nav>
+  <a class="btn btn--small magnetic" href="https://www.van.com.pk/crops/index.html" data-cursor="Open"><span>Find my crop plan</span></a>
+</div></header>
+
+<main id="main">
+
+<!-- 1. Editorial hero -->
+<section class="phero" id="top">
+  <div class="phero__grid">
+    <div class="phero__text">
+      <p class="eyebrow phero__eyebrow">24 brands · 22 PSQCA licences for our own brands · Licence figures as of July 2026</p>
+      <h1 class="phero__title" id="heroTitle">Every product starts with what the soil locks up.</h1>
+      <p class="lead phero__lead">Nitrogen is lost to the air as ammonia and lost to water as nitrate. Phosphate is bound by calcium in the soil. Too little potash is applied. Crops therefore take potassium from what the soil already holds.</p>
+      <div class="phero__stat" data-reveal>
+        <span class="fig phero__num" data-count="69.1" data-decimals="1" data-suffix="%">69.1%</span>
+        <p class="note">The Punjab soil testing programme tested 770,160 soil samples in about 2016 to 2018. Of these samples, 69.1% had a pH above 8. Above pH 8, part of the nitrogen from urea left on the soil surface is lost to the air as ammonia. In calcareous soil, free calcium binds most of the phosphate applied as fertiliser before the roots can take it up.</p>
+      </div>
+      <nav class="ptabs" aria-label="Sections of this page">
+        <a class="ptabs__a" href="#soil"><span class="fig">01</span>Soil chemistry</a>
+        <a class="ptabs__a" href="#brands"><span class="fig">02</span>Our brands</a>
+        <a class="ptabs__a" href="#verify"><span class="fig">03</span>Verify a bag</a>
+        <a class="ptabs__a" href="#order"><span class="fig">04</span>Order direct from the plant</a>
+      </nav>
+    </div>
+
+    <figure class="phero__fig" id="heroFig">
+      <svg class="granules" viewBox="0 0 560 520" role="img" aria-labelledby="granTitle granDesc">
+        <title id="granTitle">3 coated granules in cross-section</title>
+        <desc id="granDesc">Vital Urea has a white urea core and a yellow sulfur coating. Green Phosphate has a brown phosphate core and a black humic coating. Vital Potash has a cream potash core and a boron coating in 2 forms.</desc>
+        <defs>
+          <radialGradient id="gUrea" cx="42%" cy="38%" r="70%"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E9E6DC"/></radialGradient>
+          <radialGradient id="gPhos" cx="42%" cy="38%" r="72%"><stop offset="0" stop-color="#9A7650"/><stop offset="1" stop-color="#5E4329"/></radialGradient>
+          <radialGradient id="gPot" cx="42%" cy="38%" r="72%"><stop offset="0" stop-color="#F7EDCF"/><stop offset="1" stop-color="#DCCB9C"/></radialGradient>
+          <filter id="gGrain" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" result="n"/><feColorMatrix in="n" values="0 0 0 0 0.1  0 0 0 0 0.08  0 0 0 0 0.05  0 0 0 0.5 0" result="g"/><feComposite in="g" in2="SourceGraphic" operator="in"/><feBlend in2="SourceGraphic" mode="multiply"/></filter>
+          <filter id="gShadow" x="-30%" y="-30%" width="160%" height="170%"><feGaussianBlur stdDeviation="14"/></filter>
+        </defs>
+
+        <!-- Vital Urea -->
+        <g class="gran gran--urea">
+          <ellipse cx="156" cy="262" rx="92" ry="14" fill="#171A16" opacity="0.16" filter="url(#gShadow)"/>
+          <circle class="gran__coat" cx="150" cy="150" r="105" fill="#E6BE3C" stroke="#A88417" stroke-width="1.5" filter="url(#gGrain)"/>
+          <circle cx="150" cy="150" r="88" fill="url(#gUrea)" stroke="#C9C4B4" stroke-width="1"/>
+          <g class="gran__spin" stroke="#D5D0C2" stroke-width="1.2" fill="none" opacity="0.9">
+            <path d="M150 150 L110 96 M150 150 L206 112 M150 150 L214 178 M150 150 L164 222 M150 150 L92 186 M150 150 L84 132"/>
+            <path d="M110 96 L84 132 L92 186 L164 222 L214 178 L206 112 Z"/>
+          </g>
+          <path class="gran__lead" d="M228 80 L268 58" stroke="#171A16" stroke-width="1" fill="none"/>
+          <text class="gran__name" x="274" y="54">Vital Urea</text>
+          <text class="gran__part" x="274" y="78">Sulfur coating</text>
+          <text class="gran__part" x="274" y="98">Urea core</text>
+        </g>
+
+        <!-- Green Phosphate -->
+        <g class="gran gran--phos">
+          <ellipse cx="406" cy="352" rx="84" ry="13" fill="#171A16" opacity="0.16" filter="url(#gShadow)"/>
+          <circle class="gran__coat" cx="400" cy="250" r="95" fill="#1F1B18" filter="url(#gGrain)"/>
+          <circle cx="400" cy="250" r="82" fill="url(#gPhos)" filter="url(#gGrain)"/>
+          <g class="gran__spin" fill="#4A341F" opacity="0.75">
+            <circle cx="372" cy="218" r="5"/><circle cx="430" cy="226" r="7"/><circle cx="446" cy="270" r="4"/><circle cx="404" cy="296" r="6"/><circle cx="360" cy="270" r="7"/><circle cx="398" cy="246" r="4"/><circle cx="420" cy="200" r="3"/><circle cx="350" cy="240" r="3"/>
+          </g>
+          <path class="gran__lead" d="M356 334 L330 372" stroke="#171A16" stroke-width="1" fill="none"/>
+          <text class="gran__name" x="300" y="398">Green Phosphate</text>
+          <text class="gran__part" x="300" y="422">Humic coating</text>
+          <text class="gran__part" x="300" y="442">Acidic phosphate core</text>
+        </g>
+
+        <!-- Vital Potash -->
+        <g class="gran gran--pot">
+          <ellipse cx="146" cy="486" rx="78" ry="12" fill="#171A16" opacity="0.16" filter="url(#gShadow)"/>
+          <g class="gran__coat">
+            <path d="M130 302 A88 88 0 0 0 130 478" fill="none" stroke="#8D979C" stroke-width="12"/>
+            <path d="M130 302 A88 88 0 0 1 130 478" fill="none" stroke="#C7CDD0" stroke-width="12" stroke-dasharray="14 6"/>
+          </g>
+          <circle cx="130" cy="390" r="80" fill="url(#gPot)" stroke="#BDAA78" stroke-width="1" filter="url(#gGrain)"/>
+          <g class="gran__spin" stroke="#C9B782" stroke-width="1.2" fill="none">
+            <path d="M92 356 l22 -12 l24 14 l-4 26 l-26 8 z M140 398 l28 -6 l12 22 l-20 18 l-24 -10 z M96 410 l20 4 l4 22 l-22 2 z"/>
+          </g>
+          <path class="gran__lead" d="M208 436 L236 470" stroke="#171A16" stroke-width="1" fill="none"/>
+          <text class="gran__name" x="236" y="494">Vital Potash</text>
+          <text class="gran__part" x="236" y="514">Boron coating in 2 forms</text>
+        </g>
+      </svg>
+      <figcaption class="note">The drawing shows 3 coated granules cut in half: Vital Urea, Green Phosphate and Vital Potash. The drawing is a diagram and is not to scale.</figcaption>
+    </figure>
+  </div>
+  <span class="rule" data-reveal></span>
+</section>
+
+<!-- 2. Soil cross-section -->
+<section class="band band--clay soil" id="soil" aria-labelledby="soilTitle">
+  <div class="band__head">
+    <div>
+      <span class="eyebrow">01 · Soil chemistry</span>
+      <h2 class="h-lg" id="soilTitle" data-reveal>Nitrogen, phosphate and potash in the soil</h2>
+    </div>
+    <p class="lead" data-reveal>The drawing shows 1 soil cross-section and covers 3 nutrients. Choose a nutrient. Then switch between the problem with that nutrient in the soil and our product for it.</p>
+  </div>
+
+  <div class="soil__stage" id="soilStage" data-problem="n" data-mode="std">
+    <div class="soil__tabs" role="tablist" aria-label="The 3 nutrients">
+      <button class="soil__tab is-on" role="tab" type="button" id="tab-n" aria-selected="true" aria-controls="soilPanel" data-problem="n"><span class="fig">1 of 3</span><span class="soil__tabname">Nitrogen</span></button>
+      <button class="soil__tab" role="tab" type="button" id="tab-p" aria-selected="false" aria-controls="soilPanel" data-problem="p" tabindex="-1"><span class="fig">2 of 3</span><span class="soil__tabname">Phosphate</span></button>
+      <button class="soil__tab" role="tab" type="button" id="tab-k" aria-selected="false" aria-controls="soilPanel" data-problem="k" tabindex="-1"><span class="fig">3 of 3</span><span class="soil__tabname">Potash</span></button>
+    </div>
+
+    <div class="soil__body">
+      <figure class="soil__fig">
+        <svg class="soil__svg" id="soilSvg" viewBox="0 0 720 600" role="img" aria-labelledby="soilSvgTitle">
+          <title id="soilSvgTitle">Nitrogen, phosphate and potash, drawn on 1 soil cross-section</title>
+          <defs>
+            <linearGradient id="sSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBF9F3"/><stop offset="1" stop-color="#F1EBDD"/></linearGradient>
+            <linearGradient id="sSoil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#CFB48C"/><stop offset="0.55" stop-color="#BE9F74"/><stop offset="1" stop-color="#A98A61"/></linearGradient>
+            <pattern id="sLime" width="96" height="88" patternUnits="userSpaceOnUse">
+              <ellipse cx="12" cy="14" rx="3.2" ry="2" fill="#F8F4E8"/><ellipse cx="52" cy="8" rx="2" ry="1.4" fill="#F8F4E8"/><ellipse cx="80" cy="30" rx="3.6" ry="2.2" fill="#F8F4E8" transform="rotate(24 80 30)"/>
+              <ellipse cx="34" cy="42" rx="2.4" ry="1.6" fill="#F8F4E8"/><ellipse cx="66" cy="60" rx="2" ry="1.3" fill="#F8F4E8"/><ellipse cx="16" cy="70" rx="3" ry="1.8" fill="#F8F4E8" transform="rotate(-18 16 70)"/>
+              <ellipse cx="46" cy="78" rx="1.6" ry="1.1" fill="#F8F4E8"/><ellipse cx="90" cy="76" rx="2.2" ry="1.4" fill="#F8F4E8"/>
+              <circle cx="26" cy="26" r="1.2" fill="#8E7250"/><circle cx="70" cy="44" r="1.4" fill="#8E7250"/><circle cx="56" cy="30" r="1" fill="#8E7250"/><circle cx="8" cy="50" r="1.1" fill="#8E7250"/><circle cx="84" cy="10" r="1" fill="#8E7250"/>
+            </pattern>
+            <filter id="sGrain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="3" result="n"/><feColorMatrix in="n" values="0 0 0 0 0.3  0 0 0 0 0.22  0 0 0 0 0.12  0 0 0 0.35 0" result="g"/><feComposite in="g" in2="SourceGraphic" operator="in"/><feBlend in2="SourceGraphic" mode="multiply"/></filter>
+            <clipPath id="sClip"><rect x="0" y="0" width="720" height="600" rx="22"/></clipPath>
+            <marker id="sArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#171A16"/></marker>
+          </defs>
+
+          <g clip-path="url(#sClip)">
+            <rect x="0" y="0" width="720" height="600" fill="url(#sSky)"/>
+            <path d="M0 194 C120 186 240 198 360 190 S600 186 720 194 L720 600 L0 600 Z" fill="url(#sSoil)" filter="url(#sGrain)"/>
+            <path d="M0 194 C120 186 240 198 360 190 S600 186 720 194 L720 600 L0 600 Z" fill="url(#sLime)"/>
+            <path d="M0 194 C120 186 240 198 360 190 S600 186 720 194" fill="none" stroke="#8E7250" stroke-width="2"/>
+            <line x1="0" y1="486" x2="720" y2="486" stroke="#171A16" stroke-width="1" stroke-dasharray="3 7" opacity="0.6"/>
+
+            <!-- Crop: roots, then leaves -->
+            <g fill="none" stroke="#F1E6CF" stroke-linecap="round">
+              <path d="M500 190 C498 240 492 280 486 330" stroke-width="4"/>
+              <path d="M497 225 C470 245 440 262 400 300 C380 318 360 326 338 332" stroke-width="2.6"/>
+              <path d="M494 260 C520 285 548 300 580 340" stroke-width="2.4"/>
+              <path d="M490 300 C470 340 455 370 440 420" stroke-width="2.2"/>
+              <path d="M487 325 C500 370 512 400 520 440" stroke-width="2.2"/>
+              <path d="M498 215 C530 230 560 236 600 262" stroke-width="2.2"/>
+              <path d="M640 190 C638 230 634 260 630 300" stroke-width="3"/>
+              <path d="M638 215 C660 240 672 262 684 300" stroke-width="2"/>
+              <path d="M637 230 C618 252 606 270 596 300" stroke-width="2"/>
+            </g>
+            <g>
+              <path d="M500 190 C496 150 488 110 470 70 C486 100 502 140 506 190 Z" fill="#2D5A3C"/>
+              <path d="M502 190 C508 140 524 96 552 58 C536 100 522 146 510 190 Z" fill="#3B7550"/>
+              <path d="M498 190 C486 160 462 140 432 128 C458 146 482 168 502 190 Z" fill="#3B7550"/>
+              <path d="M504 190 C520 160 546 146 578 140 C552 152 526 170 508 190 Z" fill="#2D5A3C"/>
+              <path d="M640 190 C636 160 628 136 614 112 C628 134 640 160 644 190 Z" fill="#2D5A3C"/>
+              <path d="M642 190 C648 160 660 138 678 120 C664 142 652 164 648 190 Z" fill="#3B7550"/>
+            </g>
+            <text class="slbl slbl--end" x="704" y="514">Below the roots</text>
+
+            <!-- Nitrogen, standard: urea on the surface -->
+            <g class="sc is-on" data-scene="n-std">
+              <g fill="#FFFFFF" stroke="#8C8778" stroke-width="1.4">
+                <circle cx="90" cy="183" r="9"/><circle cx="150" cy="181" r="9"/><circle cx="210" cy="184" r="9"/><circle cx="270" cy="184" r="9"/><circle cx="330" cy="182" r="9"/>
+              </g>
+              <g fill="none" stroke="#171A16" stroke-width="1.6" stroke-dasharray="5 6" marker-end="url(#sArrow)">
+                <path d="M120 160 C114 120 126 90 118 50"/><path d="M240 160 C246 124 234 92 242 54"/>
+                <path d="M180 214 C188 300 172 400 182 560"/><path d="M300 214 C292 310 308 420 298 560"/>
+              </g>
+              <text class="slbl" x="24" y="64">NH₃</text>
+              <text class="slbl" x="24" y="566">NO₃⁻</text>
+              <text class="slbl" x="60" y="232">Urea</text>
+              <text class="slbl slbl--end" x="704" y="578">Soil pH above 8</text>
+            </g>
+
+            <!-- Nitrogen, Vital Urea: coated granules in the same place as the urea granules -->
+            <g class="sc" data-scene="n-van">
+              <g fill="#FFFFFF" stroke="#E6BE3C" stroke-width="5">
+                <circle cx="90" cy="182" r="9"/><circle cx="150" cy="180" r="9"/><circle cx="210" cy="183" r="9"/><circle cx="270" cy="183" r="9"/><circle cx="330" cy="181" r="9"/>
+              </g>
+              <g fill="none" stroke="#7C6410" stroke-width="1">
+                <circle cx="90" cy="182" r="12"/><circle cx="150" cy="180" r="12"/><circle cx="210" cy="183" r="12"/><circle cx="270" cy="183" r="12"/><circle cx="330" cy="181" r="12"/>
+              </g>
+              <g fill="none" stroke="#171A16" stroke-width="1.6" stroke-dasharray="5 6" marker-end="url(#sArrow)">
+                <path d="M120 160 C114 120 126 90 118 50"/>
+                <path d="M300 214 C292 310 308 420 298 560"/>
+              </g>
+              <text class="slbl" x="24" y="64">NH₃</text>
+              <text class="slbl" x="24" y="566">NO₃⁻</text>
+              <text class="slbl" x="60" y="232">Sulfur coating</text>
+              <text class="slbl slbl--end" x="704" y="578">Soil pH above 8</text>
+            </g>
+
+            <!-- Phosphate, standard: DAP -->
+            <g class="sc" data-scene="p-std">
+              <g fill="#F8F4E8" stroke="#8E7250" stroke-width="1">
+                <path d="M196 270 l14 -6 l10 8 l-4 12 l-16 2 z"/><path d="M300 262 l12 -4 l8 10 l-8 10 l-14 -4 z"/><path d="M182 330 l10 -8 l12 6 l-2 12 l-14 2 z"/>
+                <path d="M210 364 l14 -4 l8 10 l-10 10 l-12 -6 z"/><path d="M312 370 l12 -6 l10 8 l-6 12 l-14 -2 z"/><path d="M256 392 l12 -4 l8 8 l-8 10 l-12 -4 z"/><path d="M250 244 l10 -6 l12 6 l-4 10 l-14 2 z"/>
+              </g>
+              <circle cx="262" cy="322" r="15" fill="#7A5638" stroke="#4A341F" stroke-width="1.4"/>
+              <text class="slbl slbl--mid" x="262" y="222">Calcium (Ca)</text>
+              <text class="slbl slbl--mid" x="262" y="442">Phosphate bound by Ca</text>
+              <text class="slbl" x="60" y="328">DAP</text>
+              <text class="slbl slbl--end" x="704" y="578">Soil pH above 8</text>
+              <path d="M110 322 L242 322" fill="none" stroke="#171A16" stroke-width="1"/>
+            </g>
+
+            <!-- Phosphate, Green Phosphate: acidic zone -->
+            <g class="sc" data-scene="p-van">
+              <circle cx="262" cy="322" r="72" fill="#E9D7A6" opacity="0.5"/>
+              <circle cx="262" cy="322" r="72" fill="none" stroke="#171A16" stroke-width="1.6" stroke-dasharray="7 6"/>
+              <g fill="#F8F4E8" stroke="#8E7250" stroke-width="1" opacity="0.9">
+                <path d="M196 270 l14 -6 l10 8 l-4 12 l-16 2 z"/><path d="M300 262 l12 -4 l8 10 l-8 10 l-14 -4 z"/><path d="M182 330 l10 -8 l12 6 l-2 12 l-14 2 z"/>
+                <path d="M210 364 l14 -4 l8 10 l-10 10 l-12 -6 z"/><path d="M312 370 l12 -6 l10 8 l-6 12 l-14 -2 z"/><path d="M256 392 l12 -4 l8 8 l-8 10 l-12 -4 z"/><path d="M250 244 l10 -6 l12 6 l-4 10 l-14 2 z"/>
+              </g>
+              <path d="M338 332 C322 332 308 328 292 326" fill="none" stroke="#F1E6CF" stroke-width="2.6" stroke-linecap="round"/>
+              <circle cx="262" cy="322" r="13" fill="#7A5638" stroke="#1F1B18" stroke-width="6"/>
+              <text class="slbl slbl--mid" x="262" y="236">Acidic zone</text>
+              <text class="slbl" x="24" y="328">Humic coating</text>
+              <text class="slbl slbl--end" x="704" y="578">Soil pH above 8</text>
+              <path d="M170 336 L244 326" fill="none" stroke="#171A16" stroke-width="1"/>
+            </g>
+
+            <!-- Potash, standard: 83 kg of N for every 1 kg of K2O -->
+            <g class="sc" data-scene="k-std">
+              <g id="ratioGrid" fill="#FFFFFF" stroke="#8C8778" stroke-width="1"></g>
+              <text class="slbl" x="282" y="70">83 kg N</text>
+              <text class="slbl" x="282" y="148">1 kg K₂O</text>
+              <path d="M258 144 L276 144" fill="none" stroke="#171A16" stroke-width="1"/>
+              <text class="slbl" x="24" y="340">K⁺ held by the soil</text>
+            </g>
+
+            <!-- Potash, Vital Potash: fertigation -->
+            <g class="sc" data-scene="k-van">
+              <path d="M0 184 C120 176 240 188 360 180 S600 176 720 184 L720 198 C600 190 480 196 360 194 S120 190 0 198 Z" fill="#9CC3D0" stroke="#4B7F90" stroke-width="1" opacity="0.9"/>
+              <g fill="#EFE2BF" stroke="#7D6A38" stroke-width="1.4"><circle cx="150" cy="186" r="7"/><circle cx="230" cy="188" r="5"/><circle cx="330" cy="184" r="6"/></g>
+              <circle cx="80" cy="92" r="44" fill="#EFE2BF" stroke="#BDAA78" stroke-width="1"/>
+              <path d="M30 92 A50 50 0 0 1 130 92" fill="none" stroke="#6F7A80" stroke-width="7"/>
+              <path d="M30 92 A50 50 0 0 0 130 92" fill="none" stroke="#6F7A80" stroke-width="7" stroke-dasharray="9 5"/>
+              <path d="M124 68 L146 71 M124 116 L146 119" fill="none" stroke="#171A16" stroke-width="1"/>
+              <text class="slbl" x="150" y="76">Sodium borate: quick</text>
+              <text class="slbl" x="150" y="124">Calcium borate: slow</text>
+              <text class="slbl" x="24" y="250">Irrigation water</text>
+            </g>
+
+            <g id="soilParticles"></g>
+          </g>
+          <rect x="0.5" y="0.5" width="719" height="599" rx="22" fill="none" stroke="rgba(23,26,22,0.18)"/>
+        </svg>
+        <figcaption class="soil__cap note" id="soilCap">The drawing shows urea granules on the soil surface. Ammonia (NH₃) rises into the air. Nitrate (NO₃⁻) moves down with the irrigation water to below the roots.</figcaption>
+        <p class="note soil__disclaimer">The number of dots and the speed of each change are not measurements.</p>
+      </figure>
+
+      <div class="soil__panel" id="soilPanel" role="tabpanel" aria-labelledby="tab-n" tabindex="0">
+        <div class="soil__toggle" role="group" aria-label="Choose what the drawing shows">
+          <button type="button" class="soil__mode is-on" data-mode="std" aria-pressed="true"><span class="soil__modek">The problem</span><span class="soil__modev" id="modeStd">Urea</span></button>
+          <button type="button" class="soil__mode" data-mode="van" aria-pressed="false"><span class="soil__modek">Our product</span><span class="soil__modev" id="modeVan">Vital Urea</span></button>
+        </div>
+
+        <div class="soil__copy" id="soilCopy" aria-live="polite">
+          <p class="soil__kicker fig" id="soilKicker">Nitrogen · problem 1 of 3</p>
+          <h3 class="h-md" id="soilHead">Nitrogen lost to the air and to water</h3>
+          <p class="soil__spec fig" id="soilSpec" hidden></p>
+          <div id="soilText" class="soil__text">
+            <p>In soil with a pH above 8, part of the nitrogen from urea left on the soil surface is lost to the air as ammonia before the crop can use it.</p>
+            <p>Irrigation water also carries nitrate down below the roots. The nitrogen in that nitrate is lost to water.</p>
+          </div>
+          <a class="soil__product" id="soilProduct" href="https://www.van.com.pk/brands/vital-urea.html" target="_blank" rel="noopener" data-cursor="Open" hidden>
+            <img id="soilPack" src="img/packs/vital-urea.webp" alt="" width="429" height="800" loading="lazy">
+            <span><span class="soil__productk">Our product for this problem</span><span class="soil__productn" id="soilProductName">Vital Urea</span><span class="link-arrow" id="soilProductLink">Open the live page for Vital Urea</span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Catalogue -->
+<section class="band cat" id="brands" aria-labelledby="catTitle">
+  <div class="band__head">
+    <div>
+      <span class="eyebrow">02 · Our brands</span>
+      <h2 class="h-lg" id="catTitle" data-reveal>Our brands</h2>
+    </div>
+    <p class="lead" data-reveal>Choose how you apply fertiliser to see our brands made for that method. Open a card to see the declared analysis by nutrient, the crop stages and the pack sizes.</p>
+  </div>
+
+  <div class="cat__filters">
+    <div class="cat__group" role="group" aria-labelledby="fMethod">
+      <span class="cat__label fig" id="fMethod">Application method</span>
+      <div class="cat__chips" id="methodChips">
+        <button type="button" class="chip is-on" data-method="all" aria-pressed="true">All <span class="fig">24</span></button>
+        <button type="button" class="chip" data-method="broadcast" aria-pressed="false">Broadcast <span class="fig">9</span></button>
+        <button type="button" class="chip" data-method="fertigation" aria-pressed="false">Fertigation <span class="fig">15</span></button>
+        <button type="button" class="chip" data-method="foliar" aria-pressed="false">Foliar <span class="fig">7</span></button>
+      </div>
+    </div>
+    <div class="cat__group" role="group" aria-labelledby="fCat">
+      <span class="cat__label fig" id="fCat">Nutrient category</span>
+      <div class="cat__chips" id="catChips">
+        <button type="button" class="chip is-on" data-cat="all" aria-pressed="true">All</button>
+      </div>
+    </div>
+  </div>
+  <p class="cat__status note" id="catStatus" role="status" aria-live="polite">Showing 24 of 24 brands.</p>
+
+  <ul class="cat__grid" id="catGrid"></ul>
+  <div class="cat__empty" id="catEmpty" hidden>
+    <p>No brand matches both filters.</p>
+    <button type="button" class="btn btn--ghost" id="catClear"><span>Clear the filters</span></button>
+  </div>
+  <noscript><p class="note">This list needs JavaScript. You can read our brands on <a href="https://www.van.com.pk/brands/index.html">the brands page of van.com.pk</a>.</p></noscript>
+</section>
+
+<!-- 4. Lab report -->
+<section class="band band--deep lab" id="verify" aria-labelledby="labTitle">
+  <div class="band__head">
+    <div>
+      <span class="eyebrow eyebrow--light">03 · Verify a bag</span>
+      <h2 class="h-lg" id="labTitle" data-reveal>Check the lab report for your bag by its batch number</h2>
+    </div>
+    <p class="lead" data-reveal>We test every batch before it leaves the plant. The Verify page of van.com.pk opens the approved lab report for a batch from the batch number printed on the bag. The check is free. You do not need to send a sample.</p>
+  </div>
+
+  <div class="lab__grid">
+    <form class="console" id="verifyForm" action="https://www.van.com.pk/verify.html" method="get" target="_blank" rel="noopener" data-reveal>
+      <div class="console__top">
+        <div class="console__tag">
+          <p class="console__stamp fig">VAN · TESTED BEFORE IT LEAVES THE PLANT · LAB 336</p>
+          <!-- Tahir confirmed on 24 Nov 2026 that VU25186 is the correct example. -->
+          <p class="console__batch fig">BATCH No. VU25186</p>
+        </div>
+        <p class="note console__tagnote">The batch number above is an example of the format printed on a bag.</p>
+      </div>
+      <label class="console__label" for="batchInput">Batch number, printed on the bag</label>
+      <div class="console__row">
+        <input class="console__input fig" id="batchInput" type="text" autocomplete="off" spellcheck="false" autocapitalize="characters" inputmode="text" aria-describedby="batchHelp">
+        <button class="btn btn--amber magnetic" type="submit" data-cursor="Verify"><span>Open the Verify page</span></button>
+      </div>
+      <p class="note" id="batchHelp">The Verify page opens in a new tab. Type the batch number there to get the lab report for that batch.</p>
+      <p class="console__status" id="batchStatus" role="status" aria-live="polite"></p>
+      <ul class="console__facts">
+        <li>The lab report gives the batch’s physical status, moisture, particle size, pH and chemical analysis.</li>
+        <li>For each test, the lab report shows the specification, the result and the test method.</li>
+        <li>Every copy shows the batch number and the date it was downloaded.</li>
+      </ul>
+    </form>
+
+    <div class="lab__side">
+      <div class="lab__card" data-reveal>
+        <h3 class="lab__h fig">Accreditation</h3>
+        <p>The Pakistan National Accreditation Council (PNAC) has accredited our quality control laboratory to ISO/IEC 17025:2017, under accreditation number LAB 336. The accreditation covers 8 of the laboratory’s 21 fertiliser tests.</p>
+      </div>
+      <div class="lab__card" data-reveal>
+        <h3 class="lab__h fig">Blind testing</h3>
+        <svg class="lab__chain" viewBox="0 0 420 96" role="img" aria-label="A sample goes to Sample Reception, receives a code, and then goes to the laboratory.">
+          <g fill="none" stroke="#E7B866" stroke-width="1.4">
+            <rect x="2" y="24" width="120" height="48" rx="10"/><rect x="150" y="24" width="120" height="48" rx="10" stroke-dasharray="5 4"/><rect x="298" y="24" width="120" height="48" rx="10"/>
+            <path d="M124 48 H146 M272 48 H294"/><path d="M140 43 l6 5 l-6 5 M288 43 l6 5 l-6 5"/>
+          </g>
+          <g fill="#F7F4EE" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">
+            <text x="62" y="44">Sample</text><text x="62" y="60">Reception</text>
+            <text x="210" y="52">Code</text>
+            <text x="358" y="52">Laboratory</text>
+          </g>
+        </svg>
+        <p>To have one of our products tested blind, send 500 g of it to Sample Reception and book a normal paid test. Sample Reception works from a building separate from our laboratory. The sample is given a code in place of the product name. The analysts therefore do not know that the sample is our product.</p>
+        <a class="link-arrow" href="https://www.van.com.pk/lab/index.html" target="_blank" rel="noopener" data-cursor="Open">How blind testing works</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Order -->
+<section class="band order" id="order" aria-labelledby="orderTitle">
+  <div class="band__head">
+    <div>
+      <span class="eyebrow">04 · Order direct from the plant</span>
+      <h2 class="h-lg" id="orderTitle" data-reveal>Order direct from the plant</h2>
+    </div>
+    <p class="lead" data-reveal>Tell us the product, the pack size, the quantity and your district. We reply with price, availability and delivery.</p>
+  </div>
+
+  <ol class="order__steps">
+    <li data-reveal><span class="fig order__n">1</span><span>Pick the product and the pack size</span></li>
+    <li data-reveal><span class="fig order__n">2</span><span>Send the quantity and your district on WhatsApp</span></li>
+    <li data-reveal><span class="fig order__n">3</span><span>We confirm price, availability and delivery</span></li>
+  </ol>
+
+  <div class="order__grid">
+    <form class="order__form" id="orderForm" data-reveal>
+      <div class="field">
+        <label for="oProduct">Product</label>
+        <select id="oProduct"></select>
+      </div>
+      <div class="field">
+        <label for="oPack">Pack size</label>
+        <select id="oPack"></select>
+      </div>
+      <div class="field">
+        <label for="oQty">Quantity, in packs</label>
+        <input id="oQty" type="number" min="1" step="1" inputmode="numeric" value="1">
+      </div>
+      <div class="field">
+        <label for="oDistrict">Your district</label>
+        <input id="oDistrict" type="text" autocomplete="address-level2" placeholder="For example, Sahiwal">
+      </div>
+      <div class="order__preview">
+        <span class="fig order__previewk">Your WhatsApp message</span>
+        <p id="oPreview" aria-live="polite">Hello VAN. I would like to order from the plant.</p>
+      </div>
+      <a class="btn magnetic order__wa" id="oSend" href="https://wa.me/923005003041?text=Hello%20VAN.%20I%20would%20like%20to%20order%20from%20the%20plant." target="_blank" rel="noopener" data-cursor="WhatsApp"><span>Order on WhatsApp</span></a>
+      <p class="note">WhatsApp opens with this message. You send the message yourself.</p>
+    </form>
+
+    <div class="order__side">
+      <div class="order__card" data-reveal>
+        <h3 class="order__h fig">Phone</h3>
+        <a class="order__big" href="tel:+924235762215">+92 42 35762215</a>
+      </div>
+      <div class="order__card" data-reveal>
+        <h3 class="order__h fig">Email</h3>
+        <a class="order__big" href="mailto:info@van.com.pk">info@van.com.pk</a>
+      </div>
+      <div class="order__card" data-reveal>
+        <h3 class="order__h fig">Dealers</h3>
+        <p>You can buy our products at 9 places in 7 towns. The 9 places are 7 independent dealers and 2 shops that we own.</p>
+        <a class="link-arrow" href="https://www.van.com.pk/where-to-buy.html" target="_blank" rel="noopener" data-cursor="Open">Where to buy</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Technical drawer -->
+<div class="drawer" id="drawer" hidden>
+  <div class="drawer__veil" id="drawerVeil"></div>
+  <aside class="drawer__panel" id="drawerPanel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" tabindex="-1" data-lenis-prevent>
+    <div class="drawer__bar">
+      <span class="eyebrow" id="drawerCat">Category</span>
+      <button type="button" class="drawer__close" id="drawerClose" aria-label="Close the technical details"><span aria-hidden="true">×</span><span class="drawer__closet">Close</span></button>
+    </div>
+    <div class="drawer__body" id="drawerBody"></div>
+  </aside>
+</div>
+
+<footer class="footer">
+  <div class="footer__curve" aria-hidden="true"></div>
+  <span class="eyebrow eyebrow--light">28 crop plans · per acre · stage by stage · free</span>
+  <h2 class="footer__title">Find the plan for your crop</h2>
+  <p class="footer__lead">We publish 28 crop plans. Each plan gives the amount to apply per acre at every crop stage.</p>
+  <a class="btn btn--amber magnetic" href="https://www.van.com.pk/crops/index.html" data-cursor="Open"><span>Open the crop plans</span></a>
+  <span class="rule rule--light" data-reveal></span>
+  <div class="footer__grid">
+    <div>
+      <h3 class="footer__h">Head office</h3>
+      <p>605 Al-Hafeez Heights, Gulberg III, Lahore 54660</p>
+      <p><a href="tel:+924235762215">+92 42 35762215</a></p>
+    </div>
+    <div>
+      <h3 class="footer__h">Plant</h3>
+      <p>49-Km Multan Road, Phool Nagar Bypass, Lahore</p>
+    </div>
+    <div>
+      <h3 class="footer__h">Write to us</h3>
+      <p><a href="mailto:info@van.com.pk">info@van.com.pk</a></p>
+      <p><a href="mailto:partner@van.com.pk">partner@van.com.pk</a></p>
+    </div>
+    <div>
+      <h3 class="footer__h">Pages</h3>
+      <p><a href="index.html">Home</a></p>
+      <p><a href="products.html">Products</a></p>
+      <p><a href="tools.html">Vitalytics</a></p>
+      <p><a href="research.html">Research</a></p>
+      <p><a href="partner/index.html">Your brand</a></p>
+      <p><a href="about.html">About</a></p>
+    </div>
+  </div>
+  <p class="footer__legal">© 2026 Vital Agri Nutrients (Pvt) Ltd</p>
+</footer>
+
+<div class="calm-note" id="calmNote" hidden><span>Motion is reduced on this device.</span><button type="button">Play full motion</button></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/site.js?v=10"></script>
+<script src="data/brands.js?v=9"></script>
+<script src="js/products.js?v=9"></script>
+</body>
+</html>

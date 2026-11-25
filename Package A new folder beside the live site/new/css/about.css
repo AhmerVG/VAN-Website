@@ -1,0 +1,186 @@
+/* VAN flagship site, About page. 22 Nov 2026. Builds on css/site.css and changes none of it. */
+
+.ab-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.band--deep :focus-visible, .footer :focus-visible { outline-color: var(--amber-lit); }
+.band > .rule { margin-bottom: clamp(28px, 5vh, 56px); }
+
+/* ---------- 1. Hero ---------- */
+.ab-hero { padding: clamp(104px, 14vh, 150px) 0 clamp(56px, 9vh, 104px); }
+.ab-hero__text { padding: 0 var(--gutter); display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: clamp(28px, 5vw, 88px); align-items: end; }
+.ab-hero__title { max-width: 12ch; margin: 20px 0 6px; font-size: clamp(46px, 6.6vw, 112px); }
+.ab-hero__urdu { font-size: clamp(22px, 2.4vw, 34px); color: var(--emerald); text-align: left; unicode-bidi: isolate; }
+.ab-hero__cols { display: grid; gap: 18px; padding-top: 22px; border-top: 1px solid var(--hair); margin-bottom: 14px; }
+.ab-hero__cols .lead { max-width: 54ch; font-size: 17px; }
+.ab-hero__plate { margin: clamp(28px, 4.5vh, 52px) 12px 0; border-radius: 20px; height: clamp(420px, 82vh, 860px); background: #B7AE86; }
+.hero-art { display: block; width: 100%; height: 100%; }
+.ab-hero__badge { position: absolute; left: 16px; top: 16px; z-index: 2; font-size: 12px; letter-spacing: 0.02em; padding: 9px 14px; border-radius: 999px; background: var(--canvas); color: var(--ink); border: 1px solid var(--hair); max-width: calc(100% - 32px); }
+.ab-hero__plate .plate__cap { z-index: 2; max-width: calc(100% - 24px); border-radius: 14px; line-height: 1.45; background: rgba(23, 26, 22, 0.78); }
+
+/* Ambient motion of the illustration. Full mode only, and only while the frame is on screen. */
+@keyframes heroGlint { 0%, 100% { transform: translateX(0); opacity: 0.35; } 50% { transform: translateX(14px); opacity: 1; } }
+@keyframes heroMist { 0%, 100% { transform: translateX(-60px); } 50% { transform: translateX(60px); } }
+@keyframes heroGlow { 0%, 100% { opacity: 0.82; } 50% { opacity: 1; } }
+.full .is-live .hero-glint { animation: heroGlint 7s ease-in-out infinite; }
+.full .is-live .hero-mist { animation: heroMist 26s ease-in-out infinite; }
+.full .is-live .hero-glow { animation: heroGlow 9s ease-in-out infinite; }
+
+/* ---------- 2. Ledger ---------- */
+.bento { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1px; background: var(--hair); border: 1px solid var(--hair); border-radius: 20px; overflow: hidden; }
+.bento__card { background: var(--canvas); padding: clamp(22px, 3vw, 44px); display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.motion .bento__card[data-reveal] { transform: none; }
+.bento__card--a { grid-column: span 7; }
+.bento__card--b { grid-column: span 5; }
+.bento__card--c { grid-column: span 5; }
+.bento__card--d { grid-column: span 7; background: var(--clay); }
+.bento__label { margin: 0; }
+.bento__fig { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; line-height: 1; }
+.bento__num { font-size: clamp(52px, 7.4vw, 124px); font-weight: 400; color: var(--ink); line-height: 0.95; }
+.bento__card--b .bento__num, .bento__card--c .bento__num, .bento__card--d .bento__num { font-size: clamp(48px, 5.4vw, 88px); }
+.bento__pre, .bento__unit { font-family: var(--serif); font-size: clamp(22px, 2.2vw, 32px); color: var(--ink-soft); }
+.bento__pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.bento__pair .bento__fig { flex-direction: column; gap: 8px; }
+.bento__pair .bento__unit { font-family: var(--sans); font-size: 14px; }
+.bento__body { color: var(--ink-soft); max-width: 58ch; }
+.bento__body .fig { color: var(--ink); font-weight: 500; }
+.bento__more { margin-top: 6px; }
+.bento__more a { display: inline-block; padding: 10px 0 3px; }
+.bento__art { margin-top: auto; padding-top: 18px; }
+.bento__art svg { display: block; width: 100%; height: auto; }
+.bento__art .note { margin-top: 12px; max-width: 60ch; }
+.heaps { max-width: 620px; }
+.tags { max-width: 440px; }
+.bags { max-width: 380px; }
+.bento__split { display: grid; grid-template-columns: minmax(0, 1fr) clamp(150px, 16vw, 210px); gap: clamp(20px, 3vw, 44px); align-items: start; }
+.bento__split .bento__body + .bento__body { margin-top: 12px; }
+.bento__art--agenda { margin-top: 0; padding-top: 0; }
+
+/* ---------- 3. Chronology ---------- */
+.chrono { overflow: hidden; }
+.chrono__track { display: grid; gap: 0; max-width: 860px; counter-reset: none; }
+.chrono__item { position: relative; display: grid; grid-template-columns: 96px minmax(0, 1fr); column-gap: clamp(18px, 3vw, 36px); padding: 26px 0; border-top: 1px solid var(--hair); }
+.chrono__glyph { grid-row: 1 / span 3; width: 96px; height: 96px; }
+.chrono__year { font-size: clamp(30px, 3.4vw, 46px); line-height: 1; color: var(--amber-deep); grid-column: 2; }
+.chrono__title { font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 2.2vw, 30px); line-height: 1.1; margin: 10px 0 8px; grid-column: 2; }
+.chrono__body { color: var(--ink-soft); font-size: 16px; max-width: 54ch; grid-column: 2; }
+.chrono__item--source .chrono__year { font-size: clamp(22px, 2.2vw, 28px); }
+.chrono__bar { display: none; }
+
+/* Horizontal layout. The script adds .is-horizontal when it pins the section on a wide screen. */
+.chrono.is-horizontal { height: 100vh; padding-top: 0; padding-bottom: 0; }
+.chrono.is-horizontal .chrono__pin { height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 92px 0 28px; }
+.chrono.is-horizontal .chrono__head { margin-bottom: clamp(18px, 3.5vh, 40px); }
+.chrono.is-horizontal .chrono__head .h-lg { font-size: clamp(38px, 4.4vw, 68px); }
+.chrono.is-horizontal .chrono__viewport { margin: 0 calc(var(--gutter) * -1); }
+.chrono.is-horizontal .chrono__track { display: flex; max-width: none; width: max-content; padding: 0 var(--gutter); will-change: transform; }
+.chrono.is-horizontal .chrono__item { display: block; flex: 0 0 clamp(300px, 27vw, 400px); padding: 22px clamp(20px, 2.2vw, 36px) 8px 0; margin-right: clamp(20px, 2.2vw, 36px); border-top: 1px solid var(--ink); }
+.chrono.is-horizontal .chrono__item::before { content: ""; position: absolute; left: 0; top: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--amber-deep); }
+.chrono.is-horizontal .chrono__glyph { width: clamp(72px, 11vh, 110px); height: clamp(72px, 11vh, 110px); margin-bottom: 16px; }
+.chrono.is-horizontal .chrono__item--source { flex-basis: clamp(340px, 31vw, 460px); }
+.chrono.is-horizontal.is-static, .chrono.is-horizontal.is-static .chrono__pin { height: auto; }
+.chrono.is-horizontal .chrono__bar { display: block; height: 3px; background: var(--hair); margin-top: clamp(16px, 3vh, 32px); border-radius: 3px; overflow: hidden; }
+.chrono__fill { display: block; height: 100%; background: var(--amber-deep); transform: scaleX(0); transform-origin: left center; }
+
+/* ---------- 4. LAB 336 and blind testing ---------- */
+.blind { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: 24px clamp(28px, 5vw, 80px); align-items: start; }
+.blind__title { grid-column: 1 / -1; }
+.blind__tabs { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 10px; }
+.blind__tab, .blind__step { min-height: 48px; padding: 0 22px; border-radius: 999px; border: 1px solid var(--hair-light); background: transparent; color: var(--on-deep); font-size: 15.5px; font-weight: 600; cursor: pointer; transition: background-color 0.3s, color 0.3s, border-color 0.3s; }
+.blind__tab .fig { margin-right: 8px; color: var(--amber-lit); }
+.blind__tab:hover, .blind__step:hover { border-color: var(--on-deep); }
+.blind__tab[aria-selected="true"] { background: var(--amber-lit); color: var(--deep); border-color: var(--amber-lit); }
+.blind__tab[aria-selected="true"] .fig { color: var(--deep); }
+.blind__step[disabled] { opacity: 0.45; cursor: default; }
+.blind__figure { grid-column: 1; border: 1px solid var(--hair-light); border-radius: 20px; padding: clamp(14px, 2vw, 28px); }
+.blind__art { display: block; width: 100%; height: auto; }
+.blind__figure .note { margin-top: 12px; }
+.blind__panels { grid-column: 2; display: grid; gap: 28px; }
+.blind__panel { border-top: 1px solid var(--hair-light); padding-top: 20px; }
+.blind__panel[hidden] { display: none; }
+.blind__panel .h-md { margin: 10px 0 12px; }
+.blind__panel p:last-child { color: var(--on-deep-soft); max-width: 52ch; }
+.blind__nav { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.blind:not(.is-stepped) .blind__nav, .blind:not(.is-stepped) .blind__tabs { display: none; }
+/* The stepped diagram. Without the script, every zone is lit and the sample stays at stage 1. */
+.blind__zone, .blind__name, .blind__code { transition: opacity 0.5s var(--ease); }
+.blind__sample { transition: transform 0.9s var(--ease); }
+.blind__code { opacity: 0; }
+.blind__art[data-stage] .blind__zone { opacity: 0.32; }
+.blind__art[data-stage="1"] .blind__zone[data-zone="1"], .blind__art[data-stage="2"] .blind__zone[data-zone="2"], .blind__art[data-stage="3"] .blind__zone[data-zone="3"] { opacity: 1; }
+.blind__art[data-stage="2"] .blind__sample { transform: translateX(232px); }
+.blind__art[data-stage="3"] .blind__sample { transform: translateX(612px); }
+.blind__art[data-stage="2"] .blind__name, .blind__art[data-stage="3"] .blind__name { opacity: 0; }
+.blind__art[data-stage="2"] .blind__code, .blind__art[data-stage="3"] .blind__code { opacity: 1; }
+
+/* The batch card, drawn like the stamp on a bag */
+.batch { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(28px, 5vw, 80px); align-items: center; margin-top: clamp(56px, 10vh, 112px); padding-top: clamp(40px, 7vh, 72px); border-top: 1px solid var(--hair-light); }
+.batch__text p { color: var(--on-deep-soft); max-width: 50ch; margin-top: 16px; }
+.batch__card { position: relative; color: var(--ink); border-radius: 20px; padding: clamp(24px, 3.4vw, 44px); background-color: var(--lime);
+  background-image: repeating-linear-gradient(0deg, rgba(138, 107, 74, 0.13) 0 1px, transparent 1px 5px), repeating-linear-gradient(90deg, rgba(138, 107, 74, 0.1) 0 1px, transparent 1px 5px);
+  box-shadow: inset 0 0 0 1px rgba(23, 26, 22, 0.25), inset 0 0 0 9px var(--lime), inset 0 0 0 10px rgba(23, 26, 22, 0.35); }
+.batch__card::before { content: ""; position: absolute; left: 22px; right: 22px; top: 20px; border-top: 2px dashed rgba(23, 26, 22, 0.5); }
+.batch__seal { position: absolute; right: clamp(18px, 3vw, 40px); top: clamp(34px, 4vw, 52px); width: clamp(84px, 10vw, 128px); height: auto; transform: rotate(-9deg); opacity: 0.9; }
+.batch__line { font-size: 12.5px; letter-spacing: 0.08em; color: var(--emerald); font-weight: 500; margin: 22px 0 16px; padding-right: 130px; }
+.batch__stamp { margin-right: clamp(96px, 11vw, 140px); font-size: clamp(20px, 2.4vw, 32px); letter-spacing: 0.03em; color: var(--ink); padding: 14px 18px; border: 1.5px solid var(--ink); border-radius: 10px; background: var(--canvas); }
+.batch__stamp span { display: block; font-size: 11.5px; letter-spacing: 0.12em; color: var(--amber-deep); margin-bottom: 4px; }
+.band--deep .batch__card :focus-visible { outline-color: var(--amber-deep); }
+.batch__scope { padding-top: 12px; border-top: 1px dashed rgba(23, 26, 22, 0.4); }
+.bento__note { margin-top: 16px; }
+.people__brief { grid-column: 1 / -1; display: grid; gap: 8px; margin-top: 8px; color: var(--ink-soft); font-size: 15px; max-width: 64ch; }
+.batch__help { font-size: 14px; color: var(--ink-soft); margin-top: 10px; max-width: 52ch; }
+.batch__btn { margin-top: 18px; }
+
+/* ---------- 5. Locations ---------- */
+.places { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr); gap: clamp(20px, 3vw, 48px); align-items: stretch; }
+.places__map { border-radius: 20px; background: var(--lime); border: 1px solid var(--hair); display: flex; flex-direction: column; }
+.places__map svg { display: block; width: 100%; flex: 1 1 auto; min-height: 300px; }
+.places__cap { padding: 14px 18px 16px; background: var(--canvas); border-top: 1px solid var(--hair); }
+.places__cards { display: grid; gap: 0; align-content: start; border-top: 1px solid var(--hair); }
+.place { padding: 24px 0; border-bottom: 1px solid var(--hair); }
+.place__addr { font-style: normal; font-family: var(--serif); font-size: clamp(24px, 2.3vw, 32px); line-height: 1.15; margin-top: 12px; }
+.place__links { margin-top: 8px; }
+.place__links li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
+.place__k { font-size: 13px; color: var(--ink-soft); min-width: 78px; }
+.place__links a { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--mono); font-size: 16px; letter-spacing: -0.02em; text-decoration: none; border-bottom: 1px solid var(--hair); }
+.place__links a:hover { border-color: var(--ink); }
+
+.people { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(28px, 5vw, 80px); margin-top: clamp(56px, 9vh, 104px); }
+.people__list { margin-top: 18px; border-top: 1px solid var(--hair); }
+.people__list li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2px 18px; padding: 14px 0; border-bottom: 1px solid var(--hair); align-items: baseline; }
+.people__name { font-weight: 600; }
+.people__role { color: var(--ink-soft); font-size: 15px; }
+.people__list a { grid-column: 1 / -1; display: inline-flex; align-items: center; min-height: 44px; justify-self: start; font-family: var(--mono); font-size: 14.5px; letter-spacing: -0.02em; color: var(--emerald); }
+.people__note { margin-top: 14px; }
+
+/* Footer details for this page */
+.footer .btn { min-height: 54px; }
+.footer__grid a { display: inline-block; padding: 9px 0; }
+.footer__grid p { margin-bottom: 0; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1000px) {
+  .ab-hero__text { grid-template-columns: 1fr; }
+  .bento__card--a, .bento__card--b, .bento__card--c, .bento__card--d { grid-column: 1 / -1; }
+  .blind { grid-template-columns: 1fr; }
+  .blind__figure, .blind__panels { grid-column: 1; }
+  .batch, .places, .people { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .ab-hero { padding-top: 104px; }
+  .ab-hero__plate { margin-left: 8px; margin-right: 8px; height: clamp(380px, 68vh, 560px); }
+  .ab-hero__badge { font-size: 10.5px; padding: 8px 11px; left: 10px; top: 10px; max-width: calc(100% - 20px); }
+  .bento__split { grid-template-columns: 1fr; }
+  .bento__art--agenda svg { max-width: 130px; }
+  .bento__pair { grid-template-columns: 1fr; }
+  .chrono__item { grid-template-columns: 64px minmax(0, 1fr); }
+  .chrono__glyph { width: 64px; height: 64px; }
+  .blind__tab { flex: 1 1 100%; text-align: left; }
+  .blind__step { flex: 1 1 calc(50% - 7px); padding: 0 12px; }
+  .blind__figure { padding: 10px; border-radius: 14px; }
+  .batch__seal { width: 76px; top: 30px; right: 16px; }
+  .batch__line { padding-right: 84px; }
+  .batch__stamp { font-size: 20px; }
+  .batch__btn { width: 100%; }
+  .places__map svg { height: 340px; flex: none; }
+  .map__pill { display: none; }
+  .people__list li { grid-template-columns: 1fr; }
+}
