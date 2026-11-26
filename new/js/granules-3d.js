@@ -5,7 +5,8 @@
    If WebGL is not available, the page keeps the drawn SVG granules. */
 (function () {
   'use strict';
-  var fig = document.getElementById('heroFig'), canvas = document.getElementById('granCanvas');
+  // Products: the figure #heroFig with 3 granules and name pins. Research: a figure marked data-granules3d="urea,phos" with numbered part pins.
+  var fig = document.querySelector('[data-granules3d]') || document.getElementById('heroFig'), canvas = document.getElementById('granCanvas');
   if (!fig || !canvas || !window.THREE) return;
   var calm = document.documentElement.classList.contains('calm');
   var renderer;
@@ -72,6 +73,10 @@
     GRAN[2].coatTex = t;
   })();
 
+  var pick = (fig.getAttribute('data-granules3d') || 'urea,phos,pot').split(',');
+  var LAYOUT = pick.length === 2 ? { urea: [-1.75, 0.75, 1.55], phos: [1.85, -0.75, 1.4] } : null;
+  GRAN = GRAN.filter(function (G) { return pick.indexOf(G.id) > -1; });
+  if (LAYOUT) GRAN.forEach(function (G) { var L = LAYOUT[G.id]; G.x = L[0]; G.y = L[1]; G.r = L[2]; G.coat = L[2] * 0.14; });
   var groups = [], cut = Math.PI * 0.55, FACE = Math.PI / 2 - cut / 2 - 0.45; // the wedge cut out of each granule, so the core shows
   GRAN.forEach(function (G) {
     var grp = new THREE.Group(); grp.position.set(G.x, G.y, 0);
@@ -104,14 +109,14 @@
   });
 
   // Pins: HTML buttons that follow a point on each granule.
-  var pins = Array.prototype.slice.call(fig.querySelectorAll('[data-pin]'));
+  var pins = Array.prototype.slice.call(fig.querySelectorAll('[data-pin], [data-part]'));
   var anchor = new THREE.Vector3();
   function size() {
     var w = canvas.clientWidth, h = canvas.clientHeight;
     renderer.setSize(w, h, false); cam.aspect = w / h;
     // Fit the 3 granules: half the row is about 5.2 units wide and 2.6 units high.
     var v = THREE.MathUtils.degToRad(cam.fov) / 2, hz = Math.atan(Math.tan(v) * cam.aspect);
-    cam.position.z = Math.max(4.75 / Math.tan(hz), 2.4 / Math.tan(v)); cam.updateProjectionMatrix();
+    cam.position.z = pick.length === 2 ? Math.max(3.7 / Math.tan(hz), 2.6 / Math.tan(v)) : Math.max(4.75 / Math.tan(hz), 2.4 / Math.tan(v)); cam.updateProjectionMatrix();
   }
   size(); window.addEventListener('resize', size);
 
@@ -137,8 +142,12 @@
     renderer.render(scene, cam);
     var w = canvas.clientWidth, h = canvas.clientHeight;
     pins.forEach(function (p, i) {
-      var o = groups[i]; if (!o) return;
-      anchor.set(o.G.x + o.G.r * 0.55, o.G.y + o.G.r * 0.85, 0).project(cam);
+      var part = p.getAttribute('data-part'), o, k = i;
+      if (part) { k = +part.split(':')[0]; o = groups[k]; if (!o) return;
+        if (part.split(':')[1] === 'core') anchor.set(o.G.x - o.G.r * 0.1, o.G.y - o.G.r * 0.05, o.G.r * 0.6);
+        else anchor.set(o.G.x + o.G.r * 0.72, o.G.y + o.G.r * 0.72, 0);
+        anchor.project(cam);
+      } else { o = groups[i]; if (!o) return; anchor.set(o.G.x + o.G.r * 0.55, o.G.y + o.G.r * 0.85, 0).project(cam); }
       // Keep the whole pin inside the drawing, so its name is never cut off at the edge.
       var px2 = Math.max(4, Math.min((anchor.x * 0.5 + 0.5) * w, w - p.offsetWidth - 4));
       p.style.transform = 'translate(' + px2.toFixed(1) + 'px,' + ((-anchor.y * 0.5 + 0.5) * h).toFixed(1) + 'px)';

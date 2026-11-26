@@ -272,3 +272,24 @@
   .tl__svg text:not(.ser) { font-size: 20px; }
   .tl__svg .tl-wide { display: none; }
 }
+
+/* ---- 26 Nov 2026: Research round ---- */
+/* Dark hero with Figure 1 in 3D (js/granules-3d.js); the SVG stays as the fallback. */
+.r-hero { background: radial-gradient(60% 70% at 72% 45%, #22302A 0%, #141915 62%); color: var(--on-deep); }
+.r-hero .r-hero__title { color: var(--on-deep); }
+.r-hero .lead, .r-hero .note, .r-hero .r-cap, .r-hero .r-key { color: var(--on-deep-soft); }
+.r-hero .r-toc a { color: var(--on-deep); border-color: var(--hair-light); }
+.r-hero .r-toc li { border-color: var(--hair-light); }
+.r-hero .r-cap__n { color: var(--amber-lit); }
+.r-hero .r-key__n { background: var(--amber-lit); color: var(--deep); }
+.r-hero__fig { position: relative; }
+.r-hero__canvas { display: none; width: 100%; height: clamp(380px, 52vh, 560px); }
+.r-hero__fig.is-3d .r-hero__canvas { display: block; }
+.r-hero__fig.is-3d .r-hero__svg { display: none; }
+.rpin { display: none; position: absolute; left: 0; top: 0; z-index: 3; width: 34px; height: 34px; margin: -17px 0 0 -17px; border-radius: 50%; place-items: center; background: #F7F4EE; color: var(--deep); font-weight: 700; font-size: 15px; box-shadow: 0 0 0 4px rgba(231, 184, 102, 0.45); opacity: 0; transition: opacity 0.5s; }
+.r-hero__fig.is-3d .rpin { display: grid; }
+.rpin.is-placed { opacity: 1; }
+section[id] { scroll-margin-top: 110px; }
+/* The year numbers in the timeline fit their column and are never cut off. */
+.tl--live .tl__year { overflow: visible; white-space: nowrap; font-size: clamp(48px, 6.2vw, 104px); }
+.tl--live .tl__year.is-long { font-size: clamp(28px, 3.2vw, 50px); white-space: normal; }

@@ -12,8 +12,8 @@ document.documentElement.className=(c?c==='calm':os)?'calm':'full';})();</script
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Public+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=13">
-<link rel="stylesheet" href="css/research.css?v=3">
+<link rel="stylesheet" href="css/site.css?v=14">
+<link rel="stylesheet" href="css/research.css?v=5">
 </head>
 <body>
 <a class="skip" href="#main">Skip to the main content</a>
@@ -33,7 +33,7 @@ document.documentElement.className=(c?c==='calm':os)?'calm':'full';})();</script
 <!-- Opening -->
 <section class="r-hero" id="top">
   <div class="r-hero__text">
-    <span class="eyebrow">VAN research · 2009 to 2026</span>
+    <span class="eyebrow eyebrow--light">VAN research · 2009 to 2026</span>
     <h1 class="h-xl r-hero__title" id="heroTitle">Research, product philosophy and the circular economy</h1>
     <p class="lead r-hero__lead" data-reveal>We base every formulation on 17 years of trial results and on the 770,160 samples of the Punjab soil testing programme, tested in about 2016 to 2018.</p>
     <p class="note r-hero__note" data-reveal>This page has 4 parts.</p>
@@ -46,7 +46,12 @@ document.documentElement.className=(c?c==='calm':os)?'calm':'full';})();</script
       </ol>
     </nav>
   </div>
-  <figure class="r-hero__fig" data-reveal>
+  <figure class="r-hero__fig" data-reveal data-granules3d="urea,phos">
+    <canvas class="r-hero__canvas" id="granCanvas" aria-hidden="true"></canvas>
+    <span class="rpin" data-part="0:core" aria-hidden="true">1</span>
+    <span class="rpin" data-part="0:coat" aria-hidden="true">2</span>
+    <span class="rpin" data-part="1:core" aria-hidden="true">3</span>
+    <span class="rpin" data-part="1:coat" aria-hidden="true">4</span>
     <svg class="r-hero__svg" id="heroFig" viewBox="0 0 560 520" role="img" aria-labelledby="heroFigCap">
       <defs>
         <pattern id="spSulfur" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="2" cy="3" r="1.2" fill="#C29A1E"/><circle cx="6.5" cy="7" r="1" fill="#F4DC7E"/></pattern>
@@ -90,7 +95,7 @@ document.documentElement.className=(c?c==='calm':os)?'calm':'full';})();</script
     </svg>
     <figcaption class="r-cap" id="heroFigCap">
       <span class="r-cap__n">Figure 1</span>
-      <span>The drawing shows 2 granules, each cut open on its right side. The upper granule is Vital Urea, our sulfur-coated urea. The numbers 1 and 2 mark its parts. The lower granule is Green Phosphate, our phosphate fertiliser with a humic coating. The numbers 3 and 4 mark its parts.</span>
+      <span>The drawing shows 2 granules, each cut open. The upper granule is Vital Urea, our sulfur-coated urea. The numbers 1 and 2 mark its parts. The lower granule is Green Phosphate, our phosphate fertiliser with a humic coating. The numbers 3 and 4 mark its parts.</span>
       <ol class="r-key">
         <li><span class="r-key__n fig">1</span>Urea</li>
         <li><span class="r-key__n fig">2</span>Coating of fine elemental sulfur, held on by a binder</li>
@@ -510,8 +515,10 @@ document.documentElement.className=(c?c==='calm':os)?'calm':'full';})();</script
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="js/site.js?v=10"></script>
 <script src="data/punjab-map.js?v=1"></script>
-<script src="js/research.js?v=3"></script>
+<script src="js/research.js?v=4"></script>
+<script src="js/granules-3d.js?v=5"></script>
 </body>
 </html>

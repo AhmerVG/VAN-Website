@@ -464,7 +464,7 @@
         onUpdate: function () { setProgress(proxy.p); },
         scrollTrigger: {
           trigger: pin, start: 'top top',
-          end: function () { return '+=' + Math.round(window.innerHeight * 0.5 * (n - 1)); },
+          end: function () { return '+=' + Math.round(window.innerHeight * 0.32 * (n - 1)); },
           pin: true, scrub: calm ? true : 0.5,
           refreshPriority: 50, invalidateOnRefresh: true, anticipatePin: 1
         }
@@ -543,8 +543,8 @@
     function build() {
       var tall = mq.matches;
       L = tall
-        ? { W: 600, H: 820, surf: 150, sx: [150, 450], ny: 320, py: 600, fs: 21, rN: 34, rP: 31, Z: 96, spread: 92, seedDx: 92, flecks: 110 }
-        : { W: 1200, H: 600, surf: 104, sx: [300, 900], ny: 250, py: 415, fs: 17, rN: 34, rP: 31, Z: 104, spread: 115, seedDx: 124, flecks: 170 };
+        ? { W: 600, H: 820, surf: 150, sx: [150, 450], ny: 320, py: 600, fs: 24, rN: 34, rP: 31, Z: 96, spread: 92, seedDx: 92, flecks: 110 }
+        : { W: 1200, H: 600, surf: 104, sx: [300, 900], ny: 250, py: 415, fs: 22, rN: 34, rP: 31, Z: 104, spread: 115, seedDx: 124, flecks: 170 };
       var W = L.W, H = L.H, r = rng(7), i, k;
       while (svg.firstChild) svg.removeChild(svg.firstChild);
       svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
