@@ -263,6 +263,11 @@
   }
 
   /* ---------- 3. Catalogue ---------- */
+  // Nutrient family colours from the brand master (N, P, K, NPK, micronutrients, biologicals). The brand master gives none for
+  // secondary nutrients; ochre is used for them until Tahir sets one.
+  var FAM = { N: '#2F7D3F', P: '#00598E', K: '#0F7A72', NPK: '#D2751A', MICRO: '#6E4A8E', SEC: '#A8791C', BIO: '#7A5230' };
+  var METHODS = [['broadcast', 'Broadcast'], ['fertigation', 'Fertigation'], ['foliar', 'Foliar']];
+  function methodsOf(b) { return b.filters; }
   var MARK = { N: ['N', '#E6BE3C', '#FFFFFF'], P: ['P', '#1F1B18', '#7A5638'], K: ['K', '#8D979C', '#EFE2BF'], NPK: ['NPK', '#2D5A3C', '#EFE2BF'], MICRO: ['Zn', '#855610', '#EDE6D3'], SEC: ['S', '#C88A2E', '#F7EDCF'], BIO: ['OM', '#3A2A1A', '#8A6B4A'] };
   function markSvg(cat, cls) {
     var m = MARK[cat] || MARK.NPK;
@@ -282,8 +287,10 @@
   var drawer = $('#drawer'), panel = $('#drawerPanel'), dBody = $('#drawerBody');
   var opener = null, closeTimer = 0;
 
+  function byMethod(b, m) { return m === 'all' || methodsOf(b).indexOf(m) > -1; }
+  function byCat(b, c) { return c === 'all' || b.cat === c; }
   function matches(b) {
-    return (filter.method === 'all' || b.filters.indexOf(filter.method) > -1) && (filter.cat === 'all' || b.cat === filter.cat);
+    return byMethod(b, filter.method) && byCat(b, filter.cat);
   }
   function applyFilter() {
     var shown = 0;
@@ -295,8 +302,25 @@
     });
     $('#catStatus').textContent = 'Showing ' + shown + ' of ' + BRANDS.length + ' brands.';
     $('#catEmpty').hidden = shown > 0;
-    $$('#methodChips .chip').forEach(function (c) { var on = c.getAttribute('data-method') === filter.method; c.classList.toggle('is-on', on); c.setAttribute('aria-pressed', on ? 'true' : 'false'); });
-    $$('#catChips .chip').forEach(function (c) { var on = c.getAttribute('data-cat') === filter.cat; c.classList.toggle('is-on', on); c.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+    $$('#methodChips .chip').forEach(function (c) {
+      var m = c.getAttribute('data-method'), on = m === filter.method;
+      var n = BRANDS.filter(function (b) { return byMethod(b, m) && byCat(b, filter.cat); }).length;
+      c.querySelector('.fig').textContent = n; c.disabled = !on && n === 0 && m !== 'all';
+      c.classList.toggle('is-on', on); c.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    $$('#catChips .chip').forEach(function (c) {
+      var k = c.getAttribute('data-cat'), on = k === filter.cat;
+      var n = BRANDS.filter(function (b) { return byCat(b, k) && byMethod(b, filter.method); }).length;
+      var f = c.querySelector('.fig'); if (f) f.textContent = n; c.disabled = !on && n === 0 && k !== 'all';
+      c.classList.toggle('is-on', on); c.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    // The address keeps the filters, so a filtered list can be shared. Back is not affected.
+    try {
+      var u = new URL(window.location.href);
+      if (filter.method === 'all') u.searchParams.delete('method'); else u.searchParams.set('method', filter.method);
+      if (filter.cat === 'all') u.searchParams.delete('cat'); else u.searchParams.set('cat', filter.cat);
+      history.replaceState(null, '', u.pathname + u.search + u.hash);
+    } catch (e) {}
     if (V.hasGsap && window.ScrollTrigger) ScrollTrigger.refresh();
   }
 
@@ -304,12 +328,13 @@
     // Counts on the method chips come from the data, so they always match the list.
     $$('#methodChips .chip').forEach(function (c) {
       var m = c.getAttribute('data-method');
-      var n = m === 'all' ? BRANDS.length : BRANDS.filter(function (b) { return b.filters.indexOf(m) > -1; }).length;
+      var n = BRANDS.filter(function (b) { return byMethod(b, m); }).length;
       $('.fig', c).textContent = n;
       c.addEventListener('click', function () { filter.method = m; applyFilter(); });
     });
     var catChips = $('#catChips');
     $('.chip', catChips).addEventListener('click', function () { filter.cat = 'all'; applyFilter(); });
+    if (!$('.fig', $('.chip', catChips))) { $('.chip', catChips).appendChild(document.createTextNode(' ')); $('.chip', catChips).appendChild(el('span', 'fig', String(BRANDS.length))); }
     CATS.forEach(function (c) {
       var n = BRANDS.filter(function (b) { return b.cat === c.key; }).length;
       var btn = el('button', 'chip'); btn.type = 'button';
@@ -322,7 +347,7 @@
     $('#catClear').addEventListener('click', function () { filter.method = 'all'; filter.cat = 'all'; applyFilter(); $('#methodChips .chip').focus(); });
 
     BRANDS.forEach(function (b, i) {
-      var li = el('li', 'card'); li.setAttribute('data-reveal', '');
+      var li = el('li', 'card'); li.setAttribute('data-reveal', ''); li.style.setProperty('--fam', FAM[b.cat] || '#2D5A3C');
       var btn = el('button', 'card__btn'); btn.type = 'button';
       btn.setAttribute('data-cursor', 'Details');
       btn.setAttribute('aria-haspopup', 'dialog');
@@ -331,7 +356,7 @@
       st.appendChild(el('span', 'card__catk', catLabel(b.cat)));
       if (b.img) {
         var im = el('img', 'card__img');
-        im.src = 'img/packs/' + b.img + '.webp'; im.alt = ''; im.loading = 'lazy';
+        im.src = 'img/packs/' + b.img + '.webp?v=2'; im.alt = ''; im.loading = 'lazy';
         st.appendChild(im);
       } else {
         st.appendChild(markSvg(b.cat, 'card__mark'));
@@ -342,12 +367,14 @@
       body.appendChild(el('span', 'card__name', b.name));
       body.appendChild(el('span', 'card__analysis', b.analysis));
       var tags = el('span', 'card__tags');
-      b.methods.forEach(function (m) { tags.appendChild(el('span', 'tag', m)); });
+      if (b.filters.length) METHODS.forEach(function (m) { if (b.filters.indexOf(m[0]) > -1) tags.appendChild(el('span', 'tag', m[1])); });
+      else b.methods.forEach(function (m) { tags.appendChild(el('span', 'tag', m)); });
       body.appendChild(tags);
       body.appendChild(el('span', 'card__more', 'Technical details'));
       btn.appendChild(body);
       btn.addEventListener('click', function () { openDrawer(b, btn); });
       if (V.animate && V.finePointer && b.img) {
+        st.classList.add('has-tilt');
         btn.addEventListener('pointermove', function (e) {
           var r = st.getBoundingClientRect();
           st.firstChild.nextSibling.style.setProperty('--ry', (((e.clientX - r.left) / r.width - 0.5) * 22).toFixed(1) + 'deg');
@@ -393,12 +420,14 @@
   function fillDrawer(b) {
     while (dBody.firstChild) dBody.removeChild(dBody.firstChild);
     $('#drawerCat').textContent = catLabel(b.cat);
+    panel.style.setProperty('--fam', FAM[b.cat] || '#2D5A3C');
     var top = el('div', 'd__top');
-    if (b.img) { var im = el('img', 'd__img'); im.src = 'img/packs/' + b.img + '.webp'; im.alt = b.imgAlt; top.appendChild(im); }
+    if (b.img) { var im = el('img', 'd__img'); im.src = 'img/packs/' + b.img + '.webp?v=2'; im.alt = b.imgAlt; top.appendChild(im); }
     else top.appendChild(markSvg(b.cat, 'd__mark'));
     var tt = el('div');
     var h = el('h2', 'd__name', b.name); h.id = 'drawerTitle'; tt.appendChild(h);
     tt.appendChild(el('p', 'd__analysis', b.analysis));
+    if (b.picNote) tt.appendChild(el('p', 'note d__picnote', b.picNote));
     top.appendChild(tt); dBody.appendChild(top);
 
     var about = el('div', 'd__about');
@@ -465,8 +494,8 @@
       closeDrawer(true);
       var sel = $('#oProduct');
       if (sel) { sel.value = b.slug; sel.dispatchEvent(new Event('change')); }
-      var target = $('#order');
-      if (V.lenis) V.lenis.scrollTo(target, { offset: 0 }); else target.scrollIntoView({ behavior: calm ? 'auto' : 'smooth' });
+      var target = $('#orderForm') || $('#order');
+      if (V.lenis) V.lenis.scrollTo(target, { offset: -120 }); else target.scrollIntoView({ behavior: calm ? 'auto' : 'smooth' });
       if (sel) sel.focus({ preventScroll: true });
     });
     act.appendChild(a2);
@@ -565,4 +594,15 @@
   if (params.brand && drawer) {
     for (var bi = 0; bi < BRANDS.length; bi++) if (BRANDS[bi].slug === params.brand) { openDrawer(BRANDS[bi], null); break; }
   }
+
+  /* Pins on the 3D granules: each opens a card with the reviewed text for that product. */
+  $$('.gpin').forEach(function (p) {
+    p.addEventListener('click', function () {
+      var card = document.getElementById(p.getAttribute('aria-controls')), open = p.getAttribute('aria-expanded') === 'true';
+      $$('.gpin').forEach(function (q) { q.setAttribute('aria-expanded', 'false'); });
+      $$('.gcard').forEach(function (c) { c.hidden = true; });
+      if (!open) { p.setAttribute('aria-expanded', 'true'); card.hidden = false; }
+    });
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { $$('.gcard').forEach(function (c) { c.hidden = true; }); $$('.gpin').forEach(function (q) { q.setAttribute('aria-expanded', 'false'); }); } });
 })();

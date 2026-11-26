@@ -252,3 +252,74 @@ html.drawer-open, html.drawer-open body { overflow: hidden; }
   .cat__grid { grid-template-columns: 1fr; }
 }
 .d__wl { margin-top: 6px; padding-top: 14px; border-top: 1px solid var(--hair); } .d__wl a { text-underline-offset: 3px; }
+
+/* ---- 26 Nov 2026: Tahir's brief and the independent UX review ---- */
+/* Dark hero stage */
+.phero { background: radial-gradient(60% 70% at 72% 45%, #22302A 0%, #141915 62%); color: var(--on-deep); padding-bottom: clamp(40px, 6vh, 72px); }
+.phero .phero__title { color: var(--on-deep); }
+.phero .lead, .phero .note { color: var(--on-deep-soft); }
+.phero .phero__stat { border-top-color: var(--hair-light); }
+.phero .phero__num { color: var(--amber-lit); }
+.phero .ptabs__a { border-color: rgba(247, 244, 238, 0.45); color: var(--on-deep); }
+.phero .ptabs__a:hover, .phero .ptabs__a:focus-visible { background: var(--on-deep); color: var(--deep); }
+.phero .rule { background: var(--hair-light); }
+.phero__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; margin-top: 28px; }
+.phero__ctalink { color: var(--on-deep); }
+.phero__fig { min-height: 460px; }
+.phero__canvas { display: none; width: 100%; height: clamp(380px, 52vh, 560px); }
+.phero__fig.is-3d .phero__canvas { display: block; }
+.phero__fig.is-3d .granules { display: none; }
+.phero__fig figcaption { color: var(--on-deep-soft); }
+.gpin { display: none; position: absolute; left: 0; top: 0; z-index: 3; align-items: center; gap: 8px; padding: 6px 14px 6px 8px; border-radius: 999px; border: 1px solid rgba(247, 244, 238, 0.35); background: rgba(20, 25, 21, 0.72); color: var(--on-deep); font: inherit; font-size: 13.5px; font-weight: 700; cursor: pointer; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); opacity: 0; transition: opacity 0.5s, background-color 0.3s; }
+.phero__fig.is-3d .gpin { display: inline-flex; }
+.gpin.is-placed { opacity: 1; }
+.gpin__dot { width: 12px; height: 12px; border-radius: 50%; background: var(--amber-lit); box-shadow: 0 0 0 0 rgba(231, 184, 102, 0.7); animation: pinPulse 2.4s infinite; }
+@keyframes pinPulse { 0% { box-shadow: 0 0 0 0 rgba(231, 184, 102, 0.6); } 70% { box-shadow: 0 0 0 10px rgba(231, 184, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(231, 184, 102, 0); } }
+.calm .gpin__dot { animation: none; }
+.gpin:hover, .gpin[aria-expanded="true"] { background: var(--amber-lit); color: var(--deep); }
+.gpin[aria-expanded="true"] .gpin__dot { background: var(--deep); }
+.gcard { position: absolute; right: 0; bottom: 64px; z-index: 4; width: min(360px, 92%); display: grid; gap: 8px; padding: 18px 20px; border-radius: 18px; background: #FBF8F1; color: var(--ink); box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.8); font-size: 14.5px; line-height: 1.5; }
+.gcard[hidden] { display: none; }
+.gcard__k { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--amber-deep); }
+.gcard__h { font-family: var(--serif); font-size: 22px; line-height: 1.15; }
+.gcard .link-arrow { justify-self: start; margin-top: 4px; }
+
+/* Cards: family colour, studio plinth and floor light */
+.card__btn { border-top: 4px solid var(--fam, var(--emerald)); }
+.card__stage { background: radial-gradient(70% 55% at 50% 92%, color-mix(in srgb, var(--fam, #2D5A3C) 22%, transparent) 0%, transparent 70%), linear-gradient(180deg, #F7F4EE 0%, #EDE6D9 100%); }
+.card__stage::before { content: ""; position: absolute; left: 50%; bottom: 16px; width: 62%; height: 26px; transform: translateX(-50%); border-radius: 50%; background: linear-gradient(180deg, #FFFFFF, #E2D9C8); box-shadow: inset 0 -2px 0 rgba(23, 26, 22, 0.08); }
+.card__catk { background: var(--fam, var(--emerald)); color: #FFFFFF; border-color: transparent; }
+.card__img { filter: drop-shadow(0 18px 16px rgba(23, 26, 22, 0.28)); }
+.chip:disabled { opacity: 0.38; cursor: not-allowed; }
+.chip:disabled:hover { border-color: var(--hair); }
+
+/* Drawer: family colour */
+.d__bar i { background: var(--fam, var(--emerald)); }
+#drawerCat { color: var(--fam, var(--amber-deep)); }
+.d__picnote { margin-top: 8px; }
+.d__name { overflow-wrap: normal; hyphens: manual; }
+
+/* The fixed menu no longer covers a section when a link jumps to it */
+section[id], #orderForm { scroll-margin-top: 120px; }
+
+/* Phone: 2 columns of cards and 1 row of chips that scrolls sideways */
+@media (max-width: 640px) {
+  .cat__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .card__stage { height: 190px; }
+  .card__img { height: 160px; }
+  .card__name { font-size: 22px; }
+  .card__body { padding: 14px; gap: 8px; }
+  .card__analysis { font-size: 11.5px; }
+  .card__more { font-size: 12.5px; }
+  .cat__group { grid-template-columns: 1fr; gap: 8px; }
+  .cat__chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; margin: 0 calc(var(--gutter) * -1); padding-left: var(--gutter); padding-right: var(--gutter); scrollbar-width: none; }
+  .cat__chips::-webkit-scrollbar { display: none; }
+  .chip { flex: none; min-height: 42px; }
+  .phero__fig { min-height: 0; }
+  .phero__canvas { height: 340px; }
+  .gcard { position: relative; bottom: auto; width: 100%; margin-top: 12px; }
+}
+.gcard { right: auto; left: 0; top: 0; bottom: auto; }
+@media (max-width: 640px) { .gcard { top: auto; } }
+.phero__lic { margin-top: 14px; max-width: 60ch; }
+.phero__title { font-size: clamp(36px, 4.2vw, 68px); max-width: 18ch; }

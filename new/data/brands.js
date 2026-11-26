@@ -33,7 +33,7 @@ window.VAN_BRANDS = [
   },
   {
     /* Nitro Sulfur is not on the live site. Every value is from the bag label of 15 Nov 2026. */
-    slug: 'nitro-sulfur', name: 'Nitro Sulfur', cat: 'N', live: false,
+    slug: 'nitro-sulfur', name: 'Nitro Sulfur', cat: 'N', picNote: "The pack picture is drawn from the product's label artwork.", live: false,
     analysis: 'N 22% min · S 18% min',
     unit: '%', nutrients: [['Nitrogen (N)', '22 min'], ['Sulfur (S)', '18 min']],
     form: 'Multinutrient fertiliser',
@@ -89,7 +89,7 @@ window.VAN_BRANDS = [
     img: 'fusion-phosphate', imgAlt: 'The 50 kg bag of Fusion Phosphate.'
   },
   {
-    slug: 'v-germinator-pro', name: 'V-Germinator Pro', cat: 'P',
+    slug: 'v-germinator-pro', name: 'V-Germinator Pro', cat: 'P', picNote: "The pack picture is drawn from the product's label artwork.",
     analysis: 'Liquid. P₂O₅ 27% · N 4.5% · K₂O 2%, with Mg, S and Fe',
     unit: '%', nutrients: [['Phosphate (P₂O₅)', '27'], ['Nitrogen (N)', '4.5'], ['Potash (K₂O)', '2'], ['Sulfur (S)', '2'], ['Magnesium (Mg)', '0.5'], ['Iron (Fe)', '0.5']],
     form: 'Liquid',
@@ -175,7 +175,7 @@ window.VAN_BRANDS = [
     img: 'v-potash-plus', imgAlt: 'The 10 kg bag of V-Potash Plus.'
   },
   {
-    slug: 'crop-force', name: 'Crop Force', cat: 'NPK',
+    slug: 'crop-force', name: 'Crop Force', cat: 'NPK', picNote: "The pack picture is a computer image made from our 3D model of the 10 kg bag.",
     analysis: '2 grades: N 15% · P₂O₅ 15% · K₂O 15% (NPK 15:15:15), and N 12% · P₂O₅ 12% · K₂O 18% (NPK 12:12:18)',
     unit: '%',
     grades: [
@@ -334,7 +334,7 @@ window.VAN_BRANDS = [
     img: 'humi-grow', imgAlt: 'The 8 kg bag of Humi Grow.'
   },
   {
-    slug: 'humi-grow-plus', name: 'Humi Grow Plus', cat: 'BIO',
+    slug: 'humi-grow-plus', name: 'Humi Grow Plus', cat: 'BIO', picNote: "The pack picture is drawn from the product's label artwork.",
     analysis: 'Liquid. Humic acid 10% · K₂O 3.5%',
     unit: '%', nutrients: [['Humic acid', '10'], ['Potash (K₂O)', '3.5']],
     form: 'Liquid',

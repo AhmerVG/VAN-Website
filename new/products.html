@@ -12,8 +12,8 @@ document.documentElement.className=(c?c==='calm':os)?'calm':'full';})();</script
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Public+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=12">
-<link rel="stylesheet" href="css/products.css?v=4">
+<link rel="stylesheet" href="css/site.css?v=13">
+<link rel="stylesheet" href="css/products.css?v=8">
 </head>
 <body>
 <a class="skip" href="#main">Skip to the main content</a>
@@ -21,7 +21,7 @@ document.documentElement.className=(c?c==='calm':os)?'calm':'full';})();</script
 <div class="cursor" id="cursor" aria-hidden="true"><div class="cursor__ring"><span class="cursor__label" id="cursorLabel"></span></div><div class="cursor__dot"></div></div>
 
 <header class="nav" id="nav"><div class="nav__pill">
-  <a class="nav__brand" href="index.html" aria-label="Vital Agri Nutrients, home"><span class="nav__mark">VAN</span><span class="nav__name">Vital Agri Nutrients</span></a>
+  <a class="nav__brand" href="index.html" aria-label="Vital Agri Nutrients, home"><img class="nav__logo" src="img/brand/van-mark.svg" alt="" width="136" height="50"><span class="nav__name">Vital Agri Nutrients</span></a>
   <nav class="nav__links" aria-label="Main menu">
     <a href="products.html" aria-current="page">Products</a><a href="tools.html">Vitalytics</a><a href="research.html">Research</a><a href="partner/index.html">Your brand</a><a href="about.html">About</a>
   </nav>
@@ -34,22 +34,31 @@ document.documentElement.className=(c?c==='calm':os)?'calm':'full';})();</script
 <section class="phero" id="top">
   <div class="phero__grid">
     <div class="phero__text">
-      <p class="eyebrow phero__eyebrow">24 brands · 22 PSQCA licences for our own brands · Licence figures as of July 2026</p>
-      <h1 class="phero__title" id="heroTitle">Every product starts with what the soil locks up.</h1>
-      <p class="lead phero__lead">Nitrogen is lost to the air as ammonia and lost to water as nitrate. Phosphate is bound by calcium in the soil. Too little potash is applied. Crops therefore take potassium from what the soil already holds.</p>
+      <p class="eyebrow eyebrow--light phero__eyebrow">24 brands · 22 PSQCA licences for our own brands</p>
+      <h1 class="phero__title" id="heroTitle">Every product is designed for soil that binds or loses nutrients before the crop can take them up.</h1>
+      <p class="lead phero__lead">A crop needs 17 essential nutrients. Plain urea supplies only nitrogen. More nitrogen does not make up for a shortage of another nutrient. Our 24 brands cover 7 families of products.</p>
+      <p class="phero__cta"><a class="btn btn--amber magnetic" href="#brands" data-cursor="Open"><span>Browse our 24 brands</span></a><a class="link-arrow phero__ctalink" href="partner/index.html">Have us make a product under your brand</a></p>
       <div class="phero__stat" data-reveal>
         <span class="fig phero__num" data-count="69.1" data-decimals="1" data-suffix="%">69.1%</span>
         <p class="note">The Punjab soil testing programme tested 770,160 soil samples in about 2016 to 2018. Of these samples, 69.1% had a pH above 8. Above pH 8, part of the nitrogen from urea left on the soil surface is lost to the air as ammonia. In calcareous soil, free calcium binds most of the phosphate applied as fertiliser before the roots can take it up.</p>
       </div>
+      <p class="note phero__lic">The 22 licences are from the Pakistan Standards and Quality Control Authority (PSQCA). The licence count is as of July 2026. The brand count is as of November 2026.</p>
       <nav class="ptabs" aria-label="Sections of this page">
-        <a class="ptabs__a" href="#soil"><span class="fig">01</span>Soil chemistry</a>
-        <a class="ptabs__a" href="#brands"><span class="fig">02</span>Our brands</a>
+        <a class="ptabs__a" href="#brands"><span class="fig">01</span>Our brands</a>
+        <a class="ptabs__a" href="#soil"><span class="fig">02</span>Soil chemistry</a>
         <a class="ptabs__a" href="#verify"><span class="fig">03</span>Verify a bag</a>
         <a class="ptabs__a" href="#order"><span class="fig">04</span>Order direct from the plant</a>
       </nav>
     </div>
 
     <figure class="phero__fig" id="heroFig">
+      <canvas class="phero__canvas" id="granCanvas" aria-hidden="true"></canvas>
+      <button type="button" class="gpin" data-pin="urea" aria-expanded="false" aria-controls="gcard-urea"><span class="gpin__dot"></span><span class="gpin__t">Vital Urea</span></button>
+      <button type="button" class="gpin" data-pin="phos" aria-expanded="false" aria-controls="gcard-phos"><span class="gpin__dot"></span><span class="gpin__t">Green Phosphate</span></button>
+      <button type="button" class="gpin" data-pin="pot" aria-expanded="false" aria-controls="gcard-pot"><span class="gpin__dot"></span><span class="gpin__t">Vital Potash</span></button>
+      <div class="gcard" id="gcard-urea" hidden><p class="gcard__k">Vital Urea · N 32% min · S 13% min</p><p class="gcard__h">Urea core, sulfur coating</p><p>The coating reduces how much nitrogen is exposed to volatilisation at any one time. The coating does not stop volatilisation.</p><p>In the soil, bacteria oxidise the elemental sulfur to sulfate. Sulfate is the form of sulfur that roots take up.</p><a class="link-arrow" href="?problem=1&amp;mode=van#soil">See the Vital Urea granule in the soil</a></div>
+      <div class="gcard" id="gcard-phos" hidden><p class="gcard__k">Green Phosphate · N 6% · P₂O₅ 32%</p><p class="gcard__h">Acidic phosphate core, humic coating</p><p>Green Phosphate is granulated in an acidic mix and coated with humic material.</p><p>The soil around each Green Phosphate granule is acidic at first. This acidic zone is a few centimetres wide.</p><a class="link-arrow" href="?problem=2&amp;mode=van#soil">See the Green Phosphate granule in the soil</a></div>
+      <div class="gcard" id="gcard-pot" hidden><p class="gcard__k">Vital Potash · N 11% · K₂O 44%</p><p class="gcard__h">Boron coating in 2 forms</p><p>Each granule carries boron in 2 forms. Sodium borate releases boron quickly. Calcium borate releases boron slowly.</p><a class="link-arrow" href="?problem=3&amp;mode=van#soil">See how Vital Potash is applied</a></div>
       <svg class="granules" viewBox="0 0 560 520" role="img" aria-labelledby="granTitle granDesc">
         <title id="granTitle">3 coated granules in cross-section</title>
         <desc id="granDesc">Vital Urea has a white urea core and a yellow sulfur coating. Green Phosphate has a brown phosphate core and a black humic coating. Vital Potash has a cream potash core and a boron coating in 2 forms.</desc>
@@ -106,17 +115,54 @@ document.documentElement.className=(c?c==='calm':os)?'calm':'full';})();</script
           <text class="gran__part" x="236" y="514">Boron coating in 2 forms</text>
         </g>
       </svg>
-      <figcaption class="note">The drawing shows 3 coated granules cut in half: Vital Urea, Green Phosphate and Vital Potash. The drawing is a diagram and is not to scale.</figcaption>
+      <figcaption class="note">The drawing shows 3 coated granules cut open: Vital Urea, Green Phosphate and Vital Potash. Choose a name to read about its coating. The drawing is a diagram and is not to scale.</figcaption>
     </figure>
   </div>
   <span class="rule" data-reveal></span>
 </section>
 
-<!-- 2. Soil cross-section -->
-<section class="band band--clay soil" id="soil" aria-labelledby="soilTitle">
+<!-- 2. Catalogue -->
+<section class="band band--clay cat" id="brands" aria-labelledby="catTitle">
   <div class="band__head">
     <div>
-      <span class="eyebrow">01 · Soil chemistry</span>
+      <span class="eyebrow">01 · Our brands</span>
+      <h2 class="h-lg" id="catTitle" data-reveal>Our brands</h2>
+    </div>
+    <p class="lead" data-reveal>Choose how you apply fertiliser to see our brands made for that method. Open a card to see the declared analysis by nutrient, the crop stages and the pack sizes.</p>
+  </div>
+
+  <div class="cat__filters">
+    <div class="cat__group" role="group" aria-labelledby="fMethod">
+      <span class="cat__label fig" id="fMethod">Application method</span>
+      <div class="cat__chips" id="methodChips">
+        <button type="button" class="chip is-on" data-method="all" aria-pressed="true">All <span class="fig">24</span></button>
+        <button type="button" class="chip" data-method="broadcast" aria-pressed="false">Broadcast <span class="fig">9</span></button>
+        <button type="button" class="chip" data-method="fertigation" aria-pressed="false">Fertigation <span class="fig">15</span></button>
+        <button type="button" class="chip" data-method="foliar" aria-pressed="false">Foliar <span class="fig">7</span></button>
+      </div>
+    </div>
+    <div class="cat__group" role="group" aria-labelledby="fCat">
+      <span class="cat__label fig" id="fCat">Nutrient category</span>
+      <div class="cat__chips" id="catChips">
+        <button type="button" class="chip is-on" data-cat="all" aria-pressed="true">All</button>
+      </div>
+    </div>
+  </div>
+  <p class="cat__status note" id="catStatus" role="status" aria-live="polite">Showing 24 of 24 brands.</p>
+
+  <ul class="cat__grid" id="catGrid"></ul>
+  <div class="cat__empty" id="catEmpty" hidden>
+    <p>No brand matches both filters.</p>
+    <button type="button" class="btn btn--ghost" id="catClear"><span>Clear the filters</span></button>
+  </div>
+  <noscript><p class="note">This list needs JavaScript. You can read our brands on <a href="https://www.van.com.pk/brands/index.html">the brands page of van.com.pk</a>.</p></noscript>
+</section>
+
+<!-- 3. Soil cross-section -->
+<section class="band soil" id="soil" aria-labelledby="soilTitle">
+  <div class="band__head">
+    <div>
+      <span class="eyebrow">02 · Soil chemistry</span>
       <h2 class="h-lg" id="soilTitle" data-reveal>Nitrogen, phosphate and potash in the soil</h2>
     </div>
     <p class="lead" data-reveal>The drawing shows 1 soil cross-section and covers 3 nutrients. Choose a nutrient. Then switch between the problem with that nutrient in the soil and our product for it.</p>
@@ -293,43 +339,6 @@ document.documentElement.className=(c?c==='calm':os)?'calm':'full';})();</script
   </div>
 </section>
 
-<!-- 3. Catalogue -->
-<section class="band cat" id="brands" aria-labelledby="catTitle">
-  <div class="band__head">
-    <div>
-      <span class="eyebrow">02 · Our brands</span>
-      <h2 class="h-lg" id="catTitle" data-reveal>Our brands</h2>
-    </div>
-    <p class="lead" data-reveal>Choose how you apply fertiliser to see our brands made for that method. Open a card to see the declared analysis by nutrient, the crop stages and the pack sizes.</p>
-  </div>
-
-  <div class="cat__filters">
-    <div class="cat__group" role="group" aria-labelledby="fMethod">
-      <span class="cat__label fig" id="fMethod">Application method</span>
-      <div class="cat__chips" id="methodChips">
-        <button type="button" class="chip is-on" data-method="all" aria-pressed="true">All <span class="fig">24</span></button>
-        <button type="button" class="chip" data-method="broadcast" aria-pressed="false">Broadcast <span class="fig">9</span></button>
-        <button type="button" class="chip" data-method="fertigation" aria-pressed="false">Fertigation <span class="fig">15</span></button>
-        <button type="button" class="chip" data-method="foliar" aria-pressed="false">Foliar <span class="fig">7</span></button>
-      </div>
-    </div>
-    <div class="cat__group" role="group" aria-labelledby="fCat">
-      <span class="cat__label fig" id="fCat">Nutrient category</span>
-      <div class="cat__chips" id="catChips">
-        <button type="button" class="chip is-on" data-cat="all" aria-pressed="true">All</button>
-      </div>
-    </div>
-  </div>
-  <p class="cat__status note" id="catStatus" role="status" aria-live="polite">Showing 24 of 24 brands.</p>
-
-  <ul class="cat__grid" id="catGrid"></ul>
-  <div class="cat__empty" id="catEmpty" hidden>
-    <p>No brand matches both filters.</p>
-    <button type="button" class="btn btn--ghost" id="catClear"><span>Clear the filters</span></button>
-  </div>
-  <noscript><p class="note">This list needs JavaScript. You can read our brands on <a href="https://www.van.com.pk/brands/index.html">the brands page of van.com.pk</a>.</p></noscript>
-</section>
-
 <!-- 4. Lab report -->
 <section class="band band--deep lab" id="verify" aria-labelledby="labTitle">
   <div class="band__head">
@@ -344,7 +353,7 @@ document.documentElement.className=(c?c==='calm':os)?'calm':'full';})();</script
     <form class="console" id="verifyForm" action="https://www.van.com.pk/verify.html" method="get" target="_blank" rel="noopener" data-reveal>
       <div class="console__top">
         <div class="console__tag">
-          <p class="console__stamp fig">VAN · TESTED BEFORE IT LEAVES THE PLANT · LAB 336</p>
+          <p class="console__stamp fig">VAN · TESTED BEFORE IT LEAVES THE PLANT</p>
           <!-- Tahir confirmed on 24 Nov 2026 that VU25186 is the correct example. -->
           <p class="console__batch fig">BATCH No. VU25186</p>
         </div>
@@ -465,6 +474,7 @@ document.documentElement.className=(c?c==='calm':os)?'calm':'full';})();</script
 
 <footer class="footer">
   <div class="footer__curve" aria-hidden="true"></div>
+  <img class="footer__logo" src="img/brand/van-logo-light.svg" alt="Vital Agri Nutrients (Pvt) Ltd" width="300" height="82" loading="lazy">
   <span class="eyebrow eyebrow--light">28 crop plans · per acre · stage by stage · free</span>
   <h2 class="footer__title">Find the plan for your crop</h2>
   <p class="footer__lead">We publish 28 crop plans. Each plan gives the amount to apply per acre at every crop stage.</p>
@@ -503,8 +513,10 @@ document.documentElement.className=(c?c==='calm':os)?'calm':'full';})();</script
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="js/site.js?v=10"></script>
-<script src="data/brands.js?v=9"></script>
-<script src="js/products.js?v=9"></script>
+<script src="data/brands.js?v=11"></script>
+<script src="js/products.js?v=14"></script>
+<script src="js/granules-3d.js?v=3"></script>
 </body>
 </html>

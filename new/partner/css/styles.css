@@ -508,3 +508,9 @@ section, .footer { position: relative; z-index: 2; }
 .lib-shelf.is-on b { background: rgba(246, 243, 238, 0.2); }
 .lib-shelf:focus-visible { outline: 2px solid #D2751A; outline-offset: 3px; }
 .lib-card__code--own { font-size: clamp(19px, 1.5vw, 23px); line-height: 1.15; }
+
+/* VAN logo (web copies of the master logo, 26 Nov 2026) */
+.nav__brand { align-items: center; }
+.nav__logo { display: block; height: 36px; width: auto; }
+.footer__logo { display: block; position: relative; z-index: 2; width: clamp(200px, 22vw, 300px); height: auto; margin-bottom: 28px; }
+@media (max-width: 1000px) { .nav__logo { height: 30px; } }

@@ -176,3 +176,10 @@ section, .footer { position: relative; z-index: 2; }
 /* Calm mode: no looping animation and no timed transitions. Scroll still drives the page.
    "transition: none" is required. A very short transition makes the scroll library mis-measure pinned sections. */
 .calm *, .calm *::before, .calm *::after { animation: none !important; transition: none !important; }
+
+/* VAN logo (web copies of the master logo, 26 Nov 2026) */
+.nav__brand { align-items: center; }
+.nav__logo { display: block; height: 38px; width: auto; }
+.nav__brand .nav__name { padding-left: 12px; border-left: 1px solid var(--hair); }
+.footer__logo { display: block; width: clamp(200px, 22vw, 300px); height: auto; margin-bottom: 28px; }
+@media (max-width: 1000px) { .nav__logo { height: 32px; } .nav__brand .nav__name { display: none; } }
