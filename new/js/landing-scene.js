@@ -131,7 +131,7 @@
 
   function resize() {
     if (!renderer) return;
-    var b = wrap.getBoundingClientRect(), w = Math.max(1, b.width), h = Math.max(1, b.height);
+    var b = canvas.getBoundingClientRect(), w = Math.max(1, b.width), h = Math.max(1, b.height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, window.innerWidth < 800 ? 1.5 : 1.75));
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
@@ -185,10 +185,23 @@
 
     // Place the page's labels over their points in the drawing.
     if (labelEls.length) {
-      var w = canvas.clientWidth, h = canvas.clientHeight;
+      var w = canvas.clientWidth, h = canvas.clientHeight, boxes = [];
       for (i = 0; i < labelEls.length && i < api.anchors.length; i++) {
         tmp.copy(api.anchors[i]); group.localToWorld(tmp); tmp.project(camera);
-        labelEls[i].style.transform = 'translate(' + ((tmp.x * 0.5 + 0.5) * w).toFixed(1) + 'px,' + ((-tmp.y * 0.5 + 0.5) * h).toFixed(1) + 'px)';
+        var lw = labelEls[i].offsetWidth + 14, lh = labelEls[i].offsetHeight;
+        var lx = Math.max(14, Math.min((tmp.x * 0.5 + 0.5) * w, w - lw - 4)), ly = (-tmp.y * 0.5 + 0.5) * h;
+        // Move the label down until it clears every label already placed.
+        for (var pass = 0; pass < 4; pass++) {
+          var hit = false;
+          for (var j = 0; j < boxes.length; j++) {
+            var o = boxes[j];
+            if (lx < o.x + o.w && lx + lw > o.x && ly - 14 < o.y - 14 + o.h + 6 && ly - 14 + lh + 6 > o.y - 14) { ly = o.y + o.h + 8; hit = true; }
+          }
+          if (!hit) break;
+        }
+        ly = Math.min(ly, h - lh + 10);
+        boxes.push({ x: lx, y: ly, w: lw, h: lh });
+        labelEls[i].style.transform = 'translate(' + lx.toFixed(1) + 'px,' + ly.toFixed(1) + 'px)';
         labelEls[i].classList.add('is-placed');
       }
     }

@@ -4,7 +4,7 @@
 .hero { padding: clamp(104px, 14vh, 150px) var(--gutter) clamp(40px, 6vh, 72px); background:
   radial-gradient(48% 52% at 80% 34%, rgba(231, 184, 102, 0.42), transparent 70%),
   radial-gradient(40% 40% at 4% 0%, rgba(255, 255, 255, 0.9), transparent 70%); }
-.hero__grid { display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr); gap: clamp(20px, 3vw, 56px); align-items: center; min-height: min(72vh, 760px); }
+.hero__grid { display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr); gap: clamp(20px, 3vw, 56px); align-items: center; min-height: min(68vh, 720px); }
 .hero__title { margin: 18px 0 22px; }
 .hero__origin { font-family: var(--serif); font-style: italic; font-size: clamp(22px, 2.2vw, 32px); line-height: 1.2; color: var(--emerald); }
 .hero__urdu { font-size: clamp(20px, 1.9vw, 27px); color: var(--ink-soft); text-align: left; margin-top: 4px; }
@@ -101,7 +101,7 @@
 /* 4. Method */
 .method { background: var(--canvas); overflow-x: hidden; overflow-x: clip; }
 .method__pin { overflow-x: hidden; overflow-x: clip; }
-.method__pin { padding: clamp(72px, 11vh, 120px) 0 clamp(48px, 8vh, 88px); }
+.method__pin { padding: clamp(48px, 7vh, 80px) 0 clamp(40px, 6vh, 64px); }
 .method__head { padding: 0 var(--gutter); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(24px, 5vw, 80px); align-items: end; margin-bottom: clamp(28px, 5vh, 56px); }
 .method__head .eyebrow { display: block; margin-bottom: 16px; }
 .method__track { display: flex; gap: 0; padding: 0 var(--gutter); width: max-content; border-top: 1px solid var(--hair); will-change: transform; }
@@ -115,7 +115,7 @@
 .method__rail i { display: block; height: 100%; background: var(--amber); transform: scaleX(0.02); transform-origin: left; }
 .method.is-pinned .method__pin { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: clamp(84px, 11vh, 120px); padding-bottom: 28px; }
 .method.is-pinned .method__rail { display: block; }
-.method:not(.is-pinned) .method__pin { padding-top: clamp(40px, 6vh, 72px); }
+.method:not(.is-pinned) .method__pin { padding-top: clamp(32px, 5vh, 56px); }
 .method:not(.is-pinned) .method__track { width: auto; overflow-x: auto; scroll-padding-left: var(--gutter); scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 16px; scrollbar-width: none; }
 .method:not(.is-pinned) .method__track::-webkit-scrollbar { display: none; }
 .method:not(.is-pinned) .step { scroll-snap-align: start; width: min(80vw, 360px); }
@@ -162,3 +162,112 @@
 .stamp__batch { font-size: clamp(22px, 2.4vw, 32px); letter-spacing: 0.02em; padding: 14px 18px; border-radius: 12px; border: 1px solid rgba(247, 244, 238, 0.4); background: rgba(247, 244, 238, 0.08); }
 .stamp__batch span { display: block; font-size: 11px; letter-spacing: 0.1em; color: var(--amber-lit); margin-bottom: 4px; }
 .method__note { padding: 14px var(--gutter) 0; }
+
+
+/* ---- 26 Nov 2026: Tahir's review of the live page ---- */
+/* The caption sits below the drawing, never on it. The figure is a grid: drawing in row 1, caption in row 2. */
+.hero__scene { height: auto; min-height: 0; display: grid; grid-template-rows: auto auto; align-content: start; }
+.hero__scene canvas, .hero__scene .hero__fallback { position: relative; inset: auto; grid-area: 1 / 1; width: 100%; height: min(62vh, 640px); min-height: 360px; }
+.hero__cap { position: static; grid-area: 2 / 1; margin-top: 10px; }
+/* Labels: plain text font, kept inside the drawing; landing-scene.js moves them apart when they would overlap. */
+.scene-label { font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: 0; padding: 6px 12px; background: rgba(247, 244, 238, 0.94); }
+.hero__three dt { font-family: var(--serif); font-size: 21px; letter-spacing: -0.01em; text-transform: none; color: var(--emerald); padding-top: 0; }
+.hero__three > div { grid-template-columns: 150px 1fr; }
+.door__go { font-family: var(--sans); font-weight: 700; }
+
+/* The 7 product families */
+.fams { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
+.fams li + li { border-left: 1px solid var(--hair); }
+.fams a { display: grid; gap: 6px; align-content: start; height: 100%; padding: 22px 18px 20px; text-decoration: none; transition: background-color 0.3s, color 0.3s; }
+.fams__n { font-family: var(--serif); font-size: clamp(36px, 3.4vw, 52px); line-height: 1; color: var(--amber-deep); }
+.fams__t { font-size: 15px; font-weight: 600; line-height: 1.3; }
+.fams a:hover, .fams a:focus-visible { background: var(--deep); color: var(--on-deep); }
+.fams a:hover .fams__n, .fams a:focus-visible .fams__n { color: var(--amber-lit); }
+.fams__note { margin-top: 10px; }
+.pb__intro { margin-top: clamp(40px, 6vh, 64px); }
+.pb__introlead { color: var(--ink-soft); margin: 8px 0 22px; max-width: 60ch; }
+
+/* Questions growers ask */
+.qs { margin-top: clamp(44px, 7vh, 72px); display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: clamp(20px, 4vw, 64px); align-items: start; }
+.qs__list { border-top: 1px solid var(--hair); }
+.qs__list > div { padding: 18px 0; border-bottom: 1px solid var(--hair); display: grid; gap: 6px; }
+.qs__list dt { font-family: var(--serif); font-size: clamp(19px, 1.6vw, 23px); line-height: 1.25; }
+.qs__list dd { color: var(--ink-soft); font-size: 15.5px; }
+
+/* Find the plan for your crop */
+.crops { background: linear-gradient(180deg, var(--canvas), var(--clay)); }
+.crops__grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: clamp(24px, 5vw, 72px); align-items: center; }
+.crops__copy .eyebrow { display: block; margin-bottom: 14px; }
+.crops__copy .lead { margin-top: 16px; }
+.crops__search { margin-top: 26px; display: grid; gap: 8px; max-width: 560px; }
+.crops__label { font-weight: 600; font-size: 15px; }
+.crops__field { display: flex; gap: 8px; }
+.crops__field input { flex: 1; min-width: 0; min-height: 56px; padding: 0 20px; border-radius: 999px; border: 1px solid var(--ink); background: #FFFDF8; font: inherit; font-size: 17px; color: var(--ink); }
+.crops__field input:focus-visible { outline: 2px solid var(--amber-deep); outline-offset: 2px; }
+.crops__month { margin-top: 26px; }
+.crops__mh { font-family: var(--serif); font-size: clamp(20px, 1.8vw, 26px); margin-bottom: 12px; }
+.crops__chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chiplink { display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border-radius: 999px; background: #FFFDF8; border: 1px solid var(--hair); text-decoration: none; font-weight: 600; font-size: 14.5px; border-left: 6px solid var(--g, var(--emerald)); }
+.chiplink:hover, .chiplink:focus-visible { background: var(--deep); color: var(--on-deep); }
+.crops__wheel { display: grid; gap: 10px; justify-items: center; }
+.crops__wheel svg { width: min(100%, 440px); height: auto; overflow: visible; }
+.crops__wheel figcaption { max-width: 48ch; text-align: center; }
+.wheel__seg { cursor: pointer; outline: none; }
+.wheel__seg path { fill: var(--amber); fill-opacity: var(--k); stroke: var(--canvas); stroke-width: 2; transition: fill 0.3s, transform 0.4s var(--ease); transform-origin: 210px 210px; }
+.wheel__seg text { font-size: 14px; font-weight: 600; fill: var(--deep); pointer-events: none; }
+.wheel__seg:hover path, .wheel__seg:focus-visible path { fill: var(--emerald); fill-opacity: 0.8; }
+.wheel__seg.is-on path { fill: var(--emerald); fill-opacity: 1; transform: scale(1.04); }
+.wheel__seg.is-on text, .wheel__seg:hover text, .wheel__seg:focus-visible text { fill: var(--on-deep); }
+.wheel__seg:focus-visible path { stroke: var(--deep); stroke-width: 3; }
+.wheel__m { font-family: var(--serif); font-size: 30px; fill: var(--ink); }
+.wheel__n { font-size: 15px; fill: var(--ink-soft); }
+.crops__all { margin-top: clamp(36px, 6vh, 56px); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--hair); }
+.cgroup { padding: 20px 16px 8px 0; }
+.cgroup + .cgroup { padding-left: 16px; border-left: 1px solid var(--hair); }
+.cgroup[hidden] { display: none; }
+.cgroup__h { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--amber-deep); margin-bottom: 12px; }
+.cgroup__h .fig { color: var(--ink-soft); }
+.cgroup__list { display: grid; gap: 8px; }
+.cgroup__list li[hidden] { display: none; }
+.ctile { display: grid; gap: 2px; padding: 12px 14px; border-radius: 14px; background: #FFFDF8; border: 1px solid var(--hair); border-left: 6px solid var(--g, var(--emerald)); text-decoration: none; transition: background-color 0.3s, color 0.3s, transform 0.3s var(--ease); }
+.ctile__name { font-weight: 700; font-size: 15.5px; line-height: 1.3; }
+.ctile__when { font-size: 13px; color: var(--ink-soft); }
+.ctile__tag { justify-self: start; margin-top: 4px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--emerald); }
+.ctile:hover, .ctile:focus-visible { background: var(--deep); color: var(--on-deep); transform: translateY(-2px); }
+.ctile:hover .ctile__when, .ctile:focus-visible .ctile__when { color: var(--on-deep-soft); }
+.ctile:hover .ctile__tag, .ctile:focus-visible .ctile__tag { color: var(--amber-lit); }
+.ctile--cereal { --g: #C88A2E; } .ctile--oil { --g: #E6BE3C; } .ctile--pulse { --g: #2D5A3C; } .ctile--veg { --g: #9C3F2C; } .ctile--fruit { --g: #7FB08A; }
+.crops__note { margin-top: 20px; }
+
+@media (max-width: 1100px) {
+  .fams { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .fams li:nth-child(5) { border-left: 0; }
+  .fams li:nth-child(n+5) { border-top: 1px solid var(--hair); }
+  .crops__all { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cgroup:nth-child(4) { padding-left: 0; border-left: 0; }
+}
+@media (max-width: 1000px) {
+  .crops__grid, .qs { grid-template-columns: 1fr; }
+  .crops__wheel svg { width: min(100%, 340px); }
+  .hero__scene { margin-bottom: 24px; height: auto; }
+  .hero__scene canvas, .hero__scene .hero__fallback { height: 48vh; min-height: 320px; }
+}
+@media (max-width: 640px) {
+  .fams { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fams li:nth-child(odd) { border-left: 0; }
+  .fams li:nth-child(n+3) { border-top: 1px solid var(--hair); }
+  .crops__all { grid-template-columns: 1fr 1fr; }
+  .cgroup, .cgroup + .cgroup { padding: 18px 8px 6px 0; border-left: 0; }
+  .crops__field { flex-direction: column; }
+  .crops__field .btn { width: 100%; }
+  .hero__three > div { grid-template-columns: 1fr; }
+  .hero__scene { margin-bottom: 24px; }
+}
+/* The pinned method section starts under the menu, not in the middle of the screen, so no blank band shows above it. */
+.method.is-pinned .method__pin { justify-content: flex-start; padding-top: clamp(88px, 12vh, 112px); }
+.qs { padding-bottom: 0; }
+@media (max-width: 640px) {
+  .ctile { padding: 10px 12px; }
+  .ctile__tag { font-size: 10.5px; letter-spacing: 0.02em; }
+  .crops__wheel svg { width: min(100%, 300px); }
+}
