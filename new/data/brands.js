@@ -364,5 +364,5 @@ window.VAN_BRANDS = [
 ];
 
 window.VAN_BRANDS.forEach(function (b) {
-  b.url = 'https://www.van.com.pk/brands/' + b.slug + '.html';
+  b.url = 'brands/' + b.slug + '.html';
 });

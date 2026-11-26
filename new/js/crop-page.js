@@ -9,7 +9,7 @@
   var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   var GROUPS = [['cereal', 'Cereals and field crops', '#C88A2E'], ['oil', 'Oilseeds', '#D9A92A'], ['pulse', 'Pulses', '#2D5A3C'], ['veg', 'Vegetables and spices', '#9C3F2C'], ['fruit', 'Orchards and fruit', '#5E9A6C']];
   var GCOL = {}; GROUPS.forEach(function (g) { GCOL[g[0]] = g[2]; });
-  var BASE = 'https://www.van.com.pk/crops/';
+  var BASE = 'crops/';
   var WORD = { sowing: 'Sowing', planting: 'Planting', 'season start': 'Season starts' };
   var SHORT = { Jan: 'January', Feb: 'February', Mar: 'March', Apr: 'April', May: 'May', Jun: 'June', Jul: 'July', Aug: 'August', Sep: 'September', Oct: 'October', Nov: 'November', Dec: 'December' };
   var calm = document.documentElement.classList.contains('calm');

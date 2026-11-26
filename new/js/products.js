@@ -232,7 +232,7 @@
       $('#soilCap').textContent = c.cap;
       var prod = $('#soilProduct');
       prod.hidden = !van;
-      prod.href = 'https://www.van.com.pk/brands/' + d.slug + '.html';
+      prod.href = 'brands/' + d.slug + '.html';
       $('#soilPack').src = 'img/packs/' + d.slug + '.webp';
       $('#soilProductName').textContent = d.vanName;
       $('#soilProductLink').textContent = 'Open the live page for ' + d.vanName;
@@ -555,7 +555,7 @@
       e.preventDefault();
       var val = $('#batchInput').value.trim().toUpperCase();
       var status = $('#batchStatus');
-      window.open('https://www.van.com.pk/verify.html', '_blank', 'noopener');
+      window.open('verify.html', '_blank', 'noopener');
       var plain = 'The Verify page has opened in a new tab. Type your batch number there.';
       if (!val || !navigator.clipboard || !navigator.clipboard.writeText) { status.textContent = plain; return; }
       navigator.clipboard.writeText(val).then(function () {

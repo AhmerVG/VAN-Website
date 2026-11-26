@@ -11,7 +11,7 @@
   var NS = 'http://www.w3.org/2000/svg';
   var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   var GCOL = { cereal: '#C88A2E', oil: '#D9A92A', pulse: '#2D5A3C', veg: '#9C3F2C', fruit: '#5E9A6C' };
-  var BASE = 'https://www.van.com.pk/crops/';
+  var BASE = 'crops/';
   function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text !== undefined) n.textContent = text; return n; }
   function sv(tag, a) { var n = document.createElementNS(NS, tag); for (var k in a) n.setAttribute(k, a[k]); return n; }
   function inMonth(c, m) { return c.windows.some(function (w) { return w[0] <= w[1] ? m >= w[0] && m <= w[1] : m >= w[0] || m <= w[1]; }); }

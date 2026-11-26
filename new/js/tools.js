@@ -259,7 +259,7 @@
 
   var VS = root.VANSite || { calm: true, animate: false, hasGsap: false, $: function (s, el) { return (el || document).querySelector(s); }, $$: function (s, el) { return Array.prototype.slice.call((el || document).querySelectorAll(s)); } };
   var $ = VS.$, $$ = VS.$$;
-  var SITE = 'https://www.van.com.pk/';
+  var SITE = '';
   var WA = 'https://wa.me/923005003041';
   var qs = {};
   location.search.replace(/^\?/, '').split('&').forEach(function (p) { if (!p) return; var kv = p.split('='); try { qs[decodeURIComponent(kv[0])] = decodeURIComponent((kv[1] || '').replace(/\+/g, ' ')); } catch (e) {} });
