@@ -2,22 +2,22 @@
    Warm paper layout with VAN's own colours: navy type, nutrient green, NPK amber. */
 
 :root {
-  --canvas: #F6F3EE;
-  --sand: #EAE4DA;
-  --ink: #0E3550;
-  --ink-soft: #46596A;
+  --canvas: #F7F4EE;
+  --sand: #EBE4D8;
+  --ink: #171A16;
+  --ink-soft: #4B5148;
   --unlit: #C8BFB0;
   --green: #2F7D3F;
-  --amber: #D2751A;
-  --amber-lit: #F2B866;
-  --amber-deep: #9A4E0C;
+  --amber: #C88A2E;
+  --amber-lit: #E7B866;
+  --amber-deep: #855610;
   --teal: #0F7A72;
   --blue: #00598E;
   --plum: #6E4A8E;
-  --deep: #0B192C;
-  --on-deep: #F6F3EE;
+  --deep: #171A16;
+  --on-deep: #F7F4EE;
   --on-deep-soft: rgba(246, 243, 238, 0.76);
-  --hair: rgba(14, 53, 80, 0.16);
+  --hair: rgba(23, 26, 22, 0.16);
   --hair-light: rgba(246, 243, 238, 0.22);
   --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
   --sans: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -504,7 +504,7 @@ section, .footer { position: relative; z-index: 2; }
 .lib-shelves { display: flex; flex-wrap: wrap; gap: 10px; margin: 26px 0 18px; }
 .lib-shelf { display: inline-flex; align-items: center; gap: 12px; padding: 14px 22px; border-radius: 999px; border: 1px solid rgba(14, 53, 80, 0.28); background: transparent; color: inherit; font: inherit; font-size: 16px; font-weight: 600; cursor: pointer; }
 .lib-shelf b { font-weight: 600; font-size: 13px; padding: 2px 9px; border-radius: 999px; background: rgba(14, 53, 80, 0.1); }
-.lib-shelf.is-on { background: #0E3550; color: #F6F3EE; border-color: #0E3550; }
+.lib-shelf.is-on { background: #171A16; color: #F7F4EE; border-color: #171A16; }
 .lib-shelf.is-on b { background: rgba(246, 243, 238, 0.2); }
 .lib-shelf:focus-visible { outline: 2px solid #D2751A; outline-offset: 3px; }
 .lib-card__code--own { font-size: clamp(19px, 1.5vw, 23px); line-height: 1.15; }
@@ -514,3 +514,35 @@ section, .footer { position: relative; z-index: 2; }
 .nav__logo { display: block; height: 36px; width: auto; }
 .footer__logo { display: block; position: relative; z-index: 2; width: clamp(200px, 22vw, 300px); height: auto; margin-bottom: 28px; }
 @media (max-width: 1000px) { .nav__logo { height: 30px; } }
+
+/* ---- 26 Nov 2026: site palette (limestone, amber, dark green-black), site menu with a section bar ---- */
+:root { --emerald: #2D5A3C; }
+.btn:hover { background: var(--emerald); }
+.secbar { pointer-events: auto; max-width: 1220px; margin: 8px auto 0; display: flex; gap: 6px; justify-content: center; flex-wrap: nowrap; overflow-x: auto; padding: 6px; border-radius: 999px; background: rgba(247, 244, 238, 0.82); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border: 1px solid var(--hair); scrollbar-width: none; }
+.secbar::-webkit-scrollbar { display: none; }
+.secbar a { flex: none; padding: 6px 14px; border-radius: 999px; font-size: 13.5px; font-weight: 600; text-decoration: none; color: var(--ink-soft); transition: background-color 0.3s, color 0.3s; }
+.secbar a:hover, .secbar a:focus-visible { background: var(--ink); color: var(--canvas); }
+.nav.is-hidden .secbar { opacity: 0; }
+.motion .coat__note { background: rgba(247, 244, 238, 0.9); padding: 8px 12px; border-radius: 12px; z-index: 3; }
+section[id] { scroll-margin-top: 150px; }
+@media (max-width: 700px) { .secbar { justify-content: flex-start; margin-top: 6px; } .secbar a { font-size: 12.5px; padding: 6px 10px; } }
+/* Room for the section bar under the menu */
+.hero { padding-top: clamp(160px, 21vh, 210px); }
+@media (max-width: 700px) { .hero { padding-top: clamp(280px, 40vh, 360px); } }
+/* Phone and tablet: the main menu shows as a second row in the pill, as on the other pages */
+@media (max-width: 1000px) {
+  .nav__pill { flex-wrap: wrap; row-gap: 4px; border-radius: 26px; }
+  .nav .nav__links { display: flex; order: 3; flex: 0 0 100%; justify-content: space-between; gap: 6px; overflow-x: auto; border-top: 1px solid var(--hair); padding-top: 4px; scrollbar-width: none; }
+  .nav .nav__links a { font-size: 12.5px; padding: 8px 0; }
+  .nav .btn { min-height: 40px; padding: 0 14px; font-size: 12.5px; }
+}
+@media (max-width: 440px) {
+  .nav__pill { gap: 8px; padding: 6px 6px 6px 14px; }
+  .nav__logo { height: 26px; }
+  .nav .btn { padding: 0 12px; font-size: 12px; min-height: 36px; }
+  .nav .nav__links a { font-size: 12px; }
+  .secbar { min-width: 0; }
+}
+@media (max-width: 1000px) { .nav .nav__links, .secbar, .nav__pill { min-width: 0; } .nav__pill { max-width: 100%; } }
+.footer { overflow-x: clip; }
+html { overflow-x: clip; }
