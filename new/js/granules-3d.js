@@ -139,7 +139,9 @@
     pins.forEach(function (p, i) {
       var o = groups[i]; if (!o) return;
       anchor.set(o.G.x + o.G.r * 0.55, o.G.y + o.G.r * 0.85, 0).project(cam);
-      p.style.transform = 'translate(' + ((anchor.x * 0.5 + 0.5) * w).toFixed(1) + 'px,' + ((-anchor.y * 0.5 + 0.5) * h).toFixed(1) + 'px)';
+      // Keep the whole pin inside the drawing, so its name is never cut off at the edge.
+      var px2 = Math.max(4, Math.min((anchor.x * 0.5 + 0.5) * w, w - p.offsetWidth - 4));
+      p.style.transform = 'translate(' + px2.toFixed(1) + 'px,' + ((-anchor.y * 0.5 + 0.5) * h).toFixed(1) + 'px)';
       p.classList.add('is-placed');
     });
     if (calm) { if (++still > 30) return; }
