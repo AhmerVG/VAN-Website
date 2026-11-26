@@ -142,7 +142,7 @@
         if (i < 83) grid.appendChild(svgEl('rect', { x: gx, y: gy, width: 16, height: 16, rx: 3 }));
         else {
           grid.appendChild(svgEl('rect', { x: gx - 1, y: gy - 1, width: 18, height: 18, rx: 3, fill: '#EFE2BF', stroke: '#171A16', 'stroke-width': 2 }));
-          var kt = svgEl('text', { x: gx + 8, y: gy + 13, 'text-anchor': 'middle', 'font-family': 'JetBrains Mono, monospace', 'font-size': 12, 'font-weight': 700, fill: '#171A16', stroke: 'none' });
+          var kt = svgEl('text', { x: gx + 8, y: gy + 13, 'text-anchor': 'middle', 'font-family': 'Public Sans, sans-serif', 'font-size': 12, 'font-weight': 700, fill: '#171A16', stroke: 'none' });
           kt.textContent = 'K'; grid.appendChild(kt);
         }
       }
@@ -277,7 +277,7 @@
     s.appendChild(svgEl('circle', { cx: 60, cy: 60, r: 30, fill: 'none', stroke: 'rgba(23,26,22,0.35)', 'stroke-width': 1, 'stroke-dasharray': '2 5' }));
     s.appendChild(svgEl('path', { d: 'M60 6 V20 M60 100 V114 M6 60 H20 M100 60 H114', stroke: '#F7F4EE', 'stroke-width': 1.5 }));
     var dark = cat === 'BIO' || cat === 'P';
-    var t = svgEl('text', { x: 60, y: 70, 'text-anchor': 'middle', 'font-family': 'Instrument Serif, Georgia, serif', 'font-size': m[0].length > 2 ? 26 : 34, fill: dark ? '#F7F4EE' : '#171A16' });
+    var t = svgEl('text', { x: 60, y: 70, 'text-anchor': 'middle', 'font-family': 'Fraunces, Georgia, serif', 'font-size': m[0].length > 2 ? 26 : 34, fill: dark ? '#F7F4EE' : '#171A16' });
     t.textContent = m[0]; s.appendChild(t);
     return s;
   }
