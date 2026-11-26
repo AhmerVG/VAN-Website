@@ -108,3 +108,11 @@
     var input = $('#batch'); input.value = input.value.trim();
   });
 })();
+
+/* Slow parallax on the full-width photographs. */
+(function () {
+  var S = window.VANSite; if (!S || !S.animate) return;
+  S.$$('[data-parallax]').forEach(function (img) {
+    gsap.fromTo(img, { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: img.parentNode, start: 'top bottom', end: 'bottom top', scrub: true } });
+  });
+})();

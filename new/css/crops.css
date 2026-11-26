@@ -1,0 +1,123 @@
+/* Crop plans page. Builds on site.css. 26 Nov 2026. */
+
+/* 1. Hero over a field photograph */
+.cp-hero { position: relative; min-height: min(92vh, 860px); display: grid; align-items: end; padding: 140px var(--gutter) clamp(48px, 8vh, 88px); color: var(--on-deep); overflow: hidden; background: var(--deep); }
+.cp-hero__photo { position: absolute; inset: 0; margin: 0; }
+.cp-hero__photo img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.06); }
+.full .cp-hero__photo img { animation: cpZoom 18s var(--ease) both; }
+@keyframes cpZoom { from { transform: scale(1.14); } to { transform: scale(1.02); } }
+.cp-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(23, 26, 22, 0.35) 0%, rgba(23, 26, 22, 0.15) 35%, rgba(23, 26, 22, 0.82) 100%); pointer-events: none; }
+.cp-hero__inner { position: relative; z-index: 2; max-width: 860px; }
+.cp-hero__title { margin: 16px 0 18px; color: var(--on-deep); }
+.cp-hero__lead { font-size: clamp(17px, 1.4vw, 20px); color: var(--on-deep-soft); max-width: 58ch; }
+.cp-hero__credit { position: absolute; right: var(--gutter); bottom: 14px; z-index: 2; font-size: 11.5px; color: rgba(247, 244, 238, 0.6); margin: 0; }
+
+/* The search instrument */
+.finder { position: relative; margin-top: 30px; max-width: 640px; }
+.finder__label { display: block; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--amber-lit); margin-bottom: 10px; }
+.finder__field { display: flex; align-items: center; gap: 6px; padding: 6px 6px 6px 18px; border-radius: 999px; background: rgba(247, 244, 238, 0.96); box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(23, 26, 22, 0.08); transition: box-shadow 0.3s; }
+.finder__field:focus-within { box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.6), 0 0 0 3px var(--amber-lit); }
+.finder__icon { width: 22px; height: 22px; flex: none; fill: none; stroke: var(--ink-soft); stroke-width: 2; stroke-linecap: round; }
+.finder__field input { flex: 1; min-width: 0; min-height: 52px; border: 0; background: transparent; font: inherit; font-size: 18px; color: var(--ink); outline: none; }
+.finder__field input::placeholder { color: #8A8F86; }
+.finder__go { flex: none; min-height: 52px; padding: 0 24px; border: 0; border-radius: 999px; background: var(--deep); color: var(--on-deep); font-weight: 700; font-size: 15.5px; cursor: pointer; transition: background-color 0.3s; }
+.finder__go:hover, .finder__go:focus-visible { background: var(--emerald); }
+.finder__suggest { position: absolute; left: 0; right: 0; top: calc(100% - 26px); z-index: 5; margin-top: 8px; padding: 6px; border-radius: 22px; background: #FFFDF8; color: var(--ink); box-shadow: 0 30px 70px -24px rgba(0, 0, 0, 0.55); }
+.finder__opt a { display: grid; grid-template-columns: 12px 1fr auto; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 16px; text-decoration: none; }
+.finder__opt.is-on a, .finder__opt a:hover { background: var(--clay); }
+.finder__dot { width: 10px; height: 10px; border-radius: 50%; }
+.finder__name { font-weight: 700; }
+.finder__when { font-size: 13.5px; color: var(--ink-soft); }
+.finder__status { margin-top: 10px; font-size: 13.5px; color: var(--on-deep-soft); }
+
+/* 2. The season dial */
+.dial__grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: clamp(24px, 4vw, 64px); align-items: center; }
+.dial__stage { position: relative; }
+.dial__svg { width: 100%; max-width: 700px; height: auto; display: block; margin: 0 auto; overflow: visible; }
+.dial__lane { fill: none; stroke: rgba(23, 26, 22, 0.06); stroke-width: 1; }
+.dial__tick { stroke: rgba(23, 26, 22, 0.12); stroke-width: 1; }
+.dial__seg { cursor: pointer; outline: none; }
+.dial__seg path { fill: var(--clay); stroke: var(--canvas); stroke-width: 2; transition: fill 0.3s; }
+.dial__seg path { fill: color-mix(in srgb, var(--amber) calc(var(--k) * 100%), var(--clay)); }
+.dial__seg text { font-size: 15px; font-weight: 700; fill: var(--deep); pointer-events: none; }
+.dial__seg:hover path, .dial__seg:focus-visible path { fill: var(--emerald-lit); }
+.dial__seg.is-on path { fill: var(--emerald); }
+.dial__seg.is-on text { fill: var(--on-deep); }
+.dial__seg:focus-visible path { stroke: var(--deep); stroke-width: 3; }
+.dial__arc { fill: none; stroke: var(--c); stroke-width: 4.2; stroke-linecap: round; stroke-dasharray: var(--len) 2000; stroke-dashoffset: var(--len); transition: stroke-dashoffset 1.3s var(--ease) var(--d), opacity 0.3s, stroke-width 0.3s; }
+.is-drawn .dial__arc, .calm .dial__arc { stroke-dashoffset: 0; }
+.dial__hit { fill: none; stroke: transparent; stroke-width: 12; cursor: pointer; }
+.dial__crop.is-dim .dial__arc { opacity: 0.2; }
+.dial__crop.is-hot .dial__arc { stroke-width: 7; }
+.dial__needle line { stroke: var(--amber-deep); stroke-width: 2.5; stroke-linecap: round; }
+.dial__needle circle { fill: var(--amber-deep); }
+.dial__needle text { font-size: 13px; font-weight: 700; fill: var(--amber-deep); }
+.full .dial__needle { transform-origin: 320px 320px; animation: needle 1.8s var(--ease) both 0.4s; }
+@keyframes needle { from { transform: rotate(-200deg); opacity: 0; } to { transform: rotate(0); opacity: 1; } }
+.dial__centre circle { fill: #FFFDF8; stroke: var(--hair); }
+.dial__ct { font-family: var(--serif); font-size: 30px; fill: var(--ink); }
+.dial__cs { font-size: 15px; fill: var(--ink-soft); }
+.dial__tip { position: absolute; left: 0; top: 0; z-index: 4; display: grid; gap: 2px; padding: 10px 14px; border-radius: 14px; background: var(--deep); color: var(--on-deep); font-size: 13.5px; pointer-events: none; box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.6); max-width: 220px; }
+.dial__tip span { color: var(--on-deep-soft); }
+
+.dial__panel { display: grid; gap: 22px; align-content: start; }
+.dial__legend { display: flex; flex-wrap: wrap; gap: 8px; }
+.dial__key { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--hair); background: transparent; font-size: 14px; font-weight: 600; cursor: pointer; transition: background-color 0.3s, color 0.3s, border-color 0.3s; }
+.dial__key i { width: 10px; height: 10px; border-radius: 50%; }
+.dial__key .fig { color: var(--ink-soft); }
+.dial__key:hover { border-color: var(--ink); }
+.dial__key.is-on { background: var(--deep); color: var(--on-deep); border-color: var(--deep); }
+.dial__key.is-on .fig { color: var(--on-deep-soft); }
+.dial__info { padding: clamp(20px, 2.4vw, 30px); border-radius: var(--radius); background: #FFFDF8; border: 1px solid var(--hair); box-shadow: 0 24px 60px -36px rgba(23, 26, 22, 0.45); display: grid; gap: 10px; align-content: start; min-height: 260px; }
+.dial__k { font-size: 12.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber-deep); }
+.dial__h { font-family: var(--serif); font-size: clamp(24px, 2.2vw, 32px); line-height: 1.15; }
+.dial__w { color: var(--ink-soft); }
+.dial__t { font-size: 14.5px; color: var(--emerald); font-weight: 600; }
+.dial__list { display: grid; gap: 6px; margin-top: 4px; }
+.dial__item { width: 100%; display: grid; grid-template-columns: 10px 1fr auto; align-items: center; gap: 12px; padding: 10px 12px; border: 0; border-radius: 12px; background: var(--canvas); text-align: left; cursor: pointer; transition: background-color 0.25s, color 0.25s; }
+.dial__item i { width: 10px; height: 10px; border-radius: 50%; }
+.dial__in { font-weight: 700; }
+.dial__iw { font-size: 13px; color: var(--ink-soft); }
+.dial__item:hover, .dial__item:focus-visible { background: var(--deep); color: var(--on-deep); }
+.dial__item:hover .dial__iw, .dial__item:focus-visible .dial__iw { color: var(--on-deep-soft); }
+.dial__clear { justify-self: start; margin-top: 4px; border: 0; background: none; padding: 6px 0; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; color: var(--ink); }
+.dial__info .btn { justify-self: start; margin-top: 8px; }
+
+/* 3. All 28 plans */
+.crops__all { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid var(--hair); }
+.cgroup { padding: 20px 16px 8px 0; transition: opacity 0.3s; }
+.cgroup + .cgroup { padding-left: 16px; border-left: 1px solid var(--hair); }
+.cgroup[hidden] { display: none; }
+.cgroup.is-faded { opacity: 0.3; }
+.cgroup__h { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--amber-deep); margin-bottom: 12px; }
+.cgroup__h .fig { color: var(--ink-soft); }
+.cgroup__list { display: grid; gap: 8px; }
+.cgroup__list li[hidden] { display: none; }
+.ctile { display: grid; gap: 2px; padding: 12px 14px; border-radius: 14px; background: #FFFDF8; border: 1px solid var(--hair); border-left: 6px solid var(--g, var(--emerald)); text-decoration: none; transition: background-color 0.3s, color 0.3s, transform 0.3s var(--ease), box-shadow 0.3s; }
+.ctile__name { font-weight: 700; font-size: 15.5px; line-height: 1.3; }
+.ctile__when { font-size: 13px; color: var(--ink-soft); }
+.ctile__tag { justify-self: start; margin-top: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--emerald); }
+.ctile:hover, .ctile:focus-visible { background: var(--deep); color: var(--on-deep); transform: translateY(-3px); box-shadow: 0 18px 36px -20px rgba(23, 26, 22, 0.6); }
+.ctile:hover .ctile__when, .ctile:focus-visible .ctile__when { color: var(--on-deep-soft); }
+.ctile:hover .ctile__tag, .ctile:focus-visible .ctile__tag { color: var(--amber-lit); }
+.ctile--cereal { --g: #C88A2E; } .ctile--oil { --g: #D9A92A; } .ctile--pulse { --g: #2D5A3C; } .ctile--veg { --g: #9C3F2C; } .ctile--fruit { --g: #5E9A6C; }
+.plans__notes { margin-top: 32px; display: grid; gap: 10px; max-width: 90ch; }
+.plans__notes p:last-child { margin-top: 10px; }
+
+@media (max-width: 1100px) {
+  .crops__all { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cgroup:nth-child(4) { padding-left: 0; border-left: 0; }
+}
+@media (max-width: 900px) {
+  .dial__grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .cp-hero { min-height: 88vh; padding-top: 120px; }
+  .finder__go { padding: 0 16px; font-size: 14px; }
+  .finder__when { display: none; }
+  .crops__all { grid-template-columns: 1fr 1fr; }
+  .cgroup, .cgroup + .cgroup { padding: 18px 8px 6px 0; border-left: 0; }
+  .ctile { padding: 10px 12px; }
+  .ctile__tag { font-size: 10.5px; letter-spacing: 0.02em; }
+}
+.dial__tip[hidden], .finder__suggest[hidden] { display: none; }

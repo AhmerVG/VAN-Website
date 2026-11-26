@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crop plans · Vital Agri Nutrients</title>
+<meta name="description" content="Vital Agri Nutrients (VAN) publishes 28 crop plans for alkaline, calcareous soil. Each plan gives the amount of each product to apply per acre at every crop stage.">
+<script>(function(){var q=location.search,c=null;try{c=localStorage.getItem('van-motion')}catch(e){}
+if(/[?&]motion=1/.test(q))c='full';if(/[?&]motion=0/.test(q))c='calm';
+var os=matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.documentElement.className=(c?c==='calm':os)?'calm':'full';})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Public+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css?v=12">
+<link rel="stylesheet" href="css/crops.css?v=2">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the main content</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"><div class="cursor__ring"><span class="cursor__label" id="cursorLabel"></span></div><div class="cursor__dot"></div></div>
+<header class="nav" id="nav"><div class="nav__pill">
+  <a class="nav__brand" href="index.html" aria-label="Vital Agri Nutrients, home"><span class="nav__mark">VAN</span><span class="nav__name">Vital Agri Nutrients</span></a>
+  <nav class="nav__links" aria-label="Main menu">
+    <a href="products.html">Products</a><a href="tools.html">Vitalytics</a><a href="research.html">Research</a><a href="partner/index.html">Your brand</a><a href="about.html">About</a>
+  </nav>
+  <a class="btn btn--small magnetic" href="crops.html" aria-current="page" data-cursor="Open"><span>Find my crop plan</span></a>
+</div></header>
+
+<main id="main">
+
+  <!-- 1. Hero over a field photograph -->
+  <section class="cp-hero" id="top">
+    <figure class="cp-hero__photo" aria-hidden="true"><img src="img/photos/field-hero.webp" alt="" width="2400" height="1600" fetchpriority="high"></figure>
+    <div class="cp-hero__inner">
+      <span class="eyebrow eyebrow--light">28 crop plans · per acre · stage by stage · free</span>
+      <h1 class="h-xl cp-hero__title" id="heroTitle">Find the plan for your crop</h1>
+      <p class="cp-hero__lead">Each plan gives the amount of each product to apply per acre at every crop stage. Each of our crop plans is written for alkaline, calcareous soil.</p>
+      <form class="finder" id="cropSearch" role="search" onsubmit="return false">
+        <label class="finder__label" for="cropQ">Search for your crop</label>
+        <div class="finder__field">
+          <svg class="finder__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
+          <input id="cropQ" type="search" autocomplete="off" placeholder="Wheat, cotton, mango…" aria-describedby="cropStatus" aria-controls="cropAll">
+          <button class="finder__go" type="submit"><span>Open the plan</span></button>
+        </div>
+        <ul class="finder__suggest" id="cropSuggest" role="listbox" aria-label="Matching crop plans" hidden></ul>
+        <p class="finder__status" id="cropStatus" aria-live="polite">Showing all 28 crop plans.</p>
+      </form>
+    </div>
+    <p class="cp-hero__credit" id="heroCredit">Wheat field, Sukkur, Pakistan. Photograph by Muneer ahmed ok, from Unsplash.</p>
+  </section>
+
+  <!-- 2. The season dial -->
+  <section class="band dial" id="dial" aria-labelledby="dialTitle">
+    <div class="band__head">
+      <div>
+        <span class="eyebrow">The season dial</span>
+        <h2 class="h-lg" id="dialTitle" data-reveal>When each crop plan can start</h2>
+      </div>
+      <p class="lead" data-reveal>Each ring of the dial shows 1 of our 28 crop plans. Its coloured arc covers the months in which the plan can start: at sowing, at planting or at the start of the season. A plan with 2 start windows has 2 arcs. The needle marks today's date. Choose a month to see its crop plans, or choose an arc to see 1 plan.</p>
+    </div>
+    <div class="dial__grid">
+      <div class="dial__stage">
+        <svg class="dial__svg" id="dialSvg" viewBox="0 0 640 640" role="group" aria-label="Season dial: 12 months around the edge and 1 arc for each crop plan"></svg>
+        <div class="dial__tip" id="dialTip" hidden></div>
+      </div>
+      <aside class="dial__panel" aria-live="polite">
+        <div class="dial__legend" id="dialLegend" role="group" aria-label="Show 1 group of crops"></div>
+        <div class="dial__info" id="dialInfo"></div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 3. All 28 plans -->
+  <section class="band band--clay plans" id="plans" aria-labelledby="plansTitle">
+    <div class="band__head">
+      <div>
+        <span class="eyebrow">All 28 crop plans</span>
+        <h2 class="h-lg" id="plansTitle" data-reveal>Choose your crop</h2>
+      </div>
+      <p class="lead" data-reveal>Our 28 crop plans are sorted into 5 groups. The number beside each group is the count of crop plans in that group. Choose a crop to open its plan.</p>
+    </div>
+    <div class="crops__all" id="cropAll"></div>
+    <div class="plans__notes">
+      <p class="note">For 24 of the 28 plans, the Nutrition creator changes the amount of each product per acre to suit your soil test. If you have no soil test, you can choose your Punjab district. The Nutrition creator then uses the median soil test results for that district from the Punjab soil testing programme. These are typical values for the district, not readings from your own field.</p>
+      <p class="note">The soil adjustment in the Nutrition creator is a pilot. Check any change with your VAN dealer before you apply it.</p>
+      <p class="note">Calcareous soil is soil that contains free lime. Soil with a pH above 7 is alkaline. In the Punjab soil testing programme, 69.1% of the 770,160 samples tested in about 2016 to 2018 had a pH above 8. These samples came from alkaline soil.</p>
+      <p><a class="btn btn--ghost magnetic" href="https://wa.me/923005003041" target="_blank" rel="noopener" data-cursor="Chat"><span>Ask us about any plan on WhatsApp</span></a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__curve" aria-hidden="true"></div>
+  <span class="eyebrow eyebrow--light">Contact</span>
+  <h2 class="footer__title">Contact Vital Agri Nutrients</h2>
+  <p class="footer__lead">Call us on +92 42 35762215, send a WhatsApp message to +92 300 5003041 or write to info@van.com.pk.</p>
+  <a class="btn btn--amber magnetic" href="https://wa.me/923005003041" target="_blank" rel="noopener" data-cursor="Chat"><span>Send a WhatsApp message</span></a>
+  <span class="rule rule--light" data-reveal></span>
+  <div class="footer__grid">
+    <div><h3 class="footer__h">Head office</h3><p>605 Al-Hafeez Heights, Gulberg III, Lahore 54660</p></div>
+    <div><h3 class="footer__h">Plant</h3><p>49-Km Multan Road, Phool Nagar Bypass, Lahore</p></div>
+    <div><h3 class="footer__h">Contact</h3><p><a href="tel:+924235762215">+92 42 35762215</a></p><p><a href="https://wa.me/923005003041" target="_blank" rel="noopener">WhatsApp +92 300 5003041</a></p><p><a href="mailto:info@van.com.pk">info@van.com.pk</a></p></div>
+    <nav aria-label="Pages"><h3 class="footer__h">Pages</h3><p><a href="products.html">Products</a></p><p><a href="crops.html">Crop plans</a></p><p><a href="tools.html">Vitalytics</a></p><p><a href="research.html">Research</a></p><p><a href="about.html">About</a></p></nav>
+  </div>
+  <p class="footer__legal">© 2026 Vital Agri Nutrients (Pvt) Ltd</p>
+</footer>
+
+<div class="calm-note" id="calmNote" hidden><span>Motion is reduced on this device.</span><button type="button">Play full motion</button></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/site.js?v=10"></script>
+<script src="data/crop-calendar.js?v=1"></script>
+<script src="js/crop-page.js?v=2"></script>
+</body>
+</html>
