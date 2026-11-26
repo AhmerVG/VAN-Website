@@ -13,7 +13,7 @@ document.documentElement.className=(c?c==='calm':os)?'calm':'full';})();</script
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Public+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/site.css?v=13">
-<link rel="stylesheet" href="css/tools.css?v=3">
+<link rel="stylesheet" href="css/tools.css?v=5">
 </head>
 <body>
 <a class="skip" href="#main">Skip to the main content</a>
@@ -32,8 +32,9 @@ document.documentElement.className=(c?c==='calm':os)?'calm':'full';})();</script
 
   <!-- Opening -->
   <section class="band t-hero" aria-labelledby="heroTitle">
+    <figure class="t-hero__photo" aria-hidden="true"><img src="img/photos/field-furrows.webp" alt="" width="2400" height="1440" fetchpriority="high"></figure>
     <div class="t-wrap">
-      <p class="eyebrow t-hero__eyebrow" data-reveal>Vitalytics · Soil data from the Punjab soil testing programme, from the province’s own 36 district workbooks · <span class="fig">770,160</span> samples · <span class="fig">36</span> districts · tested in about 2016 to 2018</p>
+      <p class="eyebrow eyebrow--light t-hero__eyebrow" data-reveal>Vitalytics · free tools for your field · <span class="fig">770,160</span> soil samples from <span class="fig">36</span> districts</p>
       <h1 class="h-xl t-hero__title" id="heroTitle">Soil figures for your district and a crop plan for your acres</h1>
       <div class="t-hero__row">
         <p class="lead" data-reveal>Most samples in the Punjab soil testing programme were alkaline. Of the 770,160 samples tested in about 2016 to 2018, 69.1% had a pH above 8. Each of our crop plans is written for alkaline, calcareous soil.</p>
@@ -45,6 +46,7 @@ document.documentElement.className=(c?c==='calm':os)?'calm':'full';})();</script
         </nav>
       </div>
     </div>
+    <p class="t-hero__credit">The photograph shows ridged soil with water in the furrows, in Rahimyar Khan, Rahimyar Khan, Pakistan. The photograph is by Ayesha Ch, from Unsplash.</p>
   </section>
 
   <!-- Tool 1: Soil Atlas -->
@@ -197,33 +199,19 @@ document.documentElement.className=(c?c==='calm':os)?'calm':'full';})();</script
     </div>
   </section>
 
-  <!-- Tool 3: Sowing calendar -->
+  <!-- Tool 3: Sowing calendar. The full calendar, the season dial and the 28 plans are on crops.html (Tahir, 26 Nov 2026). -->
   <section class="band band--clay t-calendar" id="calendar" aria-labelledby="calendarTitle">
-    <div class="t-wrap">
-      <div class="band__head">
-        <div>
-          <span class="eyebrow" data-reveal>Tool 3 · Sowing calendar</span>
-          <h2 class="h-lg" id="calendarTitle" data-reveal>Sowing calendar and the 28 crop plans</h2>
-        </div>
-        <p class="lead" data-reveal>The calendar shows the sowing window of each of our 28 crop plans. Tap a month to see the crops sown in that month. For a crop marked season start, the sowing window is the start of the season.</p>
+    <div class="t-wrap t-calcard">
+      <div class="t-calcard__copy">
+        <span class="eyebrow" data-reveal>Tool 3 · Sowing calendar</span>
+        <h2 class="h-lg" id="calendarTitle" data-reveal>When each crop plan can start</h2>
+        <div class="crops__month" id="cropMonth" aria-live="polite"></div>
+        <p class="t-calcard__go"><a class="btn magnetic" href="crops.html" data-cursor="Open"><span>See all 28 crop plans</span></a></p>
       </div>
-      <span class="rule" data-reveal></span>
-
-      <div class="cal" id="calendarApp">
-        <div class="cal__bar">
-          <p class="t-step"><span class="fig">1</span> Pick a month.</p>
-          <div class="cal__strip" id="calStrip" role="group" aria-label="Months of the year"></div>
-          <p class="cal__status" id="calStatus" aria-live="polite"></p>
-        </div>
-        <div class="cal__scroll" tabindex="0" role="region" aria-labelledby="calendarTitle">
-          <table class="cal__matrix" id="calMatrix">
-            <caption class="sr-only">Sowing window of each crop plan, by month</caption>
-            <thead></thead>
-            <tbody></tbody>
-          </table>
-        </div>
-        <p class="note" id="calKey">A filled square marks a month inside the crop’s sowing window. Each crop name opens that crop’s plan on van.com.pk.</p>
-      </div>
+      <figure class="crops__wheel t-calcard__wheel">
+        <svg id="cropWheel" viewBox="0 0 420 420" role="group" aria-label="Sowing wheel: choose a month to open the crop plans that can start in that month"></svg>
+        <figcaption>Choose a month to see its crop plans.</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -323,6 +311,9 @@ document.documentElement.className=(c?c==='calm':os)?'calm':'full';})();</script
 <script src="data/soil-districts.js?v=2"></script>
 <script src="data/punjab-map.js?v=1"></script>
 <script src="data/crop-plans.js?v=2"></script>
-<script src="js/tools.js?v=2"></script>
+<script src="data/crop-calendar.js?v=1"></script>
+<script src="js/crops.js?v=5"></script>
+<script src="data/simulator-text.js?v=3"></script>
+<script src="js/tools.js?v=7"></script>
 </body>
 </html>

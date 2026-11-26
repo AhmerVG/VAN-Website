@@ -8,6 +8,11 @@
 
   var DATA = root.VAN_DATA || {};
   var PL = DATA.plans, SOIL = DATA.soil, MAP = DATA.map, CAL = DATA.calendar, SIM = DATA.simulator;
+  // Plain-English wording for the simulator (data/simulator-text.js, 26 Nov 2026). Only the words change.
+  if (root.VAN_SIM_TEXT && SIM) Object.keys(root.VAN_SIM_TEXT).forEach(function (crop) {
+    var T = root.VAN_SIM_TEXT[crop], M = SIM[crop];
+    if (M && T.length === M.levers.length) M.levers.forEach(function (l, i) { ['name', 'bad', 'ok', 'best'].forEach(function (k) { if (T[i][k]) l[k] = T[i][k]; }); });
+  });
   var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   var MONTHS_LONG = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -31,6 +36,7 @@
 
   /* Quantity in the Nutrition creator list (NutritionCreator.tsx, fmtQty). */
   var QUARTER = { '0.25': '¼', '0.5': '½', '0.75': '¾' };
+  function toBuy(n) { return n <= 0 ? 0 : Math.ceil(n * 2 - 1e-9) / 2; }
   function fmtCreator(n) {
     var r = Math.round(n * 100) / 100;
     if (r < 0) return '-' + fmtCreator(-r);
@@ -604,7 +610,7 @@
       }).join('') + '</ul>';
       if (state.fromDistrict && d) h += '<p class="lnote">These readings are the median readings of ' + esc(d.name) + ' district from the samples that the Punjab soil testing programme tested in about 2016 to 2018. They are not a test of your field.</p>';
       if (state.readings.pH !== undefined && !res.bands.pH) h += '<p class="lnote">Our soil scale has no level for a pH below 7. A pH reading below 7 changes nothing in the plan.</p>';
-      if (res.adjusted) h += '<p class="lnote lnote--pilot">The soil adjustment is a pilot. It has not yet been calibrated against a full season’s results. Confirm any change made for your soil with your VAN dealer before you apply it.</p>';
+      if (res.adjusted) h += '<p class="lnote lnote--pilot">The soil adjustment is a pilot. Confirm any change made for your soil with your VAN dealer before you apply it.</p>';
       return h + scaleNote();
     }
     function rangeText(r) {
@@ -621,8 +627,7 @@
 
     function waText(P, res, tl) {
       var a = state.acres, lines = ['Hello VAN. My ' + P.inline + ' plan for ' + fmtInt(a) + ' acre' + (a > 1 ? 's' : '') + ':'];
-      res.lines.forEach(function (l) { lines.push('• ' + l.name + ', ' + fmtCreator(l.shown) + ' × ' + l.packKg + ' ' + l.unit); });
-      if (res.lines.some(function (l) { return Math.abs(l.shown - Math.round(l.shown)) > 1e-6; })) lines.push('Round up to whole packs.');
+      res.lines.forEach(function (l) { lines.push('• ' + l.name + ': your field needs ' + group(l.total) + ' ' + l.unit + '. Buy ' + group(fmtCreator(toBuy(l.shown))) + ' ' + l.word + (toBuy(l.shown) > 1 ? 's' : '') + ' of ' + l.packKg + ' ' + l.unit + ' each.'); });
       var d = districtByAny(state.district);
       if (d) lines.push('My district: ' + d.name + '.');
       var keys = E.inputs.filter(function (p) { return state.readings[p] !== undefined; });
@@ -655,17 +660,18 @@
 
       /* 1. Bag totals */
       h += '<section class="lsec"><h4 class="lsec__h"><span class="fig">A</span> Bags and packs for ' + acresText + '</h4>' + soilSummary(res) +
-        '<div class="ltable" role="table" aria-label="Bags and packs for ' + acresText + '"><div class="lrow lrow--head" role="row"><span role="columnheader">Product</span><span role="columnheader">Bags or packs</span><span role="columnheader">Total weight or volume</span></div>' +
+        '<div class="ltable" role="table" aria-label="Bags and packs for ' + acresText + '"><div class="lrow lrow--head" role="row"><span role="columnheader">Product</span><span role="columnheader">Total weight or volume</span><span role="columnheader">Bags or packs to buy</span></div>' +
         res.lines.map(function (l) {
           var notes = [];
-          if (l.bumpPerAcre > 0) notes.push('<span class="chg chg--up">+' + fmtCreator(l.bumpQty) + ' bags or packs for your soil</span>');
-          if (l.bumpPerAcre < 0) notes.push('<span class="chg chg--down">−' + fmtCreator(-l.bumpQty) + ' bags or packs for your soil, because the phosphorus reading is at the Healthy level</span>');
-          if (l.swapPerAcre > 0.001) notes.push('<span class="chg chg--up">+' + fmtCreator(l.swapQty) + ' bags, for the nitrogen moved from urea</span>');
-          if (l.swapPerAcre < -0.001) notes.push('<span class="chg chg--down">' + fmtCreator(l.swapQty).replace('-', '−') + ' bags, nitrogen moved to Vital Urea</span>');
-          return '<div class="lrow' + (notes.length ? ' is-changed' : '') + '" role="row"><span role="cell" class="lrow__p"><b>' + esc(l.name) + '</b>' + (l.slug ? '' : '<span class="tag tag--grey">not made by VAN</span>') + '<span class="lrow__pack">' + l.packKg + ' ' + l.unit + ' ' + l.word + '</span>' + notes.join('') + '</span>' +
-            '<span role="cell" class="fig lrow__q">' + group(fmtCreator(l.shown)) + '</span><span role="cell" class="fig lrow__t">' + group(l.total) + ' ' + l.unit + '</span></div>';
+          var kg = function (q) { return group(fmtNum(Math.abs(q) * l.packKg, 1).replace(/\.0$/, '')) + ' ' + l.unit; };
+          if (l.bumpPerAcre > 0) notes.push('<span class="chg chg--up">This product has ' + kg(l.bumpQty) + ' more because of your soil readings.</span>');
+          if (l.bumpPerAcre < 0) notes.push('<span class="chg chg--down">This product has ' + kg(l.bumpQty) + ' less because of your soil readings.</span>');
+          if (l.swapPerAcre > 0.001) notes.push('<span class="chg chg--up">This product has ' + kg(l.swapQty) + ' more because it now carries the nitrogen moved from urea.</span>');
+          if (l.swapPerAcre < -0.001) notes.push('<span class="chg chg--down">This product has ' + kg(l.swapQty) + ' less because its nitrogen moved to Vital Urea.</span>');
+          return '<div class="lrow' + (notes.length ? ' is-changed' : '') + '" role="row"><span role="cell" class="lrow__p">' + (l.slug ? '<img class="lrow__img" src="img/packs/' + l.slug + '.webp?v=2" alt="" loading="lazy" width="40" height="56">' : '<span class="lrow__img lrow__img--none" aria-hidden="true"></span>') + '<b>' + esc(l.name) + '</b>' + (l.slug ? '' : '<span class="tag tag--grey">not made by VAN</span>') + '<span class="lrow__pack">' + l.packKg + ' ' + l.unit + ' ' + l.word + '</span>' + notes.join('') + '</span>' +
+            '<span role="cell" class="fig lrow__t">' + group(l.total) + ' ' + l.unit + '</span><span role="cell" class="fig lrow__q">' + group(fmtCreator(toBuy(l.shown))) + '</span></div>';
         }).join('') + '</div>' +
-        '<p class="lnote">Round up to whole bags and packs when you buy.</p></section>';
+        '<p class="lnote">The total weight or volume is the amount your field needs. The number of bags or packs to buy is that amount rounded up to the next half bag or half pack.</p></section>';
 
       /* 2. Nutrients */
       h += '<section class="lsec"><h4 class="lsec__h"><span class="fig">B</span> Nutrients applied on ' + acresText + '</h4>';

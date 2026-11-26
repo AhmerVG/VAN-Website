@@ -192,7 +192,7 @@ input[type="range"]::-moz-range-thumb { width: 26px; height: 26px; border-radius
 .lvl--average::before { color: var(--amber); }
 .lvl--moderate::before, .lvl--healthy::before { color: var(--emerald); }
 .ltable { margin-top: 14px; }
-.lrow { display: grid; grid-template-columns: minmax(0, 1fr) 96px 128px; gap: 12px; align-items: baseline; padding: 12px 0 12px 12px; border-bottom: 1px solid var(--line); border-left: 3px solid transparent; }
+.lrow { display: grid; grid-template-columns: minmax(0, 1fr) 128px 104px; gap: 12px; align-items: baseline; padding: 12px 0 12px 12px; border-bottom: 1px solid var(--line); border-left: 3px solid transparent; }
 .lrow--head { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); padding-top: 4px; padding-bottom: 8px; }
 .lrow--head span:nth-child(n+2), .lrow__q, .lrow__t { text-align: right; }
 .lrow.is-changed { border-left-color: var(--emerald); background: rgba(45, 90, 60, 0.05); }
@@ -338,7 +338,7 @@ input[type="range"]::-moz-range-thumb { width: 26px; height: 26px; border-radius
   .dcard__facts li { grid-template-columns: 78px 1fr; }
   .own__slider { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .own__out { text-align: left; }
-  .lrow { grid-template-columns: minmax(0, 1fr) 62px 84px; gap: 8px; padding-left: 8px; }
+  .lrow { grid-template-columns: minmax(0, 1fr) 84px 66px; gap: 8px; padding-left: 8px; }
   .lrow__q { font-size: 19px; }
   .lrow__t { font-size: 13px; }
   .readings li { grid-template-columns: minmax(0, 1fr) auto; }
@@ -420,3 +420,56 @@ input[type="range"]::-moz-range-thumb { width: 26px; height: 26px; border-radius
 
 /* Map colours follow the usual reading: green for few samples with the problem, amber for about half, red for most. */
 .dist { stroke: #FFFDF8; }
+
+/* ---- 26 Nov 2026: Vitalytics round ---- */
+/* Dark hero over a field photograph, like the other pages */
+.t-hero { position: relative; overflow: hidden; background: #141915; color: var(--on-deep); padding-top: clamp(130px, 18vh, 180px); }
+.t-hero__photo { position: absolute; inset: 0; margin: 0; }
+.t-hero__photo img { width: 100%; height: 100%; object-fit: cover; opacity: 0.55; }
+.t-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20, 25, 21, 0.92) 0%, rgba(20, 25, 21, 0.7) 50%, rgba(20, 25, 21, 0.45) 100%); pointer-events: none; }
+.t-hero .t-wrap { position: relative; z-index: 2; }
+.t-hero .t-hero__title { color: var(--on-deep); }
+.t-hero .lead { color: var(--on-deep-soft); }
+.t-hero .t-tabs a { color: var(--on-deep); border-color: var(--hair-light); }
+.t-hero .t-tabs a:hover, .t-hero .t-tabs a:focus-visible { background: var(--on-deep); color: var(--deep); }
+.t-hero__credit { position: absolute; right: var(--gutter); bottom: 12px; z-index: 2; margin: 0; font-size: 11.5px; color: rgba(247, 244, 238, 0.55); }
+
+/* The calendar card with the sowing wheel */
+.t-calcard { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: clamp(24px, 5vw, 72px); align-items: center; }
+.t-calcard .eyebrow { display: block; margin-bottom: 14px; }
+.crops__month { margin-top: 22px; }
+.crops__mh { font-family: var(--serif); font-size: clamp(21px, 1.9vw, 28px); margin-bottom: 14px; }
+.crops__chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
+.chiplink { display: inline-flex; align-items: center; gap: 8px; min-height: 42px; padding: 0 16px 0 12px; border-radius: 999px; background: #FFFDF8; border: 1px solid var(--line, rgba(23,26,22,0.16)); text-decoration: none; font-weight: 600; font-size: 14.5px; transition: background-color 0.3s, color 0.3s; }
+.chiplink::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--g, var(--emerald)); }
+.chiplink:hover, .chiplink:focus-visible { background: var(--deep); color: var(--on-deep); }
+.t-calcard__go { margin-top: 26px; }
+.crops__wheel { display: grid; gap: 10px; justify-items: center; margin: 0; }
+.crops__wheel svg { width: min(100%, 420px); height: auto; overflow: visible; }
+.crops__wheel figcaption { font-size: 14px; color: var(--ink-soft); }
+.wheel__seg { cursor: pointer; outline: none; }
+.wheel__seg path { fill: color-mix(in srgb, var(--amber) calc(var(--k) * 100%), #F3EEE4); stroke: var(--clay); stroke-width: 2; transition: fill 0.3s, transform 0.45s var(--ease); transform-origin: 210px 210px; }
+.wheel__seg text { font-size: 14px; font-weight: 700; fill: var(--deep); pointer-events: none; }
+.wheel__dot { stroke: rgba(23, 26, 22, 0.35); stroke-width: 1; pointer-events: none; }
+.wheel__seg:hover path, .wheel__seg:focus-visible path { fill: var(--emerald-lit); transform: scale(1.045); }
+.wheel__seg.is-on path { fill: var(--emerald); }
+.wheel__seg.is-on text { fill: var(--on-deep); }
+.wheel__needle line { stroke: var(--amber-deep); stroke-width: 2.5; stroke-linecap: round; }
+.wheel__needle circle { fill: var(--amber-deep); }
+.wheel__m { font-family: var(--serif); font-size: 32px; fill: var(--ink); }
+.wheel__n { font-size: 15px; fill: var(--ink-soft); }
+
+/* Pack pictures in the creator */
+.lrow__p { display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 12px; align-items: start; }
+.lrow__p > :not(.lrow__img) { grid-column: 2; }
+.lrow__img { grid-row: 1 / span 4; width: 40px; height: 56px; object-fit: contain; filter: drop-shadow(0 6px 6px rgba(23, 26, 22, 0.2)); }
+.lrow__img--none { display: block; border-radius: 8px; border: 1px dashed var(--line, rgba(23,26,22,0.2)); height: 48px; }
+
+/* The fixed menu no longer covers a section heading after a jump */
+section[id] { scroll-margin-top: 110px; }
+
+@media (max-width: 900px) {
+  .t-calcard { grid-template-columns: 1fr; }
+  .crops__wheel svg { width: min(100%, 320px); }
+}
+.lrow__p .tag { justify-self: start; }
