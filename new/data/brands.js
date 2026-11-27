@@ -43,7 +43,7 @@ window.VAN_BRANDS = [
     about: ['Nitro Sulfur supplies nitrogen and sulfur.', 'The bag declares a minimum of 22% nitrogen and a minimum of 18% sulfur.', 'The Nitro Sulfur bag carries a new label.'],
     guidance: ['The bag label gives 1 bag (25 kg) per acre at sowing for wheat, maize, cotton and vegetables.', 'For rice, the label gives 1 bag per acre at transplanting.', 'For sugarcane, the label gives 2 bags per acre. Apply 1 bag at sowing and 1 bag at the first irrigation.', 'For banana, the label gives 2 bags per acre. Apply 1 bag at flowering and 1 bag before the fruit sets.', 'At sowing, mix Nitro Sulfur with the other fertilisers applied at sowing and broadcast it evenly over the field.', 'The label also gives application with irrigation water as a method for rice, sugarcane and banana. Put the fertiliser slowly into the water at the field inlet while you irrigate.'],
     wheat: [],
-    registration: [],
+    registration: ['The Pakistan Standards and Quality Control Authority (PSQCA) has approved a licence for Nitro Sulfur.'],
     img: 'nitro-sulfur', imgAlt: 'The front of the 25 kg bag of Nitro Sulfur, with its new label.'
   },
   {
