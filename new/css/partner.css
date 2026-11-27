@@ -136,6 +136,9 @@
 .pp-tool__text { color: var(--ink-soft); font-size: 15.5px; }
 .pp-tool__arrow { font-size: 22px; transition: transform 0.3s var(--ease); }
 .pp-tool:hover .pp-tool__arrow { transform: translateX(6px); }
+/* 27 Nov 2026: links to the 4 partner pages, under section 02 */
+.pp-more__h { margin: clamp(40px, 5vw, 64px) 0 12px; }
+.pp-more .pp-tool__name { font-size: clamp(20px, 1.8vw, 26px); }
 
 /* ---------- 05 published detail ---------- */
 .pp-detail { display: grid; gap: 12px; }

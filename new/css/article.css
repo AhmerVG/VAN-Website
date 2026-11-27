@@ -275,3 +275,22 @@ img.k-pack { display: block; height: 150px; width: auto; max-width: 100%; margin
 /* paragraph spacing inside text blocks that carry no layout class */
 .k-article div:not([class]) > * + *, .sp-body > * + *, .k-stack > p + p { margin-top: 14px; }
 .k-article li > p + p { margin-top: 8px; }
+/* 27 Nov 2026, Tahir: the partner pages open compactly, so the page starts in view, and their sections are a slim bar
+   of links under the opening that stays at the top while the reader scrolls (in place of the side list). */
+.k-hero--compact { padding: clamp(112px, 13vh, 132px) var(--gutter) clamp(32px, 5vh, 48px); }
+.k-hero--compact .k-hero__title { font-size: clamp(32px, 3.4vw, 52px); max-width: 26ch; margin: 12px 0 18px; }
+.k-hero--compact .k-hero__body { max-width: 92ch; }
+.k-hero--compact .k-hero__body p { font-size: 16.5px; line-height: 1.6; }
+.k-hero--compact::before { width: 40vw; height: 40vw; }
+.k-layout--wide { max-width: 1160px; }
+.k-secbar { position: sticky; top: 82px; z-index: 40; max-height: none; overflow: visible; padding: 0; align-self: auto; background: none; pointer-events: none; }
+.k-secbar ol { pointer-events: auto; }
+.k-secbar ol { max-width: 1160px; margin: 0 auto; padding: 10px var(--gutter); display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+.k-secbar ol::-webkit-scrollbar { display: none; }
+.k-secbar li { flex: none; }
+.k-secbar a { box-shadow: 0 10px 24px -16px rgba(23, 26, 22, 0.55); display: inline-flex; grid-template-columns: none; align-items: center; gap: 8px; padding: 7px 14px 7px 7px; border: 1px solid var(--hair); border-radius: 999px; background: #fff; font-size: 14px; white-space: nowrap; }
+.k-secbar a::after { content: none; }
+.k-secbar a:hover, .k-secbar a:focus-visible { background: var(--lime); border-color: var(--ink); }
+.k-secbar a[aria-current] { background: var(--deep); border-color: var(--deep); color: var(--on-deep); }
+.k-layout--wide .k-article { padding-top: 8px; }
+.k-layout--wide .k-sec { scroll-margin-top: var(--secbar-top, 150px); }

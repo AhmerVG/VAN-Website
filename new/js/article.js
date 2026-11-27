@@ -24,7 +24,7 @@
   function fail(el) { el.innerHTML = '<p class="lz-fail">This chart could not load. Please refresh the page.</p>'; }
 
   /* 2. Side list */
-  var links = {}, toc = document.querySelector('.k-toc');
+  var links = {}, toc = document.querySelector('.k-toc:not(.k-secbar)');
   if (toc && 'IntersectionObserver' in window) {
     toc.querySelectorAll('a[href^="#"]').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
     var seen = {};
@@ -47,4 +47,33 @@
   var mq = window.matchMedia('(max-width: 1023px)');
   if (mq.matches) box.removeAttribute('open');
   box.addEventListener('click', function (e) { if (mq.matches && e.target.closest('a')) box.removeAttribute('open'); });
+})();
+
+/* 27 Nov 2026: the section bar of the partner pages sits just under the floating menu, whose height differs
+   between a phone and a computer, and the highlighted link is kept in view inside the bar. */
+(function () {
+  var bar = document.querySelector('.k-secbar'), pill = document.querySelector('.nav__pill');
+  if (!bar) return;
+  function place() {
+    var b = pill ? pill.getBoundingClientRect().bottom : 70;
+    bar.style.top = Math.round(Math.max(b, 0) + 8) + 'px';
+    document.documentElement.style.setProperty('--secbar-top', Math.round(b + 70) + 'px');
+  }
+  place(); window.addEventListener('resize', place);
+  /* the current section is the last one whose top has passed under the bar */
+  var items = [].map.call(bar.querySelectorAll('a[href^="#"]'), function (a) { return [a, document.getElementById(a.getAttribute('href').slice(1))]; })
+    .filter(function (x) { return x[1]; });
+  var ticking = false;
+  function mark() {
+    ticking = false;
+    var line = bar.getBoundingClientRect().bottom + 40, cur = null;
+    items.forEach(function (x) { if (x[1].getBoundingClientRect().top <= line) cur = x[0]; });
+    items.forEach(function (x) { x[0].toggleAttribute('aria-current', x[0] === cur); });
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(mark); } }, { passive: true });
+  mark();
+  if ('MutationObserver' in window) new MutationObserver(function () {
+    var a = bar.querySelector('a[aria-current]'), ol = bar.querySelector('ol');
+    if (a && ol) ol.scrollTo({ left: a.offsetLeft - 16, behavior: 'smooth' });
+  }).observe(bar, { attributes: true, subtree: true, attributeFilter: ['aria-current'] });
 })();
